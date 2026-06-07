@@ -63,6 +63,24 @@ Einschraenkung:
 - Kein automatischer Node-Poller.
 - Ergebnisse muessen vorher lokal gebaut und committed/gepusht werden.
 
+Vorbereitet:
+
+- `.nojekyll` verhindert, dass GitHub Pages Dateien als Jekyll-Seite verarbeitet.
+- `.github/workflows/pages.yml` deployt den Repository-Stand bei jedem Push auf `master`.
+
+Aktivierung in GitHub:
+
+1. Repository oeffnen.
+2. `Settings` -> `Pages`.
+3. Unter `Build and deployment` die Source auf `GitHub Actions` stellen.
+4. Danach einen Push ausloesen oder den Workflow `Deploy static app to GitHub Pages` manuell starten.
+
+Erwartete URL:
+
+```text
+https://jobo2501.github.io/wm-radar-2026/
+```
+
 ### Kleiner Server oder Worker
 
 Gut fuer:

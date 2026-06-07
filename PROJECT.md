@@ -54,6 +54,7 @@ Wichtige Dateien:
 - `enable-football-data.cmd`: Provider aktivieren und einmal syncen.
 - `watch-results.cmd`: dauerhaften Poller starten.
 - `sync-results.cmd`: einmaliger Sync/Rebuild per Doppelklick.
+- `.github/workflows/pages.yml`: statisches GitHub-Pages-Deployment ohne Ergebnis-Poller.
 
 ## UI-Module
 
@@ -88,7 +89,7 @@ Wichtige Dateien:
 2. Sobald echte Resultate eintreffen, Mapping und Tabellen live pruefen.
 3. Provider-Mapping fuer K.o.-Runden gegen echte Providerdaten nachschaerfen.
 4. GitHub-Repository anlegen und Projekt sichern.
-5. Deployment-Ziel pruefen: GitHub Pages fuer statische Standalone-App oder kleiner Server fuer automatischen Sync.
+5. GitHub Pages aktivieren und die statische Demo pruefen.
 6. Premium-Datenphase planen: xG, Lineups, Karten, Schuesse, Ballbesitz, Pressing-/Trackingdaten.
 
 ## GitHub und Deployment
@@ -100,7 +101,7 @@ Empfohlener Ablauf:
 1. `.gitignore` fuer Tokens, Logs und lokale Runtime-Dateien anlegen.
 2. Repository initialisieren oder bestehendes Repo nutzen.
 3. Initial Commit mit App, Datenmodell und Dokumentation.
-4. Optional GitHub Pages fuer statische Datei `WM-Radar-26.html`.
+4. GitHub Pages per vorbereitetem Workflow `.github/workflows/pages.yml` aktivieren.
 5. Fuer automatischen Live-Sync spaeter eher ein kleiner Server/Worker, weil GitHub Pages selbst keine regelmaessigen Node-Syncs ausfuehrt.
 
 ## Betriebsmodus waehrend der WM
