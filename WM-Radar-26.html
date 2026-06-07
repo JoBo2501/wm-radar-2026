@@ -1949,6 +1949,94 @@ h3 {
   grid-row: span 2;
 }
 
+.evidence-card,
+.metric-plan-card {
+  grid-column: span 2;
+}
+
+.evidence-stack,
+.voice-mini-list,
+.advanced-metric-list {
+  display: grid;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.evidence-stack {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.evidence-stack a,
+.voice-mini-list a,
+.advanced-metric-list span {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  padding: 11px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.04);
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.evidence-stack a:hover,
+.voice-mini-list a:hover {
+  border-color: rgba(196, 255, 95, 0.28);
+  background: rgba(255, 255, 255, 0.065);
+  transform: translateY(-1px);
+}
+
+.evidence-stack span,
+.voice-mini-list span,
+.advanced-metric-list small {
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.evidence-stack strong,
+.voice-mini-list strong,
+.advanced-metric-list strong {
+  min-width: 0;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.evidence-stack em {
+  color: var(--lime);
+  font-size: 0.76rem;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.voice-mini-list {
+  grid-template-columns: 1fr;
+}
+
+.advanced-metric-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.advanced-metric-list em {
+  --metric: 62;
+  display: block;
+  height: 8px;
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, var(--lime) calc(var(--metric) * 1%), rgba(255, 255, 255, 0.09) 0);
+}
+
+.advanced-metric-list p {
+  font-size: 0.82rem;
+}
+
 .metric-list {
   display: grid;
   gap: 8px;
@@ -3465,13 +3553,17 @@ h3 {
 
   .tactical-briefing,
   .trigger-card,
-  .score-signals {
+  .score-signals,
+  .evidence-card,
+  .metric-plan-card {
     grid-column: auto;
     grid-row: auto;
   }
 
   .battle-board,
-  .decision-grid {
+  .decision-grid,
+  .evidence-stack,
+  .advanced-metric-list {
     grid-template-columns: 1fr;
   }
 
@@ -10026,6 +10118,70 @@ function getDecisionMatrix(match) {
   ];
 }
 
+function getEvidencePillars(match) {
+  const pillarIds =
+    match.signals.tactical >= 70
+      ? ["statsbomb", "skillcorner", "wyscout"]
+      : match.signals.importance >= 70
+        ? ["opta", "wyscout", "scisports"]
+        : ["opta", "statsbomb", "wyscout"];
+
+  return pillarIds
+    .map((id) => analystSources.pillars.find((pillar) => pillar.id === id))
+    .filter(Boolean);
+}
+
+function getEvidenceVoices(match) {
+  const voiceIds =
+    match.signals.tactical >= 70
+      ? ["athletic-tactics", "spielverlagerung", "coaches-voice"]
+      : match.hasFocusTeam
+        ? ["opta-analyst", "athletic-tactics", "coaches-voice"]
+        : ["opta-analyst", "total-football-analysis", "athletic-tactics"];
+
+  return voiceIds
+    .map((id) => analystSources.voices.find((voice) => voice.id === id))
+    .filter(Boolean);
+}
+
+function getAdvancedMetricPlan(match) {
+  return [
+    {
+      label: "xG / Chance Quality",
+      status: match.sourceLevel === "real" ? "bereit" : "Provider spaeter",
+      detail: "Prueft, ob das Ergebnis zur Chancenqualitaet passt oder nur Scoreboard-Rauschen ist.",
+      value: match.signals.importance,
+    },
+    {
+      label: "PPDA / Pressingdruck",
+      status: "Modellanker",
+      detail: "Soll Pressinghoehe, Zugriff und passive Phasen im Spielverlauf trennen.",
+      value: match.signals.tactical,
+    },
+    {
+      label: "Field Tilt / Territory",
+      status: "Provider spaeter",
+      detail: "Zeigt, wer das Spiel wirklich in gefaehrlichen Zonen haelt.",
+      value: Math.round((match.signals.importance + match.pathImpact) / 2),
+    },
+    {
+      label: "Line-Breaking / 360",
+      status: "Premium spaeter",
+      detail: "Erklaert Paesse und Annahmen, die normale Eventdaten kaum sichtbar machen.",
+      value: match.signals.tactical,
+    },
+  ];
+}
+
+function getPostMatchChecks(match, home, away) {
+  return [
+    `Hat ${match.driver} tatsaechlich den Spielverlauf gepraegt?`,
+    `Passte die Chancenqualitaet zur Empfehlung ${getWatchLabel(match.category)}?`,
+    `Wurde ${home.code}-${away.code} durch Ballverluste, Standards oder offene Raeume entschieden?`,
+    `Muss der Match-Score nach echten Ergebnis- und Eventdaten neu kalibriert werden?`,
+  ];
+}
+
 function renderMatches() {
   const visibleMatches = getVisibleMatches();
 
@@ -10110,6 +10266,10 @@ function renderDossier() {
   const keyBattle = getKeyBattle(home, away);
   const tacticalTriggers = getTacticalTriggers(selectedMatch, home, away);
   const decisionMatrix = getDecisionMatrix(selectedMatch);
+  const evidencePillars = getEvidencePillars(selectedMatch);
+  const evidenceVoices = getEvidenceVoices(selectedMatch);
+  const metricPlan = getAdvancedMetricPlan(selectedMatch);
+  const postMatchChecks = getPostMatchChecks(selectedMatch, home, away);
 
   dossierMetaEl.innerHTML = [
     `${selectedMatch.displayDate}`,
@@ -10220,6 +10380,64 @@ function renderDossier() {
       <span class="briefing-kicker">Quellenlogik</span>
       <h3>Quellenlogik</h3>
       <p>${selectedMatch.analysis.source} ${selectedMatch.sourceNote}</p>
+    </div>
+    <div class="insight-card evidence-card">
+      <span class="briefing-kicker">Evidence Pipeline</span>
+      <h3>Datenquellen fuer dieses Spiel</h3>
+      <div class="evidence-stack">
+        ${evidencePillars
+          .map(
+            (pillar) => `
+              <a href="${pillar.url}" target="_blank" rel="noreferrer">
+                <span>${pillar.layer}</span>
+                <strong>${pillar.name}</strong>
+                <em>${pillar.integration}</em>
+              </a>
+            `,
+          )
+          .join("")}
+      </div>
+    </div>
+    <div class="insight-card analyst-voice-card">
+      <span class="briefing-kicker">Serioese Stimmen</span>
+      <h3>Welche Analysten wuerden zaehlen?</h3>
+      <div class="voice-mini-list">
+        ${evidenceVoices
+          .map(
+            (voice) => `
+              <a href="${voice.url}" target="_blank" rel="noreferrer">
+                <strong>${voice.name}</strong>
+                <span>${voice.type} · Trust ${voice.trust}</span>
+              </a>
+            `,
+          )
+          .join("")}
+      </div>
+    </div>
+    <div class="insight-card metric-plan-card">
+      <span class="briefing-kicker">Advanced Metrics</span>
+      <h3>Was spaeter automatisch validiert wird</h3>
+      <div class="advanced-metric-list">
+        ${metricPlan
+          .map(
+            (metric) => `
+              <span>
+                <strong>${metric.label}</strong>
+                <small>${metric.status}</small>
+                <em style="--metric: ${metric.value}"></em>
+                <p>${metric.detail}</p>
+              </span>
+            `,
+          )
+          .join("")}
+      </div>
+    </div>
+    <div class="insight-card post-match-card">
+      <span class="briefing-kicker">Nach dem Spiel</span>
+      <h3>Validierungsfragen</h3>
+      <ul class="cue-list">
+        ${postMatchChecks.map((check) => `<li>${check}</li>`).join("")}
+      </ul>
     </div>
     <div class="insight-card">
       <span class="briefing-kicker">Action</span>

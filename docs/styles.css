@@ -1940,6 +1940,94 @@ h3 {
   grid-row: span 2;
 }
 
+.evidence-card,
+.metric-plan-card {
+  grid-column: span 2;
+}
+
+.evidence-stack,
+.voice-mini-list,
+.advanced-metric-list {
+  display: grid;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.evidence-stack {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.evidence-stack a,
+.voice-mini-list a,
+.advanced-metric-list span {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  padding: 11px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.04);
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.evidence-stack a:hover,
+.voice-mini-list a:hover {
+  border-color: rgba(196, 255, 95, 0.28);
+  background: rgba(255, 255, 255, 0.065);
+  transform: translateY(-1px);
+}
+
+.evidence-stack span,
+.voice-mini-list span,
+.advanced-metric-list small {
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.evidence-stack strong,
+.voice-mini-list strong,
+.advanced-metric-list strong {
+  min-width: 0;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.evidence-stack em {
+  color: var(--lime);
+  font-size: 0.76rem;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.voice-mini-list {
+  grid-template-columns: 1fr;
+}
+
+.advanced-metric-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.advanced-metric-list em {
+  --metric: 62;
+  display: block;
+  height: 8px;
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, var(--lime) calc(var(--metric) * 1%), rgba(255, 255, 255, 0.09) 0);
+}
+
+.advanced-metric-list p {
+  font-size: 0.82rem;
+}
+
 .metric-list {
   display: grid;
   gap: 8px;
@@ -3456,13 +3544,17 @@ h3 {
 
   .tactical-briefing,
   .trigger-card,
-  .score-signals {
+  .score-signals,
+  .evidence-card,
+  .metric-plan-card {
     grid-column: auto;
     grid-row: auto;
   }
 
   .battle-board,
-  .decision-grid {
+  .decision-grid,
+  .evidence-stack,
+  .advanced-metric-list {
     grid-template-columns: 1fr;
   }
 
