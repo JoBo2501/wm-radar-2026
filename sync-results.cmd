@@ -2,6 +2,8 @@
 cd /d "%~dp0"
 node sync-results.mjs
 node validate-results.mjs
+node generate-post-match-reports.mjs
+node validate-post-match-reports.mjs
 node build-data.mjs
 node build-standalone.mjs
 node build-pages.mjs

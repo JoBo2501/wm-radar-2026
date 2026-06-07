@@ -14,7 +14,7 @@
       "id": "demo-local",
       "label": "Demo Ergebnis-Feed",
       "type": "local-json",
-      "enabled": true,
+      "enabled": false,
       "path": "data/raw/demo-results-feed.json",
       "trust": 20,
       "pollMinutes": 0,

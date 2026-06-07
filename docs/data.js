@@ -1224,13 +1224,13 @@ window.WMRadarData = {
     }
   },
   "resultValidation": {
-    "generatedAt": "2026-06-07T07:51:07.733Z",
+    "generatedAt": "2026-06-07T10:33:33.534Z",
     "status": "waiting",
     "summary": "Noch keine echten Resultate synchronisiert; Projektionsmodus bleibt aktiv.",
     "source": {
       "activeSource": "football-data",
       "sourceLabel": "football-data.org",
-      "generatedAt": "2026-06-07T06:42:26.664Z",
+      "generatedAt": "2026-06-07T10:33:33.398Z",
       "pollMinutes": 10
     },
     "issues": {
@@ -1252,7 +1252,7 @@ window.WMRadarData = {
   "postMatchReports": {
     "schemaVersion": 1,
     "status": "preTournament",
-    "generatedAt": "2026-06-07T10:00:59.937Z",
+    "generatedAt": "2026-06-07T10:50:38.137Z",
     "sourceNote": "Post-Match-Reports sind als Datenmodell vorbereitet. Echte Werte werden nach Spielende aus Ergebnis-, Event-, Tracking- und Analystenquellen ergänzt.",
     "metricDefinitions": [
       {
@@ -1311,7 +1311,7 @@ window.WMRadarData = {
     "reports": []
   },
   "postMatchValidation": {
-    "generatedAt": "2026-06-07T10:25:45.074Z",
+    "generatedAt": "2026-06-07T10:50:39.033Z",
     "status": "waiting",
     "summary": "Post-Match-Report-Modell ist vorbereitet; echte Reports entstehen nach finalen Ergebnissen.",
     "coverage": {
@@ -4441,7 +4441,7 @@ window.WMRadarData = {
     "activeSource": "football-data",
     "sourceLabel": "football-data.org",
     "sourceNote": "Keine echten Ergebnisse von football-data.org; Tabellenansicht nutzt weiter Modellprojektion.",
-    "generatedAt": "2026-06-07T06:42:26.664Z",
+    "generatedAt": "2026-06-07T10:33:33.398Z",
     "pollMinutes": 10,
     "syncError": null,
     "summary": {
