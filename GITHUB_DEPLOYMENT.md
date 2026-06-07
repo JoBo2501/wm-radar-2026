@@ -66,14 +66,14 @@ Einschraenkung:
 Vorbereitet:
 
 - `.nojekyll` verhindert, dass GitHub Pages Dateien als Jekyll-Seite verarbeitet.
-- Die App kann direkt aus dem Branch `master` und dem Ordner `/root` ausgeliefert werden.
+- Die App wird als statisches Bundle in `docs/` bereitgestellt.
 
 Aktivierung in GitHub:
 
 1. Repository oeffnen.
 2. `Settings` -> `Pages`.
 3. Unter `Build and deployment` als Source `Deploy from a branch` waehlen.
-4. Branch `master` und Folder `/root` auswaehlen.
+4. Branch `master` und Folder `/docs` auswaehlen.
 5. Speichern. GitHub baut die statische Seite danach selbst.
 
 Erwartete URL:

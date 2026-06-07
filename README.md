@@ -6,7 +6,7 @@ Die dauerhafte Projektdokumentation liegt in `PROJECT.md`. Dort stehen Zielbild,
 
 GitHub- und Deployment-Hinweise liegen in `GITHUB_DEPLOYMENT.md`.
 
-GitHub Pages ist vorbereitet. Nach Aktivierung in GitHub Settings -> Pages -> Source: `Deploy from a branch`, Branch `master`, Folder `/root` kann die statische App unter `https://jobo2501.github.io/wm-radar-2026/` laufen.
+GitHub Pages ist vorbereitet. Nach Aktivierung in GitHub Settings -> Pages -> Source: `Deploy from a branch`, Branch `master`, Folder `/docs` kann die statische App unter `https://jobo2501.github.io/wm-radar-2026/` laufen.
 
 ## Was drin ist
 

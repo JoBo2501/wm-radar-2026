@@ -24,7 +24,7 @@ WM Radar 26 ist ein persoenliches Analysten-Cockpit fuer die FIFA Fussball-WM 20
 - Ergebnis-Sync: `sync-results.mjs`, `validate-results.mjs`, `watch-results.mjs`
 - Ergebnis-Konfiguration: `data/result-sources.json`, `data/results.json`, `data/result-overrides.json`, `data/result-validation.json`
 - Quellen-/Analystenmodell: `data/analyst-sources.json`
-- Build/Validierung: `normalize-fixtures.mjs`, `validate-schedule.mjs`, `build-data.mjs`, `build-standalone.mjs`
+- Build/Validierung: `normalize-fixtures.mjs`, `validate-schedule.mjs`, `build-data.mjs`, `build-standalone.mjs`, `build-pages.mjs`
 
 ## Datenfluss
 
@@ -101,7 +101,7 @@ Empfohlener Ablauf:
 1. `.gitignore` fuer Tokens, Logs und lokale Runtime-Dateien anlegen.
 2. Repository initialisieren oder bestehendes Repo nutzen.
 3. Initial Commit mit App, Datenmodell und Dokumentation.
-4. GitHub Pages per `Deploy from a branch` aktivieren: Branch `master`, Folder `/root`.
+4. GitHub Pages per `Deploy from a branch` aktivieren: Branch `master`, Folder `/docs`.
 5. Fuer automatischen Live-Sync spaeter eher ein kleiner Server/Worker, weil GitHub Pages selbst keine regelmaessigen Node-Syncs ausfuehrt.
 
 ## Betriebsmodus waehrend der WM
