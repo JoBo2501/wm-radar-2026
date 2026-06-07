@@ -36,6 +36,10 @@ let weights = { ...preferences.weights };
 let selectedMatchId = null;
 
 const focusTeamsEl = document.querySelector("#focusTeams");
+const heroMissionEl = document.querySelector("#heroMission");
+const heroStatusRailEl = document.querySelector("#heroStatusRail");
+const orbitSignalEl = document.querySelector("#orbitSignal");
+const heroSignalStackEl = document.querySelector("#heroSignalStack");
 const controlStatsEl = document.querySelector("#controlStats");
 const summaryGridEl = document.querySelector("#summaryGrid");
 const summaryLineEl = document.querySelector("#summaryLine");
@@ -547,6 +551,57 @@ function renderControlStats() {
   const liveCount = scoredMatches.filter((match) => match.category === "live").length;
   const skipCount = scoredMatches.filter((match) => match.category === "skip").length;
   const topScore = Math.max(...scoredMatches.map((match) => match.score));
+  const dailyMatches = getTodayCommandMatches();
+  const topMatch = [...dailyMatches].sort((a, b) => b.score - a.score)[0] || scoredMatches[0];
+  const nightMatches = dailyMatches.filter(isNightMatch);
+  const focusToday = dailyMatches.filter((match) => match.hasFocusTeam).length;
+
+  if (topMatch) {
+    const [home, away] = topMatch.matchTeams;
+    heroMissionEl.textContent = `${formatDate(preferences.baseDate)}: ${home.code}-${away.code} fuehrt den Radar an`;
+    orbitSignalEl.textContent = `${topMatch.score}/100 · ${topMatch.driver} · ${getWatchAction(topMatch.category)}`;
+  }
+
+  heroStatusRailEl.innerHTML = [
+    ["Heute", dailyMatches.length, "Spiele im Tagesfenster"],
+    ["Live", liveCount, "Pflichtspiele gesamt"],
+    ["Nacht", nightMatches.length, "spoiler-sensibel"],
+    ["Fokus", focusToday, "Watchlist-Bezug"],
+  ]
+    .map(
+      ([label, value, detail]) => `
+        <span>
+          <strong>${value}</strong>
+          ${label}
+          <small>${detail}</small>
+        </span>
+      `,
+    )
+    .join("");
+
+  heroSignalStackEl.innerHTML = (topMatch ? [topMatch, ...dailyMatches.filter((match) => match.id !== topMatch.id)] : dailyMatches)
+    .slice(0, 3)
+    .map((match) => {
+      const [home, away] = match.matchTeams;
+      return `
+        <button class="hero-signal ${match.category}" type="button" data-match="${match.id}">
+          <span>${match.germanyTime}</span>
+          <strong>${home.code}-${away.code}</strong>
+          <em>${match.score}/100 · ${match.driver}</em>
+        </button>
+      `;
+    })
+    .join("");
+
+  heroSignalStackEl.querySelectorAll("button").forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedMatchId = button.dataset.match;
+      activeFilter = "today";
+      activeCategory = "all";
+      renderAllDynamic();
+      document.querySelector("#dossier").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
 
   controlStatsEl.innerHTML = [
     ["Datenstand", metadata.snapshotDate],

@@ -245,6 +245,11 @@ button {
   position: relative;
 }
 
+.hero-copy > * {
+  position: relative;
+  z-index: 1;
+}
+
 .hero-copy::after {
   content: "";
   position: absolute;
@@ -269,6 +274,33 @@ button {
   border-radius: 7px;
 }
 
+.hero-mission-strip {
+  width: max-content;
+  max-width: 100%;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding: 8px 10px;
+  border: 1px solid rgba(196, 255, 95, 0.24);
+  border-radius: 7px;
+  background:
+    linear-gradient(90deg, rgba(196, 255, 95, 0.12), rgba(105, 227, 208, 0.06)),
+    rgba(255, 255, 255, 0.045);
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hero-mission-strip strong {
+  color: var(--lime);
+  font-size: 0.8rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
 .eyebrow {
   margin: 0 0 12px;
   color: var(--lime);
@@ -286,10 +318,10 @@ p {
 }
 
 h1 {
-  max-width: 11ch;
+  max-width: 780px;
   margin-bottom: 18px;
-  font-size: clamp(3.2rem, 7vw, 6.8rem);
-  line-height: 0.92;
+  font-size: clamp(3rem, 5.1vw, 4.8rem);
+  line-height: 0.98;
   letter-spacing: 0;
 }
 
@@ -344,12 +376,35 @@ h3 {
   font-size: 0.78rem;
   font-weight: 800;
   text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-status-rail span::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(196, 255, 95, 0.12), transparent 54%);
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.hero-status-rail span:hover::before {
+  opacity: 1;
 }
 
 .hero-status-rail strong {
   color: var(--text);
   font-size: 1.35rem;
   line-height: 1;
+}
+
+.hero-status-rail small {
+  color: var(--muted);
+  font-size: 0.67rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-transform: none;
 }
 
 .primary-action,
@@ -408,8 +463,9 @@ h3 {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background:
-    linear-gradient(180deg, rgba(35, 44, 36, 0.9), rgba(17, 21, 18, 0.92)),
-    radial-gradient(circle at center, rgba(82, 210, 115, 0.15), transparent 60%);
+    radial-gradient(circle at 50% 32%, rgba(196, 255, 95, 0.14), transparent 19rem),
+    radial-gradient(circle at 82% 74%, rgba(105, 227, 208, 0.1), transparent 17rem),
+    linear-gradient(180deg, rgba(35, 44, 36, 0.92), rgba(17, 21, 18, 0.95));
   box-shadow: var(--shadow);
   position: relative;
   overflow: hidden;
@@ -420,7 +476,11 @@ h3 {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(circle at 50% 42%, rgba(196, 255, 95, 0.12), transparent 22rem);
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(circle at 50% 42%, rgba(0, 0, 0, 0.86), transparent 76%);
 }
 
 .control-header {
@@ -428,6 +488,8 @@ h3 {
   align-items: center;
   gap: 10px;
   color: var(--muted);
+  position: relative;
+  z-index: 1;
 }
 
 .control-header strong {
@@ -452,9 +514,11 @@ h3 {
   overflow: hidden;
   border-radius: 7px;
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-  background-size: 28px 28px;
+    radial-gradient(circle at center, rgba(196, 255, 95, 0.08), transparent 58%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: auto, 28px 28px, 28px 28px;
+  border: 1px solid rgba(218, 240, 216, 0.08);
 }
 
 .orbit-line {
@@ -485,6 +549,7 @@ h3 {
   color: var(--lime);
   font-weight: 900;
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+  z-index: 2;
 }
 
 .node-a {
@@ -517,6 +582,9 @@ h3 {
     linear-gradient(90deg, transparent 49.5%, rgba(218, 240, 216, 0.24) 50%, transparent 50.5%),
     repeating-linear-gradient(90deg, rgba(31, 140, 77, 0.25) 0 18%, rgba(31, 140, 77, 0.14) 18% 36%),
     rgba(31, 140, 77, 0.18);
+  box-shadow:
+    inset 0 0 0 1px rgba(196, 255, 95, 0.08),
+    0 18px 52px rgba(0, 0, 0, 0.3);
 }
 
 .mini-pitch::before,
@@ -574,10 +642,109 @@ h3 {
   animation: ballMove 4s ease-in-out infinite;
 }
 
+.orbit-feed {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid rgba(196, 255, 95, 0.18);
+  border-radius: 7px;
+  background: rgba(16, 20, 17, 0.76);
+  backdrop-filter: blur(16px);
+  z-index: 3;
+}
+
+.orbit-feed span {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.orbit-feed strong {
+  min-width: 0;
+  color: var(--text);
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hero-signal-stack {
+  display: grid;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-signal {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 0.82fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.045);
+  color: var(--soft);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.hero-signal:hover {
+  border-color: rgba(196, 255, 95, 0.32);
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-1px);
+}
+
+.hero-signal.live {
+  border-color: rgba(196, 255, 95, 0.28);
+  background: linear-gradient(90deg, rgba(196, 255, 95, 0.12), rgba(255, 255, 255, 0.045));
+}
+
+.hero-signal.analysis {
+  border-color: rgba(255, 214, 107, 0.22);
+}
+
+.hero-signal span {
+  color: var(--lime);
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.hero-signal strong {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--text);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hero-signal em {
+  min-width: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-style: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .control-stats {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
+  position: relative;
+  z-index: 1;
 }
 
 .control-stat {
@@ -2983,7 +3150,7 @@ h3 {
   }
 
   h1 {
-    max-width: 12ch;
+    max-width: 14ch;
   }
 
   .dossier {
@@ -3081,25 +3248,42 @@ h3 {
 
   .hero-grid {
     padding-top: 18px;
+    padding-bottom: 8px;
+    gap: 12px;
   }
 
   .hero-copy {
-    padding: 24px;
+    padding: 18px;
     min-height: auto;
   }
 
+  .hero-mission-strip {
+    width: 100%;
+    display: grid;
+    gap: 3px;
+  }
+
   h1 {
-    max-width: 12ch;
-    font-size: 2.9rem;
+    max-width: 13ch;
+    margin-bottom: 12px;
+    font-size: 2.15rem;
+    line-height: 0.98;
   }
 
   .hero-text {
     font-size: 1rem;
-    line-height: 1.55;
+    line-height: 1.45;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  .hero-actions {
+    margin: 8px 0 12px;
   }
 
   .summary-grid,
-  .hero-status-rail,
   .bracket-summary,
   .standings-summary,
   .data-grid,
@@ -3118,12 +3302,38 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .hero-status-rail {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-bottom: 0;
+  }
+
+  .hero-status-rail span {
+    min-height: 58px;
+    padding: 8px;
+  }
+
+  .hero-status-rail strong {
+    font-size: 1.15rem;
+  }
+
+  .focus-strip {
+    display: none;
+  }
+
   .third-place-board {
     grid-column: auto;
   }
 
-  .control-stats {
-    grid-template-columns: 1fr;
+  .control-room {
+    display: none;
+  }
+
+  .hero-signal {
+    grid-template-columns: 44px minmax(0, 1fr);
+  }
+
+  .hero-signal em {
+    grid-column: 2;
   }
 
   .section-head {
@@ -3296,6 +3506,10 @@ h3 {
       <main id="top">
         <section class="hero-grid" aria-labelledby="heroTitle">
           <div class="hero-copy">
+            <div class="hero-mission-strip" aria-label="Turnierlage">
+              <span>Matchday Control</span>
+              <strong id="heroMission">Briefing wird kalibriert</strong>
+            </div>
             <p class="eyebrow">FIFA World Cup 2026 · 104 Spiele · Dein Filter</p>
             <h1 id="heroTitle">Die WM fühlt sich riesig an. Diese App sagt dir, was wirklich zählt.</h1>
             <p class="hero-text">
@@ -3308,12 +3522,7 @@ h3 {
               <a class="secondary-action" href="#dossier">Match-Dossier ansehen</a>
             </div>
 
-            <div class="hero-status-rail" aria-label="Live-Status">
-              <span><strong>104</strong> Spiele</span>
-              <span><strong>12</strong> Gruppen</span>
-              <span><strong>32</strong> K.o.-Slots</span>
-              <span><strong>Sync</strong> bereit</span>
-            </div>
+            <div class="hero-status-rail" aria-label="Live-Status" id="heroStatusRail"></div>
 
             <div class="focus-strip" aria-label="Fokus-Teams" id="focusTeams"></div>
           </div>
@@ -3337,7 +3546,12 @@ h3 {
                 <span class="lane lane-right"></span>
                 <span class="ball"></span>
               </div>
+              <div class="orbit-feed">
+                <span>Signal</span>
+                <strong id="orbitSignal">Topspiel wird berechnet</strong>
+              </div>
             </div>
+            <div class="hero-signal-stack" id="heroSignalStack" aria-label="Aktuelle Signale"></div>
             <div class="control-stats" id="controlStats"></div>
           </aside>
         </section>
@@ -8084,6 +8298,10 @@ let weights = { ...preferences.weights };
 let selectedMatchId = null;
 
 const focusTeamsEl = document.querySelector("#focusTeams");
+const heroMissionEl = document.querySelector("#heroMission");
+const heroStatusRailEl = document.querySelector("#heroStatusRail");
+const orbitSignalEl = document.querySelector("#orbitSignal");
+const heroSignalStackEl = document.querySelector("#heroSignalStack");
 const controlStatsEl = document.querySelector("#controlStats");
 const summaryGridEl = document.querySelector("#summaryGrid");
 const summaryLineEl = document.querySelector("#summaryLine");
@@ -8595,6 +8813,57 @@ function renderControlStats() {
   const liveCount = scoredMatches.filter((match) => match.category === "live").length;
   const skipCount = scoredMatches.filter((match) => match.category === "skip").length;
   const topScore = Math.max(...scoredMatches.map((match) => match.score));
+  const dailyMatches = getTodayCommandMatches();
+  const topMatch = [...dailyMatches].sort((a, b) => b.score - a.score)[0] || scoredMatches[0];
+  const nightMatches = dailyMatches.filter(isNightMatch);
+  const focusToday = dailyMatches.filter((match) => match.hasFocusTeam).length;
+
+  if (topMatch) {
+    const [home, away] = topMatch.matchTeams;
+    heroMissionEl.textContent = `${formatDate(preferences.baseDate)}: ${home.code}-${away.code} fuehrt den Radar an`;
+    orbitSignalEl.textContent = `${topMatch.score}/100 · ${topMatch.driver} · ${getWatchAction(topMatch.category)}`;
+  }
+
+  heroStatusRailEl.innerHTML = [
+    ["Heute", dailyMatches.length, "Spiele im Tagesfenster"],
+    ["Live", liveCount, "Pflichtspiele gesamt"],
+    ["Nacht", nightMatches.length, "spoiler-sensibel"],
+    ["Fokus", focusToday, "Watchlist-Bezug"],
+  ]
+    .map(
+      ([label, value, detail]) => `
+        <span>
+          <strong>${value}</strong>
+          ${label}
+          <small>${detail}</small>
+        </span>
+      `,
+    )
+    .join("");
+
+  heroSignalStackEl.innerHTML = (topMatch ? [topMatch, ...dailyMatches.filter((match) => match.id !== topMatch.id)] : dailyMatches)
+    .slice(0, 3)
+    .map((match) => {
+      const [home, away] = match.matchTeams;
+      return `
+        <button class="hero-signal ${match.category}" type="button" data-match="${match.id}">
+          <span>${match.germanyTime}</span>
+          <strong>${home.code}-${away.code}</strong>
+          <em>${match.score}/100 · ${match.driver}</em>
+        </button>
+      `;
+    })
+    .join("");
+
+  heroSignalStackEl.querySelectorAll("button").forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedMatchId = button.dataset.match;
+      activeFilter = "today";
+      activeCategory = "all";
+      renderAllDynamic();
+      document.querySelector("#dossier").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
 
   controlStatsEl.innerHTML = [
     ["Datenstand", metadata.snapshotDate],
