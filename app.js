@@ -1829,7 +1829,7 @@ function setupSpoilerMode() {
   spoilerToggle.addEventListener("click", () => {
     const enabled = document.body.classList.toggle("spoiler-mode");
     spoilerToggle.setAttribute("aria-pressed", String(enabled));
-    spoilerToggle.textContent = enabled ? "Spoiler aktiv" : "Spoiler frei";
+    spoilerToggle.querySelector("strong").textContent = enabled ? "aktiv" : "frei";
   });
 }
 
