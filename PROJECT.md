@@ -54,7 +54,7 @@ Wichtige Dateien:
 - `enable-football-data.cmd`: Provider aktivieren und einmal syncen.
 - `watch-results.cmd`: dauerhaften Poller starten.
 - `sync-results.cmd`: einmaliger Sync/Rebuild per Doppelklick.
-- `.github/workflows/pages.yml`: statisches GitHub-Pages-Deployment ohne Ergebnis-Poller.
+- `.nojekyll`: statisches GitHub-Pages-Deployment aus Branch `master` ohne Jekyll-Verarbeitung.
 
 ## UI-Module
 
@@ -101,7 +101,7 @@ Empfohlener Ablauf:
 1. `.gitignore` fuer Tokens, Logs und lokale Runtime-Dateien anlegen.
 2. Repository initialisieren oder bestehendes Repo nutzen.
 3. Initial Commit mit App, Datenmodell und Dokumentation.
-4. GitHub Pages per vorbereitetem Workflow `.github/workflows/pages.yml` aktivieren.
+4. GitHub Pages per `Deploy from a branch` aktivieren: Branch `master`, Folder `/root`.
 5. Fuer automatischen Live-Sync spaeter eher ein kleiner Server/Worker, weil GitHub Pages selbst keine regelmaessigen Node-Syncs ausfuehrt.
 
 ## Betriebsmodus waehrend der WM

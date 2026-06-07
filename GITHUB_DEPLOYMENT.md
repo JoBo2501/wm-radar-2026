@@ -66,14 +66,15 @@ Einschraenkung:
 Vorbereitet:
 
 - `.nojekyll` verhindert, dass GitHub Pages Dateien als Jekyll-Seite verarbeitet.
-- `.github/workflows/pages.yml` deployt den Repository-Stand bei jedem Push auf `master`.
+- Die App kann direkt aus dem Branch `master` und dem Ordner `/root` ausgeliefert werden.
 
 Aktivierung in GitHub:
 
 1. Repository oeffnen.
 2. `Settings` -> `Pages`.
-3. Unter `Build and deployment` die Source auf `GitHub Actions` stellen.
-4. Danach einen Push ausloesen oder den Workflow `Deploy static app to GitHub Pages` manuell starten.
+3. Unter `Build and deployment` als Source `Deploy from a branch` waehlen.
+4. Branch `master` und Folder `/root` auswaehlen.
+5. Speichern. GitHub baut die statische Seite danach selbst.
 
 Erwartete URL:
 
