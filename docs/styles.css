@@ -2117,6 +2117,72 @@ h3 {
   font-size: 0.8rem;
 }
 
+.source-synthesis-card {
+  grid-column: span 2;
+  background:
+    radial-gradient(circle at 86% 16%, rgba(105, 227, 208, 0.12), transparent 12rem),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(242, 249, 245, 0.88));
+}
+
+.synthesis-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.synthesis-head h3 {
+  margin: 0;
+}
+
+.synthesis-status-row,
+.synthesis-layer-grid {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.synthesis-status-row {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.synthesis-status-row span,
+.synthesis-layer-grid span {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(244, 248, 242, 0.78);
+}
+
+.synthesis-status-row strong,
+.synthesis-layer-grid strong {
+  color: var(--text);
+}
+
+.synthesis-status-row small,
+.synthesis-layer-grid small {
+  color: var(--muted);
+  line-height: 1.38;
+}
+
+.synthesis-layer-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.synthesis-layer-grid em,
+.synthesis-model-card span {
+  --layer: 25;
+  display: block;
+  height: 7px;
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, var(--green) calc(var(--layer) * 2.5%), rgba(19, 69, 41, 0.12) 0);
+}
+
 .metric-list {
   display: grid;
   gap: 8px;
@@ -3370,6 +3436,9 @@ h3 {
 
 .analyst-pillar-card,
 .voice-card,
+.workflow-card,
+.access-card,
+.synthesis-model-card,
 .source-rule-card,
 .ai-model-card {
   border: 1px solid var(--line);
@@ -3381,6 +3450,87 @@ h3 {
   display: grid;
   gap: 12px;
   padding: 14px;
+}
+
+.source-workflow-section {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.source-workflow-grid,
+.source-access-grid,
+.synthesis-model-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.source-workflow-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.source-access-grid,
+.synthesis-model-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.workflow-card,
+.access-card,
+.synthesis-model-card {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+}
+
+.workflow-card span {
+  width: max-content;
+  padding: 4px 7px;
+  border-radius: 999px;
+  background: rgba(29, 143, 79, 0.1);
+  color: var(--lime);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.workflow-card h3,
+.access-card h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.workflow-card p,
+.access-card p,
+.synthesis-model-card p {
+  margin: 0;
+  color: var(--soft);
+  line-height: 1.45;
+}
+
+.workflow-card small,
+.access-card small,
+.synthesis-model-card small {
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.workflow-card em,
+.access-card em {
+  color: var(--cyan);
+  font-style: normal;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.synthesis-model-card div {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.synthesis-model-card strong {
+  color: var(--text);
 }
 
 .analyst-pillar-top {
@@ -3421,6 +3571,9 @@ h3 {
 
 .analyst-pillar-card p,
 .voice-card p,
+.workflow-card p,
+.access-card p,
+.synthesis-model-card p,
 .source-rule-card p,
 .ai-model-card p {
   margin: 0;
@@ -3595,6 +3748,9 @@ h3 {
 .radar-card,
 .analyst-pillar,
 .voice-card,
+.workflow-card,
+.access-card,
+.synthesis-model-card,
 .source-rule-card,
 .ai-model-card,
 .source-card {
@@ -3636,6 +3792,11 @@ h3 {
 .phase-grid span,
 .watch-cues,
 .key-figure-item,
+.synthesis-status-row span,
+.synthesis-layer-grid span,
+.workflow-card,
+.access-card,
+.synthesis-model-card,
 .radar-signal,
 .voice-card,
 .source-card,
@@ -3677,6 +3838,9 @@ h3 {
 .watch-cues > strong,
 .key-figure-name strong,
 .key-figure-item b,
+.synthesis-status-row strong,
+.synthesis-layer-grid strong,
+.synthesis-model-card strong,
 .group-fixtures > strong,
 .path-note > strong,
 .source-rule-card strong {
@@ -3691,6 +3855,11 @@ h3 {
 .team-lab-top small,
 .key-figure-team small,
 .key-figure-name span,
+.synthesis-status-row small,
+.synthesis-layer-grid small,
+.workflow-card small,
+.access-card small,
+.synthesis-model-card small,
 .source-card p,
 .radar-card p {
   color: var(--muted);
@@ -3765,6 +3934,13 @@ h3 {
 
   .analyst-pillar-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .source-workflow-grid,
+  .source-access-grid,
+  .synthesis-model-grid,
+  .synthesis-layer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .analyst-desk-board {
@@ -3903,6 +4079,10 @@ h3 {
   .group-teams,
   .phase-grid,
   .key-figures-grid,
+  .source-workflow-grid,
+  .source-access-grid,
+  .synthesis-model-grid,
+  .synthesis-layer-grid,
   .insight-grid,
   .radar-grid,
   .analyst-pillar-grid {
@@ -3914,6 +4094,7 @@ h3 {
   .score-signals,
   .evidence-card,
   .metric-plan-card,
+  .source-synthesis-card,
   .report-hub-card {
     grid-column: auto;
     grid-row: auto;
@@ -3924,6 +4105,7 @@ h3 {
   .evidence-stack,
   .advanced-metric-list,
   .report-status-row,
+  .synthesis-status-row,
   .report-blueprint-list {
     grid-template-columns: 1fr;
   }

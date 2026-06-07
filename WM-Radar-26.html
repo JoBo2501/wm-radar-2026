@@ -2126,6 +2126,72 @@ h3 {
   font-size: 0.8rem;
 }
 
+.source-synthesis-card {
+  grid-column: span 2;
+  background:
+    radial-gradient(circle at 86% 16%, rgba(105, 227, 208, 0.12), transparent 12rem),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(242, 249, 245, 0.88));
+}
+
+.synthesis-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.synthesis-head h3 {
+  margin: 0;
+}
+
+.synthesis-status-row,
+.synthesis-layer-grid {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.synthesis-status-row {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.synthesis-status-row span,
+.synthesis-layer-grid span {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(244, 248, 242, 0.78);
+}
+
+.synthesis-status-row strong,
+.synthesis-layer-grid strong {
+  color: var(--text);
+}
+
+.synthesis-status-row small,
+.synthesis-layer-grid small {
+  color: var(--muted);
+  line-height: 1.38;
+}
+
+.synthesis-layer-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.synthesis-layer-grid em,
+.synthesis-model-card span {
+  --layer: 25;
+  display: block;
+  height: 7px;
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, var(--green) calc(var(--layer) * 2.5%), rgba(19, 69, 41, 0.12) 0);
+}
+
 .metric-list {
   display: grid;
   gap: 8px;
@@ -3379,6 +3445,9 @@ h3 {
 
 .analyst-pillar-card,
 .voice-card,
+.workflow-card,
+.access-card,
+.synthesis-model-card,
 .source-rule-card,
 .ai-model-card {
   border: 1px solid var(--line);
@@ -3390,6 +3459,87 @@ h3 {
   display: grid;
   gap: 12px;
   padding: 14px;
+}
+
+.source-workflow-section {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.source-workflow-grid,
+.source-access-grid,
+.synthesis-model-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.source-workflow-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.source-access-grid,
+.synthesis-model-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.workflow-card,
+.access-card,
+.synthesis-model-card {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+}
+
+.workflow-card span {
+  width: max-content;
+  padding: 4px 7px;
+  border-radius: 999px;
+  background: rgba(29, 143, 79, 0.1);
+  color: var(--lime);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.workflow-card h3,
+.access-card h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.workflow-card p,
+.access-card p,
+.synthesis-model-card p {
+  margin: 0;
+  color: var(--soft);
+  line-height: 1.45;
+}
+
+.workflow-card small,
+.access-card small,
+.synthesis-model-card small {
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.workflow-card em,
+.access-card em {
+  color: var(--cyan);
+  font-style: normal;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.synthesis-model-card div {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.synthesis-model-card strong {
+  color: var(--text);
 }
 
 .analyst-pillar-top {
@@ -3430,6 +3580,9 @@ h3 {
 
 .analyst-pillar-card p,
 .voice-card p,
+.workflow-card p,
+.access-card p,
+.synthesis-model-card p,
 .source-rule-card p,
 .ai-model-card p {
   margin: 0;
@@ -3604,6 +3757,9 @@ h3 {
 .radar-card,
 .analyst-pillar,
 .voice-card,
+.workflow-card,
+.access-card,
+.synthesis-model-card,
 .source-rule-card,
 .ai-model-card,
 .source-card {
@@ -3645,6 +3801,11 @@ h3 {
 .phase-grid span,
 .watch-cues,
 .key-figure-item,
+.synthesis-status-row span,
+.synthesis-layer-grid span,
+.workflow-card,
+.access-card,
+.synthesis-model-card,
 .radar-signal,
 .voice-card,
 .source-card,
@@ -3686,6 +3847,9 @@ h3 {
 .watch-cues > strong,
 .key-figure-name strong,
 .key-figure-item b,
+.synthesis-status-row strong,
+.synthesis-layer-grid strong,
+.synthesis-model-card strong,
 .group-fixtures > strong,
 .path-note > strong,
 .source-rule-card strong {
@@ -3700,6 +3864,11 @@ h3 {
 .team-lab-top small,
 .key-figure-team small,
 .key-figure-name span,
+.synthesis-status-row small,
+.synthesis-layer-grid small,
+.workflow-card small,
+.access-card small,
+.synthesis-model-card small,
 .source-card p,
 .radar-card p {
   color: var(--muted);
@@ -3774,6 +3943,13 @@ h3 {
 
   .analyst-pillar-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .source-workflow-grid,
+  .source-access-grid,
+  .synthesis-model-grid,
+  .synthesis-layer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .analyst-desk-board {
@@ -3912,6 +4088,10 @@ h3 {
   .group-teams,
   .phase-grid,
   .key-figures-grid,
+  .source-workflow-grid,
+  .source-access-grid,
+  .synthesis-model-grid,
+  .synthesis-layer-grid,
   .insight-grid,
   .radar-grid,
   .analyst-pillar-grid {
@@ -3923,6 +4103,7 @@ h3 {
   .score-signals,
   .evidence-card,
   .metric-plan-card,
+  .source-synthesis-card,
   .report-hub-card {
     grid-column: auto;
     grid-row: auto;
@@ -3933,6 +4114,7 @@ h3 {
   .evidence-stack,
   .advanced-metric-list,
   .report-status-row,
+  .synthesis-status-row,
   .report-blueprint-list {
     grid-template-columns: 1fr;
   }
@@ -4420,6 +4602,30 @@ h3 {
           </div>
 
           <div class="analyst-pillar-grid" id="analystPillars"></div>
+
+          <div class="source-workflow-section">
+            <div class="panel-title">
+              <span>Automatisierung</span>
+              <strong>Was läuft von selbst?</strong>
+            </div>
+            <div class="source-workflow-grid" id="sourceAutomation"></div>
+          </div>
+
+          <div class="source-workflow-section">
+            <div class="panel-title">
+              <span>Zugang zu Quellen</span>
+              <strong>Frei, Abo oder Provider?</strong>
+            </div>
+            <div class="source-access-grid" id="sourceAccess"></div>
+          </div>
+
+          <div class="source-workflow-section">
+            <div class="panel-title">
+              <span>Analyse-Synthese</span>
+              <strong>Wie entsteht eine Spielgeschichte?</strong>
+            </div>
+            <div class="synthesis-model-grid" id="synthesisModel"></div>
+          </div>
 
           <div class="analyst-desk-board">
             <div>
@@ -5647,6 +5853,88 @@ window.WMRadarData = {
         "bestFor": "Corner-Kick-Muster, aehnliche Setups, Vorschlaege fuer Positionsanpassungen und Modellpruefung mit Experten.",
         "limitation": "Forschungsreferenz, kein frei integrierter WM-Live-Dienst. Fokus auf Ecken statt gesamtem offenen Spiel.",
         "url": "https://www.nature.com/articles/s41467-024-45965-x"
+      }
+    ],
+    "automationPlan": [
+      {
+        "id": "hard-data",
+        "label": "Harte Daten",
+        "mode": "Automatisch",
+        "cadence": "Poller vor, waehrend und nach Spielen",
+        "whatHappens": "Ergebnisse, Tabellen, Spielstatus und spaeter Eventdaten werden per Provider-API synchronisiert.",
+        "userAction": "Keine Aktion noetig, ausser ein Provider-Token muss erneuert werden."
+      },
+      {
+        "id": "focus-analysis",
+        "label": "Fokusspiele",
+        "mode": "Automatisch plus Review",
+        "cadence": "Vorbericht vor Anpfiff, Analyse-Lauf nach Abpfiff",
+        "whatHappens": "Die App sucht passende Datenanker, Taktikquellen und serioese Stimmen und erstellt eine gewichtete Analyse-Synthese.",
+        "userAction": "Optional: Analyse aktualisieren, wenn du ein Spiel besonders tief verfolgen willst."
+      },
+      {
+        "id": "low-value",
+        "label": "Low-Value-Spiele",
+        "mode": "Kurz automatisch",
+        "cadence": "Nach Ergebnis und Basisdaten",
+        "whatHappens": "Nur kompakte Einordnung: Ergebnis, Tabellenwirkung, Auffaelligkeiten und ob ein Upset-Signal entstanden ist.",
+        "userAction": "Tiefe Analyse nur per Klick, wenn das Spiel ueberraschend relevant wird."
+      },
+      {
+        "id": "opinion-layer",
+        "label": "Taktik & Meinung",
+        "mode": "Halbautomatisch",
+        "cadence": "Quellen-Inbox nach Spielende",
+        "whatHappens": "Artikel, Podcast-Folgen und Coach-Analysen werden als Links und Kurzbefunde vorgeschlagen, nicht blind als Wahrheit uebernommen.",
+        "userAction": "Die App zeigt Belegstatus und Trust; du kannst Quellen oeffnen oder spaeter ignorieren."
+      }
+    ],
+    "accessModel": [
+      {
+        "label": "Frei / offen",
+        "examples": "FIFA-Basisdaten, oeffentliche Artikel, Podcasts, Opta Analyst Artikel, Spielverlagerung je nach Beitrag",
+        "use": "Orientierung, Links, Kontext, Taktik-Hypothesen und Presseschau-Signale.",
+        "risk": "Nicht immer strukturiert, keine Garantie fuer vollstaendige WM-Abdeckung oder API-Zugriff."
+      },
+      {
+        "label": "Gueltiges Abo",
+        "examples": "The Athletic, Coaches' Voice Academy, einzelne Analyse- oder Videoangebote",
+        "use": "Hochwertige Deutung und Coach-Perspektive, sofern rechtlich nur verlinkt und zusammengefasst wird.",
+        "risk": "Keine Paywall-Umgehung; die App speichert nur eigene Notizen, Links und kurze Befunde."
+      },
+      {
+        "label": "API / Providervertrag",
+        "examples": "Opta / Stats Perform, StatsBomb, SkillCorner, Wyscout API oder Datenpakete",
+        "use": "Automatische Rohdaten, Eventdaten, Tracking, Video- oder Scouting-Layer.",
+        "risk": "Kosten und Lizenzbedingungen; fuer Privatanwendung oft nur nach Anfrage oder gar nicht sinnvoll."
+      },
+      {
+        "label": "Manuell kuratiert",
+        "examples": "Einzelne starke Artikel, Podcast-Episoden, Trainerstimmen, eigene Beobachtungen",
+        "use": "Qualitativer Mehrwert fuer Spiele, die wirklich interessieren.",
+        "risk": "Mehr Arbeit, dafuer maximale Kontrolle und kein rechtliches Graufeld."
+      }
+    ],
+    "synthesisModel": [
+      {
+        "label": "Datenanker",
+        "weight": 38,
+        "rule": "Ergebnis, xG, Schuesse, Feldposition, Pressing- und Eventsignale bilden die erste Beweisschicht."
+      },
+      {
+        "label": "Video- oder Tracking-Beleg",
+        "weight": 28,
+        "rule": "Eine These steigt, wenn Bewegung, Raum oder konkrete Szenen die Datenursache sichtbar machen."
+      },
+      {
+        "label": "Taktische Deutung",
+        "weight": 24,
+        "rule": "Serioese Analysten erklaeren Rollen, Pressingtrigger, Staffelung und Traineranpassungen."
+      },
+      {
+        "label": "Kontextstimme",
+        "weight": 10,
+        "rule": "Ex-Profis, Podcasts und Pundits liefern Druck, Kabine und Turniergefuehl, aber nur mit Fachanker."
       }
     ],
     "rules": [
@@ -9348,6 +9636,9 @@ const surpriseRadarEl = document.querySelector("#surpriseRadar");
 const sourceStackEl = document.querySelector("#sourceStack");
 const analystPillarsEl = document.querySelector("#analystPillars");
 const analystVoicesEl = document.querySelector("#analystVoices");
+const sourceAutomationEl = document.querySelector("#sourceAutomation");
+const sourceAccessEl = document.querySelector("#sourceAccess");
+const synthesisModelEl = document.querySelector("#synthesisModel");
 const sourceRulesEl = document.querySelector("#sourceRules");
 const aiModelCardEl = document.querySelector("#aiModelCard");
 const spoilerToggle = document.querySelector("#spoilerToggle");
@@ -10940,6 +11231,71 @@ function getEvidenceVoices(match) {
     .filter(Boolean);
 }
 
+function getSourceAutomationMode(match) {
+  if (match.category === "skip") {
+    return analystSources.automationPlan.find((item) => item.id === "low-value");
+  }
+  if (match.hasFocusTeam || match.score >= 78 || match.signals.tactical >= 70) {
+    return analystSources.automationPlan.find((item) => item.id === "focus-analysis");
+  }
+  return analystSources.automationPlan.find((item) => item.id === "hard-data");
+}
+
+function getSynthesisVerdict(match) {
+  const dataStrength = match.sourceLevel === "real" ? 82 : match.sourceLevel === "mixed" ? 58 : 36;
+  const tacticStrength = Math.max(36, match.signals.tactical);
+  const videoStrength = match.signals.tactical >= 72 ? 54 : 32;
+  const contextStrength = match.hasFocusTeam ? 62 : 42;
+  const score = Math.round(
+    dataStrength * 0.38 + videoStrength * 0.28 + tacticStrength * 0.24 + contextStrength * 0.1,
+  );
+
+  if (score >= 72) {
+    return { label: "Stark belegbar", score, tone: "real" };
+  }
+  if (score >= 54) {
+    return { label: "Plausibel, aber Review nötig", score, tone: "mixed" };
+  }
+  return { label: "Hypothese / Seed", score, tone: "seed" };
+}
+
+function renderSourceSynthesisPanel(match) {
+  const automation = getSourceAutomationMode(match);
+  const verdict = getSynthesisVerdict(match);
+  const synthesisRows = analystSources.synthesisModel || [];
+
+  return `
+    <div class="insight-card source-synthesis-card">
+      <span class="briefing-kicker">Analyse-Synthese</span>
+      <div class="synthesis-head">
+        <h3>Daten, Taktik und Stimmen zusammenführen</h3>
+        <span class="data-badge ${verdict.tone}">${verdict.label}</span>
+      </div>
+      <p>
+        ${automation?.whatHappens || "Die App kombiniert Datenanker, Taktikquellen und Kontextstimmen nach Trust-Regeln."}
+      </p>
+      <div class="synthesis-status-row">
+        <span><strong>${automation?.mode || "Halbautomatisch"}</strong><small>Modus</small></span>
+        <span><strong>${verdict.score}/100</strong><small>Belegkraft</small></span>
+        <span><strong>${automation?.userAction || "Optional aktualisieren"}</strong><small>Nutzeraktion</small></span>
+      </div>
+      <div class="synthesis-layer-grid">
+        ${synthesisRows
+          .map(
+            (row) => `
+              <span>
+                <strong>${row.label}</strong>
+                <em style="--layer: ${row.weight}"></em>
+                <small>${row.rule}</small>
+              </span>
+            `,
+          )
+          .join("")}
+      </div>
+    </div>
+  `;
+}
+
 function getAdvancedMetricPlan(match) {
   return [
     {
@@ -11250,6 +11606,7 @@ function renderDossier() {
           .join("")}
       </div>
     </div>
+    ${renderSourceSynthesisPanel(selectedMatch)}
     <div class="insight-card analyst-voice-card">
       <span class="briefing-kicker">Serioese Stimmen</span>
       <h3>Welche Analysten wuerden zaehlen?</h3>
@@ -11464,6 +11821,54 @@ function renderAnalystDesk() {
       `,
     )
     .join("");
+
+  if (sourceAutomationEl) {
+    sourceAutomationEl.innerHTML = analystSources.automationPlan
+      .map(
+        (item) => `
+          <article class="workflow-card">
+            <span>${item.mode}</span>
+            <h3>${item.label}</h3>
+            <p>${item.whatHappens}</p>
+            <small>${item.cadence}</small>
+            <em>${item.userAction}</em>
+          </article>
+        `,
+      )
+      .join("");
+  }
+
+  if (sourceAccessEl) {
+    sourceAccessEl.innerHTML = analystSources.accessModel
+      .map(
+        (item) => `
+          <article class="access-card">
+            <h3>${item.label}</h3>
+            <p>${item.use}</p>
+            <small>${item.examples}</small>
+            <em>${item.risk}</em>
+          </article>
+        `,
+      )
+      .join("");
+  }
+
+  if (synthesisModelEl) {
+    synthesisModelEl.innerHTML = analystSources.synthesisModel
+      .map(
+        (item) => `
+          <article class="synthesis-model-card">
+            <div>
+              <strong>${item.label}</strong>
+              <small>${item.weight}% Gewicht</small>
+            </div>
+            <span style="--layer: ${item.weight}"></span>
+            <p>${item.rule}</p>
+          </article>
+        `,
+      )
+      .join("");
+  }
 
   analystVoicesEl.innerHTML = analystSources.voices
     .slice()

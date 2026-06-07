@@ -34,6 +34,7 @@ GitHub Pages ist vorbereitet. Nach Aktivierung in GitHub Settings -> Pages -> So
 - Spielplan-Transparenz mit Coverage, Gruppenstatus, Bracketstatus und Datenqualitaets-Ampel
 - Analyse-Overrides in `data/match-overrides.json` fuer kuratierte Topspiele
 - Analyst Desk mit Trust-Modell fuer Premiumdaten, Taktikstimmen, KI-Research und Noise-Filter
+- Analyse-Synthese-Modell fuer automatische Daten, halbautomatische Quellen-Inbox und gewichtete Spieldeutung
 - Post-Match-Report-Modell mit automatischem Draft-Generator fuer finale Ergebnisse
 
 ## Lokal starten

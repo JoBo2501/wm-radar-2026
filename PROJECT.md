@@ -25,7 +25,7 @@ WM Radar 26 ist ein persoenliches Analysten-Cockpit fuer die FIFA Fussball-WM 20
 - Ergebnis-Konfiguration: `data/result-sources.json`, `data/results.json`, `data/result-overrides.json`, `data/result-validation.json`
 - Post-Match-Reports: `data/post-match-reports.json`, `generate-post-match-reports.mjs`, `validate-post-match-reports.mjs`
 - Schluesselfiguren: `data/key-figures.json`
-- Quellen-/Analystenmodell: `data/analyst-sources.json`
+- Quellen-/Analystenmodell: `data/analyst-sources.json` mit Automationsplan, Zugangsmodell und Analyse-Synthese
 - Build/Validierung: `normalize-fixtures.mjs`, `validate-schedule.mjs`, `build-data.mjs`, `build-standalone.mjs`, `build-pages.mjs`, `release-pages.mjs`
 
 ## Datenfluss
@@ -79,6 +79,7 @@ Wichtige Dateien:
 - Team-Briefings: taktische Teamprofile. Sichtbare Teamwerte sind Watchlist-Prioritaet, kein objektives Ranking. Spaeter getrennt: Teamstaerke, Momentum, Attraktivitaet, Ueberraschungspotenzial und Datenlage.
 - Schluesselfiguren: Trainer, Leader, Taktikspieler, Druckspieler und Turnier-Entdeckungen mit Erwartung vor dem Turnier, Watch-Cues und Entwicklung im Turnierverlauf.
 - Analyst Desk: Trust-Modell fuer Daten, Stimmen und KI-Research.
+- Analyse-Synthese: Datenanker, Video-/Tracking-Beleg, taktische Deutung und Kontextstimmen werden getrennt gewichtet.
 
 ## Erledigte Schritte
 
@@ -96,6 +97,7 @@ Wichtige Dateien:
 - Post-Match-Report-Modell, Validator und automatischer Draft-Generator hinzugefuegt.
 - Demo-Feed und Dry-Run fuer Post-Match-Reports hinzugefuegt, damit der Workflow ohne echte WM-Daten getestet werden kann.
 - Schluesselfiguren-Modul als Seed-Datenmodell und UI-Schicht angelegt.
+- Quellen-Automationsmodell und Analyse-Synthese fuer Match-Dossiers und Analyst Desk integriert.
 
 ## Naechste Schritte
 

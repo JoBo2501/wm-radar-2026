@@ -134,6 +134,88 @@
       "url": "https://www.nature.com/articles/s41467-024-45965-x"
     }
   ],
+  "automationPlan": [
+    {
+      "id": "hard-data",
+      "label": "Harte Daten",
+      "mode": "Automatisch",
+      "cadence": "Poller vor, waehrend und nach Spielen",
+      "whatHappens": "Ergebnisse, Tabellen, Spielstatus und spaeter Eventdaten werden per Provider-API synchronisiert.",
+      "userAction": "Keine Aktion noetig, ausser ein Provider-Token muss erneuert werden."
+    },
+    {
+      "id": "focus-analysis",
+      "label": "Fokusspiele",
+      "mode": "Automatisch plus Review",
+      "cadence": "Vorbericht vor Anpfiff, Analyse-Lauf nach Abpfiff",
+      "whatHappens": "Die App sucht passende Datenanker, Taktikquellen und serioese Stimmen und erstellt eine gewichtete Analyse-Synthese.",
+      "userAction": "Optional: Analyse aktualisieren, wenn du ein Spiel besonders tief verfolgen willst."
+    },
+    {
+      "id": "low-value",
+      "label": "Low-Value-Spiele",
+      "mode": "Kurz automatisch",
+      "cadence": "Nach Ergebnis und Basisdaten",
+      "whatHappens": "Nur kompakte Einordnung: Ergebnis, Tabellenwirkung, Auffaelligkeiten und ob ein Upset-Signal entstanden ist.",
+      "userAction": "Tiefe Analyse nur per Klick, wenn das Spiel ueberraschend relevant wird."
+    },
+    {
+      "id": "opinion-layer",
+      "label": "Taktik & Meinung",
+      "mode": "Halbautomatisch",
+      "cadence": "Quellen-Inbox nach Spielende",
+      "whatHappens": "Artikel, Podcast-Folgen und Coach-Analysen werden als Links und Kurzbefunde vorgeschlagen, nicht blind als Wahrheit uebernommen.",
+      "userAction": "Die App zeigt Belegstatus und Trust; du kannst Quellen oeffnen oder spaeter ignorieren."
+    }
+  ],
+  "accessModel": [
+    {
+      "label": "Frei / offen",
+      "examples": "FIFA-Basisdaten, oeffentliche Artikel, Podcasts, Opta Analyst Artikel, Spielverlagerung je nach Beitrag",
+      "use": "Orientierung, Links, Kontext, Taktik-Hypothesen und Presseschau-Signale.",
+      "risk": "Nicht immer strukturiert, keine Garantie fuer vollstaendige WM-Abdeckung oder API-Zugriff."
+    },
+    {
+      "label": "Gueltiges Abo",
+      "examples": "The Athletic, Coaches' Voice Academy, einzelne Analyse- oder Videoangebote",
+      "use": "Hochwertige Deutung und Coach-Perspektive, sofern rechtlich nur verlinkt und zusammengefasst wird.",
+      "risk": "Keine Paywall-Umgehung; die App speichert nur eigene Notizen, Links und kurze Befunde."
+    },
+    {
+      "label": "API / Providervertrag",
+      "examples": "Opta / Stats Perform, StatsBomb, SkillCorner, Wyscout API oder Datenpakete",
+      "use": "Automatische Rohdaten, Eventdaten, Tracking, Video- oder Scouting-Layer.",
+      "risk": "Kosten und Lizenzbedingungen; fuer Privatanwendung oft nur nach Anfrage oder gar nicht sinnvoll."
+    },
+    {
+      "label": "Manuell kuratiert",
+      "examples": "Einzelne starke Artikel, Podcast-Episoden, Trainerstimmen, eigene Beobachtungen",
+      "use": "Qualitativer Mehrwert fuer Spiele, die wirklich interessieren.",
+      "risk": "Mehr Arbeit, dafuer maximale Kontrolle und kein rechtliches Graufeld."
+    }
+  ],
+  "synthesisModel": [
+    {
+      "label": "Datenanker",
+      "weight": 38,
+      "rule": "Ergebnis, xG, Schuesse, Feldposition, Pressing- und Eventsignale bilden die erste Beweisschicht."
+    },
+    {
+      "label": "Video- oder Tracking-Beleg",
+      "weight": 28,
+      "rule": "Eine These steigt, wenn Bewegung, Raum oder konkrete Szenen die Datenursache sichtbar machen."
+    },
+    {
+      "label": "Taktische Deutung",
+      "weight": 24,
+      "rule": "Serioese Analysten erklaeren Rollen, Pressingtrigger, Staffelung und Traineranpassungen."
+    },
+    {
+      "label": "Kontextstimme",
+      "weight": 10,
+      "rule": "Ex-Profis, Podcasts und Pundits liefern Druck, Kabine und Turniergefuehl, aber nur mit Fachanker."
+    }
+  ],
   "rules": [
     {
       "label": "Belegte Szene vor Bauchgefuehl",

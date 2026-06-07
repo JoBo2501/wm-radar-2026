@@ -79,6 +79,9 @@ const surpriseRadarEl = document.querySelector("#surpriseRadar");
 const sourceStackEl = document.querySelector("#sourceStack");
 const analystPillarsEl = document.querySelector("#analystPillars");
 const analystVoicesEl = document.querySelector("#analystVoices");
+const sourceAutomationEl = document.querySelector("#sourceAutomation");
+const sourceAccessEl = document.querySelector("#sourceAccess");
+const synthesisModelEl = document.querySelector("#synthesisModel");
 const sourceRulesEl = document.querySelector("#sourceRules");
 const aiModelCardEl = document.querySelector("#aiModelCard");
 const spoilerToggle = document.querySelector("#spoilerToggle");
@@ -1671,6 +1674,71 @@ function getEvidenceVoices(match) {
     .filter(Boolean);
 }
 
+function getSourceAutomationMode(match) {
+  if (match.category === "skip") {
+    return analystSources.automationPlan.find((item) => item.id === "low-value");
+  }
+  if (match.hasFocusTeam || match.score >= 78 || match.signals.tactical >= 70) {
+    return analystSources.automationPlan.find((item) => item.id === "focus-analysis");
+  }
+  return analystSources.automationPlan.find((item) => item.id === "hard-data");
+}
+
+function getSynthesisVerdict(match) {
+  const dataStrength = match.sourceLevel === "real" ? 82 : match.sourceLevel === "mixed" ? 58 : 36;
+  const tacticStrength = Math.max(36, match.signals.tactical);
+  const videoStrength = match.signals.tactical >= 72 ? 54 : 32;
+  const contextStrength = match.hasFocusTeam ? 62 : 42;
+  const score = Math.round(
+    dataStrength * 0.38 + videoStrength * 0.28 + tacticStrength * 0.24 + contextStrength * 0.1,
+  );
+
+  if (score >= 72) {
+    return { label: "Stark belegbar", score, tone: "real" };
+  }
+  if (score >= 54) {
+    return { label: "Plausibel, aber Review nötig", score, tone: "mixed" };
+  }
+  return { label: "Hypothese / Seed", score, tone: "seed" };
+}
+
+function renderSourceSynthesisPanel(match) {
+  const automation = getSourceAutomationMode(match);
+  const verdict = getSynthesisVerdict(match);
+  const synthesisRows = analystSources.synthesisModel || [];
+
+  return `
+    <div class="insight-card source-synthesis-card">
+      <span class="briefing-kicker">Analyse-Synthese</span>
+      <div class="synthesis-head">
+        <h3>Daten, Taktik und Stimmen zusammenführen</h3>
+        <span class="data-badge ${verdict.tone}">${verdict.label}</span>
+      </div>
+      <p>
+        ${automation?.whatHappens || "Die App kombiniert Datenanker, Taktikquellen und Kontextstimmen nach Trust-Regeln."}
+      </p>
+      <div class="synthesis-status-row">
+        <span><strong>${automation?.mode || "Halbautomatisch"}</strong><small>Modus</small></span>
+        <span><strong>${verdict.score}/100</strong><small>Belegkraft</small></span>
+        <span><strong>${automation?.userAction || "Optional aktualisieren"}</strong><small>Nutzeraktion</small></span>
+      </div>
+      <div class="synthesis-layer-grid">
+        ${synthesisRows
+          .map(
+            (row) => `
+              <span>
+                <strong>${row.label}</strong>
+                <em style="--layer: ${row.weight}"></em>
+                <small>${row.rule}</small>
+              </span>
+            `,
+          )
+          .join("")}
+      </div>
+    </div>
+  `;
+}
+
 function getAdvancedMetricPlan(match) {
   return [
     {
@@ -1981,6 +2049,7 @@ function renderDossier() {
           .join("")}
       </div>
     </div>
+    ${renderSourceSynthesisPanel(selectedMatch)}
     <div class="insight-card analyst-voice-card">
       <span class="briefing-kicker">Serioese Stimmen</span>
       <h3>Welche Analysten wuerden zaehlen?</h3>
@@ -2195,6 +2264,54 @@ function renderAnalystDesk() {
       `,
     )
     .join("");
+
+  if (sourceAutomationEl) {
+    sourceAutomationEl.innerHTML = analystSources.automationPlan
+      .map(
+        (item) => `
+          <article class="workflow-card">
+            <span>${item.mode}</span>
+            <h3>${item.label}</h3>
+            <p>${item.whatHappens}</p>
+            <small>${item.cadence}</small>
+            <em>${item.userAction}</em>
+          </article>
+        `,
+      )
+      .join("");
+  }
+
+  if (sourceAccessEl) {
+    sourceAccessEl.innerHTML = analystSources.accessModel
+      .map(
+        (item) => `
+          <article class="access-card">
+            <h3>${item.label}</h3>
+            <p>${item.use}</p>
+            <small>${item.examples}</small>
+            <em>${item.risk}</em>
+          </article>
+        `,
+      )
+      .join("");
+  }
+
+  if (synthesisModelEl) {
+    synthesisModelEl.innerHTML = analystSources.synthesisModel
+      .map(
+        (item) => `
+          <article class="synthesis-model-card">
+            <div>
+              <strong>${item.label}</strong>
+              <small>${item.weight}% Gewicht</small>
+            </div>
+            <span style="--layer: ${item.weight}"></span>
+            <p>${item.rule}</p>
+          </article>
+        `,
+      )
+      .join("");
+  }
 
   analystVoicesEl.innerHTML = analystSources.voices
     .slice()
