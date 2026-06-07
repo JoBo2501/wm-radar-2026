@@ -16,20 +16,21 @@ GitHub Pages ist vorbereitet. Nach Aktivierung in GitHub Settings -> Pages -> So
 - Surprise Radar fuer Teams mit attraktivem Upset-Potenzial
 - PWA-Grundlage mit Manifest und Service Worker
 - Datenmodell in `data.js` mit Real/Mixed/Model/Seed-Kennzeichnung
-- Data Hub in der UI fuer Transparenz ueber Datenqualitaet
-- Team Lab mit taktischen Profilen fuer Fokus- und Surprise-Teams
+- Datenlage & Transparenz mit eingeklappten Import- und Validierungsdetails
+- Team-Briefings mit taktischen Profilen fuer Fokus- und Surprise-Teams
+- App-Fokus getrennt von spaeterer objektiver Teamstaerke
 - Match-Dossier mit Team-Matchup und Watch-Cues
 - Daily Command Center mit Tagesbriefing, Watch Plan und Spoiler-Safe Morning
 - Low-Value-Erklaerungen direkt an Skip-Spielen
 - Groups & Paths mit Gruppen A-L, Watch Strategy und modellierter Pfad-Relevanz
-- Match Value Score mit neuer Gewichtung `Pfad`
+- Spielwert mit neuer Gewichtung `Pfad`
 - Import-Pipeline fuer Spielplan-Rohdaten in `data/raw/fixtures.json`
 - Vollstaendige Gruppenphase mit 72 importierten Gruppenspielen
 - K.o.-Bracket-Schicht mit 32 Platzhalterspielen von Round of 32 bis Finale
 - Ergebnis- und Tabellenlayer mit Projektionsmodus bis echte Resultate vorliegen
 - Dynamische Bracket-Aufloesung fuer `1E`, `2B`, `3ABCDF`, `W73` und Folgerunden
 - K.o.-Match-Dossiers mit Watch-Empfehlung, Stilkontrast, Upset-Sensitivitaet und Pfadwert
-- Spielplan-Validierung mit Coverage, Gruppenstatus, Bracketstatus und Datenqualitaets-Ampel
+- Spielplan-Transparenz mit Coverage, Gruppenstatus, Bracketstatus und Datenqualitaets-Ampel
 - Analyse-Overrides in `data/match-overrides.json` fuer kuratierte Topspiele
 - Analyst Desk mit Trust-Modell fuer Premiumdaten, Taktikstimmen, KI-Research und Noise-Filter
 - Post-Match-Report-Modell mit automatischem Draft-Generator fuer finale Ergebnisse
@@ -166,4 +167,4 @@ Post-Match-Reports liegen in `data/post-match-reports.json`. `generate-post-matc
 
 Das Bracket liest diese Tabellenprojektion bereits aus: Direkte Slots wie `1E` oder `2B` werden aus der Gruppentabelle gesetzt, Third-Place-Slots wie `3ABCDF` nehmen den besten erlaubten Drittplatzierten, und Folgerunden-Slots wie `W73`/`L101` kaskadieren aus den vorherigen Match-Projektionen.
 
-Jede K.o.-Karte enthaelt zusaetzlich ein Mini-Dossier: Score, Watch-Empfehlung, Stilkontrast, Upset-Risiko, Pfadwert und konkrete Watch-Cues. Das ist noch modelliert, wird aber sofort besser, sobald echte Ergebnisse und weitere Teamdaten einlaufen.
+Jede K.o.-Karte enthaelt zusaetzlich ein Mini-Dossier: Spielwert, Watch-Empfehlung, Stilkontrast, Upset-Risiko, Pfadwert und konkrete Watch-Cues. Das ist noch modelliert, wird aber sofort besser, sobald echte Ergebnisse und weitere Teamdaten einlaufen.

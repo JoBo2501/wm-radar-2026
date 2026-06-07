@@ -28,7 +28,7 @@
           <a href="#groupPaths">Gruppen</a>
           <a href="#standings">Tabellen</a>
           <a href="#bracket">Bracket</a>
-          <a href="#teamLab">Team Lab</a>
+          <a href="#teamLab">Teams</a>
           <a href="#dossier">Dossier</a>
           <a href="#radar">Radar</a>
           <a href="#analystDesk">Analysten</a>
@@ -148,10 +148,10 @@
         <section class="score-lab" aria-labelledby="scoreLabTitle">
           <div>
             <p class="eyebrow">Deine Gewichtung</p>
-            <h2 id="scoreLabTitle">Score Engine</h2>
+            <h2 id="scoreLabTitle">Warum diese Empfehlung?</h2>
             <p id="scoreExplainer">
-              Match Value wird live aus sportlicher Bedeutung, Taktikwert, Attraktivität, Fokus-Team-Relevanz,
-              Surprise-Potenzial und Uhrzeit berechnet.
+              Der Spielwert priorisiert, was du live sehen solltest: sportliche Bedeutung, Taktikwert,
+              Attraktivität, Fokus-Team-Bezug, Surprise-Potenzial und Uhrzeit.
             </p>
           </div>
           <div class="score-controls" id="scoreControls"></div>
@@ -162,13 +162,19 @@
           <div class="section-head compact">
             <div>
               <p class="eyebrow">Datenlage</p>
-              <h2 id="dataTitle">Data Hub</h2>
+              <h2 id="dataTitle">Datenlage & Transparenz</h2>
             </div>
             <p id="dataSnapshot">Stand wird geladen.</p>
           </div>
           <div class="data-grid" id="dataStatusGrid"></div>
-          <div class="schedule-validator result-validator" id="resultValidator"></div>
-          <div class="schedule-validator" id="scheduleValidator"></div>
+          <details class="transparency-drawer">
+            <summary>
+              <span>Import- und Validierungsdetails</span>
+              <small>Für Kontrolle, Fehlersuche und Quellenvertrauen. Im Turnierbetrieb bleibt das eingeklappt.</small>
+            </summary>
+            <div class="schedule-validator result-validator" id="resultValidator"></div>
+            <div class="schedule-validator" id="scheduleValidator"></div>
+          </details>
         </section>
 
         <section class="group-path-section" id="groupPaths" aria-labelledby="groupPathTitle">
@@ -219,11 +225,11 @@
           <div class="section-head compact">
             <div>
               <p class="eyebrow">Teamprofile</p>
-              <h2 id="teamLabTitle">Team Lab</h2>
+              <h2 id="teamLabTitle">Team-Briefings</h2>
             </div>
             <p>
-              Fokus-Teams und Surprise-Kandidaten als taktische Arbeitskarten: Identität, Pressing, Aufbau,
-              Schwachstellen und Watch-Cues für das nächste Spiel.
+              Fokus-Teams und Surprise-Kandidaten als taktische Arbeitskarten. Die sichtbare Zahl ist App-Fokus,
+              kein objektives Weltranking; echte Teamstärke und Momentum werden später separat berechnet.
             </p>
           </div>
           <div class="team-lab-grid" id="teamLabGrid"></div>

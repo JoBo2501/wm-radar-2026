@@ -2161,6 +2161,60 @@ h3 {
   backdrop-filter: blur(18px);
 }
 
+.transparency-drawer {
+  margin-top: 12px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.62);
+  overflow: hidden;
+}
+
+.transparency-drawer summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 14px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.transparency-drawer summary::-webkit-details-marker {
+  display: none;
+}
+
+.transparency-drawer summary span {
+  color: var(--text);
+  font-weight: 950;
+}
+
+.transparency-drawer summary small {
+  max-width: 560px;
+  color: var(--muted);
+  line-height: 1.35;
+  text-align: right;
+}
+
+.transparency-drawer summary::after {
+  content: "+";
+  display: grid;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(29, 143, 79, 0.1);
+  color: var(--lime);
+  font-weight: 950;
+}
+
+.transparency-drawer[open] summary::after {
+  content: "-";
+}
+
+.transparency-drawer > .schedule-validator {
+  margin: 0 14px 14px;
+}
+
 .team-lab-section {
   margin-bottom: 16px;
   padding: 18px;
@@ -2867,23 +2921,48 @@ h3 {
   color: var(--muted);
 }
 
+.app-focus-meter,
 .team-lab-top > strong {
   display: grid;
   width: 58px;
   height: 58px;
   place-items: center;
+  align-content: center;
   border-radius: 50%;
   background:
     radial-gradient(circle at center, #171d18 0 58%, transparent 59%),
     conic-gradient(var(--lime) 76%, rgba(255, 255, 255, 0.11) 0);
   color: var(--text);
+  text-align: center;
+}
+
+.app-focus-meter strong,
+.team-lab-top > strong {
   font-size: 1.15rem;
+}
+
+.app-focus-meter small {
+  margin-top: 1px;
+  color: var(--muted);
+  font-size: 0.54rem;
+  font-weight: 950;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .team-lab-card p {
   margin: 0;
   color: var(--soft);
   line-height: 1.55;
+}
+
+.team-lab-card .team-score-note {
+  padding: 10px 12px;
+  border: 1px solid rgba(29, 143, 79, 0.14);
+  border-radius: 7px;
+  background: rgba(29, 143, 79, 0.07);
+  color: var(--muted);
+  font-size: 0.86rem;
 }
 
 .phase-grid {
@@ -3479,6 +3558,7 @@ h3 {
 
 .group-path-top > strong,
 .team-lab-top > strong,
+.app-focus-meter,
 .validator-score,
 .radar-score,
 .voice-score {
@@ -3496,6 +3576,10 @@ h3 {
 
 .team-lab-flag {
   background: rgba(255, 255, 255, 0.78);
+}
+
+.team-lab-card .team-score-note {
+  color: var(--soft);
 }
 
 .bracket-slot strong,

@@ -69,13 +69,13 @@ Wichtige Dateien:
 - Hero/Control Room: atmosphaerischer Einstieg und Kontrollzahlen.
 - Match Value Board: Empfehlungen Live, Analyse, Highlights, Skip.
 - Daily Command Center: Tagesplan plus Nachtspiele.
-- Data Hub: Datenqualitaet, Spielplan-Ampel, Ergebnis-Sync-Ampel.
+- Datenlage & Transparenz: Datenqualitaet, Spielplan-Ampel, Ergebnis-Sync-Ampel. Routine-Importe bleiben in einem einklappbaren Detailbereich.
 - Groups & Paths: Gruppen A-L mit Pfadrelevanz.
 - Standings Hub: Tabellenprojektion, direkte Qualifikanten, Best Thirds.
 - Bracket Command: 32 K.o.-Matches, dynamisch aufgeloeste Slots.
 - K.o.-Dossiers: Watch-Empfehlung, Stilkontrast, Upset-Risiko, Pfadwert.
 - Match-Dossier: Analysten-Story, Evidence Pipeline, Advanced-Metrics-Plan und Post-Match Report Hub.
-- Team Lab: taktische Teamprofile.
+- Team-Briefings: taktische Teamprofile. Sichtbare Teamwerte sind App-Fokus/Watch-Prioritaet, kein objektives Ranking.
 - Analyst Desk: Trust-Modell fuer Daten, Stimmen und KI-Research.
 
 ## Erledigte Schritte
@@ -84,7 +84,7 @@ Wichtige Dateien:
 - Standalone-Doppelklickdatei erstellt.
 - Vollstaendige Gruppenphase mit 72 Spielen importiert.
 - K.o.-Struktur mit 32 Platzhalterspielen angelegt.
-- Match Value Score inklusive Pfadgewichtung gebaut.
+- Spielwert inklusive Pfadgewichtung gebaut.
 - Groups & Paths, Standings Hub und Best Thirds umgesetzt.
 - Dynamische Bracket-Aufloesung fuer direkte Slots, Drittplatzierte und Folgerunden gebaut.
 - K.o.-Match-Dossiers integriert.

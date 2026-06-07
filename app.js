@@ -561,7 +561,7 @@ function renderControlStats() {
   if (topMatch) {
     const [home, away] = topMatch.matchTeams;
     heroMissionEl.textContent = `${formatDate(preferences.baseDate)}: ${home.code}-${away.code} fuehrt den Radar an`;
-    orbitSignalEl.textContent = `${topMatch.score}/100 · ${topMatch.driver} · ${getWatchAction(topMatch.category)}`;
+    orbitSignalEl.textContent = `Spielwert ${topMatch.score}/100 · ${topMatch.driver} · ${getWatchAction(topMatch.category)}`;
   }
 
   heroStatusRailEl.innerHTML = [
@@ -589,7 +589,7 @@ function renderControlStats() {
         <button class="hero-signal ${match.category}" type="button" data-match="${match.id}">
           <span>${match.germanyTime}</span>
           <strong>${home.code}-${away.code}</strong>
-          <em>${match.score}/100 · ${match.driver}</em>
+          <em>Spielwert ${match.score}/100 · ${match.driver}</em>
         </button>
       `;
     })
@@ -609,7 +609,7 @@ function renderControlStats() {
     ["Datenstand", metadata.snapshotDate],
     ["Live-Spiele", liveCount],
     ["Skip-Kandidaten", skipCount],
-    ["Top-Score", topScore],
+    ["Top-Spielwert", topScore],
   ]
     .map(
       ([label, value]) => `
@@ -647,7 +647,7 @@ function getStageLabel(stage) {
 }
 
 function renderDataStatus() {
-  dataSnapshotEl.textContent = `${metadata.tournament} · ${metadata.format} · Stand ${metadata.snapshotDate}`;
+  dataSnapshotEl.textContent = `${metadata.tournament} · ${metadata.format} · Stand ${metadata.snapshotDate}. Routine-Imports bleiben bewusst in den Details.`;
   dataStatusGridEl.innerHTML = dataStatus
     .map(
       (item) => `
@@ -708,7 +708,7 @@ function renderScheduleValidation() {
     <div class="validator-hero ${statusTone}">
       <div>
         <span class="data-badge ${statusTone}">${getValidationLabel(scheduleValidation.status)}</span>
-        <h3>Spielplan-Validierung</h3>
+        <h3>Spielplan-Transparenz</h3>
         <p>${scheduleValidation.summary}</p>
       </div>
       <div class="validator-score" style="--coverage: ${scheduleValidation.coverage.tournament}">
@@ -1440,7 +1440,7 @@ function getRecommendationReason(match) {
     skip: "skippen",
   }[match.category];
 
-  return `${categoryText}: ${home.name} vs ${away.name} bekommt ${match.score}/100. Haupttreiber: ${match.driver}. ${match.analysis.key}`;
+  return `${categoryText}: ${home.name} vs ${away.name} bekommt Spielwert ${match.score}/100. Haupttreiber: ${match.driver}. ${match.analysis.key}`;
 }
 
 function getSkipReasons(match) {
@@ -1451,7 +1451,7 @@ function getSkipReasons(match) {
   if (match.signals.lowValueRisk >= 35) reasons.push("erhöhtes Low-Value-Risiko");
   if (match.pathImpact < 55) reasons.push("geringe Pfadwirkung");
   if (isNightMatch(match) && match.score < 80) reasons.push("schlechte Uhrzeit");
-  return reasons.length ? reasons : ["Score liegt unter deiner Live-Schwelle"];
+  return reasons.length ? reasons : ["Spielwert liegt unter deiner Live-Schwelle"];
 }
 
 function getThreeWatchCues(match) {
@@ -1523,7 +1523,7 @@ function renderDailyCommandCenter() {
           <span class="watch-time">${match.germanyTime}</span>
           <span class="watch-fixture">
             <strong>${home.code} vs ${away.code}</strong>
-            <small class="${isNightMatch(match) ? "spoiler-sensitive" : ""}">${getWatchAction(match.category)} · ${match.score}/100 · ${match.driver}</small>
+            <small class="${isNightMatch(match) ? "spoiler-sensitive" : ""}">${getWatchAction(match.category)} · Spielwert ${match.score}/100 · ${match.driver}</small>
             ${
               skipReasons.length
                 ? `<em>Skip, weil: ${skipReasons.join(", ")}</em>`
@@ -1554,7 +1554,7 @@ function renderDailyCommandCenter() {
           <article class="morning-item">
             <span>${match.germanyTime}</span>
             <strong>${home.code} vs ${away.code}</strong>
-            <p class="spoiler-sensitive">${getWatchAction(match.category)} · ${match.score}/100 · ${match.analysis.key}</p>
+            <p class="spoiler-sensitive">${getWatchAction(match.category)} · Spielwert ${match.score}/100 · ${match.analysis.key}</p>
           </article>
         `;
       })
@@ -1702,7 +1702,7 @@ function getPostMatchChecks(match, home, away) {
     `Hat ${match.driver} tatsaechlich den Spielverlauf gepraegt?`,
     `Passte die Chancenqualitaet zur Empfehlung ${getWatchLabel(match.category)}?`,
     `Wurde ${home.code}-${away.code} durch Ballverluste, Standards oder offene Raeume entschieden?`,
-    `Muss der Match-Score nach echten Ergebnis- und Eventdaten neu kalibriert werden?`,
+    `Muss der Spielwert nach echten Ergebnis- und Eventdaten neu kalibriert werden?`,
   ];
 }
 
@@ -1907,8 +1907,8 @@ function renderDossier() {
       </div>
     </div>
     <div class="insight-card score-signals">
-      <span class="briefing-kicker">Score Engine</span>
-      <h3>Signalprofil</h3>
+      <span class="briefing-kicker">Empfehlungslogik</span>
+      <h3>Warum diese Empfehlung?</h3>
       <div class="metric-list">
         ${[
           ["Bedeutung", selectedMatch.signals.importance],
@@ -2038,6 +2038,7 @@ function renderTeamLab() {
     .map((team) => {
       const profile = getTeamProfile(team);
       const status = team.focus ? "Fokus-Team" : "Surprise";
+      const appFocus = team.watchPriority || profile.confidence;
 
       return `
         <article class="team-lab-card">
@@ -2048,8 +2049,12 @@ function renderTeamLab() {
               <h3>${team.name}</h3>
               <small>${status} · ${team.confederation}</small>
             </span>
-            <strong>${team.watchPriority || profile.confidence}</strong>
+            <span class="app-focus-meter" title="App-Fokus: persönliche Watch-Priorität, kein objektives Teamranking.">
+              <strong>${appFocus}</strong>
+              <small>App-Fokus</small>
+            </span>
           </div>
+          <p class="team-score-note">Diese Zahl priorisiert die App-Watchlist. Sie sagt noch nicht, dass ${team.name} objektiv stärker ist als andere Teams.</p>
           <p>${profile.identity}</p>
           <div class="phase-grid">
             <span><strong>Aufbau</strong>${profile.buildUp}</span>
