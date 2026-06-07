@@ -1371,31 +1371,36 @@ h3 {
   white-space: nowrap;
 }
 
-.flag {
-  font-size: 1.45rem;
-}
-
 .flag-badge {
-  display: inline-grid;
-  width: 1.45rem;
-  height: 1.45rem;
+  display: inline-flex;
+  width: 2.24rem;
+  height: 1.36rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
   place-items: center;
+  border: 1px solid rgba(19, 69, 41, 0.18);
+  border-radius: 4px;
+  background:
+    linear-gradient(90deg, var(--flag-a, #ffffff) 0 33.333%, var(--flag-b, #1d8f4f) 33.333% 66.666%, var(--flag-c, #122018) 66.666% 100%);
+  box-shadow: 0 1px 3px rgba(23, 60, 36, 0.12);
+  overflow: hidden;
+  vertical-align: -0.16em;
+}
+
+.flag-code {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.62rem;
+  min-height: 0.86rem;
+  padding: 0 2px;
   border-radius: 3px;
-  box-shadow: inset 0 0 0 1px rgba(244, 247, 239, 0.28);
-}
-
-.flag-badge.england {
-  background:
-    linear-gradient(90deg, transparent 0 38%, #d81e35 38% 62%, transparent 62% 100%),
-    linear-gradient(transparent 0 38%, #d81e35 38% 62%, transparent 62% 100%),
-    #f4f7ef;
-}
-
-.flag-badge.scotland {
-  background:
-    linear-gradient(45deg, transparent 0 40%, #f4f7ef 40% 58%, transparent 58% 100%),
-    linear-gradient(-45deg, transparent 0 40%, #f4f7ef 40% 58%, transparent 58% 100%),
-    #005eb8;
+  background: rgba(255, 255, 255, 0.82);
+  color: #122018;
+  font-size: 0.48rem;
+  font-weight: 950;
+  letter-spacing: 0;
 }
 
 .versus {
@@ -3423,6 +3428,111 @@ h3 {
   height: 100%;
   border-radius: inherit;
   background: linear-gradient(90deg, var(--green), var(--lime));
+}
+
+.data-card,
+.validator-hero,
+.group-path-card,
+.standing-card,
+.bracket-round,
+.team-lab-card,
+.radar-card,
+.analyst-pillar,
+.voice-card,
+.source-rule-card,
+.ai-model-card,
+.source-card {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 251, 245, 0.88)),
+    var(--panel);
+  color: var(--text);
+  box-shadow: 0 12px 30px rgba(23, 60, 36, 0.08);
+}
+
+.group-path-card p,
+.group-teams span,
+.path-note span,
+.group-fixtures button,
+.standing-card p,
+.standing-row,
+.third-place-list div,
+.bracket-match,
+.ko-dossier,
+.team-lab-card p,
+.phase-grid span,
+.watch-cues,
+.radar-card p,
+.source-card p,
+.voice-card em {
+  color: var(--soft);
+}
+
+.group-teams span,
+.path-note,
+.group-fixtures button,
+.standing-row,
+.third-place-list div,
+.bracket-match,
+.bracket-slot,
+.ko-dossier,
+.ko-dossier-metrics span,
+.phase-grid span,
+.watch-cues,
+.radar-signal,
+.voice-card,
+.source-card,
+.source-rule-card,
+.ai-model-card {
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.group-path-top > strong,
+.team-lab-top > strong,
+.validator-score,
+.radar-score,
+.voice-score {
+  background:
+    radial-gradient(circle at center, #ffffff 0 58%, transparent 59%),
+    conic-gradient(var(--lime) calc(var(--score, var(--coverage, 76)) * 1%), rgba(19, 69, 41, 0.12) 0);
+  color: var(--text);
+}
+
+.group-letter,
+.source-grade {
+  background: rgba(29, 143, 79, 0.1);
+  color: var(--lime);
+}
+
+.team-lab-flag {
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.bracket-slot strong,
+.bracket-match-top strong,
+.ko-dossier-metrics strong,
+.phase-grid strong,
+.watch-cues > strong,
+.group-fixtures > strong,
+.path-note > strong,
+.source-rule-card strong {
+  color: var(--text);
+}
+
+.bracket-slot small,
+.bracket-match p,
+.bracket-match small,
+.ko-dossier ul,
+.ko-dossier-metrics small,
+.team-lab-top small,
+.source-card p,
+.radar-card p {
+  color: var(--muted);
+}
+
+.ko-dossier-top strong,
+.bracket-match-top strong,
+.radar-score strong {
+  color: var(--lime);
 }
 
 .spoiler-mode .spoiler-sensitive {
@@ -10068,12 +10178,65 @@ function getWatchAction(category) {
   return actions[category] || "Check";
 }
 
-function renderFlag(team) {
-  if (team.code === "ENG" || team.code === "SCO") {
-    return `<span class="flag-badge ${team.code === "ENG" ? "england" : "scotland"}" aria-hidden="true"></span>`;
-  }
+const flagThemeMap = {
+  ARG: ["#74acdf", "#ffffff", "#f6b40e"],
+  BRA: ["#009b3a", "#ffdf00", "#002776"],
+  ESP: ["#aa151b", "#f1bf00", "#aa151b"],
+  GER: ["#000000", "#dd0000", "#ffce00"],
+  ENG: ["#ffffff", "#cf142b", "#ffffff"],
+  FRA: ["#0055a4", "#ffffff", "#ef4135"],
+  MAR: ["#c1272d", "#006233", "#c1272d"],
+  JPN: ["#ffffff", "#bc002d", "#ffffff"],
+  NOR: ["#ba0c2f", "#ffffff", "#00205b"],
+  TUR: ["#e30a17", "#ffffff", "#e30a17"],
+  CUW: ["#002b7f", "#f9e814", "#002b7f"],
+  CRO: ["#ff0000", "#ffffff", "#171796"],
+  ALG: ["#006233", "#ffffff", "#d21034"],
+  URU: ["#ffffff", "#0038a8", "#fcd116"],
+  QAT: ["#ffffff", "#8d1b3d", "#8d1b3d"],
+  SUI: ["#d52b1e", "#ffffff", "#d52b1e"],
+  HAI: ["#00209f", "#d21034", "#ffffff"],
+  SCO: ["#0065bd", "#ffffff", "#0065bd"],
+  NED: ["#ae1c28", "#ffffff", "#21468b"],
+  CIV: ["#f77f00", "#ffffff", "#009e60"],
+  ECU: ["#ffdd00", "#034ea2", "#ed1c24"],
+  MEX: ["#006847", "#ffffff", "#ce1126"],
+  RSA: ["#007a4d", "#ffb612", "#de3831"],
+  KOR: ["#ffffff", "#c60c30", "#003478"],
+  CZE: ["#ffffff", "#d7141a", "#11457e"],
+  CAN: ["#ff0000", "#ffffff", "#ff0000"],
+  BIH: ["#002395", "#fecb00", "#002395"],
+  USA: ["#b22234", "#ffffff", "#3c3b6e"],
+  PAR: ["#d52b1e", "#ffffff", "#0038a8"],
+  AUS: ["#00008b", "#ffffff", "#ff0000"],
+  TUN: ["#e70013", "#ffffff", "#e70013"],
+  SWE: ["#006aa7", "#fecc00", "#006aa7"],
+  BEL: ["#000000", "#ffd90c", "#ef3340"],
+  EGY: ["#ce1126", "#ffffff", "#000000"],
+  IRN: ["#239f40", "#ffffff", "#da0000"],
+  NZL: ["#00247d", "#ffffff", "#cc142b"],
+  CPV: ["#003893", "#ffffff", "#cf2027"],
+  KSA: ["#006c35", "#ffffff", "#006c35"],
+  SEN: ["#00853f", "#fdef42", "#e31b23"],
+  IRQ: ["#ce1126", "#ffffff", "#000000"],
+  AUT: ["#ed2939", "#ffffff", "#ed2939"],
+  JOR: ["#000000", "#ffffff", "#007a3d"],
+  POR: ["#006600", "#ff0000", "#ffcc00"],
+  UZB: ["#1eb6e7", "#ffffff", "#00923f"],
+  COL: ["#fcd116", "#003893", "#ce1126"],
+  COD: ["#007fff", "#f7d618", "#ce1021"],
+  GHA: ["#ce1126", "#fcd116", "#006b3f"],
+  PAN: ["#ffffff", "#005293", "#d21034"],
+};
 
-  return `<span class="flag" aria-hidden="true">${team.flag}</span>`;
+function renderFlag(team) {
+  const colors = flagThemeMap[team.code] || ["#ffffff", "#1d8f4f", "#122018"];
+
+  return `
+    <span class="flag-badge" style="--flag-a: ${colors[0]}; --flag-b: ${colors[1]}; --flag-c: ${colors[2]};" aria-hidden="true">
+      <span class="flag-code">${team.code}</span>
+    </span>
+  `;
 }
 
 function getRecommendationReason(match) {

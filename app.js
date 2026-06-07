@@ -1370,12 +1370,65 @@ function getWatchAction(category) {
   return actions[category] || "Check";
 }
 
-function renderFlag(team) {
-  if (team.code === "ENG" || team.code === "SCO") {
-    return `<span class="flag-badge ${team.code === "ENG" ? "england" : "scotland"}" aria-hidden="true"></span>`;
-  }
+const flagThemeMap = {
+  ARG: ["#74acdf", "#ffffff", "#f6b40e"],
+  BRA: ["#009b3a", "#ffdf00", "#002776"],
+  ESP: ["#aa151b", "#f1bf00", "#aa151b"],
+  GER: ["#000000", "#dd0000", "#ffce00"],
+  ENG: ["#ffffff", "#cf142b", "#ffffff"],
+  FRA: ["#0055a4", "#ffffff", "#ef4135"],
+  MAR: ["#c1272d", "#006233", "#c1272d"],
+  JPN: ["#ffffff", "#bc002d", "#ffffff"],
+  NOR: ["#ba0c2f", "#ffffff", "#00205b"],
+  TUR: ["#e30a17", "#ffffff", "#e30a17"],
+  CUW: ["#002b7f", "#f9e814", "#002b7f"],
+  CRO: ["#ff0000", "#ffffff", "#171796"],
+  ALG: ["#006233", "#ffffff", "#d21034"],
+  URU: ["#ffffff", "#0038a8", "#fcd116"],
+  QAT: ["#ffffff", "#8d1b3d", "#8d1b3d"],
+  SUI: ["#d52b1e", "#ffffff", "#d52b1e"],
+  HAI: ["#00209f", "#d21034", "#ffffff"],
+  SCO: ["#0065bd", "#ffffff", "#0065bd"],
+  NED: ["#ae1c28", "#ffffff", "#21468b"],
+  CIV: ["#f77f00", "#ffffff", "#009e60"],
+  ECU: ["#ffdd00", "#034ea2", "#ed1c24"],
+  MEX: ["#006847", "#ffffff", "#ce1126"],
+  RSA: ["#007a4d", "#ffb612", "#de3831"],
+  KOR: ["#ffffff", "#c60c30", "#003478"],
+  CZE: ["#ffffff", "#d7141a", "#11457e"],
+  CAN: ["#ff0000", "#ffffff", "#ff0000"],
+  BIH: ["#002395", "#fecb00", "#002395"],
+  USA: ["#b22234", "#ffffff", "#3c3b6e"],
+  PAR: ["#d52b1e", "#ffffff", "#0038a8"],
+  AUS: ["#00008b", "#ffffff", "#ff0000"],
+  TUN: ["#e70013", "#ffffff", "#e70013"],
+  SWE: ["#006aa7", "#fecc00", "#006aa7"],
+  BEL: ["#000000", "#ffd90c", "#ef3340"],
+  EGY: ["#ce1126", "#ffffff", "#000000"],
+  IRN: ["#239f40", "#ffffff", "#da0000"],
+  NZL: ["#00247d", "#ffffff", "#cc142b"],
+  CPV: ["#003893", "#ffffff", "#cf2027"],
+  KSA: ["#006c35", "#ffffff", "#006c35"],
+  SEN: ["#00853f", "#fdef42", "#e31b23"],
+  IRQ: ["#ce1126", "#ffffff", "#000000"],
+  AUT: ["#ed2939", "#ffffff", "#ed2939"],
+  JOR: ["#000000", "#ffffff", "#007a3d"],
+  POR: ["#006600", "#ff0000", "#ffcc00"],
+  UZB: ["#1eb6e7", "#ffffff", "#00923f"],
+  COL: ["#fcd116", "#003893", "#ce1126"],
+  COD: ["#007fff", "#f7d618", "#ce1021"],
+  GHA: ["#ce1126", "#fcd116", "#006b3f"],
+  PAN: ["#ffffff", "#005293", "#d21034"],
+};
 
-  return `<span class="flag" aria-hidden="true">${team.flag}</span>`;
+function renderFlag(team) {
+  const colors = flagThemeMap[team.code] || ["#ffffff", "#1d8f4f", "#122018"];
+
+  return `
+    <span class="flag-badge" style="--flag-a: ${colors[0]}; --flag-b: ${colors[1]}; --flag-c: ${colors[2]};" aria-hidden="true">
+      <span class="flag-code">${team.code}</span>
+    </span>
+  `;
 }
 
 function getRecommendationReason(match) {

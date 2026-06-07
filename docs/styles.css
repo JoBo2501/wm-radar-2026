@@ -1362,31 +1362,36 @@ h3 {
   white-space: nowrap;
 }
 
-.flag {
-  font-size: 1.45rem;
-}
-
 .flag-badge {
-  display: inline-grid;
-  width: 1.45rem;
-  height: 1.45rem;
+  display: inline-flex;
+  width: 2.24rem;
+  height: 1.36rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
   place-items: center;
+  border: 1px solid rgba(19, 69, 41, 0.18);
+  border-radius: 4px;
+  background:
+    linear-gradient(90deg, var(--flag-a, #ffffff) 0 33.333%, var(--flag-b, #1d8f4f) 33.333% 66.666%, var(--flag-c, #122018) 66.666% 100%);
+  box-shadow: 0 1px 3px rgba(23, 60, 36, 0.12);
+  overflow: hidden;
+  vertical-align: -0.16em;
+}
+
+.flag-code {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.62rem;
+  min-height: 0.86rem;
+  padding: 0 2px;
   border-radius: 3px;
-  box-shadow: inset 0 0 0 1px rgba(244, 247, 239, 0.28);
-}
-
-.flag-badge.england {
-  background:
-    linear-gradient(90deg, transparent 0 38%, #d81e35 38% 62%, transparent 62% 100%),
-    linear-gradient(transparent 0 38%, #d81e35 38% 62%, transparent 62% 100%),
-    #f4f7ef;
-}
-
-.flag-badge.scotland {
-  background:
-    linear-gradient(45deg, transparent 0 40%, #f4f7ef 40% 58%, transparent 58% 100%),
-    linear-gradient(-45deg, transparent 0 40%, #f4f7ef 40% 58%, transparent 58% 100%),
-    #005eb8;
+  background: rgba(255, 255, 255, 0.82);
+  color: #122018;
+  font-size: 0.48rem;
+  font-weight: 950;
+  letter-spacing: 0;
 }
 
 .versus {
@@ -3414,6 +3419,111 @@ h3 {
   height: 100%;
   border-radius: inherit;
   background: linear-gradient(90deg, var(--green), var(--lime));
+}
+
+.data-card,
+.validator-hero,
+.group-path-card,
+.standing-card,
+.bracket-round,
+.team-lab-card,
+.radar-card,
+.analyst-pillar,
+.voice-card,
+.source-rule-card,
+.ai-model-card,
+.source-card {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 251, 245, 0.88)),
+    var(--panel);
+  color: var(--text);
+  box-shadow: 0 12px 30px rgba(23, 60, 36, 0.08);
+}
+
+.group-path-card p,
+.group-teams span,
+.path-note span,
+.group-fixtures button,
+.standing-card p,
+.standing-row,
+.third-place-list div,
+.bracket-match,
+.ko-dossier,
+.team-lab-card p,
+.phase-grid span,
+.watch-cues,
+.radar-card p,
+.source-card p,
+.voice-card em {
+  color: var(--soft);
+}
+
+.group-teams span,
+.path-note,
+.group-fixtures button,
+.standing-row,
+.third-place-list div,
+.bracket-match,
+.bracket-slot,
+.ko-dossier,
+.ko-dossier-metrics span,
+.phase-grid span,
+.watch-cues,
+.radar-signal,
+.voice-card,
+.source-card,
+.source-rule-card,
+.ai-model-card {
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.group-path-top > strong,
+.team-lab-top > strong,
+.validator-score,
+.radar-score,
+.voice-score {
+  background:
+    radial-gradient(circle at center, #ffffff 0 58%, transparent 59%),
+    conic-gradient(var(--lime) calc(var(--score, var(--coverage, 76)) * 1%), rgba(19, 69, 41, 0.12) 0);
+  color: var(--text);
+}
+
+.group-letter,
+.source-grade {
+  background: rgba(29, 143, 79, 0.1);
+  color: var(--lime);
+}
+
+.team-lab-flag {
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.bracket-slot strong,
+.bracket-match-top strong,
+.ko-dossier-metrics strong,
+.phase-grid strong,
+.watch-cues > strong,
+.group-fixtures > strong,
+.path-note > strong,
+.source-rule-card strong {
+  color: var(--text);
+}
+
+.bracket-slot small,
+.bracket-match p,
+.bracket-match small,
+.ko-dossier ul,
+.ko-dossier-metrics small,
+.team-lab-top small,
+.source-card p,
+.radar-card p {
+  color: var(--muted);
+}
+
+.ko-dossier-top strong,
+.bracket-match-top strong,
+.radar-score strong {
+  color: var(--lime);
 }
 
 .spoiler-mode .spoiler-sensitive {
