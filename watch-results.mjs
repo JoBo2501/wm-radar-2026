@@ -43,6 +43,7 @@ async function runOnce() {
   await run("node", ["validate-results.mjs"]);
   await run("node", ["build-data.mjs"]);
   await run("node", ["build-standalone.mjs"]);
+  await run("node", ["build-pages.mjs"]);
   printStatus();
 }
 

@@ -24,7 +24,7 @@ WM Radar 26 ist ein persoenliches Analysten-Cockpit fuer die FIFA Fussball-WM 20
 - Ergebnis-Sync: `sync-results.mjs`, `validate-results.mjs`, `watch-results.mjs`
 - Ergebnis-Konfiguration: `data/result-sources.json`, `data/results.json`, `data/result-overrides.json`, `data/result-validation.json`
 - Quellen-/Analystenmodell: `data/analyst-sources.json`
-- Build/Validierung: `normalize-fixtures.mjs`, `validate-schedule.mjs`, `build-data.mjs`, `build-standalone.mjs`, `build-pages.mjs`
+- Build/Validierung: `normalize-fixtures.mjs`, `validate-schedule.mjs`, `build-data.mjs`, `build-standalone.mjs`, `build-pages.mjs`, `release-pages.mjs`
 
 ## Datenfluss
 
@@ -54,6 +54,8 @@ Wichtige Dateien:
 - `enable-football-data.cmd`: Provider aktivieren und einmal syncen.
 - `watch-results.cmd`: dauerhaften Poller starten.
 - `sync-results.cmd`: einmaliger Sync/Rebuild per Doppelklick.
+- `release-pages.cmd`: Daten und `docs/` aktualisieren.
+- `release-and-push.cmd`: Daten aktualisieren, committen und nach GitHub pushen.
 - `.nojekyll`: statisches GitHub-Pages-Deployment aus Branch `master` ohne Jekyll-Verarbeitung.
 
 ## UI-Module

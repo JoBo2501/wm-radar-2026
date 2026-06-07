@@ -48,6 +48,7 @@ node sync-results.mjs
 node validate-results.mjs
 node build-data.mjs
 node build-standalone.mjs
+node build-pages.mjs
 ```
 
 Optional mit lokalem Server:
@@ -75,6 +76,7 @@ node sync-results.mjs
 node validate-results.mjs
 node build-data.mjs
 node build-standalone.mjs
+node build-pages.mjs
 ```
 
 Ergebnis-Sync:
@@ -84,9 +86,26 @@ node sync-results.mjs
 node validate-results.mjs
 node build-data.mjs
 node build-standalone.mjs
+node build-pages.mjs
 ```
 
 Oder `sync-results.cmd` doppelklicken. Standardquelle ist `data/raw/results-feed.json`; echte API-Provider werden in `data/result-sources.json` aktiviert und ueber Umgebungsvariablen wie `API_FOOTBALL_KEY` oder `FOOTBALL_DATA_TOKEN` authentifiziert.
+
+Deployment-Update fuer GitHub Pages:
+
+```powershell
+node release-pages.mjs
+```
+
+Oder `release-pages.cmd` doppelklicken. Das aktualisiert Daten, Standalone-Datei und `docs/`.
+
+Zum Aktualisieren und direkt nach GitHub pushen:
+
+```powershell
+node release-pages.mjs --commit --push --message="Update WM Radar deployment"
+```
+
+Oder `release-and-push.cmd` doppelklicken.
 
 Dauerhafter Poller:
 
@@ -111,6 +130,7 @@ node sync-results.mjs --source=football-data
 node validate-results.mjs
 node build-data.mjs
 node build-standalone.mjs
+node build-pages.mjs
 ```
 
 Die aktuelle Turnierstruktur ist vollstaendig importiert: 72 Gruppenspiele plus 32 K.o.-Platzhalter. Spielzeiten und Spielplanbasis sind als `mixed` markiert, weil sie aus offiziellen/FIFA-nahen und aktuellen Fixture-Listen gespiegelt wurden. Live-Ergebnisse, Tabellen und Premium-Statistiken folgen als naechste Datenebene.

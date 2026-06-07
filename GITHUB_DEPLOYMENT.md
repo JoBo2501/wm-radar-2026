@@ -63,6 +63,18 @@ Einschraenkung:
 - Kein automatischer Node-Poller.
 - Ergebnisse muessen vorher lokal gebaut und committed/gepusht werden.
 
+Standardablauf fuer Updates:
+
+```powershell
+node release-pages.mjs
+```
+
+Danach manuell committen/pushen oder direkt:
+
+```powershell
+node release-pages.mjs --commit --push --message="Update WM Radar deployment"
+```
+
 Vorbereitet:
 
 - `.nojekyll` verhindert, dass GitHub Pages Dateien als Jekyll-Seite verarbeitet.

@@ -963,7 +963,7 @@ window.WMRadarData = {
     ]
   },
   "scheduleValidation": {
-    "generatedAt": "2026-06-07T06:47:11.138Z",
+    "generatedAt": "2026-06-07T07:49:11.054Z",
     "expected": {
       "totalMatches": 104,
       "groupMatches": 72,
@@ -1217,7 +1217,7 @@ window.WMRadarData = {
     }
   },
   "resultValidation": {
-    "generatedAt": "2026-06-07T06:42:26.803Z",
+    "generatedAt": "2026-06-07T07:51:07.733Z",
     "status": "waiting",
     "summary": "Noch keine echten Resultate synchronisiert; Projektionsmodus bleibt aktiv.",
     "source": {
