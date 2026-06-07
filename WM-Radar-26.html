@@ -1774,18 +1774,179 @@ h3 {
   padding: 14px;
   border: 1px solid var(--line);
   border-radius: 7px;
-  background: rgba(255, 255, 255, 0.04);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.022)),
+    rgba(255, 255, 255, 0.035);
+  position: relative;
+  overflow: hidden;
+}
+
+.insight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: rgba(196, 255, 95, 0.28);
+  opacity: 0.75;
 }
 
 .insight-card h3 {
   margin-bottom: 8px;
   font-size: 0.98rem;
+  position: relative;
+  z-index: 1;
 }
 
 .insight-card p {
   margin: 0;
   color: var(--muted);
   line-height: 1.55;
+  position: relative;
+  z-index: 1;
+}
+
+.briefing-kicker {
+  display: inline-flex;
+  margin-bottom: 8px;
+  color: var(--lime);
+  font-size: 0.68rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
+.tactical-briefing {
+  grid-column: 1 / -1;
+  min-height: 176px;
+  padding: 18px;
+  background:
+    radial-gradient(circle at 78% 12%, rgba(196, 255, 95, 0.13), transparent 16rem),
+    linear-gradient(145deg, rgba(31, 38, 32, 0.92), rgba(16, 20, 17, 0.58));
+}
+
+.tactical-briefing h3 {
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+}
+
+.tactical-briefing p {
+  max-width: 820px;
+  color: var(--soft);
+  font-size: 1rem;
+}
+
+.briefing-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.briefing-tags span {
+  padding: 6px 9px;
+  border: 1px solid rgba(196, 255, 95, 0.2);
+  border-radius: 999px;
+  background: rgba(196, 255, 95, 0.075);
+  color: var(--lime);
+  font-size: 0.76rem;
+  font-weight: 900;
+}
+
+.battle-board {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 10px;
+  align-items: stretch;
+  position: relative;
+  z-index: 1;
+}
+
+.battle-board span {
+  display: grid;
+  gap: 7px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.battle-board strong {
+  color: var(--text);
+  font-size: 1.05rem;
+}
+
+.battle-board em {
+  align-self: center;
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.trigger-card {
+  grid-row: span 2;
+}
+
+.trigger-list {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  padding-left: 22px;
+  color: var(--soft);
+  line-height: 1.45;
+  position: relative;
+  z-index: 1;
+}
+
+.trigger-list li::marker {
+  color: var(--lime);
+  font-weight: 950;
+}
+
+.decision-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.decision-grid span {
+  display: grid;
+  gap: 4px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.decision-grid small {
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.decision-grid strong {
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.decision-grid em {
+  color: var(--lime);
+  font-size: 0.76rem;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.score-signals {
+  grid-row: span 2;
 }
 
 .metric-list {
@@ -3300,6 +3461,22 @@ h3 {
   .radar-grid,
   .analyst-pillar-grid {
     grid-template-columns: 1fr;
+  }
+
+  .tactical-briefing,
+  .trigger-card,
+  .score-signals {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .battle-board,
+  .decision-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .battle-board em {
+    justify-self: start;
   }
 
   .hero-status-rail {
@@ -9807,6 +9984,48 @@ function getWatchCueList(home, away) {
   return cues.length ? cues.slice(0, 4) : ["Auf Ballverluste, Pressinghöhe und Restverteidigung achten."];
 }
 
+function getDossierBriefing(match, home, away) {
+  const homeProfile = getTeamProfile(home);
+  const awayProfile = getTeamProfile(away);
+  const context = match.groupModel ? match.groupModel.pathNote : "Der Turnierpfad ist noch modelliert.";
+  const homeIdentity = homeProfile?.identity || `${home.name} wird aktuell über Matchsignale eingeordnet.`;
+  const awayIdentity = awayProfile?.identity || `${away.name} wird aktuell über Matchsignale eingeordnet.`;
+
+  return `${home.code}-${away.code} ist ein ${getWatchAction(match.category).toLowerCase()}-Spiel, weil ${match.driver} der stärkste Treiber ist. ${homeIdentity} Gegenbild: ${awayIdentity} ${context}`;
+}
+
+function getKeyBattle(home, away) {
+  const homeProfile = getTeamProfile(home);
+  const awayProfile = getTeamProfile(away);
+
+  return {
+    title: `${home.code} Ballbesitz vs ${away.code} Zugriff`,
+    left: homeProfile?.bestAgainst || "progressive Struktur und zweite Bälle",
+    right: awayProfile?.dangerAgainst || "Konterfenster und Strafraumdruck",
+  };
+}
+
+function getTacticalTriggers(match, home, away) {
+  const [homeProfile, awayProfile] = [getTeamProfile(home), getTeamProfile(away)];
+  const profileCues = [homeProfile, awayProfile].filter(Boolean).flatMap((profile) => profile.watchCues.slice(0, 2));
+  const generic = [
+    `Wenn ${match.driver} früh sichtbar wird, steigt der Live-Wert.`,
+    "Nach Ballverlusten sofort auf Restverteidigung und erste Anschlussläufe achten.",
+    "Standards und zweite Bälle als Low-Noise-Signal notieren.",
+  ];
+
+  return [...profileCues, ...generic].slice(0, 5);
+}
+
+function getDecisionMatrix(match) {
+  return [
+    ["Live-Schwelle", match.score >= 80 ? "erreicht" : "nicht erreicht", match.score],
+    ["Taktikwert", match.signals.tactical >= 72 ? "hoch" : match.signals.tactical >= 58 ? "mittel" : "niedrig", match.signals.tactical],
+    ["Pfadwirkung", match.pathImpact >= 80 ? "kritisch" : match.pathImpact >= 62 ? "relevant" : "gering", match.pathImpact],
+    ["Low-Value", match.signals.lowValueRisk >= 35 ? "beachten" : "kontrolliert", 100 - match.signals.lowValueRisk],
+  ];
+}
+
 function renderMatches() {
   const visibleMatches = getVisibleMatches();
 
@@ -9888,6 +10107,9 @@ function renderDossier() {
   dossierScoreEl.className = `score-ring ${getScoreTone(selectedMatch.score)}`;
   dossierScoreEl.querySelector("span").textContent = selectedMatch.score;
   pitchModeEl.textContent = selectedMatch.tags[1] || "Taktik";
+  const keyBattle = getKeyBattle(home, away);
+  const tacticalTriggers = getTacticalTriggers(selectedMatch, home, away);
+  const decisionMatrix = getDecisionMatrix(selectedMatch);
 
   dossierMetaEl.innerHTML = [
     `${selectedMatch.displayDate}`,
@@ -9901,20 +10123,52 @@ function renderDossier() {
     .join("");
 
   insightGridEl.innerHTML = `
-    <div class="insight-card">
-      <h3>Taktischer Kern</h3>
-      <p>${selectedMatch.analysis.key}</p>
+    <div class="insight-card tactical-briefing">
+      <span class="briefing-kicker">Analysten-Story</span>
+      <h3>Warum dieses Spiel zaehlt</h3>
+      <p>${getDossierBriefing(selectedMatch, home, away)}</p>
+      <div class="briefing-tags">
+        <span>${selectedMatch.driver}</span>
+        <span>${getWatchLabel(selectedMatch.category)}</span>
+        <span>Pfad ${selectedMatch.pathImpact}</span>
+      </div>
     </div>
-    <div class="insight-card">
-      <h3>Risiko-Signal</h3>
-      <p>${selectedMatch.analysis.risk}</p>
+    <div class="insight-card key-battle-card">
+      <span class="briefing-kicker">Key Battle</span>
+      <h3>${keyBattle.title}</h3>
+      <div class="battle-board">
+        <span><strong>${home.code}</strong>${keyBattle.left}</span>
+        <em>gegen</em>
+        <span><strong>${away.code}</strong>${keyBattle.right}</span>
+      </div>
     </div>
-    <div class="insight-card">
-      <h3>Spielkipper</h3>
-      <p>${selectedMatch.analysis.player}</p>
+    <div class="insight-card trigger-card">
+      <span class="briefing-kicker">Live Trigger</span>
+      <h3>Woran du frueh erkennst, ob es kippt</h3>
+      <ol class="trigger-list">
+        ${tacticalTriggers.map((trigger) => `<li>${trigger}</li>`).join("")}
+      </ol>
     </div>
-    <div class="insight-card">
-      <h3>Score-Signale</h3>
+    <div class="insight-card decision-card">
+      <span class="briefing-kicker">Decision Matrix</span>
+      <h3>Live, Analyse oder Skip?</h3>
+      <div class="decision-grid">
+        ${decisionMatrix
+          .map(
+            ([label, verdict, value]) => `
+              <span>
+                <small>${label}</small>
+                <strong>${verdict}</strong>
+                <em>${value}/100</em>
+              </span>
+            `,
+          )
+          .join("")}
+      </div>
+    </div>
+    <div class="insight-card score-signals">
+      <span class="briefing-kicker">Score Engine</span>
+      <h3>Signalprofil</h3>
       <div class="metric-list">
         ${[
           ["Bedeutung", selectedMatch.signals.importance],
@@ -9938,20 +10192,20 @@ function renderDossier() {
       </div>
     </div>
     <div class="insight-card profile-insight">
+      <span class="briefing-kicker">Matchup Lens</span>
       <h3>Team-Matchup</h3>
       <p>${getTeamProfileSummary(home)}</p>
       <p>${getTeamProfileSummary(away)}</p>
       <p>${getMatchupLine(home, away)}</p>
     </div>
     <div class="insight-card">
-      <h3>Worauf achten?</h3>
-      <ul class="cue-list">
-        ${getWatchCueList(home, away)
-          .map((cue) => `<li>${cue}</li>`)
-          .join("")}
-      </ul>
+      <span class="briefing-kicker">Risk Scan</span>
+      <h3>Risiko-Signal</h3>
+      <p>${selectedMatch.analysis.risk}</p>
+      <p>${selectedMatch.analysis.player}</p>
     </div>
     <div class="insight-card">
+      <span class="briefing-kicker">Turnierpfad</span>
       <h3>Pfad-Relevanz</h3>
       <p>${
         selectedMatch.groupModel
@@ -9963,10 +10217,12 @@ function renderDossier() {
       }</p>
     </div>
     <div class="insight-card">
+      <span class="briefing-kicker">Quellenlogik</span>
       <h3>Quellenlogik</h3>
       <p>${selectedMatch.analysis.source} ${selectedMatch.sourceNote}</p>
     </div>
     <div class="insight-card">
+      <span class="briefing-kicker">Action</span>
       <h3>Empfehlung</h3>
       <p>${getRecommendationReason(selectedMatch)}</p>
     </div>

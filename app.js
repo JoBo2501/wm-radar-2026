@@ -1545,6 +1545,48 @@ function getWatchCueList(home, away) {
   return cues.length ? cues.slice(0, 4) : ["Auf Ballverluste, Pressinghöhe und Restverteidigung achten."];
 }
 
+function getDossierBriefing(match, home, away) {
+  const homeProfile = getTeamProfile(home);
+  const awayProfile = getTeamProfile(away);
+  const context = match.groupModel ? match.groupModel.pathNote : "Der Turnierpfad ist noch modelliert.";
+  const homeIdentity = homeProfile?.identity || `${home.name} wird aktuell über Matchsignale eingeordnet.`;
+  const awayIdentity = awayProfile?.identity || `${away.name} wird aktuell über Matchsignale eingeordnet.`;
+
+  return `${home.code}-${away.code} ist ein ${getWatchAction(match.category).toLowerCase()}-Spiel, weil ${match.driver} der stärkste Treiber ist. ${homeIdentity} Gegenbild: ${awayIdentity} ${context}`;
+}
+
+function getKeyBattle(home, away) {
+  const homeProfile = getTeamProfile(home);
+  const awayProfile = getTeamProfile(away);
+
+  return {
+    title: `${home.code} Ballbesitz vs ${away.code} Zugriff`,
+    left: homeProfile?.bestAgainst || "progressive Struktur und zweite Bälle",
+    right: awayProfile?.dangerAgainst || "Konterfenster und Strafraumdruck",
+  };
+}
+
+function getTacticalTriggers(match, home, away) {
+  const [homeProfile, awayProfile] = [getTeamProfile(home), getTeamProfile(away)];
+  const profileCues = [homeProfile, awayProfile].filter(Boolean).flatMap((profile) => profile.watchCues.slice(0, 2));
+  const generic = [
+    `Wenn ${match.driver} früh sichtbar wird, steigt der Live-Wert.`,
+    "Nach Ballverlusten sofort auf Restverteidigung und erste Anschlussläufe achten.",
+    "Standards und zweite Bälle als Low-Noise-Signal notieren.",
+  ];
+
+  return [...profileCues, ...generic].slice(0, 5);
+}
+
+function getDecisionMatrix(match) {
+  return [
+    ["Live-Schwelle", match.score >= 80 ? "erreicht" : "nicht erreicht", match.score],
+    ["Taktikwert", match.signals.tactical >= 72 ? "hoch" : match.signals.tactical >= 58 ? "mittel" : "niedrig", match.signals.tactical],
+    ["Pfadwirkung", match.pathImpact >= 80 ? "kritisch" : match.pathImpact >= 62 ? "relevant" : "gering", match.pathImpact],
+    ["Low-Value", match.signals.lowValueRisk >= 35 ? "beachten" : "kontrolliert", 100 - match.signals.lowValueRisk],
+  ];
+}
+
 function renderMatches() {
   const visibleMatches = getVisibleMatches();
 
@@ -1626,6 +1668,9 @@ function renderDossier() {
   dossierScoreEl.className = `score-ring ${getScoreTone(selectedMatch.score)}`;
   dossierScoreEl.querySelector("span").textContent = selectedMatch.score;
   pitchModeEl.textContent = selectedMatch.tags[1] || "Taktik";
+  const keyBattle = getKeyBattle(home, away);
+  const tacticalTriggers = getTacticalTriggers(selectedMatch, home, away);
+  const decisionMatrix = getDecisionMatrix(selectedMatch);
 
   dossierMetaEl.innerHTML = [
     `${selectedMatch.displayDate}`,
@@ -1639,20 +1684,52 @@ function renderDossier() {
     .join("");
 
   insightGridEl.innerHTML = `
-    <div class="insight-card">
-      <h3>Taktischer Kern</h3>
-      <p>${selectedMatch.analysis.key}</p>
+    <div class="insight-card tactical-briefing">
+      <span class="briefing-kicker">Analysten-Story</span>
+      <h3>Warum dieses Spiel zaehlt</h3>
+      <p>${getDossierBriefing(selectedMatch, home, away)}</p>
+      <div class="briefing-tags">
+        <span>${selectedMatch.driver}</span>
+        <span>${getWatchLabel(selectedMatch.category)}</span>
+        <span>Pfad ${selectedMatch.pathImpact}</span>
+      </div>
     </div>
-    <div class="insight-card">
-      <h3>Risiko-Signal</h3>
-      <p>${selectedMatch.analysis.risk}</p>
+    <div class="insight-card key-battle-card">
+      <span class="briefing-kicker">Key Battle</span>
+      <h3>${keyBattle.title}</h3>
+      <div class="battle-board">
+        <span><strong>${home.code}</strong>${keyBattle.left}</span>
+        <em>gegen</em>
+        <span><strong>${away.code}</strong>${keyBattle.right}</span>
+      </div>
     </div>
-    <div class="insight-card">
-      <h3>Spielkipper</h3>
-      <p>${selectedMatch.analysis.player}</p>
+    <div class="insight-card trigger-card">
+      <span class="briefing-kicker">Live Trigger</span>
+      <h3>Woran du frueh erkennst, ob es kippt</h3>
+      <ol class="trigger-list">
+        ${tacticalTriggers.map((trigger) => `<li>${trigger}</li>`).join("")}
+      </ol>
     </div>
-    <div class="insight-card">
-      <h3>Score-Signale</h3>
+    <div class="insight-card decision-card">
+      <span class="briefing-kicker">Decision Matrix</span>
+      <h3>Live, Analyse oder Skip?</h3>
+      <div class="decision-grid">
+        ${decisionMatrix
+          .map(
+            ([label, verdict, value]) => `
+              <span>
+                <small>${label}</small>
+                <strong>${verdict}</strong>
+                <em>${value}/100</em>
+              </span>
+            `,
+          )
+          .join("")}
+      </div>
+    </div>
+    <div class="insight-card score-signals">
+      <span class="briefing-kicker">Score Engine</span>
+      <h3>Signalprofil</h3>
       <div class="metric-list">
         ${[
           ["Bedeutung", selectedMatch.signals.importance],
@@ -1676,20 +1753,20 @@ function renderDossier() {
       </div>
     </div>
     <div class="insight-card profile-insight">
+      <span class="briefing-kicker">Matchup Lens</span>
       <h3>Team-Matchup</h3>
       <p>${getTeamProfileSummary(home)}</p>
       <p>${getTeamProfileSummary(away)}</p>
       <p>${getMatchupLine(home, away)}</p>
     </div>
     <div class="insight-card">
-      <h3>Worauf achten?</h3>
-      <ul class="cue-list">
-        ${getWatchCueList(home, away)
-          .map((cue) => `<li>${cue}</li>`)
-          .join("")}
-      </ul>
+      <span class="briefing-kicker">Risk Scan</span>
+      <h3>Risiko-Signal</h3>
+      <p>${selectedMatch.analysis.risk}</p>
+      <p>${selectedMatch.analysis.player}</p>
     </div>
     <div class="insight-card">
+      <span class="briefing-kicker">Turnierpfad</span>
       <h3>Pfad-Relevanz</h3>
       <p>${
         selectedMatch.groupModel
@@ -1701,10 +1778,12 @@ function renderDossier() {
       }</p>
     </div>
     <div class="insight-card">
+      <span class="briefing-kicker">Quellenlogik</span>
       <h3>Quellenlogik</h3>
       <p>${selectedMatch.analysis.source} ${selectedMatch.sourceNote}</p>
     </div>
     <div class="insight-card">
+      <span class="briefing-kicker">Action</span>
       <h3>Empfehlung</h3>
       <p>${getRecommendationReason(selectedMatch)}</p>
     </div>
