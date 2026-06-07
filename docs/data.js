@@ -395,7 +395,9 @@ window.WMRadarData = {
       "name": "Portugal",
       "flag": "🇵🇹",
       "confederation": "UEFA",
-      "focus": false
+      "focus": true,
+      "style": "Ballbesitzqualität, Halbraumbesetzung, individuelle Kreativität",
+      "watchPriority": 91
     },
     {
       "code": "UZB",
@@ -711,6 +713,24 @@ window.WMRadarData = {
       "bestAgainst": "Hoch stehende Gegner mit Raum hinter der Kette.",
       "dangerAgainst": "Teams, die Tempo rausnehmen und Frankreich lange verteidigen lassen.",
       "confidence": 65
+    },
+    {
+      "code": "POR",
+      "level": "seed",
+      "identity": "Technische Ballbesitzqualität, viele Kreativspieler zwischen den Linien und die Balancefrage zwischen Kontrolle und Direktheit.",
+      "buildUp": "Portugal kann geduldig aufbauen, sucht aber häufig den Moment, in dem ein Achter, Zehner oder Flügelspieler zwischen den Linien frei wird.",
+      "pressing": "Phasenweise hoch und mannorientiert, aber die Abstände hinter der ersten Pressinglinie entscheiden über Stabilität.",
+      "transition": "Sehr gefährlich, wenn Ballgewinne sofort auf kreative Läufe und diagonale Anschlussaktionen treffen.",
+      "setPieces": "Hohe individuelle Qualität bei ruhenden Bällen, gute Zielspieler und starke zweite-Ball-Zonen.",
+      "weakness": "Kann bei zu vielen Kreativspielern vor dem Ball Restverteidigungsräume öffnen und gegen direkte Gegner verwundbar werden.",
+      "watchCues": [
+        "Findet Portugal den freien Spieler zwischen gegnerischer Sechs und Innenverteidigung?",
+        "Bleibt die Restverteidigung stabil, wenn beide Außenverteidiger hoch stehen?",
+        "Wer übernimmt im Druckmoment Führung: Trainerstruktur, Kapitän, Kreativspieler oder Einzelaktion?"
+      ],
+      "bestAgainst": "Gegner, die zwischen den Linien zu große Abstände lassen.",
+      "dangerAgainst": "Direkte Gegner mit Tempo hinter Portugals Außenverteidigern.",
+      "confidence": 62
     },
     {
       "code": "MAR",
@@ -1384,6 +1404,15 @@ window.WMRadarData = {
       "focus": true,
       "style": "Transitions, Tiefe, explosive Flügel",
       "watchPriority": 94
+    },
+    {
+      "code": "POR",
+      "name": "Portugal",
+      "flag": "🇵🇹",
+      "confederation": "UEFA",
+      "focus": true,
+      "style": "Ballbesitzqualität, Halbraumbesetzung, individuelle Kreativität",
+      "watchPriority": 91
     }
   ],
   "filters": [

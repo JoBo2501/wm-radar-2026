@@ -125,7 +125,15 @@
   { "code": "IRQ", "name": "Irak", "flag": "🇮🇶", "confederation": "AFC", "focus": false },
   { "code": "AUT", "name": "Österreich", "flag": "🇦🇹", "confederation": "UEFA", "focus": false },
   { "code": "JOR", "name": "Jordanien", "flag": "🇯🇴", "confederation": "AFC", "focus": false },
-  { "code": "POR", "name": "Portugal", "flag": "🇵🇹", "confederation": "UEFA", "focus": false },
+  {
+    "code": "POR",
+    "name": "Portugal",
+    "flag": "🇵🇹",
+    "confederation": "UEFA",
+    "focus": true,
+    "style": "Ballbesitzqualität, Halbraumbesetzung, individuelle Kreativität",
+    "watchPriority": 91
+  },
   { "code": "UZB", "name": "Usbekistan", "flag": "🇺🇿", "confederation": "AFC", "focus": false },
   { "code": "COL", "name": "Kolumbien", "flag": "🇨🇴", "confederation": "CONMEBOL", "focus": false },
   { "code": "COD", "name": "DR Kongo", "flag": "🇨🇩", "confederation": "CAF", "focus": false },

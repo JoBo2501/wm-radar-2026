@@ -76,6 +76,7 @@ Wichtige Dateien:
 - K.o.-Dossiers: Watch-Empfehlung, Stilkontrast, Upset-Risiko, moeglicher naechster Gegner.
 - Match-Dossier: Analysten-Story, Belegschicht, Advanced-Metrics-Plan und Post-Match Report Hub.
 - Team-Briefings: taktische Teamprofile. Sichtbare Teamwerte sind Watchlist-Prioritaet, kein objektives Ranking. Spaeter getrennt: Teamstaerke, Momentum, Attraktivitaet, Ueberraschungspotenzial und Datenlage.
+- Schluesselfiguren, geplant: Trainer, Leader, Taktikspieler, Druckspieler und Turnier-Entdeckungen mit Erwartung vor dem Turnier, aktueller Performance und Entwicklung im Turnierverlauf.
 - Analyst Desk: Trust-Modell fuer Daten, Stimmen und KI-Research.
 
 ## Erledigte Schritte
