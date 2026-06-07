@@ -26,9 +26,9 @@ GitHub Pages ist vorbereitet. Nach Aktivierung in GitHub Settings -> Pages -> So
 - Spielwert mit neuer Gewichtung `Pfad`
 - Import-Pipeline fuer Spielplan-Rohdaten in `data/raw/fixtures.json`
 - Vollstaendige Gruppenphase mit 72 importierten Gruppenspielen
-- K.o.-Bracket-Schicht mit 32 Platzhalterspielen von Round of 32 bis Finale
+- Der Weg ins Finale mit 32 K.o.-Platzhalterspielen von Round of 32 bis Finale
 - Ergebnis- und Tabellenlayer mit Projektionsmodus bis echte Resultate vorliegen
-- Dynamische Bracket-Aufloesung fuer `1E`, `2B`, `3ABCDF`, `W73` und Folgerunden
+- Dynamische Finalweg-Aufloesung fuer `1E`, `2B`, `3ABCDF`, `W73` und Folgerunden
 - K.o.-Match-Dossiers mit Watch-Empfehlung, Stilkontrast, Upset-Sensitivitaet und Pfadwert
 - Spielplan-Transparenz mit Coverage, Gruppenstatus, Bracketstatus und Datenqualitaets-Ampel
 - Analyse-Overrides in `data/match-overrides.json` fuer kuratierte Topspiele
@@ -165,6 +165,6 @@ Der automatische Ergebnisabgleich ist in `sync-results.mjs` vorbereitet. Die akt
 
 Post-Match-Reports liegen in `data/post-match-reports.json`. `generate-post-match-reports.mjs` erzeugt aus finalen Ergebnissen erste Draft-Reports mit Score-Audit, Metrik-Blueprint und Lernfrage; `validate-post-match-reports.mjs` schreibt die Ampel nach `data/post-match-validation.json`.
 
-Das Bracket liest diese Tabellenprojektion bereits aus: Direkte Slots wie `1E` oder `2B` werden aus der Gruppentabelle gesetzt, Third-Place-Slots wie `3ABCDF` nehmen den besten erlaubten Drittplatzierten, und Folgerunden-Slots wie `W73`/`L101` kaskadieren aus den vorherigen Match-Projektionen.
+Der Weg ins Finale liest diese Tabellenprojektion bereits aus: Direkte Slots wie `1E` oder `2B` werden aus der Gruppentabelle gesetzt, Third-Place-Slots wie `3ABCDF` nehmen den besten erlaubten Drittplatzierten, und Folgerunden-Slots wie `W73`/`L101` kaskadieren aus den vorherigen Match-Projektionen.
 
 Jede K.o.-Karte enthaelt zusaetzlich ein Mini-Dossier: Spielwert, Watch-Empfehlung, Stilkontrast, Upset-Risiko, Pfadwert und konkrete Watch-Cues. Das ist noch modelliert, wird aber sofort besser, sobald echte Ergebnisse und weitere Teamdaten einlaufen.

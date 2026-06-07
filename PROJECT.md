@@ -72,7 +72,7 @@ Wichtige Dateien:
 - Datenlage & Transparenz: Datenqualitaet, Spielplan-Ampel, Ergebnis-Sync-Ampel. Routine-Importe bleiben in einem einklappbaren Detailbereich.
 - Groups & Paths: Gruppen A-L mit Pfadrelevanz.
 - Standings Hub: Tabellenprojektion, direkte Qualifikanten, Best Thirds.
-- Bracket Command: 32 K.o.-Matches, dynamisch aufgeloeste Slots.
+- Der Weg ins Finale: 32 K.o.-Matches, dynamisch aufgeloeste Slots und moegliche Finalpfade.
 - K.o.-Dossiers: Watch-Empfehlung, Stilkontrast, Upset-Risiko, Pfadwert.
 - Match-Dossier: Analysten-Story, Evidence Pipeline, Advanced-Metrics-Plan und Post-Match Report Hub.
 - Team-Briefings: taktische Teamprofile. Sichtbare Teamwerte sind App-Fokus/Watch-Prioritaet, kein objektives Ranking.
