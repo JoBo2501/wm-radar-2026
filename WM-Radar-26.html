@@ -4049,14 +4049,14 @@ h3 {
         <section class="hero-grid" aria-labelledby="heroTitle">
           <div class="hero-copy">
             <div class="hero-mission-strip" aria-label="Turnierlage">
-              <span>Matchday Control</span>
+              <span>Heute wichtig</span>
               <strong id="heroMission">Briefing wird kalibriert</strong>
             </div>
             <p class="eyebrow">FIFA World Cup 2026 · 104 Spiele · Dein Filter</p>
             <h1 id="heroTitle">Die WM fühlt sich riesig an. Diese App sagt dir, was wirklich zählt.</h1>
             <p class="hero-text">
-              Live schauen, später analysieren, nur Highlights oder komplett skippen: WM Radar bewertet jedes
-              Spiel nach sportlichem Wert, taktischem Reiz und deiner persönlichen Team-Watchlist.
+              Öffnen, orientieren, entscheiden: WM Radar zeigt dir, welche Spiele live zählen, was du später
+              analysieren solltest und welche Duelle du ohne schlechtes Gewissen auslassen kannst.
             </p>
 
             <div class="hero-actions" aria-label="Schnellzugriffe">
@@ -4101,7 +4101,7 @@ h3 {
         <section class="section-head" id="matches" aria-labelledby="matchesTitle">
           <div>
             <p class="eyebrow">Heute priorisieren</p>
-            <h2 id="matchesTitle">Match Value Board</h2>
+            <h2 id="matchesTitle">Was heute zählt</h2>
           </div>
           <div class="date-chip" id="activeDateChip">
             <span>Demo</span>
@@ -4111,7 +4111,7 @@ h3 {
 
         <section class="command-center" id="commandCenter" aria-labelledby="commandCenterTitle">
           <div class="command-hero">
-            <p class="eyebrow">Daily Command Center</p>
+            <p class="eyebrow">Tagesbriefing</p>
             <h2 id="commandCenterTitle">Dein Plan für heute + Nacht</h2>
             <p id="dailyBriefingText">Briefing wird geladen.</p>
             <div class="command-metrics" id="commandMetrics"></div>
@@ -4121,7 +4121,7 @@ h3 {
 
           <div class="watch-plan-card">
             <div class="panel-title">
-              <span>Watch Plan</span>
+              <span>Sehplan</span>
               <strong id="watchPlanCount">0 Spiele</strong>
             </div>
             <div class="watch-plan" id="watchPlan"></div>
@@ -4129,7 +4129,7 @@ h3 {
 
           <div class="morning-card">
             <div class="panel-title">
-              <span>Spoiler-Safe Morning</span>
+              <span>Morgen ohne Spoiler</span>
               <strong id="morningCount">0 Nachtspiele</strong>
             </div>
             <div id="morningQueue"></div>
@@ -4183,12 +4183,12 @@ h3 {
         <section class="group-path-section" id="groupPaths" aria-labelledby="groupPathTitle">
           <div class="section-head compact">
             <div>
-              <p class="eyebrow">Gruppen & Pfade</p>
-              <h2 id="groupPathTitle">Groups & Paths</h2>
+              <p class="eyebrow">Gruppenlage</p>
+              <h2 id="groupPathTitle">Gruppen & Szenarien</h2>
             </div>
             <p>
-              Gruppen A-L mit Fokusmarkierung, Watch Strategy und modellierter Pfad-Relevanz. So sieht man,
-              welche Spiele auch dann wichtig sind, wenn sie nicht nach Topspiel aussehen.
+              Gruppen A-L mit Fokusmarkierung, Watch-Empfehlung und Pfad-Relevanz. So erkennst du,
+              welche Spiele wichtig sind, obwohl sie auf den ersten Blick nicht nach Topspiel aussehen.
             </p>
           </div>
           <div class="group-path-grid" id="groupPathGrid"></div>
@@ -4198,7 +4198,7 @@ h3 {
           <div class="section-head compact">
             <div>
               <p class="eyebrow">Ergebnisse & Tabellen</p>
-              <h2 id="standingsTitle">Standings Hub</h2>
+              <h2 id="standingsTitle">Tabellen & Szenarien</h2>
             </div>
             <p>
               Bis echte Resultate vorliegen, rechnet die App eine transparente Projektion. Sobald Ergebnisse in
@@ -4294,8 +4294,8 @@ h3 {
         <section class="analyst-desk-section" id="analystDesk" aria-labelledby="analystDeskTitle">
           <div class="section-head compact">
             <div>
-              <p class="eyebrow">Serioeser Quellenfilter</p>
-              <h2 id="analystDeskTitle">Analyst Desk</h2>
+              <p class="eyebrow">Seriöser Quellenfilter</p>
+              <h2 id="analystDeskTitle">Gute Quellen</h2>
             </div>
             <p>
               Hier entscheidet die App, welchen Daten, Stimmen und KI-Modellen sie vertraut. Kein TV-Laerm,
@@ -9843,7 +9843,7 @@ function getUpsetRisk(match) {
 
 function getKnockoutWatchCues(match) {
   const [home, away] = getResolvedTeams(match);
-  if (!home || !away) return ["Teams stehen erst nach der Gruppenphase fest.", "Pfadverschiebungen im Standings Hub beobachten."];
+  if (!home || !away) return ["Teams stehen erst nach der Gruppenphase fest.", "Pfadverschiebungen in Tabellen & Szenarien beobachten."];
 
   const profileCues = getWatchCueList(home, away).slice(0, 2);
   const upsetRisk = getUpsetRisk(match);
@@ -10375,7 +10375,7 @@ function renderDailyCommandCenter() {
   }
 
   const [topHome, topAway] = topMatch.matchTeams;
-  dailyBriefingTextEl.textContent = `${formatDate(preferences.baseDate)} + Nacht: Top-Spiel ist ${topHome.name} vs ${topAway.name}. ${liveCount} live, ${analysisCount} Analyse, ${skipCount} Skip.`;
+  dailyBriefingTextEl.textContent = `${formatDate(preferences.baseDate)} + Nacht: Heute führt ${topHome.name} vs ${topAway.name} den Sehplan an. ${liveCount} live, ${analysisCount} Analyse, ${skipCount} Skip.`;
 
   commandMetricsEl.innerHTML = [
     ["Top-Spiel", `${topHome.code}-${topAway.code}`],
@@ -10837,8 +10837,8 @@ function renderDossier() {
       <p>${getMatchupLine(home, away)}</p>
     </div>
     <div class="insight-card">
-      <span class="briefing-kicker">Risk Scan</span>
-      <h3>Risiko-Signal</h3>
+      <span class="briefing-kicker">Risiko</span>
+      <h3>Was kann kippen?</h3>
       <p>${selectedMatch.analysis.risk}</p>
       <p>${selectedMatch.analysis.player}</p>
     </div>
@@ -10855,13 +10855,13 @@ function renderDossier() {
       }</p>
     </div>
     <div class="insight-card">
-      <span class="briefing-kicker">Quellenlogik</span>
-      <h3>Quellenlogik</h3>
+      <span class="briefing-kicker">Einordnung</span>
+      <h3>Woher kommt diese Analyse?</h3>
       <p>${selectedMatch.analysis.source} ${selectedMatch.sourceNote}</p>
     </div>
     <div class="insight-card evidence-card">
-      <span class="briefing-kicker">Evidence Pipeline</span>
-      <h3>Datenquellen fuer dieses Spiel</h3>
+      <span class="briefing-kicker">Belege</span>
+      <h3>Worauf stützt sich die Analyse?</h3>
       <div class="evidence-stack">
         ${evidencePillars
           .map(

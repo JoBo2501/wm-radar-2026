@@ -945,7 +945,7 @@ function getUpsetRisk(match) {
 
 function getKnockoutWatchCues(match) {
   const [home, away] = getResolvedTeams(match);
-  if (!home || !away) return ["Teams stehen erst nach der Gruppenphase fest.", "Pfadverschiebungen im Standings Hub beobachten."];
+  if (!home || !away) return ["Teams stehen erst nach der Gruppenphase fest.", "Pfadverschiebungen in Tabellen & Szenarien beobachten."];
 
   const profileCues = getWatchCueList(home, away).slice(0, 2);
   const upsetRisk = getUpsetRisk(match);
@@ -1477,7 +1477,7 @@ function renderDailyCommandCenter() {
   }
 
   const [topHome, topAway] = topMatch.matchTeams;
-  dailyBriefingTextEl.textContent = `${formatDate(preferences.baseDate)} + Nacht: Top-Spiel ist ${topHome.name} vs ${topAway.name}. ${liveCount} live, ${analysisCount} Analyse, ${skipCount} Skip.`;
+  dailyBriefingTextEl.textContent = `${formatDate(preferences.baseDate)} + Nacht: Heute führt ${topHome.name} vs ${topAway.name} den Sehplan an. ${liveCount} live, ${analysisCount} Analyse, ${skipCount} Skip.`;
 
   commandMetricsEl.innerHTML = [
     ["Top-Spiel", `${topHome.code}-${topAway.code}`],
@@ -1939,8 +1939,8 @@ function renderDossier() {
       <p>${getMatchupLine(home, away)}</p>
     </div>
     <div class="insight-card">
-      <span class="briefing-kicker">Risk Scan</span>
-      <h3>Risiko-Signal</h3>
+      <span class="briefing-kicker">Risiko</span>
+      <h3>Was kann kippen?</h3>
       <p>${selectedMatch.analysis.risk}</p>
       <p>${selectedMatch.analysis.player}</p>
     </div>
@@ -1957,13 +1957,13 @@ function renderDossier() {
       }</p>
     </div>
     <div class="insight-card">
-      <span class="briefing-kicker">Quellenlogik</span>
-      <h3>Quellenlogik</h3>
+      <span class="briefing-kicker">Einordnung</span>
+      <h3>Woher kommt diese Analyse?</h3>
       <p>${selectedMatch.analysis.source} ${selectedMatch.sourceNote}</p>
     </div>
     <div class="insight-card evidence-card">
-      <span class="briefing-kicker">Evidence Pipeline</span>
-      <h3>Datenquellen fuer dieses Spiel</h3>
+      <span class="briefing-kicker">Belege</span>
+      <h3>Worauf stützt sich die Analyse?</h3>
       <div class="evidence-stack">
         ${evidencePillars
           .map(

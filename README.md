@@ -10,7 +10,7 @@ GitHub Pages ist vorbereitet. Nach Aktivierung in GitHub Settings -> Pages -> So
 
 ## Was drin ist
 
-- Match Value Board mit Empfehlungen fuer Live, Analyse, Highlights und Skip
+- "Was heute zaehlt" mit Empfehlungen fuer Live, Analyse, Highlights und Skip
 - Fokus-Teams fuer Argentinien, Brasilien, Spanien, Deutschland, England und Frankreich
 - Match-Dossier mit taktischem Kern, Risiko-Signal, Datenprofil und Quellenlogik
 - Surprise Radar fuer Teams mit attraktivem Upset-Potenzial
@@ -20,9 +20,9 @@ GitHub Pages ist vorbereitet. Nach Aktivierung in GitHub Settings -> Pages -> So
 - Team-Briefings mit taktischen Profilen fuer Fokus- und Surprise-Teams
 - App-Fokus getrennt von spaeterer objektiver Teamstaerke
 - Match-Dossier mit Team-Matchup und Watch-Cues
-- Daily Command Center mit Tagesbriefing, Watch Plan und Spoiler-Safe Morning
+- Tagesbriefing mit Sehplan und Morgen-ohne-Spoiler-Ansicht
 - Low-Value-Erklaerungen direkt an Skip-Spielen
-- Groups & Paths mit Gruppen A-L, Watch Strategy und modellierter Pfad-Relevanz
+- Gruppen & Szenarien mit Gruppen A-L, Watch-Empfehlung und modellierter Pfad-Relevanz
 - Spielwert mit neuer Gewichtung `Pfad`
 - Import-Pipeline fuer Spielplan-Rohdaten in `data/raw/fixtures.json`
 - Vollstaendige Gruppenphase mit 72 importierten Gruppenspielen
@@ -32,7 +32,7 @@ GitHub Pages ist vorbereitet. Nach Aktivierung in GitHub Settings -> Pages -> So
 - K.o.-Match-Dossiers mit Watch-Empfehlung, Stilkontrast, Upset-Sensitivitaet und Pfadwert
 - Spielplan-Transparenz mit Coverage, Gruppenstatus, Bracketstatus und Datenqualitaets-Ampel
 - Analyse-Overrides in `data/match-overrides.json` fuer kuratierte Topspiele
-- Analyst Desk mit Trust-Modell fuer Premiumdaten, Taktikstimmen, KI-Research und Noise-Filter
+- Gute Quellen mit Trust-Modell fuer Premiumdaten, Taktikstimmen, KI-Research und Noise-Filter
 - Post-Match-Report-Modell mit automatischem Draft-Generator fuer finale Ergebnisse
 
 ## Lokal starten
@@ -159,7 +159,7 @@ Die Spielplan-Ampel liegt in `data/schedule-validation.json` und wird mit `valid
 
 Die K.o.-Struktur liegt in `data/knockout.json`. Dort stehen Slots wie `1E`, `3ABCDF`, `W73` oder `L101`, bis echte Tabellen und Ergebnisse angebunden sind.
 
-Der Ergebnislayer liegt in `data/results.json`. Aktuell ist er leer und markiert die App als `preTournament`; der Standings Hub berechnet deshalb eine Modellprojektion. Sobald echte Resultate mit `status: "final"` eingetragen werden, fliessen sie automatisch in Gruppenstaende und Third-Place-Ranking ein.
+Der Ergebnislayer liegt in `data/results.json`. Aktuell ist er leer und markiert die App als `preTournament`; Tabellen & Szenarien berechnen deshalb eine Modellprojektion. Sobald echte Resultate mit `status: "final"` eingetragen werden, fliessen sie automatisch in Gruppenstaende und Third-Place-Ranking ein.
 
 Der automatische Ergebnisabgleich ist in `sync-results.mjs` vorbereitet. Die aktive Quelle steht in `data/result-sources.json`, manuelle Korrekturen liegen in `data/result-overrides.json`, und `validate-results.mjs` schreibt die Sync-Ampel nach `data/result-validation.json`.
 

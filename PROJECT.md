@@ -67,16 +67,16 @@ Wichtige Dateien:
 ## UI-Module
 
 - Hero/Control Room: atmosphaerischer Einstieg und Kontrollzahlen.
-- Match Value Board: Empfehlungen Live, Analyse, Highlights, Skip.
-- Daily Command Center: Tagesplan plus Nachtspiele.
+- Was heute zaehlt: Empfehlungen Live, Analyse, Highlights, Skip.
+- Tagesbriefing: Sehplan plus Nachtspiele ohne Spoiler.
 - Datenlage & Transparenz: Datenqualitaet, Spielplan-Ampel, Ergebnis-Sync-Ampel. Routine-Importe bleiben in einem einklappbaren Detailbereich.
-- Groups & Paths: Gruppen A-L mit Pfadrelevanz.
-- Standings Hub: Tabellenprojektion, direkte Qualifikanten, Best Thirds.
+- Gruppen & Szenarien: Gruppen A-L mit Pfadrelevanz.
+- Tabellen & Szenarien: Tabellenprojektion, direkte Qualifikanten, Best Thirds.
 - Der Weg ins Finale: 32 K.o.-Matches, dynamisch aufgeloeste Slots und moegliche Finalpfade.
 - K.o.-Dossiers: Watch-Empfehlung, Stilkontrast, Upset-Risiko, Pfadwert.
-- Match-Dossier: Analysten-Story, Evidence Pipeline, Advanced-Metrics-Plan und Post-Match Report Hub.
+- Match-Dossier: Analysten-Story, Belegschicht, Advanced-Metrics-Plan und Post-Match Report Hub.
 - Team-Briefings: taktische Teamprofile. Sichtbare Teamwerte sind App-Fokus/Watch-Prioritaet, kein objektives Ranking.
-- Analyst Desk: Trust-Modell fuer Daten, Stimmen und KI-Research.
+- Gute Quellen: Trust-Modell fuer Daten, Stimmen und KI-Research.
 
 ## Erledigte Schritte
 
@@ -85,7 +85,7 @@ Wichtige Dateien:
 - Vollstaendige Gruppenphase mit 72 Spielen importiert.
 - K.o.-Struktur mit 32 Platzhalterspielen angelegt.
 - Spielwert inklusive Pfadgewichtung gebaut.
-- Groups & Paths, Standings Hub und Best Thirds umgesetzt.
+- Gruppen & Szenarien, Tabellen & Szenarien und Best Thirds umgesetzt.
 - Dynamische Bracket-Aufloesung fuer direkte Slots, Drittplatzierte und Folgerunden gebaut.
 - K.o.-Match-Dossiers integriert.
 - Ergebnis-Sync-Architektur mit Provider, Overrides, Validierung und Ampel gebaut.
