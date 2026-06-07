@@ -1036,7 +1036,7 @@ h3 {
 .match-card {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 16px;
+  gap: 18px;
   padding: 16px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -1063,6 +1063,35 @@ h3 {
   transition: opacity 180ms ease;
 }
 
+.match-card.live::before {
+  background: var(--lime);
+}
+
+.match-card.analysis::before {
+  background: var(--gold);
+}
+
+.match-card.highlights::before {
+  background: var(--cyan);
+}
+
+.match-card.skip::before {
+  background: var(--red);
+}
+
+.match-main,
+.match-card-topline {
+  min-width: 0;
+}
+
+.match-card-topline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
 .match-card:hover,
 .match-card.active {
   transform: translateY(-2px);
@@ -1085,7 +1114,6 @@ h3 {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 12px;
   color: var(--muted);
   font-size: 0.78rem;
   font-weight: 800;
@@ -1137,12 +1165,39 @@ h3 {
 }
 
 .teams {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
   gap: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   font-weight: 900;
-  font-size: 1.25rem;
+  font-size: 1.32rem;
+}
+
+.team-side {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 5px 8px;
+  align-items: center;
+  justify-content: start;
+  min-width: 0;
+}
+
+.team-side.away {
+  justify-content: end;
+  text-align: right;
+}
+
+.team-side small {
+  grid-column: 1 / -1;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .flag {
@@ -1178,10 +1233,40 @@ h3 {
   font-weight: 800;
 }
 
+.match-signal-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  margin: 0 0 12px;
+}
+
+.match-signal-strip span {
+  display: grid;
+  gap: 2px;
+  padding: 7px 8px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.032);
+  color: var(--muted);
+  font-size: 0.66rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.match-signal-strip strong {
+  color: var(--text);
+  font-size: 0.98rem;
+  line-height: 1;
+}
+
 .match-reason {
   margin: 0;
   color: var(--soft);
   line-height: 1.5;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 
 .skip-reasons {
@@ -1235,11 +1320,36 @@ h3 {
   background:
     radial-gradient(circle at center, #171d18 0 58%, transparent 59%),
     conic-gradient(var(--lime) calc(var(--score) * 1%), rgba(255, 255, 255, 0.11) 0);
+  box-shadow: 0 0 34px rgba(196, 255, 95, 0.08);
 }
 
 .score-ring span {
   font-size: 1.25rem;
   font-weight: 950;
+}
+
+.score-ring.elite {
+  background:
+    radial-gradient(circle at center, #171d18 0 58%, transparent 59%),
+    conic-gradient(var(--lime) calc(var(--score) * 1%), rgba(255, 255, 255, 0.11) 0);
+}
+
+.score-ring.strong {
+  background:
+    radial-gradient(circle at center, #171d18 0 58%, transparent 59%),
+    conic-gradient(var(--gold) calc(var(--score) * 1%), rgba(255, 255, 255, 0.11) 0);
+}
+
+.score-ring.medium {
+  background:
+    radial-gradient(circle at center, #171d18 0 58%, transparent 59%),
+    conic-gradient(var(--cyan) calc(var(--score) * 1%), rgba(255, 255, 255, 0.11) 0);
+}
+
+.score-ring.low {
+  background:
+    radial-gradient(circle at center, #171d18 0 58%, transparent 59%),
+    conic-gradient(var(--red) calc(var(--score) * 1%), rgba(255, 255, 255, 0.11) 0);
 }
 
 .watch-label {
@@ -1275,6 +1385,9 @@ h3 {
   top: 92px;
   padding: 18px;
   overflow: hidden;
+  background:
+    linear-gradient(145deg, rgba(196, 255, 95, 0.055), rgba(105, 227, 208, 0.032)),
+    var(--panel);
 }
 
 .dossier-top {
@@ -1282,10 +1395,24 @@ h3 {
   justify-content: space-between;
   gap: 18px;
   align-items: center;
+  padding: 4px 0 16px;
+  border-bottom: 1px solid var(--line);
 }
 
 .dossier-top h2 {
   font-size: clamp(1.7rem, 4vw, 3.4rem);
+}
+
+.dossier[data-recommendation="live"] .dossier-top {
+  border-color: rgba(196, 255, 95, 0.26);
+}
+
+.dossier[data-recommendation="analysis"] .dossier-top {
+  border-color: rgba(255, 214, 107, 0.24);
+}
+
+.dossier[data-recommendation="highlights"] .dossier-top {
+  border-color: rgba(105, 227, 208, 0.22);
 }
 
 .dossier-meta {
@@ -1308,6 +1435,7 @@ h3 {
   border-radius: 7px;
   background: rgba(16, 20, 17, 0.4);
   overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
 }
 
 .pitch-toolbar {
@@ -1327,6 +1455,7 @@ h3 {
   position: relative;
   min-height: 330px;
   background:
+    radial-gradient(circle at center, rgba(196, 255, 95, 0.08), transparent 12rem),
     linear-gradient(90deg, rgba(218, 240, 216, 0.18) 1px, transparent 1px),
     repeating-linear-gradient(90deg, rgba(31, 140, 77, 0.28) 0 12%, rgba(31, 140, 77, 0.16) 12% 24%),
     #17351f;
@@ -2931,6 +3060,46 @@ h3 {
 
   .match-card {
     grid-template-columns: 1fr;
+  }
+
+  .teams {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .team-side,
+  .team-side.away {
+    justify-content: start;
+    text-align: left;
+  }
+
+  .team-side.away {
+    grid-template-columns: auto auto;
+  }
+
+  .team-side.away strong {
+    order: 2;
+  }
+
+  .team-side.away .flag,
+  .team-side.away .flag-badge {
+    order: 1;
+  }
+
+  .teams .versus {
+    width: max-content;
+    padding: 4px 8px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+  }
+
+  .match-signal-strip {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .match-signal-strip span {
+    padding: 6px;
+    font-size: 0.58rem;
   }
 
   .top-match-main,
@@ -9057,6 +9226,13 @@ function getWatchLabel(category) {
   return labels[category] || "Check";
 }
 
+function getScoreTone(score) {
+  if (score >= 80) return "elite";
+  if (score >= 70) return "strong";
+  if (score >= 52) return "medium";
+  return "low";
+}
+
 function getWatchAction(category) {
   const actions = {
     live: "Live schauen",
@@ -9257,34 +9433,40 @@ function renderMatches() {
       .map((match) => {
         const [home, away] = match.matchTeams;
         const active = match.id === selectedMatchId ? "active" : "";
+        const scoreTone = getScoreTone(match.score);
 
         return `
-          <button class="match-card ${active}" type="button" data-match="${match.id}">
-            <span>
-              <span class="match-state">
-                <span class="state-dot"></span>
-                ${match.state} · ${match.displayDate} · ${match.germanyTime}
+          <button class="match-card ${active} ${match.category}" type="button" data-match="${match.id}">
+            <span class="match-main">
+              <span class="match-card-topline">
+                <span class="match-state">
+                  <span class="state-dot"></span>
+                  ${match.state} · ${match.displayDate} · ${match.germanyTime}
+                </span>
+                <span class="data-badge ${match.sourceLevel || "seed"}">${getDataLevelLabel(match.sourceLevel)}</span>
               </span>
-              <span class="data-badge ${match.sourceLevel || "seed"}">${getDataLevelLabel(match.sourceLevel)}</span>
               <span class="teams">
-                ${renderFlag(home)}
-                <span>${home.code}</span>
+                <span class="team-side">${renderFlag(home)}<strong>${home.code}</strong><small>${home.name}</small></span>
                 <span class="versus">vs</span>
-                <span>${away.code}</span>
-                ${renderFlag(away)}
+                <span class="team-side away"><strong>${away.code}</strong>${renderFlag(away)}<small>${away.name}</small></span>
               </span>
-            <p class="match-reason">${getRecommendationReason(match)}</p>
-            ${
-              match.category === "skip"
-                ? `<p class="skip-reasons">Skip, weil: ${getSkipReasons(match).join(", ")}.</p>`
-                : ""
-            }
-            <span class="match-tags">
-                ${match.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}
+              <span class="match-signal-strip">
+                <span><strong>${match.driver}</strong> Treiber</span>
+                <span><strong>${match.pathImpact}</strong> Pfad</span>
+                <span><strong>${match.signals.tactical}</strong> Taktik</span>
               </span>
+              <p class="match-reason">${getRecommendationReason(match)}</p>
+              ${
+                match.category === "skip"
+                  ? `<p class="skip-reasons">Skip, weil: ${getSkipReasons(match).join(", ")}.</p>`
+                  : ""
+              }
+              <span class="match-tags">
+                  ${match.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}
+                </span>
             </span>
-            <span class="match-score">
-              <span class="score-ring" style="--score: ${match.score}">
+            <span class="match-score ${scoreTone}">
+              <span class="score-ring ${scoreTone}" style="--score: ${match.score}">
                 <span>${match.score}</span>
               </span>
               <span class="watch-label ${getWatchClass(match.category)}">${getWatchLabel(match.category)}</span>
@@ -9315,7 +9497,9 @@ function renderDossier() {
   selectedMatchId = selectedMatch.id;
   const [home, away] = selectedMatch.matchTeams;
   dossierTitleEl.textContent = `${home.name} vs ${away.name}`;
+  dossierTitleEl.closest(".dossier").dataset.recommendation = selectedMatch.category;
   dossierScoreEl.style.setProperty("--score", selectedMatch.score);
+  dossierScoreEl.className = `score-ring ${getScoreTone(selectedMatch.score)}`;
   dossierScoreEl.querySelector("span").textContent = selectedMatch.score;
   pitchModeEl.textContent = selectedMatch.tags[1] || "Taktik";
 

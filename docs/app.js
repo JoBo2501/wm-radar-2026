@@ -1294,6 +1294,13 @@ function getWatchLabel(category) {
   return labels[category] || "Check";
 }
 
+function getScoreTone(score) {
+  if (score >= 80) return "elite";
+  if (score >= 70) return "strong";
+  if (score >= 52) return "medium";
+  return "low";
+}
+
 function getWatchAction(category) {
   const actions = {
     live: "Live schauen",
@@ -1494,34 +1501,40 @@ function renderMatches() {
       .map((match) => {
         const [home, away] = match.matchTeams;
         const active = match.id === selectedMatchId ? "active" : "";
+        const scoreTone = getScoreTone(match.score);
 
         return `
-          <button class="match-card ${active}" type="button" data-match="${match.id}">
-            <span>
-              <span class="match-state">
-                <span class="state-dot"></span>
-                ${match.state} · ${match.displayDate} · ${match.germanyTime}
+          <button class="match-card ${active} ${match.category}" type="button" data-match="${match.id}">
+            <span class="match-main">
+              <span class="match-card-topline">
+                <span class="match-state">
+                  <span class="state-dot"></span>
+                  ${match.state} · ${match.displayDate} · ${match.germanyTime}
+                </span>
+                <span class="data-badge ${match.sourceLevel || "seed"}">${getDataLevelLabel(match.sourceLevel)}</span>
               </span>
-              <span class="data-badge ${match.sourceLevel || "seed"}">${getDataLevelLabel(match.sourceLevel)}</span>
               <span class="teams">
-                ${renderFlag(home)}
-                <span>${home.code}</span>
+                <span class="team-side">${renderFlag(home)}<strong>${home.code}</strong><small>${home.name}</small></span>
                 <span class="versus">vs</span>
-                <span>${away.code}</span>
-                ${renderFlag(away)}
+                <span class="team-side away"><strong>${away.code}</strong>${renderFlag(away)}<small>${away.name}</small></span>
               </span>
-            <p class="match-reason">${getRecommendationReason(match)}</p>
-            ${
-              match.category === "skip"
-                ? `<p class="skip-reasons">Skip, weil: ${getSkipReasons(match).join(", ")}.</p>`
-                : ""
-            }
-            <span class="match-tags">
-                ${match.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}
+              <span class="match-signal-strip">
+                <span><strong>${match.driver}</strong> Treiber</span>
+                <span><strong>${match.pathImpact}</strong> Pfad</span>
+                <span><strong>${match.signals.tactical}</strong> Taktik</span>
               </span>
+              <p class="match-reason">${getRecommendationReason(match)}</p>
+              ${
+                match.category === "skip"
+                  ? `<p class="skip-reasons">Skip, weil: ${getSkipReasons(match).join(", ")}.</p>`
+                  : ""
+              }
+              <span class="match-tags">
+                  ${match.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}
+                </span>
             </span>
-            <span class="match-score">
-              <span class="score-ring" style="--score: ${match.score}">
+            <span class="match-score ${scoreTone}">
+              <span class="score-ring ${scoreTone}" style="--score: ${match.score}">
                 <span>${match.score}</span>
               </span>
               <span class="watch-label ${getWatchClass(match.category)}">${getWatchLabel(match.category)}</span>
@@ -1552,7 +1565,9 @@ function renderDossier() {
   selectedMatchId = selectedMatch.id;
   const [home, away] = selectedMatch.matchTeams;
   dossierTitleEl.textContent = `${home.name} vs ${away.name}`;
+  dossierTitleEl.closest(".dossier").dataset.recommendation = selectedMatch.category;
   dossierScoreEl.style.setProperty("--score", selectedMatch.score);
+  dossierScoreEl.className = `score-ring ${getScoreTone(selectedMatch.score)}`;
   dossierScoreEl.querySelector("span").textContent = selectedMatch.score;
   pitchModeEl.textContent = selectedMatch.tags[1] || "Taktik";
 
