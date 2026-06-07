@@ -74,7 +74,7 @@ const data = {
       confidence: 78,
     },
     {
-      label: "Gruppen & Pfade",
+      label: "Gruppen & Szenarien",
       value: "Modell",
       tone: "mixed",
       detail: "Gruppen A-L, Tabellenprojektion und K.o.-Slots sind strukturiert; echte Resultate werden spaeter eingespielt.",
@@ -122,7 +122,7 @@ const data = {
     { id: "today", label: "Heute" },
     { id: "tomorrow", label: "Morgen" },
     { id: "focus", label: "Fokus-Teams" },
-    { id: "path", label: "Pfad-relevant" },
+    { id: "path", label: "Weiterkommen & Gegner" },
     { id: "night", label: "Nachtspiele" },
     { id: "low-value", label: "Low Value" },
   ],

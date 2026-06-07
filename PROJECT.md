@@ -4,7 +4,7 @@ Stand: 2026-06-07
 
 ## Ziel
 
-WM Radar 26 ist ein persoenliches Analysten-Cockpit fuer die FIFA Fussball-WM 2026. Die App soll bei 104 Spielen Orientierung geben, Low-Value-Spiele herausfiltern, Fokus-Teams priorisieren und K.o.-Pfade, Drittplatzierte, Tabellen, Taktiksignale und serioese Quellen sichtbar machen.
+WM Radar 26 ist ein persoenliches Analysten-Cockpit fuer die FIFA Fussball-WM 2026. Die App soll bei 104 Spielen Orientierung geben, Low-Value-Spiele herausfiltern, Fokus-Teams priorisieren und sichtbar machen, wer weiterkommt, gegen wen es danach geht, welche Drittplatzierten profitieren und welche Taktiksignale zaehlen.
 
 ## Produktprinzipien
 
@@ -70,10 +70,10 @@ Wichtige Dateien:
 - Was heute zaehlt: Empfehlungen Live, Analyse, Highlights, Skip.
 - Tagesbriefing: Watch Plan plus Nachtspiele ohne Spoiler.
 - Datenlage & Transparenz: Datenqualitaet, Spielplan-Ampel, Ergebnis-Sync-Ampel. Routine-Importe bleiben in einem einklappbaren Detailbereich.
-- Gruppen & Szenarien: Gruppen A-L mit Pfadrelevanz.
-- Tabellen & Szenarien: Tabellenprojektion, direkte Qualifikanten, Best Thirds.
-- Der Weg ins Finale: 32 K.o.-Matches, dynamisch aufgeloeste Slots und moegliche Finalpfade.
-- K.o.-Dossiers: Watch-Empfehlung, Stilkontrast, Upset-Risiko, Pfadwert.
+- Gruppen & Szenarien: Gruppen A-L mit Weiterkommen-und-Gegner-Relevanz.
+- Tabellen & Szenarien: Tabellenprojektion, direkte Qualifikanten, Best Thirds und moegliche naechste Gegner.
+- Der Weg ins Finale: 32 K.o.-Matches, dynamisch aufgeloeste Slots und moegliche Gegnerfolgen.
+- K.o.-Dossiers: Watch-Empfehlung, Stilkontrast, Upset-Risiko, moeglicher naechster Gegner.
 - Match-Dossier: Analysten-Story, Belegschicht, Advanced-Metrics-Plan und Post-Match Report Hub.
 - Team-Briefings: taktische Teamprofile. Sichtbare Teamwerte sind App-Fokus/Watch-Prioritaet, kein objektives Ranking.
 - Analyst Desk: Trust-Modell fuer Daten, Stimmen und KI-Research.
@@ -84,7 +84,7 @@ Wichtige Dateien:
 - Standalone-Doppelklickdatei erstellt.
 - Vollstaendige Gruppenphase mit 72 Spielen importiert.
 - K.o.-Struktur mit 32 Platzhalterspielen angelegt.
-- Spielwert inklusive Pfadgewichtung gebaut.
+- Spielwert inklusive Weiterkommen-und-Gegner-Gewichtung gebaut.
 - Gruppen & Szenarien, Tabellen & Szenarien und Best Thirds umgesetzt.
 - Dynamische Bracket-Aufloesung fuer direkte Slots, Drittplatzierte und Folgerunden gebaut.
 - K.o.-Match-Dossiers integriert.

@@ -44,8 +44,8 @@
     },
     {
       "id": "path",
-      "label": "Pfad",
-      "description": "Spiele höher bewerten, die Gruppen- oder K.o.-Pfade deiner Fokus-Teams beeinflussen.",
+      "label": "Weiterkommen & Gegner",
+      "description": "Spiele höher bewerten, die Weiterkommen und nächste Gegner deiner Fokus-Teams beeinflussen.",
       "min": 0.4,
       "max": 1.8,
       "step": 0.05

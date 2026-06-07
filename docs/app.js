@@ -194,7 +194,7 @@ function getDriver(match) {
     ["Upset", signal.surprise],
     ["Bedeutung", signal.importance],
     ["Uhrzeit", signal.time],
-    ["Pfad", getPathImpact(match)],
+    ["Weiterkommen", getPathImpact(match)],
   ].sort((a, b) => b[1] - a[1]);
 
   return drivers[0][0];
@@ -560,7 +560,7 @@ function renderControlStats() {
 
   if (topMatch) {
     const [home, away] = topMatch.matchTeams;
-    heroMissionEl.textContent = `${formatDate(preferences.baseDate)}: ${home.code}-${away.code} fuehrt den Radar an`;
+    heroMissionEl.textContent = `${formatDate(preferences.baseDate)}: ${home.code}-${away.code} führt den Radar an`;
     orbitSignalEl.textContent = `Spielwert ${topMatch.score}/100 · ${topMatch.driver} · ${getWatchAction(topMatch.category)}`;
   }
 
@@ -760,15 +760,15 @@ function renderScheduleValidation() {
         .join("")}
     </div>
     <div class="validator-next">
-      <strong>Naechster Import-Fokus</strong>
+      <strong>Nächster Import-Fokus</strong>
       <p>${
         missingGroups.length
-          ? `Zuerst Gruppen ${formatList(missingGroups.map((group) => group.id))} vervollstaendigen. Komplett sind aktuell: ${
+          ? `Zuerst Gruppen ${formatList(missingGroups.map((group) => group.id))} vervollständigen. Komplett sind aktuell: ${
               formatList(completeGroups.map((group) => group.id)) || "noch keine"
             }.`
           : scheduleValidation.imported.knockoutMatches === scheduleValidation.expected.knockoutMatches
-            ? "Turnierstruktur ist komplett. Als Naechstes Ergebnisse, Tabellen und Third-Place-Mapping andocken."
-            : "Gruppenphase ist komplett; als Naechstes K.o.-Platzhalter und Bracket-Logik einfuehren."
+            ? "Turnierstruktur ist komplett. Als Nächstes Ergebnisse, Tabellen und Third-Place-Mapping andocken."
+            : "Gruppenphase ist komplett; als Nächstes K.o.-Platzhalter und Bracket-Logik einführen."
       }</p>
     </div>
   `;
@@ -945,16 +945,16 @@ function getUpsetRisk(match) {
 
 function getKnockoutWatchCues(match) {
   const [home, away] = getResolvedTeams(match);
-  if (!home || !away) return ["Teams stehen erst nach der Gruppenphase fest.", "Pfadverschiebungen in Tabellen & Szenarien beobachten."];
+  if (!home || !away) return ["Teams stehen erst nach der Gruppenphase fest.", "In Tabellen & Szenarien beobachten, wer weiterkommt und gegen wen es danach geht."];
 
   const profileCues = getWatchCueList(home, away).slice(0, 2);
   const upsetRisk = getUpsetRisk(match);
   const focusCue = [home, away].some((team) => team.focus)
-    ? "Fokus-Team: fruehe Spielkontrolle, Restverteidigung und Wechselwirkung mit dem naechsten Pfad beachten."
-    : "Neutraler Pfad: nur live priorisieren, wenn Tempo, Pressing oder Upset-Signal frueh sichtbar werden.";
+    ? "Fokus-Team: frühe Spielkontrolle, Restverteidigung und möglichen nächsten Gegner beachten."
+    : "Neutraler K.o.-Weg: nur live priorisieren, wenn Tempo, Pressing oder Upset-Signal früh sichtbar werden.";
   const upsetCue =
     upsetRisk >= 70
-      ? "Upset-Zone: der nominell kleinere Gegner kann ueber Stilkontrast oder Drittplatz-Dynamik echte Hebel haben."
+      ? "Upset-Zone: der nominell kleinere Gegner kann über Stilkontrast oder Drittplatz-Dynamik echte Hebel haben."
       : "Upset-Risiko moderat: eher auf saubere Dominanzmuster und Spielkontrolle achten.";
 
   return [...profileCues, focusCue, upsetCue].slice(0, 3);
@@ -970,8 +970,8 @@ function renderKnockoutDossier(match) {
   if (!home || !away) {
     return `
       <div class="ko-dossier">
-        <span class="data-badge model">Pfad offen</span>
-        <p>Teams sind noch nicht aufgeloest. Der Slot bleibt als Strukturpfad sichtbar.</p>
+        <span class="data-badge model">Gegner offen</span>
+        <p>Teams sind noch nicht aufgelöst. Die App zeigt hier später, wer weiterkommt und gegen wen es danach geht.</p>
       </div>
     `;
   }
@@ -985,7 +985,7 @@ function renderKnockoutDossier(match) {
       <p>${getStyleContrast(home, away)}</p>
       <div class="ko-dossier-metrics">
         <span><strong>${upsetRisk}</strong><small>Upset</small></span>
-        <span><strong>${getBracketImpact(match)}</strong><small>Pfad</small></span>
+        <span><strong>${getBracketImpact(match)}</strong><small>Finalweg</small></span>
         <span><strong>${Math.round(Math.abs(getTeamStrength(home.code) - getTeamStrength(away.code)))}</strong><small>Gap</small></span>
       </div>
       <ul>
@@ -1009,10 +1009,10 @@ function renderBracket() {
 
   bracketSummaryEl.innerHTML = [
     ["K.o.-Spiele", knockout.length],
-    ["Aufgeloeste Slots", `${resolvedTeamSlots}/${knockout.length * 2}`],
+    ["Aufgelöste Slots", `${resolvedTeamSlots}/${knockout.length * 2}`],
     ["Variable Third-Place", variableSlots],
     ["Fokus-Matches", focusPathMatches],
-    ["Top-Pfadwert", topImpact],
+    ["Top-Hebel", topImpact],
   ]
     .map(
       ([label, value]) => `
@@ -1077,7 +1077,7 @@ function renderGroupPaths() {
             <span>
               <span class="data-badge ${group.sourceLevel}">${getDataLevelLabel(group.sourceLevel)}</span>
               <h3>Gruppe ${group.id}</h3>
-              <small>${hasFocus ? "Fokus-Pfad" : hasSurprise ? "Surprise-Pfad" : "Kontext-Pfad"}</small>
+              <small>${hasFocus ? "Fokus-Team im Blick" : hasSurprise ? "Surprise-Team im Blick" : "Weiterkommen im Blick"}</small>
             </span>
             <strong>${group.pathRelevance}</strong>
           </div>
@@ -1095,7 +1095,7 @@ function renderGroupPaths() {
           </div>
           <p>${group.watchStrategy}</p>
           <div class="path-note">
-            <strong>Pfadmodell</strong>
+            <strong>Wer kommt weiter und gegen wen?</strong>
             <span>${group.pathNote}</span>
             <small>${group.modelPath}</small>
           </div>
@@ -1109,7 +1109,7 @@ function renderGroupPaths() {
                       return `<button type="button" data-match="${match.id}">
                         <span>${match.displayDate} · ${match.germanyTime}</span>
                         <strong>${home.code} vs ${away.code}</strong>
-                        <em>${match.score}/100 · ${getWatchAction(match.category)} · Pfad ${match.pathImpact}</em>
+                        <em>${match.score}/100 · ${getWatchAction(match.category)} · Weiterkommen ${match.pathImpact}</em>
                       </button>`;
                     })
                     .join("")
@@ -1145,7 +1145,7 @@ function renderStandings() {
     ["Modus", projectedMode ? "Projektion" : "Live + Modell"],
     ["Direkt weiter", directQualifiers.length],
     ["Best Thirds", `${thirdQualifiers.length}/8`],
-    ["Fokus im Pfad", focusQualifiers],
+    ["Fokus weiter", focusQualifiers],
   ]
     .map(
       ([label, value]) => `
@@ -1202,7 +1202,7 @@ function renderStandings() {
                 .join("")}
             </div>
             <div class="standing-note">
-              <strong>Pfadlesart</strong>
+              <strong>Wer kommt weiter und gegen wen?</strong>
               <span>
                 ${topMatch ? `${topMatch.matchTeams[0].code}-${topMatch.matchTeams[1].code} ist aktuell der hoechste Hebel.` : "Noch kein Topspiel erkannt."}
               </span>
@@ -1449,7 +1449,7 @@ function getSkipReasons(match) {
   if (match.signals.tactical < 55) reasons.push("niedriger Taktikwert");
   if (match.signals.entertainment < 55) reasons.push("geringe Attraktivitätsprognose");
   if (match.signals.lowValueRisk >= 35) reasons.push("erhöhtes Low-Value-Risiko");
-  if (match.pathImpact < 55) reasons.push("geringe Pfadwirkung");
+  if (match.pathImpact < 55) reasons.push("geringe Wirkung auf Weiterkommen und nächsten Gegner");
   if (isNightMatch(match) && match.score < 80) reasons.push("schlechte Uhrzeit");
   return reasons.length ? reasons : ["Spielwert liegt unter deiner Live-Schwelle"];
 }
@@ -1603,7 +1603,7 @@ function getWatchCueList(home, away) {
 function getDossierBriefing(match, home, away) {
   const homeProfile = getTeamProfile(home);
   const awayProfile = getTeamProfile(away);
-  const context = match.groupModel ? match.groupModel.pathNote : "Der Turnierpfad ist noch modelliert.";
+  const context = match.groupModel ? match.groupModel.pathNote : "Wer weiterkommt und gegen wen es danach geht, ist noch modelliert.";
   const homeIdentity = homeProfile?.identity || `${home.name} wird aktuell über Matchsignale eingeordnet.`;
   const awayIdentity = awayProfile?.identity || `${away.name} wird aktuell über Matchsignale eingeordnet.`;
 
@@ -1637,7 +1637,7 @@ function getDecisionMatrix(match) {
   return [
     ["Live-Schwelle", match.score >= 80 ? "erreicht" : "nicht erreicht", match.score],
     ["Taktikwert", match.signals.tactical >= 72 ? "hoch" : match.signals.tactical >= 58 ? "mittel" : "niedrig", match.signals.tactical],
-    ["Pfadwirkung", match.pathImpact >= 80 ? "kritisch" : match.pathImpact >= 62 ? "relevant" : "gering", match.pathImpact],
+    ["Weiterkommen", match.pathImpact >= 80 ? "kritisch" : match.pathImpact >= 62 ? "relevant" : "gering", match.pathImpact],
     ["Low-Value", match.signals.lowValueRisk >= 35 ? "beachten" : "kontrolliert", 100 - match.signals.lowValueRisk],
   ];
 }
@@ -1672,7 +1672,7 @@ function getAdvancedMetricPlan(match) {
   return [
     {
       label: "xG / Chance Quality",
-      status: match.sourceLevel === "real" ? "bereit" : "Provider spaeter",
+      status: match.sourceLevel === "real" ? "bereit" : "Provider später",
       detail: "Prueft, ob das Ergebnis zur Chancenqualitaet passt oder nur Scoreboard-Rauschen ist.",
       value: match.signals.importance,
     },
@@ -1684,13 +1684,13 @@ function getAdvancedMetricPlan(match) {
     },
     {
       label: "Field Tilt / Territory",
-      status: "Provider spaeter",
+      status: "Provider später",
       detail: "Zeigt, wer das Spiel wirklich in gefaehrlichen Zonen haelt.",
       value: Math.round((match.signals.importance + match.pathImpact) / 2),
     },
     {
       label: "Line-Breaking / 360",
-      status: "Premium spaeter",
+      status: "Premium später",
       detail: "Erklaert Paesse und Annahmen, die normale Eventdaten kaum sichtbar machen.",
       value: match.signals.tactical,
     },
@@ -1793,7 +1793,7 @@ function renderMatches() {
               </span>
               <span class="match-signal-strip">
                 <span><strong>${match.driver}</strong> Treiber</span>
-                <span><strong>${match.pathImpact}</strong> Pfad</span>
+                <span><strong>${match.pathImpact}</strong> Weiterkommen</span>
                 <span><strong>${match.signals.tactical}</strong> Taktik</span>
               </span>
               <p class="match-reason">${getRecommendationReason(match)}</p>
@@ -1865,12 +1865,12 @@ function renderDossier() {
   insightGridEl.innerHTML = `
     <div class="insight-card tactical-briefing">
       <span class="briefing-kicker">Analysten-Story</span>
-      <h3>Warum dieses Spiel zaehlt</h3>
+      <h3>Warum dieses Spiel zählt</h3>
       <p>${getDossierBriefing(selectedMatch, home, away)}</p>
       <div class="briefing-tags">
         <span>${selectedMatch.driver}</span>
         <span>${getWatchLabel(selectedMatch.category)}</span>
-        <span>Pfad ${selectedMatch.pathImpact}</span>
+        <span>Weiterkommen ${selectedMatch.pathImpact}</span>
       </div>
     </div>
     <div class="insight-card key-battle-card">
@@ -1884,7 +1884,7 @@ function renderDossier() {
     </div>
     <div class="insight-card trigger-card">
       <span class="briefing-kicker">Live Trigger</span>
-      <h3>Woran du frueh erkennst, ob es kippt</h3>
+      <h3>Woran du früh erkennst, ob es kippt</h3>
       <ol class="trigger-list">
         ${tacticalTriggers.map((trigger) => `<li>${trigger}</li>`).join("")}
       </ol>
@@ -1917,7 +1917,7 @@ function renderDossier() {
           ["Fokus", selectedMatch.signals.focus],
           ["Upset", selectedMatch.signals.surprise],
           ["Uhrzeit", selectedMatch.signals.time],
-          ["Pfad", selectedMatch.pathImpact],
+          ["Weiterkommen", selectedMatch.pathImpact],
         ]
           .map(
             ([label, value]) => `
@@ -1945,14 +1945,14 @@ function renderDossier() {
       <p>${selectedMatch.analysis.player}</p>
     </div>
     <div class="insight-card">
-      <span class="briefing-kicker">Turnierpfad</span>
-      <h3>Pfad-Relevanz</h3>
+      <span class="briefing-kicker">Weiterkommen & Gegner</span>
+      <h3>Wer kommt weiter und gegen wen?</h3>
       <p>${
         selectedMatch.groupModel
           ? selectedMatch.groupModel.pathNote
-          : "Für dieses Spiel liegt noch kein detaillierter Gruppenpfad vor."
+          : "Für dieses Spiel liegt noch keine detaillierte Weiterkommen-und-Gegner-Projektion vor."
       }</p>
-      <p>Pfadwirkung: ${selectedMatch.pathImpact}/100. ${
+      <p>Wirkung auf Weiterkommen und nächsten Gegner: ${selectedMatch.pathImpact}/100. ${
         selectedMatch.groupModel ? selectedMatch.groupModel.modelPath : ""
       }</p>
     </div>
@@ -1996,7 +1996,7 @@ function renderDossier() {
     </div>
     <div class="insight-card metric-plan-card">
       <span class="briefing-kicker">Advanced Metrics</span>
-      <h3>Was spaeter automatisch validiert wird</h3>
+      <h3>Was später automatisch validiert wird</h3>
       <div class="advanced-metric-list">
         ${metricPlan
           .map(
@@ -2134,7 +2134,7 @@ function renderAnalystDesk() {
             ${pillar.signals.map((signal) => `<span>${signal}</span>`).join("")}
           </div>
           <div class="analyst-note">
-            <strong>Wofuer nutzen?</strong>
+            <strong>Wofür nutzen?</strong>
             <span>${pillar.watchFor}</span>
           </div>
           <div class="analyst-note muted-note">

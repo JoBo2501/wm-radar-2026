@@ -22,14 +22,14 @@ GitHub Pages ist vorbereitet. Nach Aktivierung in GitHub Settings -> Pages -> So
 - Match-Dossier mit Team-Matchup und Watch-Cues
 - Tagesbriefing mit Watch Plan und Morgen-ohne-Spoiler-Ansicht
 - Low-Value-Erklaerungen direkt an Skip-Spielen
-- Gruppen & Szenarien mit Gruppen A-L, Watch-Empfehlung und modellierter Pfad-Relevanz
-- Spielwert mit neuer Gewichtung `Pfad`
+- Gruppen & Szenarien mit Gruppen A-L, Watch-Empfehlung und der Frage "Wer kommt weiter und gegen wen?"
+- Spielwert mit neuer Gewichtung `Weiterkommen & Gegner`
 - Import-Pipeline fuer Spielplan-Rohdaten in `data/raw/fixtures.json`
 - Vollstaendige Gruppenphase mit 72 importierten Gruppenspielen
 - Der Weg ins Finale mit 32 K.o.-Platzhalterspielen von Round of 32 bis Finale
 - Ergebnis- und Tabellenlayer mit Projektionsmodus bis echte Resultate vorliegen
 - Dynamische Finalweg-Aufloesung fuer `1E`, `2B`, `3ABCDF`, `W73` und Folgerunden
-- K.o.-Match-Dossiers mit Watch-Empfehlung, Stilkontrast, Upset-Sensitivitaet und Pfadwert
+- K.o.-Match-Dossiers mit Watch-Empfehlung, Stilkontrast, Upset-Sensitivitaet und naechstem Gegner
 - Spielplan-Transparenz mit Coverage, Gruppenstatus, Bracketstatus und Datenqualitaets-Ampel
 - Analyse-Overrides in `data/match-overrides.json` fuer kuratierte Topspiele
 - Analyst Desk mit Trust-Modell fuer Premiumdaten, Taktikstimmen, KI-Research und Noise-Filter
@@ -167,4 +167,4 @@ Post-Match-Reports liegen in `data/post-match-reports.json`. `generate-post-matc
 
 Der Weg ins Finale liest diese Tabellenprojektion bereits aus: Direkte Slots wie `1E` oder `2B` werden aus der Gruppentabelle gesetzt, Third-Place-Slots wie `3ABCDF` nehmen den besten erlaubten Drittplatzierten, und Folgerunden-Slots wie `W73`/`L101` kaskadieren aus den vorherigen Match-Projektionen.
 
-Jede K.o.-Karte enthaelt zusaetzlich ein Mini-Dossier: Spielwert, Watch-Empfehlung, Stilkontrast, Upset-Risiko, Pfadwert und konkrete Watch-Cues. Das ist noch modelliert, wird aber sofort besser, sobald echte Ergebnisse und weitere Teamdaten einlaufen.
+Jede K.o.-Karte enthaelt zusaetzlich ein Mini-Dossier: Spielwert, Watch-Empfehlung, Stilkontrast, Upset-Risiko, moeglicher naechster Gegner und konkrete Watch-Cues. Das ist noch modelliert, wird aber sofort besser, sobald echte Ergebnisse und weitere Teamdaten einlaufen.

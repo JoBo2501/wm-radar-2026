@@ -43,7 +43,7 @@ window.WMRadarData = {
       "confidence": 78
     },
     {
-      "label": "Gruppen & Pfade",
+      "label": "Gruppen & Szenarien",
       "value": "Modell",
       "tone": "mixed",
       "detail": "Gruppen A-L, Tabellenprojektion und K.o.-Slots sind strukturiert; echte Resultate werden spaeter eingespielt.",
@@ -443,9 +443,9 @@ window.WMRadarData = {
         "CZE"
       ],
       "pathRelevance": 42,
-      "watchStrategy": "Host-Gruppe beobachten, aber ohne Fokus-Team nur selektiv. Relevant, falls ein möglicher Drittplatzierter in den Pfad eines Favoriten rutscht.",
+      "watchStrategy": "Host-Gruppe beobachten, aber ohne Fokus-Team nur selektiv. Relevant, falls ein möglicher Drittplatzierter in den Finalweg eines Favoriten rutscht.",
       "pathNote": "Kann indirekt über Drittplatzierte relevant werden.",
-      "modelPath": "1A und 2A gehen sicher weiter; 3A kann in mehrere K.o.-Pfade fallen.",
+      "modelPath": "1A und 2A gehen sicher weiter; 3A kann in mehrere K.o.-Wege fallen.",
       "sourceLevel": "mixed"
     },
     {
@@ -459,7 +459,7 @@ window.WMRadarData = {
       "pathRelevance": 48,
       "watchStrategy": "Schweiz und Kanada können taktisch interessant werden; Qatar-Spiele eher Ergebnischeck, wenn kein Upset-Signal entsteht.",
       "pathNote": "Mögliche Drittplatzierung kann spätere Favoritenpfade beeinflussen.",
-      "modelPath": "Gruppe mit mittlerem Pfadwert, weil kein Fokus-Team direkt betroffen ist.",
+      "modelPath": "Gruppe mit mittlerer Relevanz, weil kein Fokus-Team direkt betroffen ist.",
       "sourceLevel": "mixed"
     },
     {
@@ -472,8 +472,8 @@ window.WMRadarData = {
       ],
       "pathRelevance": 92,
       "watchStrategy": "Hoch priorisieren: Brasilien ist Fokus-Team, Marokko ist Surprise-Team, und die direkten Duelle haben echten Stilwert.",
-      "pathNote": "Brasiliens Platzierung steuert seinen frühen K.o.-Pfad; Marokko kann den Gruppenschnitt stark verschieben.",
-      "modelPath": "1C/2C sind für Favoriten- und Upset-Pfade hochrelevant; 3C kann als gefährlicher Außenseiter weiterkommen.",
+      "pathNote": "Brasiliens Platzierung steuert seinen frühen K.o.-Gegner; Marokko kann den Gruppenschnitt stark verschieben.",
+      "modelPath": "1C/2C sind für Favoriten- und Upset-Szenarien hochrelevant; 3C kann als gefährlicher Außenseiter weiterkommen.",
       "sourceLevel": "mixed"
     },
     {
@@ -500,8 +500,8 @@ window.WMRadarData = {
       ],
       "pathRelevance": 96,
       "watchStrategy": "Deutschland-Gruppe vollständig im Blick behalten. Auch Côte d'Ivoire/Ecuador ist relevant, weil es Deutschlands Gruppendynamik beeinflusst.",
-      "pathNote": "Jedes Ergebnis beeinflusst Deutschlands Achtelfinalpfad und mögliche Gegnerqualität.",
-      "modelPath": "1E/2E sind Kernpfade für Deutschland; 3E kann zusätzlich in die Drittplatziertenlogik fallen.",
+      "pathNote": "Jedes Ergebnis beeinflusst Deutschlands Achtelfinalgegner und mögliche Gegnerqualität.",
+      "modelPath": "1E/2E sind Kernszenarien für Deutschland; 3E kann zusätzlich in die Drittplatziertenlogik fallen.",
       "sourceLevel": "mixed"
     },
     {
@@ -529,7 +529,7 @@ window.WMRadarData = {
       "pathRelevance": 52,
       "watchStrategy": "Belgien checken, aber ohne Fokus- oder Surprise-Team eher datengetrieben beobachten.",
       "pathNote": "Relevanz steigt, wenn Belgien als möglicher K.o.-Gegner in den Favoritenpfad fällt.",
-      "modelPath": "Mittlerer Pfadwert, abhängig von späterer Bracket-Zuordnung.",
+      "modelPath": "Mittlere Relevanz, abhängig von späterer Bracket-Zuordnung.",
       "sourceLevel": "mixed"
     },
     {
@@ -542,8 +542,8 @@ window.WMRadarData = {
       ],
       "pathRelevance": 94,
       "watchStrategy": "Spanien-Gruppe hoch priorisieren. Uruguay und Saudi-Arabien machen den Stilkontrast und Gruppenschnitt relevant.",
-      "pathNote": "Spaniens Platzierung bestimmt frühen K.o.-Pfad; Uruguay ist ein potenziell harter Pfadstörer.",
-      "modelPath": "1H/2H sind Fokuspfade; 3H kann wegen Uruguay/Saudi-Konstellation unangenehm werden.",
+      "pathNote": "Spaniens Platzierung bestimmt frühen K.o.-Gegner; Uruguay ist ein potenziell harter Gegnerstörer.",
+      "modelPath": "1H/2H sind Fokusszenarien; 3H kann wegen Uruguay/Saudi-Konstellation unangenehm werden.",
       "sourceLevel": "mixed"
     },
     {
@@ -556,7 +556,7 @@ window.WMRadarData = {
       ],
       "pathRelevance": 93,
       "watchStrategy": "Frankreich plus Norwegen: hohe Live- und Analysepriorität. Senegal kann die Gruppe physisch/taktisch kompliziert machen.",
-      "pathNote": "Frankreichs Pfad und Norwegens Upset-Potenzial machen fast jedes Gruppenspiel relevant.",
+      "pathNote": "Frankreichs Weg ins Finale und Norwegens Upset-Potenzial machen fast jedes Gruppenspiel relevant.",
       "modelPath": "1I/2I sind starke K.o.-Kandidaten; 3I kann sehr gefährlich werden.",
       "sourceLevel": "mixed"
     },
@@ -569,9 +569,9 @@ window.WMRadarData = {
         "JOR"
       ],
       "pathRelevance": 90,
-      "watchStrategy": "Argentinien priorisieren, die restlichen Spiele als Pfad-/Gegnercheck nutzen.",
+      "watchStrategy": "Argentinien priorisieren, die restlichen Spiele als Weiterkommen-und-Gegnercheck nutzen.",
       "pathNote": "Argentiniens Platzierung ist zentral, aber Low-Value-Spiele können trotzdem reichen, wenn keine Upsets entstehen.",
-      "modelPath": "1J/2J bestimmen den Argentina-Pfad; 3J nur relevant bei unerwarteter Tabellenlage.",
+      "modelPath": "1J/2J bestimmen den Argentinien-Weg; 3J nur relevant bei unerwarteter Tabellenlage.",
       "sourceLevel": "mixed"
     },
     {
@@ -583,8 +583,8 @@ window.WMRadarData = {
         "COD"
       ],
       "pathRelevance": 58,
-      "watchStrategy": "Portugal und Kolumbien datengetrieben beobachten. Live nur bei hohem Score oder Pfadverbindung.",
-      "pathNote": "Kann als späterer Gegnerpfad für Fokus-Teams wichtig werden.",
+      "watchStrategy": "Portugal und Kolumbien datengetrieben beobachten. Live nur bei hohem Score oder Weiterkommen-und-Gegner-Verbindung.",
+      "pathNote": "Kann als späterer Gegnerszenario für Fokus-Teams wichtig werden.",
       "modelPath": "Mittlerer bis hoher Gegnerwert, aber aktuell ohne direkten Fokusanker.",
       "sourceLevel": "mixed"
     },
@@ -598,8 +598,8 @@ window.WMRadarData = {
       ],
       "pathRelevance": 91,
       "watchStrategy": "England-Gruppe hoch priorisieren. Kroatien ist als Ballbesitz-/Kontrollgegner besonders analysewürdig.",
-      "pathNote": "Englands Platzierung und Kroatiens Rolle können den frühen K.o.-Pfad stark verändern.",
-      "modelPath": "1L/2L sind Fokuspfade; 3L kann wegen Kroatien/Ghana ebenfalls relevant sein.",
+      "pathNote": "Englands Platzierung und Kroatiens Rolle können stark verändern, wer weiterkommt und gegen wen es danach geht.",
+      "modelPath": "1L/2L sind Fokusszenarien; 3L kann wegen Kroatien/Ghana ebenfalls relevant sein.",
       "sourceLevel": "mixed"
     }
   ],
@@ -1405,7 +1405,7 @@ window.WMRadarData = {
     },
     {
       "id": "path",
-      "label": "Pfad-relevant"
+      "label": "Weiterkommen & Gegner"
     },
     {
       "id": "night",
@@ -1484,8 +1484,8 @@ window.WMRadarData = {
       },
       {
         "id": "path",
-        "label": "Pfad",
-        "description": "Spiele höher bewerten, die Gruppen- oder K.o.-Pfade deiner Fokus-Teams beeinflussen.",
+        "label": "Weiterkommen & Gegner",
+        "description": "Spiele höher bewerten, die Weiterkommen und nächste Gegner deiner Fokus-Teams beeinflussen.",
         "min": 0.4,
         "max": 1.8,
         "step": 0.05
@@ -1519,10 +1519,10 @@ window.WMRadarData = {
       },
       "tags": [],
       "analysis": {
-        "key": "Mexiko vs Südafrika: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Mexiko vs Südafrika: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe A, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe A, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -1553,10 +1553,10 @@ window.WMRadarData = {
         "Spoilerfrei"
       ],
       "analysis": {
-        "key": "Südkorea vs Tschechien: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Südkorea vs Tschechien: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe A, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe A, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -1585,10 +1585,10 @@ window.WMRadarData = {
       },
       "tags": [],
       "analysis": {
-        "key": "Kanada vs Bosnien und Herzegowina: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Kanada vs Bosnien und Herzegowina: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe B, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe B, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -1688,14 +1688,14 @@ window.WMRadarData = {
         "lowValueRisk": 26
       },
       "tags": [
-        "Pfad-relevant",
+        "Weiterkommen & Gegner",
         "Spoilerfrei"
       ],
       "analysis": {
-        "key": "Haiti vs Schottland: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Haiti vs Schottland: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe C, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe C, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -1726,10 +1726,10 @@ window.WMRadarData = {
         "Spoilerfrei"
       ],
       "analysis": {
-        "key": "USA vs Paraguay: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "USA vs Paraguay: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe D, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe D, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -1764,7 +1764,7 @@ window.WMRadarData = {
         "key": "Australien vs Türkei: Bleibt die Mitte nach Ballverlusten stabil?",
         "risk": "Teams mit ruhiger Ballzirkulation und starker Restverteidigung.",
         "player": "Wie mutig sind die ersten Pässe nach Ballgewinn?",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe D, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe D, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -1834,7 +1834,7 @@ window.WMRadarData = {
         "key": "Niederlande vs Japan: Wie oft zwingt Japan den Gegner zu Rückpässen?",
         "risk": "Teams mit Wucht, zweiten Bällen und vielen Strafraumduellen.",
         "player": "Wie viele Anschlussläufe gibt es nach dem ersten Ballgewinn?",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe F, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe F, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -1862,13 +1862,13 @@ window.WMRadarData = {
         "lowValueRisk": 16
       },
       "tags": [
-        "Pfad-relevant"
+        "Weiterkommen & Gegner"
       ],
       "analysis": {
-        "key": "Côte d'Ivoire vs Ecuador: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Côte d'Ivoire vs Ecuador: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe E, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe E, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -1899,10 +1899,10 @@ window.WMRadarData = {
         "Spoilerfrei"
       ],
       "analysis": {
-        "key": "Schweden vs Tunesien: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Schweden vs Tunesien: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe F, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe F, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -1931,13 +1931,13 @@ window.WMRadarData = {
       },
       "tags": [
         "Fokus-Team",
-        "Pfad-relevant"
+        "Weiterkommen & Gegner"
       ],
       "analysis": {
         "key": "Spanien vs Kap Verde: Wie oft kommt Spanien hinter den gegnerischen Sechser?",
         "risk": "Wenn der Gegner die erste Gegenpressingwelle überspielt, muss die Restverteidigung große Räume kontrollieren.",
         "player": "Wird der ballferne Flügel geduldig vorbereitet?",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe H, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe H, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -1966,10 +1966,10 @@ window.WMRadarData = {
       },
       "tags": [],
       "analysis": {
-        "key": "Belgien vs Ägypten: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Belgien vs Ägypten: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe G, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe G, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -1997,13 +1997,13 @@ window.WMRadarData = {
         "lowValueRisk": 16
       },
       "tags": [
-        "Pfad-relevant"
+        "Weiterkommen & Gegner"
       ],
       "analysis": {
-        "key": "Saudi-Arabien vs Uruguay: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Saudi-Arabien vs Uruguay: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe H, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe H, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -2034,10 +2034,10 @@ window.WMRadarData = {
         "Spoilerfrei"
       ],
       "analysis": {
-        "key": "Iran vs Neuseeland: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Iran vs Neuseeland: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe G, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe G, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -2066,13 +2066,13 @@ window.WMRadarData = {
       },
       "tags": [
         "Fokus-Team",
-        "Pfad-relevant"
+        "Weiterkommen & Gegner"
       ],
       "analysis": {
         "key": "Frankreich vs Senegal: Wie früh findet Frankreich Tiefe hinter der letzten Linie?",
         "risk": "Wenn das Spiel langsam und eng wird, kann die Chance Creation stärker von Einzelaktionen abhängen.",
         "player": "Werden Ballgewinne sofort vertikal gemacht?",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe I, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe I, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -2101,13 +2101,13 @@ window.WMRadarData = {
       },
       "tags": [
         "Surprise-Radar",
-        "Pfad-relevant"
+        "Weiterkommen & Gegner"
       ],
       "analysis": {
         "key": "Irak vs Norwegen: Wie oft wird die letzte Linie früh attackiert?",
         "risk": "Tiefe Blöcke mit guter Kontrolle über zweite Bälle.",
         "player": "Findet Norwegen zentrale Kreativität vor dem vertikalen Ball?",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe I, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe I, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -2171,14 +2171,14 @@ window.WMRadarData = {
         "lowValueRisk": 26
       },
       "tags": [
-        "Pfad-relevant",
+        "Weiterkommen & Gegner",
         "Spoilerfrei"
       ],
       "analysis": {
-        "key": "Österreich vs Jordanien: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Österreich vs Jordanien: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe J, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe J, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -2207,10 +2207,10 @@ window.WMRadarData = {
       },
       "tags": [],
       "analysis": {
-        "key": "Portugal vs DR Kongo: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Portugal vs DR Kongo: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe K, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe K, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -2240,7 +2240,7 @@ window.WMRadarData = {
       "tags": [
         "Live schauen",
         "Halbraumduell",
-        "Turnierpfad"
+        "Weiterkommen & Gegner"
       ],
       "analysis": {
         "key": "Kroatien will Tempo aus dem Spiel nehmen. England muss entscheiden, ob es hoch presst oder lockt.",
@@ -2274,13 +2274,13 @@ window.WMRadarData = {
         "lowValueRisk": 16
       },
       "tags": [
-        "Pfad-relevant"
+        "Weiterkommen & Gegner"
       ],
       "analysis": {
-        "key": "Ghana vs Panama: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Ghana vs Panama: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe L, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe L, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -2311,10 +2311,10 @@ window.WMRadarData = {
         "Spoilerfrei"
       ],
       "analysis": {
-        "key": "Usbekistan vs Kolumbien: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Usbekistan vs Kolumbien: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe K, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe K, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -2343,10 +2343,10 @@ window.WMRadarData = {
       },
       "tags": [],
       "analysis": {
-        "key": "Tschechien vs Südafrika: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Tschechien vs Südafrika: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe A, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe A, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -2375,10 +2375,10 @@ window.WMRadarData = {
       },
       "tags": [],
       "analysis": {
-        "key": "Schweiz vs Bosnien und Herzegowina: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Schweiz vs Bosnien und Herzegowina: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe B, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe B, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -2407,10 +2407,10 @@ window.WMRadarData = {
       },
       "tags": [],
       "analysis": {
-        "key": "Kanada vs Katar: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Kanada vs Katar: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe B, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe B, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -2441,10 +2441,10 @@ window.WMRadarData = {
         "Spoilerfrei"
       ],
       "analysis": {
-        "key": "Mexiko vs Südkorea: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Mexiko vs Südkorea: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe A, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe A, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -2473,10 +2473,10 @@ window.WMRadarData = {
       },
       "tags": [],
       "analysis": {
-        "key": "USA vs Australien: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "USA vs Australien: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe D, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe D, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -2505,13 +2505,13 @@ window.WMRadarData = {
       },
       "tags": [
         "Surprise-Radar",
-        "Pfad-relevant"
+        "Weiterkommen & Gegner"
       ],
       "analysis": {
         "key": "Schottland vs Marokko: Lockt Marokko Brasilien oder andere Favoriten konsequent an die Linie?",
         "risk": "Geduldige Gegner mit schnellen Seitenwechseln.",
         "player": "Wie sauber ist der erste Pass nach Ballgewinn?",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe C, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe C, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -2540,14 +2540,14 @@ window.WMRadarData = {
       },
       "tags": [
         "Fokus-Team",
-        "Pfad-relevant",
+        "Weiterkommen & Gegner",
         "Spoilerfrei"
       ],
       "analysis": {
         "key": "Brasilien vs Haiti: Gewinnt Brasilien die ersten 1-gegen-1s am Flügel?",
         "risk": "Nach riskanten Dribblings können offene Räume hinter dem Ball entstehen.",
         "player": "Wie schnell kommt die Rückverlagerung nach geblocktem Dribbling?",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe C, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe C, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -2576,10 +2576,10 @@ window.WMRadarData = {
       },
       "tags": [],
       "analysis": {
-        "key": "Niederlande vs Schweden: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Niederlande vs Schweden: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe F, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe F, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -2608,13 +2608,13 @@ window.WMRadarData = {
       },
       "tags": [
         "Fokus-Team",
-        "Pfad-relevant"
+        "Weiterkommen & Gegner"
       ],
       "analysis": {
         "key": "Deutschland vs Côte d'Ivoire: Ist der Sechserraum nach Ballverlusten besetzt?",
         "risk": "Bei zu vielen Spielern vor dem Ball entstehen Konterräume neben und hinter der Sechserzone.",
         "player": "Schaffen die Achter Tiefe ohne die Mitte zu leeren?",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe E, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe E, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -2642,14 +2642,14 @@ window.WMRadarData = {
         "lowValueRisk": 26
       },
       "tags": [
-        "Pfad-relevant",
+        "Weiterkommen & Gegner",
         "Spoilerfrei"
       ],
       "analysis": {
-        "key": "Ecuador vs Curaçao: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Ecuador vs Curaçao: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe E, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe E, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -2684,7 +2684,7 @@ window.WMRadarData = {
         "key": "Türkei vs Paraguay: Bleibt die Mitte nach Ballverlusten stabil?",
         "risk": "Kann Spiele zu offen werden lassen, wenn Struktur und Emotion nicht sauber zusammenfinden.",
         "player": "Wie mutig sind die ersten Pässe nach Ballgewinn?",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe D, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe D, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -2719,7 +2719,7 @@ window.WMRadarData = {
         "key": "Tunesien vs Japan: Wie oft zwingt Japan den Gegner zu Rückpässen?",
         "risk": "Teams mit Wucht, zweiten Bällen und vielen Strafraumduellen.",
         "player": "Wie viele Anschlussläufe gibt es nach dem ersten Ballgewinn?",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe F, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe F, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -2748,13 +2748,13 @@ window.WMRadarData = {
       },
       "tags": [
         "Fokus-Team",
-        "Pfad-relevant"
+        "Weiterkommen & Gegner"
       ],
       "analysis": {
         "key": "Spanien vs Saudi-Arabien: Wie oft kommt Spanien hinter den gegnerischen Sechser?",
         "risk": "Wenn der Gegner die erste Gegenpressingwelle überspielt, muss die Restverteidigung große Räume kontrollieren.",
         "player": "Wird der ballferne Flügel geduldig vorbereitet?",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe H, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe H, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -2783,10 +2783,10 @@ window.WMRadarData = {
       },
       "tags": [],
       "analysis": {
-        "key": "Belgien vs Iran: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Belgien vs Iran: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe G, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe G, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -2814,13 +2814,13 @@ window.WMRadarData = {
         "lowValueRisk": 16
       },
       "tags": [
-        "Pfad-relevant"
+        "Weiterkommen & Gegner"
       ],
       "analysis": {
-        "key": "Uruguay vs Kap Verde: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Uruguay vs Kap Verde: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe H, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe H, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -2851,10 +2851,10 @@ window.WMRadarData = {
         "Spoilerfrei"
       ],
       "analysis": {
-        "key": "Neuseeland vs Ägypten: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Neuseeland vs Ägypten: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe G, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe G, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -2883,13 +2883,13 @@ window.WMRadarData = {
       },
       "tags": [
         "Fokus-Team",
-        "Pfad-relevant"
+        "Weiterkommen & Gegner"
       ],
       "analysis": {
         "key": "Argentinien vs Österreich: Findet Argentinien den freien Mann hinter der ersten Linie?",
         "risk": "Kann phasenweise zu kontrolliert werden, wenn der Gegner tief bleibt und keine Räume zwischen den Linien anbietet.",
         "player": "Wie gut bleibt die Restverteidigung bei langen Ballbesitzphasen?",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe J, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe J, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -2918,13 +2918,13 @@ window.WMRadarData = {
       },
       "tags": [
         "Fokus-Team",
-        "Pfad-relevant"
+        "Weiterkommen & Gegner"
       ],
       "analysis": {
         "key": "Frankreich vs Irak: Wie früh findet Frankreich Tiefe hinter der letzten Linie?",
         "risk": "Wenn das Spiel langsam und eng wird, kann die Chance Creation stärker von Einzelaktionen abhängen.",
         "player": "Werden Ballgewinne sofort vertikal gemacht?",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe I, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe I, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -2953,14 +2953,14 @@ window.WMRadarData = {
       },
       "tags": [
         "Surprise-Radar",
-        "Pfad-relevant",
+        "Weiterkommen & Gegner",
         "Spoilerfrei"
       ],
       "analysis": {
         "key": "Norwegen vs Senegal: Wie oft wird die letzte Linie früh attackiert?",
         "risk": "Wenn der Gegner Tiefe kontrolliert und Zentrum schließt, kann Norwegen eindimensionaler wirken.",
         "player": "Findet Norwegen zentrale Kreativität vor dem vertikalen Ball?",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe I, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe I, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -2988,14 +2988,14 @@ window.WMRadarData = {
         "lowValueRisk": 26
       },
       "tags": [
-        "Pfad-relevant",
+        "Weiterkommen & Gegner",
         "Spoilerfrei"
       ],
       "analysis": {
-        "key": "Jordanien vs Algerien: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Jordanien vs Algerien: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe J, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe J, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -3024,10 +3024,10 @@ window.WMRadarData = {
       },
       "tags": [],
       "analysis": {
-        "key": "Portugal vs Usbekistan: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Portugal vs Usbekistan: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe K, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe K, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -3056,13 +3056,13 @@ window.WMRadarData = {
       },
       "tags": [
         "Fokus-Team",
-        "Pfad-relevant"
+        "Weiterkommen & Gegner"
       ],
       "analysis": {
         "key": "England vs Ghana: Wird das Zentrum mutig bespielt oder nur außen zirkuliert?",
         "risk": "Kann zu vorsichtig werden, wenn der Gegner das Zentrum schließt und Tempo aus dem Spiel nimmt.",
         "player": "Springen die Achter im Pressing zu früh heraus?",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe L, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe L, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -3090,13 +3090,13 @@ window.WMRadarData = {
         "lowValueRisk": 16
       },
       "tags": [
-        "Pfad-relevant"
+        "Weiterkommen & Gegner"
       ],
       "analysis": {
-        "key": "Panama vs Kroatien: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Panama vs Kroatien: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe L, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe L, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -3127,10 +3127,10 @@ window.WMRadarData = {
         "Spoilerfrei"
       ],
       "analysis": {
-        "key": "Kolumbien vs DR Kongo: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Kolumbien vs DR Kongo: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe K, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe K, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -3159,10 +3159,10 @@ window.WMRadarData = {
       },
       "tags": [],
       "analysis": {
-        "key": "Bosnien und Herzegowina vs Katar: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Bosnien und Herzegowina vs Katar: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe B, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe B, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -3191,10 +3191,10 @@ window.WMRadarData = {
       },
       "tags": [],
       "analysis": {
-        "key": "Schweiz vs Kanada: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Schweiz vs Kanada: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe B, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe B, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -3223,13 +3223,13 @@ window.WMRadarData = {
       },
       "tags": [
         "Surprise-Radar",
-        "Pfad-relevant"
+        "Weiterkommen & Gegner"
       ],
       "analysis": {
         "key": "Marokko vs Haiti: Lockt Marokko Brasilien oder andere Favoriten konsequent an die Linie?",
         "risk": "Bei langer eigener Ballbesitzphase kann die kreative Durchdringung schwerer fallen.",
         "player": "Wie sauber ist der erste Pass nach Ballgewinn?",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe C, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe C, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -3258,13 +3258,13 @@ window.WMRadarData = {
       },
       "tags": [
         "Fokus-Team",
-        "Pfad-relevant"
+        "Weiterkommen & Gegner"
       ],
       "analysis": {
         "key": "Schottland vs Brasilien: Gewinnt Brasilien die ersten 1-gegen-1s am Flügel?",
         "risk": "Kompakte Pressingfallen mit sauberem Konterausgang.",
         "player": "Wie schnell kommt die Rückverlagerung nach geblocktem Dribbling?",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe C, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe C, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -3295,10 +3295,10 @@ window.WMRadarData = {
         "Spoilerfrei"
       ],
       "analysis": {
-        "key": "Tschechien vs Mexiko: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Tschechien vs Mexiko: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe A, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe A, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -3329,10 +3329,10 @@ window.WMRadarData = {
         "Spoilerfrei"
       ],
       "analysis": {
-        "key": "Südafrika vs Südkorea: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Südafrika vs Südkorea: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe A, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe A, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -3360,13 +3360,13 @@ window.WMRadarData = {
         "lowValueRisk": 14
       },
       "tags": [
-        "Pfad-relevant"
+        "Weiterkommen & Gegner"
       ],
       "analysis": {
-        "key": "Curaçao vs Côte d'Ivoire: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Curaçao vs Côte d'Ivoire: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe E, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe E, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -3395,13 +3395,13 @@ window.WMRadarData = {
       },
       "tags": [
         "Fokus-Team",
-        "Pfad-relevant"
+        "Weiterkommen & Gegner"
       ],
       "analysis": {
         "key": "Ecuador vs Deutschland: Ist der Sechserraum nach Ballverlusten besetzt?",
         "risk": "Gegner mit schnellen Ausbrüchen in den Rücken der Außenverteidiger.",
         "player": "Schaffen die Achter Tiefe ohne die Mitte zu leeren?",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe E, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe E, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -3435,7 +3435,7 @@ window.WMRadarData = {
         "key": "Japan vs Schweden: Wie oft zwingt Japan den Gegner zu Rückpässen?",
         "risk": "Gegen sehr robuste Strafraumteams kann die letzte Linie unter Druck geraten.",
         "player": "Wie viele Anschlussläufe gibt es nach dem ersten Ballgewinn?",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe F, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe F, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -3464,10 +3464,10 @@ window.WMRadarData = {
       },
       "tags": [],
       "analysis": {
-        "key": "Tunesien vs Niederlande: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Tunesien vs Niederlande: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe F, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe F, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -3498,10 +3498,10 @@ window.WMRadarData = {
         "Spoilerfrei"
       ],
       "analysis": {
-        "key": "Paraguay vs Australien: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Paraguay vs Australien: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe D, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe D, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -3536,7 +3536,7 @@ window.WMRadarData = {
         "key": "Türkei vs USA: Bleibt die Mitte nach Ballverlusten stabil?",
         "risk": "Kann Spiele zu offen werden lassen, wenn Struktur und Emotion nicht sauber zusammenfinden.",
         "player": "Wie mutig sind die ersten Pässe nach Ballgewinn?",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe D, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe D, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -3566,13 +3566,13 @@ window.WMRadarData = {
       "tags": [
         "Fokus-Team",
         "Surprise-Radar",
-        "Pfad-relevant"
+        "Weiterkommen & Gegner"
       ],
       "analysis": {
         "key": "Norwegen vs Frankreich: Wie oft wird die letzte Linie früh attackiert?",
         "risk": "Teams, die Tempo rausnehmen und Frankreich lange verteidigen lassen.",
         "player": "Findet Norwegen zentrale Kreativität vor dem vertikalen Ball?",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe I, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe I, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -3600,13 +3600,13 @@ window.WMRadarData = {
         "lowValueRisk": 14
       },
       "tags": [
-        "Pfad-relevant"
+        "Weiterkommen & Gegner"
       ],
       "analysis": {
-        "key": "Senegal vs Irak: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Senegal vs Irak: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe I, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe I, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -3634,14 +3634,14 @@ window.WMRadarData = {
         "lowValueRisk": 24
       },
       "tags": [
-        "Pfad-relevant",
+        "Weiterkommen & Gegner",
         "Spoilerfrei"
       ],
       "analysis": {
-        "key": "Kap Verde vs Saudi-Arabien: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Kap Verde vs Saudi-Arabien: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe H, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe H, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -3708,10 +3708,10 @@ window.WMRadarData = {
         "Spoilerfrei"
       ],
       "analysis": {
-        "key": "Ägypten vs Iran: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Ägypten vs Iran: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe G, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe G, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -3742,10 +3742,10 @@ window.WMRadarData = {
         "Spoilerfrei"
       ],
       "analysis": {
-        "key": "Neuseeland vs Belgien: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Neuseeland vs Belgien: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe G, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe G, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -3773,13 +3773,13 @@ window.WMRadarData = {
         "lowValueRisk": 14
       },
       "tags": [
-        "Pfad-relevant"
+        "Weiterkommen & Gegner"
       ],
       "analysis": {
-        "key": "Kroatien vs Ghana: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Kroatien vs Ghana: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe L, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe L, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -3808,13 +3808,13 @@ window.WMRadarData = {
       },
       "tags": [
         "Fokus-Team",
-        "Pfad-relevant"
+        "Weiterkommen & Gegner"
       ],
       "analysis": {
         "key": "Panama vs England: Wird das Zentrum mutig bespielt oder nur außen zirkuliert?",
         "risk": "Teams mit hoher Pressingresistenz und guter Ballzirkulation.",
         "player": "Springen die Achter im Pressing zu früh heraus?",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe L, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe L, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -3843,10 +3843,10 @@ window.WMRadarData = {
       },
       "tags": [],
       "analysis": {
-        "key": "DR Kongo vs Usbekistan: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "DR Kongo vs Usbekistan: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe K, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe K, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -3875,10 +3875,10 @@ window.WMRadarData = {
       },
       "tags": [],
       "analysis": {
-        "key": "Kolumbien vs Portugal: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Kolumbien vs Portugal: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe K, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe K, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -3906,14 +3906,14 @@ window.WMRadarData = {
         "lowValueRisk": 24
       },
       "tags": [
-        "Pfad-relevant",
+        "Weiterkommen & Gegner",
         "Spoilerfrei"
       ],
       "analysis": {
-        "key": "Algerien vs Österreich: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+        "key": "Algerien vs Österreich: Score-Signale nach Fokus, Weiterkommen, Gegner und Uhrzeit beobachten.",
         "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
         "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe J, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe J, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     },
     {
@@ -3942,14 +3942,14 @@ window.WMRadarData = {
       },
       "tags": [
         "Fokus-Team",
-        "Pfad-relevant",
+        "Weiterkommen & Gegner",
         "Spoilerfrei"
       ],
       "analysis": {
         "key": "Jordanien vs Argentinien: Findet Argentinien den freien Mann hinter der ersten Linie?",
         "risk": "Sehr kompakte Blöcke mit schnellen diagonalen Kontern.",
         "player": "Wie gut bleibt die Restverteidigung bei langen Ballbesitzphasen?",
-        "source": "Auto-Modell: aus Teamprofilen, Gruppe J, Pfad-Relevanz und Uhrzeit abgeleitet."
+        "source": "Auto-Modell: aus Teamprofilen, Gruppe J, Weiterkommen-und-Gegner-Relevanz und Uhrzeit abgeleitet."
       }
     }
   ],

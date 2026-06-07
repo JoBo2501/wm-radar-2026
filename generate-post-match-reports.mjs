@@ -67,7 +67,7 @@ function getDriver(match, pathImpact) {
     ["Upset", match.signals.surprise],
     ["Bedeutung", match.signals.importance],
     ["Uhrzeit", match.signals.time],
-    ["Pfad", pathImpact],
+    ["Finalweg", pathImpact],
   ].sort((a, b) => b[1] - a[1])[0][0];
 }
 
