@@ -822,6 +822,7 @@ h3 {
 .dossier,
 .group-path-section,
 .team-lab-section,
+.key-figures-section,
 .radar-section,
 .sources-section {
   border: 1px solid var(--line);
@@ -2222,7 +2223,8 @@ h3 {
   margin: 0 14px 14px;
 }
 
-.team-lab-section {
+.team-lab-section,
+.key-figures-section {
   margin-bottom: 16px;
   padding: 18px;
 }
@@ -3002,6 +3004,82 @@ h3 {
   background: rgba(196, 255, 95, 0.055);
 }
 
+.key-figures-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.key-figure-card {
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.028)),
+    rgba(31, 38, 32, 0.76);
+}
+
+.key-figure-team {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+}
+
+.key-figure-team h3 {
+  margin: 4px 0 2px;
+  font-size: 1.35rem;
+}
+
+.key-figure-team small {
+  color: var(--muted);
+}
+
+.key-figure-list {
+  display: grid;
+  gap: 10px;
+}
+
+.key-figure-item {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.key-figure-name {
+  display: grid;
+  gap: 2px;
+}
+
+.key-figure-name strong {
+  color: var(--text);
+  font-size: 1.02rem;
+}
+
+.key-figure-name span {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.key-figure-item p {
+  margin: 0;
+  color: var(--soft);
+  line-height: 1.48;
+}
+
+.key-figure-item b {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--text);
+}
+
 .cue-list {
   display: grid;
   gap: 8px;
@@ -3513,6 +3591,7 @@ h3 {
 .standing-card,
 .bracket-round,
 .team-lab-card,
+.key-figure-card,
 .radar-card,
 .analyst-pillar,
 .voice-card,
@@ -3536,6 +3615,7 @@ h3 {
 .bracket-match,
 .ko-dossier,
 .team-lab-card p,
+.key-figure-item p,
 .phase-grid span,
 .watch-cues,
 .radar-card p,
@@ -3555,6 +3635,7 @@ h3 {
 .ko-dossier-metrics span,
 .phase-grid span,
 .watch-cues,
+.key-figure-item,
 .radar-signal,
 .voice-card,
 .source-card,
@@ -3594,6 +3675,8 @@ h3 {
 .ko-dossier-metrics strong,
 .phase-grid strong,
 .watch-cues > strong,
+.key-figure-name strong,
+.key-figure-item b,
 .group-fixtures > strong,
 .path-note > strong,
 .source-rule-card strong {
@@ -3606,6 +3689,8 @@ h3 {
 .ko-dossier ul,
 .ko-dossier-metrics small,
 .team-lab-top small,
+.key-figure-team small,
+.key-figure-name span,
 .source-card p,
 .radar-card p {
   color: var(--muted);
@@ -3723,6 +3808,10 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .key-figures-grid {
+    grid-template-columns: 1fr;
+  }
+
   .command-metrics {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -3813,6 +3902,7 @@ h3 {
   .bracket-grid,
   .group-teams,
   .phase-grid,
+  .key-figures-grid,
   .insight-grid,
   .radar-grid,
   .analyst-pillar-grid {

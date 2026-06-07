@@ -6,6 +6,7 @@ const {
   filters,
   focusTeams,
   groups,
+  keyFigures,
   knockout,
   matches,
   metadata,
@@ -23,6 +24,7 @@ const {
 
 const teamByCode = new Map(teams.map((team) => [team.code, team]));
 const profileByCode = new Map(teamProfiles.map((profile) => [profile.code, profile]));
+const keyFiguresByTeam = new Map(keyFigures.map((entry) => [entry.team, entry]));
 const groupById = new Map(groups.map((group) => [group.id, group]));
 const groupByTeamCode = new Map(groups.flatMap((group) => group.teams.map((code) => [code, group])));
 const stateLabels = {
@@ -72,6 +74,7 @@ const bracketGridEl = document.querySelector("#bracketGrid");
 const standingsSummaryEl = document.querySelector("#standingsSummary");
 const standingsGridEl = document.querySelector("#standingsGrid");
 const teamLabGridEl = document.querySelector("#teamLabGrid");
+const keyFiguresGridEl = document.querySelector("#keyFiguresGrid");
 const surpriseRadarEl = document.querySelector("#surpriseRadar");
 const sourceStackEl = document.querySelector("#sourceStack");
 const analystPillarsEl = document.querySelector("#analystPillars");
@@ -2074,6 +2077,52 @@ function renderTeamLab() {
     .join("");
 }
 
+function renderKeyFigures() {
+  if (!keyFiguresGridEl) {
+    return;
+  }
+
+  const preferredCodes = new Set([...focusTeams.map((team) => team.code), ...surpriseTeams.map((team) => team.code)]);
+  const entries = teams
+    .filter((team) => preferredCodes.has(team.code) && keyFiguresByTeam.has(team.code))
+    .sort((a, b) => Number(b.focus || b.surprise) - Number(a.focus || a.surprise) || b.watchPriority - a.watchPriority)
+    .map((team) => ({ team, figures: keyFiguresByTeam.get(team.code).figures }));
+
+  keyFiguresGridEl.innerHTML = entries
+    .map(
+      ({ team, figures }) => `
+        <article class="key-figure-card">
+          <div class="key-figure-team">
+            <span class="team-lab-flag">${renderFlag(team)}</span>
+            <span>
+              <span class="data-badge seed">Seed</span>
+              <h3>${team.name}</h3>
+              <small>${figures.length} Schlüsselfiguren · wird im Turnier fortgeschrieben</small>
+            </span>
+          </div>
+          <div class="key-figure-list">
+            ${figures
+              .map(
+                (figure) => `
+                  <section class="key-figure-item">
+                    <div class="key-figure-name">
+                      <strong>${figure.name}</strong>
+                      <span>${figure.role} · ${figure.lens}</span>
+                    </div>
+                    <p><b>Erwartung</b>${figure.expectation}</p>
+                    <p><b>Worauf achten?</b>${figure.watch}</p>
+                    <p><b>Verlauf</b>${figure.development}</p>
+                  </section>
+                `,
+              )
+              .join("")}
+          </div>
+        </article>
+      `,
+    )
+    .join("");
+}
+
 function renderSurpriseRadar() {
   surpriseRadarEl.innerHTML = surpriseTeams
     .map(
@@ -2242,5 +2291,6 @@ renderSources();
 renderAnalystDesk();
 renderAllDynamic();
 renderTeamLab();
+renderKeyFigures();
 setupSpoilerMode();
 setupPwa();

@@ -12,6 +12,7 @@ const results = readJson("data/results.json");
 const resultValidation = readJson("data/result-validation.json");
 const preferences = readJson("data/preferences.json");
 const teamProfiles = readJson("data/team-profiles.json");
+const keyFigures = readJson("data/key-figures.json");
 const analystSources = readJson("data/analyst-sources.json");
 const scheduleValidation = readJson("data/schedule-validation.json");
 const postMatchReports = readJson("data/post-match-reports.json");
@@ -111,6 +112,7 @@ const data = {
   teams,
   groups,
   teamProfiles,
+  keyFigures,
   analystSources,
   scheduleValidation,
   resultValidation,

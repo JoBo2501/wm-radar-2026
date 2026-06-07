@@ -18,6 +18,7 @@ GitHub Pages ist vorbereitet. Nach Aktivierung in GitHub Settings -> Pages -> So
 - Datenmodell in `data.js` mit Real/Mixed/Model/Seed-Kennzeichnung
 - Datenlage & Transparenz mit eingeklappten Import- und Validierungsdetails
 - Team-Briefings mit taktischen Profilen fuer Fokus- und Surprise-Teams
+- Schluesselfiguren-Modul mit Trainern, Leadern, Taktikspielern, Druckspielern und Turnier-Entdeckungen
 - Watchlist-Prioritaet getrennt von spaeterer Teamstaerke, Momentum, Attraktivitaet, Ueberraschungspotenzial und Datenlage
 - Match-Dossier mit Team-Matchup und Watch-Cues
 - Tagesbriefing mit Watch Plan und Morgen-ohne-Spoiler-Ansicht

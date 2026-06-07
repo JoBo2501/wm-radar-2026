@@ -805,6 +805,232 @@ window.WMRadarData = {
       "confidence": 59
     }
   ],
+  "keyFigures": [
+    {
+      "team": "GER",
+      "figures": [
+        {
+          "name": "Julian Nagelsmann",
+          "role": "Trainer",
+          "lens": "Strukturgeber",
+          "expectation": "Deutschland braucht klare Rollen, stabile Restverteidigung und mutige Ballbesitzphasen.",
+          "watch": "Wie schnell passt er Rollen, Pressinghöhe und Absicherung an, wenn ein Spiel kippt?",
+          "development": "Seed: Trainerwirkung wird im Turnier über Anpassungen, Wechsel und Spielkontrolle bewertet."
+        },
+        {
+          "name": "Joshua Kimmich",
+          "role": "Taktikspieler",
+          "lens": "Rhythmus und Erwartungsdruck",
+          "expectation": "Er soll Struktur, Tempo, Standards und mentale Stabilität verbinden.",
+          "watch": "Trägt er das Spiel unter Druck oder wird er zum Ziel gegnerischer Pressingfallen?",
+          "development": "Seed: Performance wird über Ballverluste, progressive Pässe, Gegenpressing und Führungswirkung verfolgt."
+        },
+        {
+          "name": "Florian Wirtz",
+          "role": "Kreativspieler",
+          "lens": "Zwischenlinienqualität",
+          "expectation": "Deutschland braucht von ihm Lösungen gegen tiefe und enge Gegner.",
+          "watch": "Kommt er zwischen die Linien oder wird er von der gegnerischen Sechs isoliert?",
+          "development": "Seed: Entwicklung wird über Chancenvorbereitung, Raumfindung und Einfluss in engen Spielen beobachtet."
+        }
+      ]
+    },
+    {
+      "team": "POR",
+      "figures": [
+        {
+          "name": "Roberto Martínez",
+          "role": "Trainer",
+          "lens": "Balance",
+          "expectation": "Portugal muss Kreativität, Erfahrung und Restverteidigung in ein klares Turniermodell bringen.",
+          "watch": "Wie balanciert er Ronaldo-Rolle, kreative Achter und defensive Stabilität?",
+          "development": "Seed: Trainerwirkung wird über Startelflogik, Wechsel und Spielkontrolle gegen Umschaltteams bewertet."
+        },
+        {
+          "name": "Cristiano Ronaldo",
+          "role": "Leader",
+          "lens": "Erwartung und Strafraumwirkung",
+          "expectation": "Seine Rolle ist weniger Dauerpräsenz allein, sondern Effizienz, Führung und Strafraumgravitation.",
+          "watch": "Hilft seine Präsenz Portugals Struktur oder zieht sie zu viel Angriffsspiel auf den Abschlussmoment?",
+          "development": "Seed: Entwicklung wird über Abschlüsse, Verbindungsspiel, Pressinglast und Einfluss in engen Phasen bewertet."
+        },
+        {
+          "name": "Vitinha",
+          "role": "Taktikspieler",
+          "lens": "Spielkontrolle",
+          "expectation": "Er kann Portugals Ballbesitz zwischen Sicherheit und Durchbruch verbinden.",
+          "watch": "Findet er den Moment für vertikale Pässe oder bleibt Portugal zu zirkulär?",
+          "development": "Seed: Entwicklung wird über progressive Pässe, Druckresistenz und Verbindung zu den Kreativzonen bewertet."
+        }
+      ]
+    },
+    {
+      "team": "BRA",
+      "figures": [
+        {
+          "name": "Carlo Ancelotti",
+          "role": "Trainer",
+          "lens": "Turniermanagement",
+          "expectation": "Brasilien braucht Struktur, ohne die individuelle Improvisation zu bremsen.",
+          "watch": "Wie verbindet er Flügelisolierung, zentrale Absicherung und Kontrolle nach Ballverlusten?",
+          "development": "Seed: Trainerwirkung wird über Balance, Reaktion auf tiefe Blöcke und Wechselmomente bewertet."
+        },
+        {
+          "name": "Vinícius Júnior",
+          "role": "Druckspieler",
+          "lens": "1-gegen-1 und Erwartung",
+          "expectation": "Er soll Spiele öffnen, ohne Brasilien nach Ballverlusten zu entblößen.",
+          "watch": "Gewinnt er die wichtigen Duelle oder zwingt ihn der Gegner in schlechte Winkel?",
+          "development": "Seed: Entwicklung wird über Dribblingausgang, Shot Quality und Anschlussaktionen verfolgt."
+        },
+        {
+          "name": "Bruno Guimarães",
+          "role": "Taktikspieler",
+          "lens": "Absicherung",
+          "expectation": "Er kann Rhythmus, Aggressivität und Gegenpressing miteinander verbinden.",
+          "watch": "Stabilisiert er Brasilien hinter den kreativen Spielern oder entstehen offene Umschalträume?",
+          "development": "Seed: Entwicklung wird über Ballgewinne, progressive Verbindungen und Restverteidigung bewertet."
+        }
+      ]
+    },
+    {
+      "team": "ARG",
+      "figures": [
+        {
+          "name": "Lionel Scaloni",
+          "role": "Trainer",
+          "lens": "Rollenmanagement",
+          "expectation": "Argentinien muss Erfahrung, Kontrolle und frische Beine sauber staffeln.",
+          "watch": "Wie dosiert er Tempo, Intensität und Rollenwechsel über das Turnier?",
+          "development": "Seed: Trainerwirkung wird über Spielmanagement, Wechsel und Kontrolle enger Spielstände verfolgt."
+        },
+        {
+          "name": "Lionel Messi",
+          "role": "Leader",
+          "lens": "Entscheidungsmomente",
+          "expectation": "Nicht jede Minute muss dominant sein; entscheidend ist, wann er das Spiel öffnet.",
+          "watch": "Bekommt er Zonen mit Blick zum Tor oder muss er zu tief abholen?",
+          "development": "Seed: Entwicklung wird über Chance Creation, Freistoß-/Standardgefahr und letzte Pässe bewertet."
+        },
+        {
+          "name": "Enzo Fernández",
+          "role": "Taktikspieler",
+          "lens": "Verbindung",
+          "expectation": "Er soll Kontrolle und vertikale Progression miteinander verbinden.",
+          "watch": "Findet er den Pass durch die erste Drucklinie oder wird Argentinien zu horizontal?",
+          "development": "Seed: Entwicklung wird über progressive Pässe, Ballgewinne und Pressingresistenz verfolgt."
+        }
+      ]
+    },
+    {
+      "team": "ESP",
+      "figures": [
+        {
+          "name": "Luis de la Fuente",
+          "role": "Trainer",
+          "lens": "Kontinuität",
+          "expectation": "Spanien soll Positionsspiel, Flügeltempo und Gegenpressing zu einem reifen Turnierteam verbinden.",
+          "watch": "Wie hält er die Balance, wenn Gegner das Zentrum schließen und Umschaltmomente suchen?",
+          "development": "Seed: Trainerwirkung wird über Rollenstabilität, Pressingabstände und Anpassungen bewertet."
+        },
+        {
+          "name": "Lamine Yamal",
+          "role": "Druckspieler",
+          "lens": "Kreativität unter Erwartung",
+          "expectation": "Er kann Spanien öffnen, soll aber nicht alleiniger Problemlöser werden.",
+          "watch": "Bekommt er gute Isolationsräume oder wird er früh gedoppelt?",
+          "development": "Seed: Entwicklung wird über Dribblings, letzte Pässe und Entscheidungsqualität verfolgt."
+        },
+        {
+          "name": "Pedri",
+          "role": "Taktikspieler",
+          "lens": "Halbraumkontrolle",
+          "expectation": "Er soll Tempo dosieren und die Verbindungen im letzten Drittel herstellen.",
+          "watch": "Findet er die Räume hinter der gegnerischen Mittelfeldlinie?",
+          "development": "Seed: Entwicklung wird über Ballkontakte zwischen den Linien und Chance Creation beobachtet."
+        }
+      ]
+    },
+    {
+      "team": "ENG",
+      "figures": [
+        {
+          "name": "Thomas Tuchel",
+          "role": "Trainer",
+          "lens": "Chemie und Kontrolle",
+          "expectation": "England braucht klare Rollen und mehr Tempo im Ballbesitz.",
+          "watch": "Wie gut findet er die Balance zwischen individueller Qualität, Pressing und Spielkontrolle?",
+          "development": "Seed: Trainerwirkung wird über Chemie, Wechsel und Reaktion auf Rückschläge bewertet."
+        },
+        {
+          "name": "Harry Kane",
+          "role": "Leader",
+          "lens": "Verbindung und Abschluss",
+          "expectation": "Er soll nicht nur abschließen, sondern Englands Angriffe verbinden.",
+          "watch": "Kommt England durch seine Ablagen in gefährliche Räume oder wird es zu langsam?",
+          "development": "Seed: Entwicklung wird über Shot Quality, Ablagen, Tiefenläufe um ihn herum und Druckspiele bewertet."
+        },
+        {
+          "name": "Jude Bellingham",
+          "role": "Druckspieler",
+          "lens": "Spielkippende Präsenz",
+          "expectation": "Er kann enge Spiele über Läufe, Zweikämpfe und Strafraumpräsenz drehen.",
+          "watch": "Bleibt er in der Struktur oder wird England zu abhängig von Einzelmomenten?",
+          "development": "Seed: Entwicklung wird über Box-Präsenz, Ballgewinne und Einfluss in kritischen Phasen verfolgt."
+        }
+      ]
+    },
+    {
+      "team": "FRA",
+      "figures": [
+        {
+          "name": "Didier Deschamps",
+          "role": "Trainer",
+          "lens": "Turnierpragmatismus",
+          "expectation": "Frankreich muss Kontrolle und Explosivität im richtigen Moment verbinden.",
+          "watch": "Wie viel Risiko lässt er zu, wenn Gegner Tempo aus dem Spiel nehmen?",
+          "development": "Seed: Trainerwirkung wird über Spielstandmanagement, Umschaltfenster und defensive Ordnung verfolgt."
+        },
+        {
+          "name": "Kylian Mbappé",
+          "role": "Leader",
+          "lens": "Tiefe und Verantwortung",
+          "expectation": "Er soll Frankreichs gefährlichste Räume öffnen und als Kapitän Spiele prägen.",
+          "watch": "Findet Frankreich früh Tiefe für ihn oder wird er in statische Eins-gegen-eins gezwungen?",
+          "development": "Seed: Entwicklung wird über Tiefenläufe, Shot Quality und entscheidende Aktionen verfolgt."
+        },
+        {
+          "name": "Aurélien Tchouaméni",
+          "role": "Taktikspieler",
+          "lens": "Balance",
+          "expectation": "Er muss Absicherung, Ballgewinn und erste Progression verbinden.",
+          "watch": "Schließt er Umschalträume, ohne Frankreichs Aufbau zu bremsen?",
+          "development": "Seed: Entwicklung wird über Ballgewinne, Zweikämpfe und erste progressive Pässe bewertet."
+        }
+      ]
+    },
+    {
+      "team": "MAR",
+      "figures": [
+        {
+          "name": "Mohamed Ouahbi",
+          "role": "Trainer",
+          "lens": "Neustart nach Erfolg",
+          "expectation": "Marokko muss Kompaktheit und Umschaltkraft bewahren, obwohl die Erwartungen gestiegen sind.",
+          "watch": "Bleibt der Block stabil und findet Marokko genug eigene Ballbesitzlösungen?",
+          "development": "Seed: Trainerwirkung wird über Defensivabstände, Umschaltfenster und Anpassungen bewertet."
+        },
+        {
+          "name": "Achraf Hakimi",
+          "role": "Leader",
+          "lens": "Flügelhebel",
+          "expectation": "Er verbindet Tempo, Erfahrung und die wichtigste Ausgangsroute nach Ballgewinn.",
+          "watch": "Kommt er in offene Räume oder wird seine Seite konsequent zugestellt?",
+          "development": "Seed: Entwicklung wird über Ballgewinne, Läufe, Flanken-/Passqualität und defensive Balance verfolgt."
+        }
+      ]
+    }
+  ],
   "analystSources": {
     "pillars": [
       {
