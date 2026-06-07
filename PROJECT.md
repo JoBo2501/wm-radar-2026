@@ -23,6 +23,7 @@ WM Radar 26 ist ein persoenliches Analysten-Cockpit fuer die FIFA Fussball-WM 20
 - K.o.-Struktur: `data/knockout.json`
 - Ergebnis-Sync: `sync-results.mjs`, `validate-results.mjs`, `watch-results.mjs`
 - Ergebnis-Konfiguration: `data/result-sources.json`, `data/results.json`, `data/result-overrides.json`, `data/result-validation.json`
+- Post-Match-Reports: `data/post-match-reports.json`, `generate-post-match-reports.mjs`, `validate-post-match-reports.mjs`
 - Quellen-/Analystenmodell: `data/analyst-sources.json`
 - Build/Validierung: `normalize-fixtures.mjs`, `validate-schedule.mjs`, `build-data.mjs`, `build-standalone.mjs`, `build-pages.mjs`, `release-pages.mjs`
 
@@ -33,9 +34,11 @@ WM Radar 26 ist ein persoenliches Analysten-Cockpit fuer die FIFA Fussball-WM 20
 3. `validate-schedule.mjs` prueft 72 Gruppenspiele und 32 K.o.-Slots.
 4. `sync-results.mjs` zieht Ergebnisse aus der aktiven Quelle, aktuell football-data.org Free.
 5. `validate-results.mjs` prueft Mapping, Scores, Dubletten und Konflikte.
-6. `build-data.mjs` packt alle Daten in `data.js`.
-7. `build-standalone.mjs` erzeugt `WM-Radar-26.html`.
-8. Die UI berechnet Match Value, Tabellen, Best Thirds, Bracket-Aufloesung und K.o.-Dossiers.
+6. `generate-post-match-reports.mjs` erzeugt Draft-Reports aus finalen Ergebnissen.
+7. `validate-post-match-reports.mjs` prueft Reportstruktur, Match-IDs und Metriken.
+8. `build-data.mjs` packt alle Daten in `data.js`.
+9. `build-standalone.mjs` erzeugt `WM-Radar-26.html`.
+10. Die UI berechnet Match Value, Tabellen, Best Thirds, Bracket-Aufloesung und Dossiers.
 
 ## Ergebnis-Sync
 
@@ -47,6 +50,7 @@ Aktueller Zustand:
 - Es gibt noch 0 finale und 0 Live-Ergebnisse.
 - Die App bleibt deshalb im Projektionsmodus.
 - Sobald echte Resultate kommen, aktualisieren sich Tabellen, Best Thirds, Bracket und K.o.-Dossiers automatisch.
+- Finale Gruppenspiele erzeugen zusaetzlich automatische Post-Match-Draft-Reports mit Score-Audit, Metrik-Blueprint und Lernfrage.
 
 Wichtige Dateien:
 
@@ -68,6 +72,7 @@ Wichtige Dateien:
 - Standings Hub: Tabellenprojektion, direkte Qualifikanten, Best Thirds.
 - Bracket Command: 32 K.o.-Matches, dynamisch aufgeloeste Slots.
 - K.o.-Dossiers: Watch-Empfehlung, Stilkontrast, Upset-Risiko, Pfadwert.
+- Match-Dossier: Analysten-Story, Evidence Pipeline, Advanced-Metrics-Plan und Post-Match Report Hub.
 - Team Lab: taktische Teamprofile.
 - Analyst Desk: Trust-Modell fuer Daten, Stimmen und KI-Research.
 
@@ -84,6 +89,7 @@ Wichtige Dateien:
 - Ergebnis-Sync-Architektur mit Provider, Overrides, Validierung und Ampel gebaut.
 - football-data.org Free vorbereitet und aktiviert.
 - Poller fuer regelmaessigen Ergebnisabgleich hinzugefuegt.
+- Post-Match-Report-Modell, Validator und automatischer Draft-Generator hinzugefuegt.
 
 ## Naechste Schritte
 

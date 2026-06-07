@@ -34,6 +34,8 @@ async function main() {
   await run("node", ["validate-schedule.mjs"]);
   await run("node", ["sync-results.mjs"]);
   await run("node", ["validate-results.mjs"]);
+  await run("node", ["generate-post-match-reports.mjs"]);
+  await run("node", ["validate-post-match-reports.mjs"]);
   await run("node", ["build-data.mjs"]);
   await run("node", ["build-standalone.mjs"]);
   await run("node", ["build-pages.mjs"]);

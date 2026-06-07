@@ -32,6 +32,7 @@ GitHub Pages ist vorbereitet. Nach Aktivierung in GitHub Settings -> Pages -> So
 - Spielplan-Validierung mit Coverage, Gruppenstatus, Bracketstatus und Datenqualitaets-Ampel
 - Analyse-Overrides in `data/match-overrides.json` fuer kuratierte Topspiele
 - Analyst Desk mit Trust-Modell fuer Premiumdaten, Taktikstimmen, KI-Research und Noise-Filter
+- Post-Match-Report-Modell mit automatischem Draft-Generator fuer finale Ergebnisse
 
 ## Lokal starten
 
@@ -46,6 +47,8 @@ node normalize-fixtures.mjs
 node validate-schedule.mjs
 node sync-results.mjs
 node validate-results.mjs
+node generate-post-match-reports.mjs
+node validate-post-match-reports.mjs
 node build-data.mjs
 node build-standalone.mjs
 node build-pages.mjs
@@ -74,6 +77,8 @@ node normalize-fixtures.mjs
 node validate-schedule.mjs
 node sync-results.mjs
 node validate-results.mjs
+node generate-post-match-reports.mjs
+node validate-post-match-reports.mjs
 node build-data.mjs
 node build-standalone.mjs
 node build-pages.mjs
@@ -84,6 +89,8 @@ Ergebnis-Sync:
 ```powershell
 node sync-results.mjs
 node validate-results.mjs
+node generate-post-match-reports.mjs
+node validate-post-match-reports.mjs
 node build-data.mjs
 node build-standalone.mjs
 node build-pages.mjs
@@ -128,6 +135,8 @@ Alternativ im Terminal:
 node switch-result-source.mjs football-data
 node sync-results.mjs --source=football-data
 node validate-results.mjs
+node generate-post-match-reports.mjs
+node validate-post-match-reports.mjs
 node build-data.mjs
 node build-standalone.mjs
 node build-pages.mjs
@@ -144,6 +153,8 @@ Die K.o.-Struktur liegt in `data/knockout.json`. Dort stehen Slots wie `1E`, `3A
 Der Ergebnislayer liegt in `data/results.json`. Aktuell ist er leer und markiert die App als `preTournament`; der Standings Hub berechnet deshalb eine Modellprojektion. Sobald echte Resultate mit `status: "final"` eingetragen werden, fliessen sie automatisch in Gruppenstaende und Third-Place-Ranking ein.
 
 Der automatische Ergebnisabgleich ist in `sync-results.mjs` vorbereitet. Die aktive Quelle steht in `data/result-sources.json`, manuelle Korrekturen liegen in `data/result-overrides.json`, und `validate-results.mjs` schreibt die Sync-Ampel nach `data/result-validation.json`.
+
+Post-Match-Reports liegen in `data/post-match-reports.json`. `generate-post-match-reports.mjs` erzeugt aus finalen Ergebnissen erste Draft-Reports mit Score-Audit, Metrik-Blueprint und Lernfrage; `validate-post-match-reports.mjs` schreibt die Ampel nach `data/post-match-validation.json`.
 
 Das Bracket liest diese Tabellenprojektion bereits aus: Direkte Slots wie `1E` oder `2B` werden aus der Gruppentabelle gesetzt, Third-Place-Slots wie `3ABCDF` nehmen den besten erlaubten Drittplatzierten, und Folgerunden-Slots wie `W73`/`L101` kaskadieren aus den vorherigen Match-Projektionen.
 

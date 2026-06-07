@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "status": "preTournament",
-  "generatedAt": "2026-06-07T00:00:00+02:00",
+  "generatedAt": "2026-06-07T10:00:59.937Z",
   "sourceNote": "Post-Match-Reports sind als Datenmodell vorbereitet. Echte Werte werden nach Spielende aus Ergebnis-, Event-, Tracking- und Analystenquellen ergänzt.",
   "metricDefinitions": [
     {
@@ -45,8 +45,17 @@
       "recommendationAudit",
       "analystNotes"
     ],
-    "statusValues": ["draft", "provider-synced", "reviewed"],
-    "recommendationAuditFields": ["preMatchScore", "postMatchScore", "verdict", "learning"]
+    "statusValues": [
+      "draft",
+      "provider-synced",
+      "reviewed"
+    ],
+    "recommendationAuditFields": [
+      "preMatchScore",
+      "postMatchScore",
+      "verdict",
+      "learning"
+    ]
   },
   "reports": []
 }
