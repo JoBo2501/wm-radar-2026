@@ -75,7 +75,7 @@ Wichtige Dateien:
 - Der Weg ins Finale: 32 K.o.-Matches, dynamisch aufgeloeste Slots und moegliche Gegnerfolgen.
 - K.o.-Dossiers: Watch-Empfehlung, Stilkontrast, Upset-Risiko, moeglicher naechster Gegner.
 - Match-Dossier: Analysten-Story, Belegschicht, Advanced-Metrics-Plan und Post-Match Report Hub.
-- Team-Briefings: taktische Teamprofile. Sichtbare Teamwerte sind App-Fokus/Watch-Prioritaet, kein objektives Ranking.
+- Team-Briefings: taktische Teamprofile. Sichtbare Teamwerte sind Watchlist-Prioritaet, kein objektives Ranking. Spaeter getrennt: Teamstaerke, Momentum, Attraktivitaet, Ueberraschungspotenzial und Datenlage.
 - Analyst Desk: Trust-Modell fuer Daten, Stimmen und KI-Research.
 
 ## Erledigte Schritte

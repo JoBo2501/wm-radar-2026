@@ -2928,7 +2928,7 @@ h3 {
   color: var(--muted);
 }
 
-.app-focus-meter,
+.watchlist-priority-meter,
 .team-lab-top > strong {
   display: grid;
   width: 58px;
@@ -2943,12 +2943,12 @@ h3 {
   text-align: center;
 }
 
-.app-focus-meter strong,
+.watchlist-priority-meter strong,
 .team-lab-top > strong {
   font-size: 1.15rem;
 }
 
-.app-focus-meter small {
+.watchlist-priority-meter small {
   margin-top: 1px;
   color: var(--muted);
   font-size: 0.54rem;
@@ -3565,7 +3565,7 @@ h3 {
 
 .group-path-top > strong,
 .team-lab-top > strong,
-.app-focus-meter,
+.watchlist-priority-meter,
 .validator-score,
 .radar-score,
 .voice-score {

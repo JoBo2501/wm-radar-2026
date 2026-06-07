@@ -2937,7 +2937,7 @@ h3 {
   color: var(--muted);
 }
 
-.app-focus-meter,
+.watchlist-priority-meter,
 .team-lab-top > strong {
   display: grid;
   width: 58px;
@@ -2952,12 +2952,12 @@ h3 {
   text-align: center;
 }
 
-.app-focus-meter strong,
+.watchlist-priority-meter strong,
 .team-lab-top > strong {
   font-size: 1.15rem;
 }
 
-.app-focus-meter small {
+.watchlist-priority-meter small {
   margin-top: 1px;
   color: var(--muted);
   font-size: 0.54rem;
@@ -3574,7 +3574,7 @@ h3 {
 
 .group-path-top > strong,
 .team-lab-top > strong,
-.app-focus-meter,
+.watchlist-priority-meter,
 .validator-score,
 .radar-score,
 .voice-score {
@@ -4241,8 +4241,9 @@ h3 {
               <h2 id="teamLabTitle">Team-Briefings</h2>
             </div>
             <p>
-              Fokus-Teams und Surprise-Kandidaten als taktische Arbeitskarten. Die sichtbare Zahl ist App-Fokus,
-              kein objektives Weltranking; echte Teamstärke und Momentum werden später separat berechnet.
+              Fokus-Teams und Surprise-Kandidaten als taktische Arbeitskarten. Die sichtbare Zahl ist die
+              Watchlist-Priorität, kein Weltranking. Teamstärke, Momentum, Attraktivität, Überraschungspotenzial
+              und Datenlage werden später separat aus Providerdaten und Modelllogik berechnet.
             </p>
           </div>
           <div class="team-lab-grid" id="teamLabGrid"></div>
@@ -10946,7 +10947,7 @@ function renderTeamLab() {
     .map((team) => {
       const profile = getTeamProfile(team);
       const status = team.focus ? "Fokus-Team" : "Surprise";
-      const appFocus = team.watchPriority || profile.confidence;
+      const watchlistPriority = team.watchPriority || profile.confidence;
 
       return `
         <article class="team-lab-card">
@@ -10957,12 +10958,12 @@ function renderTeamLab() {
               <h3>${team.name}</h3>
               <small>${status} · ${team.confederation}</small>
             </span>
-            <span class="app-focus-meter" title="App-Fokus: persönliche Watch-Priorität, kein objektives Teamranking.">
-              <strong>${appFocus}</strong>
-              <small>App-Fokus</small>
+            <span class="watchlist-priority-meter" title="Watchlist-Priorität: persönliche Beobachtungsrelevanz, kein objektives Teamranking.">
+              <strong>${watchlistPriority}</strong>
+              <small>Watchlist</small>
             </span>
           </div>
-          <p class="team-score-note">Diese Zahl priorisiert die App-Watchlist. Sie sagt noch nicht, dass ${team.name} objektiv stärker ist als andere Teams.</p>
+          <p class="team-score-note">Diese Zahl zeigt, wie aufmerksam WM Radar ${team.name} beobachten soll. Teamstärke, Momentum, Attraktivität, Überraschungspotenzial und Datenlage werden später getrennt bewertet.</p>
           <p>${profile.identity}</p>
           <div class="phase-grid">
             <span><strong>Aufbau</strong>${profile.buildUp}</span>
