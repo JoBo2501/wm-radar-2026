@@ -1,0 +1,17 @@
+{
+  "source": "demo-local",
+  "updatedAt": "2026-06-07T00:00:00+02:00",
+  "note": "Demo-Feed nur zum lokalen Testen des Post-Match-Report-Generators. Nicht als echte WM-Daten verwenden.",
+  "matches": [
+    {
+      "matchId": "bra-mar-2026-06-14",
+      "home": "Brazil",
+      "away": "Morocco",
+      "homeGoals": 2,
+      "awayGoals": 1,
+      "status": "final",
+      "source": "demo-local",
+      "updatedAt": "2026-06-07T00:00:00+02:00"
+    }
+  ]
+}

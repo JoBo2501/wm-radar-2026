@@ -11,6 +11,16 @@
       "pollMinutes": 15
     },
     {
+      "id": "demo-local",
+      "label": "Demo Ergebnis-Feed",
+      "type": "local-json",
+      "enabled": true,
+      "path": "data/raw/demo-results-feed.json",
+      "trust": 20,
+      "pollMinutes": 0,
+      "demo": true
+    },
+    {
       "id": "api-football",
       "label": "API-FOOTBALL",
       "type": "api-football",

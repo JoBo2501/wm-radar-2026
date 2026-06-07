@@ -8,6 +8,16 @@ function writeJson(path, value) {
   writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`, "utf8");
 }
 
+function getArg(name) {
+  const prefix = `--${name}=`;
+  const match = process.argv.find((arg) => arg.startsWith(prefix));
+  return match ? match.slice(prefix.length) : null;
+}
+
+function hasFlag(name) {
+  return process.argv.includes(`--${name}`);
+}
+
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
 }
@@ -175,8 +185,9 @@ const matches = readJson("data/matches.json");
 const groups = readJson("data/groups.json");
 const teams = readJson("data/teams.json");
 const preferences = readJson("data/preferences.json");
-const results = readJson("data/results.json");
+const results = readJson(getArg("results") || "data/results.json");
 const reportsBundle = readJson("data/post-match-reports.json");
+const dryRun = hasFlag("dry-run");
 
 const finalResults = (results.matches || []).filter((result) => result.status === "final" && result.matchId);
 const existingReports = reportsBundle.reports || [];
@@ -198,5 +209,9 @@ const nextBundle = {
   reports: reports.sort((a, b) => a.matchId.localeCompare(b.matchId)),
 };
 
-writeJson("data/post-match-reports.json", nextBundle);
-console.log(`Generated ${reports.length} post-match reports from ${finalResults.length} final results`);
+if (dryRun) {
+  console.log(JSON.stringify({ reports: reports.length, finalResults: finalResults.length, sample: reports[0] || null }, null, 2));
+} else {
+  writeJson("data/post-match-reports.json", nextBundle);
+  console.log(`Generated ${reports.length} post-match reports from ${finalResults.length} final results`);
+}

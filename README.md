@@ -122,6 +122,14 @@ node watch-results.mjs
 
 Oder `watch-results.cmd` doppelklicken. Der Poller synchronisiert im konfigurierten Intervall, validiert, baut `data.js` und `WM-Radar-26.html` neu und zeigt den Status im Terminal.
 
+Post-Match-Demo testen:
+
+```powershell
+node generate-post-match-reports.mjs --results=data/raw/demo-results-final.json --dry-run
+```
+
+Oder `enable-demo-post-match.cmd` doppelklicken. Das schaltet lokal auf den Demo-Ergebnisfeed, erzeugt einen Draft-Report fuer Brasilien-Marokko und baut die App neu. Danach mit `restore-football-data.cmd` wieder auf football-data.org zurueckschalten.
+
 football-data.org Free vorbereiten:
 
 1. Kostenlos registrieren: https://www.football-data.org/client/register

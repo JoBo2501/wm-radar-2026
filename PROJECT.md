@@ -56,6 +56,8 @@ Wichtige Dateien:
 
 - `setup-football-data-token.cmd`: Token lokal speichern.
 - `enable-football-data.cmd`: Provider aktivieren und einmal syncen.
+- `enable-demo-post-match.cmd`: lokalen Demo-Feed aktivieren und Post-Match-Draft-Report testen.
+- `restore-football-data.cmd`: nach Demo wieder auf football-data.org zurueckschalten.
 - `watch-results.cmd`: dauerhaften Poller starten.
 - `sync-results.cmd`: einmaliger Sync/Rebuild per Doppelklick.
 - `release-pages.cmd`: Daten und `docs/` aktualisieren.
@@ -90,6 +92,7 @@ Wichtige Dateien:
 - football-data.org Free vorbereitet und aktiviert.
 - Poller fuer regelmaessigen Ergebnisabgleich hinzugefuegt.
 - Post-Match-Report-Modell, Validator und automatischer Draft-Generator hinzugefuegt.
+- Demo-Feed und Dry-Run fuer Post-Match-Reports hinzugefuegt, damit der Workflow ohne echte WM-Daten getestet werden kann.
 
 ## Naechste Schritte
 

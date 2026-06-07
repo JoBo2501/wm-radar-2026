@@ -1311,7 +1311,7 @@ window.WMRadarData = {
     "reports": []
   },
   "postMatchValidation": {
-    "generatedAt": "2026-06-07T10:00:59.890Z",
+    "generatedAt": "2026-06-07T10:25:45.074Z",
     "status": "waiting",
     "summary": "Post-Match-Report-Modell ist vorbereitet; echte Reports entstehen nach finalen Ergebnissen.",
     "coverage": {

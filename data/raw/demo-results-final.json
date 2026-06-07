@@ -1,0 +1,36 @@
+{
+  "mode": "demo",
+  "sourceLevel": "model",
+  "activeSource": "demo-local",
+  "sourceLabel": "Demo Ergebnis-Feed",
+  "sourceNote": "Demo-Datei zum Testen des Post-Match-Report-Generators. Nicht als echte WM-Daten verwenden.",
+  "generatedAt": "2026-06-07T00:00:00+02:00",
+  "pollMinutes": 0,
+  "syncError": null,
+  "summary": {
+    "providerMatches": 1,
+    "synced": 1,
+    "final": 1,
+    "live": 0,
+    "overrides": 0
+  },
+  "matches": [
+    {
+      "matchId": "bra-mar-2026-06-14",
+      "matchNumber": null,
+      "stage": "group",
+      "status": "final",
+      "homeGoals": 2,
+      "awayGoals": 1,
+      "minute": null,
+      "penaltyHomeGoals": null,
+      "penaltyAwayGoals": null,
+      "source": "demo-local",
+      "providerId": "demo-bra-mar",
+      "providerHome": "Brazil",
+      "providerAway": "Morocco",
+      "providerDate": "2026-06-14",
+      "updatedAt": "2026-06-07T00:00:00+02:00"
+    }
+  ]
+}
