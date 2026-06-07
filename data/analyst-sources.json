@@ -1,0 +1,159 @@
+{
+  "pillars": [
+    {
+      "id": "opta",
+      "name": "Opta / Stats Perform",
+      "layer": "Live- und Kontextdaten",
+      "quality": 96,
+      "integration": "Premium API spaeter",
+      "bestFor": "xG, Predictions, Live-Events, historische Trends, Broadcast-taugliche Datenstories.",
+      "watchFor": "Schnelle Einordnung: Ist ein Ergebnis verdient, kippt ein Momentum, ist ein Team wirklich dominant?",
+      "blindSpot": "Sehr stark fuer Ereignisse und Modelle, aber ohne eigenes Video nicht automatisch eine komplette Taktikerzaehlung.",
+      "signals": ["xG", "Eventdaten", "Predictions", "Live-Kontext"],
+      "url": "https://www.statsperform.com/opta/"
+    },
+    {
+      "id": "statsbomb",
+      "name": "Hudl StatsBomb 360",
+      "layer": "Taktische Eventdaten",
+      "quality": 97,
+      "integration": "Premium Datenvertrag spaeter",
+      "bestFor": "360-Kontext, Line-breaking passes, Ballannahmen im Raum, Drucknaehe und datenbasierte Teamtaktik.",
+      "watchFor": "Warum ein Pass, ein Empfang oder ein Pressingausloeser wertvoll war, obwohl er in normalen Statistiken unsichtbar bleibt.",
+      "blindSpot": "Extrem wertvoll, aber fuer Live-Nutzung abhaengig von Coverage, Lizenz und Verfuegbarkeit.",
+      "signals": ["360", "Raum", "Druck", "OBV"],
+      "url": "https://statsbomb.com/what-we-do/soccer-data/360-2/"
+    },
+    {
+      "id": "skillcorner",
+      "name": "SkillCorner",
+      "layer": "Tracking und Off-Ball",
+      "quality": 95,
+      "integration": "Tracking-Schicht spaeter",
+      "bestFor": "Broadcast-basiertes Tracking, Off-Ball-Runs, defensive Strukturen, physische Profile und Game Intelligence.",
+      "watchFor": "Welche Laeufe oeffnen Raeume, welche Kette kippt, wer presst nur optisch und wer nimmt wirklich Optionen weg?",
+      "blindSpot": "Tracking erklaert Bewegung, braucht aber Event- und Videoabgleich fuer die komplette Spielstory.",
+      "signals": ["Tracking", "Off-Ball", "Physical", "Game Intelligence"],
+      "url": "https://skillcorner.com/sports/football"
+    },
+    {
+      "id": "wyscout",
+      "name": "Hudl Wyscout",
+      "layer": "Video, Scouting und Clips",
+      "quality": 92,
+      "integration": "Video- und Clip-Workflow spaeter",
+      "bestFor": "Spieler-, Team- und Gegneranalyse mit Video, getaggten Aktionen, Scouting-Reports und Vergleichsmaterial.",
+      "watchFor": "Schnell pruefen, ob ein Datenmuster im Video wirklich sichtbar ist.",
+      "blindSpot": "Video ist stark, aber ohne Modellierung kann es selektiv und zeitintensiv werden.",
+      "signals": ["Video", "Scouting", "Clips", "Reports"],
+      "url": "https://wyscout.it/"
+    },
+    {
+      "id": "scisports",
+      "name": "SciSports",
+      "layer": "AI Scouting und Match Analysis",
+      "quality": 86,
+      "integration": "AI-Provider optional",
+      "bestFor": "KI-gestuetzte Spieler-, Team- und Matchanalyse, besonders wenn Datenquellen kombiniert werden muessen.",
+      "watchFor": "Zweiter Blick auf Rollenprofile, Talentwert und Muster, die ueber ein einzelnes Spiel hinausgehen.",
+      "blindSpot": "Provider-Modelle muessen gegen Rohdaten und Video kalibriert werden.",
+      "signals": ["AI", "Scouting", "Match Analysis", "Tracking"],
+      "url": "https://www.scisports.com/"
+    }
+  ],
+  "voices": [
+    {
+      "id": "athletic-tactics",
+      "name": "The Athletic FC Tactics",
+      "type": "Taktik- und Datenredaktion",
+      "trust": 93,
+      "bestFor": "Systeme, Trends, Rollen, In-Game-Anpassungen und datenstuetzte Detailanalysen.",
+      "useWhen": "Wenn ein Topspiel taktisch wirklich verstanden werden soll.",
+      "downgradeWhen": "Wenn der Text nur als Narrative ohne konkrete Spielszenen oder Datenpunkte funktioniert.",
+      "url": "https://shows.acast.com/the-athletic-fc-tactics-podcast"
+    },
+    {
+      "id": "coaches-voice",
+      "name": "Coaches' Voice",
+      "type": "Coach-Perspektive",
+      "trust": 91,
+      "bestFor": "Prinzipien, Trainingslogik, Rollenverhalten, Trainerentscheidungen und Taktiktafeln.",
+      "useWhen": "Wenn die App erklaeren soll, warum ein Trainer eine Rolle oder Struktur waehlt.",
+      "downgradeWhen": "Wenn es um harte Live-Daten oder Modellwahrscheinlichkeiten geht.",
+      "url": "https://learning.coachesvoice.com/"
+    },
+    {
+      "id": "spielverlagerung",
+      "name": "Spielverlagerung",
+      "type": "Taktische Tiefenanalyse",
+      "trust": 90,
+      "bestFor": "Positionsspiel, Pressing, Kompaktheit, gruppentaktische Mechanismen und deutsche Taktiksprache.",
+      "useWhen": "Wenn ein Spiel ueber Strukturen statt ueber Einzelspieler erklaert werden soll.",
+      "downgradeWhen": "Wenn keine aktuelle WM-spezifische Analyse vorliegt.",
+      "url": "https://spielverlagerung.de/"
+    },
+    {
+      "id": "total-football-analysis",
+      "name": "Total Football Analysis",
+      "type": "Taktik, Scouting und Theorie",
+      "trust": 84,
+      "bestFor": "Breite internationale Scouting-, Team- und Taktikanalysen.",
+      "useWhen": "Wenn fuer kleinere Teams oder Surprise-Kandidaten schnell ein strukturiertes Profil gebraucht wird.",
+      "downgradeWhen": "Wenn Autor, Datenbasis oder Videoevidenz nicht klar genug sind.",
+      "url": "https://totalfootballanalysis.com/about-total-football-analysis-magazine"
+    },
+    {
+      "id": "opta-analyst",
+      "name": "Opta Analyst",
+      "type": "Datenstory und Predictions",
+      "trust": 88,
+      "bestFor": "Zahlenbasierte Vorschauen, Trends, historische Vergleiche und Wahrscheinlichkeiten.",
+      "useWhen": "Wenn die App schnell eine datenbasierte Storyline braucht.",
+      "downgradeWhen": "Wenn eine taktische Tiefenerklaerung ohne Video/Struktur gebraucht wird.",
+      "url": "https://theanalyst.com/"
+    },
+    {
+      "id": "rest-is-football",
+      "name": "The Rest Is Football",
+      "type": "Ex-Profi-Kontext",
+      "trust": 74,
+      "bestFor": "Kabinenlogik, Stuermerperspektive, Turniergefuehl, England-Kontext und menschliche Zwischentoene.",
+      "useWhen": "Als Kontextstimme, nicht als primaere Daten- oder Taktikquelle.",
+      "downgradeWhen": "Wenn die These nicht durch Daten, Szenen oder Coach-Logik gestuetzt wird.",
+      "url": "https://therestisfootball.com/about"
+    }
+  ],
+  "aiModels": [
+    {
+      "id": "tacticai",
+      "name": "TacticAI / Google DeepMind + Liverpool FC",
+      "trust": 89,
+      "role": "Research-Referenz fuer KI-gestuetzte Standardsituationen",
+      "bestFor": "Corner-Kick-Muster, aehnliche Setups, Vorschlaege fuer Positionsanpassungen und Modellpruefung mit Experten.",
+      "limitation": "Forschungsreferenz, kein frei integrierter WM-Live-Dienst. Fokus auf Ecken statt gesamtem offenen Spiel.",
+      "url": "https://www.nature.com/articles/s41467-024-45965-x"
+    }
+  ],
+  "rules": [
+    {
+      "label": "Belegte Szene vor Bauchgefuehl",
+      "rule": "Eine Meinung steigt erst, wenn sie konkrete Spielszenen, Rollen, Daten oder wiederholbare Muster nennt.",
+      "weight": 100
+    },
+    {
+      "label": "Daten plus Video",
+      "rule": "Ein Datenmuster zaehlt mehr, wenn Video oder Tracking bestaetigt, dass die Ursache sichtbar ist.",
+      "weight": 94
+    },
+    {
+      "label": "Ex-Profi nur mit Fachanker",
+      "rule": "Erfahrung hilft bei Rollen, Druck und Kabine. Ohne taktische oder datenbasierte Evidenz bleibt sie Kontext.",
+      "weight": 72
+    },
+    {
+      "label": "TV-Laerm runterstufen",
+      "rule": "Thesen mit Drama, Namen oder Stimmung, aber ohne Beleg, bekommen keinen Einfluss auf Match Value.",
+      "weight": 22
+    }
+  ]
+}

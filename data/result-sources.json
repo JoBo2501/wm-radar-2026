@@ -1,0 +1,36 @@
+{
+  "activeSource": "football-data",
+  "sources": [
+    {
+      "id": "local-json",
+      "label": "Lokaler Ergebnis-Feed",
+      "type": "local-json",
+      "enabled": true,
+      "path": "data/raw/results-feed.json",
+      "trust": 70,
+      "pollMinutes": 15
+    },
+    {
+      "id": "api-football",
+      "label": "API-FOOTBALL",
+      "type": "api-football",
+      "enabled": false,
+      "endpoint": "https://v3.football.api-sports.io/fixtures",
+      "apiKeyEnv": "API_FOOTBALL_KEY",
+      "leagueId": null,
+      "season": 2026,
+      "trust": 88,
+      "pollMinutes": 5
+    },
+    {
+      "id": "football-data",
+      "label": "football-data.org",
+      "type": "football-data",
+      "enabled": true,
+      "endpoint": "https://api.football-data.org/v4/competitions/WC/matches",
+      "apiKeyEnv": "FOOTBALL_DATA_TOKEN",
+      "trust": 82,
+      "pollMinutes": 10
+    }
+  ]
+}

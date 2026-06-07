@@ -1,0 +1,56 @@
+{
+  "qat-sui-2026-06-13": {
+    "tags": ["Nur Ergebnis", "Low Value", "Gruppenauftakt"],
+    "analysis": {
+      "key": "Interessant wird nur, ob die Schweiz ungewöhnlich aggressiv presst oder im Aufbau neue Rollen zeigt.",
+      "risk": "Niedriger persönlicher Wert und wenig Bezug zu deinen Fokus-Teams.",
+      "player": "Nur ein Schweizer Schlüsselspieler mit neuer Ballbesitzrolle würde das Spiel hochziehen.",
+      "source": "Mixed: Spielplanbasis gespiegelt, Low-Value-Einstufung ist Modell."
+    }
+  },
+  "bra-mar-2026-06-14": {
+    "tags": ["Live schauen", "Pressingfalle", "Upset-Radar"],
+    "analysis": {
+      "key": "Marokko kann Brasilien auf die Außenlinie lenken. Brasilien braucht schnelle Rückverlagerungen.",
+      "risk": "Brasilien darf die Konterabsicherung nach Dribblings nicht verlieren.",
+      "player": "Der linke Flügel ist der Hebel: gewinnt Brasilien dort 1-gegen-1s, kippt das Pressingbild.",
+      "source": "Mixed: Paarung/Zeit verifiziert, taktische Tiefe im MVP modelliert."
+    }
+  },
+  "ger-cuw-2026-06-14": {
+    "tags": ["Später analysieren", "Restverteidigung", "Set Pieces"],
+    "analysis": {
+      "key": "Deutschland wird viel Ballbesitz haben. Entscheidend ist die Absicherung nach Ballverlusten.",
+      "risk": "Breite Außenverteidiger plus eingerückte Achter können Konterräume öffnen.",
+      "player": "Der deutsche Sechser ist der Taktgeber für Rhythmus, Absicherung und Gegenpressing.",
+      "source": "Mixed: Paarung/Zeit aus aktuellen FIFA-nahen Quellen, Taktikprofil noch Seed."
+    }
+  },
+  "arg-alg-2026-06-17": {
+    "tags": ["Spoilerfrei", "Morgens lesen", "Fokus-Team"],
+    "analysis": {
+      "key": "Argentinien wird über Rhythmus und Zwischenlinienbesetzung kommen.",
+      "risk": "Wenn Argentinien zu bequem in Ballbesitz kommt, wird es kontrolliert, aber nicht zwingend spektakulär.",
+      "player": "Der freie Mann zwischen Algeriens Mittelfeld- und Abwehrlinie ist der wichtigste Datenpunkt.",
+      "source": "Mixed: Spielplan gespiegelt, Live-Eventdaten fehlen im MVP."
+    }
+  },
+  "eng-cro-2026-06-17": {
+    "tags": ["Live schauen", "Halbraumduell", "Turnierpfad"],
+    "analysis": {
+      "key": "Kroatien will Tempo aus dem Spiel nehmen. England muss entscheiden, ob es hoch presst oder lockt.",
+      "risk": "Wenn Englands Achter zu früh springen, öffnen sich diagonale Passwege hinter der ersten Pressinglinie.",
+      "player": "Der spielkippende Akteur ist Englands rechter Achter.",
+      "source": "Mixed: Gruppenduell gespiegelt, taktische Tiefe im MVP modelliert."
+    }
+  },
+  "uru-esp-2026-06-27": {
+    "tags": ["Live schauen", "Stilkontrast", "Top-Dossier"],
+    "analysis": {
+      "key": "Spanien will den Gegner verschieben, Uruguay will das Spiel in Zweikämpfe und zweite Bälle ziehen.",
+      "risk": "Spaniens Restverteidigung wird nach Seitenwechseln getestet.",
+      "player": "Der spanische linke Achter ist der Taktikdetektor.",
+      "source": "Mixed: Gruppenduell gespiegelt, taktische Tiefe im MVP modelliert."
+    }
+  }
+}

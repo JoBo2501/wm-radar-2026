@@ -1,0 +1,2461 @@
+[
+  {
+    "id": "mex-rsa-2026-06-11",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Mexico v South Africa ist als Eröffnungsspiel in FIFA- und aktuellen Fixture-Listen geführt; CEST aus UK-Zeit normalisiert.",
+    "stage": "group",
+    "group": "Gruppe A",
+    "kickoffGermany": "2026-06-11T21:00:00+02:00",
+    "venue": "Mexico City Stadium",
+    "teams": [
+      "MEX",
+      "RSA"
+    ],
+    "signals": {
+      "importance": 52,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 38,
+      "time": 94,
+      "lowValueRisk": 33
+    },
+    "tags": [],
+    "analysis": {
+      "key": "Mexiko vs Südafrika: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe A, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "kor-cze-2026-06-12",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Korea Republic v Czechia ist in aktuellen Group-A-Listen geführt; CEST aus UK-Zeit normalisiert.",
+    "stage": "group",
+    "group": "Gruppe A",
+    "kickoffGermany": "2026-06-12T04:00:00+02:00",
+    "venue": "Guadalajara Stadium",
+    "teams": [
+      "KOR",
+      "CZE"
+    ],
+    "signals": {
+      "importance": 52,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 38,
+      "time": 14,
+      "lowValueRisk": 43
+    },
+    "tags": [
+      "Spoilerfrei"
+    ],
+    "analysis": {
+      "key": "Südkorea vs Tschechien: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe A, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "can-bih-2026-06-12",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Canada v Bosnia and Herzegovina ist in aktuellen Group-B-Listen geführt; CEST aus UK-Zeit normalisiert.",
+    "stage": "group",
+    "group": "Gruppe B",
+    "kickoffGermany": "2026-06-12T21:00:00+02:00",
+    "venue": "Toronto Stadium",
+    "teams": [
+      "CAN",
+      "BIH"
+    ],
+    "signals": {
+      "importance": 54,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 38,
+      "time": 94,
+      "lowValueRisk": 32
+    },
+    "tags": [],
+    "analysis": {
+      "key": "Kanada vs Bosnien und Herzegowina: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe B, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "qat-sui-2026-06-13",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Fixture aus FIFA-naher Spielplanliste; Kickoff in deutscher Zeit aus UK/US-Zeitlisten gespiegelt.",
+    "stage": "group",
+    "group": "Gruppe B",
+    "kickoffGermany": "2026-06-13T21:00:00+02:00",
+    "venue": "San Francisco Bay Area Stadium",
+    "teams": [
+      "QAT",
+      "SUI"
+    ],
+    "signals": {
+      "importance": 54,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 38,
+      "time": 94,
+      "lowValueRisk": 32
+    },
+    "tags": [
+      "Nur Ergebnis",
+      "Low Value",
+      "Gruppenauftakt"
+    ],
+    "analysis": {
+      "key": "Interessant wird nur, ob die Schweiz ungewöhnlich aggressiv presst oder im Aufbau neue Rollen zeigt.",
+      "risk": "Niedriger persönlicher Wert und wenig Bezug zu deinen Fokus-Teams.",
+      "player": "Nur ein Schweizer Schlüsselspieler mit neuer Ballbesitzrolle würde das Spiel hochziehen.",
+      "source": "Mixed: Spielplanbasis gespiegelt, Low-Value-Einstufung ist Modell."
+    }
+  },
+  {
+    "id": "bra-mar-2026-06-14",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Brazil v Morocco ist in aktuellen Group-C- und Broadcast-Listen bestätigt; Kickoff auf CEST normalisiert.",
+    "stage": "group",
+    "group": "Gruppe C",
+    "kickoffGermany": "2026-06-14T00:00:00+02:00",
+    "venue": "New York New Jersey Stadium",
+    "teams": [
+      "BRA",
+      "MAR"
+    ],
+    "signals": {
+      "importance": 85,
+      "tactical": 82,
+      "entertainment": 96,
+      "focus": 94,
+      "surprise": 86,
+      "time": 48,
+      "lowValueRisk": 0
+    },
+    "tags": [
+      "Live schauen",
+      "Pressingfalle",
+      "Upset-Radar"
+    ],
+    "analysis": {
+      "key": "Marokko kann Brasilien auf die Außenlinie lenken. Brasilien braucht schnelle Rückverlagerungen.",
+      "risk": "Brasilien darf die Konterabsicherung nach Dribblings nicht verlieren.",
+      "player": "Der linke Flügel ist der Hebel: gewinnt Brasilien dort 1-gegen-1s, kippt das Pressingbild.",
+      "source": "Mixed: Paarung/Zeit verifiziert, taktische Tiefe im MVP modelliert."
+    }
+  },
+  {
+    "id": "hai-sco-2026-06-14",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Haiti v Scotland ist in Group-C-Listen bestätigt; Kickoff auf CEST normalisiert.",
+    "stage": "group",
+    "group": "Gruppe C",
+    "kickoffGermany": "2026-06-14T03:00:00+02:00",
+    "venue": "Boston Stadium",
+    "teams": [
+      "HAI",
+      "SCO"
+    ],
+    "signals": {
+      "importance": 69,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 72,
+      "surprise": 62,
+      "time": 28,
+      "lowValueRisk": 26
+    },
+    "tags": [
+      "Pfad-relevant",
+      "Spoilerfrei"
+    ],
+    "analysis": {
+      "key": "Haiti vs Schottland: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe C, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "usa-par-2026-06-14",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Fixture aus FIFA-naher Spielplanliste; Kickoff in deutscher Zeit aus UK/US-Zeitlisten gespiegelt.",
+    "stage": "group",
+    "group": "Gruppe D",
+    "kickoffGermany": "2026-06-14T03:00:00+02:00",
+    "venue": "Los Angeles Stadium",
+    "teams": [
+      "USA",
+      "PAR"
+    ],
+    "signals": {
+      "importance": 61,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 62,
+      "time": 28,
+      "lowValueRisk": 40
+    },
+    "tags": [
+      "Spoilerfrei"
+    ],
+    "analysis": {
+      "key": "USA vs Paraguay: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe D, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "aus-tur-2026-06-14",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Fixture aus frühen Spielplanlisten; Türkei als Surprise-Team relevant.",
+    "stage": "group",
+    "group": "Gruppe D",
+    "kickoffGermany": "2026-06-14T06:00:00+02:00",
+    "venue": "BC Place Vancouver",
+    "teams": [
+      "AUS",
+      "TUR"
+    ],
+    "signals": {
+      "importance": 61,
+      "tactical": 65,
+      "entertainment": 79,
+      "focus": 24,
+      "surprise": 79,
+      "time": 14,
+      "lowValueRisk": 17
+    },
+    "tags": [
+      "Surprise-Radar",
+      "Spoilerfrei"
+    ],
+    "analysis": {
+      "key": "Australien vs Türkei: Bleibt die Mitte nach Ballverlusten stabil?",
+      "risk": "Teams mit ruhiger Ballzirkulation und starker Restverteidigung.",
+      "player": "Wie mutig sind die ersten Pässe nach Ballgewinn?",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe D, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "ger-cuw-2026-06-14",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Germany v Curaçao ist auf FIFA/Team- und Broadcast-Seiten bestätigt; Kickoff in deutscher Zeit gespiegelt.",
+    "stage": "group",
+    "group": "Gruppe E",
+    "kickoffGermany": "2026-06-14T19:00:00+02:00",
+    "venue": "Houston Stadium",
+    "teams": [
+      "GER",
+      "CUW"
+    ],
+    "signals": {
+      "importance": 87,
+      "tactical": 67,
+      "entertainment": 86,
+      "focus": 98,
+      "surprise": 38,
+      "time": 94,
+      "lowValueRisk": 0
+    },
+    "tags": [
+      "Später analysieren",
+      "Restverteidigung",
+      "Set Pieces"
+    ],
+    "analysis": {
+      "key": "Deutschland wird viel Ballbesitz haben. Entscheidend ist die Absicherung nach Ballverlusten.",
+      "risk": "Breite Außenverteidiger plus eingerückte Achter können Konterräume öffnen.",
+      "player": "Der deutsche Sechser ist der Taktgeber für Rhythmus, Absicherung und Gegenpressing.",
+      "source": "Mixed: Paarung/Zeit aus aktuellen FIFA-nahen Quellen, Taktikprofil noch Seed."
+    }
+  },
+  {
+    "id": "ned-jpn-2026-06-14",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Netherlands v Japan ist in Group-F-Listen bestätigt; Japan ist Surprise-Team.",
+    "stage": "group",
+    "group": "Gruppe F",
+    "kickoffGermany": "2026-06-14T22:00:00+02:00",
+    "venue": "Dallas Stadium",
+    "teams": [
+      "NED",
+      "JPN"
+    ],
+    "signals": {
+      "importance": 65,
+      "tactical": 65,
+      "entertainment": 81,
+      "focus": 24,
+      "surprise": 84,
+      "time": 94,
+      "lowValueRisk": 5
+    },
+    "tags": [
+      "Surprise-Radar"
+    ],
+    "analysis": {
+      "key": "Niederlande vs Japan: Wie oft zwingt Japan den Gegner zu Rückpässen?",
+      "risk": "Teams mit Wucht, zweiten Bällen und vielen Strafraumduellen.",
+      "player": "Wie viele Anschlussläufe gibt es nach dem ersten Ballgewinn?",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe F, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "civ-ecu-2026-06-15",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Fixture aus FIFA-naher Group-E-Liste; Kickoff in deutscher Zeit gespiegelt.",
+    "stage": "group",
+    "group": "Gruppe E",
+    "kickoffGermany": "2026-06-15T01:00:00+02:00",
+    "venue": "Philadelphia Stadium",
+    "teams": [
+      "CIV",
+      "ECU"
+    ],
+    "signals": {
+      "importance": 71,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 72,
+      "surprise": 38,
+      "time": 48,
+      "lowValueRisk": 16
+    },
+    "tags": [
+      "Pfad-relevant"
+    ],
+    "analysis": {
+      "key": "Côte d'Ivoire vs Ecuador: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe E, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "swe-tun-2026-06-15",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Fixture aus Group-F- und Broadcast-Listen; Kickoff in deutscher Zeit gespiegelt.",
+    "stage": "group",
+    "group": "Gruppe F",
+    "kickoffGermany": "2026-06-15T04:00:00+02:00",
+    "venue": "Monterrey Stadium",
+    "teams": [
+      "SWE",
+      "TUN"
+    ],
+    "signals": {
+      "importance": 65,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 62,
+      "time": 14,
+      "lowValueRisk": 39
+    },
+    "tags": [
+      "Spoilerfrei"
+    ],
+    "analysis": {
+      "key": "Schweden vs Tunesien: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe F, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "esp-cpv-2026-06-15",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Spain v Cabo Verde ist in Group-H-Listen bestätigt; Kickoff aus ET nach CEST normalisiert.",
+    "stage": "group",
+    "group": "Gruppe H",
+    "kickoffGermany": "2026-06-15T18:00:00+02:00",
+    "venue": "Atlanta Stadium",
+    "teams": [
+      "ESP",
+      "CPV"
+    ],
+    "signals": {
+      "importance": 86,
+      "tactical": 67,
+      "entertainment": 84,
+      "focus": 93,
+      "surprise": 38,
+      "time": 94,
+      "lowValueRisk": 0
+    },
+    "tags": [
+      "Fokus-Team",
+      "Pfad-relevant"
+    ],
+    "analysis": {
+      "key": "Spanien vs Kap Verde: Wie oft kommt Spanien hinter den gegnerischen Sechser?",
+      "risk": "Wenn der Gegner die erste Gegenpressingwelle überspielt, muss die Restverteidigung große Räume kontrollieren.",
+      "player": "Wird der ballferne Flügel geduldig vorbereitet?",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe H, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "bel-egy-2026-06-15",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Belgium v Egypt ist in aktuellen Group-G-Listen geführt; CEST aus UK-Zeit normalisiert.",
+    "stage": "group",
+    "group": "Gruppe G",
+    "kickoffGermany": "2026-06-15T21:00:00+02:00",
+    "venue": "Seattle Stadium",
+    "teams": [
+      "BEL",
+      "EGY"
+    ],
+    "signals": {
+      "importance": 56,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 38,
+      "time": 94,
+      "lowValueRisk": 32
+    },
+    "tags": [],
+    "analysis": {
+      "key": "Belgien vs Ägypten: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe G, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "ksa-uru-2026-06-16",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Saudi Arabia v Uruguay ist in Group-H-Listen bestätigt; Kickoff aus ET nach CEST normalisiert.",
+    "stage": "group",
+    "group": "Gruppe H",
+    "kickoffGermany": "2026-06-16T00:00:00+02:00",
+    "venue": "Miami Stadium",
+    "teams": [
+      "KSA",
+      "URU"
+    ],
+    "signals": {
+      "importance": 70,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 72,
+      "surprise": 38,
+      "time": 48,
+      "lowValueRisk": 16
+    },
+    "tags": [
+      "Pfad-relevant"
+    ],
+    "analysis": {
+      "key": "Saudi-Arabien vs Uruguay: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe H, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "irn-nzl-2026-06-16",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "IR Iran v New Zealand ist in aktuellen Group-G-Listen geführt; CEST aus UK-Zeit normalisiert.",
+    "stage": "group",
+    "group": "Gruppe G",
+    "kickoffGermany": "2026-06-16T03:00:00+02:00",
+    "venue": "Los Angeles Stadium",
+    "teams": [
+      "IRN",
+      "NZL"
+    ],
+    "signals": {
+      "importance": 56,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 38,
+      "time": 28,
+      "lowValueRisk": 42
+    },
+    "tags": [
+      "Spoilerfrei"
+    ],
+    "analysis": {
+      "key": "Iran vs Neuseeland: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe G, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "fra-sen-2026-06-16",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "France v Senegal ist in Group-I-Listen bestätigt; Kickoff aus ET nach CEST normalisiert.",
+    "stage": "group",
+    "group": "Gruppe I",
+    "kickoffGermany": "2026-06-16T21:00:00+02:00",
+    "venue": "New York New Jersey Stadium",
+    "teams": [
+      "FRA",
+      "SEN"
+    ],
+    "signals": {
+      "importance": 86,
+      "tactical": 67,
+      "entertainment": 85,
+      "focus": 94,
+      "surprise": 62,
+      "time": 94,
+      "lowValueRisk": 0
+    },
+    "tags": [
+      "Fokus-Team",
+      "Pfad-relevant"
+    ],
+    "analysis": {
+      "key": "Frankreich vs Senegal: Wie früh findet Frankreich Tiefe hinter der letzten Linie?",
+      "risk": "Wenn das Spiel langsam und eng wird, kann die Chance Creation stärker von Einzelaktionen abhängen.",
+      "player": "Werden Ballgewinne sofort vertikal gemacht?",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe I, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "irq-nor-2026-06-17",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Iraq v Norway ist in Group-I-Listen bestätigt; Norwegen ist Surprise-Team.",
+    "stage": "group",
+    "group": "Gruppe I",
+    "kickoffGermany": "2026-06-17T00:00:00+02:00",
+    "venue": "Boston Stadium",
+    "teams": [
+      "IRQ",
+      "NOR"
+    ],
+    "signals": {
+      "importance": 70,
+      "tactical": 65,
+      "entertainment": 80,
+      "focus": 72,
+      "surprise": 82,
+      "time": 48,
+      "lowValueRisk": 0
+    },
+    "tags": [
+      "Surprise-Radar",
+      "Pfad-relevant"
+    ],
+    "analysis": {
+      "key": "Irak vs Norwegen: Wie oft wird die letzte Linie früh attackiert?",
+      "risk": "Tiefe Blöcke mit guter Kontrolle über zweite Bälle.",
+      "player": "Findet Norwegen zentrale Kreativität vor dem vertikalen Ball?",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe I, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "arg-alg-2026-06-17",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Argentina v Algeria ist in Group-J-Listen bestätigt; Kickoff auf CEST normalisiert.",
+    "stage": "group",
+    "group": "Gruppe J",
+    "kickoffGermany": "2026-06-17T03:00:00+02:00",
+    "venue": "Kansas City Stadium",
+    "teams": [
+      "ARG",
+      "ALG"
+    ],
+    "signals": {
+      "importance": 85,
+      "tactical": 67,
+      "entertainment": 85,
+      "focus": 96,
+      "surprise": 38,
+      "time": 28,
+      "lowValueRisk": 0
+    },
+    "tags": [
+      "Spoilerfrei",
+      "Morgens lesen",
+      "Fokus-Team"
+    ],
+    "analysis": {
+      "key": "Argentinien wird über Rhythmus und Zwischenlinienbesetzung kommen.",
+      "risk": "Wenn Argentinien zu bequem in Ballbesitz kommt, wird es kontrolliert, aber nicht zwingend spektakulär.",
+      "player": "Der freie Mann zwischen Algeriens Mittelfeld- und Abwehrlinie ist der wichtigste Datenpunkt.",
+      "source": "Mixed: Spielplan gespiegelt, Live-Eventdaten fehlen im MVP."
+    }
+  },
+  {
+    "id": "aut-jor-2026-06-17",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Austria v Jordan ist in Group-J-Listen bestätigt; Kickoff auf CEST normalisiert.",
+    "stage": "group",
+    "group": "Gruppe J",
+    "kickoffGermany": "2026-06-17T06:00:00+02:00",
+    "venue": "San Francisco Bay Area Stadium",
+    "teams": [
+      "AUT",
+      "JOR"
+    ],
+    "signals": {
+      "importance": 69,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 72,
+      "surprise": 38,
+      "time": 14,
+      "lowValueRisk": 26
+    },
+    "tags": [
+      "Pfad-relevant",
+      "Spoilerfrei"
+    ],
+    "analysis": {
+      "key": "Österreich vs Jordanien: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe J, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "por-cod-2026-06-17",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Portugal v DR Congo ist in aktuellen Group-K-Listen geführt; CEST aus UK-Zeit normalisiert.",
+    "stage": "group",
+    "group": "Gruppe K",
+    "kickoffGermany": "2026-06-17T19:00:00+02:00",
+    "venue": "Houston Stadium",
+    "teams": [
+      "POR",
+      "COD"
+    ],
+    "signals": {
+      "importance": 58,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 38,
+      "time": 94,
+      "lowValueRisk": 31
+    },
+    "tags": [],
+    "analysis": {
+      "key": "Portugal vs DR Kongo: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe K, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "eng-cro-2026-06-17",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "England v Croatia ist in Group-L-Listen bestätigt; Kickoff auf CEST normalisiert.",
+    "stage": "group",
+    "group": "Gruppe L",
+    "kickoffGermany": "2026-06-17T22:00:00+02:00",
+    "venue": "Dallas Stadium",
+    "teams": [
+      "ENG",
+      "CRO"
+    ],
+    "signals": {
+      "importance": 85,
+      "tactical": 67,
+      "entertainment": 84,
+      "focus": 92,
+      "surprise": 38,
+      "time": 94,
+      "lowValueRisk": 0
+    },
+    "tags": [
+      "Live schauen",
+      "Halbraumduell",
+      "Turnierpfad"
+    ],
+    "analysis": {
+      "key": "Kroatien will Tempo aus dem Spiel nehmen. England muss entscheiden, ob es hoch presst oder lockt.",
+      "risk": "Wenn Englands Achter zu früh springen, öffnen sich diagonale Passwege hinter der ersten Pressinglinie.",
+      "player": "Der spielkippende Akteur ist Englands rechter Achter.",
+      "source": "Mixed: Gruppenduell gespiegelt, taktische Tiefe im MVP modelliert."
+    }
+  },
+  {
+    "id": "gha-pan-2026-06-18",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Ghana v Panama ist in Group-L-Listen bestätigt; Kickoff auf CEST normalisiert.",
+    "stage": "group",
+    "group": "Gruppe L",
+    "kickoffGermany": "2026-06-18T01:00:00+02:00",
+    "venue": "Toronto Stadium",
+    "teams": [
+      "GHA",
+      "PAN"
+    ],
+    "signals": {
+      "importance": 69,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 72,
+      "surprise": 38,
+      "time": 48,
+      "lowValueRisk": 16
+    },
+    "tags": [
+      "Pfad-relevant"
+    ],
+    "analysis": {
+      "key": "Ghana vs Panama: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe L, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "uzb-col-2026-06-18",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Uzbekistan v Colombia ist in aktuellen Group-K-Listen geführt; CEST aus UK-Zeit normalisiert.",
+    "stage": "group",
+    "group": "Gruppe K",
+    "kickoffGermany": "2026-06-18T04:00:00+02:00",
+    "venue": "Mexico City Stadium",
+    "teams": [
+      "UZB",
+      "COL"
+    ],
+    "signals": {
+      "importance": 58,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 38,
+      "time": 14,
+      "lowValueRisk": 41
+    },
+    "tags": [
+      "Spoilerfrei"
+    ],
+    "analysis": {
+      "key": "Usbekistan vs Kolumbien: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe K, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "cze-rsa-2026-06-18",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Czechia v South Africa ist in aktuellen Group-A-Listen geführt; CEST aus UK-Zeit normalisiert.",
+    "stage": "group",
+    "group": "Gruppe A",
+    "kickoffGermany": "2026-06-18T18:00:00+02:00",
+    "venue": "Atlanta Stadium",
+    "teams": [
+      "CZE",
+      "RSA"
+    ],
+    "signals": {
+      "importance": 52,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 38,
+      "time": 94,
+      "lowValueRisk": 33
+    },
+    "tags": [],
+    "analysis": {
+      "key": "Tschechien vs Südafrika: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe A, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "sui-bih-2026-06-18",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Switzerland v Bosnia and Herzegovina ist in aktuellen Group-B-Listen geführt; CEST aus UK-Zeit normalisiert.",
+    "stage": "group",
+    "group": "Gruppe B",
+    "kickoffGermany": "2026-06-18T21:00:00+02:00",
+    "venue": "Los Angeles Stadium",
+    "teams": [
+      "SUI",
+      "BIH"
+    ],
+    "signals": {
+      "importance": 54,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 38,
+      "time": 94,
+      "lowValueRisk": 32
+    },
+    "tags": [],
+    "analysis": {
+      "key": "Schweiz vs Bosnien und Herzegowina: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe B, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "can-qat-2026-06-19",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Canada v Qatar ist in aktuellen Group-B-Listen geführt; CEST aus UK-Zeit normalisiert.",
+    "stage": "group",
+    "group": "Gruppe B",
+    "kickoffGermany": "2026-06-19T00:00:00+02:00",
+    "venue": "BC Place Vancouver",
+    "teams": [
+      "CAN",
+      "QAT"
+    ],
+    "signals": {
+      "importance": 54,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 38,
+      "time": 48,
+      "lowValueRisk": 32
+    },
+    "tags": [],
+    "analysis": {
+      "key": "Kanada vs Katar: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe B, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "mex-kor-2026-06-19",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Mexico v Korea Republic ist in aktuellen Group-A-Listen geführt; CEST aus UK-Zeit normalisiert.",
+    "stage": "group",
+    "group": "Gruppe A",
+    "kickoffGermany": "2026-06-19T03:00:00+02:00",
+    "venue": "Guadalajara Stadium",
+    "teams": [
+      "MEX",
+      "KOR"
+    ],
+    "signals": {
+      "importance": 52,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 38,
+      "time": 28,
+      "lowValueRisk": 43
+    },
+    "tags": [
+      "Spoilerfrei"
+    ],
+    "analysis": {
+      "key": "Mexiko vs Südkorea: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe A, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "usa-aus-2026-06-19",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "United States v Australia ist in aktuellen Group-D-Listen geführt; CEST aus UK-Zeit normalisiert.",
+    "stage": "group",
+    "group": "Gruppe D",
+    "kickoffGermany": "2026-06-19T21:00:00+02:00",
+    "venue": "Seattle Stadium",
+    "teams": [
+      "USA",
+      "AUS"
+    ],
+    "signals": {
+      "importance": 61,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 62,
+      "time": 94,
+      "lowValueRisk": 30
+    },
+    "tags": [],
+    "analysis": {
+      "key": "USA vs Australien: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe D, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "sco-mar-2026-06-20",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Scotland v Morocco ist in Group-C-Listen bestätigt; Kickoff auf CEST normalisiert.",
+    "stage": "group",
+    "group": "Gruppe C",
+    "kickoffGermany": "2026-06-20T00:00:00+02:00",
+    "venue": "Boston Stadium",
+    "teams": [
+      "SCO",
+      "MAR"
+    ],
+    "signals": {
+      "importance": 69,
+      "tactical": 65,
+      "entertainment": 82,
+      "focus": 72,
+      "surprise": 86,
+      "time": 48,
+      "lowValueRisk": 0
+    },
+    "tags": [
+      "Surprise-Radar",
+      "Pfad-relevant"
+    ],
+    "analysis": {
+      "key": "Schottland vs Marokko: Lockt Marokko Brasilien oder andere Favoriten konsequent an die Linie?",
+      "risk": "Geduldige Gegner mit schnellen Seitenwechseln.",
+      "player": "Wie sauber ist der erste Pass nach Ballgewinn?",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe C, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "bra-hai-2026-06-20",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Brazil v Haiti ist in aktuellen Spielplanlisten gespiegelt; Kickoff in deutscher Zeit markiert als Mixed.",
+    "stage": "group",
+    "group": "Gruppe C",
+    "kickoffGermany": "2026-06-20T02:30:00+02:00",
+    "venue": "Philadelphia Stadium",
+    "teams": [
+      "BRA",
+      "HAI"
+    ],
+    "signals": {
+      "importance": 85,
+      "tactical": 67,
+      "entertainment": 85,
+      "focus": 94,
+      "surprise": 62,
+      "time": 28,
+      "lowValueRisk": 0
+    },
+    "tags": [
+      "Fokus-Team",
+      "Pfad-relevant",
+      "Spoilerfrei"
+    ],
+    "analysis": {
+      "key": "Brasilien vs Haiti: Gewinnt Brasilien die ersten 1-gegen-1s am Flügel?",
+      "risk": "Nach riskanten Dribblings können offene Räume hinter dem Ball entstehen.",
+      "player": "Wie schnell kommt die Rückverlagerung nach geblocktem Dribbling?",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe C, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "ned-swe-2026-06-20",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Netherlands v Sweden ist in Group-F-Kickofflisten bestätigt.",
+    "stage": "group",
+    "group": "Gruppe F",
+    "kickoffGermany": "2026-06-20T19:00:00+02:00",
+    "venue": "Houston Stadium",
+    "teams": [
+      "NED",
+      "SWE"
+    ],
+    "signals": {
+      "importance": 65,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 62,
+      "time": 94,
+      "lowValueRisk": 29
+    },
+    "tags": [],
+    "analysis": {
+      "key": "Niederlande vs Schweden: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe F, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "ger-civ-2026-06-20",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Germany v Côte d'Ivoire ist in deutschen Kickofflisten und Group-E-Listen gespiegelt.",
+    "stage": "group",
+    "group": "Gruppe E",
+    "kickoffGermany": "2026-06-20T22:00:00+02:00",
+    "venue": "Toronto Stadium",
+    "teams": [
+      "GER",
+      "CIV"
+    ],
+    "signals": {
+      "importance": 87,
+      "tactical": 67,
+      "entertainment": 86,
+      "focus": 98,
+      "surprise": 38,
+      "time": 94,
+      "lowValueRisk": 0
+    },
+    "tags": [
+      "Fokus-Team",
+      "Pfad-relevant"
+    ],
+    "analysis": {
+      "key": "Deutschland vs Côte d'Ivoire: Ist der Sechserraum nach Ballverlusten besetzt?",
+      "risk": "Bei zu vielen Spielern vor dem Ball entstehen Konterräume neben und hinter der Sechserzone.",
+      "player": "Schaffen die Achter Tiefe ohne die Mitte zu leeren?",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe E, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "ecu-cuw-2026-06-21",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Ecuador v Curaçao ist in Group-E-Listen gespiegelt; Kickoff in deutscher Zeit markiert als Mixed.",
+    "stage": "group",
+    "group": "Gruppe E",
+    "kickoffGermany": "2026-06-21T02:00:00+02:00",
+    "venue": "Kansas City Stadium",
+    "teams": [
+      "ECU",
+      "CUW"
+    ],
+    "signals": {
+      "importance": 71,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 72,
+      "surprise": 38,
+      "time": 28,
+      "lowValueRisk": 26
+    },
+    "tags": [
+      "Pfad-relevant",
+      "Spoilerfrei"
+    ],
+    "analysis": {
+      "key": "Ecuador vs Curaçao: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe E, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "tur-par-2026-06-21",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Türkiye v Paraguay ist aus aktuellen Spielplanlisten gespiegelt; Türkei ist Surprise-Team.",
+    "stage": "group",
+    "group": "Gruppe D",
+    "kickoffGermany": "2026-06-21T05:00:00+02:00",
+    "venue": "San Francisco Bay Area Stadium",
+    "teams": [
+      "TUR",
+      "PAR"
+    ],
+    "signals": {
+      "importance": 61,
+      "tactical": 65,
+      "entertainment": 79,
+      "focus": 24,
+      "surprise": 79,
+      "time": 14,
+      "lowValueRisk": 17
+    },
+    "tags": [
+      "Surprise-Radar",
+      "Spoilerfrei"
+    ],
+    "analysis": {
+      "key": "Türkei vs Paraguay: Bleibt die Mitte nach Ballverlusten stabil?",
+      "risk": "Kann Spiele zu offen werden lassen, wenn Struktur und Emotion nicht sauber zusammenfinden.",
+      "player": "Wie mutig sind die ersten Pässe nach Ballgewinn?",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe D, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "tun-jpn-2026-06-21",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Tunisia v Japan ist in Group-F-Listen bestätigt; Japan ist Surprise-Team.",
+    "stage": "group",
+    "group": "Gruppe F",
+    "kickoffGermany": "2026-06-21T06:00:00+02:00",
+    "venue": "Monterrey Stadium",
+    "teams": [
+      "TUN",
+      "JPN"
+    ],
+    "signals": {
+      "importance": 65,
+      "tactical": 65,
+      "entertainment": 81,
+      "focus": 24,
+      "surprise": 84,
+      "time": 14,
+      "lowValueRisk": 15
+    },
+    "tags": [
+      "Surprise-Radar",
+      "Spoilerfrei"
+    ],
+    "analysis": {
+      "key": "Tunesien vs Japan: Wie oft zwingt Japan den Gegner zu Rückpässen?",
+      "risk": "Teams mit Wucht, zweiten Bällen und vielen Strafraumduellen.",
+      "player": "Wie viele Anschlussläufe gibt es nach dem ersten Ballgewinn?",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe F, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "esp-ksa-2026-06-21",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Spain v Saudi Arabia ist in Group-H-Listen bestätigt.",
+    "stage": "group",
+    "group": "Gruppe H",
+    "kickoffGermany": "2026-06-21T18:00:00+02:00",
+    "venue": "Atlanta Stadium",
+    "teams": [
+      "ESP",
+      "KSA"
+    ],
+    "signals": {
+      "importance": 86,
+      "tactical": 67,
+      "entertainment": 84,
+      "focus": 93,
+      "surprise": 38,
+      "time": 94,
+      "lowValueRisk": 0
+    },
+    "tags": [
+      "Fokus-Team",
+      "Pfad-relevant"
+    ],
+    "analysis": {
+      "key": "Spanien vs Saudi-Arabien: Wie oft kommt Spanien hinter den gegnerischen Sechser?",
+      "risk": "Wenn der Gegner die erste Gegenpressingwelle überspielt, muss die Restverteidigung große Räume kontrollieren.",
+      "player": "Wird der ballferne Flügel geduldig vorbereitet?",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe H, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "bel-irn-2026-06-21",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Belgium v IR Iran ist in aktuellen Group-G-Listen geführt; CEST aus UK-Zeit normalisiert.",
+    "stage": "group",
+    "group": "Gruppe G",
+    "kickoffGermany": "2026-06-21T21:00:00+02:00",
+    "venue": "Los Angeles Stadium",
+    "teams": [
+      "BEL",
+      "IRN"
+    ],
+    "signals": {
+      "importance": 56,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 38,
+      "time": 94,
+      "lowValueRisk": 32
+    },
+    "tags": [],
+    "analysis": {
+      "key": "Belgien vs Iran: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe G, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "uru-cpv-2026-06-22",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Uruguay v Cabo Verde ist in Group-H-Listen bestätigt.",
+    "stage": "group",
+    "group": "Gruppe H",
+    "kickoffGermany": "2026-06-22T00:00:00+02:00",
+    "venue": "Miami Stadium",
+    "teams": [
+      "URU",
+      "CPV"
+    ],
+    "signals": {
+      "importance": 70,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 72,
+      "surprise": 38,
+      "time": 48,
+      "lowValueRisk": 16
+    },
+    "tags": [
+      "Pfad-relevant"
+    ],
+    "analysis": {
+      "key": "Uruguay vs Kap Verde: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe H, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "nzl-egy-2026-06-22",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "New Zealand v Egypt ist in aktuellen Group-G-Listen geführt; CEST aus UK-Zeit normalisiert.",
+    "stage": "group",
+    "group": "Gruppe G",
+    "kickoffGermany": "2026-06-22T03:00:00+02:00",
+    "venue": "BC Place Vancouver",
+    "teams": [
+      "NZL",
+      "EGY"
+    ],
+    "signals": {
+      "importance": 56,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 38,
+      "time": 28,
+      "lowValueRisk": 42
+    },
+    "tags": [
+      "Spoilerfrei"
+    ],
+    "analysis": {
+      "key": "Neuseeland vs Ägypten: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe G, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "arg-aut-2026-06-22",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Argentina v Austria ist in Group-J-Listen bestätigt.",
+    "stage": "group",
+    "group": "Gruppe J",
+    "kickoffGermany": "2026-06-22T19:00:00+02:00",
+    "venue": "Dallas Stadium",
+    "teams": [
+      "ARG",
+      "AUT"
+    ],
+    "signals": {
+      "importance": 85,
+      "tactical": 67,
+      "entertainment": 85,
+      "focus": 96,
+      "surprise": 38,
+      "time": 94,
+      "lowValueRisk": 0
+    },
+    "tags": [
+      "Fokus-Team",
+      "Pfad-relevant"
+    ],
+    "analysis": {
+      "key": "Argentinien vs Österreich: Findet Argentinien den freien Mann hinter der ersten Linie?",
+      "risk": "Kann phasenweise zu kontrolliert werden, wenn der Gegner tief bleibt und keine Räume zwischen den Linien anbietet.",
+      "player": "Wie gut bleibt die Restverteidigung bei langen Ballbesitzphasen?",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe J, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "fra-irq-2026-06-22",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "France v Iraq ist in Group-I-Listen bestätigt.",
+    "stage": "group",
+    "group": "Gruppe I",
+    "kickoffGermany": "2026-06-22T23:00:00+02:00",
+    "venue": "Philadelphia Stadium",
+    "teams": [
+      "FRA",
+      "IRQ"
+    ],
+    "signals": {
+      "importance": 86,
+      "tactical": 67,
+      "entertainment": 85,
+      "focus": 94,
+      "surprise": 62,
+      "time": 78,
+      "lowValueRisk": 0
+    },
+    "tags": [
+      "Fokus-Team",
+      "Pfad-relevant"
+    ],
+    "analysis": {
+      "key": "Frankreich vs Irak: Wie früh findet Frankreich Tiefe hinter der letzten Linie?",
+      "risk": "Wenn das Spiel langsam und eng wird, kann die Chance Creation stärker von Einzelaktionen abhängen.",
+      "player": "Werden Ballgewinne sofort vertikal gemacht?",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe I, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "nor-sen-2026-06-23",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Norway v Senegal ist in Group-I-Listen bestätigt; Norwegen ist Surprise-Team.",
+    "stage": "group",
+    "group": "Gruppe I",
+    "kickoffGermany": "2026-06-23T02:00:00+02:00",
+    "venue": "New York New Jersey Stadium",
+    "teams": [
+      "NOR",
+      "SEN"
+    ],
+    "signals": {
+      "importance": 70,
+      "tactical": 65,
+      "entertainment": 80,
+      "focus": 72,
+      "surprise": 82,
+      "time": 28,
+      "lowValueRisk": 2
+    },
+    "tags": [
+      "Surprise-Radar",
+      "Pfad-relevant",
+      "Spoilerfrei"
+    ],
+    "analysis": {
+      "key": "Norwegen vs Senegal: Wie oft wird die letzte Linie früh attackiert?",
+      "risk": "Wenn der Gegner Tiefe kontrolliert und Zentrum schließt, kann Norwegen eindimensionaler wirken.",
+      "player": "Findet Norwegen zentrale Kreativität vor dem vertikalen Ball?",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe I, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "jor-alg-2026-06-23",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Jordan v Algeria ist in Group-J-Listen bestätigt.",
+    "stage": "group",
+    "group": "Gruppe J",
+    "kickoffGermany": "2026-06-23T05:00:00+02:00",
+    "venue": "San Francisco Bay Area Stadium",
+    "teams": [
+      "JOR",
+      "ALG"
+    ],
+    "signals": {
+      "importance": 69,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 72,
+      "surprise": 38,
+      "time": 14,
+      "lowValueRisk": 26
+    },
+    "tags": [
+      "Pfad-relevant",
+      "Spoilerfrei"
+    ],
+    "analysis": {
+      "key": "Jordanien vs Algerien: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe J, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "por-uzb-2026-06-23",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Portugal v Uzbekistan ist in aktuellen Group-K-Listen geführt; CEST aus UK-Zeit normalisiert.",
+    "stage": "group",
+    "group": "Gruppe K",
+    "kickoffGermany": "2026-06-23T19:00:00+02:00",
+    "venue": "Houston Stadium",
+    "teams": [
+      "POR",
+      "UZB"
+    ],
+    "signals": {
+      "importance": 58,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 38,
+      "time": 94,
+      "lowValueRisk": 31
+    },
+    "tags": [],
+    "analysis": {
+      "key": "Portugal vs Usbekistan: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe K, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "eng-gha-2026-06-23",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "England v Ghana ist in England/Group-L-Listen bestätigt.",
+    "stage": "group",
+    "group": "Gruppe L",
+    "kickoffGermany": "2026-06-23T22:00:00+02:00",
+    "venue": "Boston Stadium",
+    "teams": [
+      "ENG",
+      "GHA"
+    ],
+    "signals": {
+      "importance": 85,
+      "tactical": 67,
+      "entertainment": 84,
+      "focus": 92,
+      "surprise": 38,
+      "time": 94,
+      "lowValueRisk": 0
+    },
+    "tags": [
+      "Fokus-Team",
+      "Pfad-relevant"
+    ],
+    "analysis": {
+      "key": "England vs Ghana: Wird das Zentrum mutig bespielt oder nur außen zirkuliert?",
+      "risk": "Kann zu vorsichtig werden, wenn der Gegner das Zentrum schließt und Tempo aus dem Spiel nimmt.",
+      "player": "Springen die Achter im Pressing zu früh heraus?",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe L, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "pan-cro-2026-06-24",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Panama v Croatia ist in Group-L-Listen gespiegelt.",
+    "stage": "group",
+    "group": "Gruppe L",
+    "kickoffGermany": "2026-06-24T01:00:00+02:00",
+    "venue": "Toronto Stadium",
+    "teams": [
+      "PAN",
+      "CRO"
+    ],
+    "signals": {
+      "importance": 69,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 72,
+      "surprise": 38,
+      "time": 48,
+      "lowValueRisk": 16
+    },
+    "tags": [
+      "Pfad-relevant"
+    ],
+    "analysis": {
+      "key": "Panama vs Kroatien: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe L, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "col-cod-2026-06-24",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Colombia v DR Congo ist in aktuellen Group-K-Listen geführt; CEST aus UK-Zeit normalisiert.",
+    "stage": "group",
+    "group": "Gruppe K",
+    "kickoffGermany": "2026-06-24T04:00:00+02:00",
+    "venue": "Guadalajara Stadium",
+    "teams": [
+      "COL",
+      "COD"
+    ],
+    "signals": {
+      "importance": 58,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 38,
+      "time": 14,
+      "lowValueRisk": 41
+    },
+    "tags": [
+      "Spoilerfrei"
+    ],
+    "analysis": {
+      "key": "Kolumbien vs DR Kongo: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe K, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "bih-qat-2026-06-24",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Bosnia and Herzegovina v Qatar ist als paralleles Group-B-Finale geführt; CEST aus UK-Zeit normalisiert.",
+    "stage": "group",
+    "group": "Gruppe B",
+    "kickoffGermany": "2026-06-24T21:00:00+02:00",
+    "venue": "Seattle Stadium",
+    "teams": [
+      "BIH",
+      "QAT"
+    ],
+    "signals": {
+      "importance": 54,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 38,
+      "time": 94,
+      "lowValueRisk": 32
+    },
+    "tags": [],
+    "analysis": {
+      "key": "Bosnien und Herzegowina vs Katar: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe B, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "sui-can-2026-06-24",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Switzerland v Canada ist als paralleles Group-B-Finale geführt; CEST aus UK-Zeit normalisiert.",
+    "stage": "group",
+    "group": "Gruppe B",
+    "kickoffGermany": "2026-06-24T21:00:00+02:00",
+    "venue": "BC Place Vancouver",
+    "teams": [
+      "SUI",
+      "CAN"
+    ],
+    "signals": {
+      "importance": 54,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 38,
+      "time": 94,
+      "lowValueRisk": 32
+    },
+    "tags": [],
+    "analysis": {
+      "key": "Schweiz vs Kanada: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe B, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "mar-hai-2026-06-25",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Morocco v Haiti ist in Group-C-Listen bestätigt; finaler Gruppenspieltag.",
+    "stage": "group",
+    "group": "Gruppe C",
+    "kickoffGermany": "2026-06-25T00:00:00+02:00",
+    "venue": "Atlanta Stadium",
+    "teams": [
+      "MAR",
+      "HAI"
+    ],
+    "signals": {
+      "importance": 78,
+      "tactical": 65,
+      "entertainment": 82,
+      "focus": 72,
+      "surprise": 86,
+      "time": 48,
+      "lowValueRisk": 0
+    },
+    "tags": [
+      "Surprise-Radar",
+      "Pfad-relevant"
+    ],
+    "analysis": {
+      "key": "Marokko vs Haiti: Lockt Marokko Brasilien oder andere Favoriten konsequent an die Linie?",
+      "risk": "Bei langer eigener Ballbesitzphase kann die kreative Durchdringung schwerer fallen.",
+      "player": "Wie sauber ist der erste Pass nach Ballgewinn?",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe C, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "sco-bra-2026-06-25",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Scotland v Brazil ist in Group-C-Listen bestätigt; finaler Gruppenspieltag.",
+    "stage": "group",
+    "group": "Gruppe C",
+    "kickoffGermany": "2026-06-25T00:00:00+02:00",
+    "venue": "Miami Stadium",
+    "teams": [
+      "SCO",
+      "BRA"
+    ],
+    "signals": {
+      "importance": 94,
+      "tactical": 67,
+      "entertainment": 85,
+      "focus": 94,
+      "surprise": 62,
+      "time": 48,
+      "lowValueRisk": 0
+    },
+    "tags": [
+      "Fokus-Team",
+      "Pfad-relevant"
+    ],
+    "analysis": {
+      "key": "Schottland vs Brasilien: Gewinnt Brasilien die ersten 1-gegen-1s am Flügel?",
+      "risk": "Kompakte Pressingfallen mit sauberem Konterausgang.",
+      "player": "Wie schnell kommt die Rückverlagerung nach geblocktem Dribbling?",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe C, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "cze-mex-2026-06-25",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Czechia v Mexico ist als paralleles Group-A-Finale geführt; CEST aus UK-Zeit normalisiert.",
+    "stage": "group",
+    "group": "Gruppe A",
+    "kickoffGermany": "2026-06-25T03:00:00+02:00",
+    "venue": "Mexico City Stadium",
+    "teams": [
+      "CZE",
+      "MEX"
+    ],
+    "signals": {
+      "importance": 61,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 38,
+      "time": 28,
+      "lowValueRisk": 40
+    },
+    "tags": [
+      "Spoilerfrei"
+    ],
+    "analysis": {
+      "key": "Tschechien vs Mexiko: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe A, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "rsa-kor-2026-06-25",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "South Africa v Korea Republic ist als paralleles Group-A-Finale geführt; CEST aus UK-Zeit normalisiert.",
+    "stage": "group",
+    "group": "Gruppe A",
+    "kickoffGermany": "2026-06-25T03:00:00+02:00",
+    "venue": "Monterrey Stadium",
+    "teams": [
+      "RSA",
+      "KOR"
+    ],
+    "signals": {
+      "importance": 61,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 38,
+      "time": 28,
+      "lowValueRisk": 40
+    },
+    "tags": [
+      "Spoilerfrei"
+    ],
+    "analysis": {
+      "key": "Südafrika vs Südkorea: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe A, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "cuw-civ-2026-06-25",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Curaçao v Côte d'Ivoire ist als paralleles Group-E-Finale gespiegelt.",
+    "stage": "group",
+    "group": "Gruppe E",
+    "kickoffGermany": "2026-06-25T22:00:00+02:00",
+    "venue": "Philadelphia Stadium",
+    "teams": [
+      "CUW",
+      "CIV"
+    ],
+    "signals": {
+      "importance": 80,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 72,
+      "surprise": 38,
+      "time": 94,
+      "lowValueRisk": 14
+    },
+    "tags": [
+      "Pfad-relevant"
+    ],
+    "analysis": {
+      "key": "Curaçao vs Côte d'Ivoire: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe E, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "ecu-ger-2026-06-25",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Ecuador v Germany ist in deutschen Kickofflisten bestätigt; finaler Gruppenspieltag.",
+    "stage": "group",
+    "group": "Gruppe E",
+    "kickoffGermany": "2026-06-25T22:00:00+02:00",
+    "venue": "New York New Jersey Stadium",
+    "teams": [
+      "ECU",
+      "GER"
+    ],
+    "signals": {
+      "importance": 96,
+      "tactical": 67,
+      "entertainment": 86,
+      "focus": 98,
+      "surprise": 38,
+      "time": 94,
+      "lowValueRisk": 0
+    },
+    "tags": [
+      "Fokus-Team",
+      "Pfad-relevant"
+    ],
+    "analysis": {
+      "key": "Ecuador vs Deutschland: Ist der Sechserraum nach Ballverlusten besetzt?",
+      "risk": "Gegner mit schnellen Ausbrüchen in den Rücken der Außenverteidiger.",
+      "player": "Schaffen die Achter Tiefe ohne die Mitte zu leeren?",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe E, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "jpn-swe-2026-06-26",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Japan v Sweden ist in Group-F-Kickofflisten bestätigt.",
+    "stage": "group",
+    "group": "Gruppe F",
+    "kickoffGermany": "2026-06-26T01:00:00+02:00",
+    "venue": "Dallas Stadium",
+    "teams": [
+      "JPN",
+      "SWE"
+    ],
+    "signals": {
+      "importance": 74,
+      "tactical": 65,
+      "entertainment": 81,
+      "focus": 24,
+      "surprise": 84,
+      "time": 48,
+      "lowValueRisk": 3
+    },
+    "tags": [
+      "Surprise-Radar"
+    ],
+    "analysis": {
+      "key": "Japan vs Schweden: Wie oft zwingt Japan den Gegner zu Rückpässen?",
+      "risk": "Gegen sehr robuste Strafraumteams kann die letzte Linie unter Druck geraten.",
+      "player": "Wie viele Anschlussläufe gibt es nach dem ersten Ballgewinn?",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe F, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "tun-ned-2026-06-26",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Tunisia v Netherlands ist in Group-F-Kickofflisten bestätigt.",
+    "stage": "group",
+    "group": "Gruppe F",
+    "kickoffGermany": "2026-06-26T01:00:00+02:00",
+    "venue": "Kansas City Stadium",
+    "teams": [
+      "TUN",
+      "NED"
+    ],
+    "signals": {
+      "importance": 74,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 62,
+      "time": 48,
+      "lowValueRisk": 27
+    },
+    "tags": [],
+    "analysis": {
+      "key": "Tunesien vs Niederlande: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe F, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "par-aus-2026-06-26",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Paraguay v Australia ist als paralleles Group-D-Finale geführt; CEST aus UK-Zeit normalisiert.",
+    "stage": "group",
+    "group": "Gruppe D",
+    "kickoffGermany": "2026-06-26T04:00:00+02:00",
+    "venue": "San Francisco Bay Area Stadium",
+    "teams": [
+      "PAR",
+      "AUS"
+    ],
+    "signals": {
+      "importance": 70,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 62,
+      "time": 14,
+      "lowValueRisk": 38
+    },
+    "tags": [
+      "Spoilerfrei"
+    ],
+    "analysis": {
+      "key": "Paraguay vs Australien: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe D, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "tur-usa-2026-06-26",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Türkiye v United States ist als paralleles Group-D-Finale geführt; CEST aus UK-Zeit normalisiert.",
+    "stage": "group",
+    "group": "Gruppe D",
+    "kickoffGermany": "2026-06-26T04:00:00+02:00",
+    "venue": "Los Angeles Stadium",
+    "teams": [
+      "TUR",
+      "USA"
+    ],
+    "signals": {
+      "importance": 70,
+      "tactical": 65,
+      "entertainment": 79,
+      "focus": 24,
+      "surprise": 79,
+      "time": 14,
+      "lowValueRisk": 15
+    },
+    "tags": [
+      "Surprise-Radar",
+      "Spoilerfrei"
+    ],
+    "analysis": {
+      "key": "Türkei vs USA: Bleibt die Mitte nach Ballverlusten stabil?",
+      "risk": "Kann Spiele zu offen werden lassen, wenn Struktur und Emotion nicht sauber zusammenfinden.",
+      "player": "Wie mutig sind die ersten Pässe nach Ballgewinn?",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe D, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "nor-fra-2026-06-26",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Norway v France ist in Group-I-Listen bestätigt; finaler Gruppenspieltag.",
+    "stage": "group",
+    "group": "Gruppe I",
+    "kickoffGermany": "2026-06-26T21:00:00+02:00",
+    "venue": "Boston Stadium",
+    "teams": [
+      "NOR",
+      "FRA"
+    ],
+    "signals": {
+      "importance": 95,
+      "tactical": 82,
+      "entertainment": 94,
+      "focus": 94,
+      "surprise": 82,
+      "time": 94,
+      "lowValueRisk": 0
+    },
+    "tags": [
+      "Fokus-Team",
+      "Surprise-Radar",
+      "Pfad-relevant"
+    ],
+    "analysis": {
+      "key": "Norwegen vs Frankreich: Wie oft wird die letzte Linie früh attackiert?",
+      "risk": "Teams, die Tempo rausnehmen und Frankreich lange verteidigen lassen.",
+      "player": "Findet Norwegen zentrale Kreativität vor dem vertikalen Ball?",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe I, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "sen-irq-2026-06-26",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Senegal v Iraq ist als paralleles Group-I-Finale bestätigt.",
+    "stage": "group",
+    "group": "Gruppe I",
+    "kickoffGermany": "2026-06-26T21:00:00+02:00",
+    "venue": "Toronto Stadium",
+    "teams": [
+      "SEN",
+      "IRQ"
+    ],
+    "signals": {
+      "importance": 79,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 72,
+      "surprise": 62,
+      "time": 94,
+      "lowValueRisk": 14
+    },
+    "tags": [
+      "Pfad-relevant"
+    ],
+    "analysis": {
+      "key": "Senegal vs Irak: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe I, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "cpv-ksa-2026-06-27",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Cabo Verde v Saudi Arabia ist in Group-H-Listen bestätigt; finaler Gruppenspieltag.",
+    "stage": "group",
+    "group": "Gruppe H",
+    "kickoffGermany": "2026-06-27T02:00:00+02:00",
+    "venue": "Houston Stadium",
+    "teams": [
+      "CPV",
+      "KSA"
+    ],
+    "signals": {
+      "importance": 79,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 72,
+      "surprise": 38,
+      "time": 28,
+      "lowValueRisk": 24
+    },
+    "tags": [
+      "Pfad-relevant",
+      "Spoilerfrei"
+    ],
+    "analysis": {
+      "key": "Kap Verde vs Saudi-Arabien: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe H, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "uru-esp-2026-06-27",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Uruguay v Spain ist in Group-H-Listen bestätigt; finaler Gruppenspieltag.",
+    "stage": "group",
+    "group": "Gruppe H",
+    "kickoffGermany": "2026-06-27T02:00:00+02:00",
+    "venue": "Guadalajara Stadium",
+    "teams": [
+      "URU",
+      "ESP"
+    ],
+    "signals": {
+      "importance": 95,
+      "tactical": 67,
+      "entertainment": 84,
+      "focus": 93,
+      "surprise": 38,
+      "time": 28,
+      "lowValueRisk": 0
+    },
+    "tags": [
+      "Live schauen",
+      "Stilkontrast",
+      "Top-Dossier"
+    ],
+    "analysis": {
+      "key": "Spanien will den Gegner verschieben, Uruguay will das Spiel in Zweikämpfe und zweite Bälle ziehen.",
+      "risk": "Spaniens Restverteidigung wird nach Seitenwechseln getestet.",
+      "player": "Der spanische linke Achter ist der Taktikdetektor.",
+      "source": "Mixed: Gruppenduell gespiegelt, taktische Tiefe im MVP modelliert."
+    }
+  },
+  {
+    "id": "egy-irn-2026-06-27",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Egypt v IR Iran ist als paralleles Group-G-Finale geführt; CEST aus UK-Zeit normalisiert.",
+    "stage": "group",
+    "group": "Gruppe G",
+    "kickoffGermany": "2026-06-27T05:00:00+02:00",
+    "venue": "Seattle Stadium",
+    "teams": [
+      "EGY",
+      "IRN"
+    ],
+    "signals": {
+      "importance": 65,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 38,
+      "time": 14,
+      "lowValueRisk": 39
+    },
+    "tags": [
+      "Spoilerfrei"
+    ],
+    "analysis": {
+      "key": "Ägypten vs Iran: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe G, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "nzl-bel-2026-06-27",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "New Zealand v Belgium ist als paralleles Group-G-Finale geführt; CEST aus UK-Zeit normalisiert.",
+    "stage": "group",
+    "group": "Gruppe G",
+    "kickoffGermany": "2026-06-27T05:00:00+02:00",
+    "venue": "BC Place Vancouver",
+    "teams": [
+      "NZL",
+      "BEL"
+    ],
+    "signals": {
+      "importance": 65,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 38,
+      "time": 14,
+      "lowValueRisk": 39
+    },
+    "tags": [
+      "Spoilerfrei"
+    ],
+    "analysis": {
+      "key": "Neuseeland vs Belgien: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe G, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "cro-gha-2026-06-27",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Croatia v Ghana ist als paralleles Group-L-Finale gespiegelt.",
+    "stage": "group",
+    "group": "Gruppe L",
+    "kickoffGermany": "2026-06-27T23:00:00+02:00",
+    "venue": "Philadelphia Stadium",
+    "teams": [
+      "CRO",
+      "GHA"
+    ],
+    "signals": {
+      "importance": 78,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 72,
+      "surprise": 38,
+      "time": 78,
+      "lowValueRisk": 14
+    },
+    "tags": [
+      "Pfad-relevant"
+    ],
+    "analysis": {
+      "key": "Kroatien vs Ghana: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe L, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "pan-eng-2026-06-27",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Panama v England ist in England/Group-L-Listen bestätigt; finaler Gruppenspieltag.",
+    "stage": "group",
+    "group": "Gruppe L",
+    "kickoffGermany": "2026-06-27T23:00:00+02:00",
+    "venue": "New York New Jersey Stadium",
+    "teams": [
+      "PAN",
+      "ENG"
+    ],
+    "signals": {
+      "importance": 94,
+      "tactical": 67,
+      "entertainment": 84,
+      "focus": 92,
+      "surprise": 38,
+      "time": 78,
+      "lowValueRisk": 0
+    },
+    "tags": [
+      "Fokus-Team",
+      "Pfad-relevant"
+    ],
+    "analysis": {
+      "key": "Panama vs England: Wird das Zentrum mutig bespielt oder nur außen zirkuliert?",
+      "risk": "Teams mit hoher Pressingresistenz und guter Ballzirkulation.",
+      "player": "Springen die Achter im Pressing zu früh heraus?",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe L, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "cod-uzb-2026-06-28",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "DR Congo v Uzbekistan ist als paralleles Group-K-Finale geführt; CEST aus UK-Zeit normalisiert.",
+    "stage": "group",
+    "group": "Gruppe K",
+    "kickoffGermany": "2026-06-28T01:30:00+02:00",
+    "venue": "Atlanta Stadium",
+    "teams": [
+      "COD",
+      "UZB"
+    ],
+    "signals": {
+      "importance": 67,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 38,
+      "time": 48,
+      "lowValueRisk": 29
+    },
+    "tags": [],
+    "analysis": {
+      "key": "DR Kongo vs Usbekistan: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe K, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "col-por-2026-06-28",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Colombia v Portugal ist als paralleles Group-K-Finale geführt; CEST aus UK-Zeit normalisiert.",
+    "stage": "group",
+    "group": "Gruppe K",
+    "kickoffGermany": "2026-06-28T01:30:00+02:00",
+    "venue": "Miami Stadium",
+    "teams": [
+      "COL",
+      "POR"
+    ],
+    "signals": {
+      "importance": 67,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 24,
+      "surprise": 38,
+      "time": 48,
+      "lowValueRisk": 29
+    },
+    "tags": [],
+    "analysis": {
+      "key": "Kolumbien vs Portugal: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe K, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "alg-aut-2026-06-28",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Algeria v Austria ist als paralleles Group-J-Finale bestätigt.",
+    "stage": "group",
+    "group": "Gruppe J",
+    "kickoffGermany": "2026-06-28T04:00:00+02:00",
+    "venue": "Kansas City Stadium",
+    "teams": [
+      "ALG",
+      "AUT"
+    ],
+    "signals": {
+      "importance": 78,
+      "tactical": 50,
+      "entertainment": 64,
+      "focus": 72,
+      "surprise": 38,
+      "time": 14,
+      "lowValueRisk": 24
+    },
+    "tags": [
+      "Pfad-relevant",
+      "Spoilerfrei"
+    ],
+    "analysis": {
+      "key": "Algerien vs Österreich: Score-Signale nach Fokus, Pfad und Uhrzeit beobachten.",
+      "risk": "Low-Value-Risiko entsteht, wenn keine klare taktische Story sichtbar wird.",
+      "player": "Der wichtigste Beobachtungspunkt ist der erste saubere Zugriff im Zentrum.",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe J, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  },
+  {
+    "id": "jor-arg-2026-06-28",
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "analysisLevel": "model",
+    "scoreSignalsSource": "auto-normalized",
+    "sourceNote": "Jordan v Argentina ist in Group-J-Listen bestätigt; finaler Gruppenspieltag.",
+    "stage": "group",
+    "group": "Gruppe J",
+    "kickoffGermany": "2026-06-28T04:00:00+02:00",
+    "venue": "Dallas Stadium",
+    "teams": [
+      "JOR",
+      "ARG"
+    ],
+    "signals": {
+      "importance": 94,
+      "tactical": 67,
+      "entertainment": 85,
+      "focus": 96,
+      "surprise": 38,
+      "time": 14,
+      "lowValueRisk": 0
+    },
+    "tags": [
+      "Fokus-Team",
+      "Pfad-relevant",
+      "Spoilerfrei"
+    ],
+    "analysis": {
+      "key": "Jordanien vs Argentinien: Findet Argentinien den freien Mann hinter der ersten Linie?",
+      "risk": "Sehr kompakte Blöcke mit schnellen diagonalen Kontern.",
+      "player": "Wie gut bleibt die Restverteidigung bei langen Ballbesitzphasen?",
+      "source": "Auto-Modell: aus Teamprofilen, Gruppe J, Pfad-Relevanz und Uhrzeit abgeleitet."
+    }
+  }
+]

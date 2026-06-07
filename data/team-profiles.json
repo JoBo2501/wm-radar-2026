@@ -1,0 +1,182 @@
+[
+  {
+    "code": "ARG",
+    "level": "seed",
+    "identity": "Turnierkontrolle mit Rhythmuswechseln, enger Zwischenlinienbesetzung und sehr bewusstem Spielmanagement.",
+    "buildUp": "Geduldiger Aufbau, viele kleine Verbindungen im Zentrum, danach Beschleunigung über freie Halbräume.",
+    "pressing": "Situativ aggressiv, oft mit klaren Triggern nach Rückpässen oder schlechten ersten Kontakten.",
+    "transition": "Nach Ballverlusten eher Kontrolle zurückholen als wildes Gegenpressing über 90 Minuten.",
+    "setPieces": "Gefährlich über präzise erste Kontakte, zweite Bälle und gute Blockbewegungen.",
+    "weakness": "Kann phasenweise zu kontrolliert werden, wenn der Gegner tief bleibt und keine Räume zwischen den Linien anbietet.",
+    "watchCues": [
+      "Findet Argentinien den freien Mann hinter der ersten Linie?",
+      "Wie gut bleibt die Restverteidigung bei langen Ballbesitzphasen?",
+      "Wird Tempo bewusst angezogen oder bleibt das Spiel im Verwaltungsmodus?"
+    ],
+    "bestAgainst": "Gegner, die im Zentrum Passfenster öffnen.",
+    "dangerAgainst": "Sehr kompakte Blöcke mit schnellen diagonalen Kontern.",
+    "confidence": 62
+  },
+  {
+    "code": "BRA",
+    "level": "seed",
+    "identity": "Individuelle Überlegenheit, Dribblingdruck, schnelle Verlagerungen und hohe Gefahr aus offenen Räumen.",
+    "buildUp": "Aufbau sucht häufig die Isolation am Flügel und den schnellen Anschluss in den Halbraum.",
+    "pressing": "Kann hoch zustellen, ist aber besonders gefährlich, wenn Ballgewinne sofort in Tempo umschlagen.",
+    "transition": "Sehr hohe Upside nach Ballgewinnen, solange die Absicherung hinter Dribblings sauber steht.",
+    "setPieces": "Gute Wucht und Timing im Strafraum, aber nicht der zentrale Identitätsanker.",
+    "weakness": "Nach riskanten Dribblings können offene Räume hinter dem Ball entstehen.",
+    "watchCues": [
+      "Gewinnt Brasilien die ersten 1-gegen-1s am Flügel?",
+      "Wie schnell kommt die Rückverlagerung nach geblocktem Dribbling?",
+      "Bleibt der ballferne Raum abgesichert?"
+    ],
+    "bestAgainst": "Mannorientierte Gegner, die isolierte Duelle zulassen.",
+    "dangerAgainst": "Kompakte Pressingfallen mit sauberem Konterausgang.",
+    "confidence": 64
+  },
+  {
+    "code": "ESP",
+    "level": "seed",
+    "identity": "Positionsspiel, Ballzirkulation, Gegenpressing und permanentes Bespielen der Halbräume.",
+    "buildUp": "Strukturierter Aufbau mit klaren Höhenstaffelungen und vielen kleinen Abständen.",
+    "pressing": "Direktes Gegenpressing nach Ballverlusten, um den Gegner in dessen erster Aktion zu ersticken.",
+    "transition": "Offensiv stark nach sofortigen Rückeroberungen, defensiv anfällig bei überspieltem Gegenpressing.",
+    "setPieces": "Mehr Präzision und zweite Bälle als reine Kopfballwucht.",
+    "weakness": "Wenn der Gegner die erste Gegenpressingwelle überspielt, muss die Restverteidigung große Räume kontrollieren.",
+    "watchCues": [
+      "Wie oft kommt Spanien hinter den gegnerischen Sechser?",
+      "Wird der ballferne Flügel geduldig vorbereitet?",
+      "Wie stabil ist die Absicherung nach Seitenwechseln?"
+    ],
+    "bestAgainst": "Teams, die zu breit oder zu passiv verteidigen.",
+    "dangerAgainst": "Direkte Gegner mit Tempo in den Rücken der Achter.",
+    "confidence": 66
+  },
+  {
+    "code": "GER",
+    "level": "seed",
+    "identity": "Ballbesitz, flexible Achterrollen, starke Kombinationsräume und ein permanentes Restverteidigungs-Thema.",
+    "buildUp": "Viele Dreiecke im Zentrum, Außenverteidigerhöhen variabel, Spielverlagerungen als Öffner.",
+    "pressing": "Gegenpressing ist zentral: Deutschland will Ballverluste sofort in neue Angriffe verwandeln.",
+    "transition": "Offensiv gefährlich nach Rückeroberungen, defensiv abhängig von der Balance hinter dem Ball.",
+    "setPieces": "Gute Varianten möglich, besonders bei zweiten Bällen am Strafraumrand.",
+    "weakness": "Bei zu vielen Spielern vor dem Ball entstehen Konterräume neben und hinter der Sechserzone.",
+    "watchCues": [
+      "Ist der Sechserraum nach Ballverlusten besetzt?",
+      "Schaffen die Achter Tiefe ohne die Mitte zu leeren?",
+      "Wird gegen tiefe Gegner genug Tempo erzeugt?"
+    ],
+    "bestAgainst": "Teams, die tief stehen und lange verteidigen müssen.",
+    "dangerAgainst": "Gegner mit schnellen Ausbrüchen in den Rücken der Außenverteidiger.",
+    "confidence": 67
+  },
+  {
+    "code": "ENG",
+    "level": "seed",
+    "identity": "Hohe Einzelqualität, physische Kontrolle, Standards und die Frage nach Tempo im Ballbesitz.",
+    "buildUp": "Kann kontrolliert aufbauen, braucht aber klare Verbindungen zwischen Mittelfeld und letzter Linie.",
+    "pressing": "Hohe Pressingphasen sind möglich, aber Timing und Abstände entscheiden über Stabilität.",
+    "transition": "Stark, wenn Ballgewinne sofort auf Tempo und Tiefenläufe treffen.",
+    "setPieces": "Ein großer Pluspunkt: Wucht, Timing und viele Zielzonen im Strafraum.",
+    "weakness": "Kann zu vorsichtig werden, wenn der Gegner das Zentrum schließt und Tempo aus dem Spiel nimmt.",
+    "watchCues": [
+      "Wird das Zentrum mutig bespielt oder nur außen zirkuliert?",
+      "Springen die Achter im Pressing zu früh heraus?",
+      "Wie viele Standards entstehen aus Druckphasen?"
+    ],
+    "bestAgainst": "Gegner, die Flügelräume und Standards zulassen.",
+    "dangerAgainst": "Teams mit hoher Pressingresistenz und guter Ballzirkulation.",
+    "confidence": 63
+  },
+  {
+    "code": "FRA",
+    "level": "seed",
+    "identity": "Explosive Tiefe, Übergänge, Flügeltempo und enorme individuelle Durchschlagskraft.",
+    "buildUp": "Nicht immer maximal dominant, aber sehr gefährlich, sobald offene Räume entstehen.",
+    "pressing": "Phasenweise kontrolliert statt dauerhaft wild, mit Fokus auf günstige Umschaltmomente.",
+    "transition": "Eine der gefährlichsten Spielphasen: schnelle Läufe, offene Räume, wenige Kontakte.",
+    "setPieces": "Stark durch Athletik, Strafraumpräsenz und zweite Bälle.",
+    "weakness": "Wenn das Spiel langsam und eng wird, kann die Chance Creation stärker von Einzelaktionen abhängen.",
+    "watchCues": [
+      "Wie früh findet Frankreich Tiefe hinter der letzten Linie?",
+      "Werden Ballgewinne sofort vertikal gemacht?",
+      "Bleibt die Struktur stabil, wenn der Gegner lange Ballbesitzphasen hat?"
+    ],
+    "bestAgainst": "Hoch stehende Gegner mit Raum hinter der Kette.",
+    "dangerAgainst": "Teams, die Tempo rausnehmen und Frankreich lange verteidigen lassen.",
+    "confidence": 65
+  },
+  {
+    "code": "MAR",
+    "level": "seed",
+    "identity": "Kompakte Abstände, Pressingfallen, emotionale Intensität und sehr gute Konterfenster.",
+    "buildUp": "Pragmatisch, aber mit klaren Ausgängen über Flügel und diagonale Anschlussaktionen.",
+    "pressing": "Lenkt Gegner gerne in seitliche Fallen und attackiert dann aggressiv.",
+    "transition": "Sehr gefährlich, wenn nach Ballgewinn sofort Raum vor der gegnerischen Restverteidigung da ist.",
+    "setPieces": "Solide Wucht, gefährlich vor allem bei zweiten Bällen und Unordnung.",
+    "weakness": "Bei langer eigener Ballbesitzphase kann die kreative Durchdringung schwerer fallen.",
+    "watchCues": [
+      "Lockt Marokko Brasilien oder andere Favoriten konsequent an die Linie?",
+      "Wie sauber ist der erste Pass nach Ballgewinn?",
+      "Kann Marokko auch selbst geduldig Chancen bauen?"
+    ],
+    "bestAgainst": "Favoriten, die viele Spieler vor dem Ball haben.",
+    "dangerAgainst": "Geduldige Gegner mit schnellen Seitenwechseln.",
+    "confidence": 64
+  },
+  {
+    "code": "JPN",
+    "level": "seed",
+    "identity": "Kollektive Disziplin, Pressingqualität, gute Laufwege und hohe Anpassungsfähigkeit.",
+    "buildUp": "Saubere technische Verbindungen, oft mit schnellem Wechsel zwischen kurz und vertikal.",
+    "pressing": "Sehr koordiniert, mit hoher Bereitschaft, schlechte Körperstellungen sofort zu attackieren.",
+    "transition": "Schnell und kollektiv, aber nicht chaotisch. Viele Anschlussläufe nach Ballgewinn.",
+    "setPieces": "Eher präzise Varianten als pure Physis.",
+    "weakness": "Gegen sehr robuste Strafraumteams kann die letzte Linie unter Druck geraten.",
+    "watchCues": [
+      "Wie oft zwingt Japan den Gegner zu Rückpässen?",
+      "Wie viele Anschlussläufe gibt es nach dem ersten Ballgewinn?",
+      "Kann Japan Standards gegen größere Gegner sauber verteidigen?"
+    ],
+    "bestAgainst": "Aufbauteams mit riskanten Pässen durch das Zentrum.",
+    "dangerAgainst": "Teams mit Wucht, zweiten Bällen und vielen Strafraumduellen.",
+    "confidence": 65
+  },
+  {
+    "code": "NOR",
+    "level": "seed",
+    "identity": "Vertikalität, Zielspielerlogik, klare Rollen und gefährliche Läufe hinter die Linie.",
+    "buildUp": "Sucht schnell den progressiven Anschluss, oft mit klarem Fokus auf zentrale Kreativräume.",
+    "pressing": "Nicht immer extrem hoch, aber gefährlich, wenn der Gegner in vorhersehbare Zonen spielt.",
+    "transition": "Sehr hohes Potenzial, weil wenige Kontakte reichen, um Tiefe zu erzeugen.",
+    "setPieces": "Große Gefahr durch Größe, Timing und Zielzonen.",
+    "weakness": "Wenn der Gegner Tiefe kontrolliert und Zentrum schließt, kann Norwegen eindimensionaler wirken.",
+    "watchCues": [
+      "Wie oft wird die letzte Linie früh attackiert?",
+      "Findet Norwegen zentrale Kreativität vor dem vertikalen Ball?",
+      "Wie viele Standards werden erzwungen?"
+    ],
+    "bestAgainst": "Teams mit hoher Linie und langsamer Rückwärtsbewegung.",
+    "dangerAgainst": "Tiefe Blöcke mit guter Kontrolle über zweite Bälle.",
+    "confidence": 61
+  },
+  {
+    "code": "TUR",
+    "level": "seed",
+    "identity": "Mutiges Zentrum, junge Kreativität, Tempo und eine gewisse kontrollierte Wildheit.",
+    "buildUp": "Kann schnelle Kombinationen durchs Zentrum suchen, nimmt dabei aber auch Risiko.",
+    "pressing": "Aggressiv in Phasen, besonders wenn Momentum und Publikumsdruck entstehen.",
+    "transition": "Gefährlich bei offenen Spielen, aber mit Balance-Risiko hinter dem Ball.",
+    "setPieces": "Gute Schuss- und zweite-Ball-Potenziale rund um den Strafraum.",
+    "weakness": "Kann Spiele zu offen werden lassen, wenn Struktur und Emotion nicht sauber zusammenfinden.",
+    "watchCues": [
+      "Bleibt die Mitte nach Ballverlusten stabil?",
+      "Wie mutig sind die ersten Pässe nach Ballgewinn?",
+      "Kippt das Spiel in kreative Kontrolle oder in offenes Hin und Her?"
+    ],
+    "bestAgainst": "Gegner, die Tempo und Zentrum nicht gut kontrollieren.",
+    "dangerAgainst": "Teams mit ruhiger Ballzirkulation und starker Restverteidigung.",
+    "confidence": 59
+  }
+]

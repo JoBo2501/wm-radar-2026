@@ -1,0 +1,110 @@
+[
+  {
+    "id": "A",
+    "teams": ["MEX", "RSA", "KOR", "CZE"],
+    "pathRelevance": 42,
+    "watchStrategy": "Host-Gruppe beobachten, aber ohne Fokus-Team nur selektiv. Relevant, falls ein möglicher Drittplatzierter in den Pfad eines Favoriten rutscht.",
+    "pathNote": "Kann indirekt über Drittplatzierte relevant werden.",
+    "modelPath": "1A und 2A gehen sicher weiter; 3A kann in mehrere K.o.-Pfade fallen.",
+    "sourceLevel": "mixed"
+  },
+  {
+    "id": "B",
+    "teams": ["CAN", "SUI", "QAT", "BIH"],
+    "pathRelevance": 48,
+    "watchStrategy": "Schweiz und Kanada können taktisch interessant werden; Qatar-Spiele eher Ergebnischeck, wenn kein Upset-Signal entsteht.",
+    "pathNote": "Mögliche Drittplatzierung kann spätere Favoritenpfade beeinflussen.",
+    "modelPath": "Gruppe mit mittlerem Pfadwert, weil kein Fokus-Team direkt betroffen ist.",
+    "sourceLevel": "mixed"
+  },
+  {
+    "id": "C",
+    "teams": ["BRA", "MAR", "HAI", "SCO"],
+    "pathRelevance": 92,
+    "watchStrategy": "Hoch priorisieren: Brasilien ist Fokus-Team, Marokko ist Surprise-Team, und die direkten Duelle haben echten Stilwert.",
+    "pathNote": "Brasiliens Platzierung steuert seinen frühen K.o.-Pfad; Marokko kann den Gruppenschnitt stark verschieben.",
+    "modelPath": "1C/2C sind für Favoriten- und Upset-Pfade hochrelevant; 3C kann als gefährlicher Außenseiter weiterkommen.",
+    "sourceLevel": "mixed"
+  },
+  {
+    "id": "D",
+    "teams": ["USA", "PAR", "AUS", "TUR"],
+    "pathRelevance": 67,
+    "watchStrategy": "Türkei als Surprise-Team scannen, USA wegen Heimvorteil beobachten. Nicht jedes Spiel live, aber viele Highlights lohnen.",
+    "pathNote": "Türkei kann als attraktiver Außenseiter für spätere K.o.-Duelle interessant werden.",
+    "modelPath": "Gruppe mit Upset-Wert, aber ohne direkten Fokus-Team-Anker.",
+    "sourceLevel": "mixed"
+  },
+  {
+    "id": "E",
+    "teams": ["GER", "CUW", "CIV", "ECU"],
+    "pathRelevance": 96,
+    "watchStrategy": "Deutschland-Gruppe vollständig im Blick behalten. Auch Côte d'Ivoire/Ecuador ist relevant, weil es Deutschlands Gruppendynamik beeinflusst.",
+    "pathNote": "Jedes Ergebnis beeinflusst Deutschlands Achtelfinalpfad und mögliche Gegnerqualität.",
+    "modelPath": "1E/2E sind Kernpfade für Deutschland; 3E kann zusätzlich in die Drittplatziertenlogik fallen.",
+    "sourceLevel": "mixed"
+  },
+  {
+    "id": "F",
+    "teams": ["NED", "JPN", "TUN", "SWE"],
+    "pathRelevance": 78,
+    "watchStrategy": "Japan als Surprise-Team und Niederlande als Qualitätsanker: taktisch viele gute Spiele, besonders gegen strukturierte Gegner.",
+    "pathNote": "Kann für spätere Favoriten relevant werden, wenn Japan oder Niederlande als unangenehmer K.o.-Gegner auftauchen.",
+    "modelPath": "1F/2F mit hohem taktischem Gegnerwert; 3F kann gefährlicher Third-Place-Kandidat sein.",
+    "sourceLevel": "mixed"
+  },
+  {
+    "id": "G",
+    "teams": ["BEL", "EGY", "IRN", "NZL"],
+    "pathRelevance": 52,
+    "watchStrategy": "Belgien checken, aber ohne Fokus- oder Surprise-Team eher datengetrieben beobachten.",
+    "pathNote": "Relevanz steigt, wenn Belgien als möglicher K.o.-Gegner in den Favoritenpfad fällt.",
+    "modelPath": "Mittlerer Pfadwert, abhängig von späterer Bracket-Zuordnung.",
+    "sourceLevel": "mixed"
+  },
+  {
+    "id": "H",
+    "teams": ["ESP", "CPV", "KSA", "URU"],
+    "pathRelevance": 94,
+    "watchStrategy": "Spanien-Gruppe hoch priorisieren. Uruguay und Saudi-Arabien machen den Stilkontrast und Gruppenschnitt relevant.",
+    "pathNote": "Spaniens Platzierung bestimmt frühen K.o.-Pfad; Uruguay ist ein potenziell harter Pfadstörer.",
+    "modelPath": "1H/2H sind Fokuspfade; 3H kann wegen Uruguay/Saudi-Konstellation unangenehm werden.",
+    "sourceLevel": "mixed"
+  },
+  {
+    "id": "I",
+    "teams": ["FRA", "SEN", "NOR", "IRQ"],
+    "pathRelevance": 93,
+    "watchStrategy": "Frankreich plus Norwegen: hohe Live- und Analysepriorität. Senegal kann die Gruppe physisch/taktisch kompliziert machen.",
+    "pathNote": "Frankreichs Pfad und Norwegens Upset-Potenzial machen fast jedes Gruppenspiel relevant.",
+    "modelPath": "1I/2I sind starke K.o.-Kandidaten; 3I kann sehr gefährlich werden.",
+    "sourceLevel": "mixed"
+  },
+  {
+    "id": "J",
+    "teams": ["ARG", "ALG", "AUT", "JOR"],
+    "pathRelevance": 90,
+    "watchStrategy": "Argentinien priorisieren, die restlichen Spiele als Pfad-/Gegnercheck nutzen.",
+    "pathNote": "Argentiniens Platzierung ist zentral, aber Low-Value-Spiele können trotzdem reichen, wenn keine Upsets entstehen.",
+    "modelPath": "1J/2J bestimmen den Argentina-Pfad; 3J nur relevant bei unerwarteter Tabellenlage.",
+    "sourceLevel": "mixed"
+  },
+  {
+    "id": "K",
+    "teams": ["POR", "UZB", "COL", "COD"],
+    "pathRelevance": 58,
+    "watchStrategy": "Portugal und Kolumbien datengetrieben beobachten. Live nur bei hohem Score oder Pfadverbindung.",
+    "pathNote": "Kann als späterer Gegnerpfad für Fokus-Teams wichtig werden.",
+    "modelPath": "Mittlerer bis hoher Gegnerwert, aber aktuell ohne direkten Fokusanker.",
+    "sourceLevel": "mixed"
+  },
+  {
+    "id": "L",
+    "teams": ["ENG", "CRO", "GHA", "PAN"],
+    "pathRelevance": 91,
+    "watchStrategy": "England-Gruppe hoch priorisieren. Kroatien ist als Ballbesitz-/Kontrollgegner besonders analysewürdig.",
+    "pathNote": "Englands Platzierung und Kroatiens Rolle können den frühen K.o.-Pfad stark verändern.",
+    "modelPath": "1L/2L sind Fokuspfade; 3L kann wegen Kroatien/Ghana ebenfalls relevant sein.",
+    "sourceLevel": "mixed"
+  }
+]

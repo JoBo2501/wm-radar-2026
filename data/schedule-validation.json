@@ -1,0 +1,254 @@
+{
+  "generatedAt": "2026-06-07T06:47:11.138Z",
+  "expected": {
+    "totalMatches": 104,
+    "groupMatches": 72,
+    "knockoutMatches": 32,
+    "groups": 12,
+    "matchesPerGroup": 6
+  },
+  "imported": {
+    "totalMatches": 104,
+    "groupMatches": 72,
+    "knockoutMatches": 32,
+    "verifiedGroupMatches": 72,
+    "verifiedKnockoutMatches": 32,
+    "completeGroups": 12
+  },
+  "coverage": {
+    "tournament": 100,
+    "groupStage": 100,
+    "knockout": 100,
+    "verifiedGroupStage": 100,
+    "verifiedKnockout": 100
+  },
+  "status": "structure-ready",
+  "summary": "Turnierstruktur vollstaendig importiert; Teams und Ergebnisse bleiben bis zur Gruppenphase offen.",
+  "issues": {
+    "duplicateFixtures": [],
+    "unknownTeams": [],
+    "invalidGroups": [],
+    "invalidKnockout": [],
+    "warnings": []
+  },
+  "groups": [
+    {
+      "id": "A",
+      "expected": 6,
+      "imported": 6,
+      "missing": 0,
+      "coverage": 100,
+      "complete": true,
+      "missingPairs": [],
+      "duplicatePairs": [],
+      "verified": 6,
+      "mixed": 6,
+      "real": 0,
+      "model": 0
+    },
+    {
+      "id": "B",
+      "expected": 6,
+      "imported": 6,
+      "missing": 0,
+      "coverage": 100,
+      "complete": true,
+      "missingPairs": [],
+      "duplicatePairs": [],
+      "verified": 6,
+      "mixed": 6,
+      "real": 0,
+      "model": 0
+    },
+    {
+      "id": "C",
+      "expected": 6,
+      "imported": 6,
+      "missing": 0,
+      "coverage": 100,
+      "complete": true,
+      "missingPairs": [],
+      "duplicatePairs": [],
+      "verified": 6,
+      "mixed": 6,
+      "real": 0,
+      "model": 0
+    },
+    {
+      "id": "D",
+      "expected": 6,
+      "imported": 6,
+      "missing": 0,
+      "coverage": 100,
+      "complete": true,
+      "missingPairs": [],
+      "duplicatePairs": [],
+      "verified": 6,
+      "mixed": 6,
+      "real": 0,
+      "model": 0
+    },
+    {
+      "id": "E",
+      "expected": 6,
+      "imported": 6,
+      "missing": 0,
+      "coverage": 100,
+      "complete": true,
+      "missingPairs": [],
+      "duplicatePairs": [],
+      "verified": 6,
+      "mixed": 6,
+      "real": 0,
+      "model": 0
+    },
+    {
+      "id": "F",
+      "expected": 6,
+      "imported": 6,
+      "missing": 0,
+      "coverage": 100,
+      "complete": true,
+      "missingPairs": [],
+      "duplicatePairs": [],
+      "verified": 6,
+      "mixed": 6,
+      "real": 0,
+      "model": 0
+    },
+    {
+      "id": "G",
+      "expected": 6,
+      "imported": 6,
+      "missing": 0,
+      "coverage": 100,
+      "complete": true,
+      "missingPairs": [],
+      "duplicatePairs": [],
+      "verified": 6,
+      "mixed": 6,
+      "real": 0,
+      "model": 0
+    },
+    {
+      "id": "H",
+      "expected": 6,
+      "imported": 6,
+      "missing": 0,
+      "coverage": 100,
+      "complete": true,
+      "missingPairs": [],
+      "duplicatePairs": [],
+      "verified": 6,
+      "mixed": 6,
+      "real": 0,
+      "model": 0
+    },
+    {
+      "id": "I",
+      "expected": 6,
+      "imported": 6,
+      "missing": 0,
+      "coverage": 100,
+      "complete": true,
+      "missingPairs": [],
+      "duplicatePairs": [],
+      "verified": 6,
+      "mixed": 6,
+      "real": 0,
+      "model": 0
+    },
+    {
+      "id": "J",
+      "expected": 6,
+      "imported": 6,
+      "missing": 0,
+      "coverage": 100,
+      "complete": true,
+      "missingPairs": [],
+      "duplicatePairs": [],
+      "verified": 6,
+      "mixed": 6,
+      "real": 0,
+      "model": 0
+    },
+    {
+      "id": "K",
+      "expected": 6,
+      "imported": 6,
+      "missing": 0,
+      "coverage": 100,
+      "complete": true,
+      "missingPairs": [],
+      "duplicatePairs": [],
+      "verified": 6,
+      "mixed": 6,
+      "real": 0,
+      "model": 0
+    },
+    {
+      "id": "L",
+      "expected": 6,
+      "imported": 6,
+      "missing": 0,
+      "coverage": 100,
+      "complete": true,
+      "missingPairs": [],
+      "duplicatePairs": [],
+      "verified": 6,
+      "mixed": 6,
+      "real": 0,
+      "model": 0
+    }
+  ],
+  "knockout": {
+    "expected": 32,
+    "imported": 32,
+    "verified": 32,
+    "coverage": 100,
+    "rounds": [
+      {
+        "id": "round-of-32",
+        "label": "Round of 32",
+        "expected": 16,
+        "imported": 16,
+        "complete": true
+      },
+      {
+        "id": "round-of-16",
+        "label": "Achtelfinale",
+        "expected": 8,
+        "imported": 8,
+        "complete": true
+      },
+      {
+        "id": "quarter-final",
+        "label": "Viertelfinale",
+        "expected": 4,
+        "imported": 4,
+        "complete": true
+      },
+      {
+        "id": "semi-final",
+        "label": "Halbfinale",
+        "expected": 2,
+        "imported": 2,
+        "complete": true
+      },
+      {
+        "id": "third-place",
+        "label": "Spiel um Platz 3",
+        "expected": 1,
+        "imported": 1,
+        "complete": true
+      },
+      {
+        "id": "final",
+        "label": "Finale",
+        "expected": 1,
+        "imported": 1,
+        "complete": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,650 @@
+[
+  {
+    "group": "B",
+    "kickoffGermany": "2026-06-13T21:00:00+02:00",
+    "venue": "San Francisco Bay Area Stadium",
+    "teams": ["QAT", "SUI"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Fixture aus FIFA-naher Spielplanliste; Kickoff in deutscher Zeit aus UK/US-Zeitlisten gespiegelt."
+  },
+  {
+    "group": "D",
+    "kickoffGermany": "2026-06-14T03:00:00+02:00",
+    "venue": "Los Angeles Stadium",
+    "teams": ["USA", "PAR"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Fixture aus FIFA-naher Spielplanliste; Kickoff in deutscher Zeit aus UK/US-Zeitlisten gespiegelt."
+  },
+  {
+    "group": "C",
+    "kickoffGermany": "2026-06-14T00:00:00+02:00",
+    "venue": "New York New Jersey Stadium",
+    "teams": ["BRA", "MAR"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Brazil v Morocco ist in aktuellen Group-C- und Broadcast-Listen bestätigt; Kickoff auf CEST normalisiert."
+  },
+  {
+    "group": "C",
+    "kickoffGermany": "2026-06-14T03:00:00+02:00",
+    "venue": "Boston Stadium",
+    "teams": ["HAI", "SCO"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Haiti v Scotland ist in Group-C-Listen bestätigt; Kickoff auf CEST normalisiert."
+  },
+  {
+    "group": "D",
+    "kickoffGermany": "2026-06-14T06:00:00+02:00",
+    "venue": "BC Place Vancouver",
+    "teams": ["AUS", "TUR"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Fixture aus frühen Spielplanlisten; Türkei als Surprise-Team relevant."
+  },
+  {
+    "group": "E",
+    "kickoffGermany": "2026-06-14T19:00:00+02:00",
+    "venue": "Houston Stadium",
+    "teams": ["GER", "CUW"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Germany v Curaçao ist auf FIFA/Team- und Broadcast-Seiten bestätigt; Kickoff in deutscher Zeit gespiegelt."
+  },
+  {
+    "group": "F",
+    "kickoffGermany": "2026-06-14T22:00:00+02:00",
+    "venue": "Dallas Stadium",
+    "teams": ["NED", "JPN"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Netherlands v Japan ist in Group-F-Listen bestätigt; Japan ist Surprise-Team."
+  },
+  {
+    "group": "E",
+    "kickoffGermany": "2026-06-15T01:00:00+02:00",
+    "venue": "Philadelphia Stadium",
+    "teams": ["CIV", "ECU"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Fixture aus FIFA-naher Group-E-Liste; Kickoff in deutscher Zeit gespiegelt."
+  },
+  {
+    "group": "F",
+    "kickoffGermany": "2026-06-15T04:00:00+02:00",
+    "venue": "Monterrey Stadium",
+    "teams": ["SWE", "TUN"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Fixture aus Group-F- und Broadcast-Listen; Kickoff in deutscher Zeit gespiegelt."
+  },
+  {
+    "group": "H",
+    "kickoffGermany": "2026-06-15T18:00:00+02:00",
+    "venue": "Atlanta Stadium",
+    "teams": ["ESP", "CPV"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Spain v Cabo Verde ist in Group-H-Listen bestätigt; Kickoff aus ET nach CEST normalisiert."
+  },
+  {
+    "group": "H",
+    "kickoffGermany": "2026-06-16T00:00:00+02:00",
+    "venue": "Miami Stadium",
+    "teams": ["KSA", "URU"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Saudi Arabia v Uruguay ist in Group-H-Listen bestätigt; Kickoff aus ET nach CEST normalisiert."
+  },
+  {
+    "group": "I",
+    "kickoffGermany": "2026-06-16T21:00:00+02:00",
+    "venue": "New York New Jersey Stadium",
+    "teams": ["FRA", "SEN"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "France v Senegal ist in Group-I-Listen bestätigt; Kickoff aus ET nach CEST normalisiert."
+  },
+  {
+    "group": "I",
+    "kickoffGermany": "2026-06-17T00:00:00+02:00",
+    "venue": "Boston Stadium",
+    "teams": ["IRQ", "NOR"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Iraq v Norway ist in Group-I-Listen bestätigt; Norwegen ist Surprise-Team."
+  },
+  {
+    "group": "J",
+    "kickoffGermany": "2026-06-17T03:00:00+02:00",
+    "venue": "Kansas City Stadium",
+    "teams": ["ARG", "ALG"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Argentina v Algeria ist in Group-J-Listen bestätigt; Kickoff auf CEST normalisiert."
+  },
+  {
+    "group": "J",
+    "kickoffGermany": "2026-06-17T06:00:00+02:00",
+    "venue": "San Francisco Bay Area Stadium",
+    "teams": ["AUT", "JOR"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Austria v Jordan ist in Group-J-Listen bestätigt; Kickoff auf CEST normalisiert."
+  },
+  {
+    "group": "L",
+    "kickoffGermany": "2026-06-17T22:00:00+02:00",
+    "venue": "Dallas Stadium",
+    "teams": ["ENG", "CRO"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "England v Croatia ist in Group-L-Listen bestätigt; Kickoff auf CEST normalisiert."
+  },
+  {
+    "group": "L",
+    "kickoffGermany": "2026-06-18T01:00:00+02:00",
+    "venue": "Toronto Stadium",
+    "teams": ["GHA", "PAN"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Ghana v Panama ist in Group-L-Listen bestätigt; Kickoff auf CEST normalisiert."
+  },
+  {
+    "group": "C",
+    "kickoffGermany": "2026-06-20T00:00:00+02:00",
+    "venue": "Boston Stadium",
+    "teams": ["SCO", "MAR"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Scotland v Morocco ist in Group-C-Listen bestätigt; Kickoff auf CEST normalisiert."
+  },
+  {
+    "group": "C",
+    "kickoffGermany": "2026-06-20T02:30:00+02:00",
+    "venue": "Philadelphia Stadium",
+    "teams": ["BRA", "HAI"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Brazil v Haiti ist in aktuellen Spielplanlisten gespiegelt; Kickoff in deutscher Zeit markiert als Mixed."
+  },
+  {
+    "group": "F",
+    "kickoffGermany": "2026-06-20T19:00:00+02:00",
+    "venue": "Houston Stadium",
+    "teams": ["NED", "SWE"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Netherlands v Sweden ist in Group-F-Kickofflisten bestätigt."
+  },
+  {
+    "group": "E",
+    "kickoffGermany": "2026-06-20T22:00:00+02:00",
+    "venue": "Toronto Stadium",
+    "teams": ["GER", "CIV"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Germany v Côte d'Ivoire ist in deutschen Kickofflisten und Group-E-Listen gespiegelt."
+  },
+  {
+    "group": "D",
+    "kickoffGermany": "2026-06-21T05:00:00+02:00",
+    "venue": "San Francisco Bay Area Stadium",
+    "teams": ["TUR", "PAR"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Türkiye v Paraguay ist aus aktuellen Spielplanlisten gespiegelt; Türkei ist Surprise-Team."
+  },
+  {
+    "group": "F",
+    "kickoffGermany": "2026-06-21T06:00:00+02:00",
+    "venue": "Monterrey Stadium",
+    "teams": ["TUN", "JPN"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Tunisia v Japan ist in Group-F-Listen bestätigt; Japan ist Surprise-Team."
+  },
+  {
+    "group": "E",
+    "kickoffGermany": "2026-06-21T02:00:00+02:00",
+    "venue": "Kansas City Stadium",
+    "teams": ["ECU", "CUW"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Ecuador v Curaçao ist in Group-E-Listen gespiegelt; Kickoff in deutscher Zeit markiert als Mixed."
+  },
+  {
+    "group": "H",
+    "kickoffGermany": "2026-06-21T18:00:00+02:00",
+    "venue": "Atlanta Stadium",
+    "teams": ["ESP", "KSA"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Spain v Saudi Arabia ist in Group-H-Listen bestätigt."
+  },
+  {
+    "group": "H",
+    "kickoffGermany": "2026-06-22T00:00:00+02:00",
+    "venue": "Miami Stadium",
+    "teams": ["URU", "CPV"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Uruguay v Cabo Verde ist in Group-H-Listen bestätigt."
+  },
+  {
+    "group": "I",
+    "kickoffGermany": "2026-06-22T23:00:00+02:00",
+    "venue": "Philadelphia Stadium",
+    "teams": ["FRA", "IRQ"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "France v Iraq ist in Group-I-Listen bestätigt."
+  },
+  {
+    "group": "J",
+    "kickoffGermany": "2026-06-22T19:00:00+02:00",
+    "venue": "Dallas Stadium",
+    "teams": ["ARG", "AUT"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Argentina v Austria ist in Group-J-Listen bestätigt."
+  },
+  {
+    "group": "I",
+    "kickoffGermany": "2026-06-23T02:00:00+02:00",
+    "venue": "New York New Jersey Stadium",
+    "teams": ["NOR", "SEN"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Norway v Senegal ist in Group-I-Listen bestätigt; Norwegen ist Surprise-Team."
+  },
+  {
+    "group": "J",
+    "kickoffGermany": "2026-06-23T05:00:00+02:00",
+    "venue": "San Francisco Bay Area Stadium",
+    "teams": ["JOR", "ALG"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Jordan v Algeria ist in Group-J-Listen bestätigt."
+  },
+  {
+    "group": "L",
+    "kickoffGermany": "2026-06-23T22:00:00+02:00",
+    "venue": "Boston Stadium",
+    "teams": ["ENG", "GHA"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "England v Ghana ist in England/Group-L-Listen bestätigt."
+  },
+  {
+    "group": "L",
+    "kickoffGermany": "2026-06-24T01:00:00+02:00",
+    "venue": "Toronto Stadium",
+    "teams": ["PAN", "CRO"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Panama v Croatia ist in Group-L-Listen gespiegelt."
+  },
+  {
+    "group": "C",
+    "kickoffGermany": "2026-06-25T00:00:00+02:00",
+    "venue": "Miami Stadium",
+    "teams": ["SCO", "BRA"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Scotland v Brazil ist in Group-C-Listen bestätigt; finaler Gruppenspieltag."
+  },
+  {
+    "group": "C",
+    "kickoffGermany": "2026-06-25T00:00:00+02:00",
+    "venue": "Atlanta Stadium",
+    "teams": ["MAR", "HAI"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Morocco v Haiti ist in Group-C-Listen bestätigt; finaler Gruppenspieltag."
+  },
+  {
+    "group": "E",
+    "kickoffGermany": "2026-06-25T22:00:00+02:00",
+    "venue": "New York New Jersey Stadium",
+    "teams": ["ECU", "GER"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Ecuador v Germany ist in deutschen Kickofflisten bestätigt; finaler Gruppenspieltag."
+  },
+  {
+    "group": "E",
+    "kickoffGermany": "2026-06-25T22:00:00+02:00",
+    "venue": "Philadelphia Stadium",
+    "teams": ["CUW", "CIV"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Curaçao v Côte d'Ivoire ist als paralleles Group-E-Finale gespiegelt."
+  },
+  {
+    "group": "F",
+    "kickoffGermany": "2026-06-26T01:00:00+02:00",
+    "venue": "Dallas Stadium",
+    "teams": ["JPN", "SWE"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Japan v Sweden ist in Group-F-Kickofflisten bestätigt."
+  },
+  {
+    "group": "F",
+    "kickoffGermany": "2026-06-26T01:00:00+02:00",
+    "venue": "Kansas City Stadium",
+    "teams": ["TUN", "NED"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Tunisia v Netherlands ist in Group-F-Kickofflisten bestätigt."
+  },
+  {
+    "group": "I",
+    "kickoffGermany": "2026-06-26T21:00:00+02:00",
+    "venue": "Boston Stadium",
+    "teams": ["NOR", "FRA"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Norway v France ist in Group-I-Listen bestätigt; finaler Gruppenspieltag."
+  },
+  {
+    "group": "I",
+    "kickoffGermany": "2026-06-26T21:00:00+02:00",
+    "venue": "Toronto Stadium",
+    "teams": ["SEN", "IRQ"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Senegal v Iraq ist als paralleles Group-I-Finale bestätigt."
+  },
+  {
+    "group": "H",
+    "kickoffGermany": "2026-06-27T02:00:00+02:00",
+    "venue": "Houston Stadium",
+    "teams": ["CPV", "KSA"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Cabo Verde v Saudi Arabia ist in Group-H-Listen bestätigt; finaler Gruppenspieltag."
+  },
+  {
+    "group": "H",
+    "kickoffGermany": "2026-06-27T02:00:00+02:00",
+    "venue": "Guadalajara Stadium",
+    "teams": ["URU", "ESP"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Uruguay v Spain ist in Group-H-Listen bestätigt; finaler Gruppenspieltag."
+  },
+  {
+    "group": "L",
+    "kickoffGermany": "2026-06-27T23:00:00+02:00",
+    "venue": "New York New Jersey Stadium",
+    "teams": ["PAN", "ENG"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Panama v England ist in England/Group-L-Listen bestätigt; finaler Gruppenspieltag."
+  },
+  {
+    "group": "L",
+    "kickoffGermany": "2026-06-27T23:00:00+02:00",
+    "venue": "Philadelphia Stadium",
+    "teams": ["CRO", "GHA"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Croatia v Ghana ist als paralleles Group-L-Finale gespiegelt."
+  },
+  {
+    "group": "J",
+    "kickoffGermany": "2026-06-28T04:00:00+02:00",
+    "venue": "Dallas Stadium",
+    "teams": ["JOR", "ARG"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Jordan v Argentina ist in Group-J-Listen bestätigt; finaler Gruppenspieltag."
+  },
+  {
+    "group": "J",
+    "kickoffGermany": "2026-06-28T04:00:00+02:00",
+    "venue": "Kansas City Stadium",
+    "teams": ["ALG", "AUT"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Algeria v Austria ist als paralleles Group-J-Finale bestätigt."
+  },
+  {
+    "group": "A",
+    "kickoffGermany": "2026-06-11T21:00:00+02:00",
+    "venue": "Mexico City Stadium",
+    "teams": ["MEX", "RSA"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Mexico v South Africa ist als Eröffnungsspiel in FIFA- und aktuellen Fixture-Listen geführt; CEST aus UK-Zeit normalisiert."
+  },
+  {
+    "group": "A",
+    "kickoffGermany": "2026-06-12T04:00:00+02:00",
+    "venue": "Guadalajara Stadium",
+    "teams": ["KOR", "CZE"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Korea Republic v Czechia ist in aktuellen Group-A-Listen geführt; CEST aus UK-Zeit normalisiert."
+  },
+  {
+    "group": "A",
+    "kickoffGermany": "2026-06-18T18:00:00+02:00",
+    "venue": "Atlanta Stadium",
+    "teams": ["CZE", "RSA"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Czechia v South Africa ist in aktuellen Group-A-Listen geführt; CEST aus UK-Zeit normalisiert."
+  },
+  {
+    "group": "A",
+    "kickoffGermany": "2026-06-19T03:00:00+02:00",
+    "venue": "Guadalajara Stadium",
+    "teams": ["MEX", "KOR"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Mexico v Korea Republic ist in aktuellen Group-A-Listen geführt; CEST aus UK-Zeit normalisiert."
+  },
+  {
+    "group": "A",
+    "kickoffGermany": "2026-06-25T03:00:00+02:00",
+    "venue": "Mexico City Stadium",
+    "teams": ["CZE", "MEX"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Czechia v Mexico ist als paralleles Group-A-Finale geführt; CEST aus UK-Zeit normalisiert."
+  },
+  {
+    "group": "A",
+    "kickoffGermany": "2026-06-25T03:00:00+02:00",
+    "venue": "Monterrey Stadium",
+    "teams": ["RSA", "KOR"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "South Africa v Korea Republic ist als paralleles Group-A-Finale geführt; CEST aus UK-Zeit normalisiert."
+  },
+  {
+    "group": "B",
+    "kickoffGermany": "2026-06-12T21:00:00+02:00",
+    "venue": "Toronto Stadium",
+    "teams": ["CAN", "BIH"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Canada v Bosnia and Herzegovina ist in aktuellen Group-B-Listen geführt; CEST aus UK-Zeit normalisiert."
+  },
+  {
+    "group": "B",
+    "kickoffGermany": "2026-06-18T21:00:00+02:00",
+    "venue": "Los Angeles Stadium",
+    "teams": ["SUI", "BIH"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Switzerland v Bosnia and Herzegovina ist in aktuellen Group-B-Listen geführt; CEST aus UK-Zeit normalisiert."
+  },
+  {
+    "group": "B",
+    "kickoffGermany": "2026-06-19T00:00:00+02:00",
+    "venue": "BC Place Vancouver",
+    "teams": ["CAN", "QAT"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Canada v Qatar ist in aktuellen Group-B-Listen geführt; CEST aus UK-Zeit normalisiert."
+  },
+  {
+    "group": "B",
+    "kickoffGermany": "2026-06-24T21:00:00+02:00",
+    "venue": "BC Place Vancouver",
+    "teams": ["SUI", "CAN"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Switzerland v Canada ist als paralleles Group-B-Finale geführt; CEST aus UK-Zeit normalisiert."
+  },
+  {
+    "group": "B",
+    "kickoffGermany": "2026-06-24T21:00:00+02:00",
+    "venue": "Seattle Stadium",
+    "teams": ["BIH", "QAT"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Bosnia and Herzegovina v Qatar ist als paralleles Group-B-Finale geführt; CEST aus UK-Zeit normalisiert."
+  },
+  {
+    "group": "D",
+    "kickoffGermany": "2026-06-19T21:00:00+02:00",
+    "venue": "Seattle Stadium",
+    "teams": ["USA", "AUS"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "United States v Australia ist in aktuellen Group-D-Listen geführt; CEST aus UK-Zeit normalisiert."
+  },
+  {
+    "group": "D",
+    "kickoffGermany": "2026-06-26T04:00:00+02:00",
+    "venue": "Los Angeles Stadium",
+    "teams": ["TUR", "USA"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Türkiye v United States ist als paralleles Group-D-Finale geführt; CEST aus UK-Zeit normalisiert."
+  },
+  {
+    "group": "D",
+    "kickoffGermany": "2026-06-26T04:00:00+02:00",
+    "venue": "San Francisco Bay Area Stadium",
+    "teams": ["PAR", "AUS"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Paraguay v Australia ist als paralleles Group-D-Finale geführt; CEST aus UK-Zeit normalisiert."
+  },
+  {
+    "group": "G",
+    "kickoffGermany": "2026-06-15T21:00:00+02:00",
+    "venue": "Seattle Stadium",
+    "teams": ["BEL", "EGY"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Belgium v Egypt ist in aktuellen Group-G-Listen geführt; CEST aus UK-Zeit normalisiert."
+  },
+  {
+    "group": "G",
+    "kickoffGermany": "2026-06-16T03:00:00+02:00",
+    "venue": "Los Angeles Stadium",
+    "teams": ["IRN", "NZL"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "IR Iran v New Zealand ist in aktuellen Group-G-Listen geführt; CEST aus UK-Zeit normalisiert."
+  },
+  {
+    "group": "G",
+    "kickoffGermany": "2026-06-21T21:00:00+02:00",
+    "venue": "Los Angeles Stadium",
+    "teams": ["BEL", "IRN"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Belgium v IR Iran ist in aktuellen Group-G-Listen geführt; CEST aus UK-Zeit normalisiert."
+  },
+  {
+    "group": "G",
+    "kickoffGermany": "2026-06-22T03:00:00+02:00",
+    "venue": "BC Place Vancouver",
+    "teams": ["NZL", "EGY"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "New Zealand v Egypt ist in aktuellen Group-G-Listen geführt; CEST aus UK-Zeit normalisiert."
+  },
+  {
+    "group": "G",
+    "kickoffGermany": "2026-06-27T05:00:00+02:00",
+    "venue": "Seattle Stadium",
+    "teams": ["EGY", "IRN"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Egypt v IR Iran ist als paralleles Group-G-Finale geführt; CEST aus UK-Zeit normalisiert."
+  },
+  {
+    "group": "G",
+    "kickoffGermany": "2026-06-27T05:00:00+02:00",
+    "venue": "BC Place Vancouver",
+    "teams": ["NZL", "BEL"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "New Zealand v Belgium ist als paralleles Group-G-Finale geführt; CEST aus UK-Zeit normalisiert."
+  },
+  {
+    "group": "K",
+    "kickoffGermany": "2026-06-17T19:00:00+02:00",
+    "venue": "Houston Stadium",
+    "teams": ["POR", "COD"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Portugal v DR Congo ist in aktuellen Group-K-Listen geführt; CEST aus UK-Zeit normalisiert."
+  },
+  {
+    "group": "K",
+    "kickoffGermany": "2026-06-18T04:00:00+02:00",
+    "venue": "Mexico City Stadium",
+    "teams": ["UZB", "COL"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Uzbekistan v Colombia ist in aktuellen Group-K-Listen geführt; CEST aus UK-Zeit normalisiert."
+  },
+  {
+    "group": "K",
+    "kickoffGermany": "2026-06-23T19:00:00+02:00",
+    "venue": "Houston Stadium",
+    "teams": ["POR", "UZB"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Portugal v Uzbekistan ist in aktuellen Group-K-Listen geführt; CEST aus UK-Zeit normalisiert."
+  },
+  {
+    "group": "K",
+    "kickoffGermany": "2026-06-24T04:00:00+02:00",
+    "venue": "Guadalajara Stadium",
+    "teams": ["COL", "COD"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Colombia v DR Congo ist in aktuellen Group-K-Listen geführt; CEST aus UK-Zeit normalisiert."
+  },
+  {
+    "group": "K",
+    "kickoffGermany": "2026-06-28T01:30:00+02:00",
+    "venue": "Miami Stadium",
+    "teams": ["COL", "POR"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "Colombia v Portugal ist als paralleles Group-K-Finale geführt; CEST aus UK-Zeit normalisiert."
+  },
+  {
+    "group": "K",
+    "kickoffGermany": "2026-06-28T01:30:00+02:00",
+    "venue": "Atlanta Stadium",
+    "teams": ["COD", "UZB"],
+    "sourceLevel": "mixed",
+    "fixtureVerified": true,
+    "sourceNote": "DR Congo v Uzbekistan ist als paralleles Group-K-Finale geführt; CEST aus UK-Zeit normalisiert."
+  }
+]

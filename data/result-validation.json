@@ -1,0 +1,26 @@
+{
+  "generatedAt": "2026-06-07T06:48:19.907Z",
+  "status": "waiting",
+  "summary": "Noch keine echten Resultate synchronisiert; Projektionsmodus bleibt aktiv.",
+  "source": {
+    "activeSource": "football-data",
+    "sourceLabel": "football-data.org",
+    "generatedAt": "2026-06-07T06:42:26.664Z",
+    "pollMinutes": 10
+  },
+  "issues": {
+    "unknownMatches": [],
+    "invalidScores": [],
+    "duplicateResults": [],
+    "teamMismatches": [],
+    "warnings": []
+  },
+  "coverage": {
+    "groupResults": 0,
+    "knockoutResults": 0,
+    "liveResults": 0,
+    "totalResults": 0,
+    "groupCoverage": 0,
+    "knockoutCoverage": 0
+  }
+}
