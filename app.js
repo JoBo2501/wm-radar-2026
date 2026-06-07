@@ -9,6 +9,8 @@ const {
   knockout,
   matches,
   metadata,
+  postMatchReports,
+  postMatchValidation,
   preferences,
   resultValidation,
   results,
@@ -1651,6 +1653,62 @@ function getPostMatchChecks(match, home, away) {
   ];
 }
 
+function getPostMatchReport(match) {
+  return (postMatchReports?.reports || []).find((report) => report.matchId === match.id) || null;
+}
+
+function getPostMatchReportStatus(report) {
+  if (!report) return "Blueprint";
+  const labels = {
+    draft: "Draft",
+    "provider-synced": "Provider Sync",
+    reviewed: "Reviewed",
+  };
+  return labels[report.status] || report.status;
+}
+
+function renderPostMatchReportPanel(match, home, away) {
+  const report = getPostMatchReport(match);
+  const metricDefinitions = postMatchReports?.metricDefinitions || [];
+
+  if (!report) {
+    return `
+      <div class="insight-card report-hub-card">
+        <span class="briefing-kicker">Post-Match Report Hub</span>
+        <h3>Report-Blueprint ist vorbereitet</h3>
+        <p>${postMatchReports?.sourceNote || "Echte Post-Match-Daten werden nach finalen Ergebnissen ergänzt."}</p>
+        <div class="report-status-row">
+          <span><strong>${getPostMatchReportStatus(report)}</strong><small>Status</small></span>
+          <span><strong>${postMatchValidation?.coverage?.reports || 0}</strong><small>Reports</small></span>
+          <span><strong>${metricDefinitions.length}</strong><small>Metriken</small></span>
+        </div>
+        <ul class="report-blueprint-list">
+          ${metricDefinitions
+            .slice(0, 5)
+            .map((metric) => `<li><strong>${metric.label}</strong><span>${metric.providerTarget}</span></li>`)
+            .join("")}
+        </ul>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="insight-card report-hub-card reviewed">
+      <span class="briefing-kicker">Post-Match Report Hub</span>
+      <h3>${home.code}-${away.code}: Analyse-Audit</h3>
+      <p>${report.summary || "Report liegt vor und wartet auf redaktionelle Auswertung."}</p>
+      <div class="report-status-row">
+        <span><strong>${getPostMatchReportStatus(report)}</strong><small>Status</small></span>
+        <span><strong>${report.recommendationAudit?.postMatchScore ?? "-"}</strong><small>Post Score</small></span>
+        <span><strong>${report.recommendationAudit?.verdict || "offen"}</strong><small>Verdict</small></span>
+      </div>
+      <ul class="report-blueprint-list">
+        ${(report.patterns || []).map((pattern) => `<li><strong>${pattern.label}</strong><span>${pattern.note}</span></li>`).join("")}
+      </ul>
+    </div>
+  `;
+}
+
 function renderMatches() {
   const visibleMatches = getVisibleMatches();
 
@@ -1901,6 +1959,7 @@ function renderDossier() {
           .join("")}
       </div>
     </div>
+    ${renderPostMatchReportPanel(selectedMatch, home, away)}
     <div class="insight-card post-match-card">
       <span class="briefing-kicker">Nach dem Spiel</span>
       <h3>Validierungsfragen</h3>

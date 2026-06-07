@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "status": "preTournament",
+  "generatedAt": "2026-06-07T00:00:00+02:00",
+  "sourceNote": "Post-Match-Reports sind als Datenmodell vorbereitet. Echte Werte werden nach Spielende aus Ergebnis-, Event-, Tracking- und Analystenquellen ergänzt.",
+  "metricDefinitions": [
+    {
+      "id": "xg",
+      "label": "xG / Chance Quality",
+      "providerTarget": "Opta / StatsBomb",
+      "meaning": "Vergleicht Ergebnis und Chancenqualität, um Scoreboard-Rauschen von echter Dominanz zu trennen."
+    },
+    {
+      "id": "ppda",
+      "label": "PPDA / Pressingdruck",
+      "providerTarget": "Opta / Wyscout",
+      "meaning": "Misst, wie hoch und wie konsequent ein Team ohne Ball Zugriff erzeugt."
+    },
+    {
+      "id": "fieldTilt",
+      "label": "Field Tilt / Territory",
+      "providerTarget": "Opta / StatsBomb",
+      "meaning": "Zeigt, wer das Spiel in gefährlichen Zonen kontrolliert statt nur Ballbesitz zu sammeln."
+    },
+    {
+      "id": "lineBreaking",
+      "label": "Line-Breaking / 360",
+      "providerTarget": "StatsBomb 360 / SkillCorner",
+      "meaning": "Erklärt Pässe, Annahmen und Läufe, die Linien brechen oder Druck überspielen."
+    },
+    {
+      "id": "setPieceThreat",
+      "label": "Set-Piece Threat",
+      "providerTarget": "Opta / Wyscout / TacticAI-Referenz",
+      "meaning": "Bewertet Standards über Zielzonen, zweite Bälle, Blockbewegungen und Abschlussqualität."
+    }
+  ],
+  "reportTemplate": {
+    "requiredFields": [
+      "matchId",
+      "status",
+      "result",
+      "metrics",
+      "patterns",
+      "recommendationAudit",
+      "analystNotes"
+    ],
+    "statusValues": ["draft", "provider-synced", "reviewed"],
+    "recommendationAuditFields": ["preMatchScore", "postMatchScore", "verdict", "learning"]
+  },
+  "reports": []
+}

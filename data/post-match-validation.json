@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-06-07T09:37:57.142Z",
+  "status": "waiting",
+  "summary": "Post-Match-Report-Modell ist vorbereitet; echte Reports entstehen nach finalen Ergebnissen.",
+  "coverage": {
+    "reports": 0,
+    "finalResults": 0,
+    "matchCoverage": 0
+  },
+  "issues": {
+    "unknownMatches": [],
+    "missingFields": [],
+    "invalidMetrics": [],
+    "duplicateReports": [],
+    "missingFinalResults": [],
+    "warnings": [
+      "Noch keine Post-Match-Reports vorhanden; Dossier nutzt Pre-Match-Blueprints."
+    ]
+  }
+}

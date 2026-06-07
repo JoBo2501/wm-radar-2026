@@ -14,6 +14,8 @@ const preferences = readJson("data/preferences.json");
 const teamProfiles = readJson("data/team-profiles.json");
 const analystSources = readJson("data/analyst-sources.json");
 const scheduleValidation = readJson("data/schedule-validation.json");
+const postMatchReports = readJson("data/post-match-reports.json");
+const postMatchValidation = readJson("data/post-match-validation.json");
 
 const focusTeams = teams.filter((team) => team.focus);
 const surpriseTeams = teams
@@ -89,6 +91,16 @@ const data = {
       confidence: resultValidation.status === "synced" ? 90 : resultValidation.status === "critical" ? 35 : 68,
     },
     {
+      label: "Post-Match Reports",
+      value: postMatchValidation.status === "ready" ? "Bereit" : "Blueprint",
+      tone: postMatchValidation.status === "critical" ? "seed" : postMatchValidation.status === "ready" ? "real" : "model",
+      detail:
+        postMatchValidation.status === "ready"
+          ? `${postMatchValidation.coverage.reports} Reports strukturell plausibel.`
+          : "Report-Schema, Metriken und Validierungsfragen sind vorbereitet.",
+      confidence: postMatchValidation.status === "critical" ? 38 : postMatchValidation.status === "ready" ? 84 : 72,
+    },
+    {
       label: "Match Value Score",
       value: "Live berechnet",
       tone: "model",
@@ -102,6 +114,8 @@ const data = {
   analystSources,
   scheduleValidation,
   resultValidation,
+  postMatchReports,
+  postMatchValidation,
   focusTeams,
   filters: [
     { id: "all", label: "Alle" },
@@ -161,5 +175,5 @@ const data = {
 const serialized = JSON.stringify(data, null, 2).replace(/<\/script/gi, "<\\/script");
 writeFileSync("data.js", `window.WMRadarData = ${serialized};\n`, "utf8");
 console.log(
-  `Created data.js from ${teams.length} teams, ${groups.length} groups, ${matches.length} matches, ${knockout.length} knockout slots, ${results.matches.length} results and ${analystSources.pillars.length} source pillars`,
+  `Created data.js from ${teams.length} teams, ${groups.length} groups, ${matches.length} matches, ${knockout.length} knockout slots, ${results.matches.length} results, ${postMatchReports.reports.length} post-match reports and ${analystSources.pillars.length} source pillars`,
 );
