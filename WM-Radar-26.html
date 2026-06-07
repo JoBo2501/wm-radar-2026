@@ -790,6 +790,13 @@ h3 {
   line-height: 1.6;
 }
 
+.section-note {
+  margin: 6px 0 12px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
 .date-chip {
   min-width: max-content;
   padding: 10px 12px;
@@ -4102,6 +4109,7 @@ h3 {
           <div>
             <p class="eyebrow">Heute priorisieren</p>
             <h2 id="matchesTitle">Was heute zählt</h2>
+            <p>Die komplette Tagesauswahl: alle Spiele, sortierbar nach Live, Analyse, Highlights oder Skip.</p>
           </div>
           <div class="date-chip" id="activeDateChip">
             <span>Demo</span>
@@ -4113,6 +4121,7 @@ h3 {
           <div class="command-hero">
             <p class="eyebrow">Tagesbriefing</p>
             <h2 id="commandCenterTitle">Dein Plan für heute + Nacht</h2>
+            <p class="section-note">Die Kurzfassung: Topspiel, wichtigste Entscheidungen und Nachtspiele auf einen Blick.</p>
             <p id="dailyBriefingText">Briefing wird geladen.</p>
             <div class="command-metrics" id="commandMetrics"></div>
           </div>
@@ -4121,7 +4130,7 @@ h3 {
 
           <div class="watch-plan-card">
             <div class="panel-title">
-              <span>Sehplan</span>
+              <span>Watch Plan</span>
               <strong id="watchPlanCount">0 Spiele</strong>
             </div>
             <div class="watch-plan" id="watchPlan"></div>
@@ -4132,6 +4141,7 @@ h3 {
               <span>Morgen ohne Spoiler</span>
               <strong id="morningCount">0 Nachtspiele</strong>
             </div>
+            <p class="section-note">Nur Nachtspiele, die du später nachholen kannst, ohne direkt das Ergebnis zu sehen.</p>
             <div id="morningQueue"></div>
           </div>
         </section>
@@ -4295,7 +4305,7 @@ h3 {
           <div class="section-head compact">
             <div>
               <p class="eyebrow">Seriöser Quellenfilter</p>
-              <h2 id="analystDeskTitle">Gute Quellen</h2>
+              <h2 id="analystDeskTitle">Analyst Desk</h2>
             </div>
             <p>
               Hier entscheidet die App, welchen Daten, Stimmen und KI-Modellen sie vertraut. Kein TV-Laerm,
@@ -10375,7 +10385,7 @@ function renderDailyCommandCenter() {
   }
 
   const [topHome, topAway] = topMatch.matchTeams;
-  dailyBriefingTextEl.textContent = `${formatDate(preferences.baseDate)} + Nacht: Heute führt ${topHome.name} vs ${topAway.name} den Sehplan an. ${liveCount} live, ${analysisCount} Analyse, ${skipCount} Skip.`;
+  dailyBriefingTextEl.textContent = `${formatDate(preferences.baseDate)} + Nacht: Heute führt ${topHome.name} vs ${topAway.name} den Watch Plan an. ${liveCount} live, ${analysisCount} Analyse, ${skipCount} Skip.`;
 
   commandMetricsEl.innerHTML = [
     ["Top-Spiel", `${topHome.code}-${topAway.code}`],

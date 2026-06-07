@@ -68,7 +68,7 @@ Wichtige Dateien:
 
 - Hero/Control Room: atmosphaerischer Einstieg und Kontrollzahlen.
 - Was heute zaehlt: Empfehlungen Live, Analyse, Highlights, Skip.
-- Tagesbriefing: Sehplan plus Nachtspiele ohne Spoiler.
+- Tagesbriefing: Watch Plan plus Nachtspiele ohne Spoiler.
 - Datenlage & Transparenz: Datenqualitaet, Spielplan-Ampel, Ergebnis-Sync-Ampel. Routine-Importe bleiben in einem einklappbaren Detailbereich.
 - Gruppen & Szenarien: Gruppen A-L mit Pfadrelevanz.
 - Tabellen & Szenarien: Tabellenprojektion, direkte Qualifikanten, Best Thirds.
@@ -76,7 +76,7 @@ Wichtige Dateien:
 - K.o.-Dossiers: Watch-Empfehlung, Stilkontrast, Upset-Risiko, Pfadwert.
 - Match-Dossier: Analysten-Story, Belegschicht, Advanced-Metrics-Plan und Post-Match Report Hub.
 - Team-Briefings: taktische Teamprofile. Sichtbare Teamwerte sind App-Fokus/Watch-Prioritaet, kein objektives Ranking.
-- Gute Quellen: Trust-Modell fuer Daten, Stimmen und KI-Research.
+- Analyst Desk: Trust-Modell fuer Daten, Stimmen und KI-Research.
 
 ## Erledigte Schritte
 

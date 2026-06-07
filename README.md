@@ -20,7 +20,7 @@ GitHub Pages ist vorbereitet. Nach Aktivierung in GitHub Settings -> Pages -> So
 - Team-Briefings mit taktischen Profilen fuer Fokus- und Surprise-Teams
 - App-Fokus getrennt von spaeterer objektiver Teamstaerke
 - Match-Dossier mit Team-Matchup und Watch-Cues
-- Tagesbriefing mit Sehplan und Morgen-ohne-Spoiler-Ansicht
+- Tagesbriefing mit Watch Plan und Morgen-ohne-Spoiler-Ansicht
 - Low-Value-Erklaerungen direkt an Skip-Spielen
 - Gruppen & Szenarien mit Gruppen A-L, Watch-Empfehlung und modellierter Pfad-Relevanz
 - Spielwert mit neuer Gewichtung `Pfad`
@@ -32,7 +32,7 @@ GitHub Pages ist vorbereitet. Nach Aktivierung in GitHub Settings -> Pages -> So
 - K.o.-Match-Dossiers mit Watch-Empfehlung, Stilkontrast, Upset-Sensitivitaet und Pfadwert
 - Spielplan-Transparenz mit Coverage, Gruppenstatus, Bracketstatus und Datenqualitaets-Ampel
 - Analyse-Overrides in `data/match-overrides.json` fuer kuratierte Topspiele
-- Gute Quellen mit Trust-Modell fuer Premiumdaten, Taktikstimmen, KI-Research und Noise-Filter
+- Analyst Desk mit Trust-Modell fuer Premiumdaten, Taktikstimmen, KI-Research und Noise-Filter
 - Post-Match-Report-Modell mit automatischem Draft-Generator fuer finale Ergebnisse
 
 ## Lokal starten
