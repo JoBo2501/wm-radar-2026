@@ -1131,9 +1131,10 @@ function renderStandings() {
                   return `
                     <div class="standing-row ${direct ? "direct-row" : bestThird ? "third-row" : ""}" role="row">
                       <span>
+                        <b class="rank-badge">${index + 1}</b>
                         ${renderFlag(row.team)}
                         <strong>${row.code}</strong>
-                        <em>${status}</em>
+                        <em class="${direct ? "status-direct" : bestThird ? "status-third" : "status-out"}">${status}</em>
                       </span>
                       <span>${row.played || "-"}</span>
                       <span>${row.displayGoalDifference}</span>
@@ -1167,7 +1168,7 @@ function renderStandings() {
           .map(
             (row) => `
               <div class="${row.advances ? "third-safe" : "third-risk"}">
-                <span>${row.thirdRank}. ${renderFlag(row.team)} ${row.code} · Gruppe ${row.group}</span>
+                <span><b class="rank-badge">${row.thirdRank}</b> ${renderFlag(row.team)} ${row.code} · Gruppe ${row.group}</span>
                 <strong>${row.displayPoints}</strong>
               </div>
             `,
