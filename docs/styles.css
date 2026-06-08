@@ -4954,60 +4954,77 @@ h3 {
 @media (max-width: 760px) {
   .app-shell {
     width: min(100% - 20px, var(--max));
-    padding-top: 10px;
+    padding: 10px 0 92px;
   }
 
   .topbar {
     top: 8px;
     flex-wrap: wrap;
+    padding: 8px;
   }
 
   .main-nav {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x proximity;
-    order: 3;
-    width: 100%;
+    position: fixed;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    z-index: 40;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 4px;
+    width: auto;
+    padding: 6px;
+    overflow: visible;
     align-items: stretch;
-    scrollbar-width: none;
-  }
-
-  .main-nav::-webkit-scrollbar {
-    display: none;
+    border-color: rgba(19, 69, 41, 0.18);
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 18px 52px rgba(23, 60, 36, 0.26);
+    backdrop-filter: blur(18px);
   }
 
   .main-nav a {
-    min-width: max-content;
+    min-width: 0;
+    display: grid;
+    justify-items: center;
+    gap: 4px;
+    padding: 8px 5px;
     text-align: center;
-    scroll-snap-align: start;
+    font-size: 0.74rem;
+    line-height: 1.05;
   }
 
   .main-nav a::before {
     width: 20px;
     height: 20px;
+    font-size: 0.62rem;
   }
 
   .spoiler-toggle {
     margin-left: auto;
+    padding: 8px 10px;
   }
 
   .hero-grid {
-    padding-top: 18px;
+    padding-top: 12px;
     padding-bottom: 8px;
     gap: 12px;
   }
 
   .orientation-map {
-    grid-template-columns: 1fr;
-    gap: 8px;
+    display: none;
   }
 
-  .orientation-card {
-    min-height: auto;
+  .brand-mark {
+    width: 38px;
+    height: 38px;
+  }
+
+  .brand small {
+    display: none;
   }
 
   .hero-copy {
-    padding: 18px;
+    padding: 16px;
     min-height: auto;
   }
 
@@ -5018,23 +5035,83 @@ h3 {
   }
 
   h1 {
-    max-width: 13ch;
+    max-width: 16ch;
     margin-bottom: 12px;
-    font-size: 2.15rem;
-    line-height: 0.98;
+    font-size: 2rem;
+    line-height: 1.02;
   }
 
   .hero-text {
-    font-size: 1rem;
-    line-height: 1.45;
+    font-size: 0.96rem;
+    line-height: 1.42;
     display: -webkit-box;
     overflow: hidden;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
   }
 
   .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
     margin: 8px 0 12px;
+  }
+
+  .primary-action,
+  .secondary-action {
+    justify-content: center;
+    min-height: 44px;
+  }
+
+  .command-center {
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .command-hero,
+  .top-match-card {
+    min-height: auto;
+    padding: 13px;
+  }
+
+  .command-hero {
+    order: 1;
+  }
+
+  .top-match-card {
+    order: 2;
+  }
+
+  .watch-plan-card {
+    order: 3;
+  }
+
+  .skip-card {
+    order: 4;
+  }
+
+  .morning-card {
+    order: 5;
+  }
+
+  .storyline-card {
+    order: 6;
+  }
+
+  .command-hero p:not(.eyebrow) {
+    margin: 10px 0;
+    line-height: 1.45;
+  }
+
+  .command-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .command-metric {
+    min-height: 68px;
+  }
+
+  .top-match-card .cue-list li:nth-child(n + 3) {
+    display: none;
   }
 
   .summary-grid,
@@ -5112,6 +5189,53 @@ h3 {
     font-size: 1.15rem;
   }
 
+  .matchday-tools > summary,
+  .dossier-depth > summary {
+    grid-template-columns: 1fr;
+  }
+
+  .matchday-tools > summary::after,
+  .dossier-depth > summary::after {
+    width: max-content;
+  }
+
+  .matchday-tools .dashboard-grid,
+  .matchday-tools .score-lab {
+    margin-inline: 10px;
+  }
+
+  .tournament-snapshot-section,
+  .group-path-section,
+  .standings-section,
+  .bracket-section,
+  .team-lab-section,
+  .key-figures-section,
+  .radar-section,
+  .analyst-desk-section,
+  .data-section,
+  .feature-lab-section,
+  .sources-section {
+    padding: 14px;
+  }
+
+  .tournament-mode-card,
+  .focus-road-card {
+    min-height: auto;
+  }
+
+  .tournament-snapshot-card {
+    padding: 12px;
+  }
+
+  .focus-road-list span {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .focus-road-list em,
+  .focus-road-list small {
+    grid-column: 2;
+  }
+
   .zone-divider {
     grid-template-columns: 1fr;
     gap: 10px;
@@ -5155,6 +5279,23 @@ h3 {
 
   .section-head {
     display: block;
+    padding: 22px 0 12px;
+  }
+
+  .section-head.compact {
+    display: grid;
+    gap: 6px;
+  }
+
+  .section-head h2,
+  .zone-divider h2 {
+    font-size: 1.45rem;
+    line-height: 1.12;
+  }
+
+  .section-head p:not(.eyebrow),
+  .zone-divider p:not(.eyebrow) {
+    line-height: 1.45;
   }
 
   .date-chip {
@@ -5164,6 +5305,20 @@ h3 {
 
   .match-card {
     grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 13px;
+    min-height: 44px;
+  }
+
+  .match-card-topline {
+    margin-bottom: 8px;
+  }
+
+  .match-reason {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
 
   .teams {
@@ -5206,6 +5361,10 @@ h3 {
     font-size: 0.58rem;
   }
 
+  .match-tags {
+    display: none;
+  }
+
   .top-match-main,
   .morning-item,
   .watch-plan-item {
@@ -5229,6 +5388,51 @@ h3 {
     grid-template-columns: auto 1fr;
     align-items: center;
     justify-items: start;
+  }
+
+  .dossier {
+    padding: 14px;
+  }
+
+  .dossier-top {
+    gap: 12px;
+  }
+
+  .dossier-top h2 {
+    font-size: 1.55rem;
+    line-height: 1.1;
+  }
+
+  .dossier-meta {
+    gap: 6px;
+    margin: 10px 0 12px;
+  }
+
+  .meta-pill {
+    padding: 6px 8px;
+    font-size: 0.76rem;
+  }
+
+  .pitch-card {
+    display: none;
+  }
+
+  .insight-grid {
+    gap: 9px;
+  }
+
+  .insight-card {
+    min-height: auto;
+    padding: 12px;
+  }
+
+  .tactical-briefing h3 {
+    font-size: 1.22rem;
+  }
+
+  .tactical-briefing p,
+  .insight-card p {
+    line-height: 1.45;
   }
 
   .standing-row {
@@ -5273,10 +5477,6 @@ h3 {
   .score-ring {
     width: 64px;
     height: 64px;
-  }
-
-  .tactical-pitch {
-    min-height: 260px;
   }
 
   .source-card {
