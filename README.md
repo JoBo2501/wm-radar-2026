@@ -20,6 +20,7 @@ GitHub Pages ist vorbereitet. Nach Aktivierung in GitHub Settings -> Pages -> So
 - Datenmodell in `data.js` mit Real/Mixed/Model/Seed-Kennzeichnung
 - Datenlage & Transparenz mit eingeklappten Import- und Validierungsdetails
 - Provider-Testprotokoll fuer Sportmonks-Abdeckung, Advanced-Felder und naechste Live-Pruefzeitpunkte
+- Sichtbare Datenanbieter auf SportMonks konsolidiert; andere Dienste bleiben nicht als App-Provider stehen
 - Feature Lab fuer Was-passiert-wenn-Modus, Momentum, Stuermer-Effizienz und Pre-Match-Scout
 - Pre-Match-Scout im Match-Dossier mit Prediction-Signal, Lineup-/Formationsstatus, Expected-XI-Abdeckung, Mapping-Vertrauen und konkreten Pruefpunkten vor Anpfiff
 - Team-Briefings mit taktischen Profilen fuer Fokus- und Surprise-Teams

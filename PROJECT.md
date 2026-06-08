@@ -82,6 +82,7 @@ Wichtige Dateien:
 - Datenlage & Transparenz: Datenqualitaet, Spielplan-Ampel, Ergebnis-Sync-Ampel. Routine-Importe bleiben in einem einklappbaren Detailbereich.
 - Provider-Testprotokoll: Sportmonks-Abdeckung, Feature-Coverage und naechste Pruefzeitpunkte fuer Pre-Match, Live und Post-Match.
 - Provider-Mapping und Predictions: Sportmonks-Fixture-IDs werden auf interne Match-IDs gemappt; Prediction-Verfuegbarkeit kann vorsichtig als Pre-Match-Signal in den Spielwert einfliessen.
+- Datenanbieter-Architektur: SportMonks ist die einzige sichtbare App-Datenquelle; Taktik- und Medienquellen bleiben separat als Analyseebene.
 - Feature Lab: Was-passiert-wenn, Momentum, Stuermer-Effizienz und Pre-Match-Scout als eigene Produktmodule mit Datenbedarf, Sportmonks-Feldern und Risiken.
 - Pre-Match-Scout: Match-Dossier verbindet Prediction, Lineup-/Formationsstatus, Expected-XI-Abdeckung, Mapping-Vertrauen und konkrete Pruefpunkte vor Anpfiff.
 - Gruppen & Szenarien: Gruppen A-L mit Weiterkommen-und-Gegner-Relevanz.
@@ -111,6 +112,7 @@ Wichtige Dateien:
 - Sportmonks als primaere WM-Datenquelle mit Setup-, Probe- und Enable-Workflow aktiviert.
 - Sportmonks-Probebericht als sichtbares Provider-Testprotokoll in die App integriert.
 - Sportmonks-Mapping-Generator und Prediction-Signal-Kanal vorbereitet.
+- Sichtbare Datenanbieter auf SportMonks konsolidiert und alte Provider-Pillars entfernt.
 - Differenzierende Sportmonks-Featuremodule als Feature Lab in Datenmodell und UI aufgenommen.
 - Pre-Match-Scout v1 im Match-Dossier integriert.
 - Poller fuer regelmaessigen Ergebnisabgleich hinzugefuegt.

@@ -155,9 +155,9 @@ const data = {
     },
     {
       grade: "A",
-      title: "StatsBomb, Opta, SkillCorner",
-      text: "Eventdaten, 360-Kontext, Tracking, xG, OBV, Pressing- und Off-Ball-Signale.",
-      quality: 96,
+      title: "SportMonks",
+      text: "Primaere WM-Datenquelle fuer Fixtures, Teams, Status, Scores, Predictions, Lineups und verfuegbare Advanced-Felder.",
+      quality: 93,
     },
     {
       grade: "A",

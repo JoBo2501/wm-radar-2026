@@ -7,31 +7,31 @@
     {
       "id": "xg",
       "label": "xG / Chance Quality",
-      "providerTarget": "Opta / StatsBomb",
+      "providerTarget": "SportMonks xGFixture / Statistics",
       "meaning": "Vergleicht Ergebnis und Chancenqualität, um Scoreboard-Rauschen von echter Dominanz zu trennen."
     },
     {
       "id": "ppda",
       "label": "PPDA / Pressingdruck",
-      "providerTarget": "Opta / Wyscout",
+      "providerTarget": "SportMonks Events / Statistics + Review",
       "meaning": "Misst, wie hoch und wie konsequent ein Team ohne Ball Zugriff erzeugt."
     },
     {
       "id": "fieldTilt",
       "label": "Field Tilt / Territory",
-      "providerTarget": "Opta / StatsBomb",
+      "providerTarget": "SportMonks Statistics / Pressure",
       "meaning": "Zeigt, wer das Spiel in gefährlichen Zonen kontrolliert statt nur Ballbesitz zu sammeln."
     },
     {
       "id": "lineBreaking",
       "label": "Line-Breaking / 360",
-      "providerTarget": "StatsBomb 360 / SkillCorner",
+      "providerTarget": "SportMonks Events + manuelle Taktikpruefung",
       "meaning": "Erklärt Pässe, Annahmen und Läufe, die Linien brechen oder Druck überspielen."
     },
     {
       "id": "setPieceThreat",
       "label": "Set-Piece Threat",
-      "providerTarget": "Opta / Wyscout / TacticAI-Referenz",
+      "providerTarget": "SportMonks Events / Statistics + Review",
       "meaning": "Bewertet Standards über Zielzonen, zweite Bälle, Blockbewegungen und Abschlussqualität."
     }
   ],

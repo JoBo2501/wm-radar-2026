@@ -5396,7 +5396,7 @@ h3 {
           <div class="source-workflow-section">
             <div class="panel-title">
               <span>Zugang zu Quellen</span>
-              <strong>Frei, Abo oder Provider?</strong>
+              <strong>SportMonks, Abo oder frei?</strong>
             </div>
             <div class="source-access-grid" id="sourceAccess"></div>
           </div>
@@ -6479,89 +6479,55 @@ window.WMRadarData = {
   "analystSources": {
     "pillars": [
       {
-        "id": "opta",
-        "name": "Opta / Stats Perform",
-        "layer": "Live- und Kontextdaten",
-        "quality": 96,
-        "integration": "Premium API spaeter",
-        "bestFor": "xG, Predictions, Live-Events, historische Trends, Broadcast-taugliche Datenstories.",
-        "watchFor": "Schnelle Einordnung: Ist ein Ergebnis verdient, kippt ein Momentum, ist ein Team wirklich dominant?",
-        "blindSpot": "Sehr stark fuer Ereignisse und Modelle, aber ohne eigenes Video nicht automatisch eine komplette Taktikerzaehlung.",
+        "id": "sportmonks-primary",
+        "name": "SportMonks",
+        "layer": "Primaere WM-Datenquelle",
+        "quality": 93,
+        "integration": "Aktive API",
+        "bestFor": "Fixtures, Teilnehmer, Status, Scores, Predictions, Lineups, Formationen und spaeter Live-/Post-Match-Daten.",
+        "watchFor": "Automatischer Ergebnisabgleich, Pre-Match-Scout, Was-passiert-wenn-Logik und belastbare Provider-Abdeckung.",
+        "blindSpot": "Advanced-Felder wie Pressure, xG und Expected Lineups werden erst kurz vor Anpfiff, live oder nach Abpfiff wirklich validiert.",
         "signals": [
+          "Fixtures",
+          "Scores",
+          "Status",
+          "Predictions"
+        ],
+        "url": "https://www.sportmonks.com/football-api/"
+      },
+      {
+        "id": "sportmonks-live",
+        "name": "SportMonks Live Layer",
+        "layer": "Live-Sync und Spielstatus",
+        "quality": 90,
+        "integration": "Poller aktivierbar",
+        "bestFor": "Live-Status, Ergebnis-Sync, Tabellenwirkung, K.o.-Pfad und schnelle Tagesaktualisierung.",
+        "watchFor": "Ob ein Tor, eine rote Karte oder ein Live-Status sofort die Gruppen- und Finalweglogik veraendert.",
+        "blindSpot": "Vor Turnierstart bleibt dieser Layer im Projektionsmodus; echte Belastbarkeit entsteht erst im Live-Betrieb.",
+        "signals": [
+          "Live",
+          "Scores",
+          "Standings",
+          "Path Impact"
+        ],
+        "url": "https://www.sportmonks.com/football-api/"
+      },
+      {
+        "id": "sportmonks-advanced",
+        "name": "SportMonks Advanced Check",
+        "layer": "Advanced Coverage",
+        "quality": 84,
+        "integration": "Validierung je Spielphase",
+        "bestFor": "Lineups, Formationen, Expected Lineups, Pressure, xG und weitere Felder, sofern im WM-Modul verfuegbar.",
+        "watchFor": "Welche Advanced-Felder zu welchem Zeitpunkt wirklich gefuellt sind und in Analyse-Module einfliessen duerfen.",
+        "blindSpot": "Nicht jedes Feld ist schon vor Turnierstart gefuellt; die App muss Coverage sichtbar machen statt Werte zu erfinden.",
+        "signals": [
+          "Lineups",
+          "Formationen",
           "xG",
-          "Eventdaten",
-          "Predictions",
-          "Live-Kontext"
+          "Pressure"
         ],
-        "url": "https://www.statsperform.com/opta/"
-      },
-      {
-        "id": "statsbomb",
-        "name": "Hudl StatsBomb 360",
-        "layer": "Taktische Eventdaten",
-        "quality": 97,
-        "integration": "Premium Datenvertrag spaeter",
-        "bestFor": "360-Kontext, Line-breaking passes, Ballannahmen im Raum, Drucknaehe und datenbasierte Teamtaktik.",
-        "watchFor": "Warum ein Pass, ein Empfang oder ein Pressingausloeser wertvoll war, obwohl er in normalen Statistiken unsichtbar bleibt.",
-        "blindSpot": "Extrem wertvoll, aber fuer Live-Nutzung abhaengig von Coverage, Lizenz und Verfuegbarkeit.",
-        "signals": [
-          "360",
-          "Raum",
-          "Druck",
-          "OBV"
-        ],
-        "url": "https://statsbomb.com/what-we-do/soccer-data/360-2/"
-      },
-      {
-        "id": "skillcorner",
-        "name": "SkillCorner",
-        "layer": "Tracking und Off-Ball",
-        "quality": 95,
-        "integration": "Tracking-Schicht spaeter",
-        "bestFor": "Broadcast-basiertes Tracking, Off-Ball-Runs, defensive Strukturen, physische Profile und Game Intelligence.",
-        "watchFor": "Welche Laeufe oeffnen Raeume, welche Kette kippt, wer presst nur optisch und wer nimmt wirklich Optionen weg?",
-        "blindSpot": "Tracking erklaert Bewegung, braucht aber Event- und Videoabgleich fuer die komplette Spielstory.",
-        "signals": [
-          "Tracking",
-          "Off-Ball",
-          "Physical",
-          "Game Intelligence"
-        ],
-        "url": "https://skillcorner.com/sports/football"
-      },
-      {
-        "id": "wyscout",
-        "name": "Hudl Wyscout",
-        "layer": "Video, Scouting und Clips",
-        "quality": 92,
-        "integration": "Video- und Clip-Workflow spaeter",
-        "bestFor": "Spieler-, Team- und Gegneranalyse mit Video, getaggten Aktionen, Scouting-Reports und Vergleichsmaterial.",
-        "watchFor": "Schnell pruefen, ob ein Datenmuster im Video wirklich sichtbar ist.",
-        "blindSpot": "Video ist stark, aber ohne Modellierung kann es selektiv und zeitintensiv werden.",
-        "signals": [
-          "Video",
-          "Scouting",
-          "Clips",
-          "Reports"
-        ],
-        "url": "https://wyscout.it/"
-      },
-      {
-        "id": "scisports",
-        "name": "SciSports",
-        "layer": "AI Scouting und Match Analysis",
-        "quality": 86,
-        "integration": "AI-Provider optional",
-        "bestFor": "KI-gestuetzte Spieler-, Team- und Matchanalyse, besonders wenn Datenquellen kombiniert werden muessen.",
-        "watchFor": "Zweiter Blick auf Rollenprofile, Talentwert und Muster, die ueber ein einzelnes Spiel hinausgehen.",
-        "blindSpot": "Provider-Modelle muessen gegen Rohdaten und Video kalibriert werden.",
-        "signals": [
-          "AI",
-          "Scouting",
-          "Match Analysis",
-          "Tracking"
-        ],
-        "url": "https://www.scisports.com/"
+        "url": "https://www.sportmonks.com/football-api/"
       }
     ],
     "voices": [
@@ -6604,16 +6570,6 @@ window.WMRadarData = {
         "useWhen": "Wenn fuer kleinere Teams oder Surprise-Kandidaten schnell ein strukturiertes Profil gebraucht wird.",
         "downgradeWhen": "Wenn Autor, Datenbasis oder Videoevidenz nicht klar genug sind.",
         "url": "https://totalfootballanalysis.com/about-total-football-analysis-magazine"
-      },
-      {
-        "id": "opta-analyst",
-        "name": "Opta Analyst",
-        "type": "Datenstory und Predictions",
-        "trust": 88,
-        "bestFor": "Zahlenbasierte Vorschauen, Trends, historische Vergleiche und Wahrscheinlichkeiten.",
-        "useWhen": "Wenn die App schnell eine datenbasierte Storyline braucht.",
-        "downgradeWhen": "Wenn eine taktische Tiefenerklaerung ohne Video/Struktur gebraucht wird.",
-        "url": "https://theanalyst.com/"
       },
       {
         "id": "rest-is-football",
@@ -6674,7 +6630,7 @@ window.WMRadarData = {
     "accessModel": [
       {
         "label": "Frei / offen",
-        "examples": "FIFA-Basisdaten, oeffentliche Artikel, Podcasts, Opta Analyst Artikel, Spielverlagerung je nach Beitrag",
+        "examples": "FIFA-Basisdaten, oeffentliche Artikel, Podcasts, Spielverlagerung je nach Beitrag",
         "use": "Orientierung, Links, Kontext, Taktik-Hypothesen und Presseschau-Signale.",
         "risk": "Nicht immer strukturiert, keine Garantie fuer vollstaendige WM-Abdeckung oder API-Zugriff."
       },
@@ -6685,10 +6641,10 @@ window.WMRadarData = {
         "risk": "Keine Paywall-Umgehung; die App speichert nur eigene Notizen, Links und kurze Befunde."
       },
       {
-        "label": "API / Providervertrag",
-        "examples": "Opta / Stats Perform, StatsBomb, SkillCorner, Wyscout API oder Datenpakete",
-        "use": "Automatische Rohdaten, Eventdaten, Tracking, Video- oder Scouting-Layer.",
-        "risk": "Kosten und Lizenzbedingungen; fuer Privatanwendung oft nur nach Anfrage oder gar nicht sinnvoll."
+        "label": "SportMonks API",
+        "examples": "Aktives WM-Modul mit Fixtures, Teilnehmern, Status, Scores, Predictions und weiteren verfuegbaren Includes",
+        "use": "Primaere automatische Rohdaten fuer Ergebnis-Sync, Pre-Match-Scout, Szenarien und Post-Match-Drafts.",
+        "risk": "Einzelne Advanced-Felder muessen im Live-Betrieb validiert werden; Coverage wird sichtbar statt angenommen."
       },
       {
         "label": "Manuell kuratiert",
@@ -7031,31 +6987,31 @@ window.WMRadarData = {
       {
         "id": "xg",
         "label": "xG / Chance Quality",
-        "providerTarget": "Opta / StatsBomb",
+        "providerTarget": "SportMonks xGFixture / Statistics",
         "meaning": "Vergleicht Ergebnis und Chancenqualität, um Scoreboard-Rauschen von echter Dominanz zu trennen."
       },
       {
         "id": "ppda",
         "label": "PPDA / Pressingdruck",
-        "providerTarget": "Opta / Wyscout",
+        "providerTarget": "SportMonks Events / Statistics + Review",
         "meaning": "Misst, wie hoch und wie konsequent ein Team ohne Ball Zugriff erzeugt."
       },
       {
         "id": "fieldTilt",
         "label": "Field Tilt / Territory",
-        "providerTarget": "Opta / StatsBomb",
+        "providerTarget": "SportMonks Statistics / Pressure",
         "meaning": "Zeigt, wer das Spiel in gefährlichen Zonen kontrolliert statt nur Ballbesitz zu sammeln."
       },
       {
         "id": "lineBreaking",
         "label": "Line-Breaking / 360",
-        "providerTarget": "StatsBomb 360 / SkillCorner",
+        "providerTarget": "SportMonks Events + manuelle Taktikpruefung",
         "meaning": "Erklärt Pässe, Annahmen und Läufe, die Linien brechen oder Druck überspielen."
       },
       {
         "id": "setPieceThreat",
         "label": "Set-Piece Threat",
-        "providerTarget": "Opta / Wyscout / TacticAI-Referenz",
+        "providerTarget": "SportMonks Events / Statistics + Review",
         "meaning": "Bewertet Standards über Zielzonen, zweite Bälle, Blockbewegungen und Abschlussqualität."
       }
     ],
@@ -12543,9 +12499,9 @@ window.WMRadarData = {
     },
     {
       "grade": "A",
-      "title": "StatsBomb, Opta, SkillCorner",
-      "text": "Eventdaten, 360-Kontext, Tracking, xG, OBV, Pressing- und Off-Ball-Signale.",
-      "quality": 96
+      "title": "SportMonks",
+      "text": "Primaere WM-Datenquelle fuer Fixtures, Teams, Status, Scores, Predictions, Lineups und verfuegbare Advanced-Felder.",
+      "quality": 93
     },
     {
       "grade": "A",
@@ -14543,10 +14499,10 @@ function getDecisionMatrix(match) {
 function getEvidencePillars(match) {
   const pillarIds =
     match.signals.tactical >= 70
-      ? ["statsbomb", "skillcorner", "wyscout"]
+      ? ["sportmonks-primary", "sportmonks-advanced", "sportmonks-live"]
       : match.signals.importance >= 70
-        ? ["opta", "wyscout", "scisports"]
-        : ["opta", "statsbomb", "wyscout"];
+        ? ["sportmonks-primary", "sportmonks-live", "sportmonks-advanced"]
+        : ["sportmonks-primary", "sportmonks-live"];
 
   return pillarIds
     .map((id) => analystSources.pillars.find((pillar) => pillar.id === id))
@@ -14558,8 +14514,8 @@ function getEvidenceVoices(match) {
     match.signals.tactical >= 70
       ? ["athletic-tactics", "spielverlagerung", "coaches-voice"]
       : match.hasFocusTeam
-        ? ["opta-analyst", "athletic-tactics", "coaches-voice"]
-        : ["opta-analyst", "total-football-analysis", "athletic-tactics"];
+        ? ["athletic-tactics", "coaches-voice", "spielverlagerung"]
+        : ["total-football-analysis", "athletic-tactics", "coaches-voice"];
 
   return voiceIds
     .map((id) => analystSources.voices.find((voice) => voice.id === id))

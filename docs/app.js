@@ -1971,10 +1971,10 @@ function getDecisionMatrix(match) {
 function getEvidencePillars(match) {
   const pillarIds =
     match.signals.tactical >= 70
-      ? ["statsbomb", "skillcorner", "wyscout"]
+      ? ["sportmonks-primary", "sportmonks-advanced", "sportmonks-live"]
       : match.signals.importance >= 70
-        ? ["opta", "wyscout", "scisports"]
-        : ["opta", "statsbomb", "wyscout"];
+        ? ["sportmonks-primary", "sportmonks-live", "sportmonks-advanced"]
+        : ["sportmonks-primary", "sportmonks-live"];
 
   return pillarIds
     .map((id) => analystSources.pillars.find((pillar) => pillar.id === id))
@@ -1986,8 +1986,8 @@ function getEvidenceVoices(match) {
     match.signals.tactical >= 70
       ? ["athletic-tactics", "spielverlagerung", "coaches-voice"]
       : match.hasFocusTeam
-        ? ["opta-analyst", "athletic-tactics", "coaches-voice"]
-        : ["opta-analyst", "total-football-analysis", "athletic-tactics"];
+        ? ["athletic-tactics", "coaches-voice", "spielverlagerung"]
+        : ["total-football-analysis", "athletic-tactics", "coaches-voice"];
 
   return voiceIds
     .map((id) => analystSources.voices.find((voice) => voice.id === id))
