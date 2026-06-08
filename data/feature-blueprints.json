@@ -5,12 +5,12 @@
     "status": "modellbereit",
     "stage": "Live",
     "impact": 96,
-    "promise": "Live-Hinweise, wie ein aktueller Spielstand die Gruppentabelle und den naechsten Gegner veraendert.",
+    "promise": "Live-Hinweise, wie ein aktueller Spielstand die Gruppentabelle und den nächsten Gegner verändert.",
     "dataNeeds": ["Scores", "Live State", "Group Standings", "Fixture Mapping", "Bracket Slots"],
     "sportmonksFields": ["scores", "state", "standings", "participants", "stage", "group"],
-    "userValue": "Der Nutzer versteht sofort, warum ein Tor in einem scheinbar kleinen Spiel ploetzlich riesig ist.",
-    "firstVersion": "Bei jedem Live-Resultat: neue Tabelle simulieren, direkte Qualifikation, Drittplatzierte und moeglichen K.o.-Gegner anzeigen.",
-    "openRisk": "Live-Standings muessen gegen eigene Tabellenlogik validiert werden."
+    "userValue": "Der Nutzer versteht sofort, warum ein Tor in einem scheinbar kleinen Spiel plötzlich riesig ist.",
+    "firstVersion": "Bei jedem Live-Resultat: neue Tabelle simulieren, direkte Qualifikation, Drittplatzierte und möglichen K.o.-Gegner anzeigen.",
+    "openRisk": "Live-Standings müssen gegen eigene Tabellenlogik validiert werden."
   },
   {
     "id": "momentum",
@@ -18,25 +18,25 @@
     "status": "wartet auf Live-Daten",
     "stage": "Live/Post",
     "impact": 88,
-    "promise": "Druckphasen visuell erklaeren: Wann kippte Kontrolle, wer erzeugte echten Druck und wer nur Ballbesitz?",
+    "promise": "Druckphasen visuell erklären: Wann kippte Kontrolle, wer erzeugte echten Druck und wer nur Ballbesitz?",
     "dataNeeds": ["Pressure Index", "Events Timeline", "Statistics", "Possession", "Shots"],
     "sportmonksFields": ["pressure", "events", "statistics", "scores", "state"],
     "userValue": "Aus 'Team war besser' wird eine nachvollziehbare Spielkurve mit konkreten Phasen.",
     "firstVersion": "Timeline mit 5-Minuten-Phasen, Event-Clustern und Pressure-Status: ruhig, Druck, Kipppunkt.",
-    "openRisk": "Pressure ist im aktuellen Probe-Lauf noch 0/104 und muss im Live-Spiel bestaetigt werden."
+    "openRisk": "Pressure ist im aktuellen Probe-Lauf noch 0/104 und muss im Live-Spiel bestätigt werden."
   },
   {
     "id": "finisher-efficiency",
-    "label": "Effizienz-Karten fuer Stuermer",
+    "label": "Effizienz-Karten für Stürmer",
     "status": "wartet auf xG",
     "stage": "Post",
     "impact": 82,
-    "promise": "xG vs. Tore, Chancenqualitaet und Abschlusswirkung fuer Schluesselspieler greifbar machen.",
+    "promise": "xG vs. Tore, Chancenqualität und Abschlusswirkung für Schlüsselspieler greifbar machen.",
     "dataNeeds": ["xG", "Goals", "Player Stats", "Lineups", "Minutes"],
     "sportmonksFields": ["xGFixture", "statistics", "lineups", "events", "scores"],
-    "userValue": "Der Nutzer sieht, wer ueber Erwartung performt, wer viel Gefahr erzeugt und wer nur vom Ergebnis lebt.",
-    "firstVersion": "Nach jedem Fokusspiel: Abschluesse, Tore, xG-Abweichung und kurze Einordnung fuer zentrale Angreifer.",
-    "openRisk": "xGFixture ist im aktuellen Probe-Lauf noch 0/104; Paket- und Live-Verfuegbarkeit pruefen."
+    "userValue": "Der Nutzer sieht, wer über Erwartung performt, wer viel Gefahr erzeugt und wer nur vom Ergebnis lebt.",
+    "firstVersion": "Nach jedem Fokusspiel: Abschlüsse, Tore, xG-Abweichung und kurze Einordnung für zentrale Angreifer.",
+    "openRisk": "xGFixture ist im aktuellen Probe-Lauf noch 0/104; Paket- und Live-Verfügbarkeit prüfen."
   },
   {
     "id": "prematch-scout",
@@ -44,11 +44,11 @@
     "status": "teilweise bereit",
     "stage": "Pre",
     "impact": 91,
-    "promise": "Vor dem Spiel: erwartete Lineups, Ausfaelle, Form, Head-to-Head und Prognosemodell als gefuehrte Vorschau.",
+    "promise": "Vor dem Spiel: erwartete Lineups, Ausfälle, Form, Head-to-Head und Prognosemodell als geführte Vorschau.",
     "dataNeeds": ["Predictions", "Lineups", "Expected Lineups", "Injuries", "Form", "Head2Head"],
     "sportmonksFields": ["predictions", "lineups", "expectedLineups", "formations", "participants", "statistics"],
-    "userValue": "Der Nutzer weiss vor Anpfiff, worauf er achten soll und ob sich Live-Schauen lohnt.",
-    "firstVersion": "Predictions + vorhandene Lineups/Formationen als Scout-Karte im Match-Dossier; Expected Lineups und Ausfaelle spaeter nachziehen.",
-    "openRisk": "Predictions sind 72/72 fuer Gruppenspiele gemappt; Expected Lineups sind noch 0/104."
+    "userValue": "Der Nutzer weiß vor Anpfiff, worauf er achten soll und ob sich Live-Schauen lohnt.",
+    "firstVersion": "Predictions + vorhandene Lineups/Formationen als Vorschau-Karte im Match-Dossier; Expected Lineups und Ausfälle später nachziehen.",
+    "openRisk": "Predictions sind 72/72 für Gruppenspiele gemappt; Expected Lineups sind noch 0/104."
   }
 ]

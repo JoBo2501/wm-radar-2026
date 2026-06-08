@@ -98,7 +98,7 @@
           <a class="orientation-card games" href="#games">
             <span>02</span>
             <strong>Spiele</strong>
-            <small>Match-Dossier, Pre-Match-Scout, Watch-Cues und Teamkontext.</small>
+            <small>Match-Dossier, Vorschau, Beobachtungspunkte und Teamkontext.</small>
           </a>
           <a class="orientation-card tournament" href="#tournament">
             <span>03</span>
@@ -116,7 +116,7 @@
           <div>
             <p class="eyebrow">Heute priorisieren</p>
             <h2 id="matchesTitle">Was heute zählt</h2>
-            <p>Die komplette Tagesauswahl: alle Spiele, sortierbar nach Live, Analyse, Highlights oder Skip.</p>
+            <p>Der kurze Tagesplan: live schauen, später verstehen, Highlights reichen oder bewusst auslassen.</p>
           </div>
           <div class="date-chip" id="activeDateChip">
             <span>Demo</span>
@@ -169,37 +169,45 @@
           </div>
         </section>
 
-        <section class="dashboard-grid">
-          <div class="today-panel" aria-label="Tageszusammenfassung">
-            <div class="panel-title">
-              <span>Heute</span>
-              <strong id="summaryLine">0 Spiele</strong>
+        <details class="matchday-tools">
+          <summary>
+            <span>Tagesplan feinjustieren</span>
+            <small>Filter, Gewichtung und Empfehlungslogik nur öffnen, wenn du bewusst nachsteuern willst.</small>
+          </summary>
+
+          <section class="dashboard-grid">
+            <div class="today-panel" aria-label="Tageszusammenfassung">
+              <div class="panel-title">
+                <span>Heute</span>
+                <strong id="summaryLine">0 Spiele</strong>
+              </div>
+              <div class="summary-grid" id="summaryGrid"></div>
             </div>
-            <div class="summary-grid" id="summaryGrid"></div>
-          </div>
 
-          <div class="filters" aria-label="Zeit- und Kontextfilter" id="filters"></div>
-        </section>
+            <div class="filters" aria-label="Zeit- und Kontextfilter" id="filters"></div>
+          </section>
 
-        <section class="score-lab" aria-labelledby="scoreLabTitle">
-          <div>
-            <p class="eyebrow">Deine Gewichtung</p>
-            <h2 id="scoreLabTitle">Warum diese Empfehlung?</h2>
-            <p id="scoreExplainer">
-              Der Spielwert priorisiert, was du live sehen solltest: sportliche Bedeutung, Taktikwert,
-              Attraktivität, Fokus-Team-Bezug, Surprise-Potenzial und Uhrzeit.
-            </p>
-          </div>
-          <div class="score-controls" id="scoreControls"></div>
-          <div class="category-filters" aria-label="Empfehlungsfilter" id="categoryFilters"></div>
-        </section>
+          <section class="score-lab" aria-labelledby="scoreLabTitle">
+            <div>
+              <p class="eyebrow">Deine Gewichtung</p>
+              <h2 id="scoreLabTitle">Warum diese Empfehlung?</h2>
+              <p id="scoreExplainer">
+                Der Spielwert priorisiert, was du live sehen solltest: sportliche Bedeutung, Taktikwert,
+                Attraktivität, Fokus-Team-Bezug, Surprise-Potenzial und Uhrzeit.
+              </p>
+            </div>
+            <div class="score-controls" id="scoreControls"></div>
+            <div class="score-impact" id="scoreImpact" aria-live="polite"></div>
+            <div class="category-filters" aria-label="Empfehlungsfilter" id="categoryFilters"></div>
+          </section>
+        </details>
 
         <section class="zone-divider games" id="games" aria-label="Bereich Spiele">
           <span>02</span>
           <div>
             <p class="eyebrow">Spiele verstehen</p>
-            <h2>Vom Spielplan zum echten Watch-Plan</h2>
-            <p>Hier lernst du Teams, Schluesselfiguren und konkrete Duelle kennen, bevor du ins Match-Dossier springst.</p>
+            <h2>Vom Spielplan zum echten Tagesplan</h2>
+            <p>Hier lernst du Teams, Schlüsselfiguren und konkrete Duelle kennen, bevor du ins Match-Dossier springst.</p>
           </div>
           <nav aria-label="Spiele Schnellzugriffe">
             <a href="#teamLab">Teams</a>
@@ -296,7 +304,7 @@
           <div>
             <p class="eyebrow">Turnierlage</p>
             <h2>Wer kommt weiter und gegen wen?</h2>
-            <p>Der Bereich fuer Gruppen, Tabellen, Drittplatzierte und den Weg ins Finale.</p>
+            <p>Der Bereich für Gruppen, Tabellen, Drittplatzierte und den Weg ins Finale.</p>
           </div>
           <nav aria-label="Turnierlage Schnellzugriffe">
             <a href="#groupPaths">Gruppen</a>
@@ -342,7 +350,7 @@
             </div>
             <p>
               Hier siehst du, welche Wege ins Finale möglich sind, wo schwere Gegner lauern und welche
-              Gruppenplatzierung ploetzlich extrem wichtig wird.
+              Gruppenplatzierung plötzlich extrem wichtig wird.
             </p>
           </div>
           <div class="bracket-summary" id="bracketSummary"></div>
@@ -358,7 +366,7 @@
           </div>
           <nav aria-label="Analyse Schnellzugriffe">
             <a href="#featureLab">Features</a>
-            <a href="#analystDesk">Analyst Desk</a>
+            <a href="#analystDesk">Quellenfilter</a>
             <a href="#data">Datenlage</a>
             <a href="#sources">Quellen</a>
           </nav>
@@ -392,7 +400,7 @@
             </div>
             <p>
               Vier Produktmodule verbinden Sportmonks-Daten mit echtem Nutzwert: Live-Szenarien, Momentum,
-              Stuermer-Effizienz und Pre-Match-Scouting.
+              Stürmer-Effizienz und Spielvorschau.
             </p>
           </div>
           <div class="feature-lab-grid" id="featureLabGrid"></div>
@@ -402,10 +410,10 @@
           <div class="section-head compact">
             <div>
               <p class="eyebrow">Seriöser Quellenfilter</p>
-              <h2 id="analystDeskTitle">Analyst Desk</h2>
+              <h2 id="analystDeskTitle">Quellenfilter</h2>
             </div>
             <p>
-              Hier entscheidet die App, welchen Daten, Stimmen und KI-Modellen sie vertraut. Kein TV-Laerm,
+              Hier entscheidet die App, welchen Daten, Stimmen und KI-Modellen sie vertraut. Kein TV-Lärm,
               keine Stammtischlogik: Nur Quellen mit Beleg, Szene, Datenanker oder echter Fachperspektive.
             </p>
           </div>

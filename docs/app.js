@@ -36,12 +36,13 @@ const stateLabels = {
   live: "Pflichtspiel",
   analysis: "Analysewürdig",
   highlights: "Highlights reichen",
-  skip: "Skip",
+  skip: "Bewusst auslassen",
 };
 
 let activeFilter = "today";
 let activeCategory = "all";
 let weights = { ...preferences.weights };
+const baselineWeights = { ...preferences.weights };
 let selectedMatchId = null;
 
 const focusTeamsEl = document.querySelector("#focusTeams");
@@ -55,6 +56,7 @@ const summaryLineEl = document.querySelector("#summaryLine");
 const filtersEl = document.querySelector("#filters");
 const categoryFiltersEl = document.querySelector("#categoryFilters");
 const scoreControlsEl = document.querySelector("#scoreControls");
+const scoreImpactEl = document.querySelector("#scoreImpact");
 const activeDateChipEl = document.querySelector("#activeDateChip");
 const dailyBriefingTextEl = document.querySelector("#dailyBriefingText");
 const commandMetricsEl = document.querySelector("#commandMetrics");
@@ -176,25 +178,29 @@ function isPathCommandMatch(match) {
   return match.hasFocusTeam || hasSurprisePath || hasStrongContext;
 }
 
-function computeScore(match) {
+function computeScoreWithWeights(match, weightSet = weights) {
   const signal = match.signals;
   const pathImpact = getPathImpact(match);
   const providerSignal = providerMappingByMatchId.get(match.id);
   const predictionImpact = providerSignal?.predictionImpact || 0;
   const parts = [
-    [signal.importance, weights.importance],
-    [signal.tactical, weights.tactical],
-    [signal.entertainment, weights.entertainment],
-    [signal.focus, weights.focus],
-    [signal.surprise, weights.surprise],
-    [signal.time, weights.time],
-    [pathImpact, weights.path],
+    [signal.importance, weightSet.importance],
+    [signal.tactical, weightSet.tactical],
+    [signal.entertainment, weightSet.entertainment],
+    [signal.focus, weightSet.focus],
+    [signal.surprise, weightSet.surprise],
+    [signal.time, weightSet.time],
+    [pathImpact, weightSet.path],
   ];
   const weightedTotal = parts.reduce((sum, [value, weight]) => sum + value * weight, 0);
   const totalWeight = parts.reduce((sum, [, weight]) => sum + weight, 0);
   const score = weightedTotal / totalWeight - signal.lowValueRisk * 0.18 + predictionImpact;
 
   return clamp(Math.round(score), 0, 100);
+}
+
+function computeScore(match) {
+  return computeScoreWithWeights(match, weights);
 }
 
 function getRecommendation(score) {
@@ -628,7 +634,7 @@ function renderControlStats() {
   controlStatsEl.innerHTML = [
     ["Datenstand", metadata.snapshotDate],
     ["Live-Spiele", liveCount],
-    ["Skip-Kandidaten", skipCount],
+    ["Auslassen", skipCount],
     ["Top-Spielwert", topScore],
   ]
     .map(
@@ -1388,7 +1394,7 @@ function renderSummary() {
     ["Live", visibleMatches.filter((match) => match.category === "live").length],
     ["Analyse", visibleMatches.filter((match) => match.category === "analysis").length],
     ["Highlights", visibleMatches.filter((match) => match.category === "highlights").length],
-    ["Skip", visibleMatches.filter((match) => match.category === "skip").length],
+    ["Auslassen", visibleMatches.filter((match) => match.category === "skip").length],
   ];
   const activeLabel = filters.find((filter) => filter.id === activeFilter)?.label || "Alle";
 
@@ -1478,6 +1484,34 @@ function renderScoreControls() {
       renderComputedViews();
     });
   });
+
+  renderScoreImpact();
+}
+
+function renderScoreImpact() {
+  if (!scoreImpactEl) return;
+
+  const scoredMatches = getScoredMatches();
+  const selected = scoredMatches.find((match) => match.id === selectedMatchId) || scoredMatches[0];
+  const todayMatches = getTodayCommandMatches();
+  const topMatch = todayMatches[0];
+
+  if (!selected || !topMatch) {
+    scoreImpactEl.innerHTML = "";
+    return;
+  }
+
+  const baselineScore = computeScoreWithWeights(selected, baselineWeights);
+  const currentScore = computeScoreWithWeights(selected, weights);
+  const delta = currentScore - baselineScore;
+  const deltaText = delta === 0 ? "unverändert" : `${delta > 0 ? "+" : ""}${delta} Punkte`;
+  const [topHome, topAway] = topMatch.matchTeams;
+
+  scoreImpactEl.innerHTML = `
+    <span>Live-Rückmeldung</span>
+    <strong>${selected.matchTeams[0].code}-${selected.matchTeams[1].code}: ${currentScore}/100 (${deltaText})</strong>
+    <small>Aktueller Spitzenwert im Tagesfenster: ${topHome.code}-${topAway.code} · ${topMatch.score}/100 · ${getWatchAction(topMatch.category)}.</small>
+  `;
 }
 
 function getWatchClass(category) {
@@ -1492,7 +1526,7 @@ function getWatchLabel(category) {
     live: "Live",
     analysis: "Analyse",
     highlights: "Highlights",
-    skip: "Skip",
+    skip: "Auslassen",
   };
 
   return labels[category] || "Check";
@@ -1510,7 +1544,7 @@ function getWatchAction(category) {
     live: "Live schauen",
     analysis: "Später analysieren",
     highlights: "Highlights reichen",
-    skip: "Skip",
+    skip: "Auslassen",
   };
 
   return actions[category] || "Check";
@@ -1620,22 +1654,22 @@ function getMatchdayStorylines(dailyMatches) {
     livePick && {
       label: "Live-Pflicht",
       match: livePick,
-      text: `${livePick.driver}: Dieses Spiel hat heute den staerksten Sofortwert.`,
+      text: `${livePick.driver}: Dieses Spiel hat heute den stärksten Sofortwert.`,
     },
     analysisPick && {
-      label: "Spaeter verstehen",
+      label: "Später verstehen",
       match: analysisPick,
-      text: `${analysisPick.driver}: Nicht zwingend live, aber gut fuer das Dossier danach.`,
+      text: `${analysisPick.driver}: Nicht zwingend live, aber gut für das Dossier danach.`,
     },
     pathPick && {
       label: "Gruppenhebel",
       match: pathPick,
-      text: "Dieses Ergebnis kann den naechsten Gegner oder den Finalweg spuerbar verschieben.",
+      text: "Dieses Ergebnis kann den nächsten Gegner oder den Finalweg spürbar verschieben.",
     },
     upsetPick && {
-      label: "Ueberraschungsfenster",
+      label: "Überraschungsfenster",
       match: upsetPick,
-      text: "Hier lohnt sich ein Blick, wenn das Spiel frueh offen bleibt.",
+      text: "Hier lohnt sich ein Blick, wenn das Spiel früh offen bleibt.",
     },
   ]
     .filter(Boolean)
@@ -1657,7 +1691,7 @@ function renderMatchdayStorylines(dailyMatches) {
           </button>
         `;
       })
-      .join("") || `<p class="empty-copy">Noch keine Storylines fuer dieses Tagesfenster.</p>`;
+      .join("") || `<p class="empty-copy">Noch keine Storylines für dieses Tagesfenster.</p>`;
 
   matchdayStorylinesEl.querySelectorAll("button").forEach((button) => {
     button.addEventListener("click", () => {
@@ -1688,7 +1722,7 @@ function renderDailyCommandCenter() {
   }
 
   const [topHome, topAway] = topMatch.matchTeams;
-  dailyBriefingTextEl.textContent = `${formatDate(preferences.baseDate)} + Nacht: Heute führt ${topHome.name} vs ${topAway.name} den Watch Plan an. ${liveCount} live, ${analysisCount} Analyse, ${skipCount} Skip.`;
+  dailyBriefingTextEl.textContent = `${formatDate(preferences.baseDate)} + Nacht: Heute führt ${topHome.name} vs ${topAway.name} den Tagesplan an. ${liveCount} live, ${analysisCount} Analyse, ${skipCount} bewusst auslassen.`;
 
   commandMetricsEl.innerHTML = [
     ["Top-Spiel", `${topHome.code}-${topAway.code}`],
@@ -1766,7 +1800,7 @@ function renderDailyCommandCenter() {
           </button>
         `;
       })
-      .join("") || `<p class="empty-copy">Heute gibt es keine klaren Skip-Spiele.</p>`;
+      .join("") || `<p class="empty-copy">Heute gibt es keine klaren Spiele zum bewussten Auslassen.</p>`;
 
   skipPlanEl.querySelectorAll("button").forEach((button) => {
     button.addEventListener("click", () => {
@@ -1873,7 +1907,7 @@ function getProviderCoverage(field) {
 
 function getCoverageStatus(field) {
   const coverage = getProviderCoverage(field);
-  if (!coverage) return { label: "offen", detail: "Noch nicht geprueft.", tone: "seed", value: "0/0" };
+  if (!coverage) return { label: "offen", detail: "Noch nicht geprüft.", tone: "seed", value: "0/0" };
   return {
     label: coverage.tone === "real" ? "bereit" : coverage.tone === "mixed" ? "teilweise" : "wartet",
     detail: coverage.detail,
@@ -1894,7 +1928,7 @@ function getPreMatchScoutItems(match, home, away) {
         label: "Prediction",
         value: "offen",
         tone: "seed",
-        detail: "Noch kein Provider-Signal fuer dieses Spiel.",
+        detail: "Noch kein Provider-Signal für dieses Spiel.",
       };
   const lineups = getCoverageStatus("lineups");
   const formations = getCoverageStatus("formations");
@@ -1919,22 +1953,22 @@ function getPreMatchScoutItems(match, home, away) {
 function renderPreMatchScout(match, home, away) {
   const scoutItems = getPreMatchScoutItems(match, home, away);
   const scoutChecks = [
-    "Kurz vor Anpfiff: Startelf und Formation gegen Sportmonks erneut pruefen.",
+    "Kurz vor Anpfiff: Startelf und Formation gegen Sportmonks erneut prüfen.",
     `Wenn ${home.code} oder ${away.code} anders aufstellt als erwartet, Taktikwert im Dossier neu lesen.`,
     "Prediction nur als Kontext nutzen, nicht als Wahrheit: Datenlage und Spielbild bleiben wichtiger.",
-    "Bei Fokus-Teams: Schluesselfiguren mit Rolle, Position und Erwartungsdruck abgleichen.",
+    "Bei Fokus-Teams: Schlüsselfiguren mit Rolle, Position und Erwartungsdruck abgleichen.",
   ];
 
   return `
     <div class="insight-card pre-match-scout-card">
-      <span class="briefing-kicker">Pre-Match Scout</span>
+      <span class="briefing-kicker">Vor dem Spiel</span>
       <div class="scout-head">
         <h3>Was wir vor Anpfiff wissen</h3>
         <span class="data-badge ${match.providerSignal ? "mixed" : "seed"}">Sportmonks</span>
       </div>
       <p>
-        ${home.name} vs ${away.name}: Der Scout verbindet Prediction, Mapping, Lineup-Status und konkrete
-        Pruefpunkte, damit aus dem Vorbericht ein echter Watch-Plan wird.
+        ${home.name} vs ${away.name}: Die Vorschau verbindet Prognose, Mapping, Aufstellungsstatus und konkrete
+        Prüfpunkte, damit aus dem Vorbericht ein echter Tagesplan wird.
       </p>
       <div class="scout-signal-grid">
         ${scoutItems
@@ -1950,7 +1984,7 @@ function renderPreMatchScout(match, home, away) {
           .join("")}
       </div>
       <div class="scout-checklist">
-        <strong>Vor dem Spiel pruefen</strong>
+        <strong>Vor dem Spiel prüfen</strong>
         <ul class="cue-list">
           ${scoutChecks.map((check) => `<li>${check}</li>`).join("")}
         </ul>
@@ -2064,25 +2098,25 @@ function getAdvancedMetricPlan(match) {
     {
       label: "xG / Chance Quality",
       status: match.sourceLevel === "real" ? "bereit" : "Provider später",
-      detail: "Prueft, ob das Ergebnis zur Chancenqualitaet passt oder nur Scoreboard-Rauschen ist.",
+      detail: "Prüft, ob das Ergebnis zur Chancenqualität passt oder nur Scoreboard-Rauschen ist.",
       value: match.signals.importance,
     },
     {
-      label: "PPDA / Pressingdruck",
+      label: "Pressingdruck (PPDA)",
       status: "Modellanker",
-      detail: "Soll Pressinghoehe, Zugriff und passive Phasen im Spielverlauf trennen.",
+      detail: "Soll Pressinghöhe, Zugriff und passive Phasen im Spielverlauf trennen.",
       value: match.signals.tactical,
     },
     {
-      label: "Field Tilt / Territory",
+      label: "Spielfeldneigung",
       status: "Provider später",
-      detail: "Zeigt, wer das Spiel wirklich in gefaehrlichen Zonen haelt.",
+      detail: "Zeigt, wer das Spiel wirklich in gefährlichen Zonen hält.",
       value: Math.round((match.signals.importance + match.pathImpact) / 2),
     },
     {
-      label: "Line-Breaking / 360",
+      label: "Linienbrechende Pässe",
       status: "Premium später",
-      detail: "Erklaert Paesse und Annahmen, die normale Eventdaten kaum sichtbar machen.",
+      detail: "Erklärt Pässe und Annahmen, die normale Eventdaten kaum sichtbar machen.",
       value: match.signals.tactical,
     },
   ];
@@ -2090,9 +2124,9 @@ function getAdvancedMetricPlan(match) {
 
 function getPostMatchChecks(match, home, away) {
   return [
-    `Hat ${match.driver} tatsaechlich den Spielverlauf gepraegt?`,
-    `Passte die Chancenqualitaet zur Empfehlung ${getWatchLabel(match.category)}?`,
-    `Wurde ${home.code}-${away.code} durch Ballverluste, Standards oder offene Raeume entschieden?`,
+    `Hat ${match.driver} tatsächlich den Spielverlauf geprägt?`,
+    `Passte die Chancenqualität zur Empfehlung ${getWatchLabel(match.category)}?`,
+    `Wurde ${home.code}-${away.code} durch Ballverluste, Standards oder offene Räume entschieden?`,
     `Muss der Spielwert nach echten Ergebnis- und Eventdaten neu kalibriert werden?`,
   ];
 }
@@ -2118,7 +2152,7 @@ function renderPostMatchReportPanel(match, home, away) {
   if (!report) {
     return `
       <div class="insight-card report-hub-card">
-        <span class="briefing-kicker">Post-Match Report Hub</span>
+        <span class="briefing-kicker">Nachspiel-Report</span>
         <h3>Report-Blueprint ist vorbereitet</h3>
         <p>${postMatchReports?.sourceNote || "Echte Post-Match-Daten werden nach finalen Ergebnissen ergänzt."}</p>
         <div class="report-status-row">
@@ -2138,7 +2172,7 @@ function renderPostMatchReportPanel(match, home, away) {
 
   return `
     <div class="insight-card report-hub-card reviewed">
-      <span class="briefing-kicker">Post-Match Report Hub</span>
+      <span class="briefing-kicker">Nachspiel-Report</span>
       <h3>${home.code}-${away.code}: Analyse-Audit</h3>
       <p>${report.summary || "Report liegt vor und wartet auf redaktionelle Auswertung."}</p>
       <div class="report-status-row">
@@ -2190,7 +2224,7 @@ function renderMatches() {
               <p class="match-reason">${getRecommendationReason(match)}</p>
               ${
                 match.category === "skip"
-                  ? `<p class="skip-reasons">Skip, weil: ${getSkipReasons(match).join(", ")}.</p>`
+                  ? `<p class="skip-reasons">Auslassen, weil: ${getSkipReasons(match).join(", ")}.</p>`
                   : ""
               }
               <span class="match-tags">
@@ -2265,7 +2299,7 @@ function renderDossier() {
       </div>
     </div>
     <div class="insight-card key-battle-card">
-      <span class="briefing-kicker">Key Battle</span>
+      <span class="briefing-kicker">Schlüsselduell</span>
       <h3>${keyBattle.title}</h3>
       <div class="battle-board">
         <span><strong>${home.code}</strong>${keyBattle.left}</span>
@@ -2275,15 +2309,15 @@ function renderDossier() {
     </div>
     ${renderPreMatchScout(selectedMatch, home, away)}
     <div class="insight-card trigger-card">
-      <span class="briefing-kicker">Live Trigger</span>
+      <span class="briefing-kicker">Frühe Signale</span>
       <h3>Woran du früh erkennst, ob es kippt</h3>
       <ol class="trigger-list">
         ${tacticalTriggers.map((trigger) => `<li>${trigger}</li>`).join("")}
       </ol>
     </div>
     <div class="insight-card decision-card">
-      <span class="briefing-kicker">Decision Matrix</span>
-      <h3>Live, Analyse oder Skip?</h3>
+      <span class="briefing-kicker">Empfehlung</span>
+      <h3>Live, Analyse oder auslassen?</h3>
       <div class="decision-grid">
         ${decisionMatrix
           .map(
@@ -2298,6 +2332,17 @@ function renderDossier() {
           .join("")}
       </div>
     </div>
+    <div class="insight-card action-card">
+      <span class="briefing-kicker">Kurzfazit</span>
+      <h3>Was du damit machst</h3>
+      <p>${getRecommendationReason(selectedMatch)}</p>
+    </div>
+    <details class="dossier-depth">
+      <summary>
+        <span>Mehr Analyse anzeigen</span>
+        <small>Datenanker, Quellen, Risiken, spätere Metriken und Report-Blueprints.</small>
+      </summary>
+      <div class="insight-grid depth-grid">
     <div class="insight-card score-signals">
       <span class="briefing-kicker">Empfehlungslogik</span>
       <h3>Warum diese Empfehlung?</h3>
@@ -2339,7 +2384,7 @@ function renderDossier() {
         : ""
     }
     <div class="insight-card profile-insight">
-      <span class="briefing-kicker">Matchup Lens</span>
+      <span class="briefing-kicker">Teamduell</span>
       <h3>Team-Matchup</h3>
       <p>${getTeamProfileSummary(home)}</p>
       <p>${getTeamProfileSummary(away)}</p>
@@ -2387,8 +2432,8 @@ function renderDossier() {
     </div>
     ${renderSourceSynthesisPanel(selectedMatch)}
     <div class="insight-card analyst-voice-card">
-      <span class="briefing-kicker">Serioese Stimmen</span>
-      <h3>Welche Analysten wuerden zaehlen?</h3>
+      <span class="briefing-kicker">Seriöse Stimmen</span>
+      <h3>Welche Analysten würden zählen?</h3>
       <div class="voice-mini-list">
         ${evidenceVoices
           .map(
@@ -2403,7 +2448,7 @@ function renderDossier() {
       </div>
     </div>
     <div class="insight-card metric-plan-card">
-      <span class="briefing-kicker">Advanced Metrics</span>
+      <span class="briefing-kicker">Erweiterte Metriken</span>
       <h3>Was später automatisch validiert wird</h3>
       <div class="advanced-metric-list">
         ${metricPlan
@@ -2428,11 +2473,8 @@ function renderDossier() {
         ${postMatchChecks.map((check) => `<li>${check}</li>`).join("")}
       </ul>
     </div>
-    <div class="insight-card">
-      <span class="briefing-kicker">Action</span>
-      <h3>Empfehlung</h3>
-      <p>${getRecommendationReason(selectedMatch)}</p>
-    </div>
+      </div>
+    </details>
   `;
 }
 
@@ -2718,6 +2760,7 @@ function renderComputedViews() {
   renderSummary();
   renderMatches();
   renderDossier();
+  renderScoreImpact();
 }
 
 function setupSpoilerMode() {

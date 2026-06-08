@@ -16,7 +16,7 @@
           "count": 104,
           "total": 104,
           "tone": "real",
-          "detail": "Teams sind fuer Mapping und Spielplan-Abgleich vorhanden."
+          "detail": "Teams sind für Mapping und Spielplan-Abgleich vorhanden."
         },
         {
           "field": "scores",
@@ -32,7 +32,7 @@
           "count": 104,
           "total": 104,
           "tone": "real",
-          "detail": "Spielstatus ist fuer Live-/Pre-Match-Logik vorhanden."
+          "detail": "Spielstatus ist für Live-/Pre-Match-Logik vorhanden."
         },
         {
           "field": "lineups",
@@ -88,7 +88,7 @@
           "count": 0,
           "total": 104,
           "tone": "seed",
-          "detail": "Pressure Index ist ein Kernkandidat fuer Momentum, aktuell noch leer."
+          "detail": "Pressure Index ist ein Kernkandidat für Momentum, aktuell noch leer."
         },
         {
           "field": "expectedLineups",

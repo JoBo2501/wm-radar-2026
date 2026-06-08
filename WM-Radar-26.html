@@ -1019,6 +1019,7 @@ h3 {
 .today-panel,
 .filters,
 .command-center,
+.matchday-tools,
 .score-lab,
 .dossier,
 .group-path-section,
@@ -1035,6 +1036,61 @@ h3 {
 
 .today-panel {
   padding: 16px;
+}
+
+.matchday-tools {
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.matchday-tools > summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 16px;
+  cursor: pointer;
+  color: var(--text);
+  list-style: none;
+}
+
+.matchday-tools > summary::-webkit-details-marker {
+  display: none;
+}
+
+.matchday-tools > summary::after {
+  content: "Öffnen";
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(29, 143, 79, 0.08);
+  color: var(--lime);
+  font-size: 0.76rem;
+  font-weight: 900;
+}
+
+.matchday-tools[open] > summary::after {
+  content: "Schließen";
+}
+
+.matchday-tools > summary span,
+.matchday-tools > summary small {
+  display: block;
+}
+
+.matchday-tools > summary span {
+  font-weight: 950;
+}
+
+.matchday-tools > summary small {
+  margin-top: 3px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.matchday-tools .dashboard-grid,
+.matchday-tools .score-lab {
+  margin: 0 16px 16px;
 }
 
 .command-center {
@@ -1464,6 +1520,32 @@ h3 {
   padding-top: 4px;
 }
 
+.score-impact {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 5px;
+  padding: 12px;
+  border: 1px solid rgba(29, 143, 79, 0.18);
+  border-radius: 7px;
+  background: rgba(29, 143, 79, 0.07);
+}
+
+.score-impact span {
+  color: var(--lime);
+  font-size: 0.72rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.score-impact strong {
+  color: var(--text);
+}
+
+.score-impact small {
+  color: var(--muted);
+  line-height: 1.4;
+}
+
 .match-layout {
   display: grid;
   grid-template-columns: minmax(320px, 0.82fr) minmax(0, 1.18fr);
@@ -1829,8 +1911,7 @@ h3 {
 }
 
 .dossier {
-  position: sticky;
-  top: 92px;
+  position: static;
   padding: 18px;
   overflow: hidden;
   background:
@@ -2048,6 +2129,63 @@ h3 {
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
   margin-top: 14px;
+}
+
+.dossier-depth {
+  grid-column: 1 / -1;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.68);
+  overflow: hidden;
+}
+
+.dossier-depth > summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 13px 14px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.dossier-depth > summary::-webkit-details-marker {
+  display: none;
+}
+
+.dossier-depth > summary::after {
+  content: "Öffnen";
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(12, 129, 123, 0.08);
+  color: var(--cyan);
+  font-size: 0.74rem;
+  font-weight: 900;
+}
+
+.dossier-depth[open] > summary::after {
+  content: "Schließen";
+}
+
+.dossier-depth > summary span,
+.dossier-depth > summary small {
+  display: block;
+}
+
+.dossier-depth > summary span {
+  font-weight: 950;
+}
+
+.dossier-depth > summary small {
+  margin-top: 3px;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.depth-grid {
+  margin: 0;
+  padding: 0 12px 12px;
 }
 
 .insight-card {
@@ -5071,7 +5209,7 @@ h3 {
           <a class="orientation-card games" href="#games">
             <span>02</span>
             <strong>Spiele</strong>
-            <small>Match-Dossier, Pre-Match-Scout, Watch-Cues und Teamkontext.</small>
+            <small>Match-Dossier, Vorschau, Beobachtungspunkte und Teamkontext.</small>
           </a>
           <a class="orientation-card tournament" href="#tournament">
             <span>03</span>
@@ -5089,7 +5227,7 @@ h3 {
           <div>
             <p class="eyebrow">Heute priorisieren</p>
             <h2 id="matchesTitle">Was heute zählt</h2>
-            <p>Die komplette Tagesauswahl: alle Spiele, sortierbar nach Live, Analyse, Highlights oder Skip.</p>
+            <p>Der kurze Tagesplan: live schauen, später verstehen, Highlights reichen oder bewusst auslassen.</p>
           </div>
           <div class="date-chip" id="activeDateChip">
             <span>Demo</span>
@@ -5142,37 +5280,45 @@ h3 {
           </div>
         </section>
 
-        <section class="dashboard-grid">
-          <div class="today-panel" aria-label="Tageszusammenfassung">
-            <div class="panel-title">
-              <span>Heute</span>
-              <strong id="summaryLine">0 Spiele</strong>
+        <details class="matchday-tools">
+          <summary>
+            <span>Tagesplan feinjustieren</span>
+            <small>Filter, Gewichtung und Empfehlungslogik nur öffnen, wenn du bewusst nachsteuern willst.</small>
+          </summary>
+
+          <section class="dashboard-grid">
+            <div class="today-panel" aria-label="Tageszusammenfassung">
+              <div class="panel-title">
+                <span>Heute</span>
+                <strong id="summaryLine">0 Spiele</strong>
+              </div>
+              <div class="summary-grid" id="summaryGrid"></div>
             </div>
-            <div class="summary-grid" id="summaryGrid"></div>
-          </div>
 
-          <div class="filters" aria-label="Zeit- und Kontextfilter" id="filters"></div>
-        </section>
+            <div class="filters" aria-label="Zeit- und Kontextfilter" id="filters"></div>
+          </section>
 
-        <section class="score-lab" aria-labelledby="scoreLabTitle">
-          <div>
-            <p class="eyebrow">Deine Gewichtung</p>
-            <h2 id="scoreLabTitle">Warum diese Empfehlung?</h2>
-            <p id="scoreExplainer">
-              Der Spielwert priorisiert, was du live sehen solltest: sportliche Bedeutung, Taktikwert,
-              Attraktivität, Fokus-Team-Bezug, Surprise-Potenzial und Uhrzeit.
-            </p>
-          </div>
-          <div class="score-controls" id="scoreControls"></div>
-          <div class="category-filters" aria-label="Empfehlungsfilter" id="categoryFilters"></div>
-        </section>
+          <section class="score-lab" aria-labelledby="scoreLabTitle">
+            <div>
+              <p class="eyebrow">Deine Gewichtung</p>
+              <h2 id="scoreLabTitle">Warum diese Empfehlung?</h2>
+              <p id="scoreExplainer">
+                Der Spielwert priorisiert, was du live sehen solltest: sportliche Bedeutung, Taktikwert,
+                Attraktivität, Fokus-Team-Bezug, Surprise-Potenzial und Uhrzeit.
+              </p>
+            </div>
+            <div class="score-controls" id="scoreControls"></div>
+            <div class="score-impact" id="scoreImpact" aria-live="polite"></div>
+            <div class="category-filters" aria-label="Empfehlungsfilter" id="categoryFilters"></div>
+          </section>
+        </details>
 
         <section class="zone-divider games" id="games" aria-label="Bereich Spiele">
           <span>02</span>
           <div>
             <p class="eyebrow">Spiele verstehen</p>
-            <h2>Vom Spielplan zum echten Watch-Plan</h2>
-            <p>Hier lernst du Teams, Schluesselfiguren und konkrete Duelle kennen, bevor du ins Match-Dossier springst.</p>
+            <h2>Vom Spielplan zum echten Tagesplan</h2>
+            <p>Hier lernst du Teams, Schlüsselfiguren und konkrete Duelle kennen, bevor du ins Match-Dossier springst.</p>
           </div>
           <nav aria-label="Spiele Schnellzugriffe">
             <a href="#teamLab">Teams</a>
@@ -5269,7 +5415,7 @@ h3 {
           <div>
             <p class="eyebrow">Turnierlage</p>
             <h2>Wer kommt weiter und gegen wen?</h2>
-            <p>Der Bereich fuer Gruppen, Tabellen, Drittplatzierte und den Weg ins Finale.</p>
+            <p>Der Bereich für Gruppen, Tabellen, Drittplatzierte und den Weg ins Finale.</p>
           </div>
           <nav aria-label="Turnierlage Schnellzugriffe">
             <a href="#groupPaths">Gruppen</a>
@@ -5315,7 +5461,7 @@ h3 {
             </div>
             <p>
               Hier siehst du, welche Wege ins Finale möglich sind, wo schwere Gegner lauern und welche
-              Gruppenplatzierung ploetzlich extrem wichtig wird.
+              Gruppenplatzierung plötzlich extrem wichtig wird.
             </p>
           </div>
           <div class="bracket-summary" id="bracketSummary"></div>
@@ -5331,7 +5477,7 @@ h3 {
           </div>
           <nav aria-label="Analyse Schnellzugriffe">
             <a href="#featureLab">Features</a>
-            <a href="#analystDesk">Analyst Desk</a>
+            <a href="#analystDesk">Quellenfilter</a>
             <a href="#data">Datenlage</a>
             <a href="#sources">Quellen</a>
           </nav>
@@ -5365,7 +5511,7 @@ h3 {
             </div>
             <p>
               Vier Produktmodule verbinden Sportmonks-Daten mit echtem Nutzwert: Live-Szenarien, Momentum,
-              Stuermer-Effizienz und Pre-Match-Scouting.
+              Stürmer-Effizienz und Spielvorschau.
             </p>
           </div>
           <div class="feature-lab-grid" id="featureLabGrid"></div>
@@ -5375,10 +5521,10 @@ h3 {
           <div class="section-head compact">
             <div>
               <p class="eyebrow">Seriöser Quellenfilter</p>
-              <h2 id="analystDeskTitle">Analyst Desk</h2>
+              <h2 id="analystDeskTitle">Quellenfilter</h2>
             </div>
             <p>
-              Hier entscheidet die App, welchen Daten, Stimmen und KI-Modellen sie vertraut. Kein TV-Laerm,
+              Hier entscheidet die App, welchen Daten, Stimmen und KI-Modellen sie vertraut. Kein TV-Lärm,
               keine Stammtischlogik: Nur Quellen mit Beleg, Szene, Datenanker oder echter Fachperspektive.
             </p>
           </div>
@@ -5502,7 +5648,7 @@ window.WMRadarData = {
       "confidence": 68
     },
     {
-      "label": "Post-Match Reports",
+      "label": "Nachspiel-Reports",
       "value": "Blueprint",
       "tone": "model",
       "detail": "Report-Schema, Metriken und Validierungsfragen sind vorbereitet.",
@@ -6484,7 +6630,7 @@ window.WMRadarData = {
         "layer": "Primaere WM-Datenquelle",
         "quality": 93,
         "integration": "Aktive API",
-        "bestFor": "Fixtures, Teilnehmer, Status, Scores, Predictions, Lineups, Formationen und spaeter Live-/Post-Match-Daten.",
+        "bestFor": "Fixtures, Teilnehmer, Status, Scores, Predictions, Lineups, Formationen und später Live-/Post-Match-Daten.",
         "watchFor": "Automatischer Ergebnisabgleich, Pre-Match-Scout, Was-passiert-wenn-Logik und belastbare Provider-Abdeckung.",
         "blindSpot": "Advanced-Felder wie Pressure, xG und Expected Lineups werden erst kurz vor Anpfiff, live oder nach Abpfiff wirklich validiert.",
         "signals": [
@@ -6567,7 +6713,7 @@ window.WMRadarData = {
         "type": "Taktik, Scouting und Theorie",
         "trust": 84,
         "bestFor": "Breite internationale Scouting-, Team- und Taktikanalysen.",
-        "useWhen": "Wenn fuer kleinere Teams oder Surprise-Kandidaten schnell ein strukturiertes Profil gebraucht wird.",
+        "useWhen": "Wenn für kleinere Teams oder Surprise-Kandidaten schnell ein strukturiertes Profil gebraucht wird.",
         "downgradeWhen": "Wenn Autor, Datenbasis oder Videoevidenz nicht klar genug sind.",
         "url": "https://totalfootballanalysis.com/about-total-football-analysis-magazine"
       },
@@ -6576,7 +6722,7 @@ window.WMRadarData = {
         "name": "The Rest Is Football",
         "type": "Ex-Profi-Kontext",
         "trust": 74,
-        "bestFor": "Kabinenlogik, Stuermerperspektive, Turniergefuehl, England-Kontext und menschliche Zwischentoene.",
+        "bestFor": "Kabinenlogik, Stürmerperspektive, Turniergefühl, England-Kontext und menschliche Zwischentöne.",
         "useWhen": "Als Kontextstimme, nicht als primaere Daten- oder Taktikquelle.",
         "downgradeWhen": "Wenn die These nicht durch Daten, Szenen oder Coach-Logik gestuetzt wird.",
         "url": "https://therestisfootball.com/about"
@@ -6587,8 +6733,8 @@ window.WMRadarData = {
         "id": "tacticai",
         "name": "TacticAI / Google DeepMind + Liverpool FC",
         "trust": 89,
-        "role": "Research-Referenz fuer KI-gestuetzte Standardsituationen",
-        "bestFor": "Corner-Kick-Muster, aehnliche Setups, Vorschlaege fuer Positionsanpassungen und Modellpruefung mit Experten.",
+        "role": "Research-Referenz für KI-gestützte Standardsituationen",
+        "bestFor": "Corner-Kick-Muster, ähnliche Setups, Vorschläge für Positionsanpassungen und Modellprüfung mit Experten.",
         "limitation": "Forschungsreferenz, kein frei integrierter WM-Live-Dienst. Fokus auf Ecken statt gesamtem offenen Spiel.",
         "url": "https://www.nature.com/articles/s41467-024-45965-x"
       }
@@ -6599,7 +6745,7 @@ window.WMRadarData = {
         "label": "Harte Daten",
         "mode": "Automatisch",
         "cadence": "Poller vor, waehrend und nach Spielen",
-        "whatHappens": "Ergebnisse, Tabellen, Spielstatus und spaeter Eventdaten werden per Provider-API synchronisiert.",
+        "whatHappens": "Ergebnisse, Tabellen, Spielstatus und später Eventdaten werden per Provider-API synchronisiert.",
         "userAction": "Keine Aktion noetig, ausser ein Provider-Token muss erneuert werden."
       },
       {
@@ -6607,7 +6753,7 @@ window.WMRadarData = {
         "label": "Fokusspiele",
         "mode": "Automatisch plus Review",
         "cadence": "Vorbericht vor Anpfiff, Analyse-Lauf nach Abpfiff",
-        "whatHappens": "Die App sucht passende Datenanker, Taktikquellen und serioese Stimmen und erstellt eine gewichtete Analyse-Synthese.",
+        "whatHappens": "Die App sucht passende Datenanker, Taktikquellen und seriöse Stimmen und erstellt eine gewichtete Analyse-Synthese.",
         "userAction": "Optional: Analyse aktualisieren, wenn du ein Spiel besonders tief verfolgen willst."
       },
       {
@@ -6624,7 +6770,7 @@ window.WMRadarData = {
         "mode": "Halbautomatisch",
         "cadence": "Quellen-Inbox nach Spielende",
         "whatHappens": "Artikel, Podcast-Folgen und Coach-Analysen werden als Links und Kurzbefunde vorgeschlagen, nicht blind als Wahrheit uebernommen.",
-        "userAction": "Die App zeigt Belegstatus und Trust; du kannst Quellen oeffnen oder spaeter ignorieren."
+        "userAction": "Die App zeigt Belegstatus und Trust; du kannst Quellen öffnen oder später ignorieren."
       }
     ],
     "accessModel": [
@@ -6632,7 +6778,7 @@ window.WMRadarData = {
         "label": "Frei / offen",
         "examples": "FIFA-Basisdaten, oeffentliche Artikel, Podcasts, Spielverlagerung je nach Beitrag",
         "use": "Orientierung, Links, Kontext, Taktik-Hypothesen und Presseschau-Signale.",
-        "risk": "Nicht immer strukturiert, keine Garantie fuer vollstaendige WM-Abdeckung oder API-Zugriff."
+        "risk": "Nicht immer strukturiert, keine Garantie für vollständige WM-Abdeckung oder API-Zugriff."
       },
       {
         "label": "Gueltiges Abo",
@@ -6643,14 +6789,14 @@ window.WMRadarData = {
       {
         "label": "SportMonks API",
         "examples": "Aktives WM-Modul mit Fixtures, Teilnehmern, Status, Scores, Predictions und weiteren verfuegbaren Includes",
-        "use": "Primaere automatische Rohdaten fuer Ergebnis-Sync, Pre-Match-Scout, Szenarien und Post-Match-Drafts.",
+        "use": "Primäre automatische Rohdaten für Ergebnis-Sync, Pre-Match-Scout, Szenarien und Post-Match-Drafts.",
         "risk": "Einzelne Advanced-Felder muessen im Live-Betrieb validiert werden; Coverage wird sichtbar statt angenommen."
       },
       {
         "label": "Manuell kuratiert",
         "examples": "Einzelne starke Artikel, Podcast-Episoden, Trainerstimmen, eigene Beobachtungen",
-        "use": "Qualitativer Mehrwert fuer Spiele, die wirklich interessieren.",
-        "risk": "Mehr Arbeit, dafuer maximale Kontrolle und kein rechtliches Graufeld."
+        "use": "Qualitativer Mehrwert für Spiele, die wirklich interessieren.",
+        "risk": "Mehr Arbeit, dafür maximale Kontrolle und kein rechtliches Graufeld."
       }
     ],
     "synthesisModel": [
@@ -6692,7 +6838,7 @@ window.WMRadarData = {
         "weight": 72
       },
       {
-        "label": "TV-Laerm runterstufen",
+        "label": "TV-Lärm runterstufen",
         "rule": "Thesen mit Drama, Namen oder Stimmung, aber ohne Beleg, bekommen keinen Einfluss auf Match Value.",
         "weight": 22
       }
@@ -6986,31 +7132,31 @@ window.WMRadarData = {
     "metricDefinitions": [
       {
         "id": "xg",
-        "label": "xG / Chance Quality",
+        "label": "xG / Chancenqualität",
         "providerTarget": "SportMonks xGFixture / Statistics",
         "meaning": "Vergleicht Ergebnis und Chancenqualität, um Scoreboard-Rauschen von echter Dominanz zu trennen."
       },
       {
         "id": "ppda",
-        "label": "PPDA / Pressingdruck",
+        "label": "Pressingdruck (PPDA)",
         "providerTarget": "SportMonks Events / Statistics + Review",
         "meaning": "Misst, wie hoch und wie konsequent ein Team ohne Ball Zugriff erzeugt."
       },
       {
         "id": "fieldTilt",
-        "label": "Field Tilt / Territory",
+        "label": "Spielfeldneigung",
         "providerTarget": "SportMonks Statistics / Pressure",
         "meaning": "Zeigt, wer das Spiel in gefährlichen Zonen kontrolliert statt nur Ballbesitz zu sammeln."
       },
       {
         "id": "lineBreaking",
-        "label": "Line-Breaking / 360",
-        "providerTarget": "SportMonks Events + manuelle Taktikpruefung",
+        "label": "Linienbrechende Pässe",
+        "providerTarget": "SportMonks Events + manuelle Taktikprüfung",
         "meaning": "Erklärt Pässe, Annahmen und Läufe, die Linien brechen oder Druck überspielen."
       },
       {
         "id": "setPieceThreat",
-        "label": "Set-Piece Threat",
+        "label": "Standardgefahr",
         "providerTarget": "SportMonks Events / Statistics + Review",
         "meaning": "Bewertet Standards über Zielzonen, zweite Bälle, Blockbewegungen und Abschlussqualität."
       }
@@ -7077,7 +7223,7 @@ window.WMRadarData = {
             "count": 104,
             "total": 104,
             "tone": "real",
-            "detail": "Teams sind fuer Mapping und Spielplan-Abgleich vorhanden."
+            "detail": "Teams sind für Mapping und Spielplan-Abgleich vorhanden."
           },
           {
             "field": "scores",
@@ -7093,7 +7239,7 @@ window.WMRadarData = {
             "count": 104,
             "total": 104,
             "tone": "real",
-            "detail": "Spielstatus ist fuer Live-/Pre-Match-Logik vorhanden."
+            "detail": "Spielstatus ist für Live-/Pre-Match-Logik vorhanden."
           },
           {
             "field": "lineups",
@@ -7149,7 +7295,7 @@ window.WMRadarData = {
             "count": 0,
             "total": 104,
             "tone": "seed",
-            "detail": "Pressure Index ist ein Kernkandidat fuer Momentum, aktuell noch leer."
+            "detail": "Pressure Index ist ein Kernkandidat für Momentum, aktuell noch leer."
           },
           {
             "field": "expectedLineups",
@@ -9188,7 +9334,7 @@ window.WMRadarData = {
     ]
   },
   "sportmonksHealth": {
-    "generatedAt": "2026-06-08T15:48:36.164Z",
+    "generatedAt": "2026-06-08T16:05:07.337Z",
     "status": "warn",
     "summary": "1 Hinweise, keine kritischen Fehler.",
     "liveFixtureCount": 104,
@@ -9244,7 +9390,7 @@ window.WMRadarData = {
       "status": "modellbereit",
       "stage": "Live",
       "impact": 96,
-      "promise": "Live-Hinweise, wie ein aktueller Spielstand die Gruppentabelle und den naechsten Gegner veraendert.",
+      "promise": "Live-Hinweise, wie ein aktueller Spielstand die Gruppentabelle und den nächsten Gegner verändert.",
       "dataNeeds": [
         "Scores",
         "Live State",
@@ -9260,9 +9406,9 @@ window.WMRadarData = {
         "stage",
         "group"
       ],
-      "userValue": "Der Nutzer versteht sofort, warum ein Tor in einem scheinbar kleinen Spiel ploetzlich riesig ist.",
-      "firstVersion": "Bei jedem Live-Resultat: neue Tabelle simulieren, direkte Qualifikation, Drittplatzierte und moeglichen K.o.-Gegner anzeigen.",
-      "openRisk": "Live-Standings muessen gegen eigene Tabellenlogik validiert werden."
+      "userValue": "Der Nutzer versteht sofort, warum ein Tor in einem scheinbar kleinen Spiel plötzlich riesig ist.",
+      "firstVersion": "Bei jedem Live-Resultat: neue Tabelle simulieren, direkte Qualifikation, Drittplatzierte und möglichen K.o.-Gegner anzeigen.",
+      "openRisk": "Live-Standings müssen gegen eigene Tabellenlogik validiert werden."
     },
     {
       "id": "momentum",
@@ -9270,7 +9416,7 @@ window.WMRadarData = {
       "status": "wartet auf Live-Daten",
       "stage": "Live/Post",
       "impact": 88,
-      "promise": "Druckphasen visuell erklaeren: Wann kippte Kontrolle, wer erzeugte echten Druck und wer nur Ballbesitz?",
+      "promise": "Druckphasen visuell erklären: Wann kippte Kontrolle, wer erzeugte echten Druck und wer nur Ballbesitz?",
       "dataNeeds": [
         "Pressure Index",
         "Events Timeline",
@@ -9287,15 +9433,15 @@ window.WMRadarData = {
       ],
       "userValue": "Aus 'Team war besser' wird eine nachvollziehbare Spielkurve mit konkreten Phasen.",
       "firstVersion": "Timeline mit 5-Minuten-Phasen, Event-Clustern und Pressure-Status: ruhig, Druck, Kipppunkt.",
-      "openRisk": "Pressure ist im aktuellen Probe-Lauf noch 0/104 und muss im Live-Spiel bestaetigt werden."
+      "openRisk": "Pressure ist im aktuellen Probe-Lauf noch 0/104 und muss im Live-Spiel bestätigt werden."
     },
     {
       "id": "finisher-efficiency",
-      "label": "Effizienz-Karten fuer Stuermer",
+      "label": "Effizienz-Karten für Stürmer",
       "status": "wartet auf xG",
       "stage": "Post",
       "impact": 82,
-      "promise": "xG vs. Tore, Chancenqualitaet und Abschlusswirkung fuer Schluesselspieler greifbar machen.",
+      "promise": "xG vs. Tore, Chancenqualität und Abschlusswirkung für Schlüsselspieler greifbar machen.",
       "dataNeeds": [
         "xG",
         "Goals",
@@ -9310,9 +9456,9 @@ window.WMRadarData = {
         "events",
         "scores"
       ],
-      "userValue": "Der Nutzer sieht, wer ueber Erwartung performt, wer viel Gefahr erzeugt und wer nur vom Ergebnis lebt.",
-      "firstVersion": "Nach jedem Fokusspiel: Abschluesse, Tore, xG-Abweichung und kurze Einordnung fuer zentrale Angreifer.",
-      "openRisk": "xGFixture ist im aktuellen Probe-Lauf noch 0/104; Paket- und Live-Verfuegbarkeit pruefen."
+      "userValue": "Der Nutzer sieht, wer über Erwartung performt, wer viel Gefahr erzeugt und wer nur vom Ergebnis lebt.",
+      "firstVersion": "Nach jedem Fokusspiel: Abschlüsse, Tore, xG-Abweichung und kurze Einordnung für zentrale Angreifer.",
+      "openRisk": "xGFixture ist im aktuellen Probe-Lauf noch 0/104; Paket- und Live-Verfügbarkeit prüfen."
     },
     {
       "id": "prematch-scout",
@@ -9320,7 +9466,7 @@ window.WMRadarData = {
       "status": "teilweise bereit",
       "stage": "Pre",
       "impact": 91,
-      "promise": "Vor dem Spiel: erwartete Lineups, Ausfaelle, Form, Head-to-Head und Prognosemodell als gefuehrte Vorschau.",
+      "promise": "Vor dem Spiel: erwartete Lineups, Ausfälle, Form, Head-to-Head und Prognosemodell als geführte Vorschau.",
       "dataNeeds": [
         "Predictions",
         "Lineups",
@@ -9337,9 +9483,9 @@ window.WMRadarData = {
         "participants",
         "statistics"
       ],
-      "userValue": "Der Nutzer weiss vor Anpfiff, worauf er achten soll und ob sich Live-Schauen lohnt.",
-      "firstVersion": "Predictions + vorhandene Lineups/Formationen als Scout-Karte im Match-Dossier; Expected Lineups und Ausfaelle spaeter nachziehen.",
-      "openRisk": "Predictions sind 72/72 fuer Gruppenspiele gemappt; Expected Lineups sind noch 0/104."
+      "userValue": "Der Nutzer weiß vor Anpfiff, worauf er achten soll und ob sich Live-Schauen lohnt.",
+      "firstVersion": "Predictions + vorhandene Lineups/Formationen als Vorschau-Karte im Match-Dossier; Expected Lineups und Ausfälle später nachziehen.",
+      "openRisk": "Predictions sind 72/72 für Gruppenspiele gemappt; Expected Lineups sind noch 0/104."
     }
   ],
   "focusTeams": [
@@ -9434,7 +9580,7 @@ window.WMRadarData = {
     },
     {
       "id": "low-value",
-      "label": "Low Value"
+      "label": "Geringer Spielwert"
     }
   ],
   "categoryFilters": [
@@ -9456,7 +9602,7 @@ window.WMRadarData = {
     },
     {
       "id": "skip",
-      "label": "Skip"
+      "label": "Auslassen"
     }
   ],
   "preferences": {
@@ -12550,7 +12696,7 @@ window.WMRadarData = {
     {
       "grade": "A",
       "title": "SportMonks",
-      "text": "Primaere WM-Datenquelle fuer Fixtures, Teams, Status, Scores, Predictions, Lineups und verfuegbare Advanced-Felder.",
+      "text": "Primäre WM-Datenquelle für Fixtures, Teams, Status, Scores, Predictions, Lineups und verfügbare erweiterte Felder.",
       "quality": 93
     },
     {
@@ -12614,12 +12760,13 @@ const stateLabels = {
   live: "Pflichtspiel",
   analysis: "Analysewürdig",
   highlights: "Highlights reichen",
-  skip: "Skip",
+  skip: "Bewusst auslassen",
 };
 
 let activeFilter = "today";
 let activeCategory = "all";
 let weights = { ...preferences.weights };
+const baselineWeights = { ...preferences.weights };
 let selectedMatchId = null;
 
 const focusTeamsEl = document.querySelector("#focusTeams");
@@ -12633,6 +12780,7 @@ const summaryLineEl = document.querySelector("#summaryLine");
 const filtersEl = document.querySelector("#filters");
 const categoryFiltersEl = document.querySelector("#categoryFilters");
 const scoreControlsEl = document.querySelector("#scoreControls");
+const scoreImpactEl = document.querySelector("#scoreImpact");
 const activeDateChipEl = document.querySelector("#activeDateChip");
 const dailyBriefingTextEl = document.querySelector("#dailyBriefingText");
 const commandMetricsEl = document.querySelector("#commandMetrics");
@@ -12754,25 +12902,29 @@ function isPathCommandMatch(match) {
   return match.hasFocusTeam || hasSurprisePath || hasStrongContext;
 }
 
-function computeScore(match) {
+function computeScoreWithWeights(match, weightSet = weights) {
   const signal = match.signals;
   const pathImpact = getPathImpact(match);
   const providerSignal = providerMappingByMatchId.get(match.id);
   const predictionImpact = providerSignal?.predictionImpact || 0;
   const parts = [
-    [signal.importance, weights.importance],
-    [signal.tactical, weights.tactical],
-    [signal.entertainment, weights.entertainment],
-    [signal.focus, weights.focus],
-    [signal.surprise, weights.surprise],
-    [signal.time, weights.time],
-    [pathImpact, weights.path],
+    [signal.importance, weightSet.importance],
+    [signal.tactical, weightSet.tactical],
+    [signal.entertainment, weightSet.entertainment],
+    [signal.focus, weightSet.focus],
+    [signal.surprise, weightSet.surprise],
+    [signal.time, weightSet.time],
+    [pathImpact, weightSet.path],
   ];
   const weightedTotal = parts.reduce((sum, [value, weight]) => sum + value * weight, 0);
   const totalWeight = parts.reduce((sum, [, weight]) => sum + weight, 0);
   const score = weightedTotal / totalWeight - signal.lowValueRisk * 0.18 + predictionImpact;
 
   return clamp(Math.round(score), 0, 100);
+}
+
+function computeScore(match) {
+  return computeScoreWithWeights(match, weights);
 }
 
 function getRecommendation(score) {
@@ -13206,7 +13358,7 @@ function renderControlStats() {
   controlStatsEl.innerHTML = [
     ["Datenstand", metadata.snapshotDate],
     ["Live-Spiele", liveCount],
-    ["Skip-Kandidaten", skipCount],
+    ["Auslassen", skipCount],
     ["Top-Spielwert", topScore],
   ]
     .map(
@@ -13966,7 +14118,7 @@ function renderSummary() {
     ["Live", visibleMatches.filter((match) => match.category === "live").length],
     ["Analyse", visibleMatches.filter((match) => match.category === "analysis").length],
     ["Highlights", visibleMatches.filter((match) => match.category === "highlights").length],
-    ["Skip", visibleMatches.filter((match) => match.category === "skip").length],
+    ["Auslassen", visibleMatches.filter((match) => match.category === "skip").length],
   ];
   const activeLabel = filters.find((filter) => filter.id === activeFilter)?.label || "Alle";
 
@@ -14056,6 +14208,34 @@ function renderScoreControls() {
       renderComputedViews();
     });
   });
+
+  renderScoreImpact();
+}
+
+function renderScoreImpact() {
+  if (!scoreImpactEl) return;
+
+  const scoredMatches = getScoredMatches();
+  const selected = scoredMatches.find((match) => match.id === selectedMatchId) || scoredMatches[0];
+  const todayMatches = getTodayCommandMatches();
+  const topMatch = todayMatches[0];
+
+  if (!selected || !topMatch) {
+    scoreImpactEl.innerHTML = "";
+    return;
+  }
+
+  const baselineScore = computeScoreWithWeights(selected, baselineWeights);
+  const currentScore = computeScoreWithWeights(selected, weights);
+  const delta = currentScore - baselineScore;
+  const deltaText = delta === 0 ? "unverändert" : `${delta > 0 ? "+" : ""}${delta} Punkte`;
+  const [topHome, topAway] = topMatch.matchTeams;
+
+  scoreImpactEl.innerHTML = `
+    <span>Live-Rückmeldung</span>
+    <strong>${selected.matchTeams[0].code}-${selected.matchTeams[1].code}: ${currentScore}/100 (${deltaText})</strong>
+    <small>Aktueller Spitzenwert im Tagesfenster: ${topHome.code}-${topAway.code} · ${topMatch.score}/100 · ${getWatchAction(topMatch.category)}.</small>
+  `;
 }
 
 function getWatchClass(category) {
@@ -14070,7 +14250,7 @@ function getWatchLabel(category) {
     live: "Live",
     analysis: "Analyse",
     highlights: "Highlights",
-    skip: "Skip",
+    skip: "Auslassen",
   };
 
   return labels[category] || "Check";
@@ -14088,7 +14268,7 @@ function getWatchAction(category) {
     live: "Live schauen",
     analysis: "Später analysieren",
     highlights: "Highlights reichen",
-    skip: "Skip",
+    skip: "Auslassen",
   };
 
   return actions[category] || "Check";
@@ -14198,22 +14378,22 @@ function getMatchdayStorylines(dailyMatches) {
     livePick && {
       label: "Live-Pflicht",
       match: livePick,
-      text: `${livePick.driver}: Dieses Spiel hat heute den staerksten Sofortwert.`,
+      text: `${livePick.driver}: Dieses Spiel hat heute den stärksten Sofortwert.`,
     },
     analysisPick && {
-      label: "Spaeter verstehen",
+      label: "Später verstehen",
       match: analysisPick,
-      text: `${analysisPick.driver}: Nicht zwingend live, aber gut fuer das Dossier danach.`,
+      text: `${analysisPick.driver}: Nicht zwingend live, aber gut für das Dossier danach.`,
     },
     pathPick && {
       label: "Gruppenhebel",
       match: pathPick,
-      text: "Dieses Ergebnis kann den naechsten Gegner oder den Finalweg spuerbar verschieben.",
+      text: "Dieses Ergebnis kann den nächsten Gegner oder den Finalweg spürbar verschieben.",
     },
     upsetPick && {
-      label: "Ueberraschungsfenster",
+      label: "Überraschungsfenster",
       match: upsetPick,
-      text: "Hier lohnt sich ein Blick, wenn das Spiel frueh offen bleibt.",
+      text: "Hier lohnt sich ein Blick, wenn das Spiel früh offen bleibt.",
     },
   ]
     .filter(Boolean)
@@ -14235,7 +14415,7 @@ function renderMatchdayStorylines(dailyMatches) {
           </button>
         `;
       })
-      .join("") || `<p class="empty-copy">Noch keine Storylines fuer dieses Tagesfenster.</p>`;
+      .join("") || `<p class="empty-copy">Noch keine Storylines für dieses Tagesfenster.</p>`;
 
   matchdayStorylinesEl.querySelectorAll("button").forEach((button) => {
     button.addEventListener("click", () => {
@@ -14266,7 +14446,7 @@ function renderDailyCommandCenter() {
   }
 
   const [topHome, topAway] = topMatch.matchTeams;
-  dailyBriefingTextEl.textContent = `${formatDate(preferences.baseDate)} + Nacht: Heute führt ${topHome.name} vs ${topAway.name} den Watch Plan an. ${liveCount} live, ${analysisCount} Analyse, ${skipCount} Skip.`;
+  dailyBriefingTextEl.textContent = `${formatDate(preferences.baseDate)} + Nacht: Heute führt ${topHome.name} vs ${topAway.name} den Tagesplan an. ${liveCount} live, ${analysisCount} Analyse, ${skipCount} bewusst auslassen.`;
 
   commandMetricsEl.innerHTML = [
     ["Top-Spiel", `${topHome.code}-${topAway.code}`],
@@ -14344,7 +14524,7 @@ function renderDailyCommandCenter() {
           </button>
         `;
       })
-      .join("") || `<p class="empty-copy">Heute gibt es keine klaren Skip-Spiele.</p>`;
+      .join("") || `<p class="empty-copy">Heute gibt es keine klaren Spiele zum bewussten Auslassen.</p>`;
 
   skipPlanEl.querySelectorAll("button").forEach((button) => {
     button.addEventListener("click", () => {
@@ -14451,7 +14631,7 @@ function getProviderCoverage(field) {
 
 function getCoverageStatus(field) {
   const coverage = getProviderCoverage(field);
-  if (!coverage) return { label: "offen", detail: "Noch nicht geprueft.", tone: "seed", value: "0/0" };
+  if (!coverage) return { label: "offen", detail: "Noch nicht geprüft.", tone: "seed", value: "0/0" };
   return {
     label: coverage.tone === "real" ? "bereit" : coverage.tone === "mixed" ? "teilweise" : "wartet",
     detail: coverage.detail,
@@ -14472,7 +14652,7 @@ function getPreMatchScoutItems(match, home, away) {
         label: "Prediction",
         value: "offen",
         tone: "seed",
-        detail: "Noch kein Provider-Signal fuer dieses Spiel.",
+        detail: "Noch kein Provider-Signal für dieses Spiel.",
       };
   const lineups = getCoverageStatus("lineups");
   const formations = getCoverageStatus("formations");
@@ -14497,22 +14677,22 @@ function getPreMatchScoutItems(match, home, away) {
 function renderPreMatchScout(match, home, away) {
   const scoutItems = getPreMatchScoutItems(match, home, away);
   const scoutChecks = [
-    "Kurz vor Anpfiff: Startelf und Formation gegen Sportmonks erneut pruefen.",
+    "Kurz vor Anpfiff: Startelf und Formation gegen Sportmonks erneut prüfen.",
     `Wenn ${home.code} oder ${away.code} anders aufstellt als erwartet, Taktikwert im Dossier neu lesen.`,
     "Prediction nur als Kontext nutzen, nicht als Wahrheit: Datenlage und Spielbild bleiben wichtiger.",
-    "Bei Fokus-Teams: Schluesselfiguren mit Rolle, Position und Erwartungsdruck abgleichen.",
+    "Bei Fokus-Teams: Schlüsselfiguren mit Rolle, Position und Erwartungsdruck abgleichen.",
   ];
 
   return `
     <div class="insight-card pre-match-scout-card">
-      <span class="briefing-kicker">Pre-Match Scout</span>
+      <span class="briefing-kicker">Vor dem Spiel</span>
       <div class="scout-head">
         <h3>Was wir vor Anpfiff wissen</h3>
         <span class="data-badge ${match.providerSignal ? "mixed" : "seed"}">Sportmonks</span>
       </div>
       <p>
-        ${home.name} vs ${away.name}: Der Scout verbindet Prediction, Mapping, Lineup-Status und konkrete
-        Pruefpunkte, damit aus dem Vorbericht ein echter Watch-Plan wird.
+        ${home.name} vs ${away.name}: Die Vorschau verbindet Prognose, Mapping, Aufstellungsstatus und konkrete
+        Prüfpunkte, damit aus dem Vorbericht ein echter Tagesplan wird.
       </p>
       <div class="scout-signal-grid">
         ${scoutItems
@@ -14528,7 +14708,7 @@ function renderPreMatchScout(match, home, away) {
           .join("")}
       </div>
       <div class="scout-checklist">
-        <strong>Vor dem Spiel pruefen</strong>
+        <strong>Vor dem Spiel prüfen</strong>
         <ul class="cue-list">
           ${scoutChecks.map((check) => `<li>${check}</li>`).join("")}
         </ul>
@@ -14642,25 +14822,25 @@ function getAdvancedMetricPlan(match) {
     {
       label: "xG / Chance Quality",
       status: match.sourceLevel === "real" ? "bereit" : "Provider später",
-      detail: "Prueft, ob das Ergebnis zur Chancenqualitaet passt oder nur Scoreboard-Rauschen ist.",
+      detail: "Prüft, ob das Ergebnis zur Chancenqualität passt oder nur Scoreboard-Rauschen ist.",
       value: match.signals.importance,
     },
     {
-      label: "PPDA / Pressingdruck",
+      label: "Pressingdruck (PPDA)",
       status: "Modellanker",
-      detail: "Soll Pressinghoehe, Zugriff und passive Phasen im Spielverlauf trennen.",
+      detail: "Soll Pressinghöhe, Zugriff und passive Phasen im Spielverlauf trennen.",
       value: match.signals.tactical,
     },
     {
-      label: "Field Tilt / Territory",
+      label: "Spielfeldneigung",
       status: "Provider später",
-      detail: "Zeigt, wer das Spiel wirklich in gefaehrlichen Zonen haelt.",
+      detail: "Zeigt, wer das Spiel wirklich in gefährlichen Zonen hält.",
       value: Math.round((match.signals.importance + match.pathImpact) / 2),
     },
     {
-      label: "Line-Breaking / 360",
+      label: "Linienbrechende Pässe",
       status: "Premium später",
-      detail: "Erklaert Paesse und Annahmen, die normale Eventdaten kaum sichtbar machen.",
+      detail: "Erklärt Pässe und Annahmen, die normale Eventdaten kaum sichtbar machen.",
       value: match.signals.tactical,
     },
   ];
@@ -14668,9 +14848,9 @@ function getAdvancedMetricPlan(match) {
 
 function getPostMatchChecks(match, home, away) {
   return [
-    `Hat ${match.driver} tatsaechlich den Spielverlauf gepraegt?`,
-    `Passte die Chancenqualitaet zur Empfehlung ${getWatchLabel(match.category)}?`,
-    `Wurde ${home.code}-${away.code} durch Ballverluste, Standards oder offene Raeume entschieden?`,
+    `Hat ${match.driver} tatsächlich den Spielverlauf geprägt?`,
+    `Passte die Chancenqualität zur Empfehlung ${getWatchLabel(match.category)}?`,
+    `Wurde ${home.code}-${away.code} durch Ballverluste, Standards oder offene Räume entschieden?`,
     `Muss der Spielwert nach echten Ergebnis- und Eventdaten neu kalibriert werden?`,
   ];
 }
@@ -14696,7 +14876,7 @@ function renderPostMatchReportPanel(match, home, away) {
   if (!report) {
     return `
       <div class="insight-card report-hub-card">
-        <span class="briefing-kicker">Post-Match Report Hub</span>
+        <span class="briefing-kicker">Nachspiel-Report</span>
         <h3>Report-Blueprint ist vorbereitet</h3>
         <p>${postMatchReports?.sourceNote || "Echte Post-Match-Daten werden nach finalen Ergebnissen ergänzt."}</p>
         <div class="report-status-row">
@@ -14716,7 +14896,7 @@ function renderPostMatchReportPanel(match, home, away) {
 
   return `
     <div class="insight-card report-hub-card reviewed">
-      <span class="briefing-kicker">Post-Match Report Hub</span>
+      <span class="briefing-kicker">Nachspiel-Report</span>
       <h3>${home.code}-${away.code}: Analyse-Audit</h3>
       <p>${report.summary || "Report liegt vor und wartet auf redaktionelle Auswertung."}</p>
       <div class="report-status-row">
@@ -14768,7 +14948,7 @@ function renderMatches() {
               <p class="match-reason">${getRecommendationReason(match)}</p>
               ${
                 match.category === "skip"
-                  ? `<p class="skip-reasons">Skip, weil: ${getSkipReasons(match).join(", ")}.</p>`
+                  ? `<p class="skip-reasons">Auslassen, weil: ${getSkipReasons(match).join(", ")}.</p>`
                   : ""
               }
               <span class="match-tags">
@@ -14843,7 +15023,7 @@ function renderDossier() {
       </div>
     </div>
     <div class="insight-card key-battle-card">
-      <span class="briefing-kicker">Key Battle</span>
+      <span class="briefing-kicker">Schlüsselduell</span>
       <h3>${keyBattle.title}</h3>
       <div class="battle-board">
         <span><strong>${home.code}</strong>${keyBattle.left}</span>
@@ -14853,15 +15033,15 @@ function renderDossier() {
     </div>
     ${renderPreMatchScout(selectedMatch, home, away)}
     <div class="insight-card trigger-card">
-      <span class="briefing-kicker">Live Trigger</span>
+      <span class="briefing-kicker">Frühe Signale</span>
       <h3>Woran du früh erkennst, ob es kippt</h3>
       <ol class="trigger-list">
         ${tacticalTriggers.map((trigger) => `<li>${trigger}</li>`).join("")}
       </ol>
     </div>
     <div class="insight-card decision-card">
-      <span class="briefing-kicker">Decision Matrix</span>
-      <h3>Live, Analyse oder Skip?</h3>
+      <span class="briefing-kicker">Empfehlung</span>
+      <h3>Live, Analyse oder auslassen?</h3>
       <div class="decision-grid">
         ${decisionMatrix
           .map(
@@ -14876,6 +15056,17 @@ function renderDossier() {
           .join("")}
       </div>
     </div>
+    <div class="insight-card action-card">
+      <span class="briefing-kicker">Kurzfazit</span>
+      <h3>Was du damit machst</h3>
+      <p>${getRecommendationReason(selectedMatch)}</p>
+    </div>
+    <details class="dossier-depth">
+      <summary>
+        <span>Mehr Analyse anzeigen</span>
+        <small>Datenanker, Quellen, Risiken, spätere Metriken und Report-Blueprints.</small>
+      </summary>
+      <div class="insight-grid depth-grid">
     <div class="insight-card score-signals">
       <span class="briefing-kicker">Empfehlungslogik</span>
       <h3>Warum diese Empfehlung?</h3>
@@ -14917,7 +15108,7 @@ function renderDossier() {
         : ""
     }
     <div class="insight-card profile-insight">
-      <span class="briefing-kicker">Matchup Lens</span>
+      <span class="briefing-kicker">Teamduell</span>
       <h3>Team-Matchup</h3>
       <p>${getTeamProfileSummary(home)}</p>
       <p>${getTeamProfileSummary(away)}</p>
@@ -14965,8 +15156,8 @@ function renderDossier() {
     </div>
     ${renderSourceSynthesisPanel(selectedMatch)}
     <div class="insight-card analyst-voice-card">
-      <span class="briefing-kicker">Serioese Stimmen</span>
-      <h3>Welche Analysten wuerden zaehlen?</h3>
+      <span class="briefing-kicker">Seriöse Stimmen</span>
+      <h3>Welche Analysten würden zählen?</h3>
       <div class="voice-mini-list">
         ${evidenceVoices
           .map(
@@ -14981,7 +15172,7 @@ function renderDossier() {
       </div>
     </div>
     <div class="insight-card metric-plan-card">
-      <span class="briefing-kicker">Advanced Metrics</span>
+      <span class="briefing-kicker">Erweiterte Metriken</span>
       <h3>Was später automatisch validiert wird</h3>
       <div class="advanced-metric-list">
         ${metricPlan
@@ -15006,11 +15197,8 @@ function renderDossier() {
         ${postMatchChecks.map((check) => `<li>${check}</li>`).join("")}
       </ul>
     </div>
-    <div class="insight-card">
-      <span class="briefing-kicker">Action</span>
-      <h3>Empfehlung</h3>
-      <p>${getRecommendationReason(selectedMatch)}</p>
-    </div>
+      </div>
+    </details>
   `;
 }
 
@@ -15296,6 +15484,7 @@ function renderComputedViews() {
   renderSummary();
   renderMatches();
   renderDossier();
+  renderScoreImpact();
 }
 
 function setupSpoilerMode() {

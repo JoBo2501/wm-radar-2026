@@ -1010,6 +1010,7 @@ h3 {
 .today-panel,
 .filters,
 .command-center,
+.matchday-tools,
 .score-lab,
 .dossier,
 .group-path-section,
@@ -1026,6 +1027,61 @@ h3 {
 
 .today-panel {
   padding: 16px;
+}
+
+.matchday-tools {
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.matchday-tools > summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 16px;
+  cursor: pointer;
+  color: var(--text);
+  list-style: none;
+}
+
+.matchday-tools > summary::-webkit-details-marker {
+  display: none;
+}
+
+.matchday-tools > summary::after {
+  content: "Öffnen";
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(29, 143, 79, 0.08);
+  color: var(--lime);
+  font-size: 0.76rem;
+  font-weight: 900;
+}
+
+.matchday-tools[open] > summary::after {
+  content: "Schließen";
+}
+
+.matchday-tools > summary span,
+.matchday-tools > summary small {
+  display: block;
+}
+
+.matchday-tools > summary span {
+  font-weight: 950;
+}
+
+.matchday-tools > summary small {
+  margin-top: 3px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.matchday-tools .dashboard-grid,
+.matchday-tools .score-lab {
+  margin: 0 16px 16px;
 }
 
 .command-center {
@@ -1455,6 +1511,32 @@ h3 {
   padding-top: 4px;
 }
 
+.score-impact {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 5px;
+  padding: 12px;
+  border: 1px solid rgba(29, 143, 79, 0.18);
+  border-radius: 7px;
+  background: rgba(29, 143, 79, 0.07);
+}
+
+.score-impact span {
+  color: var(--lime);
+  font-size: 0.72rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.score-impact strong {
+  color: var(--text);
+}
+
+.score-impact small {
+  color: var(--muted);
+  line-height: 1.4;
+}
+
 .match-layout {
   display: grid;
   grid-template-columns: minmax(320px, 0.82fr) minmax(0, 1.18fr);
@@ -1820,8 +1902,7 @@ h3 {
 }
 
 .dossier {
-  position: sticky;
-  top: 92px;
+  position: static;
   padding: 18px;
   overflow: hidden;
   background:
@@ -2039,6 +2120,63 @@ h3 {
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
   margin-top: 14px;
+}
+
+.dossier-depth {
+  grid-column: 1 / -1;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.68);
+  overflow: hidden;
+}
+
+.dossier-depth > summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 13px 14px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.dossier-depth > summary::-webkit-details-marker {
+  display: none;
+}
+
+.dossier-depth > summary::after {
+  content: "Öffnen";
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(12, 129, 123, 0.08);
+  color: var(--cyan);
+  font-size: 0.74rem;
+  font-weight: 900;
+}
+
+.dossier-depth[open] > summary::after {
+  content: "Schließen";
+}
+
+.dossier-depth > summary span,
+.dossier-depth > summary small {
+  display: block;
+}
+
+.dossier-depth > summary span {
+  font-weight: 950;
+}
+
+.dossier-depth > summary small {
+  margin-top: 3px;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.depth-grid {
+  margin: 0;
+  padding: 0 12px 12px;
 }
 
 .insight-card {

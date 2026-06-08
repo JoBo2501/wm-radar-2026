@@ -6,7 +6,7 @@
       "layer": "Primaere WM-Datenquelle",
       "quality": 93,
       "integration": "Aktive API",
-      "bestFor": "Fixtures, Teilnehmer, Status, Scores, Predictions, Lineups, Formationen und spaeter Live-/Post-Match-Daten.",
+      "bestFor": "Fixtures, Teilnehmer, Status, Scores, Predictions, Lineups, Formationen und später Live-/Post-Match-Daten.",
       "watchFor": "Automatischer Ergebnisabgleich, Pre-Match-Scout, Was-passiert-wenn-Logik und belastbare Provider-Abdeckung.",
       "blindSpot": "Advanced-Felder wie Pressure, xG und Expected Lineups werden erst kurz vor Anpfiff, live oder nach Abpfiff wirklich validiert.",
       "signals": ["Fixtures", "Scores", "Status", "Predictions"],
@@ -74,7 +74,7 @@
       "type": "Taktik, Scouting und Theorie",
       "trust": 84,
       "bestFor": "Breite internationale Scouting-, Team- und Taktikanalysen.",
-      "useWhen": "Wenn fuer kleinere Teams oder Surprise-Kandidaten schnell ein strukturiertes Profil gebraucht wird.",
+      "useWhen": "Wenn für kleinere Teams oder Surprise-Kandidaten schnell ein strukturiertes Profil gebraucht wird.",
       "downgradeWhen": "Wenn Autor, Datenbasis oder Videoevidenz nicht klar genug sind.",
       "url": "https://totalfootballanalysis.com/about-total-football-analysis-magazine"
     },
@@ -83,7 +83,7 @@
       "name": "The Rest Is Football",
       "type": "Ex-Profi-Kontext",
       "trust": 74,
-      "bestFor": "Kabinenlogik, Stuermerperspektive, Turniergefuehl, England-Kontext und menschliche Zwischentoene.",
+      "bestFor": "Kabinenlogik, Stürmerperspektive, Turniergefühl, England-Kontext und menschliche Zwischentöne.",
       "useWhen": "Als Kontextstimme, nicht als primaere Daten- oder Taktikquelle.",
       "downgradeWhen": "Wenn die These nicht durch Daten, Szenen oder Coach-Logik gestuetzt wird.",
       "url": "https://therestisfootball.com/about"
@@ -94,8 +94,8 @@
       "id": "tacticai",
       "name": "TacticAI / Google DeepMind + Liverpool FC",
       "trust": 89,
-      "role": "Research-Referenz fuer KI-gestuetzte Standardsituationen",
-      "bestFor": "Corner-Kick-Muster, aehnliche Setups, Vorschlaege fuer Positionsanpassungen und Modellpruefung mit Experten.",
+      "role": "Research-Referenz für KI-gestützte Standardsituationen",
+      "bestFor": "Corner-Kick-Muster, ähnliche Setups, Vorschläge für Positionsanpassungen und Modellprüfung mit Experten.",
       "limitation": "Forschungsreferenz, kein frei integrierter WM-Live-Dienst. Fokus auf Ecken statt gesamtem offenen Spiel.",
       "url": "https://www.nature.com/articles/s41467-024-45965-x"
     }
@@ -106,7 +106,7 @@
       "label": "Harte Daten",
       "mode": "Automatisch",
       "cadence": "Poller vor, waehrend und nach Spielen",
-      "whatHappens": "Ergebnisse, Tabellen, Spielstatus und spaeter Eventdaten werden per Provider-API synchronisiert.",
+      "whatHappens": "Ergebnisse, Tabellen, Spielstatus und später Eventdaten werden per Provider-API synchronisiert.",
       "userAction": "Keine Aktion noetig, ausser ein Provider-Token muss erneuert werden."
     },
     {
@@ -114,7 +114,7 @@
       "label": "Fokusspiele",
       "mode": "Automatisch plus Review",
       "cadence": "Vorbericht vor Anpfiff, Analyse-Lauf nach Abpfiff",
-      "whatHappens": "Die App sucht passende Datenanker, Taktikquellen und serioese Stimmen und erstellt eine gewichtete Analyse-Synthese.",
+      "whatHappens": "Die App sucht passende Datenanker, Taktikquellen und seriöse Stimmen und erstellt eine gewichtete Analyse-Synthese.",
       "userAction": "Optional: Analyse aktualisieren, wenn du ein Spiel besonders tief verfolgen willst."
     },
     {
@@ -131,7 +131,7 @@
       "mode": "Halbautomatisch",
       "cadence": "Quellen-Inbox nach Spielende",
       "whatHappens": "Artikel, Podcast-Folgen und Coach-Analysen werden als Links und Kurzbefunde vorgeschlagen, nicht blind als Wahrheit uebernommen.",
-      "userAction": "Die App zeigt Belegstatus und Trust; du kannst Quellen oeffnen oder spaeter ignorieren."
+      "userAction": "Die App zeigt Belegstatus und Trust; du kannst Quellen öffnen oder später ignorieren."
     }
   ],
   "accessModel": [
@@ -139,7 +139,7 @@
       "label": "Frei / offen",
       "examples": "FIFA-Basisdaten, oeffentliche Artikel, Podcasts, Spielverlagerung je nach Beitrag",
       "use": "Orientierung, Links, Kontext, Taktik-Hypothesen und Presseschau-Signale.",
-      "risk": "Nicht immer strukturiert, keine Garantie fuer vollstaendige WM-Abdeckung oder API-Zugriff."
+      "risk": "Nicht immer strukturiert, keine Garantie für vollständige WM-Abdeckung oder API-Zugriff."
     },
     {
       "label": "Gueltiges Abo",
@@ -150,14 +150,14 @@
     {
       "label": "SportMonks API",
       "examples": "Aktives WM-Modul mit Fixtures, Teilnehmern, Status, Scores, Predictions und weiteren verfuegbaren Includes",
-      "use": "Primaere automatische Rohdaten fuer Ergebnis-Sync, Pre-Match-Scout, Szenarien und Post-Match-Drafts.",
+      "use": "Primäre automatische Rohdaten für Ergebnis-Sync, Pre-Match-Scout, Szenarien und Post-Match-Drafts.",
       "risk": "Einzelne Advanced-Felder muessen im Live-Betrieb validiert werden; Coverage wird sichtbar statt angenommen."
     },
     {
       "label": "Manuell kuratiert",
       "examples": "Einzelne starke Artikel, Podcast-Episoden, Trainerstimmen, eigene Beobachtungen",
-      "use": "Qualitativer Mehrwert fuer Spiele, die wirklich interessieren.",
-      "risk": "Mehr Arbeit, dafuer maximale Kontrolle und kein rechtliches Graufeld."
+      "use": "Qualitativer Mehrwert für Spiele, die wirklich interessieren.",
+      "risk": "Mehr Arbeit, dafür maximale Kontrolle und kein rechtliches Graufeld."
     }
   ],
   "synthesisModel": [
@@ -199,7 +199,7 @@
       "weight": 72
     },
     {
-      "label": "TV-Laerm runterstufen",
+      "label": "TV-Lärm runterstufen",
       "rule": "Thesen mit Drama, Namen oder Stimmung, aber ohne Beleg, bekommen keinen Einfluss auf Match Value.",
       "weight": 22
     }

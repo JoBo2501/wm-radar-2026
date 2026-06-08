@@ -96,7 +96,7 @@ const data = {
       confidence: resultValidation.status === "synced" ? 90 : resultValidation.status === "critical" ? 35 : 68,
     },
     {
-      label: "Post-Match Reports",
+      label: "Nachspiel-Reports",
       value: postMatchValidation.status === "ready" ? "Bereit" : "Blueprint",
       tone: postMatchValidation.status === "critical" ? "seed" : postMatchValidation.status === "ready" ? "real" : "model",
       detail:
@@ -134,14 +134,14 @@ const data = {
     { id: "focus", label: "Fokus-Teams" },
     { id: "path", label: "Weiterkommen & Gegner" },
     { id: "night", label: "Nachtspiele" },
-    { id: "low-value", label: "Low Value" },
+    { id: "low-value", label: "Geringer Spielwert" },
   ],
   categoryFilters: [
     { id: "all", label: "Alle Empfehlungen" },
     { id: "live", label: "Live" },
     { id: "analysis", label: "Analyse" },
     { id: "highlights", label: "Highlights" },
-    { id: "skip", label: "Skip" },
+    { id: "skip", label: "Auslassen" },
   ],
   preferences,
   matches,
@@ -158,7 +158,7 @@ const data = {
     {
       grade: "A",
       title: "SportMonks",
-      text: "Primaere WM-Datenquelle fuer Fixtures, Teams, Status, Scores, Predictions, Lineups und verfuegbare Advanced-Felder.",
+      text: "Primäre WM-Datenquelle für Fixtures, Teams, Status, Scores, Predictions, Lineups und verfügbare erweiterte Felder.",
       quality: 93,
     },
     {

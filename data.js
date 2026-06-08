@@ -57,7 +57,7 @@ window.WMRadarData = {
       "confidence": 68
     },
     {
-      "label": "Post-Match Reports",
+      "label": "Nachspiel-Reports",
       "value": "Blueprint",
       "tone": "model",
       "detail": "Report-Schema, Metriken und Validierungsfragen sind vorbereitet.",
@@ -1039,7 +1039,7 @@ window.WMRadarData = {
         "layer": "Primaere WM-Datenquelle",
         "quality": 93,
         "integration": "Aktive API",
-        "bestFor": "Fixtures, Teilnehmer, Status, Scores, Predictions, Lineups, Formationen und spaeter Live-/Post-Match-Daten.",
+        "bestFor": "Fixtures, Teilnehmer, Status, Scores, Predictions, Lineups, Formationen und später Live-/Post-Match-Daten.",
         "watchFor": "Automatischer Ergebnisabgleich, Pre-Match-Scout, Was-passiert-wenn-Logik und belastbare Provider-Abdeckung.",
         "blindSpot": "Advanced-Felder wie Pressure, xG und Expected Lineups werden erst kurz vor Anpfiff, live oder nach Abpfiff wirklich validiert.",
         "signals": [
@@ -1122,7 +1122,7 @@ window.WMRadarData = {
         "type": "Taktik, Scouting und Theorie",
         "trust": 84,
         "bestFor": "Breite internationale Scouting-, Team- und Taktikanalysen.",
-        "useWhen": "Wenn fuer kleinere Teams oder Surprise-Kandidaten schnell ein strukturiertes Profil gebraucht wird.",
+        "useWhen": "Wenn für kleinere Teams oder Surprise-Kandidaten schnell ein strukturiertes Profil gebraucht wird.",
         "downgradeWhen": "Wenn Autor, Datenbasis oder Videoevidenz nicht klar genug sind.",
         "url": "https://totalfootballanalysis.com/about-total-football-analysis-magazine"
       },
@@ -1131,7 +1131,7 @@ window.WMRadarData = {
         "name": "The Rest Is Football",
         "type": "Ex-Profi-Kontext",
         "trust": 74,
-        "bestFor": "Kabinenlogik, Stuermerperspektive, Turniergefuehl, England-Kontext und menschliche Zwischentoene.",
+        "bestFor": "Kabinenlogik, Stürmerperspektive, Turniergefühl, England-Kontext und menschliche Zwischentöne.",
         "useWhen": "Als Kontextstimme, nicht als primaere Daten- oder Taktikquelle.",
         "downgradeWhen": "Wenn die These nicht durch Daten, Szenen oder Coach-Logik gestuetzt wird.",
         "url": "https://therestisfootball.com/about"
@@ -1142,8 +1142,8 @@ window.WMRadarData = {
         "id": "tacticai",
         "name": "TacticAI / Google DeepMind + Liverpool FC",
         "trust": 89,
-        "role": "Research-Referenz fuer KI-gestuetzte Standardsituationen",
-        "bestFor": "Corner-Kick-Muster, aehnliche Setups, Vorschlaege fuer Positionsanpassungen und Modellpruefung mit Experten.",
+        "role": "Research-Referenz für KI-gestützte Standardsituationen",
+        "bestFor": "Corner-Kick-Muster, ähnliche Setups, Vorschläge für Positionsanpassungen und Modellprüfung mit Experten.",
         "limitation": "Forschungsreferenz, kein frei integrierter WM-Live-Dienst. Fokus auf Ecken statt gesamtem offenen Spiel.",
         "url": "https://www.nature.com/articles/s41467-024-45965-x"
       }
@@ -1154,7 +1154,7 @@ window.WMRadarData = {
         "label": "Harte Daten",
         "mode": "Automatisch",
         "cadence": "Poller vor, waehrend und nach Spielen",
-        "whatHappens": "Ergebnisse, Tabellen, Spielstatus und spaeter Eventdaten werden per Provider-API synchronisiert.",
+        "whatHappens": "Ergebnisse, Tabellen, Spielstatus und später Eventdaten werden per Provider-API synchronisiert.",
         "userAction": "Keine Aktion noetig, ausser ein Provider-Token muss erneuert werden."
       },
       {
@@ -1162,7 +1162,7 @@ window.WMRadarData = {
         "label": "Fokusspiele",
         "mode": "Automatisch plus Review",
         "cadence": "Vorbericht vor Anpfiff, Analyse-Lauf nach Abpfiff",
-        "whatHappens": "Die App sucht passende Datenanker, Taktikquellen und serioese Stimmen und erstellt eine gewichtete Analyse-Synthese.",
+        "whatHappens": "Die App sucht passende Datenanker, Taktikquellen und seriöse Stimmen und erstellt eine gewichtete Analyse-Synthese.",
         "userAction": "Optional: Analyse aktualisieren, wenn du ein Spiel besonders tief verfolgen willst."
       },
       {
@@ -1179,7 +1179,7 @@ window.WMRadarData = {
         "mode": "Halbautomatisch",
         "cadence": "Quellen-Inbox nach Spielende",
         "whatHappens": "Artikel, Podcast-Folgen und Coach-Analysen werden als Links und Kurzbefunde vorgeschlagen, nicht blind als Wahrheit uebernommen.",
-        "userAction": "Die App zeigt Belegstatus und Trust; du kannst Quellen oeffnen oder spaeter ignorieren."
+        "userAction": "Die App zeigt Belegstatus und Trust; du kannst Quellen öffnen oder später ignorieren."
       }
     ],
     "accessModel": [
@@ -1187,7 +1187,7 @@ window.WMRadarData = {
         "label": "Frei / offen",
         "examples": "FIFA-Basisdaten, oeffentliche Artikel, Podcasts, Spielverlagerung je nach Beitrag",
         "use": "Orientierung, Links, Kontext, Taktik-Hypothesen und Presseschau-Signale.",
-        "risk": "Nicht immer strukturiert, keine Garantie fuer vollstaendige WM-Abdeckung oder API-Zugriff."
+        "risk": "Nicht immer strukturiert, keine Garantie für vollständige WM-Abdeckung oder API-Zugriff."
       },
       {
         "label": "Gueltiges Abo",
@@ -1198,14 +1198,14 @@ window.WMRadarData = {
       {
         "label": "SportMonks API",
         "examples": "Aktives WM-Modul mit Fixtures, Teilnehmern, Status, Scores, Predictions und weiteren verfuegbaren Includes",
-        "use": "Primaere automatische Rohdaten fuer Ergebnis-Sync, Pre-Match-Scout, Szenarien und Post-Match-Drafts.",
+        "use": "Primäre automatische Rohdaten für Ergebnis-Sync, Pre-Match-Scout, Szenarien und Post-Match-Drafts.",
         "risk": "Einzelne Advanced-Felder muessen im Live-Betrieb validiert werden; Coverage wird sichtbar statt angenommen."
       },
       {
         "label": "Manuell kuratiert",
         "examples": "Einzelne starke Artikel, Podcast-Episoden, Trainerstimmen, eigene Beobachtungen",
-        "use": "Qualitativer Mehrwert fuer Spiele, die wirklich interessieren.",
-        "risk": "Mehr Arbeit, dafuer maximale Kontrolle und kein rechtliches Graufeld."
+        "use": "Qualitativer Mehrwert für Spiele, die wirklich interessieren.",
+        "risk": "Mehr Arbeit, dafür maximale Kontrolle und kein rechtliches Graufeld."
       }
     ],
     "synthesisModel": [
@@ -1247,7 +1247,7 @@ window.WMRadarData = {
         "weight": 72
       },
       {
-        "label": "TV-Laerm runterstufen",
+        "label": "TV-Lärm runterstufen",
         "rule": "Thesen mit Drama, Namen oder Stimmung, aber ohne Beleg, bekommen keinen Einfluss auf Match Value.",
         "weight": 22
       }
@@ -1541,31 +1541,31 @@ window.WMRadarData = {
     "metricDefinitions": [
       {
         "id": "xg",
-        "label": "xG / Chance Quality",
+        "label": "xG / Chancenqualität",
         "providerTarget": "SportMonks xGFixture / Statistics",
         "meaning": "Vergleicht Ergebnis und Chancenqualität, um Scoreboard-Rauschen von echter Dominanz zu trennen."
       },
       {
         "id": "ppda",
-        "label": "PPDA / Pressingdruck",
+        "label": "Pressingdruck (PPDA)",
         "providerTarget": "SportMonks Events / Statistics + Review",
         "meaning": "Misst, wie hoch und wie konsequent ein Team ohne Ball Zugriff erzeugt."
       },
       {
         "id": "fieldTilt",
-        "label": "Field Tilt / Territory",
+        "label": "Spielfeldneigung",
         "providerTarget": "SportMonks Statistics / Pressure",
         "meaning": "Zeigt, wer das Spiel in gefährlichen Zonen kontrolliert statt nur Ballbesitz zu sammeln."
       },
       {
         "id": "lineBreaking",
-        "label": "Line-Breaking / 360",
-        "providerTarget": "SportMonks Events + manuelle Taktikpruefung",
+        "label": "Linienbrechende Pässe",
+        "providerTarget": "SportMonks Events + manuelle Taktikprüfung",
         "meaning": "Erklärt Pässe, Annahmen und Läufe, die Linien brechen oder Druck überspielen."
       },
       {
         "id": "setPieceThreat",
-        "label": "Set-Piece Threat",
+        "label": "Standardgefahr",
         "providerTarget": "SportMonks Events / Statistics + Review",
         "meaning": "Bewertet Standards über Zielzonen, zweite Bälle, Blockbewegungen und Abschlussqualität."
       }
@@ -1632,7 +1632,7 @@ window.WMRadarData = {
             "count": 104,
             "total": 104,
             "tone": "real",
-            "detail": "Teams sind fuer Mapping und Spielplan-Abgleich vorhanden."
+            "detail": "Teams sind für Mapping und Spielplan-Abgleich vorhanden."
           },
           {
             "field": "scores",
@@ -1648,7 +1648,7 @@ window.WMRadarData = {
             "count": 104,
             "total": 104,
             "tone": "real",
-            "detail": "Spielstatus ist fuer Live-/Pre-Match-Logik vorhanden."
+            "detail": "Spielstatus ist für Live-/Pre-Match-Logik vorhanden."
           },
           {
             "field": "lineups",
@@ -1704,7 +1704,7 @@ window.WMRadarData = {
             "count": 0,
             "total": 104,
             "tone": "seed",
-            "detail": "Pressure Index ist ein Kernkandidat fuer Momentum, aktuell noch leer."
+            "detail": "Pressure Index ist ein Kernkandidat für Momentum, aktuell noch leer."
           },
           {
             "field": "expectedLineups",
@@ -3743,7 +3743,7 @@ window.WMRadarData = {
     ]
   },
   "sportmonksHealth": {
-    "generatedAt": "2026-06-08T15:48:36.164Z",
+    "generatedAt": "2026-06-08T16:05:07.337Z",
     "status": "warn",
     "summary": "1 Hinweise, keine kritischen Fehler.",
     "liveFixtureCount": 104,
@@ -3799,7 +3799,7 @@ window.WMRadarData = {
       "status": "modellbereit",
       "stage": "Live",
       "impact": 96,
-      "promise": "Live-Hinweise, wie ein aktueller Spielstand die Gruppentabelle und den naechsten Gegner veraendert.",
+      "promise": "Live-Hinweise, wie ein aktueller Spielstand die Gruppentabelle und den nächsten Gegner verändert.",
       "dataNeeds": [
         "Scores",
         "Live State",
@@ -3815,9 +3815,9 @@ window.WMRadarData = {
         "stage",
         "group"
       ],
-      "userValue": "Der Nutzer versteht sofort, warum ein Tor in einem scheinbar kleinen Spiel ploetzlich riesig ist.",
-      "firstVersion": "Bei jedem Live-Resultat: neue Tabelle simulieren, direkte Qualifikation, Drittplatzierte und moeglichen K.o.-Gegner anzeigen.",
-      "openRisk": "Live-Standings muessen gegen eigene Tabellenlogik validiert werden."
+      "userValue": "Der Nutzer versteht sofort, warum ein Tor in einem scheinbar kleinen Spiel plötzlich riesig ist.",
+      "firstVersion": "Bei jedem Live-Resultat: neue Tabelle simulieren, direkte Qualifikation, Drittplatzierte und möglichen K.o.-Gegner anzeigen.",
+      "openRisk": "Live-Standings müssen gegen eigene Tabellenlogik validiert werden."
     },
     {
       "id": "momentum",
@@ -3825,7 +3825,7 @@ window.WMRadarData = {
       "status": "wartet auf Live-Daten",
       "stage": "Live/Post",
       "impact": 88,
-      "promise": "Druckphasen visuell erklaeren: Wann kippte Kontrolle, wer erzeugte echten Druck und wer nur Ballbesitz?",
+      "promise": "Druckphasen visuell erklären: Wann kippte Kontrolle, wer erzeugte echten Druck und wer nur Ballbesitz?",
       "dataNeeds": [
         "Pressure Index",
         "Events Timeline",
@@ -3842,15 +3842,15 @@ window.WMRadarData = {
       ],
       "userValue": "Aus 'Team war besser' wird eine nachvollziehbare Spielkurve mit konkreten Phasen.",
       "firstVersion": "Timeline mit 5-Minuten-Phasen, Event-Clustern und Pressure-Status: ruhig, Druck, Kipppunkt.",
-      "openRisk": "Pressure ist im aktuellen Probe-Lauf noch 0/104 und muss im Live-Spiel bestaetigt werden."
+      "openRisk": "Pressure ist im aktuellen Probe-Lauf noch 0/104 und muss im Live-Spiel bestätigt werden."
     },
     {
       "id": "finisher-efficiency",
-      "label": "Effizienz-Karten fuer Stuermer",
+      "label": "Effizienz-Karten für Stürmer",
       "status": "wartet auf xG",
       "stage": "Post",
       "impact": 82,
-      "promise": "xG vs. Tore, Chancenqualitaet und Abschlusswirkung fuer Schluesselspieler greifbar machen.",
+      "promise": "xG vs. Tore, Chancenqualität und Abschlusswirkung für Schlüsselspieler greifbar machen.",
       "dataNeeds": [
         "xG",
         "Goals",
@@ -3865,9 +3865,9 @@ window.WMRadarData = {
         "events",
         "scores"
       ],
-      "userValue": "Der Nutzer sieht, wer ueber Erwartung performt, wer viel Gefahr erzeugt und wer nur vom Ergebnis lebt.",
-      "firstVersion": "Nach jedem Fokusspiel: Abschluesse, Tore, xG-Abweichung und kurze Einordnung fuer zentrale Angreifer.",
-      "openRisk": "xGFixture ist im aktuellen Probe-Lauf noch 0/104; Paket- und Live-Verfuegbarkeit pruefen."
+      "userValue": "Der Nutzer sieht, wer über Erwartung performt, wer viel Gefahr erzeugt und wer nur vom Ergebnis lebt.",
+      "firstVersion": "Nach jedem Fokusspiel: Abschlüsse, Tore, xG-Abweichung und kurze Einordnung für zentrale Angreifer.",
+      "openRisk": "xGFixture ist im aktuellen Probe-Lauf noch 0/104; Paket- und Live-Verfügbarkeit prüfen."
     },
     {
       "id": "prematch-scout",
@@ -3875,7 +3875,7 @@ window.WMRadarData = {
       "status": "teilweise bereit",
       "stage": "Pre",
       "impact": 91,
-      "promise": "Vor dem Spiel: erwartete Lineups, Ausfaelle, Form, Head-to-Head und Prognosemodell als gefuehrte Vorschau.",
+      "promise": "Vor dem Spiel: erwartete Lineups, Ausfälle, Form, Head-to-Head und Prognosemodell als geführte Vorschau.",
       "dataNeeds": [
         "Predictions",
         "Lineups",
@@ -3892,9 +3892,9 @@ window.WMRadarData = {
         "participants",
         "statistics"
       ],
-      "userValue": "Der Nutzer weiss vor Anpfiff, worauf er achten soll und ob sich Live-Schauen lohnt.",
-      "firstVersion": "Predictions + vorhandene Lineups/Formationen als Scout-Karte im Match-Dossier; Expected Lineups und Ausfaelle spaeter nachziehen.",
-      "openRisk": "Predictions sind 72/72 fuer Gruppenspiele gemappt; Expected Lineups sind noch 0/104."
+      "userValue": "Der Nutzer weiß vor Anpfiff, worauf er achten soll und ob sich Live-Schauen lohnt.",
+      "firstVersion": "Predictions + vorhandene Lineups/Formationen als Vorschau-Karte im Match-Dossier; Expected Lineups und Ausfälle später nachziehen.",
+      "openRisk": "Predictions sind 72/72 für Gruppenspiele gemappt; Expected Lineups sind noch 0/104."
     }
   ],
   "focusTeams": [
@@ -3989,7 +3989,7 @@ window.WMRadarData = {
     },
     {
       "id": "low-value",
-      "label": "Low Value"
+      "label": "Geringer Spielwert"
     }
   ],
   "categoryFilters": [
@@ -4011,7 +4011,7 @@ window.WMRadarData = {
     },
     {
       "id": "skip",
-      "label": "Skip"
+      "label": "Auslassen"
     }
   ],
   "preferences": {
@@ -7105,7 +7105,7 @@ window.WMRadarData = {
     {
       "grade": "A",
       "title": "SportMonks",
-      "text": "Primaere WM-Datenquelle fuer Fixtures, Teams, Status, Scores, Predictions, Lineups und verfuegbare Advanced-Felder.",
+      "text": "Primäre WM-Datenquelle für Fixtures, Teams, Status, Scores, Predictions, Lineups und verfügbare erweiterte Felder.",
       "quality": 93
     },
     {
