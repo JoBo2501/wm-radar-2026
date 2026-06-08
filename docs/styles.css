@@ -3041,6 +3041,177 @@ h3 {
   padding: 18px;
 }
 
+.tournament-snapshot-section {
+  margin-bottom: 16px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(255, 214, 107, 0.12), transparent 18rem),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(250, 247, 238, 0.84)),
+    var(--panel);
+  box-shadow: 0 14px 34px rgba(23, 60, 36, 0.08);
+}
+
+.tournament-snapshot-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.15fr);
+  gap: 12px;
+}
+
+.tournament-snapshot-card {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 251, 245, 0.8)),
+    rgba(255, 255, 255, 0.84);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
+}
+
+.tournament-mode-card,
+.focus-road-card {
+  min-height: 236px;
+}
+
+.tournament-snapshot-card h3 {
+  margin: 0;
+  font-size: 1.18rem;
+}
+
+.tournament-snapshot-card p {
+  margin: 0;
+  color: var(--soft);
+  line-height: 1.52;
+}
+
+.snapshot-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.snapshot-metrics span,
+.focus-road-list span,
+.tense-group-list span,
+.leverage-match-list button {
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(244, 248, 242, 0.76);
+}
+
+.snapshot-metrics span {
+  display: grid;
+  gap: 4px;
+}
+
+.snapshot-metrics strong {
+  color: var(--text);
+  font-size: 1.26rem;
+}
+
+.snapshot-metrics small,
+.focus-road-list small,
+.tense-group-list small,
+.leverage-match-list small {
+  color: var(--muted);
+  line-height: 1.36;
+}
+
+.focus-road-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.focus-road-list span {
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr);
+  gap: 7px;
+  align-items: center;
+  border-left: 4px solid rgba(19, 69, 41, 0.14);
+}
+
+.focus-road-list span.direct {
+  border-left-color: var(--green);
+  background: rgba(29, 143, 79, 0.08);
+}
+
+.focus-road-list span.third {
+  border-left-color: var(--cyan);
+  background: rgba(12, 129, 123, 0.07);
+}
+
+.focus-road-list span.risk {
+  border-left-color: var(--gold);
+  background: rgba(180, 121, 0, 0.07);
+}
+
+.focus-road-list span.out {
+  border-left-color: var(--red);
+  background: rgba(213, 68, 60, 0.06);
+}
+
+.focus-road-list strong {
+  color: var(--text);
+}
+
+.focus-road-list em {
+  color: var(--soft);
+  font-style: normal;
+  font-weight: 800;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.focus-road-list small {
+  grid-column: 2 / -1;
+}
+
+.leverage-match-list,
+.tense-group-list {
+  display: grid;
+  gap: 8px;
+}
+
+.leverage-match-list button {
+  display: grid;
+  gap: 4px;
+  width: 100%;
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+}
+
+.leverage-match-list button:hover {
+  border-color: rgba(180, 121, 0, 0.32);
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.leverage-match-list span,
+.tense-group-list em {
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.leverage-match-list strong,
+.tense-group-list strong {
+  color: var(--text);
+}
+
+.tense-group-list span {
+  display: grid;
+  gap: 5px;
+}
+
 .standings-section {
   margin-bottom: 16px;
   padding: 18px;
@@ -3076,8 +3247,8 @@ h3 {
   border: 1px solid var(--line);
   border-radius: 7px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.026)),
-    rgba(31, 38, 32, 0.72);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 251, 245, 0.78)),
+    rgba(255, 255, 255, 0.84);
 }
 
 .group-path-card.focus-group {
@@ -3124,8 +3295,9 @@ h3 {
   place-items: center;
   border-radius: 50%;
   background:
-    radial-gradient(circle at center, #171d18 0 58%, transparent 59%),
-    conic-gradient(var(--lime) 78%, rgba(255, 255, 255, 0.11) 0);
+    radial-gradient(circle at center, #ffffff 0 58%, transparent 59%),
+    conic-gradient(var(--lime) 78%, rgba(19, 69, 41, 0.12) 0);
+  color: var(--text);
   font-size: 1.12rem;
 }
 
@@ -3142,7 +3314,7 @@ h3 {
   padding: 8px 9px;
   border: 1px solid var(--line);
   border-radius: 7px;
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(255, 255, 255, 0.78);
   color: var(--soft);
   font-weight: 800;
 }
@@ -3194,7 +3366,7 @@ h3 {
   padding: 9px;
   border: 1px solid var(--line);
   border-radius: 7px;
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(255, 255, 255, 0.74);
   color: var(--text);
   cursor: pointer;
   text-align: left;
@@ -3224,8 +3396,8 @@ h3 {
   border: 1px solid var(--line);
   border-radius: 7px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.025)),
-    rgba(255, 255, 255, 0.035);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 251, 245, 0.78)),
+    rgba(255, 255, 255, 0.84);
 }
 
 .standings-metric span {
@@ -3257,9 +3429,9 @@ h3 {
   border-radius: 7px;
   background:
     radial-gradient(circle at 85% 12%, rgba(196, 255, 95, 0.08), transparent 9rem),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.048), rgba(255, 255, 255, 0.024)),
-    rgba(17, 22, 18, 0.74);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 251, 245, 0.78)),
+    rgba(255, 255, 255, 0.84);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.74);
 }
 
 .standing-card.focus-standing {
@@ -3297,9 +3469,9 @@ h3 {
   gap: 8px;
   align-items: center;
   padding: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line);
   border-radius: 7px;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.72);
   color: var(--soft);
   font-size: 0.9rem;
   transition:
@@ -3331,7 +3503,7 @@ h3 {
   place-items: center;
   border: 1px solid var(--line);
   border-radius: 50%;
-  background: rgba(16, 20, 17, 0.36);
+  background: rgba(255, 255, 255, 0.78);
   color: var(--muted);
   font-size: 0.72rem;
   font-weight: 950;
@@ -3411,7 +3583,7 @@ h3 {
   padding: 8px 9px;
   border: 1px solid var(--line);
   border-radius: 7px;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.72);
   color: var(--soft);
 }
 
@@ -3437,8 +3609,8 @@ h3 {
   border: 1px solid var(--line);
   border-radius: 7px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.024)),
-    rgba(255, 255, 255, 0.032);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 251, 245, 0.78)),
+    rgba(255, 255, 255, 0.84);
 }
 
 .bracket-metric span {
@@ -3468,9 +3640,9 @@ h3 {
   border: 1px solid var(--line);
   border-radius: 7px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)),
-    rgba(255, 255, 255, 0.026);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(247, 251, 245, 0.76)),
+    rgba(255, 255, 255, 0.78);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
 }
 
 .bracket-match-list {
@@ -3484,7 +3656,7 @@ h3 {
   padding: 10px;
   border: 1px solid var(--line);
   border-radius: 7px;
-  background: rgba(16, 20, 17, 0.26);
+  background: rgba(255, 255, 255, 0.72);
   position: relative;
   overflow: hidden;
 }
@@ -4701,6 +4873,7 @@ h3 {
   .source-workflow-grid,
   .source-access-grid,
   .synthesis-model-grid,
+  .tournament-snapshot-grid,
   .synthesis-layer-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -4878,6 +5051,9 @@ h3 {
   .provider-next-grid,
   .scout-signal-grid,
   .feature-lab-grid,
+  .tournament-snapshot-grid,
+  .focus-road-list,
+  .snapshot-metrics,
   .group-path-grid,
   .standings-grid,
   .third-place-list,

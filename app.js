@@ -80,6 +80,7 @@ const providerTestGridEl = document.querySelector("#providerTestGrid");
 const featureLabGridEl = document.querySelector("#featureLabGrid");
 const scheduleValidatorEl = document.querySelector("#scheduleValidator");
 const resultValidatorEl = document.querySelector("#resultValidator");
+const tournamentSnapshotGridEl = document.querySelector("#tournamentSnapshotGrid");
 const groupPathGridEl = document.querySelector("#groupPathGrid");
 const bracketSummaryEl = document.querySelector("#bracketSummary");
 const bracketGridEl = document.querySelector("#bracketGrid");
@@ -403,6 +404,146 @@ function getThirdPlaceProjection(groupStandings) {
     .map(({ group, table }) => ({ group: group.id, ...table[2] }))
     .sort((a, b) => b.pointsValue - a.pointsValue || b.goalDifference - a.goalDifference || b.goalsFor - a.goalsFor)
     .map((row, index) => ({ ...row, thirdRank: index + 1, advances: index < 8 }));
+}
+
+function getQualificationStatus(row, rank, thirdPlaceProjection) {
+  if (rank <= 2) {
+    return { label: "direkt weiter", tone: "direct", detail: "Platz 1-2" };
+  }
+
+  const thirdRow = rank === 3 ? thirdPlaceProjection.find((entry) => entry.group === row.groupId) : null;
+  if (thirdRow?.advances) {
+    return { label: `Drittplatzierter #${thirdRow.thirdRank}`, tone: "third", detail: "aktuell weiter" };
+  }
+  if (rank === 3 && thirdRow) {
+    return { label: `Drittplatzierter #${thirdRow.thirdRank}`, tone: "risk", detail: "aktuell gefährdet" };
+  }
+  return { label: "aktuell raus", tone: "out", detail: `Platz ${rank}` };
+}
+
+function getFocusQualificationRows(groupStandings, thirdPlaceProjection) {
+  return focusTeams
+    .map((focusTeam) => {
+      const groupStanding = groupStandings.find(({ table }) => table.some((row) => row.code === focusTeam.code));
+      const rowIndex = groupStanding?.table.findIndex((row) => row.code === focusTeam.code) ?? -1;
+      if (!groupStanding || rowIndex < 0) return null;
+      const row = { ...groupStanding.table[rowIndex], groupId: groupStanding.group.id };
+      const rank = rowIndex + 1;
+      const status = getQualificationStatus(row, rank, thirdPlaceProjection);
+      return { row, rank, status, group: groupStanding.group };
+    })
+    .filter(Boolean)
+    .sort((a, b) => {
+      const toneOrder = { direct: 0, third: 1, risk: 2, out: 3 };
+      return toneOrder[a.status.tone] - toneOrder[b.status.tone] || a.rank - b.rank || b.row.pointsValue - a.row.pointsValue;
+    });
+}
+
+function renderTournamentSnapshot() {
+  if (!tournamentSnapshotGridEl) return;
+
+  const groupStandings = getGroupStandings();
+  const thirdPlaceProjection = getThirdPlaceProjection(groupStandings);
+  const actualResultCount = results?.matches?.filter((result) => result.status === "final").length || 0;
+  const projectedMode = actualResultCount === 0;
+  const focusRows = getFocusQualificationRows(groupStandings, thirdPlaceProjection);
+  const focusSafe = focusRows.filter((entry) => ["direct", "third"].includes(entry.status.tone)).length;
+  const thirdSafe = thirdPlaceProjection.filter((row) => row.advances).length;
+  const topLeverageMatches = getScoredMatches()
+    .filter((match) => match.pathImpact >= 66 || match.hasFocusTeam)
+    .sort((a, b) => b.pathImpact - a.pathImpact || b.score - a.score)
+    .slice(0, 4);
+  const tenseGroups = groupStandings
+    .map(({ group, table, topMatch }) => {
+      const gap = table[1].pointsValue - table[2].pointsValue;
+      const third = thirdPlaceProjection.find((row) => row.group === group.id);
+      return { group, table, topMatch, gap, third };
+    })
+    .sort((a, b) => a.gap - b.gap || b.group.pathRelevance - a.group.pathRelevance)
+    .slice(0, 3);
+
+  tournamentSnapshotGridEl.innerHTML = `
+    <article class="tournament-snapshot-card tournament-mode-card">
+      <span class="briefing-kicker">Datenmodus</span>
+      <h3>${projectedMode ? "Projektion, noch keine echten Ergebnisse" : "Live-Tabelle plus Modell"}</h3>
+      <p>
+        ${projectedMode
+          ? "Die App zeigt vor Turnierstart eine transparente Projektion. Sobald SportMonks finale Ergebnisse liefert, kippt dieser Bereich automatisch in den Live-Modus."
+          : `${actualResultCount} finale Ergebnisse sind eingerechnet; offene Spiele werden weiter modelliert.`}
+      </p>
+      <div class="snapshot-metrics">
+        <span><strong>${focusSafe}/${focusRows.length}</strong><small>Fokus-Teams weiter</small></span>
+        <span><strong>${thirdSafe}/8</strong><small>Dritte Plätze</small></span>
+        <span><strong>${topLeverageMatches[0]?.pathImpact || "-"}</strong><small>Top-Hebel</small></span>
+      </div>
+    </article>
+
+    <article class="tournament-snapshot-card focus-road-card">
+      <span class="briefing-kicker">Fokus-Teams</span>
+      <h3>Wenn jetzt Schluss wäre</h3>
+      <div class="focus-road-list">
+        ${focusRows
+          .map(
+            ({ row, rank, status, group }) => `
+              <span class="${status.tone}">
+                ${renderFlag(row.team)}
+                <strong>${row.code}</strong>
+                <em>Gruppe ${group.id} · Platz ${rank}</em>
+                <small>${status.label}</small>
+              </span>
+            `,
+          )
+          .join("")}
+      </div>
+    </article>
+
+    <article class="tournament-snapshot-card leverage-card">
+      <span class="briefing-kicker">Hebelspiele</span>
+      <h3>Diese Spiele verändern den Weg</h3>
+      <div class="leverage-match-list">
+        ${topLeverageMatches
+          .map((match) => {
+            const [home, away] = match.matchTeams;
+            return `
+              <button type="button" data-match="${match.id}">
+                <span>${match.displayDate} · ${match.germanyTime}</span>
+                <strong>${home.code} vs ${away.code}</strong>
+                <small>Weiterkommen ${match.pathImpact}/100 · ${getWatchAction(match.category)}</small>
+              </button>
+            `;
+          })
+          .join("")}
+      </div>
+    </article>
+
+    <article class="tournament-snapshot-card tense-group-card">
+      <span class="briefing-kicker">Kippgruppen</span>
+      <h3>Wo ein Tor besonders viel ändert</h3>
+      <div class="tense-group-list">
+        ${tenseGroups
+          .map(
+            ({ group, table, topMatch, gap, third }) => `
+              <span>
+                <strong>Gruppe ${group.id}</strong>
+                <em>${table[1].code} vs ${table[2].code}: ${gap.toFixed(1)} Punkte Abstand</em>
+                <small>${third?.code || table[2].code} als Dritter aktuell ${third?.advances ? "weiter" : "gefährdet"}${topMatch ? ` · Hebelspiel ${topMatch.matchTeams[0].code}-${topMatch.matchTeams[1].code}` : ""}</small>
+              </span>
+            `,
+          )
+          .join("")}
+      </div>
+    </article>
+  `;
+
+  tournamentSnapshotGridEl.querySelectorAll("button[data-match]").forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedMatchId = button.dataset.match;
+      activeFilter = "all";
+      activeCategory = "all";
+      renderAllDynamic();
+      document.querySelector("#dossier").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
 }
 
 function createQualificationModel() {
@@ -1162,7 +1303,7 @@ function renderBracket() {
   bracketSummaryEl.innerHTML = [
     ["K.o.-Spiele", knockout.length],
     ["Aufgelöste Slots", `${resolvedTeamSlots}/${knockout.length * 2}`],
-    ["Variable Third-Place", variableSlots],
+    ["Variable Drittplätze", variableSlots],
     ["Fokus-Matches", focusPathMatches],
     ["Top-Hebel", topImpact],
   ]
@@ -1296,7 +1437,7 @@ function renderStandings() {
   standingsSummaryEl.innerHTML = [
     ["Modus", projectedMode ? "Projektion" : "Live + Modell"],
     ["Direkt weiter", directQualifiers.length],
-    ["Best Thirds", `${thirdQualifiers.length}/8`],
+    ["Beste Dritte", `${thirdQualifiers.length}/8`],
     ["Fokus weiter", focusQualifiers],
   ]
     .map(
@@ -1356,7 +1497,7 @@ function renderStandings() {
             <div class="standing-note">
               <strong>Wer kommt weiter und gegen wen?</strong>
               <span>
-                ${topMatch ? `${topMatch.matchTeams[0].code}-${topMatch.matchTeams[1].code} ist aktuell der hoechste Hebel.` : "Noch kein Topspiel erkannt."}
+                ${topMatch ? `${topMatch.matchTeams[0].code}-${topMatch.matchTeams[1].code} ist aktuell der höchste Hebel.` : "Noch kein Topspiel erkannt."}
               </span>
             </div>
           </article>
@@ -1367,7 +1508,7 @@ function renderStandings() {
       <div class="standing-card-top">
         <span class="group-letter">3</span>
         <span>
-          <h3>Best Thirds</h3>
+          <h3>Beste Dritte</h3>
           <small>Top 8 kommen weiter</small>
         </span>
         <strong>8/12</strong>
@@ -2741,6 +2882,7 @@ function renderAnalystDesk() {
 
 function renderAllDynamic() {
   renderDailyCommandCenter();
+  renderTournamentSnapshot();
   renderGroupPaths();
   renderStandings();
   renderControlStats();
@@ -2754,6 +2896,7 @@ function renderAllDynamic() {
 
 function renderComputedViews() {
   renderDailyCommandCenter();
+  renderTournamentSnapshot();
   renderGroupPaths();
   renderStandings();
   renderControlStats();
@@ -2778,10 +2921,27 @@ function setupZoneNavigation() {
     .filter((entry) => entry.target);
 
   const setActiveZone = (activeLink) => {
-    zoneLinks.forEach((link) => link.classList.toggle("is-active", link === activeLink));
+    zoneLinks.forEach((link) => {
+      const isActive = link === activeLink;
+      link.classList.toggle("is-active", isActive);
+      if (isActive) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
   };
 
   setActiveZone(zoneTargets[0]?.link);
+
+  zoneTargets.forEach(({ link, target }) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      setActiveZone(link);
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      history.replaceState(null, "", link.getAttribute("href"));
+    });
+  });
 
   if (!("IntersectionObserver" in window)) return;
 
