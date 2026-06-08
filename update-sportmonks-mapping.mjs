@@ -28,26 +28,61 @@ function getTeamAliases(teams) {
   aliases.set("usa", "USA");
   aliases.set("united states", "USA");
   aliases.set("united states of america", "USA");
+  aliases.set("mexico", "MEX");
   aliases.set("korea republic", "KOR");
   aliases.set("south korea", "KOR");
   aliases.set("czech republic", "CZE");
   aliases.set("czechia", "CZE");
+  aliases.set("canada", "CAN");
   aliases.set("south africa", "RSA");
   aliases.set("bosnia and herzegovina", "BIH");
   aliases.set("bosnia herzegovina", "BIH");
+  aliases.set("qatar", "QAT");
+  aliases.set("switzerland", "SUI");
+  aliases.set("brazil", "BRA");
+  aliases.set("morocco", "MAR");
+  aliases.set("scotland", "SCO");
   aliases.set("curacao", "CUW");
   aliases.set("cote d ivoire", "CIV");
   aliases.set("ivory coast", "CIV");
   aliases.set("cape verde", "CPV");
+  aliases.set("cape verde islands", "CPV");
   aliases.set("saudi arabia", "KSA");
   aliases.set("ir iran", "IRN");
   aliases.set("iran", "IRN");
   aliases.set("dr congo", "COD");
   aliases.set("congo dr", "COD");
+  aliases.set("congo democratic republic", "COD");
   aliases.set("turkiye", "TUR");
   aliases.set("turkey", "TUR");
   aliases.set("brasil", "BRA");
   aliases.set("holland", "NED");
+  aliases.set("australia", "AUS");
+  aliases.set("germany", "GER");
+  aliases.set("netherlands", "NED");
+  aliases.set("sweden", "SWE");
+  aliases.set("tunisia", "TUN");
+  aliases.set("spain", "ESP");
+  aliases.set("belgium", "BEL");
+  aliases.set("egypt", "EGY");
+  aliases.set("new zealand", "NZL");
+  aliases.set("france", "FRA");
+  aliases.set("senegal", "SEN");
+  aliases.set("iraq", "IRQ");
+  aliases.set("norway", "NOR");
+  aliases.set("argentina", "ARG");
+  aliases.set("algeria", "ALG");
+  aliases.set("austria", "AUT");
+  aliases.set("jordan", "JOR");
+  aliases.set("england", "ENG");
+  aliases.set("croatia", "CRO");
+  aliases.set("uzbekistan", "UZB");
+  aliases.set("colombia", "COL");
+  aliases.set("ghana", "GHA");
+  aliases.set("panama", "PAN");
+  aliases.set("uruguay", "URU");
+  aliases.set("japan", "JPN");
+  aliases.set("paraguay", "PAR");
 
   return aliases;
 }
@@ -94,11 +129,13 @@ const fixtures = probe?.fixtureIndex || [];
 const predictions = new Map((probe?.predictionIndex || []).map((fixture) => [fixture.id, fixture]));
 
 const matchByKey = new Map();
+const matchByTeams = new Map();
 for (const match of matches) {
   const utcDate = toUtcDate(match.kickoffGermany);
   const localDate = match.kickoffGermany.slice(0, 10);
   matchByKey.set(fixtureKey(utcDate, match.teams), match);
   matchByKey.set(fixtureKey(localDate, match.teams), match);
+  matchByTeams.set(match.teams.slice().sort().join("-"), match);
 }
 
 const mappings = [];
@@ -107,7 +144,20 @@ const unmatchedProviderFixtures = [];
 for (const fixture of fixtures) {
   const providerTeams = getSportmonksTeams(fixture, teamAliases);
   const providerDate = toUtcDate(`${fixture.starting_at}Z`);
-  const match = providerTeams.length === 2 ? matchByKey.get(fixtureKey(providerDate, providerTeams)) : null;
+  let match = providerTeams.length === 2 ? matchByKey.get(fixtureKey(providerDate, providerTeams)) : null;
+  let confidence = match ? 100 : 0;
+  let dateDeltaHours = null;
+
+  if (!match && providerTeams.length === 2) {
+    const teamOnlyMatch = matchByTeams.get(providerTeams.slice().sort().join("-"));
+    if (teamOnlyMatch) {
+      const providerTime = new Date(`${fixture.starting_at}Z`).getTime();
+      const localTime = new Date(teamOnlyMatch.kickoffGermany).getTime();
+      dateDeltaHours = Math.round(Math.abs(providerTime - localTime) / 36_000) / 100;
+      match = teamOnlyMatch;
+      confidence = dateDeltaHours <= 3 ? 96 : dateDeltaHours <= 30 ? 82 : 68;
+    }
+  }
   const prediction = predictions.get(fixture.id);
   const predictionMeta = getPredictionMeta(prediction);
 
@@ -128,7 +178,8 @@ for (const fixture of fixtures) {
     providerName: fixture.name,
     startingAt: fixture.starting_at,
     teams: match.teams,
-    confidence: 100,
+    confidence,
+    dateDeltaHours,
     predictionAvailable: predictionMeta.available,
     predictionKeys: predictionMeta.keys,
     predictionImpact: predictionMeta.available ? 6 : 0,

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-08T08:55:28.202Z",
+  "generatedAt": "2026-06-08T09:14:16.247Z",
   "status": "probe-ready",
   "summary": "Sportmonks-Probe hat 104 WM-Fixtures gefunden. Pre-Match-Struktur ist belastbar; Live-, Event- und Advanced-Felder werden ab dem ersten Spiel erneut geprueft.",
   "providers": [
@@ -7,7 +7,7 @@
       "id": "sportmonks",
       "label": "Sportmonks",
       "status": "Probe bereit",
-      "testedAt": "2026-06-08T08:45:25.058Z",
+      "testedAt": "2026-06-08T09:14:16.239Z",
       "fixtures": 104,
       "coverage": [
         {
