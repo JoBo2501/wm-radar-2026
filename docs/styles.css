@@ -2410,6 +2410,82 @@ h3 {
   text-transform: uppercase;
 }
 
+.pre-match-scout-card {
+  grid-column: span 2;
+  background:
+    radial-gradient(circle at 84% 14%, rgba(196, 255, 95, 0.12), transparent 13rem),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(240, 248, 246, 0.88));
+}
+
+.scout-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.scout-head h3 {
+  margin: 0;
+}
+
+.scout-signal-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.scout-signal-grid span {
+  min-width: 0;
+  display: grid;
+  gap: 5px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.74);
+}
+
+.scout-signal-grid strong {
+  color: var(--text);
+}
+
+.scout-signal-grid em {
+  color: var(--lime);
+  font-style: normal;
+  font-weight: 950;
+}
+
+.scout-signal-grid span.mixed em {
+  color: var(--gold);
+}
+
+.scout-signal-grid span.seed em {
+  color: var(--red);
+}
+
+.scout-signal-grid small {
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.scout-checklist {
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(29, 143, 79, 0.07);
+  position: relative;
+  z-index: 1;
+}
+
+.scout-checklist > strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
 .transparency-drawer summary {
   display: flex;
   justify-content: space-between;
@@ -4241,6 +4317,7 @@ h3 {
 
   .provider-coverage-grid,
   .provider-advanced-row,
+  .scout-signal-grid,
   .feature-lab-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -4366,6 +4443,7 @@ h3 {
   .provider-coverage-grid,
   .provider-advanced-row,
   .provider-next-grid,
+  .scout-signal-grid,
   .feature-lab-grid,
   .group-path-grid,
   .standings-grid,
@@ -4390,6 +4468,7 @@ h3 {
   .evidence-card,
   .metric-plan-card,
   .source-synthesis-card,
+  .pre-match-scout-card,
   .report-hub-card {
     grid-column: auto;
     grid-row: auto;

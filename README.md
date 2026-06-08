@@ -19,6 +19,7 @@ GitHub Pages ist vorbereitet. Nach Aktivierung in GitHub Settings -> Pages -> So
 - Datenlage & Transparenz mit eingeklappten Import- und Validierungsdetails
 - Provider-Testprotokoll fuer Sportmonks-Abdeckung, Advanced-Felder und naechste Live-Pruefzeitpunkte
 - Feature Lab fuer Was-passiert-wenn-Modus, Momentum, Stuermer-Effizienz und Pre-Match-Scout
+- Pre-Match-Scout im Match-Dossier mit Prediction-Signal, Lineup-/Formationsstatus, Expected-XI-Abdeckung, Mapping-Vertrauen und konkreten Pruefpunkten vor Anpfiff
 - Team-Briefings mit taktischen Profilen fuer Fokus- und Surprise-Teams
 - Schluesselfiguren-Modul mit Trainern, Leadern, Taktikspielern, Druckspielern und Turnier-Entdeckungen
 - Watchlist-Prioritaet getrennt von spaeterer Teamstaerke, Momentum, Attraktivitaet, Ueberraschungspotenzial und Datenlage

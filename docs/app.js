@@ -1775,6 +1775,99 @@ function getTacticalTriggers(match, home, away) {
   return [...profileCues, ...generic].slice(0, 5);
 }
 
+function getProviderCoverage(field) {
+  const sportmonks = providerTests?.providers?.find((provider) => provider.id === "sportmonks");
+  return sportmonks?.coverage?.find((item) => item.field === field) || null;
+}
+
+function getCoverageStatus(field) {
+  const coverage = getProviderCoverage(field);
+  if (!coverage) return { label: "offen", detail: "Noch nicht geprueft.", tone: "seed", value: "0/0" };
+  return {
+    label: coverage.tone === "real" ? "bereit" : coverage.tone === "mixed" ? "teilweise" : "wartet",
+    detail: coverage.detail,
+    tone: coverage.tone,
+    value: `${coverage.count}/${coverage.total}`,
+  };
+}
+
+function getPreMatchScoutItems(match, home, away) {
+  const prediction = match.providerSignal?.predictionAvailable
+    ? {
+        label: "Prediction",
+        value: "bereit",
+        tone: "real",
+        detail: "Sportmonks liefert ein Prognose-Signal; WM Radar nutzt es nur als kleinen Pre-Match-Impuls.",
+      }
+    : {
+        label: "Prediction",
+        value: "offen",
+        tone: "seed",
+        detail: "Noch kein Provider-Signal fuer dieses Spiel.",
+      };
+  const lineups = getCoverageStatus("lineups");
+  const formations = getCoverageStatus("formations");
+  const expectedLineups = getCoverageStatus("expectedLineups");
+
+  return [
+    prediction,
+    { label: "Lineups", value: lineups.value, tone: lineups.tone, detail: lineups.detail },
+    { label: "Formationen", value: formations.value, tone: formations.tone, detail: formations.detail },
+    { label: "Expected XI", value: expectedLineups.value, tone: expectedLineups.tone, detail: expectedLineups.detail },
+    {
+      label: "Mapping",
+      value: match.providerSignal ? `${match.providerSignal.confidence}%` : "offen",
+      tone: match.providerSignal?.confidence >= 95 ? "real" : match.providerSignal ? "mixed" : "seed",
+      detail: match.providerSignal
+        ? `${match.providerSignal.providerName} ist mit unserem Spiel ${home.code}-${away.code} verbunden.`
+        : "Provider-Fixture noch nicht verbunden.",
+    },
+  ];
+}
+
+function renderPreMatchScout(match, home, away) {
+  const scoutItems = getPreMatchScoutItems(match, home, away);
+  const scoutChecks = [
+    "Kurz vor Anpfiff: Startelf und Formation gegen Sportmonks erneut pruefen.",
+    `Wenn ${home.code} oder ${away.code} anders aufstellt als erwartet, Taktikwert im Dossier neu lesen.`,
+    "Prediction nur als Kontext nutzen, nicht als Wahrheit: Datenlage und Spielbild bleiben wichtiger.",
+    "Bei Fokus-Teams: Schluesselfiguren mit Rolle, Position und Erwartungsdruck abgleichen.",
+  ];
+
+  return `
+    <div class="insight-card pre-match-scout-card">
+      <span class="briefing-kicker">Pre-Match Scout</span>
+      <div class="scout-head">
+        <h3>Was wir vor Anpfiff wissen</h3>
+        <span class="data-badge ${match.providerSignal ? "mixed" : "seed"}">Sportmonks</span>
+      </div>
+      <p>
+        ${home.name} vs ${away.name}: Der Scout verbindet Prediction, Mapping, Lineup-Status und konkrete
+        Pruefpunkte, damit aus dem Vorbericht ein echter Watch-Plan wird.
+      </p>
+      <div class="scout-signal-grid">
+        ${scoutItems
+          .map(
+            (item) => `
+              <span class="${item.tone}">
+                <strong>${item.label}</strong>
+                <em>${item.value}</em>
+                <small>${item.detail}</small>
+              </span>
+            `,
+          )
+          .join("")}
+      </div>
+      <div class="scout-checklist">
+        <strong>Vor dem Spiel pruefen</strong>
+        <ul class="cue-list">
+          ${scoutChecks.map((check) => `<li>${check}</li>`).join("")}
+        </ul>
+      </div>
+    </div>
+  `;
+}
+
 function getDecisionMatrix(match) {
   return [
     ["Live-Schwelle", match.score >= 80 ? "erreicht" : "nicht erreicht", match.score],
@@ -2089,6 +2182,7 @@ function renderDossier() {
         <span><strong>${away.code}</strong>${keyBattle.right}</span>
       </div>
     </div>
+    ${renderPreMatchScout(selectedMatch, home, away)}
     <div class="insight-card trigger-card">
       <span class="briefing-kicker">Live Trigger</span>
       <h3>Woran du früh erkennst, ob es kippt</h3>
