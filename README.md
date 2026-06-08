@@ -153,6 +153,28 @@ node build-standalone.mjs
 node build-pages.mjs
 ```
 
+Sportmonks-Testphase vorbereiten:
+
+1. Sportmonks-Abo/Test starten und API-Key im Sportmonks-Dashboard erzeugen.
+2. `setup-sportmonks-token.cmd` doppelklicken und Key eintragen.
+3. Terminal/Fenster neu starten.
+4. `probe-sportmonks.cmd` doppelklicken. Das schreibt `data/raw/sportmonks-probe.json` mit Abdeckung fuer Fixtures, Scores, Lineups, Events, xG, Pressure und Expected Lineups.
+5. Wenn der Probe gut aussieht: `enable-sportmonks.cmd` doppelklicken. Dann wird Sportmonks als aktive Ergebnisquelle gesetzt und die App neu gebaut.
+
+Alternativ im Terminal:
+
+```powershell
+node probe-sportmonks.mjs
+node switch-result-source.mjs sportmonks
+node sync-results.mjs --source=sportmonks
+node validate-results.mjs
+node generate-post-match-reports.mjs
+node validate-post-match-reports.mjs
+node build-data.mjs
+node build-standalone.mjs
+node build-pages.mjs
+```
+
 Die aktuelle Turnierstruktur ist vollstaendig importiert: 72 Gruppenspiele plus 32 K.o.-Platzhalter. Spielzeiten und Spielplanbasis sind als `mixed` markiert, weil sie aus offiziellen/FIFA-nahen und aktuellen Fixture-Listen gespiegelt wurden. Live-Ergebnisse, Tabellen und Premium-Statistiken folgen als naechste Datenebene.
 
 Die Analysten- und Quellenlogik liegt in `data/analyst-sources.json`. Dort werden Datenanbieter, serioese Stimmen, KI-Research und Abwertungsregeln gepflegt.
@@ -163,7 +185,7 @@ Die K.o.-Struktur liegt in `data/knockout.json`. Dort stehen Slots wie `1E`, `3A
 
 Der Ergebnislayer liegt in `data/results.json`. Aktuell ist er leer und markiert die App als `preTournament`; Tabellen & Szenarien berechnen deshalb eine Modellprojektion. Sobald echte Resultate mit `status: "final"` eingetragen werden, fliessen sie automatisch in Gruppenstaende und Third-Place-Ranking ein.
 
-Der automatische Ergebnisabgleich ist in `sync-results.mjs` vorbereitet. Die aktive Quelle steht in `data/result-sources.json`, manuelle Korrekturen liegen in `data/result-overrides.json`, und `validate-results.mjs` schreibt die Sync-Ampel nach `data/result-validation.json`.
+Der automatische Ergebnisabgleich ist in `sync-results.mjs` vorbereitet. Die aktive Quelle steht in `data/result-sources.json`, manuelle Korrekturen liegen in `data/result-overrides.json`, und `validate-results.mjs` schreibt die Sync-Ampel nach `data/result-validation.json`. Sportmonks ist als Testanbieter vorbereitet; der API-Key bleibt lokal in `SPORTMONKS_API_KEY`.
 
 Post-Match-Reports liegen in `data/post-match-reports.json`. `generate-post-match-reports.mjs` erzeugt aus finalen Ergebnissen erste Draft-Reports mit Score-Audit, Metrik-Blueprint und Lernfrage; `validate-post-match-reports.mjs` schreibt die Ampel nach `data/post-match-validation.json`.
 

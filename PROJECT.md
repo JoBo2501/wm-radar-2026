@@ -21,7 +21,7 @@ WM Radar 26 ist ein persoenliches Analysten-Cockpit fuer die FIFA Fussball-WM 20
 - App-Datenbundle: `data.js`
 - Teams/Gruppen/Fixtures: `data/teams.json`, `data/groups.json`, `data/matches.json`
 - K.o.-Struktur: `data/knockout.json`
-- Ergebnis-Sync: `sync-results.mjs`, `validate-results.mjs`, `watch-results.mjs`
+- Ergebnis-Sync: `sync-results.mjs`, `validate-results.mjs`, `watch-results.mjs`, Sportmonks-Testprobe `probe-sportmonks.mjs`
 - Ergebnis-Konfiguration: `data/result-sources.json`, `data/results.json`, `data/result-overrides.json`, `data/result-validation.json`
 - Post-Match-Reports: `data/post-match-reports.json`, `generate-post-match-reports.mjs`, `validate-post-match-reports.mjs`
 - Schluesselfiguren: `data/key-figures.json`
@@ -59,6 +59,9 @@ Wichtige Dateien:
 - `enable-football-data.cmd`: Provider aktivieren und einmal syncen.
 - `enable-demo-post-match.cmd`: lokalen Demo-Feed aktivieren und Post-Match-Draft-Report testen.
 - `restore-football-data.cmd`: nach Demo wieder auf football-data.org zurueckschalten.
+- `setup-sportmonks-token.cmd`: Sportmonks API-Key lokal speichern.
+- `probe-sportmonks.cmd`: Sportmonks-Abdeckung fuer Basis- und Advanced-Felder pruefen.
+- `enable-sportmonks.cmd`: Sportmonks als aktive Ergebnisquelle setzen und App neu bauen.
 - `watch-results.cmd`: dauerhaften Poller starten.
 - `sync-results.cmd`: einmaliger Sync/Rebuild per Doppelklick.
 - `release-pages.cmd`: Daten und `docs/` aktualisieren.
@@ -93,6 +96,7 @@ Wichtige Dateien:
 - K.o.-Match-Dossiers integriert.
 - Ergebnis-Sync-Architektur mit Provider, Overrides, Validierung und Ampel gebaut.
 - football-data.org Free vorbereitet und aktiviert.
+- Sportmonks als Testanbieter mit Setup-, Probe- und Enable-Workflow vorbereitet.
 - Poller fuer regelmaessigen Ergebnisabgleich hinzugefuegt.
 - Post-Match-Report-Modell, Validator und automatischer Draft-Generator hinzugefuegt.
 - Demo-Feed und Dry-Run fuer Post-Match-Reports hinzugefuegt, damit der Workflow ohne echte WM-Daten getestet werden kann.

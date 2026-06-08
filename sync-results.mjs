@@ -126,6 +126,43 @@ function normalizeStatus(status) {
   return "scheduled";
 }
 
+function getSportmonksParticipantName(item, location) {
+  const participant = (item.participants || []).find(
+    (candidate) => String(candidate.meta?.location || candidate.location || "").toLowerCase() === location,
+  );
+  return participant?.name || null;
+}
+
+function getSportmonksNames(item) {
+  const home = getSportmonksParticipantName(item, "home");
+  const away = getSportmonksParticipantName(item, "away");
+  if (home && away) return { home, away };
+
+  const nameParts = String(item.name || "").split(/\s+vs\s+|\s+-\s+/i);
+  return {
+    home: home || nameParts[0] || null,
+    away: away || nameParts[1] || null,
+  };
+}
+
+function getSportmonksScore(item, location) {
+  const scores = item.scores || [];
+  const candidates = scores.filter(
+    (score) => String(score.score?.participant || score.participant || "").toLowerCase() === location,
+  );
+  const preferred =
+    candidates.find((score) => String(score.description || score.type?.name || "").toLowerCase().includes("current")) ||
+    candidates.find((score) => String(score.description || score.type?.name || "").toLowerCase().includes("full")) ||
+    candidates.at(-1);
+
+  const goals = preferred?.score?.goals ?? preferred?.score?.score ?? preferred?.goals ?? preferred?.value;
+  return goals === null || goals === undefined ? null : Number(goals);
+}
+
+function getSportmonksStatus(item) {
+  return normalizeStatus(item.state?.state || item.state?.name || item.state?.short_name || item.state_id);
+}
+
 function normalizeLocalResult(raw, indexes, teamAliases) {
   const matchId = raw.matchId || raw.id || null;
   const matchNumber = Number(raw.matchNumber || raw.number || 0) || null;
@@ -215,6 +252,49 @@ async function fetchFootballData(source) {
   }));
 }
 
+async function fetchSportmonks(source) {
+  const apiKey = process.env[source.apiKeyEnv];
+  if (!apiKey) {
+    throw new Error(`${source.apiKeyEnv} ist nicht gesetzt. Starte setup-sportmonks-token.cmd oder setze die Variable manuell.`);
+  }
+
+  const url = new URL(source.endpoint);
+  url.searchParams.set("api_token", apiKey);
+  if (source.include) url.searchParams.set("include", source.include);
+  if (source.leagueId) url.searchParams.set("filters", `fixtureLeagues:${source.leagueId}`);
+  url.searchParams.set("per_page", "50");
+
+  const allFixtures = [];
+  let page = 1;
+  let hasMore = true;
+
+  while (hasMore) {
+    url.searchParams.set("page", String(page));
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`Sportmonks HTTP ${response.status}`);
+    const payload = await response.json();
+    allFixtures.push(...(payload.data || []));
+    hasMore = Boolean(payload.pagination?.has_more);
+    page += 1;
+  }
+
+  return allFixtures.map((item) => {
+    const names = getSportmonksNames(item);
+    return {
+      date: item.starting_at?.slice(0, 10),
+      home: names.home,
+      away: names.away,
+      homeGoals: getSportmonksScore(item, "home"),
+      awayGoals: getSportmonksScore(item, "away"),
+      status: getSportmonksStatus(item),
+      minute: item.periods?.current?.minute ?? item.currentPeriod?.minute ?? null,
+      providerId: item.id,
+      source: source.id,
+      updatedAt: new Date().toISOString(),
+    };
+  });
+}
+
 async function fetchSource(source) {
   if (source.type === "local-json") {
     const payload = readJson(source.path, { matches: [] });
@@ -222,6 +302,7 @@ async function fetchSource(source) {
   }
   if (source.type === "api-football") return fetchApiFootball(source);
   if (source.type === "football-data") return fetchFootballData(source);
+  if (source.type === "sportmonks") return fetchSportmonks(source);
   throw new Error(`Unbekannter Source-Typ: ${source.type}`);
 }
 
@@ -247,7 +328,7 @@ const knockout = readJson("data/knockout.json");
 const overrides = readJson("data/result-overrides.json", { matches: [] });
 const providerId = getArg("source") || sourcesConfig.activeSource;
 const source = sourcesConfig.sources.find((candidate) => candidate.id === providerId);
-const allowEmpty = hasFlag("allow-empty") || source?.type === "football-data";
+const allowEmpty = hasFlag("allow-empty") || source?.type === "football-data" || source?.type === "sportmonks";
 
 if (!source) throw new Error(`Resultatquelle ${providerId} nicht gefunden.`);
 if (!source.enabled) throw new Error(`Resultatquelle ${providerId} ist deaktiviert.`);

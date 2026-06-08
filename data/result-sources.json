@@ -41,6 +41,18 @@
       "apiKeyEnv": "FOOTBALL_DATA_TOKEN",
       "trust": 82,
       "pollMinutes": 10
+    },
+    {
+      "id": "sportmonks",
+      "label": "Sportmonks",
+      "type": "sportmonks",
+      "enabled": false,
+      "endpoint": "https://api.sportmonks.com/v3/football/fixtures/between/2026-06-11/2026-07-19",
+      "apiKeyEnv": "SPORTMONKS_API_KEY",
+      "leagueId": null,
+      "include": "participants;scores;state;league;season;stage;group",
+      "trust": 90,
+      "pollMinutes": 5
     }
   ]
 }
