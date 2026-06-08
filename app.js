@@ -31,6 +31,7 @@ const keyFiguresByTeam = new Map(keyFigures.map((entry) => [entry.team, entry]))
 const providerMappingByMatchId = new Map((providerMapping?.mappings || []).map((mapping) => [mapping.matchId, mapping]));
 const groupById = new Map(groups.map((group) => [group.id, group]));
 const groupByTeamCode = new Map(groups.flatMap((group) => group.teams.map((code) => [code, group])));
+const zoneLinks = [...document.querySelectorAll(".main-nav a[data-zone]")];
 const stateLabels = {
   live: "Pflichtspiel",
   analysis: "Analysewürdig",
@@ -2637,6 +2638,35 @@ function setupSpoilerMode() {
   });
 }
 
+function setupZoneNavigation() {
+  if (!zoneLinks.length) return;
+  const zoneTargets = zoneLinks
+    .map((link) => ({ link, target: document.querySelector(link.getAttribute("href")) }))
+    .filter((entry) => entry.target);
+
+  const setActiveZone = (activeLink) => {
+    zoneLinks.forEach((link) => link.classList.toggle("is-active", link === activeLink));
+  };
+
+  setActiveZone(zoneTargets[0]?.link);
+
+  if (!("IntersectionObserver" in window)) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      const active = zoneTargets.find((entry) => entry.target === visible.target);
+      if (active) setActiveZone(active.link);
+    },
+    { rootMargin: "-18% 0px -66% 0px", threshold: [0.08, 0.18, 0.32] },
+  );
+
+  zoneTargets.forEach(({ target }) => observer.observe(target));
+}
+
 function setupPwa() {
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("./sw.js").catch(() => {});
@@ -2657,4 +2687,5 @@ renderAllDynamic();
 renderTeamLab();
 renderKeyFigures();
 setupSpoilerMode();
+setupZoneNavigation();
 setupPwa();

@@ -74,6 +74,7 @@ Wichtige Dateien:
 ## UI-Module
 
 - Hero/Control Room: atmosphaerischer Einstieg und Kontrollzahlen.
+- Orientierungsschicht: vier Hauptzonen Heute, Spiele, Turnierlage und Analyse mit Bereichskarten, aktiver Navigation und Schnellzugriffen.
 - Was heute zaehlt: Empfehlungen Live, Analyse, Highlights, Skip.
 - Tagesbriefing: Watch Plan plus Nachtspiele ohne Spoiler.
 - Datenlage & Transparenz: Datenqualitaet, Spielplan-Ampel, Ergebnis-Sync-Ampel. Routine-Importe bleiben in einem einklappbaren Detailbereich.
@@ -94,6 +95,7 @@ Wichtige Dateien:
 ## Erledigte Schritte
 
 - MVP UI als lokales Analysten-Cockpit aufgebaut.
+- UI-Orientierung mit Vier-Zonen-Navigation, Bereichskarten und Bereichstrennern verbessert.
 - Standalone-Doppelklickdatei erstellt.
 - Vollstaendige Gruppenphase mit 72 Spielen importiert.
 - K.o.-Struktur mit 32 Platzhalterspielen angelegt.

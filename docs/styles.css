@@ -161,6 +161,9 @@ button {
 }
 
 .main-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   padding: 9px 13px;
   border-radius: 6px;
   color: var(--soft);
@@ -171,10 +174,36 @@ button {
     transform 160ms ease;
 }
 
+.main-nav a::before {
+  content: attr(data-zone);
+  display: inline-grid;
+  width: 22px;
+  height: 22px;
+  place-items: center;
+  border: 1px solid rgba(29, 143, 79, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.66);
+  color: var(--lime);
+  font-size: 0.68rem;
+  font-weight: 950;
+}
+
 .main-nav a:hover {
   background: rgba(29, 143, 79, 0.09);
   color: var(--text);
   transform: translateY(-1px);
+}
+
+.main-nav a:hover::before,
+.main-nav a.is-active::before {
+  border-color: rgba(29, 143, 79, 0.28);
+  background: rgba(29, 143, 79, 0.1);
+}
+
+.main-nav a.is-active {
+  background: rgba(29, 143, 79, 0.11);
+  color: var(--text);
+  box-shadow: inset 0 0 0 1px rgba(29, 143, 79, 0.08);
 }
 
 .spoiler-toggle {
@@ -762,6 +791,114 @@ h3 {
   color: #f6fff7;
 }
 
+.orientation-map {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 10px;
+}
+
+.orientation-card {
+  min-height: 142px;
+  display: grid;
+  align-content: space-between;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(247, 251, 245, 0.82)),
+    var(--panel);
+  box-shadow: 0 10px 26px rgba(23, 60, 36, 0.07);
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.orientation-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--lime);
+  opacity: 0.76;
+}
+
+.orientation-card::after {
+  content: "";
+  position: absolute;
+  right: -34px;
+  top: -42px;
+  width: 120px;
+  height: 120px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  opacity: 0.08;
+}
+
+.orientation-card:hover {
+  border-color: var(--line-strong);
+  box-shadow: 0 16px 34px rgba(23, 60, 36, 0.1);
+  transform: translateY(-2px);
+}
+
+.orientation-card span {
+  width: max-content;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(29, 143, 79, 0.09);
+  color: var(--lime);
+  font-size: 0.72rem;
+  font-weight: 950;
+}
+
+.orientation-card strong {
+  display: block;
+  color: var(--text);
+  font-size: 1.14rem;
+}
+
+.orientation-card small {
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.orientation-card.games::before,
+.zone-divider.games > span {
+  background: var(--cyan);
+}
+
+.orientation-card.games span,
+.zone-divider.games .eyebrow,
+.zone-divider.games nav a {
+  color: var(--cyan);
+}
+
+.orientation-card.tournament::before,
+.zone-divider.tournament > span {
+  background: var(--gold);
+}
+
+.orientation-card.tournament span,
+.zone-divider.tournament .eyebrow,
+.zone-divider.tournament nav a {
+  color: var(--gold);
+}
+
+.orientation-card.analysis::before,
+.zone-divider.analysis > span {
+  background: var(--orange);
+}
+
+.orientation-card.analysis span,
+.zone-divider.analysis .eyebrow,
+.zone-divider.analysis nav a {
+  color: var(--orange);
+}
+
 .section-head {
   display: flex;
   justify-content: space-between;
@@ -786,6 +923,61 @@ h3 {
   color: var(--muted);
   font-size: 0.92rem;
   line-height: 1.45;
+}
+
+.zone-divider {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  margin: 28px 0 14px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(247, 251, 245, 0.84)),
+    var(--panel);
+  box-shadow: 0 12px 30px rgba(23, 60, 36, 0.08);
+}
+
+.zone-divider > span {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  place-items: center;
+  border-radius: 7px;
+  background: var(--lime);
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 950;
+}
+
+.zone-divider h2 {
+  margin: 0;
+}
+
+.zone-divider p:not(.eyebrow) {
+  max-width: 760px;
+  margin: 6px 0 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.zone-divider nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  gap: 7px;
+}
+
+.zone-divider nav a {
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--lime);
+  font-size: 0.78rem;
+  font-weight: 900;
 }
 
 .date-chip {
@@ -4266,6 +4458,7 @@ h3 {
 
 @media (max-width: 1100px) {
   .hero-grid,
+  .orientation-map,
   .dashboard-grid,
   .command-center,
   .match-layout,
@@ -4357,6 +4550,15 @@ h3 {
   .command-metrics {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .zone-divider {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .zone-divider nav {
+    grid-column: 1 / -1;
+    justify-content: start;
+  }
 }
 
 @media (max-width: 760px) {
@@ -4390,6 +4592,11 @@ h3 {
     scroll-snap-align: start;
   }
 
+  .main-nav a::before {
+    width: 20px;
+    height: 20px;
+  }
+
   .spoiler-toggle {
     margin-left: auto;
   }
@@ -4398,6 +4605,15 @@ h3 {
     padding-top: 18px;
     padding-bottom: 8px;
     gap: 12px;
+  }
+
+  .orientation-map {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .orientation-card {
+    min-height: auto;
   }
 
   .hero-copy {
@@ -4500,6 +4716,27 @@ h3 {
 
   .hero-status-rail strong {
     font-size: 1.15rem;
+  }
+
+  .zone-divider {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin: 20px 0 10px;
+    padding: 14px;
+  }
+
+  .zone-divider > span {
+    width: 42px;
+    height: 42px;
+  }
+
+  .zone-divider nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .zone-divider nav a {
+    text-align: center;
   }
 
   .focus-strip {

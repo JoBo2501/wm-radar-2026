@@ -170,6 +170,9 @@ button {
 }
 
 .main-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   padding: 9px 13px;
   border-radius: 6px;
   color: var(--soft);
@@ -180,10 +183,36 @@ button {
     transform 160ms ease;
 }
 
+.main-nav a::before {
+  content: attr(data-zone);
+  display: inline-grid;
+  width: 22px;
+  height: 22px;
+  place-items: center;
+  border: 1px solid rgba(29, 143, 79, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.66);
+  color: var(--lime);
+  font-size: 0.68rem;
+  font-weight: 950;
+}
+
 .main-nav a:hover {
   background: rgba(29, 143, 79, 0.09);
   color: var(--text);
   transform: translateY(-1px);
+}
+
+.main-nav a:hover::before,
+.main-nav a.is-active::before {
+  border-color: rgba(29, 143, 79, 0.28);
+  background: rgba(29, 143, 79, 0.1);
+}
+
+.main-nav a.is-active {
+  background: rgba(29, 143, 79, 0.11);
+  color: var(--text);
+  box-shadow: inset 0 0 0 1px rgba(29, 143, 79, 0.08);
 }
 
 .spoiler-toggle {
@@ -771,6 +800,114 @@ h3 {
   color: #f6fff7;
 }
 
+.orientation-map {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 10px;
+}
+
+.orientation-card {
+  min-height: 142px;
+  display: grid;
+  align-content: space-between;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(247, 251, 245, 0.82)),
+    var(--panel);
+  box-shadow: 0 10px 26px rgba(23, 60, 36, 0.07);
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.orientation-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--lime);
+  opacity: 0.76;
+}
+
+.orientation-card::after {
+  content: "";
+  position: absolute;
+  right: -34px;
+  top: -42px;
+  width: 120px;
+  height: 120px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  opacity: 0.08;
+}
+
+.orientation-card:hover {
+  border-color: var(--line-strong);
+  box-shadow: 0 16px 34px rgba(23, 60, 36, 0.1);
+  transform: translateY(-2px);
+}
+
+.orientation-card span {
+  width: max-content;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(29, 143, 79, 0.09);
+  color: var(--lime);
+  font-size: 0.72rem;
+  font-weight: 950;
+}
+
+.orientation-card strong {
+  display: block;
+  color: var(--text);
+  font-size: 1.14rem;
+}
+
+.orientation-card small {
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.orientation-card.games::before,
+.zone-divider.games > span {
+  background: var(--cyan);
+}
+
+.orientation-card.games span,
+.zone-divider.games .eyebrow,
+.zone-divider.games nav a {
+  color: var(--cyan);
+}
+
+.orientation-card.tournament::before,
+.zone-divider.tournament > span {
+  background: var(--gold);
+}
+
+.orientation-card.tournament span,
+.zone-divider.tournament .eyebrow,
+.zone-divider.tournament nav a {
+  color: var(--gold);
+}
+
+.orientation-card.analysis::before,
+.zone-divider.analysis > span {
+  background: var(--orange);
+}
+
+.orientation-card.analysis span,
+.zone-divider.analysis .eyebrow,
+.zone-divider.analysis nav a {
+  color: var(--orange);
+}
+
 .section-head {
   display: flex;
   justify-content: space-between;
@@ -795,6 +932,61 @@ h3 {
   color: var(--muted);
   font-size: 0.92rem;
   line-height: 1.45;
+}
+
+.zone-divider {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  margin: 28px 0 14px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(247, 251, 245, 0.84)),
+    var(--panel);
+  box-shadow: 0 12px 30px rgba(23, 60, 36, 0.08);
+}
+
+.zone-divider > span {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  place-items: center;
+  border-radius: 7px;
+  background: var(--lime);
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 950;
+}
+
+.zone-divider h2 {
+  margin: 0;
+}
+
+.zone-divider p:not(.eyebrow) {
+  max-width: 760px;
+  margin: 6px 0 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.zone-divider nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  gap: 7px;
+}
+
+.zone-divider nav a {
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--lime);
+  font-size: 0.78rem;
+  font-weight: 900;
 }
 
 .date-chip {
@@ -4275,6 +4467,7 @@ h3 {
 
 @media (max-width: 1100px) {
   .hero-grid,
+  .orientation-map,
   .dashboard-grid,
   .command-center,
   .match-layout,
@@ -4366,6 +4559,15 @@ h3 {
   .command-metrics {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .zone-divider {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .zone-divider nav {
+    grid-column: 1 / -1;
+    justify-content: start;
+  }
 }
 
 @media (max-width: 760px) {
@@ -4399,6 +4601,11 @@ h3 {
     scroll-snap-align: start;
   }
 
+  .main-nav a::before {
+    width: 20px;
+    height: 20px;
+  }
+
   .spoiler-toggle {
     margin-left: auto;
   }
@@ -4407,6 +4614,15 @@ h3 {
     padding-top: 18px;
     padding-bottom: 8px;
     gap: 12px;
+  }
+
+  .orientation-map {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .orientation-card {
+    min-height: auto;
   }
 
   .hero-copy {
@@ -4509,6 +4725,27 @@ h3 {
 
   .hero-status-rail strong {
     font-size: 1.15rem;
+  }
+
+  .zone-divider {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin: 20px 0 10px;
+    padding: 14px;
+  }
+
+  .zone-divider > span {
+    width: 42px;
+    height: 42px;
+  }
+
+  .zone-divider nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .zone-divider nav a {
+    text-align: center;
   }
 
   .focus-strip {
@@ -4680,18 +4917,10 @@ h3 {
         </a>
 
         <nav class="main-nav" aria-label="Hauptnavigation">
-          <a href="#matches">Spiele</a>
-          <a href="#groupPaths">Gruppen</a>
-          <a href="#standings">Tabellen</a>
-          <a href="#bracket">Finalweg</a>
-          <a href="#featureLab">Features</a>
-          <a href="#teamLab">Teams</a>
-          <a href="#keyFigures">Figuren</a>
-          <a href="#dossier">Dossier</a>
-          <a href="#radar">Radar</a>
-          <a href="#analystDesk">Analysten</a>
-          <a href="#data">Daten</a>
-          <a href="#sources">Quellen</a>
+          <a href="#matches" data-zone="01">Heute</a>
+          <a href="#games" data-zone="02">Spiele</a>
+          <a href="#tournament" data-zone="03">Turnierlage</a>
+          <a href="#analysis" data-zone="04">Analyse</a>
         </nav>
 
         <button class="spoiler-toggle" id="spoilerToggle" type="button" aria-pressed="false">
@@ -4751,6 +4980,29 @@ h3 {
             <div class="hero-signal-stack" id="heroSignalStack" aria-label="Aktuelle Signale"></div>
             <div class="control-stats" id="controlStats"></div>
           </aside>
+        </section>
+
+        <section class="orientation-map" aria-label="App-Bereiche">
+          <a class="orientation-card today" href="#matches">
+            <span>01</span>
+            <strong>Heute</strong>
+            <small>Was jetzt zählt, was warten kann, was du skippen darfst.</small>
+          </a>
+          <a class="orientation-card games" href="#games">
+            <span>02</span>
+            <strong>Spiele</strong>
+            <small>Match-Dossier, Pre-Match-Scout, Watch-Cues und Teamkontext.</small>
+          </a>
+          <a class="orientation-card tournament" href="#tournament">
+            <span>03</span>
+            <strong>Turnierlage</strong>
+            <small>Gruppen, Tabellen, Finalweg und die Frage: gegen wen geht es weiter?</small>
+          </a>
+          <a class="orientation-card analysis" href="#analysis">
+            <span>04</span>
+            <strong>Analyse</strong>
+            <small>Datenlage, Quellenvertrauen, Feature Lab und seriöse Deutung.</small>
+          </a>
         </section>
 
         <section class="section-head" id="matches" aria-labelledby="matchesTitle">
@@ -4819,82 +5071,19 @@ h3 {
           <div class="category-filters" aria-label="Empfehlungsfilter" id="categoryFilters"></div>
         </section>
 
-        <section class="data-section" id="data" aria-labelledby="dataTitle">
-          <div class="section-head compact">
-            <div>
-              <p class="eyebrow">Datenlage</p>
-              <h2 id="dataTitle">Datenlage & Transparenz</h2>
-            </div>
-            <p id="dataSnapshot">Stand wird geladen.</p>
+        <section class="zone-divider games" id="games" aria-label="Bereich Spiele">
+          <span>02</span>
+          <div>
+            <p class="eyebrow">Spiele verstehen</p>
+            <h2>Vom Spielplan zum echten Watch-Plan</h2>
+            <p>Hier lernst du Teams, Schluesselfiguren und konkrete Duelle kennen, bevor du ins Match-Dossier springst.</p>
           </div>
-          <div class="data-grid" id="dataStatusGrid"></div>
-          <div class="provider-test-grid" id="providerTestGrid"></div>
-          <details class="transparency-drawer">
-            <summary>
-              <span>Import- und Validierungsdetails</span>
-              <small>Für Kontrolle, Fehlersuche und Quellenvertrauen. Im Turnierbetrieb bleibt das eingeklappt.</small>
-            </summary>
-            <div class="schedule-validator result-validator" id="resultValidator"></div>
-            <div class="schedule-validator" id="scheduleValidator"></div>
-          </details>
-        </section>
-
-        <section class="group-path-section" id="groupPaths" aria-labelledby="groupPathTitle">
-          <div class="section-head compact">
-            <div>
-              <p class="eyebrow">Gruppenlage</p>
-              <h2 id="groupPathTitle">Gruppen & Szenarien</h2>
-            </div>
-            <p>
-              Gruppen A-L mit Fokusmarkierung, Watch-Empfehlung und der Kernfrage: Wer kommt aktuell weiter,
-              und gegen wen ginge es danach?
-            </p>
-          </div>
-          <div class="group-path-grid" id="groupPathGrid"></div>
-        </section>
-
-        <section class="standings-section" id="standings" aria-labelledby="standingsTitle">
-          <div class="section-head compact">
-            <div>
-              <p class="eyebrow">Ergebnisse & Tabellen</p>
-              <h2 id="standingsTitle">Tabellen & Szenarien</h2>
-            </div>
-            <p>
-              Bis echte Resultate vorliegen, rechnet die App eine transparente Projektion. Sobald Ergebnisse in
-              die Datenquelle kommen, kippt die Tabelle automatisch vom Modell- in den Live-Modus.
-            </p>
-          </div>
-          <div class="standings-summary" id="standingsSummary"></div>
-          <div class="standings-grid" id="standingsGrid"></div>
-        </section>
-
-        <section class="bracket-section" id="bracket" aria-labelledby="bracketTitle">
-          <div class="section-head compact">
-            <div>
-              <p class="eyebrow">K.o.-Runden</p>
-              <h2 id="bracketTitle">Der Weg ins Finale</h2>
-            </div>
-            <p>
-              Hier siehst du, welche Wege ins Finale möglich sind, wo schwere Gegner lauern und welche
-              Gruppenplatzierung ploetzlich extrem wichtig wird.
-            </p>
-          </div>
-          <div class="bracket-summary" id="bracketSummary"></div>
-          <div class="bracket-grid" id="bracketGrid"></div>
-        </section>
-
-        <section class="feature-lab-section" id="featureLab" aria-labelledby="featureLabTitle">
-          <div class="section-head compact">
-            <div>
-              <p class="eyebrow">Differenzierende Features</p>
-              <h2 id="featureLabTitle">Was WM Radar besonders macht</h2>
-            </div>
-            <p>
-              Vier Produktmodule verbinden Sportmonks-Daten mit echtem Nutzwert: Live-Szenarien, Momentum,
-              Stuermer-Effizienz und Pre-Match-Scouting.
-            </p>
-          </div>
-          <div class="feature-lab-grid" id="featureLabGrid"></div>
+          <nav aria-label="Spiele Schnellzugriffe">
+            <a href="#teamLab">Teams</a>
+            <a href="#keyFigures">Figuren</a>
+            <a href="#dossier">Dossier</a>
+            <a href="#radar">Radar</a>
+          </nav>
         </section>
 
         <section class="team-lab-section" id="teamLab" aria-labelledby="teamLabTitle">
@@ -4977,6 +5166,113 @@ h3 {
             </p>
           </div>
           <div class="radar-grid" id="surpriseRadar"></div>
+        </section>
+
+        <section class="zone-divider tournament" id="tournament" aria-label="Bereich Turnierlage">
+          <span>03</span>
+          <div>
+            <p class="eyebrow">Turnierlage</p>
+            <h2>Wer kommt weiter und gegen wen?</h2>
+            <p>Der Bereich fuer Gruppen, Tabellen, Drittplatzierte und den Weg ins Finale.</p>
+          </div>
+          <nav aria-label="Turnierlage Schnellzugriffe">
+            <a href="#groupPaths">Gruppen</a>
+            <a href="#standings">Tabellen</a>
+            <a href="#bracket">Finalweg</a>
+          </nav>
+        </section>
+
+        <section class="group-path-section" id="groupPaths" aria-labelledby="groupPathTitle">
+          <div class="section-head compact">
+            <div>
+              <p class="eyebrow">Gruppenlage</p>
+              <h2 id="groupPathTitle">Gruppen & Szenarien</h2>
+            </div>
+            <p>
+              Gruppen A-L mit Fokusmarkierung, Watch-Empfehlung und der Kernfrage: Wer kommt aktuell weiter,
+              und gegen wen ginge es danach?
+            </p>
+          </div>
+          <div class="group-path-grid" id="groupPathGrid"></div>
+        </section>
+
+        <section class="standings-section" id="standings" aria-labelledby="standingsTitle">
+          <div class="section-head compact">
+            <div>
+              <p class="eyebrow">Ergebnisse & Tabellen</p>
+              <h2 id="standingsTitle">Tabellen & Szenarien</h2>
+            </div>
+            <p>
+              Bis echte Resultate vorliegen, rechnet die App eine transparente Projektion. Sobald Ergebnisse in
+              die Datenquelle kommen, kippt die Tabelle automatisch vom Modell- in den Live-Modus.
+            </p>
+          </div>
+          <div class="standings-summary" id="standingsSummary"></div>
+          <div class="standings-grid" id="standingsGrid"></div>
+        </section>
+
+        <section class="bracket-section" id="bracket" aria-labelledby="bracketTitle">
+          <div class="section-head compact">
+            <div>
+              <p class="eyebrow">K.o.-Runden</p>
+              <h2 id="bracketTitle">Der Weg ins Finale</h2>
+            </div>
+            <p>
+              Hier siehst du, welche Wege ins Finale möglich sind, wo schwere Gegner lauern und welche
+              Gruppenplatzierung ploetzlich extrem wichtig wird.
+            </p>
+          </div>
+          <div class="bracket-summary" id="bracketSummary"></div>
+          <div class="bracket-grid" id="bracketGrid"></div>
+        </section>
+
+        <section class="zone-divider analysis" id="analysis" aria-label="Bereich Analyse">
+          <span>04</span>
+          <div>
+            <p class="eyebrow">Analyse</p>
+            <h2>Aus Daten wird eine Spielgeschichte</h2>
+            <p>Hier trennt WM Radar Rohdaten, Expertenstimmen, Quellenvertrauen und echte Erkenntnis.</p>
+          </div>
+          <nav aria-label="Analyse Schnellzugriffe">
+            <a href="#featureLab">Features</a>
+            <a href="#analystDesk">Analyst Desk</a>
+            <a href="#data">Datenlage</a>
+            <a href="#sources">Quellen</a>
+          </nav>
+        </section>
+
+        <section class="data-section" id="data" aria-labelledby="dataTitle">
+          <div class="section-head compact">
+            <div>
+              <p class="eyebrow">Datenlage</p>
+              <h2 id="dataTitle">Datenlage & Transparenz</h2>
+            </div>
+            <p id="dataSnapshot">Stand wird geladen.</p>
+          </div>
+          <div class="data-grid" id="dataStatusGrid"></div>
+          <div class="provider-test-grid" id="providerTestGrid"></div>
+          <details class="transparency-drawer">
+            <summary>
+              <span>Import- und Validierungsdetails</span>
+              <small>Für Kontrolle, Fehlersuche und Quellenvertrauen. Im Turnierbetrieb bleibt das eingeklappt.</small>
+            </summary>
+            <div class="schedule-validator result-validator" id="resultValidator"></div>
+            <div class="schedule-validator" id="scheduleValidator"></div>
+          </details>
+        </section>
+
+        <section class="feature-lab-section" id="featureLab" aria-labelledby="featureLabTitle">
+          <div class="section-head compact">
+            <div>
+              <p class="eyebrow">Differenzierende Features</p>
+              <h2 id="featureLabTitle">Was WM Radar besonders macht</h2>
+            </div>
+            <p>
+              Vier Produktmodule verbinden Sportmonks-Daten mit echtem Nutzwert: Live-Szenarien, Momentum,
+              Stuermer-Effizienz und Pre-Match-Scouting.
+            </p>
+          </div>
+          <div class="feature-lab-grid" id="featureLabGrid"></div>
         </section>
 
         <section class="analyst-desk-section" id="analystDesk" aria-labelledby="analystDeskTitle">
@@ -12211,6 +12507,7 @@ const keyFiguresByTeam = new Map(keyFigures.map((entry) => [entry.team, entry]))
 const providerMappingByMatchId = new Map((providerMapping?.mappings || []).map((mapping) => [mapping.matchId, mapping]));
 const groupById = new Map(groups.map((group) => [group.id, group]));
 const groupByTeamCode = new Map(groups.flatMap((group) => group.teams.map((code) => [code, group])));
+const zoneLinks = [...document.querySelectorAll(".main-nav a[data-zone]")];
 const stateLabels = {
   live: "Pflichtspiel",
   analysis: "Analysewürdig",
@@ -14817,6 +15114,35 @@ function setupSpoilerMode() {
   });
 }
 
+function setupZoneNavigation() {
+  if (!zoneLinks.length) return;
+  const zoneTargets = zoneLinks
+    .map((link) => ({ link, target: document.querySelector(link.getAttribute("href")) }))
+    .filter((entry) => entry.target);
+
+  const setActiveZone = (activeLink) => {
+    zoneLinks.forEach((link) => link.classList.toggle("is-active", link === activeLink));
+  };
+
+  setActiveZone(zoneTargets[0]?.link);
+
+  if (!("IntersectionObserver" in window)) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      const active = zoneTargets.find((entry) => entry.target === visible.target);
+      if (active) setActiveZone(active.link);
+    },
+    { rootMargin: "-18% 0px -66% 0px", threshold: [0.08, 0.18, 0.32] },
+  );
+
+  zoneTargets.forEach(({ target }) => observer.observe(target));
+}
+
 function setupPwa() {
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("./sw.js").catch(() => {});
@@ -14837,6 +15163,7 @@ renderAllDynamic();
 renderTeamLab();
 renderKeyFigures();
 setupSpoilerMode();
+setupZoneNavigation();
 setupPwa();
 
     </script>

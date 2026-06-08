@@ -24,18 +24,10 @@
         </a>
 
         <nav class="main-nav" aria-label="Hauptnavigation">
-          <a href="#matches">Spiele</a>
-          <a href="#groupPaths">Gruppen</a>
-          <a href="#standings">Tabellen</a>
-          <a href="#bracket">Finalweg</a>
-          <a href="#featureLab">Features</a>
-          <a href="#teamLab">Teams</a>
-          <a href="#keyFigures">Figuren</a>
-          <a href="#dossier">Dossier</a>
-          <a href="#radar">Radar</a>
-          <a href="#analystDesk">Analysten</a>
-          <a href="#data">Daten</a>
-          <a href="#sources">Quellen</a>
+          <a href="#matches" data-zone="01">Heute</a>
+          <a href="#games" data-zone="02">Spiele</a>
+          <a href="#tournament" data-zone="03">Turnierlage</a>
+          <a href="#analysis" data-zone="04">Analyse</a>
         </nav>
 
         <button class="spoiler-toggle" id="spoilerToggle" type="button" aria-pressed="false">
@@ -95,6 +87,29 @@
             <div class="hero-signal-stack" id="heroSignalStack" aria-label="Aktuelle Signale"></div>
             <div class="control-stats" id="controlStats"></div>
           </aside>
+        </section>
+
+        <section class="orientation-map" aria-label="App-Bereiche">
+          <a class="orientation-card today" href="#matches">
+            <span>01</span>
+            <strong>Heute</strong>
+            <small>Was jetzt zählt, was warten kann, was du skippen darfst.</small>
+          </a>
+          <a class="orientation-card games" href="#games">
+            <span>02</span>
+            <strong>Spiele</strong>
+            <small>Match-Dossier, Pre-Match-Scout, Watch-Cues und Teamkontext.</small>
+          </a>
+          <a class="orientation-card tournament" href="#tournament">
+            <span>03</span>
+            <strong>Turnierlage</strong>
+            <small>Gruppen, Tabellen, Finalweg und die Frage: gegen wen geht es weiter?</small>
+          </a>
+          <a class="orientation-card analysis" href="#analysis">
+            <span>04</span>
+            <strong>Analyse</strong>
+            <small>Datenlage, Quellenvertrauen, Feature Lab und seriöse Deutung.</small>
+          </a>
         </section>
 
         <section class="section-head" id="matches" aria-labelledby="matchesTitle">
@@ -163,82 +178,19 @@
           <div class="category-filters" aria-label="Empfehlungsfilter" id="categoryFilters"></div>
         </section>
 
-        <section class="data-section" id="data" aria-labelledby="dataTitle">
-          <div class="section-head compact">
-            <div>
-              <p class="eyebrow">Datenlage</p>
-              <h2 id="dataTitle">Datenlage & Transparenz</h2>
-            </div>
-            <p id="dataSnapshot">Stand wird geladen.</p>
+        <section class="zone-divider games" id="games" aria-label="Bereich Spiele">
+          <span>02</span>
+          <div>
+            <p class="eyebrow">Spiele verstehen</p>
+            <h2>Vom Spielplan zum echten Watch-Plan</h2>
+            <p>Hier lernst du Teams, Schluesselfiguren und konkrete Duelle kennen, bevor du ins Match-Dossier springst.</p>
           </div>
-          <div class="data-grid" id="dataStatusGrid"></div>
-          <div class="provider-test-grid" id="providerTestGrid"></div>
-          <details class="transparency-drawer">
-            <summary>
-              <span>Import- und Validierungsdetails</span>
-              <small>Für Kontrolle, Fehlersuche und Quellenvertrauen. Im Turnierbetrieb bleibt das eingeklappt.</small>
-            </summary>
-            <div class="schedule-validator result-validator" id="resultValidator"></div>
-            <div class="schedule-validator" id="scheduleValidator"></div>
-          </details>
-        </section>
-
-        <section class="group-path-section" id="groupPaths" aria-labelledby="groupPathTitle">
-          <div class="section-head compact">
-            <div>
-              <p class="eyebrow">Gruppenlage</p>
-              <h2 id="groupPathTitle">Gruppen & Szenarien</h2>
-            </div>
-            <p>
-              Gruppen A-L mit Fokusmarkierung, Watch-Empfehlung und der Kernfrage: Wer kommt aktuell weiter,
-              und gegen wen ginge es danach?
-            </p>
-          </div>
-          <div class="group-path-grid" id="groupPathGrid"></div>
-        </section>
-
-        <section class="standings-section" id="standings" aria-labelledby="standingsTitle">
-          <div class="section-head compact">
-            <div>
-              <p class="eyebrow">Ergebnisse & Tabellen</p>
-              <h2 id="standingsTitle">Tabellen & Szenarien</h2>
-            </div>
-            <p>
-              Bis echte Resultate vorliegen, rechnet die App eine transparente Projektion. Sobald Ergebnisse in
-              die Datenquelle kommen, kippt die Tabelle automatisch vom Modell- in den Live-Modus.
-            </p>
-          </div>
-          <div class="standings-summary" id="standingsSummary"></div>
-          <div class="standings-grid" id="standingsGrid"></div>
-        </section>
-
-        <section class="bracket-section" id="bracket" aria-labelledby="bracketTitle">
-          <div class="section-head compact">
-            <div>
-              <p class="eyebrow">K.o.-Runden</p>
-              <h2 id="bracketTitle">Der Weg ins Finale</h2>
-            </div>
-            <p>
-              Hier siehst du, welche Wege ins Finale möglich sind, wo schwere Gegner lauern und welche
-              Gruppenplatzierung ploetzlich extrem wichtig wird.
-            </p>
-          </div>
-          <div class="bracket-summary" id="bracketSummary"></div>
-          <div class="bracket-grid" id="bracketGrid"></div>
-        </section>
-
-        <section class="feature-lab-section" id="featureLab" aria-labelledby="featureLabTitle">
-          <div class="section-head compact">
-            <div>
-              <p class="eyebrow">Differenzierende Features</p>
-              <h2 id="featureLabTitle">Was WM Radar besonders macht</h2>
-            </div>
-            <p>
-              Vier Produktmodule verbinden Sportmonks-Daten mit echtem Nutzwert: Live-Szenarien, Momentum,
-              Stuermer-Effizienz und Pre-Match-Scouting.
-            </p>
-          </div>
-          <div class="feature-lab-grid" id="featureLabGrid"></div>
+          <nav aria-label="Spiele Schnellzugriffe">
+            <a href="#teamLab">Teams</a>
+            <a href="#keyFigures">Figuren</a>
+            <a href="#dossier">Dossier</a>
+            <a href="#radar">Radar</a>
+          </nav>
         </section>
 
         <section class="team-lab-section" id="teamLab" aria-labelledby="teamLabTitle">
@@ -321,6 +273,113 @@
             </p>
           </div>
           <div class="radar-grid" id="surpriseRadar"></div>
+        </section>
+
+        <section class="zone-divider tournament" id="tournament" aria-label="Bereich Turnierlage">
+          <span>03</span>
+          <div>
+            <p class="eyebrow">Turnierlage</p>
+            <h2>Wer kommt weiter und gegen wen?</h2>
+            <p>Der Bereich fuer Gruppen, Tabellen, Drittplatzierte und den Weg ins Finale.</p>
+          </div>
+          <nav aria-label="Turnierlage Schnellzugriffe">
+            <a href="#groupPaths">Gruppen</a>
+            <a href="#standings">Tabellen</a>
+            <a href="#bracket">Finalweg</a>
+          </nav>
+        </section>
+
+        <section class="group-path-section" id="groupPaths" aria-labelledby="groupPathTitle">
+          <div class="section-head compact">
+            <div>
+              <p class="eyebrow">Gruppenlage</p>
+              <h2 id="groupPathTitle">Gruppen & Szenarien</h2>
+            </div>
+            <p>
+              Gruppen A-L mit Fokusmarkierung, Watch-Empfehlung und der Kernfrage: Wer kommt aktuell weiter,
+              und gegen wen ginge es danach?
+            </p>
+          </div>
+          <div class="group-path-grid" id="groupPathGrid"></div>
+        </section>
+
+        <section class="standings-section" id="standings" aria-labelledby="standingsTitle">
+          <div class="section-head compact">
+            <div>
+              <p class="eyebrow">Ergebnisse & Tabellen</p>
+              <h2 id="standingsTitle">Tabellen & Szenarien</h2>
+            </div>
+            <p>
+              Bis echte Resultate vorliegen, rechnet die App eine transparente Projektion. Sobald Ergebnisse in
+              die Datenquelle kommen, kippt die Tabelle automatisch vom Modell- in den Live-Modus.
+            </p>
+          </div>
+          <div class="standings-summary" id="standingsSummary"></div>
+          <div class="standings-grid" id="standingsGrid"></div>
+        </section>
+
+        <section class="bracket-section" id="bracket" aria-labelledby="bracketTitle">
+          <div class="section-head compact">
+            <div>
+              <p class="eyebrow">K.o.-Runden</p>
+              <h2 id="bracketTitle">Der Weg ins Finale</h2>
+            </div>
+            <p>
+              Hier siehst du, welche Wege ins Finale möglich sind, wo schwere Gegner lauern und welche
+              Gruppenplatzierung ploetzlich extrem wichtig wird.
+            </p>
+          </div>
+          <div class="bracket-summary" id="bracketSummary"></div>
+          <div class="bracket-grid" id="bracketGrid"></div>
+        </section>
+
+        <section class="zone-divider analysis" id="analysis" aria-label="Bereich Analyse">
+          <span>04</span>
+          <div>
+            <p class="eyebrow">Analyse</p>
+            <h2>Aus Daten wird eine Spielgeschichte</h2>
+            <p>Hier trennt WM Radar Rohdaten, Expertenstimmen, Quellenvertrauen und echte Erkenntnis.</p>
+          </div>
+          <nav aria-label="Analyse Schnellzugriffe">
+            <a href="#featureLab">Features</a>
+            <a href="#analystDesk">Analyst Desk</a>
+            <a href="#data">Datenlage</a>
+            <a href="#sources">Quellen</a>
+          </nav>
+        </section>
+
+        <section class="data-section" id="data" aria-labelledby="dataTitle">
+          <div class="section-head compact">
+            <div>
+              <p class="eyebrow">Datenlage</p>
+              <h2 id="dataTitle">Datenlage & Transparenz</h2>
+            </div>
+            <p id="dataSnapshot">Stand wird geladen.</p>
+          </div>
+          <div class="data-grid" id="dataStatusGrid"></div>
+          <div class="provider-test-grid" id="providerTestGrid"></div>
+          <details class="transparency-drawer">
+            <summary>
+              <span>Import- und Validierungsdetails</span>
+              <small>Für Kontrolle, Fehlersuche und Quellenvertrauen. Im Turnierbetrieb bleibt das eingeklappt.</small>
+            </summary>
+            <div class="schedule-validator result-validator" id="resultValidator"></div>
+            <div class="schedule-validator" id="scheduleValidator"></div>
+          </details>
+        </section>
+
+        <section class="feature-lab-section" id="featureLab" aria-labelledby="featureLabTitle">
+          <div class="section-head compact">
+            <div>
+              <p class="eyebrow">Differenzierende Features</p>
+              <h2 id="featureLabTitle">Was WM Radar besonders macht</h2>
+            </div>
+            <p>
+              Vier Produktmodule verbinden Sportmonks-Daten mit echtem Nutzwert: Live-Szenarien, Momentum,
+              Stuermer-Effizienz und Pre-Match-Scouting.
+            </p>
+          </div>
+          <div class="feature-lab-grid" id="featureLabGrid"></div>
         </section>
 
         <section class="analyst-desk-section" id="analystDesk" aria-labelledby="analystDeskTitle">
