@@ -1775,6 +1775,600 @@ window.WMRadarData = {
       }
     ]
   },
+  "providerMapping": {
+    "generatedAt": "2026-06-08T09:06:49.795Z",
+    "provider": "sportmonks",
+    "status": "not-ready",
+    "summary": "0/72 Gruppenspiele auf Sportmonks gemappt, 0 mit Prediction-Signal.",
+    "coverage": {
+      "localMatches": 72,
+      "providerFixtures": 0,
+      "mapped": 0,
+      "unmatchedLocal": 72,
+      "unmatchedProvider": 0,
+      "predictions": 0
+    },
+    "mappings": [],
+    "unmatchedLocalMatches": [
+      {
+        "matchId": "mex-rsa-2026-06-11",
+        "teams": [
+          "MEX",
+          "RSA"
+        ],
+        "kickoffGermany": "2026-06-11T21:00:00+02:00"
+      },
+      {
+        "matchId": "kor-cze-2026-06-12",
+        "teams": [
+          "KOR",
+          "CZE"
+        ],
+        "kickoffGermany": "2026-06-12T04:00:00+02:00"
+      },
+      {
+        "matchId": "can-bih-2026-06-12",
+        "teams": [
+          "CAN",
+          "BIH"
+        ],
+        "kickoffGermany": "2026-06-12T21:00:00+02:00"
+      },
+      {
+        "matchId": "qat-sui-2026-06-13",
+        "teams": [
+          "QAT",
+          "SUI"
+        ],
+        "kickoffGermany": "2026-06-13T21:00:00+02:00"
+      },
+      {
+        "matchId": "bra-mar-2026-06-14",
+        "teams": [
+          "BRA",
+          "MAR"
+        ],
+        "kickoffGermany": "2026-06-14T00:00:00+02:00"
+      },
+      {
+        "matchId": "hai-sco-2026-06-14",
+        "teams": [
+          "HAI",
+          "SCO"
+        ],
+        "kickoffGermany": "2026-06-14T03:00:00+02:00"
+      },
+      {
+        "matchId": "usa-par-2026-06-14",
+        "teams": [
+          "USA",
+          "PAR"
+        ],
+        "kickoffGermany": "2026-06-14T03:00:00+02:00"
+      },
+      {
+        "matchId": "aus-tur-2026-06-14",
+        "teams": [
+          "AUS",
+          "TUR"
+        ],
+        "kickoffGermany": "2026-06-14T06:00:00+02:00"
+      },
+      {
+        "matchId": "ger-cuw-2026-06-14",
+        "teams": [
+          "GER",
+          "CUW"
+        ],
+        "kickoffGermany": "2026-06-14T19:00:00+02:00"
+      },
+      {
+        "matchId": "ned-jpn-2026-06-14",
+        "teams": [
+          "NED",
+          "JPN"
+        ],
+        "kickoffGermany": "2026-06-14T22:00:00+02:00"
+      },
+      {
+        "matchId": "civ-ecu-2026-06-15",
+        "teams": [
+          "CIV",
+          "ECU"
+        ],
+        "kickoffGermany": "2026-06-15T01:00:00+02:00"
+      },
+      {
+        "matchId": "swe-tun-2026-06-15",
+        "teams": [
+          "SWE",
+          "TUN"
+        ],
+        "kickoffGermany": "2026-06-15T04:00:00+02:00"
+      },
+      {
+        "matchId": "esp-cpv-2026-06-15",
+        "teams": [
+          "ESP",
+          "CPV"
+        ],
+        "kickoffGermany": "2026-06-15T18:00:00+02:00"
+      },
+      {
+        "matchId": "bel-egy-2026-06-15",
+        "teams": [
+          "BEL",
+          "EGY"
+        ],
+        "kickoffGermany": "2026-06-15T21:00:00+02:00"
+      },
+      {
+        "matchId": "ksa-uru-2026-06-16",
+        "teams": [
+          "KSA",
+          "URU"
+        ],
+        "kickoffGermany": "2026-06-16T00:00:00+02:00"
+      },
+      {
+        "matchId": "irn-nzl-2026-06-16",
+        "teams": [
+          "IRN",
+          "NZL"
+        ],
+        "kickoffGermany": "2026-06-16T03:00:00+02:00"
+      },
+      {
+        "matchId": "fra-sen-2026-06-16",
+        "teams": [
+          "FRA",
+          "SEN"
+        ],
+        "kickoffGermany": "2026-06-16T21:00:00+02:00"
+      },
+      {
+        "matchId": "irq-nor-2026-06-17",
+        "teams": [
+          "IRQ",
+          "NOR"
+        ],
+        "kickoffGermany": "2026-06-17T00:00:00+02:00"
+      },
+      {
+        "matchId": "arg-alg-2026-06-17",
+        "teams": [
+          "ARG",
+          "ALG"
+        ],
+        "kickoffGermany": "2026-06-17T03:00:00+02:00"
+      },
+      {
+        "matchId": "aut-jor-2026-06-17",
+        "teams": [
+          "AUT",
+          "JOR"
+        ],
+        "kickoffGermany": "2026-06-17T06:00:00+02:00"
+      },
+      {
+        "matchId": "por-cod-2026-06-17",
+        "teams": [
+          "POR",
+          "COD"
+        ],
+        "kickoffGermany": "2026-06-17T19:00:00+02:00"
+      },
+      {
+        "matchId": "eng-cro-2026-06-17",
+        "teams": [
+          "ENG",
+          "CRO"
+        ],
+        "kickoffGermany": "2026-06-17T22:00:00+02:00"
+      },
+      {
+        "matchId": "gha-pan-2026-06-18",
+        "teams": [
+          "GHA",
+          "PAN"
+        ],
+        "kickoffGermany": "2026-06-18T01:00:00+02:00"
+      },
+      {
+        "matchId": "uzb-col-2026-06-18",
+        "teams": [
+          "UZB",
+          "COL"
+        ],
+        "kickoffGermany": "2026-06-18T04:00:00+02:00"
+      },
+      {
+        "matchId": "cze-rsa-2026-06-18",
+        "teams": [
+          "CZE",
+          "RSA"
+        ],
+        "kickoffGermany": "2026-06-18T18:00:00+02:00"
+      },
+      {
+        "matchId": "sui-bih-2026-06-18",
+        "teams": [
+          "SUI",
+          "BIH"
+        ],
+        "kickoffGermany": "2026-06-18T21:00:00+02:00"
+      },
+      {
+        "matchId": "can-qat-2026-06-19",
+        "teams": [
+          "CAN",
+          "QAT"
+        ],
+        "kickoffGermany": "2026-06-19T00:00:00+02:00"
+      },
+      {
+        "matchId": "mex-kor-2026-06-19",
+        "teams": [
+          "MEX",
+          "KOR"
+        ],
+        "kickoffGermany": "2026-06-19T03:00:00+02:00"
+      },
+      {
+        "matchId": "usa-aus-2026-06-19",
+        "teams": [
+          "USA",
+          "AUS"
+        ],
+        "kickoffGermany": "2026-06-19T21:00:00+02:00"
+      },
+      {
+        "matchId": "sco-mar-2026-06-20",
+        "teams": [
+          "SCO",
+          "MAR"
+        ],
+        "kickoffGermany": "2026-06-20T00:00:00+02:00"
+      },
+      {
+        "matchId": "bra-hai-2026-06-20",
+        "teams": [
+          "BRA",
+          "HAI"
+        ],
+        "kickoffGermany": "2026-06-20T02:30:00+02:00"
+      },
+      {
+        "matchId": "ned-swe-2026-06-20",
+        "teams": [
+          "NED",
+          "SWE"
+        ],
+        "kickoffGermany": "2026-06-20T19:00:00+02:00"
+      },
+      {
+        "matchId": "ger-civ-2026-06-20",
+        "teams": [
+          "GER",
+          "CIV"
+        ],
+        "kickoffGermany": "2026-06-20T22:00:00+02:00"
+      },
+      {
+        "matchId": "ecu-cuw-2026-06-21",
+        "teams": [
+          "ECU",
+          "CUW"
+        ],
+        "kickoffGermany": "2026-06-21T02:00:00+02:00"
+      },
+      {
+        "matchId": "tur-par-2026-06-21",
+        "teams": [
+          "TUR",
+          "PAR"
+        ],
+        "kickoffGermany": "2026-06-21T05:00:00+02:00"
+      },
+      {
+        "matchId": "tun-jpn-2026-06-21",
+        "teams": [
+          "TUN",
+          "JPN"
+        ],
+        "kickoffGermany": "2026-06-21T06:00:00+02:00"
+      },
+      {
+        "matchId": "esp-ksa-2026-06-21",
+        "teams": [
+          "ESP",
+          "KSA"
+        ],
+        "kickoffGermany": "2026-06-21T18:00:00+02:00"
+      },
+      {
+        "matchId": "bel-irn-2026-06-21",
+        "teams": [
+          "BEL",
+          "IRN"
+        ],
+        "kickoffGermany": "2026-06-21T21:00:00+02:00"
+      },
+      {
+        "matchId": "uru-cpv-2026-06-22",
+        "teams": [
+          "URU",
+          "CPV"
+        ],
+        "kickoffGermany": "2026-06-22T00:00:00+02:00"
+      },
+      {
+        "matchId": "nzl-egy-2026-06-22",
+        "teams": [
+          "NZL",
+          "EGY"
+        ],
+        "kickoffGermany": "2026-06-22T03:00:00+02:00"
+      },
+      {
+        "matchId": "arg-aut-2026-06-22",
+        "teams": [
+          "ARG",
+          "AUT"
+        ],
+        "kickoffGermany": "2026-06-22T19:00:00+02:00"
+      },
+      {
+        "matchId": "fra-irq-2026-06-22",
+        "teams": [
+          "FRA",
+          "IRQ"
+        ],
+        "kickoffGermany": "2026-06-22T23:00:00+02:00"
+      },
+      {
+        "matchId": "nor-sen-2026-06-23",
+        "teams": [
+          "NOR",
+          "SEN"
+        ],
+        "kickoffGermany": "2026-06-23T02:00:00+02:00"
+      },
+      {
+        "matchId": "jor-alg-2026-06-23",
+        "teams": [
+          "JOR",
+          "ALG"
+        ],
+        "kickoffGermany": "2026-06-23T05:00:00+02:00"
+      },
+      {
+        "matchId": "por-uzb-2026-06-23",
+        "teams": [
+          "POR",
+          "UZB"
+        ],
+        "kickoffGermany": "2026-06-23T19:00:00+02:00"
+      },
+      {
+        "matchId": "eng-gha-2026-06-23",
+        "teams": [
+          "ENG",
+          "GHA"
+        ],
+        "kickoffGermany": "2026-06-23T22:00:00+02:00"
+      },
+      {
+        "matchId": "pan-cro-2026-06-24",
+        "teams": [
+          "PAN",
+          "CRO"
+        ],
+        "kickoffGermany": "2026-06-24T01:00:00+02:00"
+      },
+      {
+        "matchId": "col-cod-2026-06-24",
+        "teams": [
+          "COL",
+          "COD"
+        ],
+        "kickoffGermany": "2026-06-24T04:00:00+02:00"
+      },
+      {
+        "matchId": "bih-qat-2026-06-24",
+        "teams": [
+          "BIH",
+          "QAT"
+        ],
+        "kickoffGermany": "2026-06-24T21:00:00+02:00"
+      },
+      {
+        "matchId": "sui-can-2026-06-24",
+        "teams": [
+          "SUI",
+          "CAN"
+        ],
+        "kickoffGermany": "2026-06-24T21:00:00+02:00"
+      },
+      {
+        "matchId": "mar-hai-2026-06-25",
+        "teams": [
+          "MAR",
+          "HAI"
+        ],
+        "kickoffGermany": "2026-06-25T00:00:00+02:00"
+      },
+      {
+        "matchId": "sco-bra-2026-06-25",
+        "teams": [
+          "SCO",
+          "BRA"
+        ],
+        "kickoffGermany": "2026-06-25T00:00:00+02:00"
+      },
+      {
+        "matchId": "cze-mex-2026-06-25",
+        "teams": [
+          "CZE",
+          "MEX"
+        ],
+        "kickoffGermany": "2026-06-25T03:00:00+02:00"
+      },
+      {
+        "matchId": "rsa-kor-2026-06-25",
+        "teams": [
+          "RSA",
+          "KOR"
+        ],
+        "kickoffGermany": "2026-06-25T03:00:00+02:00"
+      },
+      {
+        "matchId": "cuw-civ-2026-06-25",
+        "teams": [
+          "CUW",
+          "CIV"
+        ],
+        "kickoffGermany": "2026-06-25T22:00:00+02:00"
+      },
+      {
+        "matchId": "ecu-ger-2026-06-25",
+        "teams": [
+          "ECU",
+          "GER"
+        ],
+        "kickoffGermany": "2026-06-25T22:00:00+02:00"
+      },
+      {
+        "matchId": "jpn-swe-2026-06-26",
+        "teams": [
+          "JPN",
+          "SWE"
+        ],
+        "kickoffGermany": "2026-06-26T01:00:00+02:00"
+      },
+      {
+        "matchId": "tun-ned-2026-06-26",
+        "teams": [
+          "TUN",
+          "NED"
+        ],
+        "kickoffGermany": "2026-06-26T01:00:00+02:00"
+      },
+      {
+        "matchId": "par-aus-2026-06-26",
+        "teams": [
+          "PAR",
+          "AUS"
+        ],
+        "kickoffGermany": "2026-06-26T04:00:00+02:00"
+      },
+      {
+        "matchId": "tur-usa-2026-06-26",
+        "teams": [
+          "TUR",
+          "USA"
+        ],
+        "kickoffGermany": "2026-06-26T04:00:00+02:00"
+      },
+      {
+        "matchId": "nor-fra-2026-06-26",
+        "teams": [
+          "NOR",
+          "FRA"
+        ],
+        "kickoffGermany": "2026-06-26T21:00:00+02:00"
+      },
+      {
+        "matchId": "sen-irq-2026-06-26",
+        "teams": [
+          "SEN",
+          "IRQ"
+        ],
+        "kickoffGermany": "2026-06-26T21:00:00+02:00"
+      },
+      {
+        "matchId": "cpv-ksa-2026-06-27",
+        "teams": [
+          "CPV",
+          "KSA"
+        ],
+        "kickoffGermany": "2026-06-27T02:00:00+02:00"
+      },
+      {
+        "matchId": "uru-esp-2026-06-27",
+        "teams": [
+          "URU",
+          "ESP"
+        ],
+        "kickoffGermany": "2026-06-27T02:00:00+02:00"
+      },
+      {
+        "matchId": "egy-irn-2026-06-27",
+        "teams": [
+          "EGY",
+          "IRN"
+        ],
+        "kickoffGermany": "2026-06-27T05:00:00+02:00"
+      },
+      {
+        "matchId": "nzl-bel-2026-06-27",
+        "teams": [
+          "NZL",
+          "BEL"
+        ],
+        "kickoffGermany": "2026-06-27T05:00:00+02:00"
+      },
+      {
+        "matchId": "cro-gha-2026-06-27",
+        "teams": [
+          "CRO",
+          "GHA"
+        ],
+        "kickoffGermany": "2026-06-27T23:00:00+02:00"
+      },
+      {
+        "matchId": "pan-eng-2026-06-27",
+        "teams": [
+          "PAN",
+          "ENG"
+        ],
+        "kickoffGermany": "2026-06-27T23:00:00+02:00"
+      },
+      {
+        "matchId": "cod-uzb-2026-06-28",
+        "teams": [
+          "COD",
+          "UZB"
+        ],
+        "kickoffGermany": "2026-06-28T01:30:00+02:00"
+      },
+      {
+        "matchId": "col-por-2026-06-28",
+        "teams": [
+          "COL",
+          "POR"
+        ],
+        "kickoffGermany": "2026-06-28T01:30:00+02:00"
+      },
+      {
+        "matchId": "alg-aut-2026-06-28",
+        "teams": [
+          "ALG",
+          "AUT"
+        ],
+        "kickoffGermany": "2026-06-28T04:00:00+02:00"
+      },
+      {
+        "matchId": "jor-arg-2026-06-28",
+        "teams": [
+          "JOR",
+          "ARG"
+        ],
+        "kickoffGermany": "2026-06-28T04:00:00+02:00"
+      }
+    ],
+    "unmatchedProviderFixtures": []
+  },
   "focusTeams": [
     {
       "code": "ARG",

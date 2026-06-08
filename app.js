@@ -14,6 +14,7 @@ const {
   postMatchValidation,
   preferences,
   providerTests,
+  providerMapping,
   resultValidation,
   results,
   scheduleValidation,
@@ -26,6 +27,7 @@ const {
 const teamByCode = new Map(teams.map((team) => [team.code, team]));
 const profileByCode = new Map(teamProfiles.map((profile) => [profile.code, profile]));
 const keyFiguresByTeam = new Map(keyFigures.map((entry) => [entry.team, entry]));
+const providerMappingByMatchId = new Map((providerMapping?.mappings || []).map((mapping) => [mapping.matchId, mapping]));
 const groupById = new Map(groups.map((group) => [group.id, group]));
 const groupByTeamCode = new Map(groups.flatMap((group) => group.teams.map((code) => [code, group])));
 const stateLabels = {
@@ -171,6 +173,8 @@ function isPathCommandMatch(match) {
 function computeScore(match) {
   const signal = match.signals;
   const pathImpact = getPathImpact(match);
+  const providerSignal = providerMappingByMatchId.get(match.id);
+  const predictionImpact = providerSignal?.predictionImpact || 0;
   const parts = [
     [signal.importance, weights.importance],
     [signal.tactical, weights.tactical],
@@ -182,7 +186,7 @@ function computeScore(match) {
   ];
   const weightedTotal = parts.reduce((sum, [value, weight]) => sum + value * weight, 0);
   const totalWeight = parts.reduce((sum, [, weight]) => sum + weight, 0);
-  const score = weightedTotal / totalWeight - signal.lowValueRisk * 0.18;
+  const score = weightedTotal / totalWeight - signal.lowValueRisk * 0.18 + predictionImpact;
 
   return clamp(Math.round(score), 0, 100);
 }
@@ -203,6 +207,7 @@ function getDriver(match) {
     ["Bedeutung", signal.importance],
     ["Uhrzeit", signal.time],
     ["Weiterkommen", getPathImpact(match)],
+    ["Prediction", providerMappingByMatchId.get(match.id)?.predictionImpact ? 62 : 0],
   ].sort((a, b) => b[1] - a[1]);
 
   return drivers[0][0];
@@ -228,6 +233,7 @@ function getScoredMatches() {
         hasFocusTeam: matchTeams.some((team) => team.focus),
         groupModel: getGroupForMatch(match),
         pathImpact: getPathImpact(match),
+        providerSignal: providerMappingByMatchId.get(match.id) || null,
         driver: getDriver(match),
       };
     })
@@ -682,6 +688,10 @@ function renderProviderTests() {
         : "noch nicht";
       const topCoverage = provider.coverage.slice(0, 8);
       const advancedCoverage = provider.coverage.slice(8);
+      const mappingSummary =
+        providerMapping?.provider === provider.id || providerMapping?.provider === "sportmonks"
+          ? providerMapping
+          : null;
 
       return `
         <article class="provider-test-card">
@@ -699,6 +709,12 @@ function renderProviderTests() {
           <div class="provider-test-meta">
             <span><strong>${provider.status}</strong><small>Status</small></span>
             <span><strong>${testedAt}</strong><small>Letzter Probe-Lauf</small></span>
+            ${
+              mappingSummary
+                ? `<span><strong>${mappingSummary.coverage.mapped}/${mappingSummary.coverage.localMatches}</strong><small>Mapping</small></span>
+                   <span><strong>${mappingSummary.coverage.predictions}</strong><small>Predictions</small></span>`
+                : ""
+            }
           </div>
           <div class="provider-coverage-grid">
             ${topCoverage
@@ -739,6 +755,11 @@ function renderProviderTests() {
               </ul>
             </div>
           </div>
+          ${
+            mappingSummary
+              ? `<p class="provider-mapping-note">${mappingSummary.summary}</p>`
+              : ""
+          }
         </article>
       `;
     })
@@ -2064,6 +2085,7 @@ function renderDossier() {
           ["Upset", selectedMatch.signals.surprise],
           ["Uhrzeit", selectedMatch.signals.time],
           ["Weiterkommen", selectedMatch.pathImpact],
+          ["Prediction", selectedMatch.providerSignal?.predictionImpact ? 62 : 0],
         ]
           .map(
             ([label, value]) => `
@@ -2077,6 +2099,20 @@ function renderDossier() {
           .join("")}
       </div>
     </div>
+    ${
+      selectedMatch.providerSignal
+        ? `<div class="insight-card provider-signal-card">
+            <span class="briefing-kicker">Provider-Signal</span>
+            <h3>Sportmonks-Mapping</h3>
+            <p>${selectedMatch.providerSignal.providerName} ist mit Provider-ID ${selectedMatch.providerSignal.providerId} gemappt.</p>
+            <div class="provider-signal-row">
+              <span><strong>${selectedMatch.providerSignal.predictionAvailable ? "bereit" : "offen"}</strong><small>Prediction</small></span>
+              <span><strong>+${selectedMatch.providerSignal.predictionImpact || 0}</strong><small>Score-Bonus</small></span>
+              <span><strong>${selectedMatch.providerSignal.confidence}%</strong><small>Mapping</small></span>
+            </div>
+          </div>`
+        : ""
+    }
     <div class="insight-card profile-insight">
       <span class="briefing-kicker">Matchup Lens</span>
       <h3>Team-Matchup</h3>

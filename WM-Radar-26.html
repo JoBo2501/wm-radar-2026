@@ -2322,10 +2322,11 @@ h3 {
 }
 
 .provider-test-meta {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .provider-test-meta span,
+.provider-signal-row span,
 .provider-coverage-grid span,
 .provider-advanced-row span,
 .provider-next-grid > div {
@@ -2339,6 +2340,7 @@ h3 {
 }
 
 .provider-test-meta strong,
+.provider-signal-row strong,
 .provider-coverage-grid strong,
 .provider-advanced-row strong,
 .provider-next-grid strong {
@@ -2372,6 +2374,49 @@ h3 {
 
 .provider-next-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.provider-mapping-note {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid rgba(29, 143, 79, 0.14);
+  border-radius: 7px;
+  background: rgba(29, 143, 79, 0.07);
+  color: var(--soft);
+  line-height: 1.45;
+}
+
+.provider-signal-card {
+  background:
+    radial-gradient(circle at 86% 12%, rgba(255, 214, 107, 0.14), transparent 12rem),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(249, 247, 239, 0.88));
+}
+
+.provider-signal-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.provider-signal-row span {
+  display: grid;
+  gap: 4px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.74);
+}
+
+.provider-signal-row strong {
+  color: var(--text);
+}
+
+.provider-signal-row small {
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
 .transparency-drawer summary {
@@ -3995,6 +4040,7 @@ h3 {
 .ko-dossier-metrics small,
 .provider-test-score span,
 .provider-test-meta small,
+.provider-signal-row small,
 .provider-coverage-grid small,
 .team-lab-top small,
 .key-figure-team small,
@@ -4222,6 +4268,7 @@ h3 {
   .validator-metrics,
   .group-coverage-grid,
   .provider-test-meta,
+  .provider-signal-row,
   .provider-coverage-grid,
   .provider-advanced-row,
   .provider-next-grid,
@@ -9833,6 +9880,7 @@ const {
   postMatchValidation,
   preferences,
   providerTests,
+  providerMapping,
   resultValidation,
   results,
   scheduleValidation,
@@ -9845,6 +9893,7 @@ const {
 const teamByCode = new Map(teams.map((team) => [team.code, team]));
 const profileByCode = new Map(teamProfiles.map((profile) => [profile.code, profile]));
 const keyFiguresByTeam = new Map(keyFigures.map((entry) => [entry.team, entry]));
+const providerMappingByMatchId = new Map((providerMapping?.mappings || []).map((mapping) => [mapping.matchId, mapping]));
 const groupById = new Map(groups.map((group) => [group.id, group]));
 const groupByTeamCode = new Map(groups.flatMap((group) => group.teams.map((code) => [code, group])));
 const stateLabels = {
@@ -9990,6 +10039,8 @@ function isPathCommandMatch(match) {
 function computeScore(match) {
   const signal = match.signals;
   const pathImpact = getPathImpact(match);
+  const providerSignal = providerMappingByMatchId.get(match.id);
+  const predictionImpact = providerSignal?.predictionImpact || 0;
   const parts = [
     [signal.importance, weights.importance],
     [signal.tactical, weights.tactical],
@@ -10001,7 +10052,7 @@ function computeScore(match) {
   ];
   const weightedTotal = parts.reduce((sum, [value, weight]) => sum + value * weight, 0);
   const totalWeight = parts.reduce((sum, [, weight]) => sum + weight, 0);
-  const score = weightedTotal / totalWeight - signal.lowValueRisk * 0.18;
+  const score = weightedTotal / totalWeight - signal.lowValueRisk * 0.18 + predictionImpact;
 
   return clamp(Math.round(score), 0, 100);
 }
@@ -10022,6 +10073,7 @@ function getDriver(match) {
     ["Bedeutung", signal.importance],
     ["Uhrzeit", signal.time],
     ["Weiterkommen", getPathImpact(match)],
+    ["Prediction", providerMappingByMatchId.get(match.id)?.predictionImpact ? 62 : 0],
   ].sort((a, b) => b[1] - a[1]);
 
   return drivers[0][0];
@@ -10047,6 +10099,7 @@ function getScoredMatches() {
         hasFocusTeam: matchTeams.some((team) => team.focus),
         groupModel: getGroupForMatch(match),
         pathImpact: getPathImpact(match),
+        providerSignal: providerMappingByMatchId.get(match.id) || null,
         driver: getDriver(match),
       };
     })
@@ -10501,6 +10554,10 @@ function renderProviderTests() {
         : "noch nicht";
       const topCoverage = provider.coverage.slice(0, 8);
       const advancedCoverage = provider.coverage.slice(8);
+      const mappingSummary =
+        providerMapping?.provider === provider.id || providerMapping?.provider === "sportmonks"
+          ? providerMapping
+          : null;
 
       return `
         <article class="provider-test-card">
@@ -10518,6 +10575,12 @@ function renderProviderTests() {
           <div class="provider-test-meta">
             <span><strong>${provider.status}</strong><small>Status</small></span>
             <span><strong>${testedAt}</strong><small>Letzter Probe-Lauf</small></span>
+            ${
+              mappingSummary
+                ? `<span><strong>${mappingSummary.coverage.mapped}/${mappingSummary.coverage.localMatches}</strong><small>Mapping</small></span>
+                   <span><strong>${mappingSummary.coverage.predictions}</strong><small>Predictions</small></span>`
+                : ""
+            }
           </div>
           <div class="provider-coverage-grid">
             ${topCoverage
@@ -10558,6 +10621,11 @@ function renderProviderTests() {
               </ul>
             </div>
           </div>
+          ${
+            mappingSummary
+              ? `<p class="provider-mapping-note">${mappingSummary.summary}</p>`
+              : ""
+          }
         </article>
       `;
     })
@@ -11883,6 +11951,7 @@ function renderDossier() {
           ["Upset", selectedMatch.signals.surprise],
           ["Uhrzeit", selectedMatch.signals.time],
           ["Weiterkommen", selectedMatch.pathImpact],
+          ["Prediction", selectedMatch.providerSignal?.predictionImpact ? 62 : 0],
         ]
           .map(
             ([label, value]) => `
@@ -11896,6 +11965,20 @@ function renderDossier() {
           .join("")}
       </div>
     </div>
+    ${
+      selectedMatch.providerSignal
+        ? `<div class="insight-card provider-signal-card">
+            <span class="briefing-kicker">Provider-Signal</span>
+            <h3>Sportmonks-Mapping</h3>
+            <p>${selectedMatch.providerSignal.providerName} ist mit Provider-ID ${selectedMatch.providerSignal.providerId} gemappt.</p>
+            <div class="provider-signal-row">
+              <span><strong>${selectedMatch.providerSignal.predictionAvailable ? "bereit" : "offen"}</strong><small>Prediction</small></span>
+              <span><strong>+${selectedMatch.providerSignal.predictionImpact || 0}</strong><small>Score-Bonus</small></span>
+              <span><strong>${selectedMatch.providerSignal.confidence}%</strong><small>Mapping</small></span>
+            </div>
+          </div>`
+        : ""
+    }
     <div class="insight-card profile-insight">
       <span class="briefing-kicker">Matchup Lens</span>
       <h3>Team-Matchup</h3>

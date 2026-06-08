@@ -88,6 +88,15 @@ const fixtureIndex = fixtures.map((fixture) => ({
   })),
 }));
 
+const predictionIndex = fixtures
+  .filter((fixture) => hasValue(fixture.predictions))
+  .map((fixture) => ({
+    id: fixture.id,
+    name: fixture.name,
+    starting_at: fixture.starting_at,
+    predictions: fixture.predictions,
+  }));
+
 const report = {
   generatedAt: new Date().toISOString(),
   source: "sportmonks",
@@ -97,6 +106,7 @@ const report = {
   fixtures: fixtures.length,
   coverage,
   fixtureIndex,
+  predictionIndex,
   sample,
 };
 

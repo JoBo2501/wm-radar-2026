@@ -166,6 +166,7 @@ Alternativ im Terminal:
 
 ```powershell
 node probe-sportmonks.mjs
+node update-sportmonks-mapping.mjs
 node switch-result-source.mjs sportmonks
 node sync-results.mjs --source=sportmonks
 node validate-results.mjs
@@ -189,6 +190,8 @@ Der Ergebnislayer liegt in `data/results.json`. Aktuell ist er leer und markiert
 Der automatische Ergebnisabgleich ist in `sync-results.mjs` vorbereitet. Die aktive Quelle steht in `data/result-sources.json`, manuelle Korrekturen liegen in `data/result-overrides.json`, und `validate-results.mjs` schreibt die Sync-Ampel nach `data/result-validation.json`. Sportmonks ist als Testanbieter vorbereitet; der API-Key bleibt lokal in `SPORTMONKS_API_KEY`.
 
 Das Provider-Testprotokoll liegt in `data/provider-tests.json`. Es wird aus `data/raw/sportmonks-probe.json` erzeugt und in der App unter Datenlage & Transparenz angezeigt. So bleibt sichtbar, welche Sportmonks-Features bereits belastbar sind und welche erst kurz vor Anpfiff, live oder nach Abpfiff erneut geprueft werden muessen.
+
+Das Sportmonks-Mapping liegt in `data/provider-mapping.json`. Nach jedem neuen `probe-sportmonks.cmd`-Lauf wird daraus die Verbindung zwischen Sportmonks-Fixture-IDs, internen Match-IDs und Prediction-Verfuegbarkeit erzeugt. Erst danach fliesst das Prediction-Signal vorsichtig in den Spielwert ein.
 
 Post-Match-Reports liegen in `data/post-match-reports.json`. `generate-post-match-reports.mjs` erzeugt aus finalen Ergebnissen erste Draft-Reports mit Score-Audit, Metrik-Blueprint und Lernfrage; `validate-post-match-reports.mjs` schreibt die Ampel nach `data/post-match-validation.json`.
 

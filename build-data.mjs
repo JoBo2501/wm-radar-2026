@@ -18,6 +18,7 @@ const scheduleValidation = readJson("data/schedule-validation.json");
 const postMatchReports = readJson("data/post-match-reports.json");
 const postMatchValidation = readJson("data/post-match-validation.json");
 const providerTests = readJson("data/provider-tests.json");
+const providerMapping = readJson("data/provider-mapping.json");
 
 const focusTeams = teams.filter((team) => team.focus);
 const surpriseTeams = teams
@@ -120,6 +121,7 @@ const data = {
   postMatchReports,
   postMatchValidation,
   providerTests,
+  providerMapping,
   focusTeams,
   filters: [
     { id: "all", label: "Alle" },
