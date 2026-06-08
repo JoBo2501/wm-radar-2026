@@ -1,0 +1,50 @@
+{
+  "generatedAt": "2026-06-08T15:48:36.164Z",
+  "status": "warn",
+  "summary": "1 Hinweise, keine kritischen Fehler.",
+  "liveFixtureCount": 104,
+  "livePredictionCount": 0,
+  "liveError": null,
+  "checks": [
+    {
+      "status": "pass",
+      "label": "Aktive Quelle",
+      "detail": "Sportmonks ist in data/result-sources.json aktiv."
+    },
+    {
+      "status": "pass",
+      "label": "Source enabled",
+      "detail": "Sportmonks ist enabled=true."
+    },
+    {
+      "status": "pass",
+      "label": "Token",
+      "detail": "SPORTMONKS_API_KEY ist in diesem Prozess sichtbar."
+    },
+    {
+      "status": "pass",
+      "label": "Fixture-Zugriff",
+      "detail": "104 Fixtures live von Sportmonks erreichbar."
+    },
+    {
+      "status": "warn",
+      "label": "Predictions live",
+      "detail": "0 Fixtures mit Prediction-Daten im Health-Check-Request. Gespeichertes Mapping bleibt massgeblich, wenn der Prediction-Include live nicht gefuellt ist."
+    },
+    {
+      "status": "pass",
+      "label": "Mapping",
+      "detail": "72/72 Gruppenspiele gemappt."
+    },
+    {
+      "status": "pass",
+      "label": "Predictions Mapping",
+      "detail": "72/72 gemappte Gruppenspiele mit Prediction-Signal."
+    },
+    {
+      "status": "pass",
+      "label": "results.json",
+      "detail": "results.json nutzt Sportmonks als aktive Quelle."
+    }
+  ]
+}

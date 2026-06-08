@@ -8,6 +8,11 @@ GitHub- und Deployment-Hinweise liegen in `GITHUB_DEPLOYMENT.md`.
 
 GitHub Pages ist vorbereitet. Nach Aktivierung in GitHub Settings -> Pages -> Source: `Deploy from a branch`, Branch `master`, Folder `/docs` kann die statische App unter `https://jobo2501.github.io/wm-radar-2026/` laufen.
 
+Sportmonks-Betriebsdokumente:
+
+- `operations/SPORTMONKS_GOLDFALL.md`: Referenzspiel fuer End-to-End-Fehlersuche.
+- `operations/SPIELTAGS_CHECKLISTE.md`: Routine vor, waehrend und nach Spielen.
+
 ## Was drin ist
 
 - "Was heute zaehlt" mit Empfehlungen fuer Live, Analyse, Highlights und Skip
@@ -164,13 +169,15 @@ Sportmonks als primaere WM-Datenquelle betreiben:
 1. Sportmonks-Abo fuer das WM-Modul aktiv halten und API-Key im Sportmonks-Dashboard erzeugen.
 2. `setup-sportmonks-token.cmd` doppelklicken und Key eintragen.
 3. Terminal/Fenster neu starten.
-4. `probe-sportmonks.cmd` doppelklicken. Das schreibt `data/raw/sportmonks-probe.json` und aktualisiert `data/provider-tests.json` mit Abdeckung fuer Fixtures, Scores, Lineups, Events, xG, Pressure und Expected Lineups.
-5. `enable-sportmonks.cmd` doppelklicken. Dann wird Sportmonks als aktive Ergebnisquelle gesetzt, synchronisiert und die App neu gebaut.
+4. `check-sportmonks.cmd` doppelklicken. Das prueft Token, Fixture-Zugriff, Mapping und Predictions.
+5. `probe-sportmonks.cmd` doppelklicken. Das schreibt `data/raw/sportmonks-probe.json` und aktualisiert `data/provider-tests.json` mit Abdeckung fuer Fixtures, Scores, Lineups, Events, xG, Pressure und Expected Lineups.
+6. `enable-sportmonks.cmd` doppelklicken. Dann wird Sportmonks als aktive Ergebnisquelle gesetzt, synchronisiert und die App neu gebaut.
 
 Alternativ im Terminal:
 
 ```powershell
 node probe-sportmonks.mjs
+node check-sportmonks.mjs
 node update-sportmonks-mapping.mjs
 node switch-result-source.mjs sportmonks
 node sync-results.mjs --source=sportmonks

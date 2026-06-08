@@ -25,6 +25,7 @@ WM Radar 26 ist ein persoenliches Analysten-Cockpit fuer die FIFA Fussball-WM 20
 - Ergebnis-Konfiguration: `data/result-sources.json`, `data/results.json`, `data/result-overrides.json`, `data/result-validation.json`
 - Provider-Testprotokoll: `data/provider-tests.json`, erzeugt aus `data/raw/sportmonks-probe.json`
 - Provider-Mapping: `data/provider-mapping.json`, erzeugt aus Sportmonks-Probe und internem Spielplan
+- Sportmonks-Betrieb: `check-sportmonks.mjs`, `check-sportmonks.cmd`, `operations/SPORTMONKS_GOLDFALL.md`, `operations/SPIELTAGS_CHECKLISTE.md`
 - Feature Blueprints: `data/feature-blueprints.json`
 - Post-Match-Reports: `data/post-match-reports.json`, `generate-post-match-reports.mjs`, `validate-post-match-reports.mjs`
 - Schluesselfiguren: `data/key-figures.json`
@@ -64,6 +65,7 @@ Wichtige Dateien:
 - `restore-sportmonks.cmd`: nach Demo oder Fallback wieder auf Sportmonks als Primaerquelle zurueckschalten.
 - `restore-football-data.cmd`: Legacy-Fallback auf football-data.org.
 - `setup-sportmonks-token.cmd`: Sportmonks API-Key lokal speichern.
+- `check-sportmonks.cmd`: Token, Fixture-Zugriff, Mapping-Quote und Prediction-Verfuegbarkeit pruefen.
 - `probe-sportmonks.cmd`: Sportmonks-Abdeckung fuer Basis- und Advanced-Felder pruefen.
 - `enable-sportmonks.cmd`: Sportmonks als primaere Ergebnisquelle setzen, synchronisieren und App neu bauen.
 - `watch-results.cmd`: dauerhaften Poller starten.
@@ -113,6 +115,7 @@ Wichtige Dateien:
 - Sportmonks-Probebericht als sichtbares Provider-Testprotokoll in die App integriert.
 - Sportmonks-Mapping-Generator und Prediction-Signal-Kanal vorbereitet.
 - Sichtbare Datenanbieter auf SportMonks konsolidiert und alte Provider-Pillars entfernt.
+- Sportmonks-Health-Check, Referenzspiel-Goldfall und Spieltags-Checkliste angelegt.
 - Differenzierende Sportmonks-Featuremodule als Feature Lab in Datenmodell und UI aufgenommen.
 - Pre-Match-Scout v1 im Match-Dossier integriert.
 - Poller fuer regelmaessigen Ergebnisabgleich hinzugefuegt.
@@ -123,12 +126,12 @@ Wichtige Dateien:
 
 ## Naechste Schritte
 
-1. Poller waehrend Spieltagen mit `watch-results.cmd` laufen lassen.
-2. Sobald echte Resultate eintreffen, Mapping und Tabellen live pruefen.
-3. Provider-Mapping fuer K.o.-Runden gegen echte Providerdaten nachschaerfen.
-4. GitHub-Repository anlegen und Projekt sichern.
-5. GitHub Pages aktivieren und die statische Demo pruefen.
-6. Premium-Datenphase planen: xG, Lineups, Karten, Schuesse, Ballbesitz, Pressing-/Trackingdaten.
+1. Vor jedem Spieltag `check-sportmonks.cmd` ausfuehren.
+2. Goldfall `mex-rsa-2026-06-11` pruefen, wenn Mapping oder UI-Ausgabe unklar ist.
+3. Poller waehrend Spieltagen mit `watch-results.cmd` laufen lassen.
+4. Sobald echte Resultate eintreffen, Mapping und Tabellen live pruefen.
+5. Provider-Mapping fuer K.o.-Runden gegen echte Providerdaten nachschaerfen.
+6. Phase-2-Felder xG, Pressure und Expected Lineups erst nach echten Sportmonks-Responses schaerfer gewichten.
 
 ## GitHub und Deployment
 
