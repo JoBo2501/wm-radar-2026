@@ -1,0 +1,128 @@
+{
+  "generatedAt": "2026-06-08T08:45:25.058Z",
+  "source": "sportmonks",
+  "endpoint": "https://api.sportmonks.com/v3/football/fixtures/between/2026-06-11/2026-07-19",
+  "include": "participants;scores;state;league;season;stage;group;lineups;events;statistics;formations;predictions;xGFixture;pressure;expectedLineups",
+  "leagueId": null,
+  "fixtures": 104,
+  "coverage": {
+    "participants": 104,
+    "scores": 0,
+    "state": 104,
+    "lineups": 2,
+    "events": 0,
+    "statistics": 0,
+    "formations": 3,
+    "predictions": 72,
+    "xGFixture": 0,
+    "pressure": 0,
+    "expectedLineups": 0
+  },
+  "sample": [
+    {
+      "id": 19609127,
+      "name": "Mexico vs South Africa",
+      "starting_at": "2026-06-11 19:00:00",
+      "league": "World Cup",
+      "season": "2026",
+      "state": "Not Started",
+      "has": {
+        "participants": true,
+        "scores": false,
+        "state": true,
+        "lineups": true,
+        "events": false,
+        "statistics": false,
+        "formations": true,
+        "predictions": true,
+        "xGFixture": false,
+        "pressure": false,
+        "expectedLineups": false
+      }
+    },
+    {
+      "id": 19609153,
+      "name": "Korea Republic vs Czech Republic",
+      "starting_at": "2026-06-12 02:00:00",
+      "league": "World Cup",
+      "season": "2026",
+      "state": "Not Started",
+      "has": {
+        "participants": true,
+        "scores": false,
+        "state": true,
+        "lineups": false,
+        "events": false,
+        "statistics": false,
+        "formations": false,
+        "predictions": true,
+        "xGFixture": false,
+        "pressure": false,
+        "expectedLineups": false
+      }
+    },
+    {
+      "id": 19609154,
+      "name": "Canada vs Bosnia and Herzegovina",
+      "starting_at": "2026-06-12 19:00:00",
+      "league": "World Cup",
+      "season": "2026",
+      "state": "Not Started",
+      "has": {
+        "participants": true,
+        "scores": false,
+        "state": true,
+        "lineups": true,
+        "events": false,
+        "statistics": false,
+        "formations": true,
+        "predictions": true,
+        "xGFixture": false,
+        "pressure": false,
+        "expectedLineups": false
+      }
+    },
+    {
+      "id": 19609133,
+      "name": "United States vs Paraguay",
+      "starting_at": "2026-06-13 01:00:00",
+      "league": "World Cup",
+      "season": "2026",
+      "state": "Not Started",
+      "has": {
+        "participants": true,
+        "scores": false,
+        "state": true,
+        "lineups": false,
+        "events": false,
+        "statistics": false,
+        "formations": true,
+        "predictions": true,
+        "xGFixture": false,
+        "pressure": false,
+        "expectedLineups": false
+      }
+    },
+    {
+      "id": 19609130,
+      "name": "Qatar vs Switzerland",
+      "starting_at": "2026-06-13 19:00:00",
+      "league": "World Cup",
+      "season": "2026",
+      "state": "Not Started",
+      "has": {
+        "participants": true,
+        "scores": false,
+        "state": true,
+        "lineups": false,
+        "events": false,
+        "statistics": false,
+        "formations": false,
+        "predictions": true,
+        "xGFixture": false,
+        "pressure": false,
+        "expectedLineups": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "generatedAt": "2026-06-08T08:55:28.202Z",
+  "status": "probe-ready",
+  "summary": "Sportmonks-Probe hat 104 WM-Fixtures gefunden. Pre-Match-Struktur ist belastbar; Live-, Event- und Advanced-Felder werden ab dem ersten Spiel erneut geprueft.",
+  "providers": [
+    {
+      "id": "sportmonks",
+      "label": "Sportmonks",
+      "status": "Probe bereit",
+      "testedAt": "2026-06-08T08:45:25.058Z",
+      "fixtures": 104,
+      "coverage": [
+        {
+          "field": "participants",
+          "label": "Teams",
+          "count": 104,
+          "total": 104,
+          "tone": "real",
+          "detail": "Teams sind fuer Mapping und Spielplan-Abgleich vorhanden."
+        },
+        {
+          "field": "scores",
+          "label": "Scores",
+          "count": 0,
+          "total": 104,
+          "tone": "seed",
+          "detail": "Ergebnisse bleiben bis zu echten Spielen erwartbar leer."
+        },
+        {
+          "field": "state",
+          "label": "Status",
+          "count": 104,
+          "total": 104,
+          "tone": "real",
+          "detail": "Spielstatus ist fuer Live-/Pre-Match-Logik vorhanden."
+        },
+        {
+          "field": "lineups",
+          "label": "Lineups",
+          "count": 2,
+          "total": 104,
+          "tone": "mixed",
+          "detail": "Aufstellungen werden meist erst kurz vor Anpfiff belastbar."
+        },
+        {
+          "field": "events",
+          "label": "Events",
+          "count": 0,
+          "total": 104,
+          "tone": "seed",
+          "detail": "Events werden erst live oder nach Spielbeginn relevant."
+        },
+        {
+          "field": "statistics",
+          "label": "Statistiken",
+          "count": 0,
+          "total": 104,
+          "tone": "seed",
+          "detail": "Statistiken werden live/nach Spielende erneut geprueft."
+        },
+        {
+          "field": "formations",
+          "label": "Formationen",
+          "count": 3,
+          "total": 104,
+          "tone": "mixed",
+          "detail": "Formationen sind teilweise schon vorab sichtbar."
+        },
+        {
+          "field": "predictions",
+          "label": "Predictions",
+          "count": 72,
+          "total": 104,
+          "tone": "mixed",
+          "detail": "Predictions koennen sofort in den Pre-Match-Score einfliessen."
+        },
+        {
+          "field": "xGFixture",
+          "label": "xG",
+          "count": 0,
+          "total": 104,
+          "tone": "seed",
+          "detail": "xG muss live oder post-match gegen den konkreten Plan geprueft werden."
+        },
+        {
+          "field": "pressure",
+          "label": "Pressure",
+          "count": 0,
+          "total": 104,
+          "tone": "seed",
+          "detail": "Pressure Index ist ein Kernkandidat fuer Momentum, aktuell noch leer."
+        },
+        {
+          "field": "expectedLineups",
+          "label": "Expected Lineups",
+          "count": 0,
+          "total": 104,
+          "tone": "seed",
+          "detail": "Expected Lineups sind paketabhaengig und muessen separat validiert werden."
+        }
+      ],
+      "nextChecks": [
+        "Kurz vor dem ersten Anpfiff: Lineups, Formationen und Expected Lineups pruefen.",
+        "Waehrend des ersten Spiels: Scores, State, Events, Timeline und Live Standings pruefen.",
+        "Direkt nach Abpfiff: Statistics, xGFixture, Pressure und Post-Match-Daten pruefen.",
+        "1-2 Stunden nach Abpfiff: nachlaufende Datenvollstaendigkeit und Korrekturen pruefen."
+      ],
+      "productUse": [
+        "Spielplan- und Team-Mapping",
+        "Pre-Match-Score mit Predictions",
+        "Live-Ergebnis-Sync",
+        "Gruppenszenarien und Was-bedeutet-dieses-Tor-Logik",
+        "Post-Match-Analyse, falls xG/Pressure/Statistics geliefert werden"
+      ]
+    }
+  ]
+}

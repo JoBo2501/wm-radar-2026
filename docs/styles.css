@@ -2243,6 +2243,128 @@ h3 {
   overflow: hidden;
 }
 
+.provider-test-grid {
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.provider-test-card {
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background:
+    radial-gradient(circle at 92% 12%, rgba(105, 227, 208, 0.1), transparent 13rem),
+    rgba(255, 255, 255, 0.74);
+}
+
+.provider-test-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: start;
+}
+
+.provider-test-head h3 {
+  margin: 4px 0 6px;
+}
+
+.provider-test-head p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.provider-test-score {
+  display: grid;
+  width: 82px;
+  height: 82px;
+  place-items: center;
+  align-content: center;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center, #ffffff 0 58%, transparent 59%),
+    conic-gradient(var(--lime) 100%, rgba(19, 69, 41, 0.12) 0);
+  text-align: center;
+}
+
+.provider-test-score strong {
+  color: var(--text);
+  font-size: 1.35rem;
+}
+
+.provider-test-score span,
+.provider-test-meta small,
+.provider-coverage-grid small {
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.provider-test-meta,
+.provider-coverage-grid,
+.provider-advanced-row,
+.provider-next-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.provider-test-meta {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.provider-test-meta span,
+.provider-coverage-grid span,
+.provider-advanced-row span,
+.provider-next-grid > div {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.74);
+}
+
+.provider-test-meta strong,
+.provider-coverage-grid strong,
+.provider-advanced-row strong,
+.provider-next-grid strong {
+  color: var(--text);
+}
+
+.provider-coverage-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.provider-coverage-grid em,
+.provider-advanced-row em {
+  color: var(--lime);
+  font-style: normal;
+  font-weight: 950;
+}
+
+.provider-coverage-grid span.seed em,
+.provider-advanced-row span.seed em {
+  color: var(--red);
+}
+
+.provider-coverage-grid span.mixed em,
+.provider-advanced-row span.mixed em {
+  color: var(--gold);
+}
+
+.provider-advanced-row {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.provider-next-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .transparency-drawer summary {
   display: flex;
   justify-content: space-between;
@@ -3742,6 +3864,7 @@ h3 {
 .validator-hero,
 .group-path-card,
 .standing-card,
+.provider-test-card,
 .bracket-round,
 .team-lab-card,
 .key-figure-card,
@@ -3766,6 +3889,7 @@ h3 {
 .path-note span,
 .group-fixtures button,
 .standing-card p,
+.provider-test-head p,
 .standing-row,
 .third-place-list div,
 .bracket-match,
@@ -3784,6 +3908,10 @@ h3 {
 .path-note,
 .group-fixtures button,
 .standing-row,
+.provider-test-meta span,
+.provider-coverage-grid span,
+.provider-advanced-row span,
+.provider-next-grid > div,
 .third-place-list div,
 .bracket-match,
 .bracket-slot,
@@ -3834,6 +3962,10 @@ h3 {
 .bracket-slot strong,
 .bracket-match-top strong,
 .ko-dossier-metrics strong,
+.provider-test-meta strong,
+.provider-coverage-grid strong,
+.provider-advanced-row strong,
+.provider-next-grid strong,
 .phase-grid strong,
 .watch-cues > strong,
 .key-figure-name strong,
@@ -3852,6 +3984,9 @@ h3 {
 .bracket-match small,
 .ko-dossier ul,
 .ko-dossier-metrics small,
+.provider-test-score span,
+.provider-test-meta small,
+.provider-coverage-grid small,
 .team-lab-top small,
 .key-figure-team small,
 .key-figure-name span,
@@ -3954,6 +4089,11 @@ h3 {
   .validator-metrics,
   .group-coverage-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .provider-coverage-grid,
+  .provider-advanced-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .group-path-grid {
@@ -4072,6 +4212,10 @@ h3 {
   .validator-hero,
   .validator-metrics,
   .group-coverage-grid,
+  .provider-test-meta,
+  .provider-coverage-grid,
+  .provider-advanced-row,
+  .provider-next-grid,
   .group-path-grid,
   .standings-grid,
   .third-place-list,

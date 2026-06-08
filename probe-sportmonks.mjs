@@ -74,6 +74,20 @@ const sample = fixtures.slice(0, 5).map((fixture) => ({
   has: Object.fromEntries(coverageFields.map((field) => [field, hasValue(fixture[field])])),
 }));
 
+const fixtureIndex = fixtures.map((fixture) => ({
+  id: fixture.id,
+  name: fixture.name,
+  starting_at: fixture.starting_at,
+  league: fixture.league?.name || fixture.league_id,
+  season: fixture.season?.name || fixture.season_id,
+  state: fixture.state?.name || fixture.state?.state || fixture.state_id,
+  participants: (fixture.participants || []).map((participant) => ({
+    id: participant.id,
+    name: participant.name,
+    location: participant.meta?.location || participant.location || null,
+  })),
+}));
+
 const report = {
   generatedAt: new Date().toISOString(),
   source: "sportmonks",
@@ -82,14 +96,17 @@ const report = {
   leagueId: leagueId || null,
   fixtures: fixtures.length,
   coverage,
+  fixtureIndex,
   sample,
 };
 
 if (!existsSync("data/raw")) mkdirSync("data/raw", { recursive: true });
 writeFileSync("data/raw/sportmonks-probe.json", `${JSON.stringify(report, null, 2)}\n`, "utf8");
+await import("./update-provider-tests.mjs");
 
 console.log(`Sportmonks probe: ${fixtures.length} fixtures`);
 for (const [field, count] of Object.entries(coverage)) {
   console.log(`- ${field}: ${count}/${fixtures.length}`);
 }
 console.log("Wrote data/raw/sportmonks-probe.json");
+console.log("Updated data/provider-tests.json");

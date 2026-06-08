@@ -17,6 +17,7 @@ GitHub Pages ist vorbereitet. Nach Aktivierung in GitHub Settings -> Pages -> So
 - PWA-Grundlage mit Manifest und Service Worker
 - Datenmodell in `data.js` mit Real/Mixed/Model/Seed-Kennzeichnung
 - Datenlage & Transparenz mit eingeklappten Import- und Validierungsdetails
+- Provider-Testprotokoll fuer Sportmonks-Abdeckung, Advanced-Felder und naechste Live-Pruefzeitpunkte
 - Team-Briefings mit taktischen Profilen fuer Fokus- und Surprise-Teams
 - Schluesselfiguren-Modul mit Trainern, Leadern, Taktikspielern, Druckspielern und Turnier-Entdeckungen
 - Watchlist-Prioritaet getrennt von spaeterer Teamstaerke, Momentum, Attraktivitaet, Ueberraschungspotenzial und Datenlage
@@ -158,7 +159,7 @@ Sportmonks-Testphase vorbereiten:
 1. Sportmonks-Abo/Test starten und API-Key im Sportmonks-Dashboard erzeugen.
 2. `setup-sportmonks-token.cmd` doppelklicken und Key eintragen.
 3. Terminal/Fenster neu starten.
-4. `probe-sportmonks.cmd` doppelklicken. Das schreibt `data/raw/sportmonks-probe.json` mit Abdeckung fuer Fixtures, Scores, Lineups, Events, xG, Pressure und Expected Lineups.
+4. `probe-sportmonks.cmd` doppelklicken. Das schreibt `data/raw/sportmonks-probe.json` und aktualisiert `data/provider-tests.json` mit Abdeckung fuer Fixtures, Scores, Lineups, Events, xG, Pressure und Expected Lineups.
 5. Wenn der Probe gut aussieht: `enable-sportmonks.cmd` doppelklicken. Dann wird Sportmonks als aktive Ergebnisquelle gesetzt und die App neu gebaut.
 
 Alternativ im Terminal:
@@ -186,6 +187,8 @@ Die K.o.-Struktur liegt in `data/knockout.json`. Dort stehen Slots wie `1E`, `3A
 Der Ergebnislayer liegt in `data/results.json`. Aktuell ist er leer und markiert die App als `preTournament`; Tabellen & Szenarien berechnen deshalb eine Modellprojektion. Sobald echte Resultate mit `status: "final"` eingetragen werden, fliessen sie automatisch in Gruppenstaende und Third-Place-Ranking ein.
 
 Der automatische Ergebnisabgleich ist in `sync-results.mjs` vorbereitet. Die aktive Quelle steht in `data/result-sources.json`, manuelle Korrekturen liegen in `data/result-overrides.json`, und `validate-results.mjs` schreibt die Sync-Ampel nach `data/result-validation.json`. Sportmonks ist als Testanbieter vorbereitet; der API-Key bleibt lokal in `SPORTMONKS_API_KEY`.
+
+Das Provider-Testprotokoll liegt in `data/provider-tests.json`. Es wird aus `data/raw/sportmonks-probe.json` erzeugt und in der App unter Datenlage & Transparenz angezeigt. So bleibt sichtbar, welche Sportmonks-Features bereits belastbar sind und welche erst kurz vor Anpfiff, live oder nach Abpfiff erneut geprueft werden muessen.
 
 Post-Match-Reports liegen in `data/post-match-reports.json`. `generate-post-match-reports.mjs` erzeugt aus finalen Ergebnissen erste Draft-Reports mit Score-Audit, Metrik-Blueprint und Lernfrage; `validate-post-match-reports.mjs` schreibt die Ampel nach `data/post-match-validation.json`.
 

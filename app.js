@@ -13,6 +13,7 @@ const {
   postMatchReports,
   postMatchValidation,
   preferences,
+  providerTests,
   resultValidation,
   results,
   scheduleValidation,
@@ -66,6 +67,7 @@ const pitchModeEl = document.querySelector("#pitchMode");
 const insightGridEl = document.querySelector("#insightGrid");
 const dataSnapshotEl = document.querySelector("#dataSnapshot");
 const dataStatusGridEl = document.querySelector("#dataStatusGrid");
+const providerTestGridEl = document.querySelector("#providerTestGrid");
 const scheduleValidatorEl = document.querySelector("#scheduleValidator");
 const resultValidatorEl = document.querySelector("#resultValidator");
 const groupPathGridEl = document.querySelector("#groupPathGrid");
@@ -667,6 +669,79 @@ function renderDataStatus() {
         </article>
       `,
     )
+    .join("");
+}
+
+function renderProviderTests() {
+  if (!providerTestGridEl || !providerTests?.providers?.length) return;
+
+  providerTestGridEl.innerHTML = providerTests.providers
+    .map((provider) => {
+      const testedAt = provider.testedAt
+        ? new Date(provider.testedAt).toLocaleString("de-DE", { dateStyle: "short", timeStyle: "short" })
+        : "noch nicht";
+      const topCoverage = provider.coverage.slice(0, 8);
+      const advancedCoverage = provider.coverage.slice(8);
+
+      return `
+        <article class="provider-test-card">
+          <div class="provider-test-head">
+            <div>
+              <span class="data-badge mixed">Testphase</span>
+              <h3>${provider.label}</h3>
+              <p>${providerTests.summary}</p>
+            </div>
+            <div class="provider-test-score">
+              <strong>${provider.fixtures}</strong>
+              <span>Fixtures</span>
+            </div>
+          </div>
+          <div class="provider-test-meta">
+            <span><strong>${provider.status}</strong><small>Status</small></span>
+            <span><strong>${testedAt}</strong><small>Letzter Probe-Lauf</small></span>
+          </div>
+          <div class="provider-coverage-grid">
+            ${topCoverage
+              .map(
+                (item) => `
+                  <span class="${item.tone}">
+                    <strong>${item.label}</strong>
+                    <em>${item.count}/${item.total}</em>
+                    <small>${item.detail}</small>
+                  </span>
+                `,
+              )
+              .join("")}
+          </div>
+          <div class="provider-advanced-row">
+            ${advancedCoverage
+              .map(
+                (item) => `
+                  <span class="${item.tone}">
+                    <strong>${item.label}</strong>
+                    <em>${item.count}/${item.total}</em>
+                  </span>
+                `,
+              )
+              .join("")}
+          </div>
+          <div class="provider-next-grid">
+            <div>
+              <strong>Was wir damit bauen</strong>
+              <ul class="cue-list">
+                ${provider.productUse.map((item) => `<li>${item}</li>`).join("")}
+              </ul>
+            </div>
+            <div>
+              <strong>Nächste Prüfzeitpunkte</strong>
+              <ul class="cue-list">
+                ${provider.nextChecks.map((item) => `<li>${item}</li>`).join("")}
+              </ul>
+            </div>
+          </div>
+        </article>
+      `;
+    })
     .join("");
 }
 
@@ -2400,6 +2475,7 @@ function setupPwa() {
 
 renderFocusTeams();
 renderDataStatus();
+renderProviderTests();
 renderResultValidation();
 renderScheduleValidation();
 renderBracket();
