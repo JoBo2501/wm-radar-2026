@@ -2466,9 +2466,105 @@ h3 {
 }
 
 .team-lab-section,
+.feature-lab-section,
 .key-figures-section {
   margin-bottom: 16px;
   padding: 18px;
+}
+
+.feature-lab-section {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(255, 214, 107, 0.1), transparent 18rem),
+    linear-gradient(135deg, rgba(105, 227, 208, 0.05), rgba(196, 255, 95, 0.035)),
+    var(--panel);
+  backdrop-filter: blur(18px);
+}
+
+.feature-lab-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.feature-card {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(247, 251, 245, 0.78)),
+    rgba(255, 255, 255, 0.7);
+  box-shadow: 0 12px 30px rgba(23, 60, 36, 0.08);
+}
+
+.feature-card-top {
+  display: flex;
+  gap: 10px;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.feature-card-top strong {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center, #ffffff 0 58%, transparent 59%),
+    conic-gradient(var(--lime) calc(var(--score, 86) * 1%), rgba(19, 69, 41, 0.12) 0);
+  color: var(--text);
+}
+
+.feature-card h3 {
+  margin: 0;
+  font-size: 1.18rem;
+}
+
+.feature-card p,
+.feature-card small {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.feature-field-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.feature-field-row span {
+  padding: 5px 7px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(29, 143, 79, 0.07);
+  color: var(--lime);
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+.feature-story {
+  display: grid;
+  gap: 4px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.feature-story strong {
+  color: var(--text);
+  font-size: 0.82rem;
+}
+
+.feature-story span {
+  color: var(--soft);
+  line-height: 1.42;
 }
 
 .group-path-section {
@@ -3920,6 +4016,7 @@ h3 {
 .standing-card,
 .provider-test-card,
 .bracket-round,
+.feature-card,
 .team-lab-card,
 .key-figure-card,
 .radar-card,
@@ -3944,6 +4041,8 @@ h3 {
 .group-fixtures button,
 .standing-card p,
 .provider-test-head p,
+.feature-card p,
+.feature-card small,
 .standing-row,
 .third-place-list div,
 .bracket-match,
@@ -3966,6 +4065,7 @@ h3 {
 .provider-coverage-grid span,
 .provider-advanced-row span,
 .provider-next-grid > div,
+.feature-story,
 .third-place-list div,
 .bracket-match,
 .bracket-slot,
@@ -4020,6 +4120,7 @@ h3 {
 .provider-coverage-grid strong,
 .provider-advanced-row strong,
 .provider-next-grid strong,
+.feature-story strong,
 .phase-grid strong,
 .watch-cues > strong,
 .key-figure-name strong,
@@ -4042,6 +4143,7 @@ h3 {
 .provider-test-meta small,
 .provider-signal-row small,
 .provider-coverage-grid small,
+.feature-card small,
 .team-lab-top small,
 .key-figure-team small,
 .key-figure-name span,
@@ -4147,7 +4249,8 @@ h3 {
   }
 
   .provider-coverage-grid,
-  .provider-advanced-row {
+  .provider-advanced-row,
+  .feature-lab-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -4272,6 +4375,7 @@ h3 {
   .provider-coverage-grid,
   .provider-advanced-row,
   .provider-next-grid,
+  .feature-lab-grid,
   .group-path-grid,
   .standings-grid,
   .third-place-list,
@@ -4501,6 +4605,7 @@ h3 {
           <a href="#groupPaths">Gruppen</a>
           <a href="#standings">Tabellen</a>
           <a href="#bracket">Finalweg</a>
+          <a href="#featureLab">Features</a>
           <a href="#teamLab">Teams</a>
           <a href="#keyFigures">Figuren</a>
           <a href="#dossier">Dossier</a>
@@ -4697,6 +4802,20 @@ h3 {
           </div>
           <div class="bracket-summary" id="bracketSummary"></div>
           <div class="bracket-grid" id="bracketGrid"></div>
+        </section>
+
+        <section class="feature-lab-section" id="featureLab" aria-labelledby="featureLabTitle">
+          <div class="section-head compact">
+            <div>
+              <p class="eyebrow">Differenzierende Features</p>
+              <h2 id="featureLabTitle">Was WM Radar besonders macht</h2>
+            </div>
+            <p>
+              Vier Produktmodule verbinden Sportmonks-Daten mit echtem Nutzwert: Live-Szenarien, Momentum,
+              Stuermer-Effizienz und Pre-Match-Scouting.
+            </p>
+          </div>
+          <div class="feature-lab-grid" id="featureLabGrid"></div>
         </section>
 
         <section class="team-lab-section" id="teamLab" aria-labelledby="teamLabTitle">
@@ -8641,6 +8760,111 @@ window.WMRadarData = {
       }
     ]
   },
+  "featureBlueprints": [
+    {
+      "id": "what-if",
+      "label": "Was-passiert-wenn-Modus",
+      "status": "modellbereit",
+      "stage": "Live",
+      "impact": 96,
+      "promise": "Live-Hinweise, wie ein aktueller Spielstand die Gruppentabelle und den naechsten Gegner veraendert.",
+      "dataNeeds": [
+        "Scores",
+        "Live State",
+        "Group Standings",
+        "Fixture Mapping",
+        "Bracket Slots"
+      ],
+      "sportmonksFields": [
+        "scores",
+        "state",
+        "standings",
+        "participants",
+        "stage",
+        "group"
+      ],
+      "userValue": "Der Nutzer versteht sofort, warum ein Tor in einem scheinbar kleinen Spiel ploetzlich riesig ist.",
+      "firstVersion": "Bei jedem Live-Resultat: neue Tabelle simulieren, direkte Qualifikation, Drittplatzierte und moeglichen K.o.-Gegner anzeigen.",
+      "openRisk": "Live-Standings muessen gegen eigene Tabellenlogik validiert werden."
+    },
+    {
+      "id": "momentum",
+      "label": "Momentum-Ansicht",
+      "status": "wartet auf Live-Daten",
+      "stage": "Live/Post",
+      "impact": 88,
+      "promise": "Druckphasen visuell erklaeren: Wann kippte Kontrolle, wer erzeugte echten Druck und wer nur Ballbesitz?",
+      "dataNeeds": [
+        "Pressure Index",
+        "Events Timeline",
+        "Statistics",
+        "Possession",
+        "Shots"
+      ],
+      "sportmonksFields": [
+        "pressure",
+        "events",
+        "statistics",
+        "scores",
+        "state"
+      ],
+      "userValue": "Aus 'Team war besser' wird eine nachvollziehbare Spielkurve mit konkreten Phasen.",
+      "firstVersion": "Timeline mit 5-Minuten-Phasen, Event-Clustern und Pressure-Status: ruhig, Druck, Kipppunkt.",
+      "openRisk": "Pressure ist im aktuellen Probe-Lauf noch 0/104 und muss im Live-Spiel bestaetigt werden."
+    },
+    {
+      "id": "finisher-efficiency",
+      "label": "Effizienz-Karten fuer Stuermer",
+      "status": "wartet auf xG",
+      "stage": "Post",
+      "impact": 82,
+      "promise": "xG vs. Tore, Chancenqualitaet und Abschlusswirkung fuer Schluesselspieler greifbar machen.",
+      "dataNeeds": [
+        "xG",
+        "Goals",
+        "Player Stats",
+        "Lineups",
+        "Minutes"
+      ],
+      "sportmonksFields": [
+        "xGFixture",
+        "statistics",
+        "lineups",
+        "events",
+        "scores"
+      ],
+      "userValue": "Der Nutzer sieht, wer ueber Erwartung performt, wer viel Gefahr erzeugt und wer nur vom Ergebnis lebt.",
+      "firstVersion": "Nach jedem Fokusspiel: Abschluesse, Tore, xG-Abweichung und kurze Einordnung fuer zentrale Angreifer.",
+      "openRisk": "xGFixture ist im aktuellen Probe-Lauf noch 0/104; Paket- und Live-Verfuegbarkeit pruefen."
+    },
+    {
+      "id": "prematch-scout",
+      "label": "Pre-Match-Scout",
+      "status": "teilweise bereit",
+      "stage": "Pre",
+      "impact": 91,
+      "promise": "Vor dem Spiel: erwartete Lineups, Ausfaelle, Form, Head-to-Head und Prognosemodell als gefuehrte Vorschau.",
+      "dataNeeds": [
+        "Predictions",
+        "Lineups",
+        "Expected Lineups",
+        "Injuries",
+        "Form",
+        "Head2Head"
+      ],
+      "sportmonksFields": [
+        "predictions",
+        "lineups",
+        "expectedLineups",
+        "formations",
+        "participants",
+        "statistics"
+      ],
+      "userValue": "Der Nutzer weiss vor Anpfiff, worauf er achten soll und ob sich Live-Schauen lohnt.",
+      "firstVersion": "Predictions + vorhandene Lineups/Formationen als Scout-Karte im Match-Dossier; Expected Lineups und Ausfaelle spaeter nachziehen.",
+      "openRisk": "Predictions sind 72/72 fuer Gruppenspiele gemappt; Expected Lineups sind noch 0/104."
+    }
+  ],
   "focusTeams": [
     {
       "code": "ARG",
@@ -11881,6 +12105,7 @@ const {
   categoryFilters,
   dataStatus,
   filters,
+  featureBlueprints,
   focusTeams,
   groups,
   keyFigures,
@@ -11947,6 +12172,7 @@ const insightGridEl = document.querySelector("#insightGrid");
 const dataSnapshotEl = document.querySelector("#dataSnapshot");
 const dataStatusGridEl = document.querySelector("#dataStatusGrid");
 const providerTestGridEl = document.querySelector("#providerTestGrid");
+const featureLabGridEl = document.querySelector("#featureLabGrid");
 const scheduleValidatorEl = document.querySelector("#scheduleValidator");
 const resultValidatorEl = document.querySelector("#resultValidator");
 const groupPathGridEl = document.querySelector("#groupPathGrid");
@@ -12640,6 +12866,44 @@ function renderProviderTests() {
         </article>
       `;
     })
+    .join("");
+}
+
+function getFeatureTone(status) {
+  if (status === "modellbereit") return "real";
+  if (status === "teilweise bereit") return "mixed";
+  if (status.startsWith("wartet")) return "seed";
+  return "model";
+}
+
+function renderFeatureLab() {
+  if (!featureLabGridEl || !featureBlueprints?.length) return;
+
+  featureLabGridEl.innerHTML = featureBlueprints
+    .map(
+      (feature) => `
+        <article class="feature-card ${feature.id}">
+          <div class="feature-card-top">
+            <span class="data-badge ${getFeatureTone(feature.status)}">${feature.status}</span>
+            <strong>${feature.impact}</strong>
+          </div>
+          <h3>${feature.label}</h3>
+          <p>${feature.promise}</p>
+          <div class="feature-field-row">
+            ${feature.sportmonksFields.map((field) => `<span>${field}</span>`).join("")}
+          </div>
+          <div class="feature-story">
+            <strong>Nutzen</strong>
+            <span>${feature.userValue}</span>
+          </div>
+          <div class="feature-story">
+            <strong>Erste Version</strong>
+            <span>${feature.firstVersion}</span>
+          </div>
+          <small>${feature.openRisk}</small>
+        </article>
+      `,
+    )
     .join("");
 }
 
@@ -14389,6 +14653,7 @@ function setupPwa() {
 renderFocusTeams();
 renderDataStatus();
 renderProviderTests();
+renderFeatureLab();
 renderResultValidation();
 renderScheduleValidation();
 renderBracket();

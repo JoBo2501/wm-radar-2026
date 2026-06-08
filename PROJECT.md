@@ -25,6 +25,7 @@ WM Radar 26 ist ein persoenliches Analysten-Cockpit fuer die FIFA Fussball-WM 20
 - Ergebnis-Konfiguration: `data/result-sources.json`, `data/results.json`, `data/result-overrides.json`, `data/result-validation.json`
 - Provider-Testprotokoll: `data/provider-tests.json`, erzeugt aus `data/raw/sportmonks-probe.json`
 - Provider-Mapping: `data/provider-mapping.json`, erzeugt aus Sportmonks-Probe und internem Spielplan
+- Feature Blueprints: `data/feature-blueprints.json`
 - Post-Match-Reports: `data/post-match-reports.json`, `generate-post-match-reports.mjs`, `validate-post-match-reports.mjs`
 - Schluesselfiguren: `data/key-figures.json`
 - Quellen-/Analystenmodell: `data/analyst-sources.json` mit Automationsplan, Zugangsmodell und Analyse-Synthese
@@ -78,6 +79,7 @@ Wichtige Dateien:
 - Datenlage & Transparenz: Datenqualitaet, Spielplan-Ampel, Ergebnis-Sync-Ampel. Routine-Importe bleiben in einem einklappbaren Detailbereich.
 - Provider-Testprotokoll: Sportmonks-Abdeckung, Feature-Coverage und naechste Pruefzeitpunkte fuer Pre-Match, Live und Post-Match.
 - Provider-Mapping und Predictions: Sportmonks-Fixture-IDs werden auf interne Match-IDs gemappt; Prediction-Verfuegbarkeit kann vorsichtig als Pre-Match-Signal in den Spielwert einfliessen.
+- Feature Lab: Was-passiert-wenn, Momentum, Stuermer-Effizienz und Pre-Match-Scout als eigene Produktmodule mit Datenbedarf, Sportmonks-Feldern und Risiken.
 - Gruppen & Szenarien: Gruppen A-L mit Weiterkommen-und-Gegner-Relevanz.
 - Tabellen & Szenarien: Tabellenprojektion, direkte Qualifikanten, Best Thirds und moegliche naechste Gegner.
 - Der Weg ins Finale: 32 K.o.-Matches, dynamisch aufgeloeste Slots und moegliche Gegnerfolgen.
@@ -103,6 +105,7 @@ Wichtige Dateien:
 - Sportmonks als Testanbieter mit Setup-, Probe- und Enable-Workflow vorbereitet.
 - Sportmonks-Probebericht als sichtbares Provider-Testprotokoll in die App integriert.
 - Sportmonks-Mapping-Generator und Prediction-Signal-Kanal vorbereitet.
+- Differenzierende Sportmonks-Featuremodule als Feature Lab in Datenmodell und UI aufgenommen.
 - Poller fuer regelmaessigen Ergebnisabgleich hinzugefuegt.
 - Post-Match-Report-Modell, Validator und automatischer Draft-Generator hinzugefuegt.
 - Demo-Feed und Dry-Run fuer Post-Match-Reports hinzugefuegt, damit der Workflow ohne echte WM-Daten getestet werden kann.

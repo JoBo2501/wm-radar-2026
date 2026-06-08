@@ -4,6 +4,7 @@ const {
   categoryFilters,
   dataStatus,
   filters,
+  featureBlueprints,
   focusTeams,
   groups,
   keyFigures,
@@ -70,6 +71,7 @@ const insightGridEl = document.querySelector("#insightGrid");
 const dataSnapshotEl = document.querySelector("#dataSnapshot");
 const dataStatusGridEl = document.querySelector("#dataStatusGrid");
 const providerTestGridEl = document.querySelector("#providerTestGrid");
+const featureLabGridEl = document.querySelector("#featureLabGrid");
 const scheduleValidatorEl = document.querySelector("#scheduleValidator");
 const resultValidatorEl = document.querySelector("#resultValidator");
 const groupPathGridEl = document.querySelector("#groupPathGrid");
@@ -763,6 +765,44 @@ function renderProviderTests() {
         </article>
       `;
     })
+    .join("");
+}
+
+function getFeatureTone(status) {
+  if (status === "modellbereit") return "real";
+  if (status === "teilweise bereit") return "mixed";
+  if (status.startsWith("wartet")) return "seed";
+  return "model";
+}
+
+function renderFeatureLab() {
+  if (!featureLabGridEl || !featureBlueprints?.length) return;
+
+  featureLabGridEl.innerHTML = featureBlueprints
+    .map(
+      (feature) => `
+        <article class="feature-card ${feature.id}">
+          <div class="feature-card-top">
+            <span class="data-badge ${getFeatureTone(feature.status)}">${feature.status}</span>
+            <strong>${feature.impact}</strong>
+          </div>
+          <h3>${feature.label}</h3>
+          <p>${feature.promise}</p>
+          <div class="feature-field-row">
+            ${feature.sportmonksFields.map((field) => `<span>${field}</span>`).join("")}
+          </div>
+          <div class="feature-story">
+            <strong>Nutzen</strong>
+            <span>${feature.userValue}</span>
+          </div>
+          <div class="feature-story">
+            <strong>Erste Version</strong>
+            <span>${feature.firstVersion}</span>
+          </div>
+          <small>${feature.openRisk}</small>
+        </article>
+      `,
+    )
     .join("");
 }
 
@@ -2512,6 +2552,7 @@ function setupPwa() {
 renderFocusTeams();
 renderDataStatus();
 renderProviderTests();
+renderFeatureLab();
 renderResultValidation();
 renderScheduleValidation();
 renderBracket();

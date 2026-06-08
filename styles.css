@@ -2457,9 +2457,105 @@ h3 {
 }
 
 .team-lab-section,
+.feature-lab-section,
 .key-figures-section {
   margin-bottom: 16px;
   padding: 18px;
+}
+
+.feature-lab-section {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(255, 214, 107, 0.1), transparent 18rem),
+    linear-gradient(135deg, rgba(105, 227, 208, 0.05), rgba(196, 255, 95, 0.035)),
+    var(--panel);
+  backdrop-filter: blur(18px);
+}
+
+.feature-lab-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.feature-card {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(247, 251, 245, 0.78)),
+    rgba(255, 255, 255, 0.7);
+  box-shadow: 0 12px 30px rgba(23, 60, 36, 0.08);
+}
+
+.feature-card-top {
+  display: flex;
+  gap: 10px;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.feature-card-top strong {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center, #ffffff 0 58%, transparent 59%),
+    conic-gradient(var(--lime) calc(var(--score, 86) * 1%), rgba(19, 69, 41, 0.12) 0);
+  color: var(--text);
+}
+
+.feature-card h3 {
+  margin: 0;
+  font-size: 1.18rem;
+}
+
+.feature-card p,
+.feature-card small {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.feature-field-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.feature-field-row span {
+  padding: 5px 7px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(29, 143, 79, 0.07);
+  color: var(--lime);
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+.feature-story {
+  display: grid;
+  gap: 4px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.feature-story strong {
+  color: var(--text);
+  font-size: 0.82rem;
+}
+
+.feature-story span {
+  color: var(--soft);
+  line-height: 1.42;
 }
 
 .group-path-section {
@@ -3911,6 +4007,7 @@ h3 {
 .standing-card,
 .provider-test-card,
 .bracket-round,
+.feature-card,
 .team-lab-card,
 .key-figure-card,
 .radar-card,
@@ -3935,6 +4032,8 @@ h3 {
 .group-fixtures button,
 .standing-card p,
 .provider-test-head p,
+.feature-card p,
+.feature-card small,
 .standing-row,
 .third-place-list div,
 .bracket-match,
@@ -3957,6 +4056,7 @@ h3 {
 .provider-coverage-grid span,
 .provider-advanced-row span,
 .provider-next-grid > div,
+.feature-story,
 .third-place-list div,
 .bracket-match,
 .bracket-slot,
@@ -4011,6 +4111,7 @@ h3 {
 .provider-coverage-grid strong,
 .provider-advanced-row strong,
 .provider-next-grid strong,
+.feature-story strong,
 .phase-grid strong,
 .watch-cues > strong,
 .key-figure-name strong,
@@ -4033,6 +4134,7 @@ h3 {
 .provider-test-meta small,
 .provider-signal-row small,
 .provider-coverage-grid small,
+.feature-card small,
 .team-lab-top small,
 .key-figure-team small,
 .key-figure-name span,
@@ -4138,7 +4240,8 @@ h3 {
   }
 
   .provider-coverage-grid,
-  .provider-advanced-row {
+  .provider-advanced-row,
+  .feature-lab-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -4263,6 +4366,7 @@ h3 {
   .provider-coverage-grid,
   .provider-advanced-row,
   .provider-next-grid,
+  .feature-lab-grid,
   .group-path-grid,
   .standings-grid,
   .third-place-list,
