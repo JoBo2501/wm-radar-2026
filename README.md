@@ -12,6 +12,7 @@ GitHub Pages ist vorbereitet. Nach Aktivierung in GitHub Settings -> Pages -> So
 
 - "Was heute zaehlt" mit Empfehlungen fuer Live, Analyse, Highlights und Skip
 - Vier-Zonen-Orientierung fuer Heute, Spiele, Turnierlage und Analyse mit Bereichskarten und aktiver Hauptnavigation
+- Matchday-Startseite mit Topspiel, Tages-Storylines, kuratiertem Watch-Plan, Skip-Liste und Morgen-ohne-Spoiler
 - Fokus-Teams fuer Argentinien, Brasilien, Spanien, Deutschland, England, Frankreich und Portugal
 - Match-Dossier mit taktischem Kern, Risiko-Signal, Datenprofil und Quellenlogik
 - Surprise Radar fuer Teams mit attraktivem Upset-Potenzial

@@ -76,6 +76,7 @@ Wichtige Dateien:
 - Hero/Control Room: atmosphaerischer Einstieg und Kontrollzahlen.
 - Orientierungsschicht: vier Hauptzonen Heute, Spiele, Turnierlage und Analyse mit Bereichskarten, aktiver Navigation und Schnellzugriffen.
 - Was heute zaehlt: Empfehlungen Live, Analyse, Highlights, Skip.
+- Matchday-Startseite: Topspiel, Tages-Storylines, kuratierter Watch-Plan, bewusste Skip-Liste und Morgen-ohne-Spoiler.
 - Tagesbriefing: Watch Plan plus Nachtspiele ohne Spoiler.
 - Datenlage & Transparenz: Datenqualitaet, Spielplan-Ampel, Ergebnis-Sync-Ampel. Routine-Importe bleiben in einem einklappbaren Detailbereich.
 - Provider-Testprotokoll: Sportmonks-Abdeckung, Feature-Coverage und naechste Pruefzeitpunkte fuer Pre-Match, Live und Post-Match.
@@ -96,6 +97,7 @@ Wichtige Dateien:
 
 - MVP UI als lokales Analysten-Cockpit aufgebaut.
 - UI-Orientierung mit Vier-Zonen-Navigation, Bereichskarten und Bereichstrennern verbessert.
+- Heute-Bereich zur kuratierten Matchday-Startseite ausgebaut.
 - Standalone-Doppelklickdatei erstellt.
 - Vollstaendige Gruppenphase mit 72 Spielen importiert.
 - K.o.-Struktur mit 32 Platzhalterspielen angelegt.

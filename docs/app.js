@@ -59,8 +59,11 @@ const activeDateChipEl = document.querySelector("#activeDateChip");
 const dailyBriefingTextEl = document.querySelector("#dailyBriefingText");
 const commandMetricsEl = document.querySelector("#commandMetrics");
 const topMatchCardEl = document.querySelector("#topMatchCard");
+const matchdayStorylinesEl = document.querySelector("#matchdayStorylines");
 const watchPlanCountEl = document.querySelector("#watchPlanCount");
 const watchPlanEl = document.querySelector("#watchPlan");
+const skipPlanCountEl = document.querySelector("#skipPlanCount");
+const skipPlanEl = document.querySelector("#skipPlan");
 const morningCountEl = document.querySelector("#morningCount");
 const morningQueueEl = document.querySelector("#morningQueue");
 const matchListEl = document.querySelector("#matchList");
@@ -1606,16 +1609,81 @@ function getThreeWatchCues(match) {
   ].slice(0, 3);
 }
 
+function getMatchdayStorylines(dailyMatches) {
+  const sorted = [...dailyMatches].sort((a, b) => b.score - a.score);
+  const livePick = sorted.find((match) => match.category === "live") || sorted[0];
+  const analysisPick = sorted.find((match) => match.category === "analysis");
+  const pathPick = sorted.find((match) => match.pathImpact >= 72 && match.id !== livePick?.id);
+  const upsetPick = sorted.find((match) => match.signals.surprise >= 70 && ![livePick?.id, pathPick?.id].includes(match.id));
+
+  return [
+    livePick && {
+      label: "Live-Pflicht",
+      match: livePick,
+      text: `${livePick.driver}: Dieses Spiel hat heute den staerksten Sofortwert.`,
+    },
+    analysisPick && {
+      label: "Spaeter verstehen",
+      match: analysisPick,
+      text: `${analysisPick.driver}: Nicht zwingend live, aber gut fuer das Dossier danach.`,
+    },
+    pathPick && {
+      label: "Gruppenhebel",
+      match: pathPick,
+      text: "Dieses Ergebnis kann den naechsten Gegner oder den Finalweg spuerbar verschieben.",
+    },
+    upsetPick && {
+      label: "Ueberraschungsfenster",
+      match: upsetPick,
+      text: "Hier lohnt sich ein Blick, wenn das Spiel frueh offen bleibt.",
+    },
+  ]
+    .filter(Boolean)
+    .filter((item, index, list) => list.findIndex((candidate) => candidate.match.id === item.match.id) === index)
+    .slice(0, 3);
+}
+
+function renderMatchdayStorylines(dailyMatches) {
+  const storylines = getMatchdayStorylines(dailyMatches);
+  matchdayStorylinesEl.innerHTML =
+    storylines
+      .map(({ label, match, text }) => {
+        const [home, away] = match.matchTeams;
+        return `
+          <button class="storyline-item ${match.category}" type="button" data-match="${match.id}">
+            <span>${label}</span>
+            <strong>${home.code} vs ${away.code}</strong>
+            <small>${text}</small>
+          </button>
+        `;
+      })
+      .join("") || `<p class="empty-copy">Noch keine Storylines fuer dieses Tagesfenster.</p>`;
+
+  matchdayStorylinesEl.querySelectorAll("button").forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedMatchId = button.dataset.match;
+      activeFilter = "today";
+      activeCategory = "all";
+      renderAllDynamic();
+      document.querySelector("#dossier").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+}
+
 function renderDailyCommandCenter() {
   const dailyMatches = getTodayCommandMatches();
   const topMatch = [...dailyMatches].sort((a, b) => b.score - a.score)[0];
   const liveCount = dailyMatches.filter((match) => match.category === "live").length;
   const analysisCount = dailyMatches.filter((match) => match.category === "analysis").length;
   const skipCount = dailyMatches.filter((match) => match.category === "skip").length;
+  const watchMatches = dailyMatches.filter((match) => match.category !== "skip");
+  const skipMatches = dailyMatches.filter((match) => match.category === "skip");
   const nightMatches = dailyMatches.filter(isNightMatch);
 
   if (!topMatch) {
     dailyBriefingTextEl.textContent = "Für das aktuelle Tagesfenster liegen noch keine Spiele vor.";
+    if (matchdayStorylinesEl) matchdayStorylinesEl.innerHTML = "";
+    if (skipPlanEl) skipPlanEl.innerHTML = "";
     return;
   }
 
@@ -1656,29 +1724,51 @@ function renderDailyCommandCenter() {
     </ul>
   `;
 
-  watchPlanCountEl.textContent = `${dailyMatches.length} Spiele`;
-  watchPlanEl.innerHTML = dailyMatches
+  renderMatchdayStorylines(dailyMatches);
+
+  watchPlanCountEl.textContent = `${watchMatches.length} Empfehlungen`;
+  watchPlanEl.innerHTML = watchMatches
     .map((match) => {
       const [home, away] = match.matchTeams;
-      const skipReasons = match.category === "skip" ? getSkipReasons(match) : [];
       return `
         <button class="watch-plan-item ${match.category}" type="button" data-match="${match.id}">
           <span class="watch-time">${match.germanyTime}</span>
           <span class="watch-fixture">
             <strong>${home.code} vs ${away.code}</strong>
             <small class="${isNightMatch(match) ? "spoiler-sensitive" : ""}">${getWatchAction(match.category)} · Spielwert ${match.score}/100 · ${match.driver}</small>
-            ${
-              skipReasons.length
-                ? `<em>Skip, weil: ${skipReasons.join(", ")}</em>`
-                : `<em>${match.tags.slice(0, 2).join(" · ")}</em>`
-            }
+            <em>${match.tags.slice(0, 2).join(" · ")}</em>
           </span>
         </button>
       `;
     })
-    .join("");
+    .join("") || `<p class="empty-copy">Keine Live- oder Analyse-Empfehlung im aktuellen Tagesfenster.</p>`;
 
   watchPlanEl.querySelectorAll("button").forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedMatchId = button.dataset.match;
+      activeFilter = "today";
+      activeCategory = "all";
+      renderAllDynamic();
+      document.querySelector("#dossier").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+
+  skipPlanCountEl.textContent = `${skipMatches.length} Spiele`;
+  skipPlanEl.innerHTML =
+    skipMatches
+      .map((match) => {
+        const [home, away] = match.matchTeams;
+        return `
+          <button class="skip-item" type="button" data-match="${match.id}">
+            <span>${match.germanyTime}</span>
+            <strong>${home.code} vs ${away.code}</strong>
+            <small>${getSkipReasons(match).join(", ")}</small>
+          </button>
+        `;
+      })
+      .join("") || `<p class="empty-copy">Heute gibt es keine klaren Skip-Spiele.</p>`;
+
+  skipPlanEl.querySelectorAll("button").forEach((button) => {
     button.addEventListener("click", () => {
       selectedMatchId = button.dataset.match;
       activeFilter = "today";

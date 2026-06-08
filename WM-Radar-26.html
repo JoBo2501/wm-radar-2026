@@ -1039,7 +1039,7 @@ h3 {
 
 .command-center {
   display: grid;
-  grid-template-columns: minmax(280px, 0.86fr) minmax(320px, 1.14fr);
+  grid-template-columns: minmax(280px, 0.86fr) minmax(320px, 1.14fr) minmax(260px, 0.72fr);
   gap: 16px;
   margin-bottom: 16px;
   padding: 18px;
@@ -1050,7 +1050,9 @@ h3 {
 
 .command-hero,
 .top-match-card,
+.storyline-card,
 .watch-plan-card,
+.skip-card,
 .morning-card {
   border: 1px solid var(--line);
   border-radius: 7px;
@@ -1062,6 +1064,10 @@ h3 {
 .top-match-card {
   min-height: 268px;
   padding: 16px;
+}
+
+.command-hero {
+  grid-row: span 2;
 }
 
 .command-hero p:not(.eyebrow) {
@@ -1156,17 +1162,83 @@ h3 {
   line-height: 1.55;
 }
 
+.storyline-card,
 .watch-plan-card,
+.skip-card,
 .morning-card {
   padding: 14px;
 }
 
 .watch-plan-card {
-  grid-column: 1 / -1;
+  grid-column: span 2;
 }
 
 .morning-card {
-  grid-column: 1 / -1;
+  grid-column: span 2;
+}
+
+.storyline-list,
+.skip-list {
+  display: grid;
+  gap: 8px;
+}
+
+.storyline-item,
+.skip-item {
+  width: 100%;
+  display: grid;
+  gap: 5px;
+  padding: 11px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+}
+
+.storyline-item:hover,
+.skip-item:hover {
+  border-color: rgba(29, 143, 79, 0.28);
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.storyline-item span {
+  color: var(--lime);
+  font-size: 0.72rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.storyline-item.analysis span {
+  color: var(--gold);
+}
+
+.storyline-item.highlights span {
+  color: var(--cyan);
+}
+
+.storyline-item small,
+.skip-item small {
+  color: var(--muted);
+  line-height: 1.38;
+}
+
+.skip-card {
+  background:
+    linear-gradient(135deg, rgba(180, 121, 0, 0.055), rgba(255, 255, 255, 0.72)),
+    rgba(255, 255, 255, 0.82);
+}
+
+.skip-item {
+  grid-template-columns: 56px minmax(0, 0.42fr) minmax(0, 1fr);
+  align-items: center;
+  opacity: 0.9;
+}
+
+.skip-item span {
+  color: var(--gold);
+  font-weight: 950;
 }
 
 .watch-plan {
@@ -4560,6 +4632,13 @@ h3 {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .command-hero,
+  .watch-plan-card,
+  .morning-card {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
   .zone-divider {
     grid-template-columns: auto minmax(0, 1fr);
   }
@@ -4705,7 +4784,8 @@ h3 {
   .advanced-metric-list,
   .report-status-row,
   .synthesis-status-row,
-  .report-blueprint-list {
+  .report-blueprint-list,
+  .skip-item {
     grid-template-columns: 1fr;
   }
 
@@ -5020,20 +5100,36 @@ h3 {
         <section class="command-center" id="commandCenter" aria-labelledby="commandCenterTitle">
           <div class="command-hero">
             <p class="eyebrow">Tagesbriefing</p>
-            <h2 id="commandCenterTitle">Dein Plan für heute + Nacht</h2>
-            <p class="section-note">Die Kurzfassung: Topspiel, wichtigste Entscheidungen und Nachtspiele auf einen Blick.</p>
+            <h2 id="commandCenterTitle">Dein Matchday in drei Entscheidungen</h2>
+            <p class="section-note">Live schauen, später verstehen, bewusst auslassen: der Tagesstart ohne Tabellenrauschen.</p>
             <p id="dailyBriefingText">Briefing wird geladen.</p>
             <div class="command-metrics" id="commandMetrics"></div>
           </div>
 
           <div class="top-match-card" id="topMatchCard"></div>
 
+          <div class="storyline-card">
+            <div class="panel-title">
+              <span>Storylines</span>
+              <strong>Worauf achten?</strong>
+            </div>
+            <div class="storyline-list" id="matchdayStorylines"></div>
+          </div>
+
           <div class="watch-plan-card">
             <div class="panel-title">
-              <span>Watch Plan</span>
-              <strong id="watchPlanCount">0 Spiele</strong>
+              <span>Live & Analyse</span>
+              <strong id="watchPlanCount">0 Empfehlungen</strong>
             </div>
             <div class="watch-plan" id="watchPlan"></div>
+          </div>
+
+          <div class="skip-card">
+            <div class="panel-title">
+              <span>Bewusst auslassen</span>
+              <strong id="skipPlanCount">0 Spiele</strong>
+            </div>
+            <div class="skip-list" id="skipPlan"></div>
           </div>
 
           <div class="morning-card">
@@ -12535,8 +12631,11 @@ const activeDateChipEl = document.querySelector("#activeDateChip");
 const dailyBriefingTextEl = document.querySelector("#dailyBriefingText");
 const commandMetricsEl = document.querySelector("#commandMetrics");
 const topMatchCardEl = document.querySelector("#topMatchCard");
+const matchdayStorylinesEl = document.querySelector("#matchdayStorylines");
 const watchPlanCountEl = document.querySelector("#watchPlanCount");
 const watchPlanEl = document.querySelector("#watchPlan");
+const skipPlanCountEl = document.querySelector("#skipPlanCount");
+const skipPlanEl = document.querySelector("#skipPlan");
 const morningCountEl = document.querySelector("#morningCount");
 const morningQueueEl = document.querySelector("#morningQueue");
 const matchListEl = document.querySelector("#matchList");
@@ -14082,16 +14181,81 @@ function getThreeWatchCues(match) {
   ].slice(0, 3);
 }
 
+function getMatchdayStorylines(dailyMatches) {
+  const sorted = [...dailyMatches].sort((a, b) => b.score - a.score);
+  const livePick = sorted.find((match) => match.category === "live") || sorted[0];
+  const analysisPick = sorted.find((match) => match.category === "analysis");
+  const pathPick = sorted.find((match) => match.pathImpact >= 72 && match.id !== livePick?.id);
+  const upsetPick = sorted.find((match) => match.signals.surprise >= 70 && ![livePick?.id, pathPick?.id].includes(match.id));
+
+  return [
+    livePick && {
+      label: "Live-Pflicht",
+      match: livePick,
+      text: `${livePick.driver}: Dieses Spiel hat heute den staerksten Sofortwert.`,
+    },
+    analysisPick && {
+      label: "Spaeter verstehen",
+      match: analysisPick,
+      text: `${analysisPick.driver}: Nicht zwingend live, aber gut fuer das Dossier danach.`,
+    },
+    pathPick && {
+      label: "Gruppenhebel",
+      match: pathPick,
+      text: "Dieses Ergebnis kann den naechsten Gegner oder den Finalweg spuerbar verschieben.",
+    },
+    upsetPick && {
+      label: "Ueberraschungsfenster",
+      match: upsetPick,
+      text: "Hier lohnt sich ein Blick, wenn das Spiel frueh offen bleibt.",
+    },
+  ]
+    .filter(Boolean)
+    .filter((item, index, list) => list.findIndex((candidate) => candidate.match.id === item.match.id) === index)
+    .slice(0, 3);
+}
+
+function renderMatchdayStorylines(dailyMatches) {
+  const storylines = getMatchdayStorylines(dailyMatches);
+  matchdayStorylinesEl.innerHTML =
+    storylines
+      .map(({ label, match, text }) => {
+        const [home, away] = match.matchTeams;
+        return `
+          <button class="storyline-item ${match.category}" type="button" data-match="${match.id}">
+            <span>${label}</span>
+            <strong>${home.code} vs ${away.code}</strong>
+            <small>${text}</small>
+          </button>
+        `;
+      })
+      .join("") || `<p class="empty-copy">Noch keine Storylines fuer dieses Tagesfenster.</p>`;
+
+  matchdayStorylinesEl.querySelectorAll("button").forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedMatchId = button.dataset.match;
+      activeFilter = "today";
+      activeCategory = "all";
+      renderAllDynamic();
+      document.querySelector("#dossier").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+}
+
 function renderDailyCommandCenter() {
   const dailyMatches = getTodayCommandMatches();
   const topMatch = [...dailyMatches].sort((a, b) => b.score - a.score)[0];
   const liveCount = dailyMatches.filter((match) => match.category === "live").length;
   const analysisCount = dailyMatches.filter((match) => match.category === "analysis").length;
   const skipCount = dailyMatches.filter((match) => match.category === "skip").length;
+  const watchMatches = dailyMatches.filter((match) => match.category !== "skip");
+  const skipMatches = dailyMatches.filter((match) => match.category === "skip");
   const nightMatches = dailyMatches.filter(isNightMatch);
 
   if (!topMatch) {
     dailyBriefingTextEl.textContent = "Für das aktuelle Tagesfenster liegen noch keine Spiele vor.";
+    if (matchdayStorylinesEl) matchdayStorylinesEl.innerHTML = "";
+    if (skipPlanEl) skipPlanEl.innerHTML = "";
     return;
   }
 
@@ -14132,29 +14296,51 @@ function renderDailyCommandCenter() {
     </ul>
   `;
 
-  watchPlanCountEl.textContent = `${dailyMatches.length} Spiele`;
-  watchPlanEl.innerHTML = dailyMatches
+  renderMatchdayStorylines(dailyMatches);
+
+  watchPlanCountEl.textContent = `${watchMatches.length} Empfehlungen`;
+  watchPlanEl.innerHTML = watchMatches
     .map((match) => {
       const [home, away] = match.matchTeams;
-      const skipReasons = match.category === "skip" ? getSkipReasons(match) : [];
       return `
         <button class="watch-plan-item ${match.category}" type="button" data-match="${match.id}">
           <span class="watch-time">${match.germanyTime}</span>
           <span class="watch-fixture">
             <strong>${home.code} vs ${away.code}</strong>
             <small class="${isNightMatch(match) ? "spoiler-sensitive" : ""}">${getWatchAction(match.category)} · Spielwert ${match.score}/100 · ${match.driver}</small>
-            ${
-              skipReasons.length
-                ? `<em>Skip, weil: ${skipReasons.join(", ")}</em>`
-                : `<em>${match.tags.slice(0, 2).join(" · ")}</em>`
-            }
+            <em>${match.tags.slice(0, 2).join(" · ")}</em>
           </span>
         </button>
       `;
     })
-    .join("");
+    .join("") || `<p class="empty-copy">Keine Live- oder Analyse-Empfehlung im aktuellen Tagesfenster.</p>`;
 
   watchPlanEl.querySelectorAll("button").forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedMatchId = button.dataset.match;
+      activeFilter = "today";
+      activeCategory = "all";
+      renderAllDynamic();
+      document.querySelector("#dossier").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+
+  skipPlanCountEl.textContent = `${skipMatches.length} Spiele`;
+  skipPlanEl.innerHTML =
+    skipMatches
+      .map((match) => {
+        const [home, away] = match.matchTeams;
+        return `
+          <button class="skip-item" type="button" data-match="${match.id}">
+            <span>${match.germanyTime}</span>
+            <strong>${home.code} vs ${away.code}</strong>
+            <small>${getSkipReasons(match).join(", ")}</small>
+          </button>
+        `;
+      })
+      .join("") || `<p class="empty-copy">Heute gibt es keine klaren Skip-Spiele.</p>`;
+
+  skipPlanEl.querySelectorAll("button").forEach((button) => {
     button.addEventListener("click", () => {
       selectedMatchId = button.dataset.match;
       activeFilter = "today";

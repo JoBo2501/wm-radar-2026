@@ -1030,7 +1030,7 @@ h3 {
 
 .command-center {
   display: grid;
-  grid-template-columns: minmax(280px, 0.86fr) minmax(320px, 1.14fr);
+  grid-template-columns: minmax(280px, 0.86fr) minmax(320px, 1.14fr) minmax(260px, 0.72fr);
   gap: 16px;
   margin-bottom: 16px;
   padding: 18px;
@@ -1041,7 +1041,9 @@ h3 {
 
 .command-hero,
 .top-match-card,
+.storyline-card,
 .watch-plan-card,
+.skip-card,
 .morning-card {
   border: 1px solid var(--line);
   border-radius: 7px;
@@ -1053,6 +1055,10 @@ h3 {
 .top-match-card {
   min-height: 268px;
   padding: 16px;
+}
+
+.command-hero {
+  grid-row: span 2;
 }
 
 .command-hero p:not(.eyebrow) {
@@ -1147,17 +1153,83 @@ h3 {
   line-height: 1.55;
 }
 
+.storyline-card,
 .watch-plan-card,
+.skip-card,
 .morning-card {
   padding: 14px;
 }
 
 .watch-plan-card {
-  grid-column: 1 / -1;
+  grid-column: span 2;
 }
 
 .morning-card {
-  grid-column: 1 / -1;
+  grid-column: span 2;
+}
+
+.storyline-list,
+.skip-list {
+  display: grid;
+  gap: 8px;
+}
+
+.storyline-item,
+.skip-item {
+  width: 100%;
+  display: grid;
+  gap: 5px;
+  padding: 11px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+}
+
+.storyline-item:hover,
+.skip-item:hover {
+  border-color: rgba(29, 143, 79, 0.28);
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.storyline-item span {
+  color: var(--lime);
+  font-size: 0.72rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.storyline-item.analysis span {
+  color: var(--gold);
+}
+
+.storyline-item.highlights span {
+  color: var(--cyan);
+}
+
+.storyline-item small,
+.skip-item small {
+  color: var(--muted);
+  line-height: 1.38;
+}
+
+.skip-card {
+  background:
+    linear-gradient(135deg, rgba(180, 121, 0, 0.055), rgba(255, 255, 255, 0.72)),
+    rgba(255, 255, 255, 0.82);
+}
+
+.skip-item {
+  grid-template-columns: 56px minmax(0, 0.42fr) minmax(0, 1fr);
+  align-items: center;
+  opacity: 0.9;
+}
+
+.skip-item span {
+  color: var(--gold);
+  font-weight: 950;
 }
 
 .watch-plan {
@@ -4551,6 +4623,13 @@ h3 {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .command-hero,
+  .watch-plan-card,
+  .morning-card {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
   .zone-divider {
     grid-template-columns: auto minmax(0, 1fr);
   }
@@ -4696,7 +4775,8 @@ h3 {
   .advanced-metric-list,
   .report-status-row,
   .synthesis-status-row,
-  .report-blueprint-list {
+  .report-blueprint-list,
+  .skip-item {
     grid-template-columns: 1fr;
   }
 

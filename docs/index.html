@@ -127,20 +127,36 @@
         <section class="command-center" id="commandCenter" aria-labelledby="commandCenterTitle">
           <div class="command-hero">
             <p class="eyebrow">Tagesbriefing</p>
-            <h2 id="commandCenterTitle">Dein Plan für heute + Nacht</h2>
-            <p class="section-note">Die Kurzfassung: Topspiel, wichtigste Entscheidungen und Nachtspiele auf einen Blick.</p>
+            <h2 id="commandCenterTitle">Dein Matchday in drei Entscheidungen</h2>
+            <p class="section-note">Live schauen, später verstehen, bewusst auslassen: der Tagesstart ohne Tabellenrauschen.</p>
             <p id="dailyBriefingText">Briefing wird geladen.</p>
             <div class="command-metrics" id="commandMetrics"></div>
           </div>
 
           <div class="top-match-card" id="topMatchCard"></div>
 
+          <div class="storyline-card">
+            <div class="panel-title">
+              <span>Storylines</span>
+              <strong>Worauf achten?</strong>
+            </div>
+            <div class="storyline-list" id="matchdayStorylines"></div>
+          </div>
+
           <div class="watch-plan-card">
             <div class="panel-title">
-              <span>Watch Plan</span>
-              <strong id="watchPlanCount">0 Spiele</strong>
+              <span>Live & Analyse</span>
+              <strong id="watchPlanCount">0 Empfehlungen</strong>
             </div>
             <div class="watch-plan" id="watchPlan"></div>
+          </div>
+
+          <div class="skip-card">
+            <div class="panel-title">
+              <span>Bewusst auslassen</span>
+              <strong id="skipPlanCount">0 Spiele</strong>
+            </div>
+            <div class="skip-list" id="skipPlan"></div>
           </div>
 
           <div class="morning-card">
