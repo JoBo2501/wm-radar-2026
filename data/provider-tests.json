@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-06-08T09:14:16.247Z",
-  "status": "probe-ready",
-  "summary": "Sportmonks-Probe hat 104 WM-Fixtures gefunden. Pre-Match-Struktur ist belastbar; Live-, Event- und Advanced-Felder werden ab dem ersten Spiel erneut geprueft.",
+  "generatedAt": "2026-06-08T14:39:23.202Z",
+  "status": "primary-ready",
+  "summary": "Sportmonks ist als primaere WM-Datenquelle gesetzt und hat 104 WM-Fixtures gefunden. Pre-Match-Struktur ist belastbar; Live-, Event- und Advanced-Felder werden ab dem ersten Spiel erneut validiert.",
   "providers": [
     {
       "id": "sportmonks",
       "label": "Sportmonks",
-      "status": "Probe bereit",
+      "status": "Primaerquelle bereit",
       "testedAt": "2026-06-08T09:14:16.239Z",
       "fixtures": 104,
       "coverage": [

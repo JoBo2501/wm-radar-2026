@@ -69,15 +69,15 @@ const coverage = fields.map((field) => ({
 
 const providerTests = {
   generatedAt,
-  status: probe ? "probe-ready" : "not-run",
+  status: probe ? "primary-ready" : "not-run",
   summary: probe
-    ? `Sportmonks-Probe hat ${total} WM-Fixtures gefunden. Pre-Match-Struktur ist belastbar; Live-, Event- und Advanced-Felder werden ab dem ersten Spiel erneut geprueft.`
-    : "Noch kein Sportmonks-Probe-Bericht vorhanden. Starte probe-sportmonks.cmd.",
+    ? `Sportmonks ist als primaere WM-Datenquelle gesetzt und hat ${total} WM-Fixtures gefunden. Pre-Match-Struktur ist belastbar; Live-, Event- und Advanced-Felder werden ab dem ersten Spiel erneut validiert.`
+    : "Noch kein Sportmonks-Abdeckungsbericht vorhanden. Starte probe-sportmonks.cmd.",
   providers: [
     {
       id: "sportmonks",
       label: "Sportmonks",
-      status: probe ? "Probe bereit" : "Noch nicht getestet",
+      status: probe ? "Primaerquelle bereit" : "Noch nicht getestet",
       testedAt: probe?.generatedAt || null,
       fixtures: total,
       coverage,

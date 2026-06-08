@@ -703,7 +703,7 @@ function renderProviderTests() {
         <article class="provider-test-card">
           <div class="provider-test-head">
             <div>
-              <span class="data-badge mixed">Testphase</span>
+              <span class="data-badge real">Primaerquelle</span>
               <h3>${provider.label}</h3>
               <p>${providerTests.summary}</p>
             </div>
@@ -714,7 +714,7 @@ function renderProviderTests() {
           </div>
           <div class="provider-test-meta">
             <span><strong>${provider.status}</strong><small>Status</small></span>
-            <span><strong>${testedAt}</strong><small>Letzter Probe-Lauf</small></span>
+            <span><strong>${testedAt}</strong><small>Letzter Check</small></span>
             ${
               mappingSummary
                 ? `<span><strong>${mappingSummary.coverage.mapped}/${mappingSummary.coverage.localMatches}</strong><small>Mapping</small></span>

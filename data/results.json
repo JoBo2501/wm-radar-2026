@@ -1,11 +1,11 @@
 {
   "mode": "preTournament",
   "sourceLevel": "model",
-  "activeSource": "football-data",
-  "sourceLabel": "football-data.org",
-  "sourceNote": "Keine echten Ergebnisse von football-data.org; Tabellenansicht nutzt weiter Modellprojektion.",
-  "generatedAt": "2026-06-07T10:33:33.398Z",
-  "pollMinutes": 10,
+  "activeSource": "sportmonks",
+  "sourceLabel": "Sportmonks",
+  "sourceNote": "Keine echten Ergebnisse von Sportmonks; Tabellenansicht nutzt weiter Modellprojektion.",
+  "generatedAt": "2026-06-08T14:40:12.545Z",
+  "pollMinutes": 5,
   "syncError": null,
   "summary": {
     "providerMatches": 104,

@@ -1,5 +1,5 @@
 {
-  "activeSource": "football-data",
+  "activeSource": "sportmonks",
   "sources": [
     {
       "id": "local-json",
@@ -36,7 +36,7 @@
       "id": "football-data",
       "label": "football-data.org",
       "type": "football-data",
-      "enabled": true,
+      "enabled": false,
       "endpoint": "https://api.football-data.org/v4/competitions/WC/matches",
       "apiKeyEnv": "FOOTBALL_DATA_TOKEN",
       "trust": 82,
@@ -46,7 +46,7 @@
       "id": "sportmonks",
       "label": "Sportmonks",
       "type": "sportmonks",
-      "enabled": false,
+      "enabled": true,
       "endpoint": "https://api.sportmonks.com/v3/football/fixtures/between/2026-06-11/2026-07-19",
       "apiKeyEnv": "SPORTMONKS_API_KEY",
       "leagueId": null,

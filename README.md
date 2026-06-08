@@ -136,9 +136,9 @@ Post-Match-Demo testen:
 node generate-post-match-reports.mjs --results=data/raw/demo-results-final.json --dry-run
 ```
 
-Oder `enable-demo-post-match.cmd` doppelklicken. Das schaltet lokal auf den Demo-Ergebnisfeed, erzeugt einen Draft-Report fuer Brasilien-Marokko und baut die App neu. Danach mit `restore-football-data.cmd` wieder auf football-data.org zurueckschalten.
+Oder `enable-demo-post-match.cmd` doppelklicken. Das schaltet lokal auf den Demo-Ergebnisfeed, erzeugt einen Draft-Report fuer Brasilien-Marokko und baut die App neu. Danach mit `restore-sportmonks.cmd` wieder auf Sportmonks als primaere WM-Datenquelle zurueckschalten.
 
-football-data.org Free vorbereiten:
+football-data.org Free als Legacy-Fallback vorbereiten:
 
 1. Kostenlos registrieren: https://www.football-data.org/client/register
 2. `setup-football-data-token.cmd` doppelklicken und Token eintragen.
@@ -158,13 +158,13 @@ node build-standalone.mjs
 node build-pages.mjs
 ```
 
-Sportmonks-Testphase vorbereiten:
+Sportmonks als primaere WM-Datenquelle betreiben:
 
-1. Sportmonks-Abo/Test starten und API-Key im Sportmonks-Dashboard erzeugen.
+1. Sportmonks-Abo fuer das WM-Modul aktiv halten und API-Key im Sportmonks-Dashboard erzeugen.
 2. `setup-sportmonks-token.cmd` doppelklicken und Key eintragen.
 3. Terminal/Fenster neu starten.
 4. `probe-sportmonks.cmd` doppelklicken. Das schreibt `data/raw/sportmonks-probe.json` und aktualisiert `data/provider-tests.json` mit Abdeckung fuer Fixtures, Scores, Lineups, Events, xG, Pressure und Expected Lineups.
-5. Wenn der Probe gut aussieht: `enable-sportmonks.cmd` doppelklicken. Dann wird Sportmonks als aktive Ergebnisquelle gesetzt und die App neu gebaut.
+5. `enable-sportmonks.cmd` doppelklicken. Dann wird Sportmonks als aktive Ergebnisquelle gesetzt, synchronisiert und die App neu gebaut.
 
 Alternativ im Terminal:
 
@@ -191,9 +191,9 @@ Die K.o.-Struktur liegt in `data/knockout.json`. Dort stehen Slots wie `1E`, `3A
 
 Der Ergebnislayer liegt in `data/results.json`. Aktuell ist er leer und markiert die App als `preTournament`; Tabellen & Szenarien berechnen deshalb eine Modellprojektion. Sobald echte Resultate mit `status: "final"` eingetragen werden, fliessen sie automatisch in Gruppenstaende und Third-Place-Ranking ein.
 
-Der automatische Ergebnisabgleich ist in `sync-results.mjs` vorbereitet. Die aktive Quelle steht in `data/result-sources.json`, manuelle Korrekturen liegen in `data/result-overrides.json`, und `validate-results.mjs` schreibt die Sync-Ampel nach `data/result-validation.json`. Sportmonks ist als Testanbieter vorbereitet; der API-Key bleibt lokal in `SPORTMONKS_API_KEY`.
+Der automatische Ergebnisabgleich ist in `sync-results.mjs` vorbereitet. Die aktive Quelle steht in `data/result-sources.json`, manuelle Korrekturen liegen in `data/result-overrides.json`, und `validate-results.mjs` schreibt die Sync-Ampel nach `data/result-validation.json`. Sportmonks ist die primaere WM-Datenquelle; der API-Key bleibt lokal in `SPORTMONKS_API_KEY`.
 
-Das Provider-Testprotokoll liegt in `data/provider-tests.json`. Es wird aus `data/raw/sportmonks-probe.json` erzeugt und in der App unter Datenlage & Transparenz angezeigt. So bleibt sichtbar, welche Sportmonks-Features bereits belastbar sind und welche erst kurz vor Anpfiff, live oder nach Abpfiff erneut geprueft werden muessen.
+Das Provider-Testprotokoll liegt in `data/provider-tests.json`. Es wird aus `data/raw/sportmonks-probe.json` erzeugt und in der App unter Datenlage & Transparenz angezeigt. So bleibt sichtbar, welche Sportmonks-Features bereits belastbar sind und welche kurz vor Anpfiff, live oder nach Abpfiff erneut validiert werden muessen.
 
 Das Sportmonks-Mapping liegt in `data/provider-mapping.json`. Nach jedem neuen `probe-sportmonks.cmd`-Lauf wird daraus die Verbindung zwischen Sportmonks-Fixture-IDs, internen Match-IDs und Prediction-Verfuegbarkeit erzeugt. Erst danach fliesst das Prediction-Signal vorsichtig in den Spielwert ein.
 

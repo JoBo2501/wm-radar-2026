@@ -1,6 +1,6 @@
 # WM Radar 26 Projekthandbuch
 
-Stand: 2026-06-07
+Stand: 2026-06-08
 
 ## Ziel
 
@@ -21,7 +21,7 @@ WM Radar 26 ist ein persoenliches Analysten-Cockpit fuer die FIFA Fussball-WM 20
 - App-Datenbundle: `data.js`
 - Teams/Gruppen/Fixtures: `data/teams.json`, `data/groups.json`, `data/matches.json`
 - K.o.-Struktur: `data/knockout.json`
-- Ergebnis-Sync: `sync-results.mjs`, `validate-results.mjs`, `watch-results.mjs`, Sportmonks-Testprobe `probe-sportmonks.mjs`
+- Ergebnis-Sync: `sync-results.mjs`, `validate-results.mjs`, `watch-results.mjs`, Sportmonks-Abdeckungsprobe `probe-sportmonks.mjs`
 - Ergebnis-Konfiguration: `data/result-sources.json`, `data/results.json`, `data/result-overrides.json`, `data/result-validation.json`
 - Provider-Testprotokoll: `data/provider-tests.json`, erzeugt aus `data/raw/sportmonks-probe.json`
 - Provider-Mapping: `data/provider-mapping.json`, erzeugt aus Sportmonks-Probe und internem Spielplan
@@ -36,7 +36,7 @@ WM Radar 26 ist ein persoenliches Analysten-Cockpit fuer die FIFA Fussball-WM 20
 1. Rohfixtures liegen in `data/raw/fixtures.json`.
 2. `normalize-fixtures.mjs` erzeugt `data/matches.json`.
 3. `validate-schedule.mjs` prueft 72 Gruppenspiele und 32 K.o.-Slots.
-4. `sync-results.mjs` zieht Ergebnisse aus der aktiven Quelle, aktuell football-data.org Free.
+4. `sync-results.mjs` zieht Ergebnisse aus der aktiven Quelle, aktuell Sportmonks.
 5. `validate-results.mjs` prueft Mapping, Scores, Dubletten und Konflikte.
 6. `generate-post-match-reports.mjs` erzeugt Draft-Reports aus finalen Ergebnissen.
 7. `validate-post-match-reports.mjs` prueft Reportstruktur, Match-IDs und Metriken.
@@ -46,11 +46,11 @@ WM Radar 26 ist ein persoenliches Analysten-Cockpit fuer die FIFA Fussball-WM 20
 
 ## Ergebnis-Sync
 
-Aktive Quelle: `football-data.org` in `data/result-sources.json`.
+Aktive Quelle: `Sportmonks` in `data/result-sources.json`.
 
 Aktueller Zustand:
 
-- football-data.org liefert 104 Provider-Matches.
+- Sportmonks liefert 104 Provider-Matches.
 - Es gibt noch 0 finale und 0 Live-Ergebnisse.
 - Die App bleibt deshalb im Projektionsmodus.
 - Sobald echte Resultate kommen, aktualisieren sich Tabellen, Best Thirds, Bracket und K.o.-Dossiers automatisch.
@@ -61,10 +61,11 @@ Wichtige Dateien:
 - `setup-football-data-token.cmd`: Token lokal speichern.
 - `enable-football-data.cmd`: Provider aktivieren und einmal syncen.
 - `enable-demo-post-match.cmd`: lokalen Demo-Feed aktivieren und Post-Match-Draft-Report testen.
-- `restore-football-data.cmd`: nach Demo wieder auf football-data.org zurueckschalten.
+- `restore-sportmonks.cmd`: nach Demo oder Fallback wieder auf Sportmonks als Primaerquelle zurueckschalten.
+- `restore-football-data.cmd`: Legacy-Fallback auf football-data.org.
 - `setup-sportmonks-token.cmd`: Sportmonks API-Key lokal speichern.
 - `probe-sportmonks.cmd`: Sportmonks-Abdeckung fuer Basis- und Advanced-Felder pruefen.
-- `enable-sportmonks.cmd`: Sportmonks als aktive Ergebnisquelle setzen und App neu bauen.
+- `enable-sportmonks.cmd`: Sportmonks als primaere Ergebnisquelle setzen, synchronisieren und App neu bauen.
 - `watch-results.cmd`: dauerhaften Poller starten.
 - `sync-results.cmd`: einmaliger Sync/Rebuild per Doppelklick.
 - `release-pages.cmd`: Daten und `docs/` aktualisieren.
@@ -106,8 +107,8 @@ Wichtige Dateien:
 - Dynamische Bracket-Aufloesung fuer direkte Slots, Drittplatzierte und Folgerunden gebaut.
 - K.o.-Match-Dossiers integriert.
 - Ergebnis-Sync-Architektur mit Provider, Overrides, Validierung und Ampel gebaut.
-- football-data.org Free vorbereitet und aktiviert.
-- Sportmonks als Testanbieter mit Setup-, Probe- und Enable-Workflow vorbereitet.
+- football-data.org Free als frueher Fallback vorbereitet.
+- Sportmonks als primaere WM-Datenquelle mit Setup-, Probe- und Enable-Workflow aktiviert.
 - Sportmonks-Probebericht als sichtbares Provider-Testprotokoll in die App integriert.
 - Sportmonks-Mapping-Generator und Prediction-Signal-Kanal vorbereitet.
 - Differenzierende Sportmonks-Featuremodule als Feature Lab in Datenmodell und UI aufgenommen.

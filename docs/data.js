@@ -1552,14 +1552,14 @@ window.WMRadarData = {
     }
   },
   "resultValidation": {
-    "generatedAt": "2026-06-07T10:33:33.534Z",
+    "generatedAt": "2026-06-08T14:40:34.788Z",
     "status": "waiting",
     "summary": "Noch keine echten Resultate synchronisiert; Projektionsmodus bleibt aktiv.",
     "source": {
-      "activeSource": "football-data",
-      "sourceLabel": "football-data.org",
-      "generatedAt": "2026-06-07T10:33:33.398Z",
-      "pollMinutes": 10
+      "activeSource": "sportmonks",
+      "sourceLabel": "Sportmonks",
+      "generatedAt": "2026-06-08T14:40:12.545Z",
+      "pollMinutes": 5
     },
     "issues": {
       "unknownMatches": [],
@@ -1659,14 +1659,14 @@ window.WMRadarData = {
     }
   },
   "providerTests": {
-    "generatedAt": "2026-06-08T09:14:16.247Z",
-    "status": "probe-ready",
-    "summary": "Sportmonks-Probe hat 104 WM-Fixtures gefunden. Pre-Match-Struktur ist belastbar; Live-, Event- und Advanced-Felder werden ab dem ersten Spiel erneut geprueft.",
+    "generatedAt": "2026-06-08T14:39:23.202Z",
+    "status": "primary-ready",
+    "summary": "Sportmonks ist als primaere WM-Datenquelle gesetzt und hat 104 WM-Fixtures gefunden. Pre-Match-Struktur ist belastbar; Live-, Event- und Advanced-Felder werden ab dem ersten Spiel erneut validiert.",
     "providers": [
       {
         "id": "sportmonks",
         "label": "Sportmonks",
-        "status": "Probe bereit",
+        "status": "Primaerquelle bereit",
         "testedAt": "2026-06-08T09:14:16.239Z",
         "fixtures": 104,
         "coverage": [
@@ -7008,11 +7008,11 @@ window.WMRadarData = {
   "results": {
     "mode": "preTournament",
     "sourceLevel": "model",
-    "activeSource": "football-data",
-    "sourceLabel": "football-data.org",
-    "sourceNote": "Keine echten Ergebnisse von football-data.org; Tabellenansicht nutzt weiter Modellprojektion.",
-    "generatedAt": "2026-06-07T10:33:33.398Z",
-    "pollMinutes": 10,
+    "activeSource": "sportmonks",
+    "sourceLabel": "Sportmonks",
+    "sourceNote": "Keine echten Ergebnisse von Sportmonks; Tabellenansicht nutzt weiter Modellprojektion.",
+    "generatedAt": "2026-06-08T14:40:12.545Z",
+    "pollMinutes": 5,
     "syncError": null,
     "summary": {
       "providerMatches": 104,
