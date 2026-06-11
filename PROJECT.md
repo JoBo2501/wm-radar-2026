@@ -1,6 +1,6 @@
 # WM Radar 26 Projekthandbuch
 
-Stand: 2026-06-08
+Stand: 2026-06-10
 
 ## Ziel
 
@@ -84,8 +84,9 @@ Wichtige Dateien:
 - Datenlage & Transparenz: Datenqualitaet, Spielplan-Ampel, Ergebnis-Sync-Ampel. Routine-Importe bleiben in einem einklappbaren Detailbereich.
 - Provider-Testprotokoll: Sportmonks-Abdeckung, Feature-Coverage und naechste Pruefzeitpunkte fuer Pre-Match, Live und Post-Match.
 - Provider-Mapping und Predictions: Sportmonks-Fixture-IDs werden auf interne Match-IDs gemappt; Prediction-Verfuegbarkeit kann vorsichtig als Pre-Match-Signal in den Spielwert einfliessen.
+- Live-Predictions-Beta: Sportmonks hat In-Play-Win-Probabilities vor dem Auftakt am 2026-06-11 angekuendigt; die App fuehrt sie als Beta-Signal, bis echte Responses validiert sind.
 - Datenanbieter-Architektur: SportMonks ist die einzige sichtbare App-Datenquelle; Taktik- und Medienquellen bleiben separat als Analyseebene.
-- Feature Lab: Was-passiert-wenn, Momentum, Stuermer-Effizienz und Pre-Match-Scout als eigene Produktmodule mit Datenbedarf, Sportmonks-Feldern und Risiken.
+- Feature Lab: Was-passiert-wenn, Live-Predictions-Radar, Momentum, Stuermer-Effizienz und Pre-Match-Scout als eigene Produktmodule mit Datenbedarf, Sportmonks-Feldern und Risiken.
 - Pre-Match-Scout: Match-Dossier verbindet Prediction, Lineup-/Formationsstatus, Expected-XI-Abdeckung, Mapping-Vertrauen und konkrete Pruefpunkte vor Anpfiff.
 - Gruppen & Szenarien: Gruppen A-L mit Weiterkommen-und-Gegner-Relevanz.
 - Tabellen & Szenarien: Tabellenprojektion, direkte Qualifikanten, Best Thirds und moegliche naechste Gegner.
@@ -114,6 +115,7 @@ Wichtige Dateien:
 - Sportmonks als primaere WM-Datenquelle mit Setup-, Probe- und Enable-Workflow aktiviert.
 - Sportmonks-Probebericht als sichtbares Provider-Testprotokoll in die App integriert.
 - Sportmonks-Mapping-Generator und Prediction-Signal-Kanal vorbereitet.
+- Sportmonks-Meldung vom 2026-06-10 aufgenommen: Live-In-Play-Predictions Beta vor dem Auftakt am 2026-06-11, Widgets als Fallback, MCP als Developer-Hilfe.
 - Sichtbare Datenanbieter auf SportMonks konsolidiert und alte Provider-Pillars entfernt.
 - Sportmonks-Health-Check, Referenzspiel-Goldfall und Spieltags-Checkliste angelegt.
 - Differenzierende Sportmonks-Featuremodule als Feature Lab in Datenmodell und UI aufgenommen.
@@ -131,7 +133,7 @@ Wichtige Dateien:
 3. Poller waehrend Spieltagen mit `watch-results.cmd` laufen lassen.
 4. Sobald echte Resultate eintreffen, Mapping und Tabellen live pruefen.
 5. Provider-Mapping fuer K.o.-Runden gegen echte Providerdaten nachschaerfen.
-6. Phase-2-Felder xG, Pressure und Expected Lineups erst nach echten Sportmonks-Responses schaerfer gewichten.
+6. Live-Predictions-Beta, xG, Pressure und Expected Lineups erst nach echten Sportmonks-Responses schaerfer gewichten.
 
 ## GitHub und Deployment
 

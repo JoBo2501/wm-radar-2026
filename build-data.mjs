@@ -158,7 +158,7 @@ const data = {
     {
       grade: "A",
       title: "SportMonks",
-      text: "Primäre WM-Datenquelle für Fixtures, Teams, Status, Scores, Predictions, Lineups und verfügbare erweiterte Felder.",
+      text: "Primäre WM-Datenquelle für Fixtures, Teams, Status, Scores, Predictions, Live-Predictions-Beta, Lineups und verfügbare erweiterte Felder.",
       quality: 93,
     },
     {

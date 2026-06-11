@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-08T09:16:19.272Z",
+  "generatedAt": "2026-06-11T09:06:42.582Z",
   "provider": "sportmonks",
   "status": "ready",
   "summary": "72/72 Gruppenspiele auf Sportmonks gemappt, 72 mit Prediction-Signal.",
@@ -35,6 +35,84 @@
         27413323,
         27413324
       ],
+      "predictionSummary": {
+        "modelCount": 28,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 40.2,
+          "draw": 27.8,
+          "away": 32
+        },
+        "outcomeModels": [
+          {
+            "typeId": 238,
+            "home": 49.2,
+            "draw": 9.6,
+            "away": 41.3
+          },
+          {
+            "typeId": 237,
+            "home": 40.2,
+            "draw": 27.8,
+            "away": 32
+          },
+          {
+            "typeId": 233,
+            "home": 28.6,
+            "draw": 45.4,
+            "away": 26
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 13.2
+          },
+          {
+            "score": "1-0",
+            "value": 12.1
+          },
+          {
+            "score": "0-1",
+            "value": 10
+          },
+          {
+            "score": "0-0",
+            "value": 9.6
+          },
+          {
+            "score": "2-1",
+            "value": 8.4
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 235,
+            "yes": 42.4,
+            "no": 57.6,
+            "equal": null
+          },
+          {
+            "typeId": 327,
+            "yes": 2.9,
+            "no": 97.1,
+            "equal": null
+          },
+          {
+            "typeId": 326,
+            "yes": 4,
+            "no": 96,
+            "equal": null
+          },
+          {
+            "typeId": 332,
+            "yes": 28.9,
+            "no": 71.2,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -60,6 +138,72 @@
         27421150,
         27421151
       ],
+      "predictionSummary": {
+        "modelCount": 17,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 42,
+          "draw": 25.7,
+          "away": 32.3
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 42,
+            "draw": 25.7,
+            "away": 32.3
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 12.2
+          },
+          {
+            "score": "1-0",
+            "value": 9.8
+          },
+          {
+            "score": "2-1",
+            "value": 8.9
+          },
+          {
+            "score": "0-1",
+            "value": 8.4
+          },
+          {
+            "score": "1-2",
+            "value": 7.6
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 1679,
+            "yes": 15.6,
+            "no": 84.5,
+            "equal": null
+          },
+          {
+            "typeId": 235,
+            "yes": 50.5,
+            "no": 49.5,
+            "equal": null
+          },
+          {
+            "typeId": 327,
+            "yes": 3.7,
+            "no": 96.3,
+            "equal": null
+          },
+          {
+            "typeId": 236,
+            "yes": 28.5,
+            "no": 71.5,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -85,6 +229,84 @@
         27421160,
         27421161
       ],
+      "predictionSummary": {
+        "modelCount": 28,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 50.8,
+          "draw": 26.5,
+          "away": 22.7
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 50.8,
+            "draw": 26.5,
+            "away": 22.7
+          },
+          {
+            "typeId": 233,
+            "home": 39.3,
+            "draw": 43.8,
+            "away": 16.9
+          },
+          {
+            "typeId": 238,
+            "home": 61.6,
+            "draw": 8.9,
+            "away": 29.5
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-0",
+            "value": 13.3
+          },
+          {
+            "score": "1-1",
+            "value": 12.5
+          },
+          {
+            "score": "2-0",
+            "value": 9.6
+          },
+          {
+            "score": "2-1",
+            "value": 9.4
+          },
+          {
+            "score": "0-0",
+            "value": 8.9
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 334,
+            "yes": 76.9,
+            "no": 23.2,
+            "equal": null
+          },
+          {
+            "typeId": 331,
+            "yes": 43.9,
+            "no": 56.1,
+            "equal": null
+          },
+          {
+            "typeId": 330,
+            "yes": 19.4,
+            "no": 80.6,
+            "equal": null
+          },
+          {
+            "typeId": 231,
+            "yes": 44.7,
+            "no": 55.3,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -107,9 +329,87 @@
         27432765,
         27432767,
         27432769,
-        27432759,
-        27432771
+        27432771,
+        27432775
       ],
+      "predictionSummary": {
+        "modelCount": 29,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 45.9,
+          "draw": 25.8,
+          "away": 28.3
+        },
+        "outcomeModels": [
+          {
+            "typeId": 233,
+            "home": 35.3,
+            "draw": 44.6,
+            "away": 20.1
+          },
+          {
+            "typeId": 237,
+            "home": 45.9,
+            "draw": 25.8,
+            "away": 28.3
+          },
+          {
+            "typeId": 238,
+            "home": 54,
+            "draw": 7.2,
+            "away": 38.8
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 12.3
+          },
+          {
+            "score": "1-0",
+            "value": 10.6
+          },
+          {
+            "score": "2-1",
+            "value": 8.9
+          },
+          {
+            "score": "2-0",
+            "value": 8
+          },
+          {
+            "score": "0-1",
+            "value": 7.8
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 328,
+            "yes": 10.3,
+            "no": 89.7,
+            "equal": null
+          },
+          {
+            "typeId": 332,
+            "yes": 29.6,
+            "no": 70.4,
+            "equal": null
+          },
+          {
+            "typeId": 327,
+            "yes": 2.9,
+            "no": 97.1,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 74.4,
+            "no": 25.6,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -135,6 +435,72 @@
         27432712,
         27432731
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 18.8,
+          "draw": 25.4,
+          "away": 55.9
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 18.8,
+            "draw": 25.4,
+            "away": 55.9
+          }
+        ],
+        "topScores": [
+          {
+            "score": "0-1",
+            "value": 15.4
+          },
+          {
+            "score": "0-2",
+            "value": 11.8
+          },
+          {
+            "score": "1-1",
+            "value": 11
+          },
+          {
+            "score": "0-0",
+            "value": 10
+          },
+          {
+            "score": "1-2",
+            "value": 8.7
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 333,
+            "yes": 78.1,
+            "no": 21.9,
+            "equal": null
+          },
+          {
+            "typeId": 235,
+            "yes": 42,
+            "no": 58,
+            "equal": null
+          },
+          {
+            "typeId": 231,
+            "yes": 42.6,
+            "no": 57.4,
+            "equal": null
+          },
+          {
+            "typeId": 236,
+            "yes": 22,
+            "no": 78,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -160,6 +526,72 @@
         27432740,
         27432742
       ],
+      "predictionSummary": {
+        "modelCount": 17,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 42,
+          "draw": 26.8,
+          "away": 31.3
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 42,
+            "draw": 26.8,
+            "away": 31.3
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 12.7
+          },
+          {
+            "score": "1-0",
+            "value": 11.4
+          },
+          {
+            "score": "0-1",
+            "value": 9.5
+          },
+          {
+            "score": "2-1",
+            "value": 8.6
+          },
+          {
+            "score": "0-0",
+            "value": 8.4
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 234,
+            "yes": 70.8,
+            "no": 29.2,
+            "equal": null
+          },
+          {
+            "typeId": 330,
+            "yes": 15.2,
+            "no": 84.8,
+            "equal": null
+          },
+          {
+            "typeId": 326,
+            "yes": 4.9,
+            "no": 95.1,
+            "equal": null
+          },
+          {
+            "typeId": 331,
+            "yes": 38.1,
+            "no": 61.9,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -176,15 +608,81 @@
       "dateDeltaHours": null,
       "predictionAvailable": true,
       "predictionKeys": [
-        27455886,
-        27455887,
         27455874,
         27455878,
         27455889,
         27455879,
         27455888,
-        27455885
+        27455885,
+        27455880,
+        27455882
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 32.8,
+          "draw": 23.4,
+          "away": 44
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 32.8,
+            "draw": 23.4,
+            "away": 44
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 10.6
+          },
+          {
+            "score": "Other_2",
+            "value": 9
+          },
+          {
+            "score": "1-2",
+            "value": 8.9
+          },
+          {
+            "score": "2-1",
+            "value": 7.6
+          },
+          {
+            "score": "0-1",
+            "value": 7.5
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 231,
+            "yes": 61.6,
+            "no": 38.5,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 81.8,
+            "no": 18.2,
+            "equal": null
+          },
+          {
+            "typeId": 327,
+            "yes": 9.3,
+            "no": 90.7,
+            "equal": null
+          },
+          {
+            "typeId": 235,
+            "yes": 60.3,
+            "no": 39.8,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -210,6 +708,72 @@
         27455898,
         27455900
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 22.8,
+          "draw": 21.8,
+          "away": 55.5
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 22.8,
+            "draw": 21.8,
+            "away": 55.5
+          }
+        ],
+        "topScores": [
+          {
+            "score": "Other_2",
+            "value": 13.3
+          },
+          {
+            "score": "1-1",
+            "value": 9.7
+          },
+          {
+            "score": "1-2",
+            "value": 9.5
+          },
+          {
+            "score": "0-1",
+            "value": 8.7
+          },
+          {
+            "score": "0-2",
+            "value": 8.5
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 236,
+            "yes": 38.9,
+            "no": 61.2,
+            "equal": null
+          },
+          {
+            "typeId": 326,
+            "yes": 3.7,
+            "no": 96.3,
+            "equal": null
+          },
+          {
+            "typeId": 231,
+            "yes": 59.1,
+            "no": 40.9,
+            "equal": null
+          },
+          {
+            "typeId": 1679,
+            "yes": 24.7,
+            "no": 75.4,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -235,6 +799,72 @@
         27455928,
         27455929
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 65.7,
+          "draw": 21,
+          "away": 13.3
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 65.7,
+            "draw": 21,
+            "away": 13.3
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-0",
+            "value": 14
+          },
+          {
+            "score": "Other_1",
+            "value": 13.3
+          },
+          {
+            "score": "2-0",
+            "value": 13
+          },
+          {
+            "score": "1-1",
+            "value": 9.2
+          },
+          {
+            "score": "2-1",
+            "value": 9
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 231,
+            "yes": 44,
+            "no": 56,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 73.7,
+            "no": 26.3,
+            "equal": null
+          },
+          {
+            "typeId": 235,
+            "yes": 49.7,
+            "no": 50.3,
+            "equal": null
+          },
+          {
+            "typeId": 236,
+            "yes": 28.6,
+            "no": 71.4,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -260,6 +890,72 @@
         27455864,
         27455865
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 44.3,
+          "draw": 25.5,
+          "away": 30.2
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 44.3,
+            "draw": 25.5,
+            "away": 30.2
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 12.1
+          },
+          {
+            "score": "1-0",
+            "value": 10.2
+          },
+          {
+            "score": "2-1",
+            "value": 9.1
+          },
+          {
+            "score": "0-1",
+            "value": 8.1
+          },
+          {
+            "score": "2-0",
+            "value": 7.6
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 231,
+            "yes": 54.1,
+            "no": 45.9,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 75,
+            "no": 25,
+            "equal": null
+          },
+          {
+            "typeId": 235,
+            "yes": 50.5,
+            "no": 49.5,
+            "equal": null
+          },
+          {
+            "typeId": 236,
+            "yes": 28.5,
+            "no": 71.5,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -285,6 +981,72 @@
         27455911,
         27455913
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 41.9,
+          "draw": 27.7,
+          "away": 30.5
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 41.9,
+            "draw": 27.7,
+            "away": 30.5
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 13
+          },
+          {
+            "score": "1-0",
+            "value": 12.2
+          },
+          {
+            "score": "0-1",
+            "value": 10.1
+          },
+          {
+            "score": "0-0",
+            "value": 9.5
+          },
+          {
+            "score": "2-1",
+            "value": 8.4
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 231,
+            "yes": 47.6,
+            "no": 52.5,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 68.3,
+            "no": 31.7,
+            "equal": null
+          },
+          {
+            "typeId": 235,
+            "yes": 42.1,
+            "no": 58,
+            "equal": null
+          },
+          {
+            "typeId": 236,
+            "yes": 21.4,
+            "no": 78.6,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -306,10 +1068,76 @@
         27468537,
         27468540,
         27468547,
-        27468550,
-        27468551,
-        27468543
+        27468543,
+        27468544,
+        27468538
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 45.4,
+          "draw": 25.3,
+          "away": 29.4
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 45.4,
+            "draw": 25.3,
+            "away": 29.4
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 12
+          },
+          {
+            "score": "1-0",
+            "value": 10.1
+          },
+          {
+            "score": "2-1",
+            "value": 9.2
+          },
+          {
+            "score": "0-1",
+            "value": 7.8
+          },
+          {
+            "score": "2-0",
+            "value": 7.7
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 231,
+            "yes": 54.5,
+            "no": 45.5,
+            "equal": null
+          },
+          {
+            "typeId": 330,
+            "yes": 19.6,
+            "no": 80.4,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 75.5,
+            "no": 24.5,
+            "equal": null
+          },
+          {
+            "typeId": 326,
+            "yes": 7,
+            "no": 93,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -335,6 +1163,72 @@
         27468570,
         27468571
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 67,
+          "draw": 21.1,
+          "away": 12
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 67,
+            "draw": 21.1,
+            "away": 12
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-0",
+            "value": 15.1
+          },
+          {
+            "score": "2-0",
+            "value": 14
+          },
+          {
+            "score": "Other_1",
+            "value": 12.7
+          },
+          {
+            "score": "1-1",
+            "value": 9.4
+          },
+          {
+            "score": "2-1",
+            "value": 8.9
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 235,
+            "yes": 46.7,
+            "no": 53.3,
+            "equal": null
+          },
+          {
+            "typeId": 327,
+            "yes": 0.5,
+            "no": 99.5,
+            "equal": null
+          },
+          {
+            "typeId": 1679,
+            "yes": 16.3,
+            "no": 83.7,
+            "equal": null
+          },
+          {
+            "typeId": 236,
+            "yes": 25.7,
+            "no": 74.4,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -360,6 +1254,72 @@
         27468533,
         27468520
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 54.3,
+          "draw": 24,
+          "away": 21.8
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 54.3,
+            "draw": 24,
+            "away": 21.8
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-0",
+            "value": 11.7
+          },
+          {
+            "score": "1-1",
+            "value": 11.3
+          },
+          {
+            "score": "Other_1",
+            "value": 9.8
+          },
+          {
+            "score": "2-0",
+            "value": 9.8
+          },
+          {
+            "score": "2-1",
+            "value": 9.4
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 327,
+            "yes": 1.7,
+            "no": 98.4,
+            "equal": null
+          },
+          {
+            "typeId": 334,
+            "yes": 79.8,
+            "no": 20.3,
+            "equal": null
+          },
+          {
+            "typeId": 331,
+            "yes": 49.6,
+            "no": 50.4,
+            "equal": null
+          },
+          {
+            "typeId": 330,
+            "yes": 24.4,
+            "no": 75.6,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -385,6 +1345,72 @@
         27468560,
         27468561
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 25.3,
+          "draw": 26.6,
+          "away": 48.2
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 25.3,
+            "draw": 26.6,
+            "away": 48.2
+          }
+        ],
+        "topScores": [
+          {
+            "score": "0-1",
+            "value": 13
+          },
+          {
+            "score": "1-1",
+            "value": 12.5
+          },
+          {
+            "score": "0-2",
+            "value": 9.3
+          },
+          {
+            "score": "0-0",
+            "value": 9.1
+          },
+          {
+            "score": "1-2",
+            "value": 9
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 333,
+            "yes": 74.9,
+            "no": 25.1,
+            "equal": null
+          },
+          {
+            "typeId": 231,
+            "yes": 47,
+            "no": 53,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 69.1,
+            "no": 30.9,
+            "equal": null
+          },
+          {
+            "typeId": 334,
+            "yes": 58.1,
+            "no": 41.9,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -410,6 +1436,72 @@
         27472179,
         27472187
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 56.2,
+          "draw": 23.4,
+          "away": 20.5
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 56.2,
+            "draw": 23.4,
+            "away": 20.5
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-0",
+            "value": 11.7
+          },
+          {
+            "score": "1-1",
+            "value": 11.1
+          },
+          {
+            "score": "2-0",
+            "value": 10.2
+          },
+          {
+            "score": "Other_1",
+            "value": 10.2
+          },
+          {
+            "score": "2-1",
+            "value": 9.7
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 234,
+            "yes": 75.3,
+            "no": 24.7,
+            "equal": null
+          },
+          {
+            "typeId": 236,
+            "yes": 28.9,
+            "no": 71.2,
+            "equal": null
+          },
+          {
+            "typeId": 326,
+            "yes": 10.3,
+            "no": 89.7,
+            "equal": null
+          },
+          {
+            "typeId": 231,
+            "yes": 50.7,
+            "no": 49.3,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -435,6 +1527,72 @@
         27472171,
         27472159
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 52.7,
+          "draw": 23.1,
+          "away": 24.3
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 52.7,
+            "draw": 23.1,
+            "away": 24.3
+          }
+        ],
+        "topScores": [
+          {
+            "score": "Other_1",
+            "value": 10.9
+          },
+          {
+            "score": "1-1",
+            "value": 10.8
+          },
+          {
+            "score": "2-1",
+            "value": 9.7
+          },
+          {
+            "score": "1-0",
+            "value": 9.4
+          },
+          {
+            "score": "2-0",
+            "value": 8.5
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 234,
+            "yes": 79.3,
+            "no": 20.7,
+            "equal": null
+          },
+          {
+            "typeId": 235,
+            "yes": 56.6,
+            "no": 43.4,
+            "equal": null
+          },
+          {
+            "typeId": 333,
+            "yes": 60.9,
+            "no": 39.1,
+            "equal": null
+          },
+          {
+            "typeId": 328,
+            "yes": 10,
+            "no": 90,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -460,6 +1618,72 @@
         27472197,
         27472205
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 15.8,
+          "draw": 22.1,
+          "away": 62.2
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 15.8,
+            "draw": 22.1,
+            "away": 62.2
+          }
+        ],
+        "topScores": [
+          {
+            "score": "0-1",
+            "value": 12.9
+          },
+          {
+            "score": "Other_2",
+            "value": 12.1
+          },
+          {
+            "score": "0-2",
+            "value": 11.8
+          },
+          {
+            "score": "1-1",
+            "value": 10.3
+          },
+          {
+            "score": "1-2",
+            "value": 9.6
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 231,
+            "yes": 46.9,
+            "no": 53.1,
+            "equal": null
+          },
+          {
+            "typeId": 333,
+            "yes": 83.6,
+            "no": 16.4,
+            "equal": null
+          },
+          {
+            "typeId": 330,
+            "yes": 4.4,
+            "no": 95.6,
+            "equal": null
+          },
+          {
+            "typeId": 235,
+            "yes": 50,
+            "no": 50,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -485,6 +1709,72 @@
         27477669,
         27477673
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 50.8,
+          "draw": 25.2,
+          "away": 24.1
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 50.8,
+            "draw": 25.2,
+            "away": 24.1
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-0",
+            "value": 12
+          },
+          {
+            "score": "1-1",
+            "value": 11.9
+          },
+          {
+            "score": "2-1",
+            "value": 9.4
+          },
+          {
+            "score": "2-0",
+            "value": 9.4
+          },
+          {
+            "score": "0-0",
+            "value": 7.6
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 235,
+            "yes": 47.9,
+            "no": 52.2,
+            "equal": null
+          },
+          {
+            "typeId": 231,
+            "yes": 50.4,
+            "no": 49.7,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 72.8,
+            "no": 27.2,
+            "equal": null
+          },
+          {
+            "typeId": 236,
+            "yes": 26.3,
+            "no": 73.8,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -510,6 +1800,72 @@
         27477703,
         27477708
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 60.8,
+          "draw": 21.3,
+          "away": 17.9
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 60.8,
+            "draw": 21.3,
+            "away": 17.9
+          }
+        ],
+        "topScores": [
+          {
+            "score": "Other_1",
+            "value": 13
+          },
+          {
+            "score": "1-0",
+            "value": 11.2
+          },
+          {
+            "score": "2-0",
+            "value": 10.9
+          },
+          {
+            "score": "1-1",
+            "value": 9.9
+          },
+          {
+            "score": "2-1",
+            "value": 9.6
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 231,
+            "yes": 51,
+            "no": 49,
+            "equal": null
+          },
+          {
+            "typeId": 332,
+            "yes": 21.2,
+            "no": 78.8,
+            "equal": null
+          },
+          {
+            "typeId": 328,
+            "yes": 6.7,
+            "no": 93.4,
+            "equal": null
+          },
+          {
+            "typeId": 235,
+            "yes": 54.6,
+            "no": 45.5,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -535,6 +1891,72 @@
         27477722,
         27477724
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 60,
+          "draw": 22.8,
+          "away": 17.2
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 60,
+            "draw": 22.8,
+            "away": 17.2
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-0",
+            "value": 12.7
+          },
+          {
+            "score": "2-0",
+            "value": 11.4
+          },
+          {
+            "score": "Other_1",
+            "value": 11
+          },
+          {
+            "score": "1-1",
+            "value": 10.7
+          },
+          {
+            "score": "2-1",
+            "value": 9.7
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 234,
+            "yes": 74.1,
+            "no": 25.9,
+            "equal": null
+          },
+          {
+            "typeId": 231,
+            "yes": 47.7,
+            "no": 52.4,
+            "equal": null
+          },
+          {
+            "typeId": 235,
+            "yes": 49.4,
+            "no": 50.6,
+            "equal": null
+          },
+          {
+            "typeId": 236,
+            "yes": 27.7,
+            "no": 72.4,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -551,15 +1973,81 @@
       "dateDeltaHours": null,
       "predictionAvailable": true,
       "predictionKeys": [
-        27477682,
-        27477688,
-        27477689,
-        27477690,
         27477697,
         27477691,
         27477692,
-        27477683
+        27477683,
+        27477684,
+        27477685,
+        27477686,
+        27477693
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 46.1,
+          "draw": 23.6,
+          "away": 30.4
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 46.1,
+            "draw": 23.6,
+            "away": 30.4
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 10.8
+          },
+          {
+            "score": "2-1",
+            "value": 9.2
+          },
+          {
+            "score": "Other_1",
+            "value": 9.2
+          },
+          {
+            "score": "1-0",
+            "value": 8
+          },
+          {
+            "score": "1-2",
+            "value": 7.3
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 327,
+            "yes": 4.7,
+            "no": 95.3,
+            "equal": null
+          },
+          {
+            "typeId": 331,
+            "yes": 48.9,
+            "no": 51.1,
+            "equal": null
+          },
+          {
+            "typeId": 330,
+            "yes": 23.8,
+            "no": 76.2,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 80.9,
+            "no": 19.1,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -576,15 +2064,81 @@
       "dateDeltaHours": null,
       "predictionAvailable": true,
       "predictionKeys": [
+        27477739,
         27477745,
         27477719,
         27477721,
         27477723,
         27477727,
         27477744,
-        27477731,
-        27477739
+        27477737
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 29.3,
+          "draw": 26.1,
+          "away": 44.8
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 29.3,
+            "draw": 26.1,
+            "away": 44.8
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 12.4
+          },
+          {
+            "score": "0-1",
+            "value": 11
+          },
+          {
+            "score": "1-2",
+            "value": 9
+          },
+          {
+            "score": "1-0",
+            "value": 8.5
+          },
+          {
+            "score": "0-2",
+            "value": 8
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 330,
+            "yes": 10,
+            "no": 90,
+            "equal": null
+          },
+          {
+            "typeId": 327,
+            "yes": 6,
+            "no": 94,
+            "equal": null
+          },
+          {
+            "typeId": 231,
+            "yes": 51.9,
+            "no": 48.2,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 72.9,
+            "no": 27.1,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -610,6 +2164,72 @@
         27484535,
         27484536
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 19.1,
+          "draw": 25.9,
+          "away": 55
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 19.1,
+            "draw": 25.9,
+            "away": 55
+          }
+        ],
+        "topScores": [
+          {
+            "score": "0-1",
+            "value": 15.6
+          },
+          {
+            "score": "0-2",
+            "value": 11.8
+          },
+          {
+            "score": "1-1",
+            "value": 11.5
+          },
+          {
+            "score": "0-0",
+            "value": 10.4
+          },
+          {
+            "score": "1-2",
+            "value": 8.8
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 327,
+            "yes": 6.7,
+            "no": 93.3,
+            "equal": null
+          },
+          {
+            "typeId": 231,
+            "yes": 41.5,
+            "no": 58.5,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 66.3,
+            "no": 33.7,
+            "equal": null
+          },
+          {
+            "typeId": 235,
+            "yes": 40.1,
+            "no": 60,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -626,15 +2246,81 @@
       "dateDeltaHours": null,
       "predictionAvailable": true,
       "predictionKeys": [
-        27484556,
         27484550,
         27484561,
         27484553,
         27484554,
         27484558,
         27484559,
-        27484560
+        27484560,
+        27484546
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 36,
+          "draw": 27,
+          "away": 37.1
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 36,
+            "draw": 27,
+            "away": 37.1
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 12.8
+          },
+          {
+            "score": "0-1",
+            "value": 10.3
+          },
+          {
+            "score": "1-0",
+            "value": 10.1
+          },
+          {
+            "score": "0-0",
+            "value": 8.1
+          },
+          {
+            "score": "1-2",
+            "value": 8.1
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 234,
+            "yes": 71.6,
+            "no": 28.4,
+            "equal": null
+          },
+          {
+            "typeId": 327,
+            "yes": 4,
+            "no": 96,
+            "equal": null
+          },
+          {
+            "typeId": 1679,
+            "yes": 12.9,
+            "no": 87.1,
+            "equal": null
+          },
+          {
+            "typeId": 334,
+            "yes": 68.5,
+            "no": 31.5,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -658,8 +2344,74 @@
         27484564,
         27484565,
         27484569,
-        27484588
+        27484578
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 50.2,
+          "draw": 26.1,
+          "away": 23.7
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 50.2,
+            "draw": 26.1,
+            "away": 23.7
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-0",
+            "value": 13.3
+          },
+          {
+            "score": "1-1",
+            "value": 11.9
+          },
+          {
+            "score": "2-0",
+            "value": 9.8
+          },
+          {
+            "score": "0-0",
+            "value": 9.1
+          },
+          {
+            "score": "2-1",
+            "value": 8.9
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 326,
+            "yes": 6.7,
+            "no": 93.3,
+            "equal": null
+          },
+          {
+            "typeId": 330,
+            "yes": 19,
+            "no": 81,
+            "equal": null
+          },
+          {
+            "typeId": 231,
+            "yes": 47.1,
+            "no": 52.9,
+            "equal": null
+          },
+          {
+            "typeId": 235,
+            "yes": 44.3,
+            "no": 55.8,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -685,6 +2437,72 @@
         27484568,
         27484587
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 51,
+          "draw": 27.4,
+          "away": 21.7
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 51,
+            "draw": 27.4,
+            "away": 21.7
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-0",
+            "value": 15.4
+          },
+          {
+            "score": "1-1",
+            "value": 12.4
+          },
+          {
+            "score": "0-0",
+            "value": 11
+          },
+          {
+            "score": "2-0",
+            "value": 10.8
+          },
+          {
+            "score": "0-1",
+            "value": 8.8
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 235,
+            "yes": 38.1,
+            "no": 62,
+            "equal": null
+          },
+          {
+            "typeId": 236,
+            "yes": 18.4,
+            "no": 81.7,
+            "equal": null
+          },
+          {
+            "typeId": 334,
+            "yes": 74.7,
+            "no": 25.3,
+            "equal": null
+          },
+          {
+            "typeId": 331,
+            "yes": 40.6,
+            "no": 59.5,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -710,6 +2528,72 @@
         27492331,
         27492321
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 36.8,
+          "draw": 26.3,
+          "away": 37
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 36.8,
+            "draw": 26.3,
+            "away": 37
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 12.5
+          },
+          {
+            "score": "1-0",
+            "value": 9.7
+          },
+          {
+            "score": "0-1",
+            "value": 9.7
+          },
+          {
+            "score": "1-2",
+            "value": 8.1
+          },
+          {
+            "score": "2-1",
+            "value": 8.1
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 231,
+            "yes": 52.6,
+            "no": 47.4,
+            "equal": null
+          },
+          {
+            "typeId": 326,
+            "yes": 4.3,
+            "no": 95.7,
+            "equal": null
+          },
+          {
+            "typeId": 328,
+            "yes": 14,
+            "no": 86,
+            "equal": null
+          },
+          {
+            "typeId": 327,
+            "yes": 4.4,
+            "no": 95.6,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -735,6 +2619,72 @@
         27492339,
         27492342
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 40.9,
+          "draw": 25.1,
+          "away": 34.1
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 40.9,
+            "draw": 25.1,
+            "away": 34.1
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 11.5
+          },
+          {
+            "score": "1-0",
+            "value": 8.8
+          },
+          {
+            "score": "2-1",
+            "value": 8.5
+          },
+          {
+            "score": "0-1",
+            "value": 7.9
+          },
+          {
+            "score": "1-2",
+            "value": 7.7
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 231,
+            "yes": 57.5,
+            "no": 42.5,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 77.3,
+            "no": 22.7,
+            "equal": null
+          },
+          {
+            "typeId": 235,
+            "yes": 54.3,
+            "no": 45.7,
+            "equal": null
+          },
+          {
+            "typeId": 326,
+            "yes": 6.9,
+            "no": 93.1,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -760,6 +2710,72 @@
         27492358,
         27492349
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 25.7,
+          "draw": 23.8,
+          "away": 50.6
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 25.7,
+            "draw": 23.8,
+            "away": 50.6
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 11.2
+          },
+          {
+            "score": "0-1",
+            "value": 9.7
+          },
+          {
+            "score": "1-2",
+            "value": 9.6
+          },
+          {
+            "score": "Other_2",
+            "value": 9.5
+          },
+          {
+            "score": "0-2",
+            "value": 8.3
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 234,
+            "yes": 78.1,
+            "no": 21.9,
+            "equal": null
+          },
+          {
+            "typeId": 1679,
+            "yes": 19,
+            "no": 81.1,
+            "equal": null
+          },
+          {
+            "typeId": 328,
+            "yes": 24.3,
+            "no": 75.7,
+            "equal": null
+          },
+          {
+            "typeId": 231,
+            "yes": 56.1,
+            "no": 43.9,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -785,6 +2801,72 @@
         27497391,
         27497393
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 57.3,
+          "draw": 23.6,
+          "away": 19.3
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 57.3,
+            "draw": 23.6,
+            "away": 19.3
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-0",
+            "value": 13.6
+          },
+          {
+            "score": "2-0",
+            "value": 11.6
+          },
+          {
+            "score": "1-1",
+            "value": 10.7
+          },
+          {
+            "score": "Other_1",
+            "value": 9.1
+          },
+          {
+            "score": "2-1",
+            "value": 9
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 330,
+            "yes": 23.8,
+            "no": 76.2,
+            "equal": null
+          },
+          {
+            "typeId": 231,
+            "yes": 45.7,
+            "no": 54.3,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 72,
+            "no": 28,
+            "equal": null
+          },
+          {
+            "typeId": 235,
+            "yes": 46.9,
+            "no": 53.1,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -801,15 +2883,81 @@
       "dateDeltaHours": 24,
       "predictionAvailable": true,
       "predictionKeys": [
+        27497419,
         27497417,
         27497396,
-        27497408,
-        27497411,
         27497386,
         27497388,
         27497384,
-        27497394
+        27497394,
+        27497398
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 52.9,
+          "draw": 23.8,
+          "away": 23.3
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 52.9,
+            "draw": 23.8,
+            "away": 23.3
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 11.2
+          },
+          {
+            "score": "1-0",
+            "value": 10.6
+          },
+          {
+            "score": "2-1",
+            "value": 9.7
+          },
+          {
+            "score": "Other_1",
+            "value": 9.6
+          },
+          {
+            "score": "2-0",
+            "value": 9.1
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 328,
+            "yes": 8.5,
+            "no": 91.5,
+            "equal": null
+          },
+          {
+            "typeId": 332,
+            "yes": 26.1,
+            "no": 73.9,
+            "equal": null
+          },
+          {
+            "typeId": 236,
+            "yes": 30.7,
+            "no": 69.3,
+            "equal": null
+          },
+          {
+            "typeId": 231,
+            "yes": 53.9,
+            "no": 46.2,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -831,10 +2979,76 @@
         27497422,
         27497409,
         27497415,
-        27497429,
         27497425,
-        27497426
+        27497426,
+        27497427
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 52.2,
+          "draw": 23.4,
+          "away": 24.4
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 52.2,
+            "draw": 23.4,
+            "away": 24.4
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 10.9
+          },
+          {
+            "score": "Other_1",
+            "value": 10.4
+          },
+          {
+            "score": "2-1",
+            "value": 9.7
+          },
+          {
+            "score": "1-0",
+            "value": 9.6
+          },
+          {
+            "score": "2-0",
+            "value": 8.5
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 1679,
+            "yes": 20,
+            "no": 80,
+            "equal": null
+          },
+          {
+            "typeId": 331,
+            "yes": 51.7,
+            "no": 48.3,
+            "equal": null
+          },
+          {
+            "typeId": 334,
+            "yes": 80.8,
+            "no": 19.2,
+            "equal": null
+          },
+          {
+            "typeId": 235,
+            "yes": 55.9,
+            "no": 44.2,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -854,12 +3068,78 @@
         27497366,
         27497381,
         27497367,
-        27497372,
-        27497373,
         27497376,
         27497378,
-        27497379
+        27497379,
+        27497368,
+        27497370
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 51.3,
+          "draw": 23.5,
+          "away": 25.2
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 51.3,
+            "draw": 23.5,
+            "away": 25.2
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 11
+          },
+          {
+            "score": "Other_1",
+            "value": 9.9
+          },
+          {
+            "score": "2-1",
+            "value": 9.6
+          },
+          {
+            "score": "1-0",
+            "value": 9.6
+          },
+          {
+            "score": "2-0",
+            "value": 8.4
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 231,
+            "yes": 56.6,
+            "no": 43.5,
+            "equal": null
+          },
+          {
+            "typeId": 327,
+            "yes": 3,
+            "no": 97,
+            "equal": null
+          },
+          {
+            "typeId": 330,
+            "yes": 25.2,
+            "no": 74.9,
+            "equal": null
+          },
+          {
+            "typeId": 333,
+            "yes": 61.7,
+            "no": 38.3,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -885,6 +3165,72 @@
         27513450,
         27513459
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 45.9,
+          "draw": 27,
+          "away": 27.2
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 45.9,
+            "draw": 27,
+            "away": 27.2
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-0",
+            "value": 13.2
+          },
+          {
+            "score": "1-1",
+            "value": 12.5
+          },
+          {
+            "score": "0-0",
+            "value": 9.6
+          },
+          {
+            "score": "0-1",
+            "value": 9.2
+          },
+          {
+            "score": "2-0",
+            "value": 9.2
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 231,
+            "yes": 45.8,
+            "no": 54.2,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 68,
+            "no": 32,
+            "equal": null
+          },
+          {
+            "typeId": 236,
+            "yes": 21.3,
+            "no": 78.8,
+            "equal": null
+          },
+          {
+            "typeId": 1679,
+            "yes": 11,
+            "no": 89,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -910,6 +3256,72 @@
         27513462,
         27513464
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 20.7,
+          "draw": 24.4,
+          "away": 54.9
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 20.7,
+            "draw": 24.4,
+            "away": 54.9
+          }
+        ],
+        "topScores": [
+          {
+            "score": "0-1",
+            "value": 12.6
+          },
+          {
+            "score": "1-1",
+            "value": 11.6
+          },
+          {
+            "score": "0-2",
+            "value": 10.5
+          },
+          {
+            "score": "1-2",
+            "value": 9.6
+          },
+          {
+            "score": "Other_2",
+            "value": 8.7
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 235,
+            "yes": 47.6,
+            "no": 52.5,
+            "equal": null
+          },
+          {
+            "typeId": 231,
+            "yes": 48.5,
+            "no": 51.6,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 72.8,
+            "no": 27.3,
+            "equal": null
+          },
+          {
+            "typeId": 236,
+            "yes": 25.9,
+            "no": 74.1,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -926,15 +3338,81 @@
       "dateDeltaHours": null,
       "predictionAvailable": true,
       "predictionKeys": [
+        27513430,
         27513417,
         27513420,
         27513421,
         27513432,
         27513422,
         27513423,
-        27513425,
-        27513418
+        27513425
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 67.4,
+          "draw": 20.5,
+          "away": 12.2
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 67.4,
+            "draw": 20.5,
+            "away": 12.2
+          }
+        ],
+        "topScores": [
+          {
+            "score": "Other_1",
+            "value": 14.3
+          },
+          {
+            "score": "1-0",
+            "value": 13.8
+          },
+          {
+            "score": "2-0",
+            "value": 13.2
+          },
+          {
+            "score": "1-1",
+            "value": 9.3
+          },
+          {
+            "score": "2-1",
+            "value": 9.1
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 332,
+            "yes": 13.5,
+            "no": 86.5,
+            "equal": null
+          },
+          {
+            "typeId": 231,
+            "yes": 43.3,
+            "no": 56.7,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 74.1,
+            "no": 25.9,
+            "equal": null
+          },
+          {
+            "typeId": 327,
+            "yes": 0.6,
+            "no": 99.4,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -960,6 +3438,72 @@
         27513441,
         27513442
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 49.9,
+          "draw": 24,
+          "away": 26.1
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 49.9,
+            "draw": 24,
+            "away": 26.1
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 11.3
+          },
+          {
+            "score": "1-0",
+            "value": 9.8
+          },
+          {
+            "score": "2-1",
+            "value": 9.6
+          },
+          {
+            "score": "Other_1",
+            "value": 9.1
+          },
+          {
+            "score": "2-0",
+            "value": 8.3
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 330,
+            "yes": 23.6,
+            "no": 76.4,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 77.6,
+            "no": 22.4,
+            "equal": null
+          },
+          {
+            "typeId": 235,
+            "yes": 54.2,
+            "no": 45.9,
+            "equal": null
+          },
+          {
+            "typeId": 332,
+            "yes": 29.3,
+            "no": 70.7,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -985,6 +3529,72 @@
         27513489,
         27513494
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 46.8,
+          "draw": 26.8,
+          "away": 26.5
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 46.8,
+            "draw": 26.8,
+            "away": 26.5
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-0",
+            "value": 13
+          },
+          {
+            "score": "1-1",
+            "value": 12.5
+          },
+          {
+            "score": "0-0",
+            "value": 9.3
+          },
+          {
+            "score": "2-0",
+            "value": 9.2
+          },
+          {
+            "score": "0-1",
+            "value": 9.1
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 235,
+            "yes": 42.3,
+            "no": 57.7,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 68.5,
+            "no": 31.5,
+            "equal": null
+          },
+          {
+            "typeId": 236,
+            "yes": 21.6,
+            "no": 78.5,
+            "equal": null
+          },
+          {
+            "typeId": 1679,
+            "yes": 11.2,
+            "no": 88.8,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1001,15 +3611,81 @@
       "dateDeltaHours": null,
       "predictionAvailable": true,
       "predictionKeys": [
+        27528950,
+        27528957,
         27528956,
         27528958,
         27528959,
         27528960,
-        27528964,
         27528951,
-        27528952,
-        27528955
+        27528952
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 25.1,
+          "draw": 26.6,
+          "away": 48.3
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 25.1,
+            "draw": 26.6,
+            "away": 48.3
+          }
+        ],
+        "topScores": [
+          {
+            "score": "0-1",
+            "value": 12.9
+          },
+          {
+            "score": "1-1",
+            "value": 12.4
+          },
+          {
+            "score": "0-2",
+            "value": 9.4
+          },
+          {
+            "score": "1-2",
+            "value": 9
+          },
+          {
+            "score": "0-0",
+            "value": 9
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 231,
+            "yes": 47.5,
+            "no": 52.6,
+            "equal": null
+          },
+          {
+            "typeId": 1679,
+            "yes": 11.9,
+            "no": 88.1,
+            "equal": null
+          },
+          {
+            "typeId": 236,
+            "yes": 22.7,
+            "no": 77.4,
+            "equal": null
+          },
+          {
+            "typeId": 334,
+            "yes": 58.3,
+            "no": 41.8,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1035,6 +3711,72 @@
         27528939,
         27528940
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 43.9,
+          "draw": 24.9,
+          "away": 31.2
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 43.9,
+            "draw": 24.9,
+            "away": 31.2
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 11.5
+          },
+          {
+            "score": "1-0",
+            "value": 9.1
+          },
+          {
+            "score": "2-1",
+            "value": 8.9
+          },
+          {
+            "score": "0-1",
+            "value": 7.6
+          },
+          {
+            "score": "Other_1",
+            "value": 7.4
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 326,
+            "yes": 7.7,
+            "no": 92.4,
+            "equal": null
+          },
+          {
+            "typeId": 231,
+            "yes": 56.9,
+            "no": 43.1,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 77.2,
+            "no": 22.8,
+            "equal": null
+          },
+          {
+            "typeId": 235,
+            "yes": 54,
+            "no": 46.1,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1060,6 +3802,72 @@
         27528972,
         27528973
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 69.9,
+          "draw": 19.8,
+          "away": 10.4
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 69.9,
+            "draw": 19.8,
+            "away": 10.4
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-0",
+            "value": 15
+          },
+          {
+            "score": "2-0",
+            "value": 14.6
+          },
+          {
+            "score": "Other_1",
+            "value": 14.5
+          },
+          {
+            "score": "3-0",
+            "value": 9.5
+          },
+          {
+            "score": "2-1",
+            "value": 8.6
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 231,
+            "yes": 39.7,
+            "no": 60.4,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 72.8,
+            "no": 27.2,
+            "equal": null
+          },
+          {
+            "typeId": 235,
+            "yes": 48.4,
+            "no": 51.6,
+            "equal": null
+          },
+          {
+            "typeId": 236,
+            "yes": 27.4,
+            "no": 72.6,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1085,6 +3893,72 @@
         27532590,
         27532594
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 40.2,
+          "draw": 24.8,
+          "away": 35.1
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 40.2,
+            "draw": 24.8,
+            "away": 35.1
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 11.5
+          },
+          {
+            "score": "2-1",
+            "value": 8.6
+          },
+          {
+            "score": "1-0",
+            "value": 8.3
+          },
+          {
+            "score": "1-2",
+            "value": 8
+          },
+          {
+            "score": "0-1",
+            "value": 7.6
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 231,
+            "yes": 58.6,
+            "no": 41.4,
+            "equal": null
+          },
+          {
+            "typeId": 326,
+            "yes": 6.7,
+            "no": 93.3,
+            "equal": null
+          },
+          {
+            "typeId": 1679,
+            "yes": 19.2,
+            "no": 80.8,
+            "equal": null
+          },
+          {
+            "typeId": 334,
+            "yes": 73.9,
+            "no": 26.1,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1110,6 +3984,72 @@
         27532566,
         27532565
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 23,
+          "draw": 24.4,
+          "away": 52.7
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 23,
+            "draw": 24.4,
+            "away": 52.7
+          }
+        ],
+        "topScores": [
+          {
+            "score": "0-1",
+            "value": 11.6
+          },
+          {
+            "score": "1-1",
+            "value": 11.5
+          },
+          {
+            "score": "0-2",
+            "value": 9.6
+          },
+          {
+            "score": "1-2",
+            "value": 9.5
+          },
+          {
+            "score": "Other_2",
+            "value": 8.7
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 236,
+            "yes": 28.2,
+            "no": 71.9,
+            "equal": null
+          },
+          {
+            "typeId": 1679,
+            "yes": 16,
+            "no": 84,
+            "equal": null
+          },
+          {
+            "typeId": 334,
+            "yes": 57.8,
+            "no": 42.2,
+            "equal": null
+          },
+          {
+            "typeId": 330,
+            "yes": 7.9,
+            "no": 92.1,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1135,6 +4075,72 @@
         27532539,
         27532547
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 61.8,
+          "draw": 23.3,
+          "away": 14.9
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 61.8,
+            "draw": 23.3,
+            "away": 14.9
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-0",
+            "value": 15.6
+          },
+          {
+            "score": "2-0",
+            "value": 13.1
+          },
+          {
+            "score": "1-1",
+            "value": 10.1
+          },
+          {
+            "score": "Other_1",
+            "value": 9.9
+          },
+          {
+            "score": "0-0",
+            "value": 9.3
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 231,
+            "yes": 41.3,
+            "no": 58.7,
+            "equal": null
+          },
+          {
+            "typeId": 1679,
+            "yes": 14.2,
+            "no": 85.8,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 69.3,
+            "no": 30.7,
+            "equal": null
+          },
+          {
+            "typeId": 235,
+            "yes": 44,
+            "no": 56,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1160,6 +4166,72 @@
         27532610,
         27532611
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 67.7,
+          "draw": 20.5,
+          "away": 11.8
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 67.7,
+            "draw": 20.5,
+            "away": 11.8
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-0",
+            "value": 14.4
+          },
+          {
+            "score": "2-0",
+            "value": 13.9
+          },
+          {
+            "score": "Other_1",
+            "value": 13.5
+          },
+          {
+            "score": "1-1",
+            "value": 9.5
+          },
+          {
+            "score": "2-1",
+            "value": 9.1
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 331,
+            "yes": 57.3,
+            "no": 42.7,
+            "equal": null
+          },
+          {
+            "typeId": 330,
+            "yes": 30.7,
+            "no": 69.3,
+            "equal": null
+          },
+          {
+            "typeId": 333,
+            "yes": 41.7,
+            "no": 58.4,
+            "equal": null
+          },
+          {
+            "typeId": 1679,
+            "yes": 16.9,
+            "no": 83.1,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1177,14 +4249,80 @@
       "predictionAvailable": true,
       "predictionKeys": [
         27532555,
-        27532553,
         27532550,
-        27532554,
-        27532557,
-        27532561,
-        27532564,
-        27532551
+        27532551,
+        27532552,
+        27532549,
+        27532563,
+        27532558,
+        27532559
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 23.9,
+          "draw": 23.8,
+          "away": 52.3
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 23.9,
+            "draw": 23.8,
+            "away": 52.3
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 11.1
+          },
+          {
+            "score": "0-1",
+            "value": 10.5
+          },
+          {
+            "score": "Other_2",
+            "value": 9.6
+          },
+          {
+            "score": "1-2",
+            "value": 9.6
+          },
+          {
+            "score": "0-2",
+            "value": 9
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 236,
+            "yes": 31.4,
+            "no": 68.6,
+            "equal": null
+          },
+          {
+            "typeId": 231,
+            "yes": 54.4,
+            "no": 45.7,
+            "equal": null
+          },
+          {
+            "typeId": 328,
+            "yes": 24.6,
+            "no": 75.4,
+            "equal": null
+          },
+          {
+            "typeId": 331,
+            "yes": 27,
+            "no": 73,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1206,10 +4344,76 @@
         27536378,
         27536379,
         27536380,
-        27536385,
-        27536386,
-        27536371
+        27536371,
+        27536382,
+        27536383
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 52.3,
+          "draw": 25.7,
+          "away": 22.1
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 52.3,
+            "draw": 25.7,
+            "away": 22.1
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-0",
+            "value": 13.4
+          },
+          {
+            "score": "1-1",
+            "value": 12.1
+          },
+          {
+            "score": "2-0",
+            "value": 10.3
+          },
+          {
+            "score": "2-1",
+            "value": 9.3
+          },
+          {
+            "score": "0-0",
+            "value": 8.7
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 235,
+            "yes": 44.3,
+            "no": 55.8,
+            "equal": null
+          },
+          {
+            "typeId": 1679,
+            "yes": 12.5,
+            "no": 87.5,
+            "equal": null
+          },
+          {
+            "typeId": 334,
+            "yes": 77.7,
+            "no": 22.3,
+            "equal": null
+          },
+          {
+            "typeId": 331,
+            "yes": 45.1,
+            "no": 54.9,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1226,15 +4430,81 @@
       "dateDeltaHours": null,
       "predictionAvailable": true,
       "predictionKeys": [
-        27536611,
+        27536618,
+        27536612,
+        27536615,
+        27536623,
+        27536626,
+        27536621,
         27536613,
-        27536614,
-        27536616,
-        27536619,
-        27536617,
-        27536625,
-        27536618
+        27536614
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 41.2,
+          "draw": 28.7,
+          "away": 30.2
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 41.2,
+            "draw": 28.7,
+            "away": 30.2
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-0",
+            "value": 13.2
+          },
+          {
+            "score": "1-1",
+            "value": 12.9
+          },
+          {
+            "score": "0-0",
+            "value": 11
+          },
+          {
+            "score": "0-1",
+            "value": 10.5
+          },
+          {
+            "score": "2-0",
+            "value": 8.1
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 1679,
+            "yes": 9.8,
+            "no": 90.2,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 65.3,
+            "no": 34.7,
+            "equal": null
+          },
+          {
+            "typeId": 333,
+            "yes": 60.8,
+            "no": 39.2,
+            "equal": null
+          },
+          {
+            "typeId": 327,
+            "yes": 2.3,
+            "no": 97.7,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1260,6 +4530,72 @@
         27536655,
         27536656
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 43.1,
+          "draw": 26.7,
+          "away": 30.3
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 43.1,
+            "draw": 26.7,
+            "away": 30.3
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 12.7
+          },
+          {
+            "score": "1-0",
+            "value": 11.5
+          },
+          {
+            "score": "0-1",
+            "value": 9.2
+          },
+          {
+            "score": "2-1",
+            "value": 8.7
+          },
+          {
+            "score": "0-0",
+            "value": 8.3
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 231,
+            "yes": 50.1,
+            "no": 50,
+            "equal": null
+          },
+          {
+            "typeId": 236,
+            "yes": 24.1,
+            "no": 76,
+            "equal": null
+          },
+          {
+            "typeId": 1679,
+            "yes": 12.6,
+            "no": 87.4,
+            "equal": null
+          },
+          {
+            "typeId": 326,
+            "yes": 5.1,
+            "no": 94.9,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1285,6 +4621,72 @@
         27536629,
         27536630
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 22.3,
+          "draw": 23.5,
+          "away": 54.2
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 22.3,
+            "draw": 23.5,
+            "away": 54.2
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 11.1
+          },
+          {
+            "score": "0-1",
+            "value": 10.7
+          },
+          {
+            "score": "Other_2",
+            "value": 10
+          },
+          {
+            "score": "1-2",
+            "value": 9.8
+          },
+          {
+            "score": "0-2",
+            "value": 9.5
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 326,
+            "yes": 2.2,
+            "no": 97.9,
+            "equal": null
+          },
+          {
+            "typeId": 328,
+            "yes": 25.4,
+            "no": 74.6,
+            "equal": null
+          },
+          {
+            "typeId": 327,
+            "yes": 10.1,
+            "no": 89.9,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 76.8,
+            "no": 23.2,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1310,6 +4712,72 @@
         27536310,
         27536311
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 54.7,
+          "draw": 23.9,
+          "away": 21.5
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 54.7,
+            "draw": 23.9,
+            "away": 21.5
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-0",
+            "value": 11.8
+          },
+          {
+            "score": "1-1",
+            "value": 11.2
+          },
+          {
+            "score": "2-0",
+            "value": 10.1
+          },
+          {
+            "score": "2-1",
+            "value": 9.6
+          },
+          {
+            "score": "Other_1",
+            "value": 9.4
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 231,
+            "yes": 50.8,
+            "no": 49.3,
+            "equal": null
+          },
+          {
+            "typeId": 236,
+            "yes": 28.5,
+            "no": 71.6,
+            "equal": null
+          },
+          {
+            "typeId": 1679,
+            "yes": 16.5,
+            "no": 83.6,
+            "equal": null
+          },
+          {
+            "typeId": 330,
+            "yes": 24.3,
+            "no": 75.8,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1335,6 +4803,72 @@
         27542505,
         27542495
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 31.9,
+          "draw": 27,
+          "away": 41.2
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 31.9,
+            "draw": 27,
+            "away": 41.2
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 12.7
+          },
+          {
+            "score": "0-1",
+            "value": 11.2
+          },
+          {
+            "score": "1-0",
+            "value": 9.6
+          },
+          {
+            "score": "1-2",
+            "value": 8.5
+          },
+          {
+            "score": "0-0",
+            "value": 8.5
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 231,
+            "yes": 50.3,
+            "no": 49.7,
+            "equal": null
+          },
+          {
+            "typeId": 326,
+            "yes": 3,
+            "no": 97,
+            "equal": null
+          },
+          {
+            "typeId": 332,
+            "yes": 37.7,
+            "no": 62.3,
+            "equal": null
+          },
+          {
+            "typeId": 328,
+            "yes": 15,
+            "no": 85,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1360,6 +4894,72 @@
         27542603,
         27542592
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 32.5,
+          "draw": 25.9,
+          "away": 41.6
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 32.5,
+            "draw": 25.9,
+            "away": 41.6
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 12.3
+          },
+          {
+            "score": "0-1",
+            "value": 10.2
+          },
+          {
+            "score": "1-0",
+            "value": 8.8
+          },
+          {
+            "score": "1-2",
+            "value": 8.7
+          },
+          {
+            "score": "2-1",
+            "value": 7.5
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 235,
+            "yes": 48.9,
+            "no": 51.2,
+            "equal": null
+          },
+          {
+            "typeId": 334,
+            "yes": 66.5,
+            "no": 33.5,
+            "equal": null
+          },
+          {
+            "typeId": 236,
+            "yes": 27,
+            "no": 73,
+            "equal": null
+          },
+          {
+            "typeId": 231,
+            "yes": 53,
+            "no": 47,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1376,15 +4976,81 @@
       "dateDeltaHours": null,
       "predictionAvailable": true,
       "predictionKeys": [
-        27542642,
-        27542643,
-        27542644,
-        27542645,
-        27542646,
-        27542647,
-        27542648,
-        27542649
+        27542640,
+        27542634,
+        27542635,
+        27542636,
+        27542637,
+        27542638,
+        27542639,
+        27542641
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 19.6,
+          "draw": 23.4,
+          "away": 57.1
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 19.6,
+            "draw": 23.4,
+            "away": 57.1
+          }
+        ],
+        "topScores": [
+          {
+            "score": "0-1",
+            "value": 12.1
+          },
+          {
+            "score": "1-1",
+            "value": 11.1
+          },
+          {
+            "score": "0-2",
+            "value": 10.6
+          },
+          {
+            "score": "Other_2",
+            "value": 10.1
+          },
+          {
+            "score": "1-2",
+            "value": 9.7
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 236,
+            "yes": 28,
+            "no": 72,
+            "equal": null
+          },
+          {
+            "typeId": 231,
+            "yes": 49.7,
+            "no": 50.4,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 74.6,
+            "no": 25.4,
+            "equal": null
+          },
+          {
+            "typeId": 235,
+            "yes": 50,
+            "no": 50,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1410,6 +5076,72 @@
         27542739,
         27542740
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 22.4,
+          "draw": 24.7,
+          "away": 53
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 22.4,
+            "draw": 24.7,
+            "away": 53
+          }
+        ],
+        "topScores": [
+          {
+            "score": "0-1",
+            "value": 13.1
+          },
+          {
+            "score": "1-1",
+            "value": 11.4
+          },
+          {
+            "score": "0-2",
+            "value": 10.5
+          },
+          {
+            "score": "1-2",
+            "value": 9.1
+          },
+          {
+            "score": "0-0",
+            "value": 8.2
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 234,
+            "yes": 71.5,
+            "no": 28.5,
+            "equal": null
+          },
+          {
+            "typeId": 231,
+            "yes": 47.1,
+            "no": 53,
+            "equal": null
+          },
+          {
+            "typeId": 331,
+            "yes": 22.5,
+            "no": 77.5,
+            "equal": null
+          },
+          {
+            "typeId": 326,
+            "yes": 1.9,
+            "no": 98.1,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1435,6 +5167,72 @@
         27542263,
         27542265
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 17.5,
+          "draw": 23.6,
+          "away": 59.1
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 17.5,
+            "draw": 23.6,
+            "away": 59.1
+          }
+        ],
+        "topScores": [
+          {
+            "score": "0-1",
+            "value": 13.6
+          },
+          {
+            "score": "0-2",
+            "value": 11.7
+          },
+          {
+            "score": "1-1",
+            "value": 11
+          },
+          {
+            "score": "Other_2",
+            "value": 9.9
+          },
+          {
+            "score": "1-2",
+            "value": 9.5
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 231,
+            "yes": 46.1,
+            "no": 54,
+            "equal": null
+          },
+          {
+            "typeId": 236,
+            "yes": 25.6,
+            "no": 74.4,
+            "equal": null
+          },
+          {
+            "typeId": 331,
+            "yes": 18,
+            "no": 82,
+            "equal": null
+          },
+          {
+            "typeId": 326,
+            "yes": 1,
+            "no": 99,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1460,6 +5258,72 @@
         27542932,
         27542933
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 46.1,
+          "draw": 23.9,
+          "away": 30.1
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 46.1,
+            "draw": 23.9,
+            "away": 30.1
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 11
+          },
+          {
+            "score": "2-1",
+            "value": 9.3
+          },
+          {
+            "score": "Other_1",
+            "value": 8.8
+          },
+          {
+            "score": "1-0",
+            "value": 8.4
+          },
+          {
+            "score": "1-2",
+            "value": 7.3
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 327,
+            "yes": 4.4,
+            "no": 95.6,
+            "equal": null
+          },
+          {
+            "typeId": 231,
+            "yes": 59.7,
+            "no": 40.4,
+            "equal": null
+          },
+          {
+            "typeId": 236,
+            "yes": 35.4,
+            "no": 64.7,
+            "equal": null
+          },
+          {
+            "typeId": 334,
+            "yes": 78.1,
+            "no": 21.9,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1481,10 +5345,76 @@
         27548341,
         27548347,
         27548353,
-        27548354,
-        27548342,
-        27548343
+        27548343,
+        27548344,
+        27548348
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 37,
+          "draw": 26.9,
+          "away": 36.2
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 37,
+            "draw": 26.9,
+            "away": 36.2
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 12.7
+          },
+          {
+            "score": "1-0",
+            "value": 10.4
+          },
+          {
+            "score": "0-1",
+            "value": 10.1
+          },
+          {
+            "score": "0-0",
+            "value": 8.3
+          },
+          {
+            "score": "2-1",
+            "value": 8
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 231,
+            "yes": 50.9,
+            "no": 49.1,
+            "equal": null
+          },
+          {
+            "typeId": 334,
+            "yes": 68.9,
+            "no": 31.1,
+            "equal": null
+          },
+          {
+            "typeId": 328,
+            "yes": 13,
+            "no": 87.1,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 71.3,
+            "no": 28.7,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1510,6 +5440,72 @@
         27548592,
         27548595
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 51.4,
+          "draw": 22,
+          "away": 26.7
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 51.4,
+            "draw": 22,
+            "away": 26.7
+          }
+        ],
+        "topScores": [
+          {
+            "score": "Other_1",
+            "value": 13.2
+          },
+          {
+            "score": "1-1",
+            "value": 9.5
+          },
+          {
+            "score": "2-1",
+            "value": 9.2
+          },
+          {
+            "score": "1-0",
+            "value": 7.2
+          },
+          {
+            "score": "2-0",
+            "value": 7
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 234,
+            "yes": 84.2,
+            "no": 15.8,
+            "equal": null
+          },
+          {
+            "typeId": 235,
+            "yes": 64.4,
+            "no": 35.6,
+            "equal": null
+          },
+          {
+            "typeId": 231,
+            "yes": 63.7,
+            "no": 36.3,
+            "equal": null
+          },
+          {
+            "typeId": 236,
+            "yes": 42.8,
+            "no": 57.2,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1531,10 +5527,76 @@
         27548568,
         27548569,
         27548570,
-        27548573,
-        27548574,
-        27548575
+        27548571,
+        27548576,
+        27548578
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 27.9,
+          "draw": 22.5,
+          "away": 49.6
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 27.9,
+            "draw": 22.5,
+            "away": 49.6
+          }
+        ],
+        "topScores": [
+          {
+            "score": "Other_2",
+            "value": 11.4
+          },
+          {
+            "score": "1-1",
+            "value": 10.2
+          },
+          {
+            "score": "1-2",
+            "value": 9.4
+          },
+          {
+            "score": "0-1",
+            "value": 7.7
+          },
+          {
+            "score": "0-2",
+            "value": 7.1
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 330,
+            "yes": 13.8,
+            "no": 86.2,
+            "equal": null
+          },
+          {
+            "typeId": 231,
+            "yes": 61.7,
+            "no": 38.3,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 82.7,
+            "no": 17.4,
+            "equal": null
+          },
+          {
+            "typeId": 331,
+            "yes": 34.4,
+            "no": 65.6,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1558,8 +5620,74 @@
         27548535,
         27548536,
         27548538,
-        27548523
+        27548528
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 59.1,
+          "draw": 23.4,
+          "away": 17.6
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 59.1,
+            "draw": 23.4,
+            "away": 17.6
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-0",
+            "value": 13.3
+          },
+          {
+            "score": "2-0",
+            "value": 11.6
+          },
+          {
+            "score": "1-1",
+            "value": 11
+          },
+          {
+            "score": "Other_1",
+            "value": 10
+          },
+          {
+            "score": "2-1",
+            "value": 9.6
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 330,
+            "yes": 25.3,
+            "no": 74.7,
+            "equal": null
+          },
+          {
+            "typeId": 326,
+            "yes": 10.1,
+            "no": 89.9,
+            "equal": null
+          },
+          {
+            "typeId": 333,
+            "yes": 50.8,
+            "no": 49.2,
+            "equal": null
+          },
+          {
+            "typeId": 332,
+            "yes": 18.2,
+            "no": 81.8,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1583,8 +5711,74 @@
         27557091,
         27557092,
         27557096,
-        27557099
+        27557085
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 19.3,
+          "draw": 23.3,
+          "away": 57.5
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 19.3,
+            "draw": 23.3,
+            "away": 57.5
+          }
+        ],
+        "topScores": [
+          {
+            "score": "0-1",
+            "value": 12.2
+          },
+          {
+            "score": "1-1",
+            "value": 11
+          },
+          {
+            "score": "0-2",
+            "value": 10.7
+          },
+          {
+            "score": "Other_2",
+            "value": 10.3
+          },
+          {
+            "score": "1-2",
+            "value": 9.7
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 235,
+            "yes": 50,
+            "no": 50,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 74.5,
+            "no": 25.5,
+            "equal": null
+          },
+          {
+            "typeId": 236,
+            "yes": 28.1,
+            "no": 72,
+            "equal": null
+          },
+          {
+            "typeId": 1679,
+            "yes": 16.4,
+            "no": 83.6,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1601,15 +5795,81 @@
       "dateDeltaHours": null,
       "predictionAvailable": true,
       "predictionKeys": [
-        27557291,
-        27557287,
-        27557302,
+        27557308,
         27557289,
+        27557291,
         27557293,
-        27557312,
-        27557306,
-        27557308
+        27557295,
+        27557297,
+        27557298,
+        27557301
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 37.4,
+          "draw": 26,
+          "away": 36.7
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 37.4,
+            "draw": 26,
+            "away": 36.7
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 12.3
+          },
+          {
+            "score": "1-0",
+            "value": 9.5
+          },
+          {
+            "score": "0-1",
+            "value": 9.3
+          },
+          {
+            "score": "2-1",
+            "value": 8.2
+          },
+          {
+            "score": "1-2",
+            "value": 8.1
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 326,
+            "yes": 4.6,
+            "no": 95.4,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 74.2,
+            "no": 25.8,
+            "equal": null
+          },
+          {
+            "typeId": 235,
+            "yes": 49.5,
+            "no": 50.6,
+            "equal": null
+          },
+          {
+            "typeId": 236,
+            "yes": 27.6,
+            "no": 72.4,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1626,15 +5886,81 @@
       "dateDeltaHours": null,
       "predictionAvailable": true,
       "predictionKeys": [
-        27558124,
+        27558117,
+        27558118,
+        27558119,
+        27558121,
+        27558122,
         27558126,
-        27558127,
-        27558128,
-        27558129,
-        27558130,
-        27558131,
-        27558132
+        27558124,
+        27558130
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 14.1,
+          "draw": 19.9,
+          "away": 66
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 14.1,
+            "draw": 19.9,
+            "away": 66
+          }
+        ],
+        "topScores": [
+          {
+            "score": "Other_2",
+            "value": 17
+          },
+          {
+            "score": "0-1",
+            "value": 11.3
+          },
+          {
+            "score": "0-2",
+            "value": 11.2
+          },
+          {
+            "score": "1-2",
+            "value": 9.4
+          },
+          {
+            "score": "1-1",
+            "value": 9.2
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 231,
+            "yes": 49.1,
+            "no": 51,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 78,
+            "no": 22,
+            "equal": null
+          },
+          {
+            "typeId": 235,
+            "yes": 55.6,
+            "no": 44.5,
+            "equal": null
+          },
+          {
+            "typeId": 331,
+            "yes": 16.8,
+            "no": 83.2,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1651,15 +5977,81 @@
       "dateDeltaHours": null,
       "predictionAvailable": true,
       "predictionKeys": [
-        27557461,
-        27557455,
-        27557459,
-        27557462,
+        27557463,
+        27557464,
+        27557465,
+        27557466,
         27557467,
         27557453,
         27557456,
         27557457
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 31.2,
+          "draw": 27.2,
+          "away": 41.7
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 31.2,
+            "draw": 27.2,
+            "away": 41.7
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 12.9
+          },
+          {
+            "score": "0-1",
+            "value": 11.7
+          },
+          {
+            "score": "1-0",
+            "value": 9.8
+          },
+          {
+            "score": "0-0",
+            "value": 8.9
+          },
+          {
+            "score": "1-2",
+            "value": 8.5
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 330,
+            "yes": 9.6,
+            "no": 90.4,
+            "equal": null
+          },
+          {
+            "typeId": 326,
+            "yes": 2.6,
+            "no": 97.5,
+            "equal": null
+          },
+          {
+            "typeId": 333,
+            "yes": 71.3,
+            "no": 28.7,
+            "equal": null
+          },
+          {
+            "typeId": 332,
+            "yes": 37.1,
+            "no": 63,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1680,11 +6072,77 @@
         27557556,
         27557579,
         27557576,
-        27557545,
-        27557550,
         27557554,
-        27557557
+        27557580,
+        27557565,
+        27557571
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 59.3,
+          "draw": 22.8,
+          "away": 17.9
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 59.3,
+            "draw": 22.8,
+            "away": 17.9
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-0",
+            "value": 12.3
+          },
+          {
+            "score": "Other_1",
+            "value": 11.2
+          },
+          {
+            "score": "2-0",
+            "value": 11
+          },
+          {
+            "score": "1-1",
+            "value": 10.7
+          },
+          {
+            "score": "2-1",
+            "value": 9.6
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 234,
+            "yes": 74.8,
+            "no": 25.2,
+            "equal": null
+          },
+          {
+            "typeId": 328,
+            "yes": 5.6,
+            "no": 94.4,
+            "equal": null
+          },
+          {
+            "typeId": 332,
+            "yes": 19.8,
+            "no": 80.2,
+            "equal": null
+          },
+          {
+            "typeId": 327,
+            "yes": 1.3,
+            "no": 98.7,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1703,13 +6161,79 @@
       "predictionKeys": [
         27557469,
         27557482,
+        27557479,
         27557484,
+        27557471,
         27557489,
-        27557492,
-        27557494,
-        27557491,
-        27557496
+        27557477,
+        27557491
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 17.1,
+          "draw": 21.7,
+          "away": 61.3
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 17.1,
+            "draw": 21.7,
+            "away": 61.3
+          }
+        ],
+        "topScores": [
+          {
+            "score": "Other_2",
+            "value": 13
+          },
+          {
+            "score": "0-1",
+            "value": 11.4
+          },
+          {
+            "score": "0-2",
+            "value": 10.8
+          },
+          {
+            "score": "1-1",
+            "value": 10.2
+          },
+          {
+            "score": "1-2",
+            "value": 9.8
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 231,
+            "yes": 50.9,
+            "no": 49.2,
+            "equal": null
+          },
+          {
+            "typeId": 334,
+            "yes": 51.7,
+            "no": 48.3,
+            "equal": null
+          },
+          {
+            "typeId": 236,
+            "yes": 31.6,
+            "no": 68.4,
+            "equal": null
+          },
+          {
+            "typeId": 331,
+            "yes": 20,
+            "no": 80,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1726,15 +6250,81 @@
       "dateDeltaHours": null,
       "predictionAvailable": true,
       "predictionKeys": [
+        27574832,
+        27574833,
+        27574834,
+        27574835,
         27574836,
         27574837,
-        27574831,
-        27574828,
-        27574823,
-        27574824,
-        27574825,
-        27574826
+        27574838,
+        27574825
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 29.9,
+          "draw": 23.7,
+          "away": 46.4
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 29.9,
+            "draw": 23.7,
+            "away": 46.4
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 10.9
+          },
+          {
+            "score": "1-2",
+            "value": 9.3
+          },
+          {
+            "score": "Other_2",
+            "value": 9.2
+          },
+          {
+            "score": "0-1",
+            "value": 8.2
+          },
+          {
+            "score": "2-1",
+            "value": 7.2
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 331,
+            "yes": 35.1,
+            "no": 64.9,
+            "equal": null
+          },
+          {
+            "typeId": 330,
+            "yes": 13.9,
+            "no": 86.1,
+            "equal": null
+          },
+          {
+            "typeId": 326,
+            "yes": 4.5,
+            "no": 95.5,
+            "equal": null
+          },
+          {
+            "typeId": 333,
+            "yes": 78.5,
+            "no": 21.5,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1751,15 +6341,81 @@
       "dateDeltaHours": null,
       "predictionAvailable": true,
       "predictionKeys": [
-        27574895,
+        27574905,
         27574897,
-        27574898,
-        27574900,
+        27574895,
+        27574896,
+        27574901,
+        27574902,
         27574906,
-        27574908,
-        27574909,
-        27574896
+        27574909
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 38.4,
+          "draw": 29.2,
+          "away": 32.5
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 38.4,
+            "draw": 29.2,
+            "away": 32.5
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-0",
+            "value": 13.4
+          },
+          {
+            "score": "1-1",
+            "value": 13.1
+          },
+          {
+            "score": "0-0",
+            "value": 11.8
+          },
+          {
+            "score": "0-1",
+            "value": 11.8
+          },
+          {
+            "score": "2-0",
+            "value": 7.7
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 330,
+            "yes": 10.4,
+            "no": 89.6,
+            "equal": null
+          },
+          {
+            "typeId": 231,
+            "yes": 42.3,
+            "no": 57.8,
+            "equal": null
+          },
+          {
+            "typeId": 236,
+            "yes": 16.9,
+            "no": 83.1,
+            "equal": null
+          },
+          {
+            "typeId": 1679,
+            "yes": 8.1,
+            "no": 91.9,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1776,15 +6432,81 @@
       "dateDeltaHours": null,
       "predictionAvailable": true,
       "predictionKeys": [
-        27575114,
-        27575122,
-        27575109,
-        27575118,
+        27575107,
         27575120,
-        27575108,
+        27575110,
         27575111,
-        27575115
+        27575112,
+        27575115,
+        27575116,
+        27575117
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 30,
+          "draw": 24.6,
+          "away": 45.5
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 30,
+            "draw": 24.6,
+            "away": 45.5
+          }
+        ],
+        "topScores": [
+          {
+            "score": "1-1",
+            "value": 11.3
+          },
+          {
+            "score": "0-1",
+            "value": 9.5
+          },
+          {
+            "score": "1-2",
+            "value": 9
+          },
+          {
+            "score": "Other_2",
+            "value": 7.7
+          },
+          {
+            "score": "0-2",
+            "value": 7.5
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 231,
+            "yes": 56.6,
+            "no": 43.5,
+            "equal": null
+          },
+          {
+            "typeId": 332,
+            "yes": 45.7,
+            "no": 54.4,
+            "equal": null
+          },
+          {
+            "typeId": 234,
+            "yes": 77.3,
+            "no": 22.7,
+            "equal": null
+          },
+          {
+            "typeId": 235,
+            "yes": 54.2,
+            "no": 45.9,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     },
     {
@@ -1801,15 +6523,81 @@
       "dateDeltaHours": null,
       "predictionAvailable": true,
       "predictionKeys": [
-        27575123,
-        27575124,
-        27575125,
-        27575131,
-        27575133,
-        27575128,
+        27575138,
+        27575134,
+        27575135,
+        27575136,
+        27575127,
         27575129,
-        27575130
+        27575130,
+        27575131
       ],
+      "predictionSummary": {
+        "modelCount": 16,
+        "preferredOutcome": {
+          "typeId": 237,
+          "home": 12.9,
+          "draw": 20.2,
+          "away": 67
+        },
+        "outcomeModels": [
+          {
+            "typeId": 237,
+            "home": 12.9,
+            "draw": 20.2,
+            "away": 67
+          }
+        ],
+        "topScores": [
+          {
+            "score": "Other_2",
+            "value": 14.2
+          },
+          {
+            "score": "0-1",
+            "value": 13.2
+          },
+          {
+            "score": "0-2",
+            "value": 13.1
+          },
+          {
+            "score": "1-1",
+            "value": 9.5
+          },
+          {
+            "score": "1-2",
+            "value": 9.3
+          }
+        ],
+        "scoreTypeId": 240,
+        "yesNoSignals": [
+          {
+            "typeId": 327,
+            "yes": 14.3,
+            "no": 85.7,
+            "equal": null
+          },
+          {
+            "typeId": 326,
+            "yes": 0.6,
+            "no": 99.4,
+            "equal": null
+          },
+          {
+            "typeId": 333,
+            "yes": 85.5,
+            "no": 14.5,
+            "equal": null
+          },
+          {
+            "typeId": 332,
+            "yes": 58.5,
+            "no": 41.6,
+            "equal": null
+          }
+        ]
+      },
       "predictionImpact": 6
     }
   ],

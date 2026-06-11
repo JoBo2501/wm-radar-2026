@@ -2832,7 +2832,7 @@ h3 {
 
 .scout-signal-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
   margin-top: 12px;
   position: relative;
@@ -2886,6 +2886,119 @@ h3 {
   display: block;
   margin-bottom: 8px;
   color: var(--text);
+}
+
+.prediction-panel {
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid rgba(29, 143, 79, 0.22);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.78);
+  position: relative;
+  z-index: 1;
+}
+
+.prediction-panel-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.prediction-panel-head div {
+  display: grid;
+  gap: 3px;
+}
+
+.prediction-panel-head strong,
+.prediction-scorelines > strong {
+  color: var(--text);
+}
+
+.prediction-panel-head small {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 850;
+}
+
+.prediction-panel-head span {
+  white-space: nowrap;
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: rgba(196, 255, 95, 0.16);
+  color: var(--green);
+  font-weight: 950;
+}
+
+.prediction-outcome-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.prediction-outcome-grid span {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+.prediction-outcome-grid strong {
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.prediction-outcome-grid em {
+  color: var(--text);
+  font-style: normal;
+  font-weight: 950;
+}
+
+.prediction-outcome-grid i {
+  display: block;
+  height: 7px;
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, var(--green) calc(var(--prediction) * 1%), rgba(15, 31, 24, 0.1) 0);
+}
+
+.prediction-scorelines {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.prediction-scorelines div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.prediction-scorelines span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(29, 143, 79, 0.06);
+}
+
+.prediction-scorelines em {
+  color: var(--text);
+  font-style: normal;
+  font-weight: 950;
+}
+
+.prediction-scorelines small {
+  color: var(--muted);
+  font-weight: 850;
+}
+
+.prediction-panel p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  line-height: 1.4;
 }
 
 .transparency-drawer summary {

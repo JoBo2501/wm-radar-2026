@@ -27,7 +27,6 @@
           <a href="#matches" data-zone="01">Heute</a>
           <a href="#games" data-zone="02">Spiele</a>
           <a href="#tournament" data-zone="03">Turnierlage</a>
-          <a href="#analysis" data-zone="04">Analyse</a>
         </nav>
 
         <button class="spoiler-toggle" id="spoilerToggle" type="button" aria-pressed="false">
@@ -64,7 +63,7 @@
             <div class="control-header">
               <span class="live-dot"></span>
               <span>Turnier-Feed</span>
-              <strong>Demo-Spieltag</strong>
+              <strong>Go-Live</strong>
             </div>
             <div class="match-orbit" aria-hidden="true">
               <div class="orbit-line orbit-line-a"></div>
@@ -105,11 +104,6 @@
             <strong>Turnierlage</strong>
             <small>Gruppen, Tabellen, Finalweg und die Frage: gegen wen geht es weiter?</small>
           </a>
-          <a class="orientation-card analysis" href="#analysis">
-            <span>04</span>
-            <strong>Analyse</strong>
-            <small>Datenlage, Quellenvertrauen, Feature Lab und seriöse Deutung.</small>
-          </a>
         </section>
 
         <section class="section-head" id="matches" aria-labelledby="matchesTitle">
@@ -119,8 +113,8 @@
             <p>Der kurze Tagesplan: live schauen, später verstehen, Highlights reichen oder bewusst auslassen.</p>
           </div>
           <div class="date-chip" id="activeDateChip">
-            <span>Demo</span>
-            <strong>13. Juni 2026</strong>
+            <span>Heute</span>
+            <strong>11. Juni 2026</strong>
           </div>
         </section>
 
@@ -224,9 +218,8 @@
               <h2 id="teamLabTitle">Team-Briefings</h2>
             </div>
             <p>
-              Fokus-Teams und Surprise-Kandidaten als taktische Arbeitskarten. Die sichtbare Zahl ist die
-              Watchlist-Priorität, kein Weltranking. Teamstärke, Momentum, Attraktivität, Überraschungspotenzial
-              und Datenlage werden später separat aus Providerdaten und Modelllogik berechnet.
+              Fokus-Teams und Surprise-Kandidaten als taktische Arbeitskarten: Rollen, Stärken, Schwächen und
+              konkrete Watch-Cues für den Spieltag.
             </p>
           </div>
           <div class="team-lab-grid" id="teamLabGrid"></div>
@@ -349,8 +342,7 @@
               <h2 id="standingsTitle">Tabellen & Szenarien</h2>
             </div>
             <p>
-              Bis echte Resultate vorliegen, rechnet die App eine transparente Projektion. Sobald Ergebnisse in
-              die Datenquelle kommen, kippt die Tabelle automatisch vom Modell- in den Live-Modus.
+              Tabellen, Drittplatzierte und K.o.-Wege reagieren auf die Ergebnisse, sobald sie in der App ankommen.
             </p>
           </div>
           <div class="standings-summary" id="standingsSummary"></div>
@@ -372,123 +364,6 @@
           <div class="bracket-grid" id="bracketGrid"></div>
         </section>
 
-        <section class="zone-divider analysis" id="analysis" aria-label="Bereich Analyse">
-          <span>04</span>
-          <div>
-            <p class="eyebrow">Analyse</p>
-            <h2>Aus Daten wird eine Spielgeschichte</h2>
-            <p>Hier trennt WM Radar Rohdaten, Expertenstimmen, Quellenvertrauen und echte Erkenntnis.</p>
-          </div>
-          <nav aria-label="Analyse Schnellzugriffe">
-            <a href="#featureLab">Features</a>
-            <a href="#analystDesk">Quellenfilter</a>
-            <a href="#data">Datenlage</a>
-            <a href="#sources">Quellen</a>
-          </nav>
-        </section>
-
-        <section class="data-section" id="data" aria-labelledby="dataTitle">
-          <div class="section-head compact">
-            <div>
-              <p class="eyebrow">Datenlage</p>
-              <h2 id="dataTitle">Datenlage & Transparenz</h2>
-            </div>
-            <p id="dataSnapshot">Stand wird geladen.</p>
-          </div>
-          <div class="data-grid" id="dataStatusGrid"></div>
-          <div class="provider-test-grid" id="providerTestGrid"></div>
-          <details class="transparency-drawer">
-            <summary>
-              <span>Import- und Validierungsdetails</span>
-              <small>Für Kontrolle, Fehlersuche und Quellenvertrauen. Im Turnierbetrieb bleibt das eingeklappt.</small>
-            </summary>
-            <div class="schedule-validator result-validator" id="resultValidator"></div>
-            <div class="schedule-validator" id="scheduleValidator"></div>
-          </details>
-        </section>
-
-        <section class="feature-lab-section" id="featureLab" aria-labelledby="featureLabTitle">
-          <div class="section-head compact">
-            <div>
-              <p class="eyebrow">Differenzierende Features</p>
-              <h2 id="featureLabTitle">Was WM Radar besonders macht</h2>
-            </div>
-            <p>
-              Vier Produktmodule verbinden Sportmonks-Daten mit echtem Nutzwert: Live-Szenarien, Momentum,
-              Stürmer-Effizienz und Spielvorschau.
-            </p>
-          </div>
-          <div class="feature-lab-grid" id="featureLabGrid"></div>
-        </section>
-
-        <section class="analyst-desk-section" id="analystDesk" aria-labelledby="analystDeskTitle">
-          <div class="section-head compact">
-            <div>
-              <p class="eyebrow">Seriöser Quellenfilter</p>
-              <h2 id="analystDeskTitle">Quellenfilter</h2>
-            </div>
-            <p>
-              Hier entscheidet die App, welchen Daten, Stimmen und KI-Modellen sie vertraut. Kein TV-Lärm,
-              keine Stammtischlogik: Nur Quellen mit Beleg, Szene, Datenanker oder echter Fachperspektive.
-            </p>
-          </div>
-
-          <div class="analyst-pillar-grid" id="analystPillars"></div>
-
-          <div class="source-workflow-section">
-            <div class="panel-title">
-              <span>Automatisierung</span>
-              <strong>Was läuft von selbst?</strong>
-            </div>
-            <div class="source-workflow-grid" id="sourceAutomation"></div>
-          </div>
-
-          <div class="source-workflow-section">
-            <div class="panel-title">
-              <span>Zugang zu Quellen</span>
-              <strong>SportMonks, Abo oder frei?</strong>
-            </div>
-            <div class="source-access-grid" id="sourceAccess"></div>
-          </div>
-
-          <div class="source-workflow-section">
-            <div class="panel-title">
-              <span>Analyse-Synthese</span>
-              <strong>Wie entsteht eine Spielgeschichte?</strong>
-            </div>
-            <div class="synthesis-model-grid" id="synthesisModel"></div>
-          </div>
-
-          <div class="analyst-desk-board">
-            <div>
-              <div class="panel-title">
-                <span>Taktik- und Meinungsebene</span>
-                <strong>Trust sortiert</strong>
-              </div>
-              <div class="voice-stack" id="analystVoices"></div>
-            </div>
-            <div>
-              <div class="panel-title">
-                <span>Quellenregeln</span>
-                <strong>Noise Filter</strong>
-              </div>
-              <div class="rule-stack" id="sourceRules"></div>
-              <div class="ai-model-card" id="aiModelCard"></div>
-            </div>
-          </div>
-        </section>
-
-        <section class="sources-section" id="sources" aria-labelledby="sourcesTitle">
-          <div>
-            <p class="eyebrow">Qualitätsfilter</p>
-            <h2 id="sourcesTitle">Analysten- und Datenquellen</h2>
-            <p>
-              Meinungen werden nicht gleich behandelt. Die App trennt Datenanbieter, Taktikautoren, Ex-Profis mit
-              Substanz und reinen TV-Lärm.
-            </p>
-          </div>
-          <div class="source-stack" id="sourceStack"></div>
-        </section>
       </main>
     </div>
 

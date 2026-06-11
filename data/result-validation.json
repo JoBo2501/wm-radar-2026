@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-06-08T14:40:34.788Z",
+  "generatedAt": "2026-06-11T09:06:42.567Z",
   "status": "waiting",
   "summary": "Noch keine echten Resultate synchronisiert; Projektionsmodus bleibt aktiv.",
   "source": {
     "activeSource": "sportmonks",
     "sourceLabel": "Sportmonks",
-    "generatedAt": "2026-06-08T14:40:12.545Z",
+    "generatedAt": "2026-06-11T09:06:24.488Z",
     "pollMinutes": 5
   },
   "issues": {

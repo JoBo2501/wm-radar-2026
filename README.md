@@ -12,6 +12,7 @@ Sportmonks-Betriebsdokumente:
 
 - `operations/SPORTMONKS_GOLDFALL.md`: Referenzspiel fuer End-to-End-Fehlersuche.
 - `operations/SPIELTAGS_CHECKLISTE.md`: Routine vor, waehrend und nach Spielen.
+- Neue Sportmonks-Meldung vom 2026-06-10: Live-In-Play-Predictions sind als Beta vor dem Auftakt am 2026-06-11 angekuendigt; Widgets koennen als schneller Fallback dienen; der Sportmonks-MCP ist ein optionaler Developer-Debug-Weg.
 
 ## Was drin ist
 
@@ -24,9 +25,9 @@ Sportmonks-Betriebsdokumente:
 - PWA-Grundlage mit Manifest und Service Worker
 - Datenmodell in `data.js` mit Real/Mixed/Model/Seed-Kennzeichnung
 - Datenlage & Transparenz mit eingeklappten Import- und Validierungsdetails
-- Provider-Testprotokoll fuer Sportmonks-Abdeckung, Advanced-Felder und naechste Live-Pruefzeitpunkte
+- Provider-Testprotokoll fuer Sportmonks-Abdeckung, Live-Predictions-Beta, Advanced-Felder und naechste Live-Pruefzeitpunkte
 - Sichtbare Datenanbieter auf SportMonks konsolidiert; andere Dienste bleiben nicht als App-Provider stehen
-- Feature Lab fuer Was-passiert-wenn-Modus, Momentum, Stuermer-Effizienz und Pre-Match-Scout
+- Feature Lab fuer Was-passiert-wenn-Modus, Live-Predictions-Radar, Momentum, Stuermer-Effizienz und Pre-Match-Scout
 - Pre-Match-Scout im Match-Dossier mit Prediction-Signal, Lineup-/Formationsstatus, Expected-XI-Abdeckung, Mapping-Vertrauen und konkreten Pruefpunkten vor Anpfiff
 - Team-Briefings mit taktischen Profilen fuer Fokus- und Surprise-Teams
 - Schluesselfiguren-Modul mit Trainern, Leadern, Taktikspielern, Druckspielern und Turnier-Entdeckungen
@@ -201,7 +202,7 @@ Der Ergebnislayer liegt in `data/results.json`. Aktuell ist er leer und markiert
 
 Der automatische Ergebnisabgleich ist in `sync-results.mjs` vorbereitet. Die aktive Quelle steht in `data/result-sources.json`, manuelle Korrekturen liegen in `data/result-overrides.json`, und `validate-results.mjs` schreibt die Sync-Ampel nach `data/result-validation.json`. Sportmonks ist die primaere WM-Datenquelle; der API-Key bleibt lokal in `SPORTMONKS_API_KEY`.
 
-Das Provider-Testprotokoll liegt in `data/provider-tests.json`. Es wird aus `data/raw/sportmonks-probe.json` erzeugt und in der App unter Datenlage & Transparenz angezeigt. So bleibt sichtbar, welche Sportmonks-Features bereits belastbar sind und welche kurz vor Anpfiff, live oder nach Abpfiff erneut validiert werden muessen.
+Das Provider-Testprotokoll liegt in `data/provider-tests.json`. Es wird aus `data/raw/sportmonks-probe.json` erzeugt und in der App unter Datenlage & Transparenz angezeigt. So bleibt sichtbar, welche Sportmonks-Features bereits belastbar sind und welche kurz vor Anpfiff, live oder nach Abpfiff erneut validiert werden muessen. Die am 2026-06-10 angekuendigten Live-In-Play-Predictions bleiben bis zum echten Live-Response-Nachweis als Beta-Signal markiert.
 
 Das Sportmonks-Mapping liegt in `data/provider-mapping.json`. Nach jedem neuen `probe-sportmonks.cmd`-Lauf wird daraus die Verbindung zwischen Sportmonks-Fixture-IDs, internen Match-IDs und Prediction-Verfuegbarkeit erzeugt. Erst danach fliesst das Prediction-Signal vorsichtig in den Spielwert ein.
 

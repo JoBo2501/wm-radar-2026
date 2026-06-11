@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-06-08T14:39:23.202Z",
+  "generatedAt": "2026-06-11T09:06:11.384Z",
   "status": "primary-ready",
-  "summary": "Sportmonks ist als primaere WM-Datenquelle gesetzt und hat 104 WM-Fixtures gefunden. Pre-Match-Struktur ist belastbar; Live-, Event- und Advanced-Felder werden ab dem ersten Spiel erneut validiert.",
+  "summary": "Sportmonks ist als primaere WM-Datenquelle gesetzt und hat 104 WM-Fixtures gefunden. Pre-Match-Struktur ist belastbar; Live-In-Play-Predictions sind laut Sportmonks als Beta vor dem Auftakt am 2026-06-11 angekuendigt und werden beim ersten echten Live-Request validiert.",
   "providers": [
     {
       "id": "sportmonks",
       "label": "Sportmonks",
       "status": "Primaerquelle bereit",
-      "testedAt": "2026-06-08T09:14:16.239Z",
+      "testedAt": "2026-06-11T09:06:11.358Z",
       "fixtures": 104,
       "coverage": [
         {
@@ -16,7 +16,7 @@
           "count": 104,
           "total": 104,
           "tone": "real",
-          "detail": "Teams sind für Mapping und Spielplan-Abgleich vorhanden."
+          "detail": "Teams sind fuer Mapping und Spielplan-Abgleich vorhanden."
         },
         {
           "field": "scores",
@@ -32,12 +32,12 @@
           "count": 104,
           "total": 104,
           "tone": "real",
-          "detail": "Spielstatus ist für Live-/Pre-Match-Logik vorhanden."
+          "detail": "Spielstatus ist fuer Live-/Pre-Match-Logik vorhanden."
         },
         {
           "field": "lineups",
           "label": "Lineups",
-          "count": 2,
+          "count": 4,
           "total": 104,
           "tone": "mixed",
           "detail": "Aufstellungen werden meist erst kurz vor Anpfiff belastbar."
@@ -61,7 +61,7 @@
         {
           "field": "formations",
           "label": "Formationen",
-          "count": 3,
+          "count": 23,
           "total": 104,
           "tone": "mixed",
           "detail": "Formationen sind teilweise schon vorab sichtbar."
@@ -88,7 +88,7 @@
           "count": 0,
           "total": 104,
           "tone": "seed",
-          "detail": "Pressure Index ist ein Kernkandidat für Momentum, aktuell noch leer."
+          "detail": "Pressure Index ist ein Kernkandidat fuer Momentum, aktuell noch leer."
         },
         {
           "field": "expectedLineups",
@@ -97,17 +97,27 @@
           "total": 104,
           "tone": "seed",
           "detail": "Expected Lineups sind paketabhaengig und muessen separat validiert werden."
+        },
+        {
+          "field": "livePredictions",
+          "label": "Live Predictions Beta",
+          "count": 0,
+          "total": 104,
+          "tone": "seed",
+          "detail": "Sportmonks hat Live-In-Play-Win-Probabilities vor dem Auftakt am 2026-06-11 angekuendigt; Integration erst nach Response-Nachweis schaerfer gewichten."
         }
       ],
       "nextChecks": [
         "Kurz vor dem ersten Anpfiff: Lineups, Formationen und Expected Lineups pruefen.",
-        "Waehrend des ersten Spiels: Scores, State, Events, Timeline und Live Standings pruefen.",
+        "Vor dem Auftakt am 2026-06-11: Sportmonks-Doku fuer Live Predictions Beta und Include-/Feldnamen pruefen.",
+        "Waehrend des ersten Spiels: Scores, State, Events, Timeline, Live Standings und Live Predictions Beta pruefen.",
         "Direkt nach Abpfiff: Statistics, xGFixture, Pressure und Post-Match-Daten pruefen.",
         "1-2 Stunden nach Abpfiff: nachlaufende Datenvollstaendigkeit und Korrekturen pruefen."
       ],
       "productUse": [
         "Spielplan- und Team-Mapping",
         "Pre-Match-Score mit Predictions",
+        "Live-Win-Probability als Beta-Signal, sobald Sportmonks echte In-Play-Werte liefert",
         "Live-Ergebnis-Sync",
         "Gruppenszenarien und Was-bedeutet-dieses-Tor-Logik",
         "Post-Match-Analyse, falls xG/Pressure/Statistics geliefert werden"

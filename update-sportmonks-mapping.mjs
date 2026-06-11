@@ -111,14 +111,80 @@ function getSportmonksTeams(fixture, teamAliases) {
 }
 
 function getPredictionMeta(prediction) {
-  if (!prediction) return { available: false, keys: [] };
+  if (!prediction) return { available: false, keys: [], summary: null };
   if (Array.isArray(prediction.predictions)) {
-    return { available: true, keys: prediction.predictions.slice(0, 8).map((item) => item.type?.name || item.type || item.name || item.id) };
+    return {
+      available: true,
+      keys: prediction.predictions.slice(0, 8).map((item) => item.type?.name || item.type || item.name || item.id),
+      summary: getPredictionSummary(prediction.predictions),
+    };
   }
   if (prediction.predictions && typeof prediction.predictions === "object") {
-    return { available: true, keys: Object.keys(prediction.predictions).slice(0, 8) };
+    return { available: true, keys: Object.keys(prediction.predictions).slice(0, 8), summary: getPredictionSummary([prediction]) };
   }
-  return { available: true, keys: Object.keys(prediction).filter((key) => key !== "id" && key !== "name" && key !== "starting_at").slice(0, 8) };
+  return {
+    available: true,
+    keys: Object.keys(prediction)
+      .filter((key) => key !== "id" && key !== "name" && key !== "starting_at")
+      .slice(0, 8),
+    summary: null,
+  };
+}
+
+function isNumber(value) {
+  return typeof value === "number" && Number.isFinite(value);
+}
+
+function roundPercent(value) {
+  return Math.round(value * 10) / 10;
+}
+
+function getPredictionSummary(items) {
+  const outcomeModels = [];
+  let scoreModel = null;
+  const yesNoSignals = [];
+
+  for (const item of items) {
+    const values = item.predictions || {};
+    if (isNumber(values.home) && isNumber(values.away) && isNumber(values.draw)) {
+      outcomeModels.push({
+        typeId: item.type_id || null,
+        home: roundPercent(values.home),
+        draw: roundPercent(values.draw),
+        away: roundPercent(values.away),
+      });
+    }
+
+    if (!scoreModel && values.scores && typeof values.scores === "object") {
+      scoreModel = {
+        typeId: item.type_id || null,
+        topScores: Object.entries(values.scores)
+          .filter(([, value]) => isNumber(value))
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, 5)
+          .map(([score, value]) => ({ score, value: roundPercent(value) })),
+      };
+    }
+
+    if (isNumber(values.yes) && isNumber(values.no)) {
+      yesNoSignals.push({
+        typeId: item.type_id || null,
+        yes: roundPercent(values.yes),
+        no: roundPercent(values.no),
+        equal: isNumber(values.equal) ? roundPercent(values.equal) : null,
+      });
+    }
+  }
+
+  const preferredOutcome = outcomeModels.find((model) => model.typeId === 237) || outcomeModels[0] || null;
+  return {
+    modelCount: items.length,
+    preferredOutcome,
+    outcomeModels: outcomeModels.slice(0, 3),
+    topScores: scoreModel?.topScores || [],
+    scoreTypeId: scoreModel?.typeId || null,
+    yesNoSignals: yesNoSignals.slice(0, 4),
+  };
 }
 
 const teams = readJson("data/teams.json", []);
@@ -182,6 +248,7 @@ for (const fixture of fixtures) {
     dateDeltaHours,
     predictionAvailable: predictionMeta.available,
     predictionKeys: predictionMeta.keys,
+    predictionSummary: predictionMeta.summary,
     predictionImpact: predictionMeta.available ? 6 : 0,
   });
 }

@@ -5,11 +5,11 @@
       "name": "SportMonks",
       "layer": "Primaere WM-Datenquelle",
       "quality": 93,
-      "integration": "Aktive API",
-      "bestFor": "Fixtures, Teilnehmer, Status, Scores, Predictions, Lineups, Formationen und später Live-/Post-Match-Daten.",
+      "integration": "Aktive API plus MCP-Beta",
+      "bestFor": "Fixtures, Teilnehmer, Status, Scores, Pre-Match-Predictions, angekuendigte Live-Predictions-Beta, Lineups, Formationen und später Live-/Post-Match-Daten.",
       "watchFor": "Automatischer Ergebnisabgleich, Pre-Match-Scout, Was-passiert-wenn-Logik und belastbare Provider-Abdeckung.",
-      "blindSpot": "Advanced-Felder wie Pressure, xG und Expected Lineups werden erst kurz vor Anpfiff, live oder nach Abpfiff wirklich validiert.",
-      "signals": ["Fixtures", "Scores", "Status", "Predictions"],
+      "blindSpot": "Live-Predictions, Pressure, xG und Expected Lineups werden erst kurz vor Anpfiff, live oder nach Abpfiff wirklich validiert.",
+      "signals": ["Fixtures", "Scores", "Status", "Predictions", "Live Predictions Beta"],
       "url": "https://www.sportmonks.com/football-api/"
     },
     {
@@ -18,11 +18,23 @@
       "layer": "Live-Sync und Spielstatus",
       "quality": 90,
       "integration": "Poller aktivierbar",
-      "bestFor": "Live-Status, Ergebnis-Sync, Tabellenwirkung, K.o.-Pfad und schnelle Tagesaktualisierung.",
-      "watchFor": "Ob ein Tor, eine rote Karte oder ein Live-Status sofort die Gruppen- und Finalweglogik veraendert.",
-      "blindSpot": "Vor Turnierstart bleibt dieser Layer im Projektionsmodus; echte Belastbarkeit entsteht erst im Live-Betrieb.",
-      "signals": ["Live", "Scores", "Standings", "Path Impact"],
+      "bestFor": "Live-Status, Ergebnis-Sync, Live-Win-Probabilities, Tabellenwirkung, K.o.-Pfad und schnelle Tagesaktualisierung.",
+      "watchFor": "Ob ein Tor, eine rote Karte oder ein Live-Status sofort die Gruppen-, Finalweg- und Gewinnwahrscheinlichkeitslogik veraendert.",
+      "blindSpot": "Vor Turnierstart bleibt dieser Layer im Projektionsmodus; echte Belastbarkeit entsteht erst im Live-Betrieb und nach Beta-Feldvalidierung.",
+      "signals": ["Live", "Scores", "Standings", "Path Impact", "Win Probability"],
       "url": "https://www.sportmonks.com/football-api/"
+    },
+    {
+      "id": "sportmonks-widgets",
+      "name": "SportMonks Widgets",
+      "layer": "Fallback-Embed",
+      "quality": 78,
+      "integration": "Optionales Widget-Paket",
+      "bestFor": "Schneller Live-Fallback fuer Scores, Bracket, Standings, Topscorer, Predictions und Tournament Hub, falls die eigene API-Integration am Auftakt noch nicht reicht.",
+      "watchFor": "Ob ein Widget als Notfallfenster eingebettet werden soll, ohne API-Token oder Backend im Frontend offenzulegen.",
+      "blindSpot": "Weniger eigene Logik, weniger Designkontrolle und keine tiefe Verbindung zum Match-Value-Modell.",
+      "signals": ["Widgets", "Tournament Hub", "Predictions", "Bracket"],
+      "url": "https://www.sportmonks.com/football-api/widgets/"
     },
     {
       "id": "sportmonks-advanced",
@@ -110,6 +122,14 @@
       "userAction": "Keine Aktion noetig, ausser ein Provider-Token muss erneuert werden."
     },
     {
+      "id": "sportmonks-mcp",
+      "label": "Sportmonks MCP",
+      "mode": "Developer-Beta",
+      "cadence": "Bei API-Fragen und vor Live-Beta-Validierung",
+      "whatHappens": "MCP kann Fixtures abfragen, Request-Beispiele erzeugen und fehlerhafte Sportmonks-Calls direkt im Editor debuggen.",
+      "userAction": "Optional verbinden, wenn Include-Namen oder Live-Predictions-Responses schneller geprueft werden sollen."
+    },
+    {
       "id": "focus-analysis",
       "label": "Fokusspiele",
       "mode": "Automatisch plus Review",
@@ -149,9 +169,15 @@
     },
     {
       "label": "SportMonks API",
-      "examples": "Aktives WM-Modul mit Fixtures, Teilnehmern, Status, Scores, Predictions und weiteren verfuegbaren Includes",
-      "use": "Primäre automatische Rohdaten für Ergebnis-Sync, Pre-Match-Scout, Szenarien und Post-Match-Drafts.",
-      "risk": "Einzelne Advanced-Felder muessen im Live-Betrieb validiert werden; Coverage wird sichtbar statt angenommen."
+      "examples": "Aktives WM-Modul mit Fixtures, Teilnehmern, Status, Scores, Predictions, angekuendigter Live-Predictions-Beta und weiteren verfuegbaren Includes",
+      "use": "Primäre automatische Rohdaten für Ergebnis-Sync, Pre-Match-Scout, Live-Wahrscheinlichkeiten, Szenarien und Post-Match-Drafts.",
+      "risk": "Live-Predictions und einzelne Advanced-Felder muessen im Live-Betrieb validiert werden; Coverage wird sichtbar statt angenommen."
+    },
+    {
+      "label": "SportMonks Widgets",
+      "examples": "Tournament Hub, Live Scores, Bracket, Standings, Topscorer und Predictions als Embed",
+      "use": "Fallback fuer schnelle Live-Abdeckung, falls API-Integration oder eigener Worker zum Auftakt nicht voll stabil ist.",
+      "risk": "Nutzt externe Darstellung; nur als Notfall- oder Nebenfenster, nicht als Ersatz fuer eigene Modelllogik."
     },
     {
       "label": "Manuell kuratiert",

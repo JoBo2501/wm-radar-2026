@@ -464,12 +464,12 @@ function renderTournamentSnapshot() {
 
   tournamentSnapshotGridEl.innerHTML = `
     <article class="tournament-snapshot-card tournament-mode-card">
-      <span class="briefing-kicker">Datenmodus</span>
-      <h3>${projectedMode ? "Projektion, noch keine echten Ergebnisse" : "Live-Tabelle plus Modell"}</h3>
+      <span class="briefing-kicker">Turnierbild</span>
+      <h3>${projectedMode ? "Startprojektion" : "Live-Tabelle"}</h3>
       <p>
         ${projectedMode
-          ? "Die App zeigt vor Turnierstart eine transparente Projektion. Sobald SportMonks finale Ergebnisse liefert, kippt dieser Bereich automatisch in den Live-Modus."
-          : `${actualResultCount} finale Ergebnisse sind eingerechnet; offene Spiele werden weiter modelliert.`}
+          ? "Vor dem ersten Ergebnis zeigt WM Radar, wie die Gruppen aktuell nach Stärke, Pfad und Match Value gelesen werden."
+          : `${actualResultCount} finale Ergebnisse sind eingerechnet; offene Spiele bleiben im Ausblick.`}
       </p>
       <div class="snapshot-metrics">
         <span><strong>${focusSafe}/${focusRows.length}</strong><small>Fokus-Teams weiter</small></span>
@@ -814,6 +814,7 @@ function getStageLabel(stage) {
 }
 
 function renderDataStatus() {
+  if (!dataSnapshotEl || !dataStatusGridEl) return;
   dataSnapshotEl.textContent = `${metadata.tournament} · ${metadata.format} · Stand ${metadata.snapshotDate}. Routine-Imports bleiben bewusst in den Details.`;
   dataStatusGridEl.innerHTML = dataStatus
     .map(
@@ -986,7 +987,7 @@ function formatList(items) {
 }
 
 function renderScheduleValidation() {
-  if (!scheduleValidation) return;
+  if (!scheduleValidation || !scheduleValidatorEl) return;
 
   const missingGroups = scheduleValidation.groups.filter((group) => !group.complete);
   const completeGroups = scheduleValidation.groups.filter((group) => group.complete);
@@ -2058,45 +2059,122 @@ function getCoverageStatus(field) {
 }
 
 function getPreMatchScoutItems(match, home, away) {
+  const predictionSummary = match.providerSignal?.predictionSummary;
+  const predictionValue = predictionSummary?.preferredOutcome
+    ? `${Math.round(Math.max(predictionSummary.preferredOutcome.home, predictionSummary.preferredOutcome.draw, predictionSummary.preferredOutcome.away))}%`
+    : "Kontext";
   const prediction = match.providerSignal?.predictionAvailable
     ? {
         label: "Prediction",
-        value: "bereit",
+        value: predictionValue,
         tone: "real",
-        detail: "Sportmonks liefert ein Prognose-Signal; WM Radar nutzt es nur als kleinen Pre-Match-Impuls.",
+        detail: predictionSummary?.preferredOutcome
+          ? "Sportmonks liefert konkrete Pre-Match-Wahrscheinlichkeiten; WM Radar zeigt sie als Kontext, nicht als Wahrheit."
+          : "Sportmonks liefert ein Prognose-Signal; WM Radar nutzt es nur als kleinen Pre-Match-Impuls.",
       }
     : {
         label: "Prediction",
-        value: "offen",
+        value: "ohne Modell",
         tone: "seed",
-        detail: "Noch kein Provider-Signal für dieses Spiel.",
+        detail: "Für dieses Spiel liegt noch kein verwertbarer Modellwert vor.",
       };
-  const lineups = getCoverageStatus("lineups");
-  const formations = getCoverageStatus("formations");
-  const expectedLineups = getCoverageStatus("expectedLineups");
 
   return [
     prediction,
-    { label: "Lineups", value: lineups.value, tone: lineups.tone, detail: lineups.detail },
-    { label: "Formationen", value: formations.value, tone: formations.tone, detail: formations.detail },
-    { label: "Expected XI", value: expectedLineups.value, tone: expectedLineups.tone, detail: expectedLineups.detail },
     {
-      label: "Mapping",
-      value: match.providerSignal ? `${match.providerSignal.confidence}%` : "offen",
-      tone: match.providerSignal?.confidence >= 95 ? "real" : match.providerSignal ? "mixed" : "seed",
-      detail: match.providerSignal
-        ? `${match.providerSignal.providerName} ist mit unserem Spiel ${home.code}-${away.code} verbunden.`
-        : "Provider-Fixture noch nicht verbunden.",
+      label: "Anpfiff",
+      value: match.germanyTime,
+      tone: "real",
+      detail: `${match.displayDate} in deutscher Zeit.`,
+    },
+    {
+      label: "Gruppe",
+      value: match.group.replace("Gruppe ", ""),
+      tone: "real",
+      detail: "Erste Tabellenwirkung und mögliche Pfade beginnen hier.",
+    },
+    {
+      label: "Ort",
+      value: match.venue.split(" ")[0],
+      tone: "mixed",
+      detail: match.venue,
     },
   ];
+}
+
+function getOutcomeLeader(outcome, home, away) {
+  if (!outcome) return null;
+  const rows = [
+    { label: home.code, value: outcome.home },
+    { label: "X", value: outcome.draw },
+    { label: away.code, value: outcome.away },
+  ].sort((a, b) => b.value - a.value);
+  return rows[0];
+}
+
+function renderPredictionSummary(match, home, away) {
+  const summary = match.providerSignal?.predictionSummary;
+  if (!summary?.preferredOutcome && !summary?.topScores?.length) return "";
+
+  const outcome = summary.preferredOutcome;
+  const leader = getOutcomeLeader(outcome, home, away);
+  const outcomeRows = outcome
+    ? [
+        [home.code, outcome.home],
+        ["Remis", outcome.draw],
+        [away.code, outcome.away],
+      ]
+    : [];
+
+  return `
+    <div class="prediction-panel">
+      <div class="prediction-panel-head">
+        <div>
+          <strong>Sportmonks Prediction</strong>
+          <small>${summary.modelCount} Modellmärkte · Pre-Match</small>
+        </div>
+        ${leader ? `<span>${leader.label} ${leader.value}%</span>` : ""}
+      </div>
+      ${
+        outcomeRows.length
+          ? `<div class="prediction-outcome-grid">
+              ${outcomeRows
+                .map(
+                  ([label, value]) => `
+                    <span>
+                      <strong>${label}</strong>
+                      <em>${value}%</em>
+                      <i style="--prediction: ${value}"></i>
+                    </span>
+                  `,
+                )
+                .join("")}
+            </div>`
+          : ""
+      }
+      ${
+        summary.topScores?.length
+          ? `<div class="prediction-scorelines">
+              <strong>Wahrscheinlichste Scorelines</strong>
+              <div>
+                ${summary.topScores
+                  .map((item) => `<span><em>${item.score}</em><small>${item.value}%</small></span>`)
+                  .join("")}
+              </div>
+            </div>`
+          : ""
+      }
+      <p>Die Prediction ist ein Pre-Match-Anker. Aufstellung, Spielbild und Live-Daten können sie sofort überstimmen.</p>
+    </div>
+  `;
 }
 
 function renderPreMatchScout(match, home, away) {
   const scoutItems = getPreMatchScoutItems(match, home, away);
   const scoutChecks = [
-    "Kurz vor Anpfiff: Startelf und Formation gegen Sportmonks erneut prüfen.",
-    `Wenn ${home.code} oder ${away.code} anders aufstellt als erwartet, Taktikwert im Dossier neu lesen.`,
-    "Prediction nur als Kontext nutzen, nicht als Wahrheit: Datenlage und Spielbild bleiben wichtiger.",
+    "Erste 15 Minuten: Zugriff im Zentrum und Restverteidigung beobachten.",
+    `Bei ${home.code} auf Heimdruck und frühe Standards achten; bei ${away.code} auf Konterfenster.`,
+    "Prediction nur als Kontext nutzen, nicht als Wahrheit: Das Spielbild bleibt wichtiger.",
     "Bei Fokus-Teams: Schlüsselfiguren mit Rolle, Position und Erwartungsdruck abgleichen.",
   ];
 
@@ -2108,8 +2186,8 @@ function renderPreMatchScout(match, home, away) {
         <span class="data-badge ${match.providerSignal ? "mixed" : "seed"}">Sportmonks</span>
       </div>
       <p>
-        ${home.name} vs ${away.name}: Die Vorschau verbindet Prognose, Mapping, Aufstellungsstatus und konkrete
-        Prüfpunkte, damit aus dem Vorbericht ein echter Tagesplan wird.
+        ${home.name} vs ${away.name}: Die Vorschau verbindet Prognose, Kontext und konkrete Beobachtungspunkte,
+        damit aus dem Vorbericht ein klarer Tagesplan wird.
       </p>
       <div class="scout-signal-grid">
         ${scoutItems
@@ -2124,8 +2202,9 @@ function renderPreMatchScout(match, home, away) {
           )
           .join("")}
       </div>
+      ${renderPredictionSummary(match, home, away)}
       <div class="scout-checklist">
-        <strong>Vor dem Spiel prüfen</strong>
+        <strong>Worauf du achten solltest</strong>
         <ul class="cue-list">
           ${scoutChecks.map((check) => `<li>${check}</li>`).join("")}
         </ul>
@@ -2350,7 +2429,6 @@ function renderMatches() {
                   <span class="state-dot"></span>
                   ${match.state} · ${match.displayDate} · ${match.germanyTime}
                 </span>
-                <span class="data-badge ${match.sourceLevel || "seed"}">${getDataLevelLabel(match.sourceLevel)}</span>
               </span>
               <span class="teams">
                 <span class="team-side">${renderFlag(home)}<strong>${home.code}</strong><small>${home.name}</small></span>
@@ -2414,8 +2492,6 @@ function renderDossier() {
   const decisionMatrix = getDecisionMatrix(selectedMatch);
   const evidencePillars = getEvidencePillars(selectedMatch);
   const evidenceVoices = getEvidenceVoices(selectedMatch);
-  const metricPlan = getAdvancedMetricPlan(selectedMatch);
-  const postMatchChecks = getPostMatchChecks(selectedMatch, home, away);
 
   dossierMetaEl.innerHTML = [
     `${selectedMatch.displayDate}`,
@@ -2423,7 +2499,6 @@ function renderDossier() {
     selectedMatch.venue,
     selectedMatch.state,
     selectedMatch.group,
-    `Daten: ${getDataLevelLabel(selectedMatch.sourceLevel)}`,
   ]
     .map((item) => `<span class="meta-pill">${item}</span>`)
     .join("");
@@ -2481,7 +2556,7 @@ function renderDossier() {
     <details class="dossier-depth">
       <summary>
         <span>Mehr Analyse anzeigen</span>
-        <small>Datenanker, Quellen, Risiken, spätere Metriken und Report-Blueprints.</small>
+        <small>Teamduell, Risiken, Quellenanker und Entscheidungsmatrix.</small>
       </summary>
       <div class="insight-grid depth-grid">
     <div class="insight-card score-signals">
@@ -2510,20 +2585,6 @@ function renderDossier() {
           .join("")}
       </div>
     </div>
-    ${
-      selectedMatch.providerSignal
-        ? `<div class="insight-card provider-signal-card">
-            <span class="briefing-kicker">Provider-Signal</span>
-            <h3>Sportmonks-Mapping</h3>
-            <p>${selectedMatch.providerSignal.providerName} ist mit Provider-ID ${selectedMatch.providerSignal.providerId} gemappt.</p>
-            <div class="provider-signal-row">
-              <span><strong>${selectedMatch.providerSignal.predictionAvailable ? "bereit" : "offen"}</strong><small>Prediction</small></span>
-              <span><strong>+${selectedMatch.providerSignal.predictionImpact || 0}</strong><small>Score-Bonus</small></span>
-              <span><strong>${selectedMatch.providerSignal.confidence}%</strong><small>Mapping</small></span>
-            </div>
-          </div>`
-        : ""
-    }
     <div class="insight-card profile-insight">
       <span class="briefing-kicker">Teamduell</span>
       <h3>Team-Matchup</h3>
@@ -2556,7 +2617,7 @@ function renderDossier() {
     </div>
     <div class="insight-card evidence-card">
       <span class="briefing-kicker">Belege</span>
-      <h3>Worauf stützt sich die Analyse?</h3>
+      <h3>Welche Quellen tragen die Einordnung?</h3>
       <div class="evidence-stack">
         ${evidencePillars
           .map(
@@ -2571,10 +2632,9 @@ function renderDossier() {
           .join("")}
       </div>
     </div>
-    ${renderSourceSynthesisPanel(selectedMatch)}
     <div class="insight-card analyst-voice-card">
       <span class="briefing-kicker">Seriöse Stimmen</span>
-      <h3>Welche Analysten würden zählen?</h3>
+      <h3>Welche Stimmen lohnen sich danach?</h3>
       <div class="voice-mini-list">
         ${evidenceVoices
           .map(
@@ -2587,32 +2647,6 @@ function renderDossier() {
           )
           .join("")}
       </div>
-    </div>
-    <div class="insight-card metric-plan-card">
-      <span class="briefing-kicker">Erweiterte Metriken</span>
-      <h3>Was später automatisch validiert wird</h3>
-      <div class="advanced-metric-list">
-        ${metricPlan
-          .map(
-            (metric) => `
-              <span>
-                <strong>${metric.label}</strong>
-                <small>${metric.status}</small>
-                <em style="--metric: ${metric.value}"></em>
-                <p>${metric.detail}</p>
-              </span>
-            `,
-          )
-          .join("")}
-      </div>
-    </div>
-    ${renderPostMatchReportPanel(selectedMatch, home, away)}
-    <div class="insight-card post-match-card">
-      <span class="briefing-kicker">Nach dem Spiel</span>
-      <h3>Validierungsfragen</h3>
-      <ul class="cue-list">
-        ${postMatchChecks.map((check) => `<li>${check}</li>`).join("")}
-      </ul>
     </div>
       </div>
     </details>
@@ -2645,7 +2679,7 @@ function renderTeamLab() {
               <small>Watchlist</small>
             </span>
           </div>
-          <p class="team-score-note">Diese Zahl zeigt, wie aufmerksam WM Radar ${team.name} beobachten soll. Teamstärke, Momentum, Attraktivität, Überraschungspotenzial und Datenlage werden später getrennt bewertet.</p>
+          <p class="team-score-note">Diese Zahl zeigt, wie aufmerksam WM Radar ${team.name} im Turnier beobachten soll.</p>
           <p>${profile.identity}</p>
           <div class="phase-grid">
             <span><strong>Aufbau</strong>${profile.buildUp}</span>
@@ -2685,7 +2719,7 @@ function renderKeyFigures() {
             <span>
               <span class="data-badge seed">Seed</span>
               <h3>${team.name}</h3>
-              <small>${figures.length} Schlüsselfiguren · wird im Turnier fortgeschrieben</small>
+              <small>${figures.length} Schlüsselfiguren · Rollen und Druckpunkte</small>
             </span>
           </div>
           <div class="key-figure-list">
@@ -2734,6 +2768,7 @@ function renderSurpriseRadar() {
 }
 
 function renderSources() {
+  if (!sourceStackEl) return;
   sourceStackEl.innerHTML = sources
     .map(
       (source) => `
@@ -2753,7 +2788,7 @@ function renderSources() {
 }
 
 function renderAnalystDesk() {
-  if (!analystSources) return;
+  if (!analystSources || !analystPillarsEl) return;
 
   analystPillarsEl.innerHTML = analystSources.pillars
     .map(
