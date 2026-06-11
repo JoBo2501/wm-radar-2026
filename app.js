@@ -184,6 +184,7 @@ function computeScoreWithWeights(match, weightSet = weights) {
   const pathImpact = getPathImpact(match);
   const providerSignal = providerMappingByMatchId.get(match.id);
   const predictionImpact = providerSignal?.predictionImpact || 0;
+  const openingBoost = isOpeningMatch(match) ? 18 : 0;
   const parts = [
     [signal.importance, weightSet.importance],
     [signal.tactical, weightSet.tactical],
@@ -195,7 +196,7 @@ function computeScoreWithWeights(match, weightSet = weights) {
   ];
   const weightedTotal = parts.reduce((sum, [value, weight]) => sum + value * weight, 0);
   const totalWeight = parts.reduce((sum, [, weight]) => sum + weight, 0);
-  const score = weightedTotal / totalWeight - signal.lowValueRisk * 0.18 + predictionImpact;
+  const score = weightedTotal / totalWeight - signal.lowValueRisk * 0.18 + predictionImpact + openingBoost;
 
   return clamp(Math.round(score), 0, 100);
 }
@@ -204,7 +205,12 @@ function computeScore(match) {
   return computeScoreWithWeights(match, weights);
 }
 
-function getRecommendation(score) {
+function isOpeningMatch(match) {
+  return match.id === "mex-rsa-2026-06-11";
+}
+
+function getRecommendation(score, match = null) {
+  if (match && isOpeningMatch(match)) return score >= 70 ? "live" : "highlights";
   if (score >= 80) return "live";
   if (score >= 70) return "analysis";
   if (score >= 52) return "highlights";
@@ -230,7 +236,7 @@ function getScoredMatches() {
   return matches
     .map((match) => {
       const score = computeScore(match);
-      const category = getRecommendation(score);
+      const category = getRecommendation(score, match);
       const matchTeams = getMatchTeams(match);
       const dateKey = getDateKey(match);
 
@@ -733,7 +739,7 @@ function renderControlStats() {
 
   heroStatusRailEl.innerHTML = [
     ["Heute", dailyMatches.length, "Spiele im Tagesfenster"],
-    ["Live", liveCount, "Pflichtspiele gesamt"],
+    ["Live", liveCount, "direkt einschalten"],
     ["Nacht", nightMatches.length, "spoiler-sensibel"],
     ["Fokus", focusToday, "Watchlist-Bezug"],
   ]
@@ -775,7 +781,6 @@ function renderControlStats() {
   controlStatsEl.innerHTML = [
     ["Datenstand", metadata.snapshotDate],
     ["Live-Spiele", liveCount],
-    ["Auslassen", skipCount],
     ["Top-Spielwert", topScore],
   ]
     .map(
@@ -1537,7 +1542,7 @@ function renderSummary() {
     ["Analyse", visibleMatches.filter((match) => match.category === "analysis").length],
     ["Highlights", visibleMatches.filter((match) => match.category === "highlights").length],
     ["Auslassen", visibleMatches.filter((match) => match.category === "skip").length],
-  ];
+  ].filter(([, value]) => value > 0);
   const activeLabel = filters.find((filter) => filter.id === activeFilter)?.label || "Alle";
 
   summaryLineEl.textContent = `${visibleMatches.length} Spiele · ${activeLabel}`;
@@ -1765,6 +1770,14 @@ function getRecommendationReason(match) {
   return `${categoryText}: ${home.name} vs ${away.name} bekommt Spielwert ${match.score}/100. Haupttreiber: ${match.driver}. ${match.analysis.key}`;
 }
 
+function getCompactMatchReason(match) {
+  if (isOpeningMatch(match)) return "Eröffnungsspiel: einmal einschalten, Kontext mitnehmen, danach nach Spielbild entscheiden.";
+  if (match.category === "skip") return `Eher auslassen: ${getSkipReasons(match).slice(0, 2).join(", ")}.`;
+  if (match.category === "highlights") return `${match.driver}: Highlights reichen, wenn die erste Hälfte keinen klaren Zug bekommt.`;
+  if (match.category === "analysis") return `${match.driver}: für die spätere Einordnung vormerken.`;
+  return `${match.driver}: live relevant.`;
+}
+
 function getSkipReasons(match) {
   const reasons = [];
   if (match.signals.focus < 45) reasons.push("geringe persönliche Relevanz");
@@ -1781,7 +1794,6 @@ function getThreeWatchCues(match) {
   return [
     ...getWatchCueList(home, away),
     match.analysis.key,
-    `Nach dem Spiel prüfen: Hat der Treiber "${match.driver}" wirklich entschieden?`,
   ].slice(0, 3);
 }
 
@@ -1855,6 +1867,7 @@ function renderDailyCommandCenter() {
   const watchMatches = dailyMatches.filter((match) => match.category !== "skip");
   const skipMatches = dailyMatches.filter((match) => match.category === "skip");
   const nightMatches = dailyMatches.filter(isNightMatch);
+  const singleMatchDay = dailyMatches.length <= 1;
 
   if (!topMatch) {
     dailyBriefingTextEl.textContent = "Für das aktuelle Tagesfenster liegen noch keine Spiele vor.";
@@ -1864,14 +1877,22 @@ function renderDailyCommandCenter() {
   }
 
   const [topHome, topAway] = topMatch.matchTeams;
-  dailyBriefingTextEl.textContent = `${formatDate(preferences.baseDate)} + Nacht: Heute führt ${topHome.name} vs ${topAway.name} den Tagesplan an. ${liveCount} live, ${analysisCount} Analyse, ${skipCount} bewusst auslassen.`;
+  dailyBriefingTextEl.textContent = singleMatchDay
+    ? `${formatDate(preferences.baseDate)}: ${topHome.name} vs ${topAway.name}. Eröffnungsspiel, 21:00 Uhr, einmal bewusst einschalten.`
+    : `${formatDate(preferences.baseDate)} + Nacht: ${dailyMatches.length} Spiele, davon ${liveCount} live, ${analysisCount} Analyse, ${skipCount} bewusst auslassen.`;
 
-  commandMetricsEl.innerHTML = [
-    ["Top-Spiel", `${topHome.code}-${topAway.code}`],
-    ["Live", liveCount],
-    ["Analyse", analysisCount],
-    ["Nacht", nightMatches.length],
-  ]
+  commandMetricsEl.innerHTML = (singleMatchDay
+    ? [
+        ["Anpfiff", topMatch.germanyTime],
+        ["Spielwert", topMatch.score],
+        ["Empfehlung", getWatchAction(topMatch.category)],
+      ]
+    : [
+        ["Top-Spiel", `${topHome.code}-${topAway.code}`],
+        ["Live", liveCount],
+        ["Analyse", analysisCount],
+        ["Nacht", nightMatches.length],
+      ])
     .map(
       ([label, value]) => `
         <div class="command-metric">
@@ -1884,7 +1905,7 @@ function renderDailyCommandCenter() {
 
   topMatchCardEl.innerHTML = `
     <div class="top-match-header">
-      <span class="data-badge ${topMatch.sourceLevel}">${getDataLevelLabel(topMatch.sourceLevel)}</span>
+      <span class="data-badge ${topMatch.category}">${isOpeningMatch(topMatch) ? "Eröffnung" : topMatch.group}</span>
       <span class="watch-label ${getWatchClass(topMatch.category)}">${getWatchLabel(topMatch.category)}</span>
     </div>
     <div class="top-match-main">
@@ -1892,7 +1913,7 @@ function renderDailyCommandCenter() {
       <strong>${topMatch.score}</strong>
       <span>${topAway.code}</span>
     </div>
-    <p class="${isNightMatch(topMatch) ? "spoiler-sensitive" : ""}">${getRecommendationReason(topMatch)}</p>
+    <p class="${isNightMatch(topMatch) ? "spoiler-sensitive" : ""}">${getCompactMatchReason(topMatch)}</p>
     <ul class="cue-list">
       ${getThreeWatchCues(topMatch)
         .map((cue) => `<li>${cue}</li>`)
@@ -1900,8 +1921,16 @@ function renderDailyCommandCenter() {
     </ul>
   `;
 
-  renderMatchdayStorylines(dailyMatches);
+  const storylineCard = matchdayStorylinesEl?.closest(".storyline-card");
+  if (storylineCard) storylineCard.style.display = singleMatchDay ? "none" : "";
+  if (!singleMatchDay) {
+    renderMatchdayStorylines(dailyMatches);
+  } else if (matchdayStorylinesEl) {
+    matchdayStorylinesEl.innerHTML = "";
+  }
 
+  const watchPlanCard = watchPlanEl?.closest(".watch-plan-card");
+  if (watchPlanCard) watchPlanCard.style.display = singleMatchDay ? "none" : "";
   watchPlanCountEl.textContent = `${watchMatches.length} Empfehlungen`;
   watchPlanEl.innerHTML = watchMatches
     .map((match) => {
@@ -1911,7 +1940,7 @@ function renderDailyCommandCenter() {
           <span class="watch-time">${match.germanyTime}</span>
           <span class="watch-fixture">
             <strong>${home.code} vs ${away.code}</strong>
-            <small class="${isNightMatch(match) ? "spoiler-sensitive" : ""}">${getWatchAction(match.category)} · Spielwert ${match.score}/100 · ${match.driver}</small>
+            <small class="${isNightMatch(match) ? "spoiler-sensitive" : ""}">${getCompactMatchReason(match)}</small>
             <em>${match.tags.slice(0, 2).join(" · ")}</em>
           </span>
         </button>
@@ -1929,6 +1958,8 @@ function renderDailyCommandCenter() {
     });
   });
 
+  const skipCard = skipPlanEl?.closest(".skip-card");
+  if (skipCard) skipCard.style.display = skipMatches.length ? "" : "none";
   skipPlanCountEl.textContent = `${skipMatches.length} Spiele`;
   skipPlanEl.innerHTML =
     skipMatches
@@ -1955,6 +1986,8 @@ function renderDailyCommandCenter() {
   });
 
   morningCountEl.textContent = `${nightMatches.length} Nachtspiele`;
+  const morningCard = morningQueueEl?.closest(".morning-card");
+  if (morningCard) morningCard.style.display = nightMatches.length ? "" : "none";
   morningQueueEl.innerHTML =
     nightMatches
       .map((match) => {
@@ -2015,6 +2048,10 @@ function getDossierBriefing(match, home, away) {
   const context = match.groupModel ? match.groupModel.pathNote : "Wer weiterkommt und gegen wen es danach geht, ist noch modelliert.";
   const homeIdentity = homeProfile?.identity || `${home.name} wird aktuell über Matchsignale eingeordnet.`;
   const awayIdentity = awayProfile?.identity || `${away.name} wird aktuell über Matchsignale eingeordnet.`;
+
+  if (isOpeningMatch(match)) {
+    return `${home.code}-${away.code} eröffnet die WM. Der sportliche Wert ist nicht maximal, aber Kontext, Atmosphäre und erster Tabellenimpuls reichen für bewusstes Einschalten.`;
+  }
 
   return `${home.code}-${away.code} ist ein ${getWatchAction(match.category).toLowerCase()}-Spiel, weil ${match.driver} der stärkste Treiber ist. ${homeIdentity} Gegenbild: ${awayIdentity} ${context}`;
 }
@@ -2313,100 +2350,6 @@ function renderSourceSynthesisPanel(match) {
   `;
 }
 
-function getAdvancedMetricPlan(match) {
-  return [
-    {
-      label: "xG / Chance Quality",
-      status: match.sourceLevel === "real" ? "bereit" : "Provider später",
-      detail: "Prüft, ob das Ergebnis zur Chancenqualität passt oder nur Scoreboard-Rauschen ist.",
-      value: match.signals.importance,
-    },
-    {
-      label: "Pressingdruck (PPDA)",
-      status: "Modellanker",
-      detail: "Soll Pressinghöhe, Zugriff und passive Phasen im Spielverlauf trennen.",
-      value: match.signals.tactical,
-    },
-    {
-      label: "Spielfeldneigung",
-      status: "Provider später",
-      detail: "Zeigt, wer das Spiel wirklich in gefährlichen Zonen hält.",
-      value: Math.round((match.signals.importance + match.pathImpact) / 2),
-    },
-    {
-      label: "Linienbrechende Pässe",
-      status: "Premium später",
-      detail: "Erklärt Pässe und Annahmen, die normale Eventdaten kaum sichtbar machen.",
-      value: match.signals.tactical,
-    },
-  ];
-}
-
-function getPostMatchChecks(match, home, away) {
-  return [
-    `Hat ${match.driver} tatsächlich den Spielverlauf geprägt?`,
-    `Passte die Chancenqualität zur Empfehlung ${getWatchLabel(match.category)}?`,
-    `Wurde ${home.code}-${away.code} durch Ballverluste, Standards oder offene Räume entschieden?`,
-    `Muss der Spielwert nach echten Ergebnis- und Eventdaten neu kalibriert werden?`,
-  ];
-}
-
-function getPostMatchReport(match) {
-  return (postMatchReports?.reports || []).find((report) => report.matchId === match.id) || null;
-}
-
-function getPostMatchReportStatus(report) {
-  if (!report) return "Blueprint";
-  const labels = {
-    draft: "Draft",
-    "provider-synced": "Provider Sync",
-    reviewed: "Reviewed",
-  };
-  return labels[report.status] || report.status;
-}
-
-function renderPostMatchReportPanel(match, home, away) {
-  const report = getPostMatchReport(match);
-  const metricDefinitions = postMatchReports?.metricDefinitions || [];
-
-  if (!report) {
-    return `
-      <div class="insight-card report-hub-card">
-        <span class="briefing-kicker">Nachspiel-Report</span>
-        <h3>Report-Blueprint ist vorbereitet</h3>
-        <p>${postMatchReports?.sourceNote || "Echte Post-Match-Daten werden nach finalen Ergebnissen ergänzt."}</p>
-        <div class="report-status-row">
-          <span><strong>${getPostMatchReportStatus(report)}</strong><small>Status</small></span>
-          <span><strong>${postMatchValidation?.coverage?.reports || 0}</strong><small>Reports</small></span>
-          <span><strong>${metricDefinitions.length}</strong><small>Metriken</small></span>
-        </div>
-        <ul class="report-blueprint-list">
-          ${metricDefinitions
-            .slice(0, 5)
-            .map((metric) => `<li><strong>${metric.label}</strong><span>${metric.providerTarget}</span></li>`)
-            .join("")}
-        </ul>
-      </div>
-    `;
-  }
-
-  return `
-    <div class="insight-card report-hub-card reviewed">
-      <span class="briefing-kicker">Nachspiel-Report</span>
-      <h3>${home.code}-${away.code}: Analyse-Audit</h3>
-      <p>${report.summary || "Report liegt vor und wartet auf redaktionelle Auswertung."}</p>
-      <div class="report-status-row">
-        <span><strong>${getPostMatchReportStatus(report)}</strong><small>Status</small></span>
-        <span><strong>${report.recommendationAudit?.postMatchScore ?? "-"}</strong><small>Post Score</small></span>
-        <span><strong>${report.recommendationAudit?.verdict || "offen"}</strong><small>Verdict</small></span>
-      </div>
-      <ul class="report-blueprint-list">
-        ${(report.patterns || []).map((pattern) => `<li><strong>${pattern.label}</strong><span>${pattern.note}</span></li>`).join("")}
-      </ul>
-    </div>
-  `;
-}
-
 function renderMatches() {
   const visibleMatches = getVisibleMatches();
 
@@ -2440,12 +2383,7 @@ function renderMatches() {
                 <span><strong>${match.pathImpact}</strong> Weiterkommen</span>
                 <span><strong>${match.signals.tactical}</strong> Taktik</span>
               </span>
-              <p class="match-reason">${getRecommendationReason(match)}</p>
-              ${
-                match.category === "skip"
-                  ? `<p class="skip-reasons">Auslassen, weil: ${getSkipReasons(match).join(", ")}.</p>`
-                  : ""
-              }
+              <p class="match-reason">${getCompactMatchReason(match)}</p>
               <span class="match-tags">
                   ${match.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}
                 </span>
@@ -2506,7 +2444,7 @@ function renderDossier() {
   insightGridEl.innerHTML = `
     <div class="insight-card tactical-briefing">
       <span class="briefing-kicker">Analysten-Story</span>
-      <h3>Warum dieses Spiel zählt</h3>
+      <h3>Spiel in einem Satz</h3>
       <p>${getDossierBriefing(selectedMatch, home, away)}</p>
       <div class="briefing-tags">
         <span>${selectedMatch.driver}</span>
@@ -2547,11 +2485,6 @@ function renderDossier() {
           )
           .join("")}
       </div>
-    </div>
-    <div class="insight-card action-card">
-      <span class="briefing-kicker">Kurzfazit</span>
-      <h3>Was du damit machst</h3>
-      <p>${getRecommendationReason(selectedMatch)}</p>
     </div>
     <details class="dossier-depth">
       <summary>
