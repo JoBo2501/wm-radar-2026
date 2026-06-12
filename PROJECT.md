@@ -94,7 +94,7 @@ Wichtige Dateien:
 - Tabellen & Szenarien: Tabellenprojektion, direkte Qualifikanten, Best Thirds und moegliche naechste Gegner.
 - Der Weg ins Finale: 32 K.o.-Matches, dynamisch aufgeloeste Slots und moegliche Gegnerfolgen.
 - K.o.-Dossiers: Watch-Empfehlung, Stilkontrast, Upset-Risiko, moeglicher naechster Gegner.
-- Match-Dossier: Fuehrt die Spiele-View direkt mit Match-Liste, Analysten-Story, Belegschicht, Advanced-Metrics-Plan und Post-Match Report Hub.
+- Match-Dossier: Fuehrt die Spiele-View direkt mit Match-Liste; vor Anpfiff zeigt es Vorschau/Scout, nach Abpfiff eine Nachspielauswertung mit Ergebnis, Empfehlungs-Audit, Draft-Metriken und Review-Punkten.
 - Team-Briefings: taktische Teamprofile als Kontext unterhalb der Spiele. Sichtbare Teamwerte sind Watchlist-Prioritaet, kein objektives Ranking. Spaeter getrennt: Teamstaerke, Momentum, Attraktivitaet, Ueberraschungspotenzial und Datenlage.
 - Schluesselfiguren: Trainer, Leader, Taktikspieler, Druckspieler und Turnier-Entdeckungen mit Erwartung vor dem Turnier, Watch-Cues und Entwicklung im Turnierverlauf.
 - Analyse-Synthese: Datenanker, Video-/Tracking-Beleg, taktische Deutung und Kontextstimmen werden im Match-Dossier getrennt gewichtet.

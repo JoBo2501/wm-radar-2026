@@ -13,6 +13,7 @@ const preferences = readJson("data/preferences.json");
 const teamProfiles = readJson("data/team-profiles.json");
 const keyFigures = readJson("data/key-figures.json");
 const analystSources = readJson("data/analyst-sources.json");
+const postMatchReports = readJson("data/post-match-reports.json");
 const providerTests = readJson("data/provider-tests.json");
 const providerMapping = readJson("data/provider-mapping.json");
 
@@ -55,6 +56,7 @@ const data = {
   teamProfiles,
   keyFigures,
   analystSources,
+  postMatchReports,
   providerTests,
   providerMapping,
   focusTeams,
@@ -84,5 +86,5 @@ const data = {
 const serialized = JSON.stringify(data, null, 2).replace(/<\/script/gi, "<\\/script");
 writeFileSync("data.js", `window.WMRadarData = ${serialized};\n`, "utf8");
 console.log(
-  `Created data.js from ${teams.length} teams, ${groups.length} groups, ${matches.length} matches, ${knockout.length} knockout slots, ${results.matches.length} results and ${analystSources.pillars.length} source pillars`,
+  `Created data.js from ${teams.length} teams, ${groups.length} groups, ${matches.length} matches, ${knockout.length} knockout slots, ${results.matches.length} results, ${postMatchReports.reports.length} post-match reports and ${analystSources.pillars.length} source pillars`,
 );

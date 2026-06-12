@@ -9,6 +9,7 @@ const {
   knockout,
   matches,
   metadata,
+  postMatchReports,
   preferences,
   providerTests,
   providerMapping,
@@ -22,6 +23,7 @@ const teamByCode = new Map(teams.map((team) => [team.code, team]));
 const profileByCode = new Map(teamProfiles.map((profile) => [profile.code, profile]));
 const keyFiguresByTeam = new Map(keyFigures.map((entry) => [entry.team, entry]));
 const providerMappingByMatchId = new Map((providerMapping?.mappings || []).map((mapping) => [mapping.matchId, mapping]));
+const postMatchReportByMatchId = new Map((postMatchReports?.reports || []).map((report) => [report.matchId, report]));
 const groupById = new Map(groups.map((group) => [group.id, group]));
 const groupByTeamCode = new Map(groups.flatMap((group) => group.teams.map((code) => [code, group])));
 const zoneLinks = [...document.querySelectorAll(".main-nav a[data-zone]")];
@@ -1904,6 +1906,152 @@ function renderPreMatchScout(match, home, away) {
   `;
 }
 
+function getPostMatchReport(match, result) {
+  return postMatchReportByMatchId.get(match.id) || {
+    matchId: match.id,
+    status: "draft",
+    result: {
+      homeGoals: Number(result.homeGoals),
+      awayGoals: Number(result.awayGoals),
+      resultLine: getResultLabel(result) || "Endstand erfasst",
+      source: result.source || "unknown",
+      updatedAt: result.updatedAt || null,
+    },
+    summary: `${getResultLabel(result) || "Endstand erfasst"}. Ergebnis ist synchronisiert; detaillierte Provider-Metriken und Video-Review stehen noch aus.`,
+    metrics: [],
+    patterns: [
+      {
+        label: "Providerdaten nachziehen",
+        note: "xG, Schussqualität, Druckphasen und Eventdaten ergänzen, sobald sie verlässlich verfügbar sind.",
+      },
+      {
+        label: "Pre-Match-Annahme prüfen",
+        note: "War der vorher stärkste Treiber im Spielbild wirklich sichtbar oder nur ein Modellartefakt?",
+      },
+    ],
+    recommendationAudit: {
+      preMatchScore: match.score,
+      postMatchScore: match.score,
+      preRecommendation: match.category,
+      verdict: "Review offen",
+      learning: "Das Ergebnis ist da; die qualitative Auswertung braucht noch Metriken oder Video-Review.",
+    },
+    analystNotes: ["Automatischer Fallback, bis ein Post-Match-Report generiert wurde."],
+  };
+}
+
+function getMetricLabel(metric) {
+  const labels = {
+    xg: "Chancenqualität",
+    ppda: "Pressingdruck",
+    fieldTilt: "Spielfeldneigung",
+    lineBreaking: "Linienbrüche",
+    setPieceThreat: "Standardgefahr",
+  };
+  return labels[metric.id] || metric.id;
+}
+
+function renderPostMatchDossier(match, home, away, result) {
+  const report = getPostMatchReport(match, result);
+  const audit = report.recommendationAudit || {};
+  const resultLine = report.result?.resultLine || getResultLabel(result) || "Endstand erfasst";
+  const metrics = report.metrics || [];
+  const patterns = report.patterns || [];
+
+  return `
+    <div class="insight-card tactical-briefing post-match-summary">
+      <span class="briefing-kicker">Nach dem Spiel</span>
+      <h3>${resultLine}</h3>
+      <p>${report.summary}</p>
+      <div class="briefing-tags">
+        <span>Quelle: ${report.result?.source || result.source || "Sportmonks"}</span>
+        <span>Status: ${report.status || "draft"}</span>
+        <span>Update: ${report.result?.updatedAt ? new Date(report.result.updatedAt).toLocaleString("de-DE", { dateStyle: "short", timeStyle: "short" }) : "offen"}</span>
+      </div>
+    </div>
+    <div class="insight-card decision-card post-match-audit">
+      <span class="briefing-kicker">Empfehlungs-Audit</span>
+      <h3>Hat sich das Einschalten gelohnt?</h3>
+      <div class="decision-grid">
+        <span>
+          <small>Vorher</small>
+          <strong>${audit.preRecommendation || getWatchLabel(match.category)}</strong>
+          <em>${audit.preMatchScore ?? match.score}/100</em>
+        </span>
+        <span>
+          <small>Nachher</small>
+          <strong>${audit.verdict || "Review offen"}</strong>
+          <em>${audit.postMatchScore ?? match.score}/100</em>
+        </span>
+      </div>
+      <p>${audit.learning || "Auswertung wird mit belastbaren Metriken nachgeschärft."}</p>
+    </div>
+    <div class="insight-card score-signals post-match-metrics">
+      <span class="briefing-kicker">Spielmetriken</span>
+      <h3>Was das Ergebnis erklärt</h3>
+      ${
+        metrics.length
+          ? `<div class="metric-list">
+              ${metrics
+                .map(
+                  (metric) => `
+                    <div class="metric-row">
+                      <span>${getMetricLabel(metric)}</span>
+                      <span class="metric-track"><span class="metric-fill" style="width: ${metric.value}%"></span></span>
+                      <strong>${metric.value}</strong>
+                    </div>
+                  `,
+                )
+                .join("")}
+            </div>
+            <ul class="cue-list">
+              ${metrics.map((metric) => `<li>${metric.note}</li>`).join("")}
+            </ul>`
+          : `<p>Für ${home.code}-${away.code} liegen noch keine belastbaren Detailmetriken vor. Das Ergebnis ist erfasst; xG, Druckphasen und Eventdaten werden nachgezogen.</p>`
+      }
+    </div>
+    <div class="insight-card trigger-card post-match-patterns">
+      <span class="briefing-kicker">Review-Punkte</span>
+      <h3>Was nach dem Spiel geprüft werden muss</h3>
+      <ol class="trigger-list">
+        ${
+          patterns.length
+            ? patterns.map((pattern) => `<li><strong>${pattern.label}:</strong> ${pattern.note}</li>`).join("")
+            : `<li>Spielbild gegen Ergebnis prüfen.</li><li>Provider-Metriken und Video-Review ergänzen.</li>`
+        }
+      </ol>
+    </div>
+    <div class="insight-card profile-insight">
+      <span class="briefing-kicker">Tabellenwirkung</span>
+      <h3>Was das Ergebnis verändert</h3>
+      <p>${
+        match.groupModel
+          ? match.groupModel.pathNote
+          : "Die Tabellen- und Pfadwirkung wird aus den synchronisierten Ergebnissen berechnet."
+      }</p>
+      <p>Weiterkommen- und Gegnerwirkung: ${match.pathImpact}/100.</p>
+    </div>
+    <details class="dossier-depth">
+      <summary>
+        <span>Pre-Match-Annahmen anzeigen</span>
+        <small>Nur zur Nachkontrolle, nicht als aktuelle Auswertung.</small>
+      </summary>
+      <div class="insight-grid depth-grid">
+        <div class="insight-card">
+          <span class="briefing-kicker">Vorherige These</span>
+          <h3>Was vor Anpfiff erwartet wurde</h3>
+          <p>${getDossierBriefing(match, home, away)}</p>
+        </div>
+        <div class="insight-card">
+          <span class="briefing-kicker">Kalibrierung</span>
+          <h3>Was daraus gelernt wird</h3>
+          <p>${audit.learning || "Die Pre-Match-Logik wird gegen Ergebnis, Metriken und Review-Punkte geprüft."}</p>
+        </div>
+      </div>
+    </details>
+  `;
+}
+
 function getDecisionMatrix(match) {
   return [
     ["Live-Schwelle", match.score >= 80 ? "erreicht" : "nicht erreicht", match.score],
@@ -2082,12 +2230,17 @@ function renderDossier() {
   const [home, away] = selectedMatch.matchTeams;
   const selectedResult = getMatchResult(selectedMatch);
   const selectedResultLabel = getResultLabel(selectedResult);
+  const isFinalMatch = selectedResult?.status === "final";
+  const postMatchReport = isFinalMatch ? getPostMatchReport(selectedMatch, selectedResult) : null;
   dossierTitleEl.textContent = `${home.name} vs ${away.name}`;
   dossierTitleEl.closest(".dossier").dataset.recommendation = selectedMatch.category;
-  dossierScoreEl.style.setProperty("--score", selectedMatch.score);
-  dossierScoreEl.className = `score-ring ${getScoreTone(selectedMatch.score)}`;
-  dossierScoreEl.querySelector("span").textContent = selectedMatch.score;
-  pitchModeEl.textContent = selectedMatch.tags[1] || "Taktik";
+  const dossierScore = postMatchReport?.recommendationAudit?.postMatchScore ?? selectedMatch.score;
+  dossierScoreEl.style.setProperty("--score", dossierScore);
+  dossierScoreEl.className = `score-ring ${getScoreTone(dossierScore)}`;
+  dossierScoreEl.querySelector("span").textContent = dossierScore;
+  pitchModeEl.textContent = isFinalMatch ? "Nachspiel-Audit" : selectedMatch.tags[1] || "Taktik";
+  const pitchCard = pitchModeEl.closest(".pitch-card");
+  if (pitchCard) pitchCard.hidden = isFinalMatch;
   const keyBattle = getKeyBattle(home, away);
   const tacticalTriggers = getTacticalTriggers(selectedMatch, home, away);
   const decisionMatrix = getDecisionMatrix(selectedMatch);
@@ -2105,6 +2258,11 @@ function renderDossier() {
     .filter(Boolean)
     .map((item) => `<span class="meta-pill">${item}</span>`)
     .join("");
+
+  if (isFinalMatch) {
+    insightGridEl.innerHTML = renderPostMatchDossier(selectedMatch, home, away, selectedResult);
+    return;
+  }
 
   insightGridEl.innerHTML = `
     <div class="insight-card tactical-briefing">

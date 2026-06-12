@@ -1235,6 +1235,198 @@ window.WMRadarData = {
       }
     ]
   },
+  "postMatchReports": {
+    "schemaVersion": 1,
+    "status": "drafts-generated",
+    "generatedAt": "2026-06-12T12:05:41.249Z",
+    "sourceNote": "Post-Match-Reports sind als Datenmodell vorbereitet. Echte Werte werden nach Spielende aus Ergebnis-, Event-, Tracking- und Analystenquellen ergänzt.",
+    "metricDefinitions": [
+      {
+        "id": "xg",
+        "label": "xG / Chancenqualität",
+        "providerTarget": "SportMonks xGFixture / Statistics",
+        "meaning": "Vergleicht Ergebnis und Chancenqualität, um Scoreboard-Rauschen von echter Dominanz zu trennen."
+      },
+      {
+        "id": "ppda",
+        "label": "Pressingdruck (PPDA)",
+        "providerTarget": "SportMonks Events / Statistics + Review",
+        "meaning": "Misst, wie hoch und wie konsequent ein Team ohne Ball Zugriff erzeugt."
+      },
+      {
+        "id": "fieldTilt",
+        "label": "Spielfeldneigung",
+        "providerTarget": "SportMonks Statistics / Pressure",
+        "meaning": "Zeigt, wer das Spiel in gefährlichen Zonen kontrolliert statt nur Ballbesitz zu sammeln."
+      },
+      {
+        "id": "lineBreaking",
+        "label": "Linienbrechende Pässe",
+        "providerTarget": "SportMonks Events + manuelle Taktikprüfung",
+        "meaning": "Erklärt Pässe, Annahmen und Läufe, die Linien brechen oder Druck überspielen."
+      },
+      {
+        "id": "setPieceThreat",
+        "label": "Standardgefahr",
+        "providerTarget": "SportMonks Events / Statistics + Review",
+        "meaning": "Bewertet Standards über Zielzonen, zweite Bälle, Blockbewegungen und Abschlussqualität."
+      }
+    ],
+    "reportTemplate": {
+      "requiredFields": [
+        "matchId",
+        "status",
+        "result",
+        "metrics",
+        "patterns",
+        "recommendationAudit",
+        "analystNotes"
+      ],
+      "statusValues": [
+        "draft",
+        "provider-synced",
+        "reviewed"
+      ],
+      "recommendationAuditFields": [
+        "preMatchScore",
+        "postMatchScore",
+        "verdict",
+        "learning"
+      ]
+    },
+    "reports": [
+      {
+        "matchId": "kor-cze-2026-06-12",
+        "status": "draft",
+        "generatedAt": "2026-06-12T12:05:41.249Z",
+        "generatedBy": "generate-post-match-reports.mjs",
+        "result": {
+          "homeGoals": 2,
+          "awayGoals": 1,
+          "resultLine": "KOR gewinnt 2:1",
+          "source": "sportmonks",
+          "updatedAt": "2026-06-12T11:08:13.792Z"
+        },
+        "summary": "KOR gewinnt 2:1. Draft-Audit: Pre-Match 33/100 (skip), Post-Match 43/100. Verdict: bestaetigt.",
+        "metrics": [
+          {
+            "id": "xg",
+            "value": 47,
+            "status": "draft-model",
+            "note": "Erste Schaetzung aus Ergebnis, Score-Audit und Chancenbedarf. Provider-xG ersetzt diesen Wert spaeter."
+          },
+          {
+            "id": "ppda",
+            "value": 54,
+            "status": "draft-model",
+            "note": "Pressing-Proxy aus Taktiksignal und Spielenge. Echte PPDA-Daten werden nach Provider-Sync priorisiert."
+          },
+          {
+            "id": "fieldTilt",
+            "value": 48,
+            "status": "draft-model",
+            "note": "Territory-Proxy bis echte Field-Tilt- oder Drittelkontrollwerte vorliegen."
+          },
+          {
+            "id": "lineBreaking",
+            "value": 42,
+            "status": "draft-model",
+            "note": "360/Line-Breaking bleibt Provider-Platzhalter; Wert markiert Analysebedarf."
+          }
+        ],
+        "patterns": [
+          {
+            "label": "Haupttreiber pruefen",
+            "note": "Vor dem Spiel war Bedeutung der staerkste Treiber. Video und Eventdaten muessen klaeren, ob das wirklich sichtbar war."
+          },
+          {
+            "label": "Scoreboard vs Spielqualitaet",
+            "note": "Draft trennt Ergebniswirkung von spaeterer Chancenqualitaet, Pressingdaten und Territory-Werten."
+          },
+          {
+            "label": "Naechste Kalibrierung",
+            "note": "Wenn Providerdaten stark abweichen, werden Gewichtung und Empfehlung fuer aehnliche Spiele nachgezogen."
+          }
+        ],
+        "recommendationAudit": {
+          "preMatchScore": 33,
+          "postMatchScore": 43,
+          "preRecommendation": "skip",
+          "verdict": "bestaetigt",
+          "learning": "Pre-Match-Logik wurde durch Ergebnis- und Draft-Signale vorlaeufig gestuetzt."
+        },
+        "analystNotes": [
+          "Draft automatisch aus finalem Ergebnis und Pre-Match-Signalen erzeugt.",
+          "Provider-Metriken und Videoanalyse muessen diesen Report spaeter bestaetigen oder korrigieren."
+        ]
+      },
+      {
+        "matchId": "mex-rsa-2026-06-11",
+        "status": "draft",
+        "generatedAt": "2026-06-12T12:05:41.248Z",
+        "generatedBy": "generate-post-match-reports.mjs",
+        "result": {
+          "homeGoals": 2,
+          "awayGoals": 0,
+          "resultLine": "MEX gewinnt 2:0",
+          "source": "sportmonks",
+          "updatedAt": "2026-06-12T11:08:13.792Z"
+        },
+        "summary": "MEX gewinnt 2:0. Draft-Audit: Pre-Match 44/100 (skip), Post-Match 50/100. Verdict: bestaetigt.",
+        "metrics": [
+          {
+            "id": "xg",
+            "value": 47,
+            "status": "draft-model",
+            "note": "Erste Schaetzung aus Ergebnis, Score-Audit und Chancenbedarf. Provider-xG ersetzt diesen Wert spaeter."
+          },
+          {
+            "id": "ppda",
+            "value": 48,
+            "status": "draft-model",
+            "note": "Pressing-Proxy aus Taktiksignal und Spielenge. Echte PPDA-Daten werden nach Provider-Sync priorisiert."
+          },
+          {
+            "id": "fieldTilt",
+            "value": 51,
+            "status": "draft-model",
+            "note": "Territory-Proxy bis echte Field-Tilt- oder Drittelkontrollwerte vorliegen."
+          },
+          {
+            "id": "lineBreaking",
+            "value": 47,
+            "status": "draft-model",
+            "note": "360/Line-Breaking bleibt Provider-Platzhalter; Wert markiert Analysebedarf."
+          }
+        ],
+        "patterns": [
+          {
+            "label": "Haupttreiber pruefen",
+            "note": "Vor dem Spiel war Uhrzeit der staerkste Treiber. Video und Eventdaten muessen klaeren, ob das wirklich sichtbar war."
+          },
+          {
+            "label": "Scoreboard vs Spielqualitaet",
+            "note": "Draft trennt Ergebniswirkung von spaeterer Chancenqualitaet, Pressingdaten und Territory-Werten."
+          },
+          {
+            "label": "Naechste Kalibrierung",
+            "note": "Wenn Providerdaten stark abweichen, werden Gewichtung und Empfehlung fuer aehnliche Spiele nachgezogen."
+          }
+        ],
+        "recommendationAudit": {
+          "preMatchScore": 44,
+          "postMatchScore": 50,
+          "preRecommendation": "skip",
+          "verdict": "bestaetigt",
+          "learning": "Pre-Match-Logik wurde durch Ergebnis- und Draft-Signale vorlaeufig gestuetzt."
+        },
+        "analystNotes": [
+          "Draft automatisch aus finalem Ergebnis und Pre-Match-Signalen erzeugt.",
+          "Provider-Metriken und Videoanalyse muessen diesen Report spaeter bestaetigen oder korrigieren."
+        ]
+      }
+    ]
+  },
   "providerTests": {
     "generatedAt": "2026-06-11T09:06:11.384Z",
     "status": "primary-ready",
