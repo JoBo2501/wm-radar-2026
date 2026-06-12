@@ -1636,6 +1636,29 @@ h3 {
   text-transform: uppercase;
 }
 
+.result-badge {
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  max-width: 100%;
+  min-height: 28px;
+  padding: 5px 9px;
+  border: 1px solid rgba(29, 143, 79, 0.24);
+  border-radius: 999px;
+  background: rgba(17, 151, 81, 0.1);
+  color: var(--green);
+  font-size: 0.78rem;
+  font-weight: 950;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.result-badge.live {
+  border-color: rgba(255, 214, 107, 0.52);
+  background: rgba(255, 214, 107, 0.16);
+  color: #8a5a00;
+}
+
 .data-badge {
   display: inline-flex;
   width: max-content;

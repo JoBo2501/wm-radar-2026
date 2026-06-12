@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-06-11T09:06:42.567Z",
-  "status": "waiting",
-  "summary": "Noch keine echten Resultate synchronisiert; Projektionsmodus bleibt aktiv.",
+  "generatedAt": "2026-06-12T07:31:26.464Z",
+  "status": "synced",
+  "summary": "Resultate sind synchronisiert und plausibel.",
   "source": {
     "activeSource": "sportmonks",
     "sourceLabel": "Sportmonks",
-    "generatedAt": "2026-06-11T09:06:24.488Z",
+    "generatedAt": "2026-06-12T07:18:30.730Z",
     "pollMinutes": 5
   },
   "issues": {
@@ -16,11 +16,11 @@
     "warnings": []
   },
   "coverage": {
-    "groupResults": 0,
+    "groupResults": 2,
     "knockoutResults": 0,
     "liveResults": 0,
-    "totalResults": 0,
-    "groupCoverage": 0,
+    "totalResults": 2,
+    "groupCoverage": 3,
     "knockoutCoverage": 0
   }
 }

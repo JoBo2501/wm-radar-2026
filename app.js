@@ -306,6 +306,29 @@ function getResultMap() {
   return new Map((results?.matches || []).map((result) => [result.matchId, result]));
 }
 
+function hasCompleteScore(result) {
+  return Number.isFinite(Number(result?.homeGoals)) && Number.isFinite(Number(result?.awayGoals));
+}
+
+function getMatchResult(match) {
+  return getResultMap().get(match.id) || null;
+}
+
+function getResultLabel(result) {
+  if (!hasCompleteScore(result)) return null;
+
+  const score = `${Number(result.homeGoals)}:${Number(result.awayGoals)}`;
+  if (result.status === "final") return `Endstand ${score}`;
+  if (result.status === "live") return `Live ${score}${result.minute ? ` · ${result.minute}.` : ""}`;
+  return null;
+}
+
+function getResultTone(result) {
+  if (result?.status === "live") return "live";
+  if (result?.status === "final") return "final";
+  return "pending";
+}
+
 function addActualResult(homeRow, awayRow, homeGoals, awayGoals) {
   homeRow.played += 1;
   awayRow.played += 1;
@@ -2363,6 +2386,8 @@ function renderMatches() {
         const [home, away] = match.matchTeams;
         const active = match.id === selectedMatchId ? "active" : "";
         const scoreTone = getScoreTone(match.score);
+        const result = getMatchResult(match);
+        const resultLabel = getResultLabel(result);
 
         return `
           <button class="match-card ${active} ${match.category}" type="button" data-match="${match.id}">
@@ -2372,6 +2397,11 @@ function renderMatches() {
                   <span class="state-dot"></span>
                   ${match.state} · ${match.displayDate} · ${match.germanyTime}
                 </span>
+                ${
+                  resultLabel
+                    ? `<span class="result-badge ${getResultTone(result)}">${resultLabel}</span>`
+                    : ""
+                }
               </span>
               <span class="teams">
                 <span class="team-side">${renderFlag(home)}<strong>${home.code}</strong><small>${home.name}</small></span>
@@ -2419,6 +2449,8 @@ function renderDossier() {
 
   selectedMatchId = selectedMatch.id;
   const [home, away] = selectedMatch.matchTeams;
+  const selectedResult = getMatchResult(selectedMatch);
+  const selectedResultLabel = getResultLabel(selectedResult);
   dossierTitleEl.textContent = `${home.name} vs ${away.name}`;
   dossierTitleEl.closest(".dossier").dataset.recommendation = selectedMatch.category;
   dossierScoreEl.style.setProperty("--score", selectedMatch.score);
@@ -2437,7 +2469,9 @@ function renderDossier() {
     selectedMatch.venue,
     selectedMatch.state,
     selectedMatch.group,
+    selectedResultLabel,
   ]
+    .filter(Boolean)
     .map((item) => `<span class="meta-pill">${item}</span>`)
     .join("");
 

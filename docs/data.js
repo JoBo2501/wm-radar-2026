@@ -51,10 +51,10 @@ window.WMRadarData = {
     },
     {
       "label": "Resultate & Tabellen",
-      "value": "Projektion",
-      "tone": "model",
-      "detail": "Noch keine echten Ergebnisse; Tabellen laufen transparent im Projektionsmodus.",
-      "confidence": 68
+      "value": "Sync aktiv",
+      "tone": "real",
+      "detail": "2 echte Ergebnisse synchronisiert.",
+      "confidence": 90
     },
     {
       "label": "Nachspiel-Reports",
@@ -1541,13 +1541,13 @@ window.WMRadarData = {
     }
   },
   "resultValidation": {
-    "generatedAt": "2026-06-11T09:06:42.567Z",
-    "status": "waiting",
-    "summary": "Noch keine echten Resultate synchronisiert; Projektionsmodus bleibt aktiv.",
+    "generatedAt": "2026-06-12T07:18:41.820Z",
+    "status": "synced",
+    "summary": "Resultate sind synchronisiert und plausibel.",
     "source": {
       "activeSource": "sportmonks",
       "sourceLabel": "Sportmonks",
-      "generatedAt": "2026-06-11T09:06:24.488Z",
+      "generatedAt": "2026-06-12T07:18:30.730Z",
       "pollMinutes": 5
     },
     "issues": {
@@ -1558,11 +1558,11 @@ window.WMRadarData = {
       "warnings": []
     },
     "coverage": {
-      "groupResults": 0,
+      "groupResults": 2,
       "knockoutResults": 0,
       "liveResults": 0,
-      "totalResults": 0,
-      "groupCoverage": 0,
+      "totalResults": 2,
+      "groupCoverage": 3,
       "knockoutCoverage": 0
     }
   },
@@ -11868,22 +11868,57 @@ window.WMRadarData = {
     }
   ],
   "results": {
-    "mode": "preTournament",
-    "sourceLevel": "model",
+    "mode": "synced",
+    "sourceLevel": "real",
     "activeSource": "sportmonks",
     "sourceLabel": "Sportmonks",
-    "sourceNote": "Keine echten Ergebnisse von Sportmonks; Tabellenansicht nutzt weiter Modellprojektion.",
-    "generatedAt": "2026-06-11T09:06:24.488Z",
+    "sourceNote": "Automatisch synchronisiert aus Sportmonks; manuelle Overrides wurden angewendet.",
+    "generatedAt": "2026-06-12T07:18:30.730Z",
     "pollMinutes": 5,
     "syncError": null,
     "summary": {
       "providerMatches": 104,
-      "synced": 0,
-      "final": 0,
+      "synced": 2,
+      "final": 2,
       "live": 0,
       "overrides": 0
     },
-    "matches": []
+    "matches": [
+      {
+        "matchId": "mex-rsa-2026-06-11",
+        "matchNumber": null,
+        "stage": "group",
+        "status": "final",
+        "homeGoals": 2,
+        "awayGoals": 0,
+        "minute": null,
+        "penaltyHomeGoals": null,
+        "penaltyAwayGoals": null,
+        "source": "sportmonks",
+        "providerId": 19609127,
+        "providerHome": "Mexico",
+        "providerAway": "South Africa",
+        "providerDate": "2026-06-11",
+        "updatedAt": "2026-06-12T07:18:30.729Z"
+      },
+      {
+        "matchId": "kor-cze-2026-06-12",
+        "matchNumber": null,
+        "stage": "group",
+        "status": "final",
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "minute": null,
+        "penaltyHomeGoals": null,
+        "penaltyAwayGoals": null,
+        "source": "sportmonks",
+        "providerId": 19609153,
+        "providerHome": "Korea Republic",
+        "providerAway": "Czech Republic",
+        "providerDate": "2026-06-12",
+        "updatedAt": "2026-06-12T07:18:30.729Z"
+      }
+    ]
   },
   "surpriseTeams": [
     {

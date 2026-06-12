@@ -1,4 +1,5 @@
 import { createReadStream, existsSync } from "node:fs";
+import { stat } from "node:fs/promises";
 import { extname, join, normalize, resolve } from "node:path";
 import { createServer } from "node:http";
 
@@ -18,12 +19,18 @@ function send(res, status, message) {
   res.end(message);
 }
 
-createServer((req, res) => {
+createServer(async (req, res) => {
   const url = new URL(req.url || "/", `http://localhost:${port}`);
-  const cleanPath = normalize(decodeURIComponent(url.pathname)).replace(/^(\.\.[/\\])+/, "");
-  const filePath = resolve(join(root, cleanPath === "/" ? "index.html" : cleanPath));
+  const route =
+    url.pathname === "/"
+      ? "index.html"
+      : normalize(decodeURIComponent(url.pathname))
+          .replace(/^[/\\]+/, "")
+          .replace(/^(\.\.[/\\])+/, "");
+  const filePath = resolve(join(root, route));
 
-  if (!filePath.startsWith(root) || !existsSync(filePath)) {
+  const fileStat = existsSync(filePath) ? await stat(filePath) : null;
+  if (!filePath.startsWith(root) || !fileStat || fileStat.isDirectory()) {
     send(res, 404, "Not found");
     return;
   }
@@ -32,7 +39,9 @@ createServer((req, res) => {
     "cache-control": "no-store",
     "content-type": types[extname(filePath)] || "application/octet-stream",
   });
-  createReadStream(filePath).pipe(res);
+  createReadStream(filePath)
+    .on("error", () => send(res, 500, "Could not read file"))
+    .pipe(res);
 }).listen(port, () => {
   console.log(`WM Radar 26 listening on http://localhost:${port}`);
 });

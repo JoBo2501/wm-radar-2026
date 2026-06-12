@@ -1645,6 +1645,29 @@ h3 {
   text-transform: uppercase;
 }
 
+.result-badge {
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  max-width: 100%;
+  min-height: 28px;
+  padding: 5px 9px;
+  border: 1px solid rgba(29, 143, 79, 0.24);
+  border-radius: 999px;
+  background: rgba(17, 151, 81, 0.1);
+  color: var(--green);
+  font-size: 0.78rem;
+  font-weight: 950;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.result-badge.live {
+  border-color: rgba(255, 214, 107, 0.52);
+  background: rgba(255, 214, 107, 0.16);
+  color: #8a5a00;
+}
+
 .data-badge {
   display: inline-flex;
   width: max-content;
@@ -6021,10 +6044,10 @@ window.WMRadarData = {
     },
     {
       "label": "Resultate & Tabellen",
-      "value": "Projektion",
-      "tone": "model",
-      "detail": "Noch keine echten Ergebnisse; Tabellen laufen transparent im Projektionsmodus.",
-      "confidence": 68
+      "value": "Sync aktiv",
+      "tone": "real",
+      "detail": "2 echte Ergebnisse synchronisiert.",
+      "confidence": 90
     },
     {
       "label": "Nachspiel-Reports",
@@ -7511,13 +7534,13 @@ window.WMRadarData = {
     }
   },
   "resultValidation": {
-    "generatedAt": "2026-06-11T09:06:42.567Z",
-    "status": "waiting",
-    "summary": "Noch keine echten Resultate synchronisiert; Projektionsmodus bleibt aktiv.",
+    "generatedAt": "2026-06-12T07:18:41.820Z",
+    "status": "synced",
+    "summary": "Resultate sind synchronisiert und plausibel.",
     "source": {
       "activeSource": "sportmonks",
       "sourceLabel": "Sportmonks",
-      "generatedAt": "2026-06-11T09:06:24.488Z",
+      "generatedAt": "2026-06-12T07:18:30.730Z",
       "pollMinutes": 5
     },
     "issues": {
@@ -7528,11 +7551,11 @@ window.WMRadarData = {
       "warnings": []
     },
     "coverage": {
-      "groupResults": 0,
+      "groupResults": 2,
       "knockoutResults": 0,
       "liveResults": 0,
-      "totalResults": 0,
-      "groupCoverage": 0,
+      "totalResults": 2,
+      "groupCoverage": 3,
       "knockoutCoverage": 0
     }
   },
@@ -17838,22 +17861,57 @@ window.WMRadarData = {
     }
   ],
   "results": {
-    "mode": "preTournament",
-    "sourceLevel": "model",
+    "mode": "synced",
+    "sourceLevel": "real",
     "activeSource": "sportmonks",
     "sourceLabel": "Sportmonks",
-    "sourceNote": "Keine echten Ergebnisse von Sportmonks; Tabellenansicht nutzt weiter Modellprojektion.",
-    "generatedAt": "2026-06-11T09:06:24.488Z",
+    "sourceNote": "Automatisch synchronisiert aus Sportmonks; manuelle Overrides wurden angewendet.",
+    "generatedAt": "2026-06-12T07:18:30.730Z",
     "pollMinutes": 5,
     "syncError": null,
     "summary": {
       "providerMatches": 104,
-      "synced": 0,
-      "final": 0,
+      "synced": 2,
+      "final": 2,
       "live": 0,
       "overrides": 0
     },
-    "matches": []
+    "matches": [
+      {
+        "matchId": "mex-rsa-2026-06-11",
+        "matchNumber": null,
+        "stage": "group",
+        "status": "final",
+        "homeGoals": 2,
+        "awayGoals": 0,
+        "minute": null,
+        "penaltyHomeGoals": null,
+        "penaltyAwayGoals": null,
+        "source": "sportmonks",
+        "providerId": 19609127,
+        "providerHome": "Mexico",
+        "providerAway": "South Africa",
+        "providerDate": "2026-06-11",
+        "updatedAt": "2026-06-12T07:18:30.729Z"
+      },
+      {
+        "matchId": "kor-cze-2026-06-12",
+        "matchNumber": null,
+        "stage": "group",
+        "status": "final",
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "minute": null,
+        "penaltyHomeGoals": null,
+        "penaltyAwayGoals": null,
+        "source": "sportmonks",
+        "providerId": 19609153,
+        "providerHome": "Korea Republic",
+        "providerAway": "Czech Republic",
+        "providerDate": "2026-06-12",
+        "updatedAt": "2026-06-12T07:18:30.729Z"
+      }
+    ]
   },
   "surpriseTeams": [
     {
@@ -18263,6 +18321,29 @@ function createStandingRow(code) {
 
 function getResultMap() {
   return new Map((results?.matches || []).map((result) => [result.matchId, result]));
+}
+
+function hasCompleteScore(result) {
+  return Number.isFinite(Number(result?.homeGoals)) && Number.isFinite(Number(result?.awayGoals));
+}
+
+function getMatchResult(match) {
+  return getResultMap().get(match.id) || null;
+}
+
+function getResultLabel(result) {
+  if (!hasCompleteScore(result)) return null;
+
+  const score = `${Number(result.homeGoals)}:${Number(result.awayGoals)}`;
+  if (result.status === "final") return `Endstand ${score}`;
+  if (result.status === "live") return `Live ${score}${result.minute ? ` · ${result.minute}.` : ""}`;
+  return null;
+}
+
+function getResultTone(result) {
+  if (result?.status === "live") return "live";
+  if (result?.status === "final") return "final";
+  return "pending";
 }
 
 function addActualResult(homeRow, awayRow, homeGoals, awayGoals) {
@@ -20322,6 +20403,8 @@ function renderMatches() {
         const [home, away] = match.matchTeams;
         const active = match.id === selectedMatchId ? "active" : "";
         const scoreTone = getScoreTone(match.score);
+        const result = getMatchResult(match);
+        const resultLabel = getResultLabel(result);
 
         return `
           <button class="match-card ${active} ${match.category}" type="button" data-match="${match.id}">
@@ -20331,6 +20414,11 @@ function renderMatches() {
                   <span class="state-dot"></span>
                   ${match.state} · ${match.displayDate} · ${match.germanyTime}
                 </span>
+                ${
+                  resultLabel
+                    ? `<span class="result-badge ${getResultTone(result)}">${resultLabel}</span>`
+                    : ""
+                }
               </span>
               <span class="teams">
                 <span class="team-side">${renderFlag(home)}<strong>${home.code}</strong><small>${home.name}</small></span>
@@ -20378,6 +20466,8 @@ function renderDossier() {
 
   selectedMatchId = selectedMatch.id;
   const [home, away] = selectedMatch.matchTeams;
+  const selectedResult = getMatchResult(selectedMatch);
+  const selectedResultLabel = getResultLabel(selectedResult);
   dossierTitleEl.textContent = `${home.name} vs ${away.name}`;
   dossierTitleEl.closest(".dossier").dataset.recommendation = selectedMatch.category;
   dossierScoreEl.style.setProperty("--score", selectedMatch.score);
@@ -20396,7 +20486,9 @@ function renderDossier() {
     selectedMatch.venue,
     selectedMatch.state,
     selectedMatch.group,
+    selectedResultLabel,
   ]
+    .filter(Boolean)
     .map((item) => `<span class="meta-pill">${item}</span>`)
     .join("");
 

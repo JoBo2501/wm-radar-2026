@@ -1,18 +1,53 @@
 {
-  "mode": "preTournament",
-  "sourceLevel": "model",
+  "mode": "synced",
+  "sourceLevel": "real",
   "activeSource": "sportmonks",
   "sourceLabel": "Sportmonks",
-  "sourceNote": "Keine echten Ergebnisse von Sportmonks; Tabellenansicht nutzt weiter Modellprojektion.",
-  "generatedAt": "2026-06-11T09:06:24.488Z",
+  "sourceNote": "Automatisch synchronisiert aus Sportmonks; manuelle Overrides wurden angewendet.",
+  "generatedAt": "2026-06-12T07:18:30.730Z",
   "pollMinutes": 5,
   "syncError": null,
   "summary": {
     "providerMatches": 104,
-    "synced": 0,
-    "final": 0,
+    "synced": 2,
+    "final": 2,
     "live": 0,
     "overrides": 0
   },
-  "matches": []
+  "matches": [
+    {
+      "matchId": "mex-rsa-2026-06-11",
+      "matchNumber": null,
+      "stage": "group",
+      "status": "final",
+      "homeGoals": 2,
+      "awayGoals": 0,
+      "minute": null,
+      "penaltyHomeGoals": null,
+      "penaltyAwayGoals": null,
+      "source": "sportmonks",
+      "providerId": 19609127,
+      "providerHome": "Mexico",
+      "providerAway": "South Africa",
+      "providerDate": "2026-06-11",
+      "updatedAt": "2026-06-12T07:18:30.729Z"
+    },
+    {
+      "matchId": "kor-cze-2026-06-12",
+      "matchNumber": null,
+      "stage": "group",
+      "status": "final",
+      "homeGoals": 2,
+      "awayGoals": 1,
+      "minute": null,
+      "penaltyHomeGoals": null,
+      "penaltyAwayGoals": null,
+      "source": "sportmonks",
+      "providerId": 19609153,
+      "providerHome": "Korea Republic",
+      "providerAway": "Czech Republic",
+      "providerDate": "2026-06-12",
+      "updatedAt": "2026-06-12T07:18:30.729Z"
+    }
+  ]
 }

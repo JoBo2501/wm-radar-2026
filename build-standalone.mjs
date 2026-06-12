@@ -5,7 +5,7 @@ const css = readFileSync("styles.css", "utf8");
 const data = readFileSync("data.js", "utf8").replace(/<\/script/gi, "<\\/script");
 const js = readFileSync("app.js", "utf8").replace(/<\/script/gi, "<\\/script");
 const bodyMatch = html.match(
-  /<body>([\s\S]*?)<script src="\.\/data\.js" defer><\/script>\s*<script src="\.\/app\.js" defer><\/script>\s*<\/body>/,
+  /<body>([\s\S]*?)<script src="\.\/data\.js(?:\?[^"]*)?" defer><\/script>\s*<script src="\.\/app\.js(?:\?[^"]*)?" defer><\/script>\s*<\/body>/,
 );
 
 if (!bodyMatch) {
