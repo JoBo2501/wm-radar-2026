@@ -1951,48 +1951,93 @@ function getMetricLabel(metric) {
   return labels[metric.id] || metric.id;
 }
 
+function getPostMatchRecommendationLabel(score, match) {
+  return getWatchLabel(getRecommendation(score, match));
+}
+
+function getHumanVerdict(audit, match) {
+  const preLabel = getWatchLabel(audit.preRecommendation || match.category);
+  const postLabel = getPostMatchRecommendationLabel(audit.postMatchScore ?? match.score, match);
+  if (preLabel === postLabel) return `${preLabel} bleibt plausibel`;
+  return `${preLabel} -> ${postLabel}`;
+}
+
+function getResultFactLine(match, home, away, result) {
+  const homeGoals = Number(result.homeGoals);
+  const awayGoals = Number(result.awayGoals);
+  if (!Number.isFinite(homeGoals) || !Number.isFinite(awayGoals)) {
+    return "Endstand ist erfasst, aber noch nicht vollstaendig lesbar.";
+  }
+  if (homeGoals === awayGoals) {
+    return `${home.code}-${away.code} endet ${homeGoals}:${awayGoals}. Beide Teams nehmen einen Punkt mit.`;
+  }
+  const winner = homeGoals > awayGoals ? home : away;
+  const loser = homeGoals > awayGoals ? away : home;
+  return `${winner.name} gewinnt ${homeGoals}:${awayGoals} gegen ${loser.name} und nimmt drei Punkte mit.`;
+}
+
+function getGroupImpactLine(match) {
+  const groupId = getGroupId(match);
+  const groupEntry = getGroupStandings().find((entry) => entry.group.id === groupId);
+  if (!groupEntry) return "Die Tabellenwirkung wird aus den synchronisierten Ergebnissen berechnet.";
+  const rows = match.teams
+    .map((code) => {
+      const rank = groupEntry.table.findIndex((row) => row.code === code) + 1;
+      const row = groupEntry.table[rank - 1];
+      return row ? `${row.team.name}: Platz ${rank}, ${row.displayPoints} Punkte, Tordifferenz ${row.displayGoalDifference}` : null;
+    })
+    .filter(Boolean);
+  return rows.length ? rows.join(" · ") : "Die Tabellenwirkung wird aus den synchronisierten Ergebnissen berechnet.";
+}
+
+function getUnavailableMetricLabels(metrics) {
+  const metricIds = metrics.length ? metrics.map((metric) => metric.id) : ["xg", "ppda", "fieldTilt", "lineBreaking"];
+  return metricIds.map((id) => getMetricLabel({ id }));
+}
+
 function renderPostMatchDossier(match, home, away, result) {
   const report = getPostMatchReport(match, result);
   const audit = report.recommendationAudit || {};
   const resultLine = report.result?.resultLine || getResultLabel(result) || "Endstand erfasst";
   const metrics = report.metrics || [];
-  const patterns = report.patterns || [];
+  const verifiedMetrics = metrics.filter((metric) => metric.status && !metric.status.includes("draft"));
+  const missingMetricLabels = getUnavailableMetricLabels(metrics);
 
   return `
     <div class="insight-card tactical-briefing post-match-summary">
       <span class="briefing-kicker">Nach dem Spiel</span>
       <h3>${resultLine}</h3>
-      <p>${report.summary}</p>
+      <p>${getResultFactLine(match, home, away, result)}</p>
       <div class="briefing-tags">
         <span>Quelle: ${report.result?.source || result.source || "Sportmonks"}</span>
-        <span>Status: ${report.status || "draft"}</span>
+        <span>Endstand synchronisiert</span>
         <span>Update: ${report.result?.updatedAt ? new Date(report.result.updatedAt).toLocaleString("de-DE", { dateStyle: "short", timeStyle: "short" }) : "offen"}</span>
       </div>
     </div>
     <div class="insight-card decision-card post-match-audit">
       <span class="briefing-kicker">Empfehlungs-Audit</span>
-      <h3>Hat sich das Einschalten gelohnt?</h3>
+      <h3>Was sagt das Ergebnis über die Empfehlung?</h3>
       <div class="decision-grid">
         <span>
-          <small>Vorher</small>
-          <strong>${audit.preRecommendation || getWatchLabel(match.category)}</strong>
+          <small>Vor dem Spiel</small>
+          <strong>${getWatchLabel(audit.preRecommendation || match.category)}</strong>
           <em>${audit.preMatchScore ?? match.score}/100</em>
         </span>
         <span>
-          <small>Nachher</small>
-          <strong>${audit.verdict || "Review offen"}</strong>
+          <small>Nach dem Ergebnis</small>
+          <strong>${getPostMatchRecommendationLabel(audit.postMatchScore ?? match.score, match)}</strong>
           <em>${audit.postMatchScore ?? match.score}/100</em>
         </span>
       </div>
-      <p>${audit.learning || "Auswertung wird mit belastbaren Metriken nachgeschärft."}</p>
+      <p>${getHumanVerdict(audit, match)}. Das ist nur ein Ergebnis-Audit; ob das Spiel wirklich gut war, braucht xG, Chancenbild und Review.</p>
     </div>
     <div class="insight-card score-signals post-match-metrics">
-      <span class="briefing-kicker">Spielmetriken</span>
-      <h3>Was das Ergebnis erklärt</h3>
+      <span class="briefing-kicker">Datenlage</span>
+      <h3>Was wir noch nicht seriös behaupten</h3>
       ${
-        metrics.length
+        verifiedMetrics.length
           ? `<div class="metric-list">
-              ${metrics
+              ${verifiedMetrics
                 .map(
                   (metric) => `
                     <div class="metric-row">
@@ -2003,33 +2048,27 @@ function renderPostMatchDossier(match, home, away, result) {
                   `,
                 )
                 .join("")}
-            </div>
-            <ul class="cue-list">
-              ${metrics.map((metric) => `<li>${metric.note}</li>`).join("")}
-            </ul>`
-          : `<p>Für ${home.code}-${away.code} liegen noch keine belastbaren Detailmetriken vor. Das Ergebnis ist erfasst; xG, Druckphasen und Eventdaten werden nachgezogen.</p>`
+            </div>`
+          : `<p>Aktuell liegt ein belastbarer Endstand vor, aber keine verlässliche Detailauswertung. Deshalb zeigen wir hier keine xG-, Pressing- oder Field-Tilt-Zahlen.</p>
+             <div class="briefing-tags">
+               ${missingMetricLabels.map((label) => `<span>${label}: offen</span>`).join("")}
+             </div>`
       }
     </div>
     <div class="insight-card trigger-card post-match-patterns">
       <span class="briefing-kicker">Review-Punkte</span>
-      <h3>Was nach dem Spiel geprüft werden muss</h3>
+      <h3>Was jetzt wirklich geprüft werden muss</h3>
       <ol class="trigger-list">
-        ${
-          patterns.length
-            ? patterns.map((pattern) => `<li><strong>${pattern.label}:</strong> ${pattern.note}</li>`).join("")
-            : `<li>Spielbild gegen Ergebnis prüfen.</li><li>Provider-Metriken und Video-Review ergänzen.</li>`
-        }
+        <li>War der Sieg nach Chancenqualität verdient oder nur scoreboard-stark?</li>
+        <li>Welche Phase hat das Spiel entschieden: frühe Kontrolle, Standards, Umschalten oder Schlussphase?</li>
+        <li>Passt die Pre-Match-Empfehlung nach dem Ergebnis noch, oder muss ein ähnliches Spiel künftig höher/niedriger bewertet werden?</li>
       </ol>
     </div>
     <div class="insight-card profile-insight">
       <span class="briefing-kicker">Tabellenwirkung</span>
       <h3>Was das Ergebnis verändert</h3>
-      <p>${
-        match.groupModel
-          ? match.groupModel.pathNote
-          : "Die Tabellen- und Pfadwirkung wird aus den synchronisierten Ergebnissen berechnet."
-      }</p>
-      <p>Weiterkommen- und Gegnerwirkung: ${match.pathImpact}/100.</p>
+      <p>${getGroupImpactLine(match)}</p>
+      <p>${match.groupModel ? match.groupModel.pathNote : "Die Pfadwirkung wird mit weiteren Ergebnissen klarer."}</p>
     </div>
     <details class="dossier-depth">
       <summary>

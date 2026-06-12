@@ -1238,7 +1238,7 @@ window.WMRadarData = {
   "postMatchReports": {
     "schemaVersion": 1,
     "status": "drafts-generated",
-    "generatedAt": "2026-06-12T12:05:41.249Z",
+    "generatedAt": "2026-06-12T12:13:39.594Z",
     "sourceNote": "Post-Match-Reports sind als Datenmodell vorbereitet. Echte Werte werden nach Spielende aus Ergebnis-, Event-, Tracking- und Analystenquellen ergänzt.",
     "metricDefinitions": [
       {
@@ -1298,7 +1298,7 @@ window.WMRadarData = {
       {
         "matchId": "kor-cze-2026-06-12",
         "status": "draft",
-        "generatedAt": "2026-06-12T12:05:41.249Z",
+        "generatedAt": "2026-06-12T12:13:39.594Z",
         "generatedBy": "generate-post-match-reports.mjs",
         "result": {
           "homeGoals": 2,
@@ -1307,63 +1307,38 @@ window.WMRadarData = {
           "source": "sportmonks",
           "updatedAt": "2026-06-12T11:08:13.792Z"
         },
-        "summary": "KOR gewinnt 2:1. Draft-Audit: Pre-Match 33/100 (skip), Post-Match 43/100. Verdict: bestaetigt.",
-        "metrics": [
-          {
-            "id": "xg",
-            "value": 47,
-            "status": "draft-model",
-            "note": "Erste Schaetzung aus Ergebnis, Score-Audit und Chancenbedarf. Provider-xG ersetzt diesen Wert spaeter."
-          },
-          {
-            "id": "ppda",
-            "value": 54,
-            "status": "draft-model",
-            "note": "Pressing-Proxy aus Taktiksignal und Spielenge. Echte PPDA-Daten werden nach Provider-Sync priorisiert."
-          },
-          {
-            "id": "fieldTilt",
-            "value": 48,
-            "status": "draft-model",
-            "note": "Territory-Proxy bis echte Field-Tilt- oder Drittelkontrollwerte vorliegen."
-          },
-          {
-            "id": "lineBreaking",
-            "value": 42,
-            "status": "draft-model",
-            "note": "360/Line-Breaking bleibt Provider-Platzhalter; Wert markiert Analysebedarf."
-          }
-        ],
+        "summary": "KOR gewinnt 2:1. Ergebnis ist synchronisiert; Detailmetriken wie xG, Druckphasen und Eventdaten fehlen noch.",
+        "metrics": [],
         "patterns": [
           {
-            "label": "Haupttreiber pruefen",
-            "note": "Vor dem Spiel war Bedeutung der staerkste Treiber. Video und Eventdaten muessen klaeren, ob das wirklich sichtbar war."
+            "label": "Chancenqualität prüfen",
+            "note": "Ohne xG und Schussprofil ist noch nicht seriös klar, ob das Ergebnis die Spielqualität vollständig abbildet."
           },
           {
-            "label": "Scoreboard vs Spielqualitaet",
-            "note": "Draft trennt Ergebniswirkung von spaeterer Chancenqualitaet, Pressingdaten und Territory-Werten."
+            "label": "Spielphase finden",
+            "note": "Review muss klären, welche Phase das Spiel entschieden hat: frühe Kontrolle, Standards, Umschalten oder Schlussphase."
           },
           {
-            "label": "Naechste Kalibrierung",
-            "note": "Wenn Providerdaten stark abweichen, werden Gewichtung und Empfehlung fuer aehnliche Spiele nachgezogen."
+            "label": "Empfehlung kalibrieren",
+            "note": "Die Pre-Match-Empfehlung wird erst nach Ergebnis plus Detaildaten endgültig bewertet."
           }
         ],
         "recommendationAudit": {
           "preMatchScore": 33,
           "postMatchScore": 43,
           "preRecommendation": "skip",
-          "verdict": "bestaetigt",
-          "learning": "Pre-Match-Logik wurde durch Ergebnis- und Draft-Signale vorlaeufig gestuetzt."
+          "verdict": "plausibel",
+          "learning": "Das Ergebnis widerspricht der Pre-Match-Empfehlung nicht klar; Detaildaten müssen die Einordnung noch bestätigen."
         },
         "analystNotes": [
           "Draft automatisch aus finalem Ergebnis und Pre-Match-Signalen erzeugt.",
-          "Provider-Metriken und Videoanalyse muessen diesen Report spaeter bestaetigen oder korrigieren."
+          "Keine künstlichen Detailmetriken anzeigen, bis Providerdaten oder Videoanalyse vorliegen."
         ]
       },
       {
         "matchId": "mex-rsa-2026-06-11",
         "status": "draft",
-        "generatedAt": "2026-06-12T12:05:41.248Z",
+        "generatedAt": "2026-06-12T12:13:39.593Z",
         "generatedBy": "generate-post-match-reports.mjs",
         "result": {
           "homeGoals": 2,
@@ -1372,57 +1347,32 @@ window.WMRadarData = {
           "source": "sportmonks",
           "updatedAt": "2026-06-12T11:08:13.792Z"
         },
-        "summary": "MEX gewinnt 2:0. Draft-Audit: Pre-Match 44/100 (skip), Post-Match 50/100. Verdict: bestaetigt.",
-        "metrics": [
-          {
-            "id": "xg",
-            "value": 47,
-            "status": "draft-model",
-            "note": "Erste Schaetzung aus Ergebnis, Score-Audit und Chancenbedarf. Provider-xG ersetzt diesen Wert spaeter."
-          },
-          {
-            "id": "ppda",
-            "value": 48,
-            "status": "draft-model",
-            "note": "Pressing-Proxy aus Taktiksignal und Spielenge. Echte PPDA-Daten werden nach Provider-Sync priorisiert."
-          },
-          {
-            "id": "fieldTilt",
-            "value": 51,
-            "status": "draft-model",
-            "note": "Territory-Proxy bis echte Field-Tilt- oder Drittelkontrollwerte vorliegen."
-          },
-          {
-            "id": "lineBreaking",
-            "value": 47,
-            "status": "draft-model",
-            "note": "360/Line-Breaking bleibt Provider-Platzhalter; Wert markiert Analysebedarf."
-          }
-        ],
+        "summary": "MEX gewinnt 2:0. Ergebnis ist synchronisiert; Detailmetriken wie xG, Druckphasen und Eventdaten fehlen noch.",
+        "metrics": [],
         "patterns": [
           {
-            "label": "Haupttreiber pruefen",
-            "note": "Vor dem Spiel war Uhrzeit der staerkste Treiber. Video und Eventdaten muessen klaeren, ob das wirklich sichtbar war."
+            "label": "Chancenqualität prüfen",
+            "note": "Ohne xG und Schussprofil ist noch nicht seriös klar, ob das Ergebnis die Spielqualität vollständig abbildet."
           },
           {
-            "label": "Scoreboard vs Spielqualitaet",
-            "note": "Draft trennt Ergebniswirkung von spaeterer Chancenqualitaet, Pressingdaten und Territory-Werten."
+            "label": "Spielphase finden",
+            "note": "Review muss klären, welche Phase das Spiel entschieden hat: frühe Kontrolle, Standards, Umschalten oder Schlussphase."
           },
           {
-            "label": "Naechste Kalibrierung",
-            "note": "Wenn Providerdaten stark abweichen, werden Gewichtung und Empfehlung fuer aehnliche Spiele nachgezogen."
+            "label": "Empfehlung kalibrieren",
+            "note": "Die Pre-Match-Empfehlung wird erst nach Ergebnis plus Detaildaten endgültig bewertet."
           }
         ],
         "recommendationAudit": {
           "preMatchScore": 44,
           "postMatchScore": 50,
           "preRecommendation": "skip",
-          "verdict": "bestaetigt",
-          "learning": "Pre-Match-Logik wurde durch Ergebnis- und Draft-Signale vorlaeufig gestuetzt."
+          "verdict": "plausibel",
+          "learning": "Das Ergebnis widerspricht der Pre-Match-Empfehlung nicht klar; Detaildaten müssen die Einordnung noch bestätigen."
         },
         "analystNotes": [
           "Draft automatisch aus finalem Ergebnis und Pre-Match-Signalen erzeugt.",
-          "Provider-Metriken und Videoanalyse muessen diesen Report spaeter bestaetigen oder korrigieren."
+          "Keine künstlichen Detailmetriken anzeigen, bis Providerdaten oder Videoanalyse vorliegen."
         ]
       }
     ]

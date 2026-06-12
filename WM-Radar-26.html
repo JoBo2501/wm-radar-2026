@@ -7197,7 +7197,7 @@ window.WMRadarData = {
   "postMatchReports": {
     "schemaVersion": 1,
     "status": "drafts-generated",
-    "generatedAt": "2026-06-12T12:05:41.249Z",
+    "generatedAt": "2026-06-12T12:13:39.594Z",
     "sourceNote": "Post-Match-Reports sind als Datenmodell vorbereitet. Echte Werte werden nach Spielende aus Ergebnis-, Event-, Tracking- und Analystenquellen ergänzt.",
     "metricDefinitions": [
       {
@@ -7257,7 +7257,7 @@ window.WMRadarData = {
       {
         "matchId": "kor-cze-2026-06-12",
         "status": "draft",
-        "generatedAt": "2026-06-12T12:05:41.249Z",
+        "generatedAt": "2026-06-12T12:13:39.594Z",
         "generatedBy": "generate-post-match-reports.mjs",
         "result": {
           "homeGoals": 2,
@@ -7266,63 +7266,38 @@ window.WMRadarData = {
           "source": "sportmonks",
           "updatedAt": "2026-06-12T11:08:13.792Z"
         },
-        "summary": "KOR gewinnt 2:1. Draft-Audit: Pre-Match 33/100 (skip), Post-Match 43/100. Verdict: bestaetigt.",
-        "metrics": [
-          {
-            "id": "xg",
-            "value": 47,
-            "status": "draft-model",
-            "note": "Erste Schaetzung aus Ergebnis, Score-Audit und Chancenbedarf. Provider-xG ersetzt diesen Wert spaeter."
-          },
-          {
-            "id": "ppda",
-            "value": 54,
-            "status": "draft-model",
-            "note": "Pressing-Proxy aus Taktiksignal und Spielenge. Echte PPDA-Daten werden nach Provider-Sync priorisiert."
-          },
-          {
-            "id": "fieldTilt",
-            "value": 48,
-            "status": "draft-model",
-            "note": "Territory-Proxy bis echte Field-Tilt- oder Drittelkontrollwerte vorliegen."
-          },
-          {
-            "id": "lineBreaking",
-            "value": 42,
-            "status": "draft-model",
-            "note": "360/Line-Breaking bleibt Provider-Platzhalter; Wert markiert Analysebedarf."
-          }
-        ],
+        "summary": "KOR gewinnt 2:1. Ergebnis ist synchronisiert; Detailmetriken wie xG, Druckphasen und Eventdaten fehlen noch.",
+        "metrics": [],
         "patterns": [
           {
-            "label": "Haupttreiber pruefen",
-            "note": "Vor dem Spiel war Bedeutung der staerkste Treiber. Video und Eventdaten muessen klaeren, ob das wirklich sichtbar war."
+            "label": "Chancenqualität prüfen",
+            "note": "Ohne xG und Schussprofil ist noch nicht seriös klar, ob das Ergebnis die Spielqualität vollständig abbildet."
           },
           {
-            "label": "Scoreboard vs Spielqualitaet",
-            "note": "Draft trennt Ergebniswirkung von spaeterer Chancenqualitaet, Pressingdaten und Territory-Werten."
+            "label": "Spielphase finden",
+            "note": "Review muss klären, welche Phase das Spiel entschieden hat: frühe Kontrolle, Standards, Umschalten oder Schlussphase."
           },
           {
-            "label": "Naechste Kalibrierung",
-            "note": "Wenn Providerdaten stark abweichen, werden Gewichtung und Empfehlung fuer aehnliche Spiele nachgezogen."
+            "label": "Empfehlung kalibrieren",
+            "note": "Die Pre-Match-Empfehlung wird erst nach Ergebnis plus Detaildaten endgültig bewertet."
           }
         ],
         "recommendationAudit": {
           "preMatchScore": 33,
           "postMatchScore": 43,
           "preRecommendation": "skip",
-          "verdict": "bestaetigt",
-          "learning": "Pre-Match-Logik wurde durch Ergebnis- und Draft-Signale vorlaeufig gestuetzt."
+          "verdict": "plausibel",
+          "learning": "Das Ergebnis widerspricht der Pre-Match-Empfehlung nicht klar; Detaildaten müssen die Einordnung noch bestätigen."
         },
         "analystNotes": [
           "Draft automatisch aus finalem Ergebnis und Pre-Match-Signalen erzeugt.",
-          "Provider-Metriken und Videoanalyse muessen diesen Report spaeter bestaetigen oder korrigieren."
+          "Keine künstlichen Detailmetriken anzeigen, bis Providerdaten oder Videoanalyse vorliegen."
         ]
       },
       {
         "matchId": "mex-rsa-2026-06-11",
         "status": "draft",
-        "generatedAt": "2026-06-12T12:05:41.248Z",
+        "generatedAt": "2026-06-12T12:13:39.593Z",
         "generatedBy": "generate-post-match-reports.mjs",
         "result": {
           "homeGoals": 2,
@@ -7331,57 +7306,32 @@ window.WMRadarData = {
           "source": "sportmonks",
           "updatedAt": "2026-06-12T11:08:13.792Z"
         },
-        "summary": "MEX gewinnt 2:0. Draft-Audit: Pre-Match 44/100 (skip), Post-Match 50/100. Verdict: bestaetigt.",
-        "metrics": [
-          {
-            "id": "xg",
-            "value": 47,
-            "status": "draft-model",
-            "note": "Erste Schaetzung aus Ergebnis, Score-Audit und Chancenbedarf. Provider-xG ersetzt diesen Wert spaeter."
-          },
-          {
-            "id": "ppda",
-            "value": 48,
-            "status": "draft-model",
-            "note": "Pressing-Proxy aus Taktiksignal und Spielenge. Echte PPDA-Daten werden nach Provider-Sync priorisiert."
-          },
-          {
-            "id": "fieldTilt",
-            "value": 51,
-            "status": "draft-model",
-            "note": "Territory-Proxy bis echte Field-Tilt- oder Drittelkontrollwerte vorliegen."
-          },
-          {
-            "id": "lineBreaking",
-            "value": 47,
-            "status": "draft-model",
-            "note": "360/Line-Breaking bleibt Provider-Platzhalter; Wert markiert Analysebedarf."
-          }
-        ],
+        "summary": "MEX gewinnt 2:0. Ergebnis ist synchronisiert; Detailmetriken wie xG, Druckphasen und Eventdaten fehlen noch.",
+        "metrics": [],
         "patterns": [
           {
-            "label": "Haupttreiber pruefen",
-            "note": "Vor dem Spiel war Uhrzeit der staerkste Treiber. Video und Eventdaten muessen klaeren, ob das wirklich sichtbar war."
+            "label": "Chancenqualität prüfen",
+            "note": "Ohne xG und Schussprofil ist noch nicht seriös klar, ob das Ergebnis die Spielqualität vollständig abbildet."
           },
           {
-            "label": "Scoreboard vs Spielqualitaet",
-            "note": "Draft trennt Ergebniswirkung von spaeterer Chancenqualitaet, Pressingdaten und Territory-Werten."
+            "label": "Spielphase finden",
+            "note": "Review muss klären, welche Phase das Spiel entschieden hat: frühe Kontrolle, Standards, Umschalten oder Schlussphase."
           },
           {
-            "label": "Naechste Kalibrierung",
-            "note": "Wenn Providerdaten stark abweichen, werden Gewichtung und Empfehlung fuer aehnliche Spiele nachgezogen."
+            "label": "Empfehlung kalibrieren",
+            "note": "Die Pre-Match-Empfehlung wird erst nach Ergebnis plus Detaildaten endgültig bewertet."
           }
         ],
         "recommendationAudit": {
           "preMatchScore": 44,
           "postMatchScore": 50,
           "preRecommendation": "skip",
-          "verdict": "bestaetigt",
-          "learning": "Pre-Match-Logik wurde durch Ergebnis- und Draft-Signale vorlaeufig gestuetzt."
+          "verdict": "plausibel",
+          "learning": "Das Ergebnis widerspricht der Pre-Match-Empfehlung nicht klar; Detaildaten müssen die Einordnung noch bestätigen."
         },
         "analystNotes": [
           "Draft automatisch aus finalem Ergebnis und Pre-Match-Signalen erzeugt.",
-          "Provider-Metriken und Videoanalyse muessen diesen Report spaeter bestaetigen oder korrigieren."
+          "Keine künstlichen Detailmetriken anzeigen, bis Providerdaten oder Videoanalyse vorliegen."
         ]
       }
     ]
@@ -19507,48 +19457,93 @@ function getMetricLabel(metric) {
   return labels[metric.id] || metric.id;
 }
 
+function getPostMatchRecommendationLabel(score, match) {
+  return getWatchLabel(getRecommendation(score, match));
+}
+
+function getHumanVerdict(audit, match) {
+  const preLabel = getWatchLabel(audit.preRecommendation || match.category);
+  const postLabel = getPostMatchRecommendationLabel(audit.postMatchScore ?? match.score, match);
+  if (preLabel === postLabel) return `${preLabel} bleibt plausibel`;
+  return `${preLabel} -> ${postLabel}`;
+}
+
+function getResultFactLine(match, home, away, result) {
+  const homeGoals = Number(result.homeGoals);
+  const awayGoals = Number(result.awayGoals);
+  if (!Number.isFinite(homeGoals) || !Number.isFinite(awayGoals)) {
+    return "Endstand ist erfasst, aber noch nicht vollstaendig lesbar.";
+  }
+  if (homeGoals === awayGoals) {
+    return `${home.code}-${away.code} endet ${homeGoals}:${awayGoals}. Beide Teams nehmen einen Punkt mit.`;
+  }
+  const winner = homeGoals > awayGoals ? home : away;
+  const loser = homeGoals > awayGoals ? away : home;
+  return `${winner.name} gewinnt ${homeGoals}:${awayGoals} gegen ${loser.name} und nimmt drei Punkte mit.`;
+}
+
+function getGroupImpactLine(match) {
+  const groupId = getGroupId(match);
+  const groupEntry = getGroupStandings().find((entry) => entry.group.id === groupId);
+  if (!groupEntry) return "Die Tabellenwirkung wird aus den synchronisierten Ergebnissen berechnet.";
+  const rows = match.teams
+    .map((code) => {
+      const rank = groupEntry.table.findIndex((row) => row.code === code) + 1;
+      const row = groupEntry.table[rank - 1];
+      return row ? `${row.team.name}: Platz ${rank}, ${row.displayPoints} Punkte, Tordifferenz ${row.displayGoalDifference}` : null;
+    })
+    .filter(Boolean);
+  return rows.length ? rows.join(" · ") : "Die Tabellenwirkung wird aus den synchronisierten Ergebnissen berechnet.";
+}
+
+function getUnavailableMetricLabels(metrics) {
+  const metricIds = metrics.length ? metrics.map((metric) => metric.id) : ["xg", "ppda", "fieldTilt", "lineBreaking"];
+  return metricIds.map((id) => getMetricLabel({ id }));
+}
+
 function renderPostMatchDossier(match, home, away, result) {
   const report = getPostMatchReport(match, result);
   const audit = report.recommendationAudit || {};
   const resultLine = report.result?.resultLine || getResultLabel(result) || "Endstand erfasst";
   const metrics = report.metrics || [];
-  const patterns = report.patterns || [];
+  const verifiedMetrics = metrics.filter((metric) => metric.status && !metric.status.includes("draft"));
+  const missingMetricLabels = getUnavailableMetricLabels(metrics);
 
   return `
     <div class="insight-card tactical-briefing post-match-summary">
       <span class="briefing-kicker">Nach dem Spiel</span>
       <h3>${resultLine}</h3>
-      <p>${report.summary}</p>
+      <p>${getResultFactLine(match, home, away, result)}</p>
       <div class="briefing-tags">
         <span>Quelle: ${report.result?.source || result.source || "Sportmonks"}</span>
-        <span>Status: ${report.status || "draft"}</span>
+        <span>Endstand synchronisiert</span>
         <span>Update: ${report.result?.updatedAt ? new Date(report.result.updatedAt).toLocaleString("de-DE", { dateStyle: "short", timeStyle: "short" }) : "offen"}</span>
       </div>
     </div>
     <div class="insight-card decision-card post-match-audit">
       <span class="briefing-kicker">Empfehlungs-Audit</span>
-      <h3>Hat sich das Einschalten gelohnt?</h3>
+      <h3>Was sagt das Ergebnis über die Empfehlung?</h3>
       <div class="decision-grid">
         <span>
-          <small>Vorher</small>
-          <strong>${audit.preRecommendation || getWatchLabel(match.category)}</strong>
+          <small>Vor dem Spiel</small>
+          <strong>${getWatchLabel(audit.preRecommendation || match.category)}</strong>
           <em>${audit.preMatchScore ?? match.score}/100</em>
         </span>
         <span>
-          <small>Nachher</small>
-          <strong>${audit.verdict || "Review offen"}</strong>
+          <small>Nach dem Ergebnis</small>
+          <strong>${getPostMatchRecommendationLabel(audit.postMatchScore ?? match.score, match)}</strong>
           <em>${audit.postMatchScore ?? match.score}/100</em>
         </span>
       </div>
-      <p>${audit.learning || "Auswertung wird mit belastbaren Metriken nachgeschärft."}</p>
+      <p>${getHumanVerdict(audit, match)}. Das ist nur ein Ergebnis-Audit; ob das Spiel wirklich gut war, braucht xG, Chancenbild und Review.</p>
     </div>
     <div class="insight-card score-signals post-match-metrics">
-      <span class="briefing-kicker">Spielmetriken</span>
-      <h3>Was das Ergebnis erklärt</h3>
+      <span class="briefing-kicker">Datenlage</span>
+      <h3>Was wir noch nicht seriös behaupten</h3>
       ${
-        metrics.length
+        verifiedMetrics.length
           ? `<div class="metric-list">
-              ${metrics
+              ${verifiedMetrics
                 .map(
                   (metric) => `
                     <div class="metric-row">
@@ -19559,33 +19554,27 @@ function renderPostMatchDossier(match, home, away, result) {
                   `,
                 )
                 .join("")}
-            </div>
-            <ul class="cue-list">
-              ${metrics.map((metric) => `<li>${metric.note}</li>`).join("")}
-            </ul>`
-          : `<p>Für ${home.code}-${away.code} liegen noch keine belastbaren Detailmetriken vor. Das Ergebnis ist erfasst; xG, Druckphasen und Eventdaten werden nachgezogen.</p>`
+            </div>`
+          : `<p>Aktuell liegt ein belastbarer Endstand vor, aber keine verlässliche Detailauswertung. Deshalb zeigen wir hier keine xG-, Pressing- oder Field-Tilt-Zahlen.</p>
+             <div class="briefing-tags">
+               ${missingMetricLabels.map((label) => `<span>${label}: offen</span>`).join("")}
+             </div>`
       }
     </div>
     <div class="insight-card trigger-card post-match-patterns">
       <span class="briefing-kicker">Review-Punkte</span>
-      <h3>Was nach dem Spiel geprüft werden muss</h3>
+      <h3>Was jetzt wirklich geprüft werden muss</h3>
       <ol class="trigger-list">
-        ${
-          patterns.length
-            ? patterns.map((pattern) => `<li><strong>${pattern.label}:</strong> ${pattern.note}</li>`).join("")
-            : `<li>Spielbild gegen Ergebnis prüfen.</li><li>Provider-Metriken und Video-Review ergänzen.</li>`
-        }
+        <li>War der Sieg nach Chancenqualität verdient oder nur scoreboard-stark?</li>
+        <li>Welche Phase hat das Spiel entschieden: frühe Kontrolle, Standards, Umschalten oder Schlussphase?</li>
+        <li>Passt die Pre-Match-Empfehlung nach dem Ergebnis noch, oder muss ein ähnliches Spiel künftig höher/niedriger bewertet werden?</li>
       </ol>
     </div>
     <div class="insight-card profile-insight">
       <span class="briefing-kicker">Tabellenwirkung</span>
       <h3>Was das Ergebnis verändert</h3>
-      <p>${
-        match.groupModel
-          ? match.groupModel.pathNote
-          : "Die Tabellen- und Pfadwirkung wird aus den synchronisierten Ergebnissen berechnet."
-      }</p>
-      <p>Weiterkommen- und Gegnerwirkung: ${match.pathImpact}/100.</p>
+      <p>${getGroupImpactLine(match)}</p>
+      <p>${match.groupModel ? match.groupModel.pathNote : "Die Pfadwirkung wird mit weiteren Ergebnissen klarer."}</p>
     </div>
     <details class="dossier-depth">
       <summary>

@@ -90,40 +90,13 @@ function getPostMatchScore(preMatchScore, result, match) {
 
 function getAuditVerdict(preRecommendation, postMatchScore) {
   const postRecommendation = getRecommendation(postMatchScore);
-  if (preRecommendation === postRecommendation) return "bestaetigt";
-  if (["live", "analysis"].includes(preRecommendation) && ["live", "analysis"].includes(postRecommendation)) return "tendenz bestaetigt";
+  if (preRecommendation === postRecommendation) return "plausibel";
+  if (["live", "analysis"].includes(preRecommendation) && ["live", "analysis"].includes(postRecommendation)) return "Tendenz plausibel";
   return "neu kalibrieren";
 }
 
 function createMetrics(match, result, preMatchScore, postMatchScore) {
-  const totalGoals = Number(result.homeGoals) + Number(result.awayGoals);
-  const closeGame = Math.abs(Number(result.homeGoals) - Number(result.awayGoals)) <= 1;
-  return [
-    {
-      id: "xg",
-      value: clamp(Math.round(postMatchScore + (totalGoals >= 3 ? 4 : -3)), 0, 100),
-      status: "draft-model",
-      note: "Erste Schaetzung aus Ergebnis, Score-Audit und Chancenbedarf. Provider-xG ersetzt diesen Wert spaeter.",
-    },
-    {
-      id: "ppda",
-      value: clamp(match.signals.tactical + (closeGame ? 4 : -2), 0, 100),
-      status: "draft-model",
-      note: "Pressing-Proxy aus Taktiksignal und Spielenge. Echte PPDA-Daten werden nach Provider-Sync priorisiert.",
-    },
-    {
-      id: "fieldTilt",
-      value: clamp(Math.round((match.signals.importance + postMatchScore) / 2), 0, 100),
-      status: "draft-model",
-      note: "Territory-Proxy bis echte Field-Tilt- oder Drittelkontrollwerte vorliegen.",
-    },
-    {
-      id: "lineBreaking",
-      value: clamp(Math.round((match.signals.tactical + preMatchScore) / 2), 0, 100),
-      status: "draft-model",
-      note: "360/Line-Breaking bleibt Provider-Platzhalter; Wert markiert Analysebedarf.",
-    },
-  ];
+  return [];
 }
 
 function createReport(match, result, context) {
@@ -148,20 +121,20 @@ function createReport(match, result, context) {
       source: result.source || "unknown",
       updatedAt: result.updatedAt || null,
     },
-    summary: `${resultLine}. Draft-Audit: Pre-Match ${preMatchScore}/100 (${preRecommendation}), Post-Match ${postMatchScore}/100. Verdict: ${verdict}.`,
+    summary: `${resultLine}. Ergebnis ist synchronisiert; Detailmetriken wie xG, Druckphasen und Eventdaten fehlen noch.`,
     metrics: createMetrics(match, result, preMatchScore, postMatchScore),
     patterns: [
       {
-        label: "Haupttreiber pruefen",
-        note: `Vor dem Spiel war ${driver} der staerkste Treiber. Video und Eventdaten muessen klaeren, ob das wirklich sichtbar war.`,
+        label: "Chancenqualität prüfen",
+        note: "Ohne xG und Schussprofil ist noch nicht seriös klar, ob das Ergebnis die Spielqualität vollständig abbildet.",
       },
       {
-        label: "Scoreboard vs Spielqualitaet",
-        note: "Draft trennt Ergebniswirkung von spaeterer Chancenqualitaet, Pressingdaten und Territory-Werten.",
+        label: "Spielphase finden",
+        note: "Review muss klären, welche Phase das Spiel entschieden hat: frühe Kontrolle, Standards, Umschalten oder Schlussphase.",
       },
       {
-        label: "Naechste Kalibrierung",
-        note: "Wenn Providerdaten stark abweichen, werden Gewichtung und Empfehlung fuer aehnliche Spiele nachgezogen.",
+        label: "Empfehlung kalibrieren",
+        note: "Die Pre-Match-Empfehlung wird erst nach Ergebnis plus Detaildaten endgültig bewertet.",
       },
     ],
     recommendationAudit: {
@@ -171,12 +144,12 @@ function createReport(match, result, context) {
       verdict,
       learning:
         verdict === "neu kalibrieren"
-          ? "Pre-Match-Signale und echte Spielwirkung lagen auseinander; Gewichtung oder Quellenlage pruefen."
-          : "Pre-Match-Logik wurde durch Ergebnis- und Draft-Signale vorlaeufig gestuetzt.",
+          ? "Pre-Match-Signale und Ergebniswirkung lagen auseinander; Gewichtung oder Quellenlage prüfen."
+          : "Das Ergebnis widerspricht der Pre-Match-Empfehlung nicht klar; Detaildaten müssen die Einordnung noch bestätigen.",
     },
     analystNotes: [
       "Draft automatisch aus finalem Ergebnis und Pre-Match-Signalen erzeugt.",
-      "Provider-Metriken und Videoanalyse muessen diesen Report spaeter bestaetigen oder korrigieren.",
+      "Keine künstlichen Detailmetriken anzeigen, bis Providerdaten oder Videoanalyse vorliegen.",
     ],
   };
 }
