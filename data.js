@@ -1238,38 +1238,44 @@ window.WMRadarData = {
   "postMatchReports": {
     "schemaVersion": 1,
     "status": "drafts-generated",
-    "generatedAt": "2026-06-12T12:19:29.872Z",
+    "generatedAt": "2026-06-12T13:29:23.811Z",
     "sourceNote": "Post-Match-Reports sind als Datenmodell vorbereitet. Echte Werte werden nach Spielende aus Ergebnis-, Event-, Tracking- und Analystenquellen ergänzt.",
     "metricDefinitions": [
       {
-        "id": "xg",
-        "label": "xG / Chancenqualität",
-        "providerTarget": "SportMonks xGFixture / Statistics",
-        "meaning": "Vergleicht Ergebnis und Chancenqualität, um Scoreboard-Rauschen von echter Dominanz zu trennen."
+        "id": "shotVolume",
+        "label": "Schussbild",
+        "providerTarget": "SportMonks Statistics: shots-total, shots-on-target, shots-insidebox",
+        "meaning": "Zeigt, ob der Endstand durch Abschlussvolumen und Strafraumaktionen gestuetzt wird."
       },
       {
-        "id": "ppda",
-        "label": "Pressingdruck (PPDA)",
-        "providerTarget": "SportMonks Events / Statistics + Review",
-        "meaning": "Misst, wie hoch und wie konsequent ein Team ohne Ball Zugriff erzeugt."
+        "id": "territory",
+        "label": "Territorium",
+        "providerTarget": "SportMonks Statistics: dangerous-attacks, attacks",
+        "meaning": "Ordnet ein, wer mehr gefaehrliche Zonen erreicht hat."
       },
       {
-        "id": "fieldTilt",
-        "label": "Spielfeldneigung",
-        "providerTarget": "SportMonks Statistics / Pressure",
-        "meaning": "Zeigt, wer das Spiel in gefährlichen Zonen kontrolliert statt nur Ballbesitz zu sammeln."
+        "id": "possession",
+        "label": "Ballbesitz und Passspiel",
+        "providerTarget": "SportMonks Statistics: ball-possession, passes, successful-passes-percentage",
+        "meaning": "Trennt Ballkontrolle von Ergebniswirkung."
       },
       {
-        "id": "lineBreaking",
-        "label": "Linienbrechende Pässe",
-        "providerTarget": "SportMonks Events + manuelle Taktikprüfung",
-        "meaning": "Erklärt Pässe, Annahmen und Läufe, die Linien brechen oder Druck überspielen."
+        "id": "chanceQualityProxy",
+        "label": "Grosschancen",
+        "providerTarget": "SportMonks Statistics: big-chances-created, big-chances-missed",
+        "meaning": "Nutzt Grosschancen als xG-nahe Ersatzinformation, solange kein xGFixture geliefert wird."
       },
       {
-        "id": "setPieceThreat",
-        "label": "Standardgefahr",
-        "providerTarget": "SportMonks Events / Statistics + Review",
-        "meaning": "Bewertet Standards über Zielzonen, zweite Bälle, Blockbewegungen und Abschlussqualität."
+        "id": "pressure",
+        "label": "Pressure Index",
+        "providerTarget": "SportMonks Pressure",
+        "meaning": "Verdichtet Druckphasen, ohne daraus PPDA oder Field Tilt zu behaupten."
+      },
+      {
+        "id": "discipline",
+        "label": "Disziplin",
+        "providerTarget": "SportMonks Statistics + Events: yellowcards, redcards",
+        "meaning": "Markiert Karten und Unterzahl als moegliche Spielkipper."
       }
     ],
     "reportTemplate": {
@@ -1297,32 +1303,144 @@ window.WMRadarData = {
     "reports": [
       {
         "matchId": "kor-cze-2026-06-12",
-        "status": "draft",
-        "generatedAt": "2026-06-12T12:19:29.872Z",
+        "status": "provider-synced",
+        "generatedAt": "2026-06-12T13:29:23.811Z",
         "generatedBy": "generate-post-match-reports.mjs",
         "result": {
           "homeGoals": 2,
           "awayGoals": 1,
           "resultLine": "KOR gewinnt 2:1",
           "source": "sportmonks",
-          "updatedAt": "2026-06-12T11:08:13.792Z"
+          "updatedAt": "2026-06-12T13:29:12.409Z"
         },
-        "summary": "KOR gewinnt 2:1. Ergebnis ist synchronisiert; Detailmetriken wie xG, Druckphasen und Eventdaten fehlen noch.",
-        "metrics": [],
-        "patterns": [
+        "summary": "KOR gewinnt 2:1. Schussbild: Vorteil KOR (15:7). Territorium: Vorteil CZE (38:42). Tore: 59. Ladislav Krejci (0-1), 67. In-beom Hwang  (1-1), 80. Hyeon-gyu Oh (2-1).",
+        "metrics": [
           {
-            "label": "Chancenqualität prüfen",
-            "note": "Ohne xG und Schussprofil ist noch nicht seriös klar, ob das Ergebnis die Spielqualität vollständig abbildet."
+            "id": "shotVolume",
+            "label": "Schussbild",
+            "status": "provider-synced",
+            "value": 68,
+            "homeValue": 15,
+            "awayValue": 7,
+            "unit": "",
+            "winner": "home",
+            "note": "6:4 aufs Tor; 10:5 im Strafraum."
           },
           {
-            "label": "Spielphase finden",
-            "note": "Review muss klären, welche Phase das Spiel entschieden hat: frühe Kontrolle, Standards, Umschalten oder Schlussphase."
+            "id": "territory",
+            "label": "Territorium",
+            "status": "provider-synced",
+            "value": 53,
+            "homeValue": 38,
+            "awayValue": 42,
+            "unit": "",
+            "winner": "away",
+            "note": "98:90 Angriffe insgesamt."
           },
           {
-            "label": "Empfehlung kalibrieren",
-            "note": "Die Pre-Match-Empfehlung wird erst nach Ergebnis plus Detaildaten endgültig bewertet."
+            "id": "possession",
+            "label": "Ballbesitz",
+            "status": "provider-synced",
+            "value": 62,
+            "homeValue": 62,
+            "awayValue": 38,
+            "unit": "%",
+            "winner": "home",
+            "note": "541:327 Paesse; 87 %:70 % Passquote."
+          },
+          {
+            "id": "chanceQualityProxy",
+            "label": "Grosschancen",
+            "status": "provider-synced",
+            "value": 80,
+            "homeValue": 4,
+            "awayValue": 1,
+            "unit": "",
+            "winner": "home",
+            "note": "2:0 vergebene Grosschancen."
+          },
+          {
+            "id": "pressure",
+            "label": "Pressure Index",
+            "status": "provider-synced",
+            "value": 86,
+            "homeValue": 19.6,
+            "awayValue": 3.1,
+            "unit": "",
+            "winner": "home",
+            "note": "Maximalwerte 80.8:40.5; hohe Druckminuten 21:2."
+          },
+          {
+            "id": "discipline",
+            "label": "Disziplin",
+            "status": "provider-synced",
+            "value": 100,
+            "homeValue": 1,
+            "awayValue": 0,
+            "unit": "",
+            "winner": "home",
+            "note": "Gelb 1:0, Rot 0:0.",
+            "lowerIsBetter": true
           }
         ],
+        "timeline": [
+          {
+            "minute": "59.",
+            "type": "Tor",
+            "player": "Ladislav Krejci",
+            "relatedPlayer": "Vladimír Coufal",
+            "result": "0-1",
+            "info": "Header"
+          },
+          {
+            "minute": "67.",
+            "type": "Tor",
+            "player": "In-beom Hwang ",
+            "relatedPlayer": "Kang-in Lee",
+            "result": "1-1",
+            "info": "Right foot shot"
+          },
+          {
+            "minute": "80.",
+            "type": "Tor",
+            "player": "Hyeon-gyu Oh",
+            "relatedPlayer": "In-beom Hwang ",
+            "result": "2-1",
+            "info": "Left foot shot"
+          },
+          {
+            "minute": "90+6.",
+            "type": "Gelb",
+            "player": "Gi-hyuk Lee",
+            "relatedPlayer": null,
+            "result": null,
+            "info": "Foul"
+          }
+        ],
+        "patterns": [
+          {
+            "label": "Spielkippmoment",
+            "note": "59. Ladislav Krejci eröffnet, 80. Hyeon-gyu Oh setzt den letzten Treffer."
+          },
+          {
+            "label": "Chancenbild",
+            "note": "Schussbild: Vorteil KOR (15:7)."
+          },
+          {
+            "label": "Druck und Raum",
+            "note": "Territorium: Vorteil CZE (38:42). Pressure Index: Vorteil KOR (19.6:3.1)."
+          },
+          {
+            "label": "Disziplin",
+            "note": "Gelb 1:0, Rot 0:0."
+          }
+        ],
+        "dataCoverage": {
+          "statistics": true,
+          "events": true,
+          "pressure": true,
+          "xg": false
+        },
         "recommendationAudit": {
           "preMatchScore": 33,
           "postMatchScore": 43,
@@ -1331,38 +1449,182 @@ window.WMRadarData = {
           "learning": "Das Ergebnis widerspricht der Pre-Match-Empfehlung nicht klar; Detaildaten müssen die Einordnung noch bestätigen."
         },
         "analystNotes": [
-          "Draft automatisch aus finalem Ergebnis und Pre-Match-Signalen erzeugt.",
-          "Keine künstlichen Detailmetriken anzeigen, bis Providerdaten oder Videoanalyse vorliegen."
+          "Aus Sportmonks-Statistiken, Events und Pressure automatisch verdichtet.",
+          "xG wird nicht angezeigt, weil Sportmonks fuer dieses Spiel kein xGFixture liefert."
         ]
       },
       {
         "matchId": "mex-rsa-2026-06-11",
-        "status": "draft",
-        "generatedAt": "2026-06-12T12:19:29.870Z",
+        "status": "provider-synced",
+        "generatedAt": "2026-06-12T13:29:23.810Z",
         "generatedBy": "generate-post-match-reports.mjs",
         "result": {
           "homeGoals": 2,
           "awayGoals": 0,
           "resultLine": "MEX gewinnt 2:0",
           "source": "sportmonks",
-          "updatedAt": "2026-06-12T11:08:13.792Z"
+          "updatedAt": "2026-06-12T13:29:12.408Z"
         },
-        "summary": "MEX gewinnt 2:0. Ergebnis ist synchronisiert; Detailmetriken wie xG, Druckphasen und Eventdaten fehlen noch.",
-        "metrics": [],
-        "patterns": [
+        "summary": "MEX gewinnt 2:0. Schussbild: Vorteil MEX (16:3). Territorium: Vorteil MEX (28:27). Tore: 9. Julián Quiñones (1-0), 67. Raúl Jiménez (2-0).",
+        "metrics": [
           {
-            "label": "Chancenqualität prüfen",
-            "note": "Ohne xG und Schussprofil ist noch nicht seriös klar, ob das Ergebnis die Spielqualität vollständig abbildet."
+            "id": "shotVolume",
+            "label": "Schussbild",
+            "status": "provider-synced",
+            "value": 84,
+            "homeValue": 16,
+            "awayValue": 3,
+            "unit": "",
+            "winner": "home",
+            "note": "4:2 aufs Tor; 9:1 im Strafraum."
           },
           {
-            "label": "Spielphase finden",
-            "note": "Review muss klären, welche Phase das Spiel entschieden hat: frühe Kontrolle, Standards, Umschalten oder Schlussphase."
+            "id": "territory",
+            "label": "Territorium",
+            "status": "provider-synced",
+            "value": 51,
+            "homeValue": 28,
+            "awayValue": 27,
+            "unit": "",
+            "winner": "home",
+            "note": "98:69 Angriffe insgesamt."
           },
           {
-            "label": "Empfehlung kalibrieren",
-            "note": "Die Pre-Match-Empfehlung wird erst nach Ergebnis plus Detaildaten endgültig bewertet."
+            "id": "possession",
+            "label": "Ballbesitz",
+            "status": "provider-synced",
+            "value": 61,
+            "homeValue": 61,
+            "awayValue": 39,
+            "unit": "%",
+            "winner": "home",
+            "note": "520:334 Paesse; 90 %:81 % Passquote."
+          },
+          {
+            "id": "chanceQualityProxy",
+            "label": "Grosschancen",
+            "status": "provider-synced",
+            "value": 100,
+            "homeValue": 2,
+            "awayValue": 0,
+            "unit": "",
+            "winner": "home",
+            "note": "0:0 vergebene Grosschancen."
+          },
+          {
+            "id": "pressure",
+            "label": "Pressure Index",
+            "status": "provider-synced",
+            "value": 81,
+            "homeValue": 19.1,
+            "awayValue": 4.4,
+            "unit": "",
+            "winner": "home",
+            "note": "Maximalwerte 79.2:42.3; hohe Druckminuten 22:2."
+          },
+          {
+            "id": "discipline",
+            "label": "Disziplin",
+            "status": "provider-synced",
+            "value": 67,
+            "homeValue": 3,
+            "awayValue": 6,
+            "unit": "",
+            "winner": "away",
+            "note": "Gelb 1:2, Rot 1:2.",
+            "lowerIsBetter": true
           }
         ],
+        "timeline": [
+          {
+            "minute": "9.",
+            "type": "Tor",
+            "player": "Julián Quiñones",
+            "relatedPlayer": "Érik Lira",
+            "result": "1-0",
+            "info": "Right foot shot"
+          },
+          {
+            "minute": "17.",
+            "type": "Gelb",
+            "player": "Teboho Mokoena",
+            "relatedPlayer": null,
+            "result": null,
+            "info": "Foul"
+          },
+          {
+            "minute": "23.",
+            "type": "Gelb",
+            "player": "Brian Gutiérrez",
+            "relatedPlayer": null,
+            "result": null,
+            "info": "Foul"
+          },
+          {
+            "minute": "49.",
+            "type": "Rot",
+            "player": "Yaya Sithole",
+            "relatedPlayer": null,
+            "result": null,
+            "info": "Professional foul last man"
+          },
+          {
+            "minute": "67.",
+            "type": "Tor",
+            "player": "Raúl Jiménez",
+            "relatedPlayer": "Roberto Alvarado",
+            "result": "2-0",
+            "info": "Header"
+          },
+          {
+            "minute": "74.",
+            "type": "Gelb",
+            "player": "Nkosinathi Sibisi",
+            "relatedPlayer": null,
+            "result": null,
+            "info": "Foul"
+          },
+          {
+            "minute": "82.",
+            "type": "VAR",
+            "player": "Themba Zwane",
+            "relatedPlayer": null,
+            "result": null,
+            "info": null
+          },
+          {
+            "minute": "84.",
+            "type": "Rot",
+            "player": "Themba Zwane",
+            "relatedPlayer": null,
+            "result": null,
+            "info": "Violent conduct"
+          }
+        ],
+        "patterns": [
+          {
+            "label": "Spielkippmoment",
+            "note": "9. Julián Quiñones eröffnet, 67. Raúl Jiménez setzt den letzten Treffer."
+          },
+          {
+            "label": "Chancenbild",
+            "note": "Schussbild: Vorteil MEX (16:3)."
+          },
+          {
+            "label": "Druck und Raum",
+            "note": "Territorium: Vorteil MEX (28:27). Pressure Index: Vorteil MEX (19.1:4.4)."
+          },
+          {
+            "label": "Disziplin",
+            "note": "Gelb 1:2, Rot 1:2."
+          }
+        ],
+        "dataCoverage": {
+          "statistics": true,
+          "events": true,
+          "pressure": true,
+          "xg": false
+        },
         "recommendationAudit": {
           "preMatchScore": 44,
           "postMatchScore": 50,
@@ -1371,14 +1633,14 @@ window.WMRadarData = {
           "learning": "Das Ergebnis widerspricht der Pre-Match-Empfehlung nicht klar; Detaildaten müssen die Einordnung noch bestätigen."
         },
         "analystNotes": [
-          "Draft automatisch aus finalem Ergebnis und Pre-Match-Signalen erzeugt.",
-          "Keine künstlichen Detailmetriken anzeigen, bis Providerdaten oder Videoanalyse vorliegen."
+          "Aus Sportmonks-Statistiken, Events und Pressure automatisch verdichtet.",
+          "xG wird nicht angezeigt, weil Sportmonks fuer dieses Spiel kein xGFixture liefert."
         ]
       }
     ]
   },
   "providerTests": {
-    "generatedAt": "2026-06-11T09:06:11.384Z",
+    "generatedAt": "2026-06-12T13:23:31.562Z",
     "status": "primary-ready",
     "summary": "Sportmonks ist als primaere WM-Datenquelle gesetzt und hat 104 WM-Fixtures gefunden. Pre-Match-Struktur ist belastbar; Live-In-Play-Predictions sind laut Sportmonks als Beta vor dem Auftakt am 2026-06-11 angekuendigt und werden beim ersten echten Live-Request validiert.",
     "providers": [
@@ -1386,7 +1648,7 @@ window.WMRadarData = {
         "id": "sportmonks",
         "label": "Sportmonks",
         "status": "Primaerquelle bereit",
-        "testedAt": "2026-06-11T09:06:11.358Z",
+        "testedAt": "2026-06-12T13:23:31.554Z",
         "fixtures": 104,
         "coverage": [
           {
@@ -1400,7 +1662,7 @@ window.WMRadarData = {
           {
             "field": "scores",
             "label": "Scores",
-            "count": 0,
+            "count": 2,
             "total": 104,
             "tone": "seed",
             "detail": "Ergebnisse bleiben bis zu echten Spielen erwartbar leer."
@@ -1416,7 +1678,7 @@ window.WMRadarData = {
           {
             "field": "lineups",
             "label": "Lineups",
-            "count": 4,
+            "count": 8,
             "total": 104,
             "tone": "mixed",
             "detail": "Aufstellungen werden meist erst kurz vor Anpfiff belastbar."
@@ -1424,7 +1686,7 @@ window.WMRadarData = {
           {
             "field": "events",
             "label": "Events",
-            "count": 0,
+            "count": 2,
             "total": 104,
             "tone": "seed",
             "detail": "Events werden erst live oder nach Spielbeginn relevant."
@@ -1432,7 +1694,7 @@ window.WMRadarData = {
           {
             "field": "statistics",
             "label": "Statistiken",
-            "count": 0,
+            "count": 2,
             "total": 104,
             "tone": "seed",
             "detail": "Statistiken werden live/nach Spielende erneut geprueft."
@@ -1440,7 +1702,7 @@ window.WMRadarData = {
           {
             "field": "formations",
             "label": "Formationen",
-            "count": 23,
+            "count": 25,
             "total": 104,
             "tone": "mixed",
             "detail": "Formationen sind teilweise schon vorab sichtbar."
@@ -1464,7 +1726,7 @@ window.WMRadarData = {
           {
             "field": "pressure",
             "label": "Pressure",
-            "count": 0,
+            "count": 2,
             "total": 104,
             "tone": "seed",
             "detail": "Pressure Index ist ein Kernkandidat fuer Momentum, aktuell noch leer."
@@ -11423,7 +11685,7 @@ window.WMRadarData = {
     "activeSource": "sportmonks",
     "sourceLabel": "Sportmonks",
     "sourceNote": "Automatisch synchronisiert aus Sportmonks; manuelle Overrides wurden angewendet.",
-    "generatedAt": "2026-06-12T11:08:13.793Z",
+    "generatedAt": "2026-06-12T13:29:12.411Z",
     "pollMinutes": 5,
     "syncError": null,
     "summary": {
@@ -11452,7 +11714,201 @@ window.WMRadarData = {
         "providerHome": "Mexico",
         "providerAway": "South Africa",
         "providerDate": "2026-06-11",
-        "updatedAt": "2026-06-12T11:08:13.792Z"
+        "postMatch": {
+          "provider": "sportmonks",
+          "coverage": {
+            "statistics": true,
+            "events": true,
+            "pressure": true,
+            "xg": false
+          },
+          "participants": {
+            "home": {
+              "id": 18576,
+              "name": "Mexico"
+            },
+            "away": {
+              "id": 18555,
+              "name": "South Africa"
+            }
+          },
+          "statistics": {
+            "home": {
+              "corners": 3,
+              "shotsOffTarget": 12,
+              "shotsTotal": 16,
+              "attacks": 98,
+              "dangerousAttacks": 28,
+              "possession": 61,
+              "shotsInsideBox": 9,
+              "shotsOutsideBox": 7,
+              "goals": 2,
+              "goalAttempts": 11,
+              "fouls": 12,
+              "saves": 2,
+              "shotsBlocked": 5,
+              "tackles": 12,
+              "passes": 520,
+              "successfulPasses": 467,
+              "passAccuracy": 90,
+              "redCards": 1,
+              "yellowCards": 1,
+              "shotsOnTarget": 4,
+              "crosses": 12,
+              "accurateCrosses": 4,
+              "interceptions": 8,
+              "duelsWon": 47,
+              "keyPasses": 13,
+              "bigChancesCreated": 2,
+              "successfulLongPasses": 31
+            },
+            "away": {
+              "corners": 1,
+              "shotsOffTarget": 1,
+              "shotsTotal": 3,
+              "attacks": 69,
+              "dangerousAttacks": 27,
+              "possession": 39,
+              "shotsInsideBox": 1,
+              "shotsOutsideBox": 2,
+              "goals": 0,
+              "goalAttempts": 3,
+              "fouls": 11,
+              "saves": 2,
+              "shotsBlocked": 0,
+              "tackles": 14,
+              "passes": 334,
+              "successfulPasses": 272,
+              "passAccuracy": 81,
+              "redCards": 2,
+              "yellowCards": 2,
+              "shotsOnTarget": 2,
+              "crosses": 8,
+              "accurateCrosses": 1,
+              "interceptions": 7,
+              "duelsWon": 33,
+              "keyPasses": 2,
+              "bigChancesCreated": 0,
+              "successfulLongPasses": 17
+            }
+          },
+          "events": [
+            {
+              "minute": 9,
+              "extraMinute": null,
+              "typeId": 14,
+              "type": "GOAL",
+              "participantId": 18576,
+              "player": "Julián Quiñones",
+              "relatedPlayer": "Érik Lira",
+              "info": "Right foot shot",
+              "result": "1-0"
+            },
+            {
+              "minute": 17,
+              "extraMinute": null,
+              "typeId": 19,
+              "type": "YELLOWCARD",
+              "participantId": 18555,
+              "player": "Teboho Mokoena",
+              "relatedPlayer": null,
+              "info": "Foul",
+              "result": null
+            },
+            {
+              "minute": 23,
+              "extraMinute": null,
+              "typeId": 19,
+              "type": "YELLOWCARD",
+              "participantId": 18576,
+              "player": "Brian Gutiérrez",
+              "relatedPlayer": null,
+              "info": "Foul",
+              "result": null
+            },
+            {
+              "minute": 49,
+              "extraMinute": null,
+              "typeId": 20,
+              "type": "REDCARD",
+              "participantId": 18555,
+              "player": "Yaya Sithole",
+              "relatedPlayer": null,
+              "info": "Professional foul last man",
+              "result": null
+            },
+            {
+              "minute": 67,
+              "extraMinute": null,
+              "typeId": 14,
+              "type": "GOAL",
+              "participantId": 18576,
+              "player": "Raúl Jiménez",
+              "relatedPlayer": "Roberto Alvarado",
+              "info": "Header",
+              "result": "2-0"
+            },
+            {
+              "minute": 74,
+              "extraMinute": null,
+              "typeId": 19,
+              "type": "YELLOWCARD",
+              "participantId": 18555,
+              "player": "Nkosinathi Sibisi",
+              "relatedPlayer": null,
+              "info": "Foul",
+              "result": null
+            },
+            {
+              "minute": 82,
+              "extraMinute": null,
+              "typeId": 1697,
+              "type": "VAR_CARD",
+              "participantId": 18555,
+              "player": "Themba Zwane",
+              "relatedPlayer": null,
+              "info": null,
+              "result": null
+            },
+            {
+              "minute": 84,
+              "extraMinute": null,
+              "typeId": 20,
+              "type": "REDCARD",
+              "participantId": 18555,
+              "player": "Themba Zwane",
+              "relatedPlayer": null,
+              "info": "Violent conduct",
+              "result": null
+            },
+            {
+              "minute": 90,
+              "extraMinute": 2,
+              "typeId": 20,
+              "type": "REDCARD",
+              "participantId": 18576,
+              "player": "César Montes ",
+              "relatedPlayer": null,
+              "info": "Professional foul last man",
+              "result": null
+            }
+          ],
+          "pressure": {
+            "home": {
+              "average": 19.1,
+              "max": 79.2,
+              "highMinutes": 22,
+              "samples": 101
+            },
+            "away": {
+              "average": 4.4,
+              "max": 42.3,
+              "highMinutes": 2,
+              "samples": 101
+            }
+          }
+        },
+        "updatedAt": "2026-06-12T13:29:12.408Z"
       },
       {
         "matchId": "kor-cze-2026-06-12",
@@ -11471,7 +11927,159 @@ window.WMRadarData = {
         "providerHome": "Korea Republic",
         "providerAway": "Czech Republic",
         "providerDate": "2026-06-12",
-        "updatedAt": "2026-06-12T11:08:13.792Z"
+        "postMatch": {
+          "provider": "sportmonks",
+          "coverage": {
+            "statistics": true,
+            "events": true,
+            "pressure": true,
+            "xg": false
+          },
+          "participants": {
+            "home": {
+              "id": 18567,
+              "name": "Korea Republic"
+            },
+            "away": {
+              "id": 18718,
+              "name": "Czech Republic"
+            }
+          },
+          "statistics": {
+            "home": {
+              "corners": 4,
+              "shotsOffTarget": 9,
+              "shotsTotal": 15,
+              "attacks": 98,
+              "dangerousAttacks": 38,
+              "possession": 62,
+              "shotsInsideBox": 10,
+              "shotsOutsideBox": 5,
+              "goals": 2,
+              "goalAttempts": 12,
+              "fouls": 9,
+              "saves": 3,
+              "shotsBlocked": 4,
+              "tackles": 7,
+              "passes": 541,
+              "successfulPasses": 469,
+              "passAccuracy": 87,
+              "yellowCards": 1,
+              "shotsOnTarget": 6,
+              "crosses": 12,
+              "accurateCrosses": 3,
+              "interceptions": 9,
+              "duelsWon": 56,
+              "keyPasses": 14,
+              "bigChancesCreated": 4,
+              "bigChancesMissed": 2,
+              "counterAttacks": 1,
+              "successfulLongPasses": 30
+            },
+            "away": {
+              "corners": 5,
+              "shotsOffTarget": 4,
+              "shotsTotal": 7,
+              "attacks": 90,
+              "dangerousAttacks": 42,
+              "possession": 38,
+              "shotsInsideBox": 5,
+              "shotsOutsideBox": 2,
+              "goals": 1,
+              "goalAttempts": 7,
+              "fouls": 16,
+              "saves": 4,
+              "shotsBlocked": 1,
+              "tackles": 9,
+              "passes": 327,
+              "successfulPasses": 230,
+              "passAccuracy": 70,
+              "yellowCards": 0,
+              "shotsOnTarget": 4,
+              "crosses": 15,
+              "accurateCrosses": 3,
+              "interceptions": 6,
+              "duelsWon": 38,
+              "keyPasses": 4,
+              "bigChancesCreated": 1,
+              "bigChancesMissed": 0,
+              "counterAttacks": 0,
+              "successfulLongPasses": 23
+            }
+          },
+          "events": [
+            {
+              "minute": 59,
+              "extraMinute": null,
+              "typeId": 14,
+              "type": "GOAL",
+              "participantId": 18718,
+              "player": "Ladislav Krejci",
+              "relatedPlayer": "Vladimír Coufal",
+              "info": "Header",
+              "result": "0-1"
+            },
+            {
+              "minute": 67,
+              "extraMinute": null,
+              "typeId": 14,
+              "type": "GOAL",
+              "participantId": 18567,
+              "player": "In-beom Hwang ",
+              "relatedPlayer": "Kang-in Lee",
+              "info": "Right foot shot",
+              "result": "1-1"
+            },
+            {
+              "minute": 78,
+              "extraMinute": null,
+              "typeId": 10,
+              "type": "VAR",
+              "participantId": 18718,
+              "player": "Tomáš Souček",
+              "relatedPlayer": null,
+              "info": null,
+              "result": null
+            },
+            {
+              "minute": 80,
+              "extraMinute": null,
+              "typeId": 14,
+              "type": "GOAL",
+              "participantId": 18567,
+              "player": "Hyeon-gyu Oh",
+              "relatedPlayer": "In-beom Hwang ",
+              "info": "Left foot shot",
+              "result": "2-1"
+            },
+            {
+              "minute": 90,
+              "extraMinute": 6,
+              "typeId": 19,
+              "type": "YELLOWCARD",
+              "participantId": 18567,
+              "player": "Gi-hyuk Lee",
+              "relatedPlayer": null,
+              "info": "Foul",
+              "result": null
+            }
+          ],
+          "pressure": {
+            "home": {
+              "average": 19.6,
+              "max": 80.8,
+              "highMinutes": 21,
+              "samples": 99
+            },
+            "away": {
+              "average": 3.1,
+              "max": 40.5,
+              "highMinutes": 2,
+              "samples": 99
+            }
+          }
+        },
+        "updatedAt": "2026-06-12T13:29:12.409Z"
       }
     ]
   },

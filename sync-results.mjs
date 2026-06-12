@@ -221,6 +221,175 @@ function getSportmonksStatus(item) {
   return normalizeStatus(item.state?.state || item.state?.name || item.state?.short_name || item.state_id);
 }
 
+function getSportmonksParticipant(item, location) {
+  return (item.participants || []).find(
+    (candidate) => String(candidate.meta?.location || candidate.location || "").toLowerCase() === location,
+  );
+}
+
+const statisticIdFallback = new Map([
+  [34, "CORNERS"],
+  [41, "SHOTS_OFF_TARGET"],
+  [42, "SHOTS_TOTAL"],
+  [43, "ATTACKS"],
+  [44, "DANGEROUS_ATTACKS"],
+  [45, "BALL_POSSESSION"],
+  [49, "SHOTS_INSIDEBOX"],
+  [50, "SHOTS_OUTSIDEBOX"],
+  [52, "GOALS"],
+  [54, "GOAL_ATTEMPTS"],
+  [56, "FOULS"],
+  [57, "SAVES"],
+  [58, "SHOTS_BLOCKED"],
+  [78, "TACKLES"],
+  [80, "PASSES"],
+  [81, "SUCCESSFUL_PASSES"],
+  [82, "SUCCESSFUL_PASSES_PERCENTAGE"],
+  [83, "REDCARDS"],
+  [84, "YELLOWCARDS"],
+  [86, "SHOTS_ON_TARGET"],
+  [98, "TOTAL_CROSSES"],
+  [99, "ACCURATE_CROSSES"],
+  [100, "INTERCEPTIONS"],
+  [106, "DUELS_WON"],
+  [117, "KEY_PASSES"],
+  [580, "BIG_CHANCES_CREATED"],
+  [581, "BIG_CHANCES_MISSED"],
+  [1527, "COUNTER_ATTACKS"],
+  [27264, "SUCCESSFUL_LONG_PASSES"],
+]);
+
+const statisticKeys = new Map([
+  ["CORNERS", "corners"],
+  ["SHOTS_OFF_TARGET", "shotsOffTarget"],
+  ["SHOTS_TOTAL", "shotsTotal"],
+  ["ATTACKS", "attacks"],
+  ["DANGEROUS_ATTACKS", "dangerousAttacks"],
+  ["BALL_POSSESSION", "possession"],
+  ["SHOTS_INSIDEBOX", "shotsInsideBox"],
+  ["SHOTS_OUTSIDEBOX", "shotsOutsideBox"],
+  ["GOALS", "goals"],
+  ["GOAL_ATTEMPTS", "goalAttempts"],
+  ["FOULS", "fouls"],
+  ["SAVES", "saves"],
+  ["SHOTS_BLOCKED", "shotsBlocked"],
+  ["TACKLES", "tackles"],
+  ["PASSES", "passes"],
+  ["SUCCESSFUL_PASSES", "successfulPasses"],
+  ["SUCCESSFUL_PASSES_PERCENTAGE", "passAccuracy"],
+  ["REDCARDS", "redCards"],
+  ["YELLOWCARDS", "yellowCards"],
+  ["SHOTS_ON_TARGET", "shotsOnTarget"],
+  ["TOTAL_CROSSES", "crosses"],
+  ["ACCURATE_CROSSES", "accurateCrosses"],
+  ["INTERCEPTIONS", "interceptions"],
+  ["DUELS_WON", "duelsWon"],
+  ["KEY_PASSES", "keyPasses"],
+  ["BIG_CHANCES_CREATED", "bigChancesCreated"],
+  ["BIG_CHANCES_MISSED", "bigChancesMissed"],
+  ["COUNTER_ATTACKS", "counterAttacks"],
+  ["SUCCESSFUL_LONG_PASSES", "successfulLongPasses"],
+]);
+
+function getStatisticKey(statistic) {
+  const developerName =
+    statistic.type?.developer_name ||
+    statistic.type?.code?.replace(/-/g, "_").toUpperCase() ||
+    statisticIdFallback.get(Number(statistic.type_id));
+  return statisticKeys.get(developerName) || null;
+}
+
+function getStatisticValue(statistic) {
+  const value = statistic.data?.value ?? statistic.value;
+  return value === null || value === undefined ? null : Number(value);
+}
+
+function collectSportmonksStatistics(item, participant) {
+  const stats = {};
+  if (!participant?.id) return stats;
+
+  for (const statistic of item.statistics || []) {
+    if (Number(statistic.participant_id) !== Number(participant.id)) continue;
+    const key = getStatisticKey(statistic);
+    const value = getStatisticValue(statistic);
+    if (!key || !Number.isFinite(value)) continue;
+    stats[key] = value;
+  }
+
+  return stats;
+}
+
+function getEventType(event) {
+  return event.type?.developer_name || event.type?.code?.toUpperCase() || event.type?.name || String(event.type_id || "");
+}
+
+function collectSportmonksEvents(item) {
+  return (item.events || [])
+    .filter((event) => [10, 14, 19, 20, 1697].includes(Number(event.type_id)))
+    .map((event) => ({
+      minute: event.minute ?? null,
+      extraMinute: event.extra_minute ?? null,
+      typeId: event.type_id ?? null,
+      type: getEventType(event),
+      participantId: event.participant_id ?? null,
+      player: event.player?.display_name || event.player?.name || event.player_name || null,
+      relatedPlayer: event.relatedPlayer?.display_name || event.relatedPlayer?.name || event.related_player_name || null,
+      info: event.info || null,
+      result: event.result || null,
+    }))
+    .sort((a, b) => Number(a.minute || 0) - Number(b.minute || 0));
+}
+
+function collectPressureSummary(item, participant) {
+  const rows = (item.pressure || []).filter((row) => Number(row.participant_id) === Number(participant?.id));
+  if (!rows.length) return null;
+  const values = rows.map((row) => Number(row.pressure ?? row.value ?? row.data?.value ?? 0)).filter(Number.isFinite);
+  if (!values.length) return null;
+  return {
+    average: Number((values.reduce((sum, value) => sum + value, 0) / values.length).toFixed(1)),
+    max: Number(Math.max(...values).toFixed(1)),
+    highMinutes: values.filter((value) => value >= 35).length,
+    samples: values.length,
+  };
+}
+
+function getSportmonksPostMatch(item) {
+  const home = getSportmonksParticipant(item, "home");
+  const away = getSportmonksParticipant(item, "away");
+  const statisticsAvailable = Boolean((item.statistics || []).length && home && away);
+  const eventsAvailable = Boolean((item.events || []).length);
+  const pressureAvailable = Boolean((item.pressure || []).length && home && away);
+
+  if (!statisticsAvailable && !eventsAvailable && !pressureAvailable) return null;
+
+  return {
+    provider: "sportmonks",
+    coverage: {
+      statistics: statisticsAvailable,
+      events: eventsAvailable,
+      pressure: pressureAvailable,
+      xg: Boolean(item.xGFixture),
+    },
+    participants: {
+      home: { id: home?.id || null, name: home?.name || null },
+      away: { id: away?.id || null, name: away?.name || null },
+    },
+    statistics: statisticsAvailable
+      ? {
+          home: collectSportmonksStatistics(item, home),
+          away: collectSportmonksStatistics(item, away),
+        }
+      : null,
+    events: eventsAvailable ? collectSportmonksEvents(item) : [],
+    pressure: pressureAvailable
+      ? {
+          home: collectPressureSummary(item, home),
+          away: collectPressureSummary(item, away),
+        }
+      : null,
+  };
+}
+
 function normalizeLocalResult(raw, indexes, teamAliases, providerMappingById) {
   const mappedProviderFixture = raw.providerId ? providerMappingById.get(String(raw.providerId)) : null;
   const matchId = mappedProviderFixture?.matchId || raw.matchId || raw.id || null;
@@ -251,6 +420,7 @@ function normalizeLocalResult(raw, indexes, teamAliases, providerMappingById) {
     providerHome: raw.home || null,
     providerAway: raw.away || null,
     providerDate: raw.date || null,
+    postMatch: raw.postMatch || null,
     updatedAt: raw.updatedAt || new Date().toISOString(),
   };
 }
@@ -348,6 +518,7 @@ async function fetchSportmonks(source) {
       status: getSportmonksStatus(item),
       minute: item.periods?.current?.minute ?? item.currentPeriod?.minute ?? null,
       providerId: item.id,
+      postMatch: getSportmonksPostMatch(item),
       source: source.id,
       updatedAt: new Date().toISOString(),
     };

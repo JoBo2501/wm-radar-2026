@@ -4,7 +4,7 @@
   "activeSource": "sportmonks",
   "sourceLabel": "Sportmonks",
   "sourceNote": "Automatisch synchronisiert aus Sportmonks; manuelle Overrides wurden angewendet.",
-  "generatedAt": "2026-06-12T11:08:13.793Z",
+  "generatedAt": "2026-06-12T13:29:12.411Z",
   "pollMinutes": 5,
   "syncError": null,
   "summary": {
@@ -33,7 +33,201 @@
       "providerHome": "Mexico",
       "providerAway": "South Africa",
       "providerDate": "2026-06-11",
-      "updatedAt": "2026-06-12T11:08:13.792Z"
+      "postMatch": {
+        "provider": "sportmonks",
+        "coverage": {
+          "statistics": true,
+          "events": true,
+          "pressure": true,
+          "xg": false
+        },
+        "participants": {
+          "home": {
+            "id": 18576,
+            "name": "Mexico"
+          },
+          "away": {
+            "id": 18555,
+            "name": "South Africa"
+          }
+        },
+        "statistics": {
+          "home": {
+            "corners": 3,
+            "shotsOffTarget": 12,
+            "shotsTotal": 16,
+            "attacks": 98,
+            "dangerousAttacks": 28,
+            "possession": 61,
+            "shotsInsideBox": 9,
+            "shotsOutsideBox": 7,
+            "goals": 2,
+            "goalAttempts": 11,
+            "fouls": 12,
+            "saves": 2,
+            "shotsBlocked": 5,
+            "tackles": 12,
+            "passes": 520,
+            "successfulPasses": 467,
+            "passAccuracy": 90,
+            "redCards": 1,
+            "yellowCards": 1,
+            "shotsOnTarget": 4,
+            "crosses": 12,
+            "accurateCrosses": 4,
+            "interceptions": 8,
+            "duelsWon": 47,
+            "keyPasses": 13,
+            "bigChancesCreated": 2,
+            "successfulLongPasses": 31
+          },
+          "away": {
+            "corners": 1,
+            "shotsOffTarget": 1,
+            "shotsTotal": 3,
+            "attacks": 69,
+            "dangerousAttacks": 27,
+            "possession": 39,
+            "shotsInsideBox": 1,
+            "shotsOutsideBox": 2,
+            "goals": 0,
+            "goalAttempts": 3,
+            "fouls": 11,
+            "saves": 2,
+            "shotsBlocked": 0,
+            "tackles": 14,
+            "passes": 334,
+            "successfulPasses": 272,
+            "passAccuracy": 81,
+            "redCards": 2,
+            "yellowCards": 2,
+            "shotsOnTarget": 2,
+            "crosses": 8,
+            "accurateCrosses": 1,
+            "interceptions": 7,
+            "duelsWon": 33,
+            "keyPasses": 2,
+            "bigChancesCreated": 0,
+            "successfulLongPasses": 17
+          }
+        },
+        "events": [
+          {
+            "minute": 9,
+            "extraMinute": null,
+            "typeId": 14,
+            "type": "GOAL",
+            "participantId": 18576,
+            "player": "Julián Quiñones",
+            "relatedPlayer": "Érik Lira",
+            "info": "Right foot shot",
+            "result": "1-0"
+          },
+          {
+            "minute": 17,
+            "extraMinute": null,
+            "typeId": 19,
+            "type": "YELLOWCARD",
+            "participantId": 18555,
+            "player": "Teboho Mokoena",
+            "relatedPlayer": null,
+            "info": "Foul",
+            "result": null
+          },
+          {
+            "minute": 23,
+            "extraMinute": null,
+            "typeId": 19,
+            "type": "YELLOWCARD",
+            "participantId": 18576,
+            "player": "Brian Gutiérrez",
+            "relatedPlayer": null,
+            "info": "Foul",
+            "result": null
+          },
+          {
+            "minute": 49,
+            "extraMinute": null,
+            "typeId": 20,
+            "type": "REDCARD",
+            "participantId": 18555,
+            "player": "Yaya Sithole",
+            "relatedPlayer": null,
+            "info": "Professional foul last man",
+            "result": null
+          },
+          {
+            "minute": 67,
+            "extraMinute": null,
+            "typeId": 14,
+            "type": "GOAL",
+            "participantId": 18576,
+            "player": "Raúl Jiménez",
+            "relatedPlayer": "Roberto Alvarado",
+            "info": "Header",
+            "result": "2-0"
+          },
+          {
+            "minute": 74,
+            "extraMinute": null,
+            "typeId": 19,
+            "type": "YELLOWCARD",
+            "participantId": 18555,
+            "player": "Nkosinathi Sibisi",
+            "relatedPlayer": null,
+            "info": "Foul",
+            "result": null
+          },
+          {
+            "minute": 82,
+            "extraMinute": null,
+            "typeId": 1697,
+            "type": "VAR_CARD",
+            "participantId": 18555,
+            "player": "Themba Zwane",
+            "relatedPlayer": null,
+            "info": null,
+            "result": null
+          },
+          {
+            "minute": 84,
+            "extraMinute": null,
+            "typeId": 20,
+            "type": "REDCARD",
+            "participantId": 18555,
+            "player": "Themba Zwane",
+            "relatedPlayer": null,
+            "info": "Violent conduct",
+            "result": null
+          },
+          {
+            "minute": 90,
+            "extraMinute": 2,
+            "typeId": 20,
+            "type": "REDCARD",
+            "participantId": 18576,
+            "player": "César Montes ",
+            "relatedPlayer": null,
+            "info": "Professional foul last man",
+            "result": null
+          }
+        ],
+        "pressure": {
+          "home": {
+            "average": 19.1,
+            "max": 79.2,
+            "highMinutes": 22,
+            "samples": 101
+          },
+          "away": {
+            "average": 4.4,
+            "max": 42.3,
+            "highMinutes": 2,
+            "samples": 101
+          }
+        }
+      },
+      "updatedAt": "2026-06-12T13:29:12.408Z"
     },
     {
       "matchId": "kor-cze-2026-06-12",
@@ -52,7 +246,159 @@
       "providerHome": "Korea Republic",
       "providerAway": "Czech Republic",
       "providerDate": "2026-06-12",
-      "updatedAt": "2026-06-12T11:08:13.792Z"
+      "postMatch": {
+        "provider": "sportmonks",
+        "coverage": {
+          "statistics": true,
+          "events": true,
+          "pressure": true,
+          "xg": false
+        },
+        "participants": {
+          "home": {
+            "id": 18567,
+            "name": "Korea Republic"
+          },
+          "away": {
+            "id": 18718,
+            "name": "Czech Republic"
+          }
+        },
+        "statistics": {
+          "home": {
+            "corners": 4,
+            "shotsOffTarget": 9,
+            "shotsTotal": 15,
+            "attacks": 98,
+            "dangerousAttacks": 38,
+            "possession": 62,
+            "shotsInsideBox": 10,
+            "shotsOutsideBox": 5,
+            "goals": 2,
+            "goalAttempts": 12,
+            "fouls": 9,
+            "saves": 3,
+            "shotsBlocked": 4,
+            "tackles": 7,
+            "passes": 541,
+            "successfulPasses": 469,
+            "passAccuracy": 87,
+            "yellowCards": 1,
+            "shotsOnTarget": 6,
+            "crosses": 12,
+            "accurateCrosses": 3,
+            "interceptions": 9,
+            "duelsWon": 56,
+            "keyPasses": 14,
+            "bigChancesCreated": 4,
+            "bigChancesMissed": 2,
+            "counterAttacks": 1,
+            "successfulLongPasses": 30
+          },
+          "away": {
+            "corners": 5,
+            "shotsOffTarget": 4,
+            "shotsTotal": 7,
+            "attacks": 90,
+            "dangerousAttacks": 42,
+            "possession": 38,
+            "shotsInsideBox": 5,
+            "shotsOutsideBox": 2,
+            "goals": 1,
+            "goalAttempts": 7,
+            "fouls": 16,
+            "saves": 4,
+            "shotsBlocked": 1,
+            "tackles": 9,
+            "passes": 327,
+            "successfulPasses": 230,
+            "passAccuracy": 70,
+            "yellowCards": 0,
+            "shotsOnTarget": 4,
+            "crosses": 15,
+            "accurateCrosses": 3,
+            "interceptions": 6,
+            "duelsWon": 38,
+            "keyPasses": 4,
+            "bigChancesCreated": 1,
+            "bigChancesMissed": 0,
+            "counterAttacks": 0,
+            "successfulLongPasses": 23
+          }
+        },
+        "events": [
+          {
+            "minute": 59,
+            "extraMinute": null,
+            "typeId": 14,
+            "type": "GOAL",
+            "participantId": 18718,
+            "player": "Ladislav Krejci",
+            "relatedPlayer": "Vladimír Coufal",
+            "info": "Header",
+            "result": "0-1"
+          },
+          {
+            "minute": 67,
+            "extraMinute": null,
+            "typeId": 14,
+            "type": "GOAL",
+            "participantId": 18567,
+            "player": "In-beom Hwang ",
+            "relatedPlayer": "Kang-in Lee",
+            "info": "Right foot shot",
+            "result": "1-1"
+          },
+          {
+            "minute": 78,
+            "extraMinute": null,
+            "typeId": 10,
+            "type": "VAR",
+            "participantId": 18718,
+            "player": "Tomáš Souček",
+            "relatedPlayer": null,
+            "info": null,
+            "result": null
+          },
+          {
+            "minute": 80,
+            "extraMinute": null,
+            "typeId": 14,
+            "type": "GOAL",
+            "participantId": 18567,
+            "player": "Hyeon-gyu Oh",
+            "relatedPlayer": "In-beom Hwang ",
+            "info": "Left foot shot",
+            "result": "2-1"
+          },
+          {
+            "minute": 90,
+            "extraMinute": 6,
+            "typeId": 19,
+            "type": "YELLOWCARD",
+            "participantId": 18567,
+            "player": "Gi-hyuk Lee",
+            "relatedPlayer": null,
+            "info": "Foul",
+            "result": null
+          }
+        ],
+        "pressure": {
+          "home": {
+            "average": 19.6,
+            "max": 80.8,
+            "highMinutes": 21,
+            "samples": 99
+          },
+          "away": {
+            "average": 3.1,
+            "max": 40.5,
+            "highMinutes": 2,
+            "samples": 99
+          }
+        }
+      },
+      "updatedAt": "2026-06-12T13:29:12.409Z"
     }
   ]
 }

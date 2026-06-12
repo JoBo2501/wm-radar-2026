@@ -18,6 +18,45 @@ function hasFlag(name) {
   return process.argv.includes(`--${name}`);
 }
 
+const metricDefinitions = [
+  {
+    id: "shotVolume",
+    label: "Schussbild",
+    providerTarget: "SportMonks Statistics: shots-total, shots-on-target, shots-insidebox",
+    meaning: "Zeigt, ob der Endstand durch Abschlussvolumen und Strafraumaktionen gestuetzt wird.",
+  },
+  {
+    id: "territory",
+    label: "Territorium",
+    providerTarget: "SportMonks Statistics: dangerous-attacks, attacks",
+    meaning: "Ordnet ein, wer mehr gefaehrliche Zonen erreicht hat.",
+  },
+  {
+    id: "possession",
+    label: "Ballbesitz und Passspiel",
+    providerTarget: "SportMonks Statistics: ball-possession, passes, successful-passes-percentage",
+    meaning: "Trennt Ballkontrolle von Ergebniswirkung.",
+  },
+  {
+    id: "chanceQualityProxy",
+    label: "Grosschancen",
+    providerTarget: "SportMonks Statistics: big-chances-created, big-chances-missed",
+    meaning: "Nutzt Grosschancen als xG-nahe Ersatzinformation, solange kein xGFixture geliefert wird.",
+  },
+  {
+    id: "pressure",
+    label: "Pressure Index",
+    providerTarget: "SportMonks Pressure",
+    meaning: "Verdichtet Druckphasen, ohne daraus PPDA oder Field Tilt zu behaupten.",
+  },
+  {
+    id: "discipline",
+    label: "Disziplin",
+    providerTarget: "SportMonks Statistics + Events: yellowcards, redcards",
+    meaning: "Markiert Karten und Unterzahl als moegliche Spielkipper.",
+  },
+];
+
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
 }
@@ -95,8 +134,216 @@ function getAuditVerdict(preRecommendation, postMatchScore) {
   return "neu kalibrieren";
 }
 
-function createMetrics(match, result, preMatchScore, postMatchScore) {
-  return [];
+function getStat(postMatch, side, key) {
+  const value = postMatch?.statistics?.[side]?.[key];
+  return Number.isFinite(Number(value)) ? Number(value) : null;
+}
+
+function formatRatio(homeValue, awayValue, unit = "") {
+  const suffix = unit ? ` ${unit}` : "";
+  return `${homeValue}${suffix}:${awayValue}${suffix}`;
+}
+
+function metricAdvantage(homeValue, awayValue) {
+  const total = Math.abs(homeValue) + Math.abs(awayValue);
+  if (!total) return 50;
+  return clamp(Math.round((Math.max(homeValue, awayValue) / total) * 100), 0, 100);
+}
+
+function getMetricWinner(homeValue, awayValue) {
+  if (homeValue === awayValue) return "even";
+  return homeValue > awayValue ? "home" : "away";
+}
+
+function createComparisonMetric(id, label, homeValue, awayValue, note, unit = "") {
+  if (!Number.isFinite(homeValue) || !Number.isFinite(awayValue)) return null;
+  return {
+    id,
+    label,
+    status: "provider-synced",
+    value: metricAdvantage(homeValue, awayValue),
+    homeValue,
+    awayValue,
+    unit,
+    winner: getMetricWinner(homeValue, awayValue),
+    note,
+  };
+}
+
+function createMetrics(match, result) {
+  const postMatch = result.postMatch;
+  if (!postMatch?.statistics) return [];
+
+  const metrics = [
+    createComparisonMetric(
+      "shotVolume",
+      "Schussbild",
+      getStat(postMatch, "home", "shotsTotal"),
+      getStat(postMatch, "away", "shotsTotal"),
+      `${formatRatio(getStat(postMatch, "home", "shotsOnTarget") ?? 0, getStat(postMatch, "away", "shotsOnTarget") ?? 0)} aufs Tor; ${formatRatio(
+        getStat(postMatch, "home", "shotsInsideBox") ?? 0,
+        getStat(postMatch, "away", "shotsInsideBox") ?? 0,
+      )} im Strafraum.`,
+    ),
+    createComparisonMetric(
+      "territory",
+      "Territorium",
+      getStat(postMatch, "home", "dangerousAttacks"),
+      getStat(postMatch, "away", "dangerousAttacks"),
+      `${formatRatio(getStat(postMatch, "home", "attacks") ?? 0, getStat(postMatch, "away", "attacks") ?? 0)} Angriffe insgesamt.`,
+    ),
+    createComparisonMetric(
+      "possession",
+      "Ballbesitz",
+      getStat(postMatch, "home", "possession"),
+      getStat(postMatch, "away", "possession"),
+      `${formatRatio(getStat(postMatch, "home", "passes") ?? 0, getStat(postMatch, "away", "passes") ?? 0)} Paesse; ${formatRatio(
+        getStat(postMatch, "home", "passAccuracy") ?? 0,
+        getStat(postMatch, "away", "passAccuracy") ?? 0,
+        "%",
+      )} Passquote.`,
+      "%",
+    ),
+    createComparisonMetric(
+      "chanceQualityProxy",
+      "Grosschancen",
+      getStat(postMatch, "home", "bigChancesCreated"),
+      getStat(postMatch, "away", "bigChancesCreated"),
+      `${formatRatio(getStat(postMatch, "home", "bigChancesMissed") ?? 0, getStat(postMatch, "away", "bigChancesMissed") ?? 0)} vergebene Grosschancen.`,
+    ),
+  ].filter(Boolean);
+
+  const pressureHome = postMatch.pressure?.home?.average;
+  const pressureAway = postMatch.pressure?.away?.average;
+  const pressureMetric = createComparisonMetric(
+    "pressure",
+    "Pressure Index",
+    Number(pressureHome),
+    Number(pressureAway),
+    `Maximalwerte ${postMatch.pressure?.home?.max ?? "offen"}:${postMatch.pressure?.away?.max ?? "offen"}; hohe Druckminuten ${
+      postMatch.pressure?.home?.highMinutes ?? 0
+    }:${postMatch.pressure?.away?.highMinutes ?? 0}.`,
+  );
+  if (pressureMetric) metrics.push(pressureMetric);
+
+  const disciplineMetric = createComparisonMetric(
+    "discipline",
+    "Disziplin",
+    (getStat(postMatch, "home", "yellowCards") ?? 0) + (getStat(postMatch, "home", "redCards") ?? 0) * 2,
+    (getStat(postMatch, "away", "yellowCards") ?? 0) + (getStat(postMatch, "away", "redCards") ?? 0) * 2,
+    `Gelb ${formatRatio(getStat(postMatch, "home", "yellowCards") ?? 0, getStat(postMatch, "away", "yellowCards") ?? 0)}, Rot ${formatRatio(
+      getStat(postMatch, "home", "redCards") ?? 0,
+      getStat(postMatch, "away", "redCards") ?? 0,
+    )}.`,
+  );
+  if (disciplineMetric) metrics.push({ ...disciplineMetric, lowerIsBetter: true });
+
+  return metrics;
+}
+
+function getTeamLabel(side, homeCode, awayCode) {
+  return side === "home" ? homeCode : side === "away" ? awayCode : "beide";
+}
+
+function getMetricLine(metric, homeCode, awayCode) {
+  const winner = getTeamLabel(metric.winner, homeCode, awayCode);
+  if (metric.winner === "even") return `${metric.label}: ausgeglichen (${formatRatio(metric.homeValue, metric.awayValue, metric.unit)}).`;
+  return `${metric.label}: Vorteil ${winner} (${formatRatio(metric.homeValue, metric.awayValue, metric.unit)}).`;
+}
+
+function getGoals(postMatch) {
+  return (postMatch?.events || []).filter((event) => Number(event.typeId) === 14 || event.type === "GOAL");
+}
+
+function getCards(postMatch) {
+  return (postMatch?.events || []).filter((event) => [19, 20, 1697].includes(Number(event.typeId)));
+}
+
+function formatMinute(event) {
+  if (!event.minute) return "";
+  return `${event.minute}${event.extraMinute ? `+${event.extraMinute}` : ""}.`;
+}
+
+function createEventTimeline(postMatch) {
+  const events = [...getGoals(postMatch), ...getCards(postMatch)]
+    .sort((a, b) => Number(a.minute || 0) - Number(b.minute || 0))
+    .slice(0, 8);
+  return events.map((event) => ({
+    minute: formatMinute(event),
+    type: Number(event.typeId) === 14 ? "Tor" : Number(event.typeId) === 20 ? "Rot" : Number(event.typeId) === 19 ? "Gelb" : "VAR",
+    player: event.player || "Unbekannt",
+    relatedPlayer: event.relatedPlayer || null,
+    result: event.result || null,
+    info: event.info || null,
+  }));
+}
+
+function createPatterns(metrics, postMatch, homeCode, awayCode) {
+  if (!metrics.length) {
+    return [
+      {
+        label: "Daten fehlen",
+        note: "Sportmonks liefert fuer dieses Spiel noch keine belastbaren Analysewerte; nur der Endstand ist sicher.",
+      },
+    ];
+  }
+
+  const goals = getGoals(postMatch);
+  const shotMetric = metrics.find((metric) => metric.id === "shotVolume");
+  const territoryMetric = metrics.find((metric) => metric.id === "territory");
+  const pressureMetric = metrics.find((metric) => metric.id === "pressure");
+  const disciplineMetric = metrics.find((metric) => metric.id === "discipline");
+  const patterns = [];
+
+  if (goals.length) {
+    const firstGoal = goals[0];
+    const lastGoal = goals[goals.length - 1];
+    patterns.push({
+      label: "Spielkippmoment",
+      note:
+        goals.length === 1
+          ? `${formatMinute(firstGoal)} ${firstGoal.player} setzt den einzigen Treffer.`
+          : `${formatMinute(firstGoal)} ${firstGoal.player} eröffnet, ${formatMinute(lastGoal)} ${lastGoal.player} setzt den letzten Treffer.`,
+    });
+  }
+
+  if (shotMetric) {
+    patterns.push({
+      label: "Chancenbild",
+      note: getMetricLine(shotMetric, homeCode, awayCode),
+    });
+  }
+
+  if (territoryMetric || pressureMetric) {
+    patterns.push({
+      label: "Druck und Raum",
+      note: [territoryMetric && getMetricLine(territoryMetric, homeCode, awayCode), pressureMetric && getMetricLine(pressureMetric, homeCode, awayCode)]
+        .filter(Boolean)
+        .join(" "),
+    });
+  }
+
+  if (disciplineMetric && (disciplineMetric.homeValue || disciplineMetric.awayValue)) {
+    patterns.push({
+      label: "Disziplin",
+      note: disciplineMetric.note,
+    });
+  }
+
+  return patterns.slice(0, 4);
+}
+
+function createSummary(resultLine, metrics, postMatch, homeCode, awayCode) {
+  const shotMetric = metrics.find((metric) => metric.id === "shotVolume");
+  const territoryMetric = metrics.find((metric) => metric.id === "territory");
+  const goals = getGoals(postMatch);
+  const goalLine = goals.length
+    ? `Tore: ${goals.map((event) => `${formatMinute(event)} ${event.player}${event.result ? ` (${event.result})` : ""}`).join(", ")}.`
+    : "Tordetails fehlen noch.";
+  const metricLine = [shotMetric && getMetricLine(shotMetric, homeCode, awayCode), territoryMetric && getMetricLine(territoryMetric, homeCode, awayCode)]
+    .filter(Boolean)
+    .join(" ");
+  return `${resultLine}. ${metricLine || "Provider-Detaildaten sind noch unvollstaendig."} ${goalLine}`;
 }
 
 function createReport(match, result, context) {
@@ -108,10 +355,14 @@ function createReport(match, result, context) {
   const postMatchScore = getPostMatchScore(preMatchScore, result, match);
   const verdict = getAuditVerdict(preRecommendation, postMatchScore);
   const resultLine = getResultVerdict(result, homeCode, awayCode);
+  const metrics = createMetrics(match, result);
+  const timeline = createEventTimeline(result.postMatch);
+  const patterns = createPatterns(metrics, result.postMatch, homeCode, awayCode);
+  const hasProviderAnalysis = Boolean(result.postMatch?.coverage?.statistics || result.postMatch?.coverage?.events || result.postMatch?.coverage?.pressure);
 
   return {
     matchId: match.id,
-    status: "draft",
+    status: hasProviderAnalysis ? "provider-synced" : "draft",
     generatedAt: new Date().toISOString(),
     generatedBy: "generate-post-match-reports.mjs",
     result: {
@@ -121,22 +372,11 @@ function createReport(match, result, context) {
       source: result.source || "unknown",
       updatedAt: result.updatedAt || null,
     },
-    summary: `${resultLine}. Ergebnis ist synchronisiert; Detailmetriken wie xG, Druckphasen und Eventdaten fehlen noch.`,
-    metrics: createMetrics(match, result, preMatchScore, postMatchScore),
-    patterns: [
-      {
-        label: "Chancenqualität prüfen",
-        note: "Ohne xG und Schussprofil ist noch nicht seriös klar, ob das Ergebnis die Spielqualität vollständig abbildet.",
-      },
-      {
-        label: "Spielphase finden",
-        note: "Review muss klären, welche Phase das Spiel entschieden hat: frühe Kontrolle, Standards, Umschalten oder Schlussphase.",
-      },
-      {
-        label: "Empfehlung kalibrieren",
-        note: "Die Pre-Match-Empfehlung wird erst nach Ergebnis plus Detaildaten endgültig bewertet.",
-      },
-    ],
+    summary: createSummary(resultLine, metrics, result.postMatch, homeCode, awayCode),
+    metrics,
+    timeline,
+    patterns,
+    dataCoverage: result.postMatch?.coverage || { statistics: false, events: false, pressure: false, xg: false },
     recommendationAudit: {
       preMatchScore,
       postMatchScore,
@@ -148,8 +388,12 @@ function createReport(match, result, context) {
           : "Das Ergebnis widerspricht der Pre-Match-Empfehlung nicht klar; Detaildaten müssen die Einordnung noch bestätigen.",
     },
     analystNotes: [
-      "Draft automatisch aus finalem Ergebnis und Pre-Match-Signalen erzeugt.",
-      "Keine künstlichen Detailmetriken anzeigen, bis Providerdaten oder Videoanalyse vorliegen.",
+      hasProviderAnalysis
+        ? "Aus Sportmonks-Statistiken, Events und Pressure automatisch verdichtet."
+        : "Draft automatisch aus finalem Ergebnis und Pre-Match-Signalen erzeugt.",
+      result.postMatch?.coverage?.xg
+        ? "xG wurde vom Provider geliefert."
+        : "xG wird nicht angezeigt, weil Sportmonks fuer dieses Spiel kein xGFixture liefert.",
     ],
   };
 }
@@ -179,6 +423,7 @@ const nextBundle = {
   ...reportsBundle,
   status: reports.length ? "drafts-generated" : "preTournament",
   generatedAt: new Date().toISOString(),
+  metricDefinitions,
   reports: reports.sort((a, b) => a.matchId.localeCompare(b.matchId)),
 };
 

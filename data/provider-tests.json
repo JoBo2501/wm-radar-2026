@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-11T09:06:11.384Z",
+  "generatedAt": "2026-06-12T13:23:31.562Z",
   "status": "primary-ready",
   "summary": "Sportmonks ist als primaere WM-Datenquelle gesetzt und hat 104 WM-Fixtures gefunden. Pre-Match-Struktur ist belastbar; Live-In-Play-Predictions sind laut Sportmonks als Beta vor dem Auftakt am 2026-06-11 angekuendigt und werden beim ersten echten Live-Request validiert.",
   "providers": [
@@ -7,7 +7,7 @@
       "id": "sportmonks",
       "label": "Sportmonks",
       "status": "Primaerquelle bereit",
-      "testedAt": "2026-06-11T09:06:11.358Z",
+      "testedAt": "2026-06-12T13:23:31.554Z",
       "fixtures": 104,
       "coverage": [
         {
@@ -21,7 +21,7 @@
         {
           "field": "scores",
           "label": "Scores",
-          "count": 0,
+          "count": 2,
           "total": 104,
           "tone": "seed",
           "detail": "Ergebnisse bleiben bis zu echten Spielen erwartbar leer."
@@ -37,7 +37,7 @@
         {
           "field": "lineups",
           "label": "Lineups",
-          "count": 4,
+          "count": 8,
           "total": 104,
           "tone": "mixed",
           "detail": "Aufstellungen werden meist erst kurz vor Anpfiff belastbar."
@@ -45,7 +45,7 @@
         {
           "field": "events",
           "label": "Events",
-          "count": 0,
+          "count": 2,
           "total": 104,
           "tone": "seed",
           "detail": "Events werden erst live oder nach Spielbeginn relevant."
@@ -53,7 +53,7 @@
         {
           "field": "statistics",
           "label": "Statistiken",
-          "count": 0,
+          "count": 2,
           "total": 104,
           "tone": "seed",
           "detail": "Statistiken werden live/nach Spielende erneut geprueft."
@@ -61,7 +61,7 @@
         {
           "field": "formations",
           "label": "Formationen",
-          "count": 23,
+          "count": 25,
           "total": 104,
           "tone": "mixed",
           "detail": "Formationen sind teilweise schon vorab sichtbar."
@@ -85,7 +85,7 @@
         {
           "field": "pressure",
           "label": "Pressure",
-          "count": 0,
+          "count": 2,
           "total": 104,
           "tone": "seed",
           "detail": "Pressure Index ist ein Kernkandidat fuer Momentum, aktuell noch leer."

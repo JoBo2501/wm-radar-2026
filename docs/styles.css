@@ -2600,6 +2600,25 @@ h3 {
   font-size: 0.86rem;
 }
 
+.comparison-row {
+  grid-template-columns: minmax(104px, 0.9fr) minmax(80px, 1fr) auto;
+}
+
+.comparison-row small {
+  grid-column: 1 / -1;
+  color: var(--soft);
+  font-size: 0.76rem;
+  line-height: 1.35;
+}
+
+.event-timeline strong {
+  color: var(--text);
+}
+
+.event-timeline span {
+  display: block;
+}
+
 .metric-track {
   height: 8px;
   border-radius: 999px;

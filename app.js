@@ -2029,12 +2029,14 @@ function getPostMatchReport(match, result) {
 }
 
 function getMetricLabel(metric) {
+  if (metric.label) return metric.label;
   const labels = {
-    xg: "Chancenqualität",
-    ppda: "Pressingdruck",
-    fieldTilt: "Spielfeldneigung",
-    lineBreaking: "Linienbrüche",
-    setPieceThreat: "Standardgefahr",
+    shotVolume: "Schussbild",
+    territory: "Territorium",
+    possession: "Ballbesitz",
+    chanceQualityProxy: "Grosschancen",
+    pressure: "Pressure Index",
+    discipline: "Disziplin",
   };
   return labels[metric.id] || metric.id;
 }
@@ -2076,8 +2078,79 @@ function getGroupImpactLine(match, result) {
 }
 
 function getUnavailableMetricLabels(metrics) {
-  const metricIds = metrics.length ? metrics.map((metric) => metric.id) : ["xg", "ppda", "fieldTilt", "lineBreaking"];
+  const metricIds = metrics.length ? metrics.map((metric) => metric.id) : ["shotVolume", "territory", "pressure"];
   return metricIds.map((id) => getMetricLabel({ id }));
+}
+
+function formatMetricValue(value, unit = "") {
+  if (value === null || value === undefined || value === "") return "offen";
+  return `${value}${unit}`;
+}
+
+function renderPostMatchMetrics(metrics) {
+  if (!metrics.length) {
+    return `<p>Aktuell liegt nur der Endstand vor. Sobald Sportmonks Statistik-, Event- oder Pressure-Daten liefert, wird diese Karte automatisch zur Spielanalyse.</p>`;
+  }
+
+  return `
+    <div class="metric-list post-match-facts">
+      ${metrics
+        .map(
+          (metric) => `
+            <div class="metric-row comparison-row">
+              <span>${getMetricLabel(metric)}</span>
+              <span class="metric-track"><span class="metric-fill" style="width: ${metric.value}%"></span></span>
+              <strong>${formatMetricValue(metric.homeValue, metric.unit)}:${formatMetricValue(metric.awayValue, metric.unit)}</strong>
+              ${metric.note ? `<small>${metric.note}</small>` : ""}
+            </div>
+          `,
+        )
+        .join("")}
+    </div>
+  `;
+}
+
+function renderTimelineEvent(event) {
+  return `
+    <li>
+      <strong>${event.minute || ""} ${event.type || "Event"}</strong>
+      <span>${event.player || "Unbekannt"}${event.relatedPlayer ? `, Assist: ${event.relatedPlayer}` : ""}${
+        event.result ? ` (${event.result})` : ""
+      }${event.info ? ` · ${event.info}` : ""}</span>
+    </li>
+  `;
+}
+
+function renderPostMatchTimeline(report) {
+  const timeline = report.timeline || [];
+  if (!timeline.length) {
+    return `<p>Der Provider liefert fuer dieses Spiel noch keine verwertbare Ereignis-Timeline.</p>`;
+  }
+
+  return `<ol class="trigger-list event-timeline">${timeline.map(renderTimelineEvent).join("")}</ol>`;
+}
+
+function renderAnalysisPatterns(report) {
+  const patterns = report.patterns || [];
+  if (!patterns.length) {
+    return `<p>Noch kein belastbares Muster erkannt.</p>`;
+  }
+
+  return `
+    <ol class="trigger-list">
+      ${patterns.map((pattern) => `<li><strong>${pattern.label}:</strong> ${pattern.note}</li>`).join("")}
+    </ol>
+  `;
+}
+
+function getCoverageTags(report) {
+  const coverage = report.dataCoverage || {};
+  return [
+    coverage.statistics ? "Statistiken synchronisiert" : "Statistiken offen",
+    coverage.events ? "Events synchronisiert" : "Events offen",
+    coverage.pressure ? "Pressure synchronisiert" : "Pressure offen",
+    coverage.xg ? "xG synchronisiert" : "xG nicht geliefert",
+  ];
 }
 
 function renderPostMatchDossier(match, home, away, result) {
@@ -2085,69 +2158,36 @@ function renderPostMatchDossier(match, home, away, result) {
   const audit = report.recommendationAudit || {};
   const resultLine = report.result?.resultLine || getResultLabel(result) || "Endstand erfasst";
   const metrics = report.metrics || [];
-  const verifiedMetrics = metrics.filter((metric) => metric.status && !metric.status.includes("draft"));
-  const missingMetricLabels = getUnavailableMetricLabels(metrics);
+  const hasAnalysis = metrics.length || (report.timeline || []).length || (report.patterns || []).length;
 
   return `
     <div class="insight-card tactical-briefing post-match-summary">
       <span class="briefing-kicker">Nach dem Spiel</span>
       <h3>${resultLine}</h3>
-      <p>${getResultFactLine(match, home, away, result)}</p>
+      <p>${report.summary || getResultFactLine(match, home, away, result)}</p>
       <div class="briefing-tags">
         <span>Quelle: ${report.result?.source || result.source || "Sportmonks"}</span>
-        <span>Endstand synchronisiert</span>
+        <span>${hasAnalysis ? "Analyse synchronisiert" : "Endstand synchronisiert"}</span>
         <span>Update: ${report.result?.updatedAt ? new Date(report.result.updatedAt).toLocaleString("de-DE", { dateStyle: "short", timeStyle: "short" }) : "offen"}</span>
       </div>
     </div>
-    <div class="insight-card decision-card post-match-audit">
-      <span class="briefing-kicker">Empfehlungs-Audit</span>
-      <h3>Was sagt das Ergebnis über die Empfehlung?</h3>
-      <div class="decision-grid">
-        <span>
-          <small>Vor dem Spiel</small>
-          <strong>${getWatchLabel(audit.preRecommendation || match.category)}</strong>
-          <em>${audit.preMatchScore ?? match.score}/100</em>
-        </span>
-        <span>
-          <small>Nach dem Ergebnis</small>
-          <strong>${getPostMatchRecommendationLabel(audit.postMatchScore ?? match.score, match)}</strong>
-          <em>${audit.postMatchScore ?? match.score}/100</em>
-        </span>
-      </div>
-      <p>${getHumanVerdict(audit, match)}. Das ist nur ein Ergebnis-Audit; ob das Spiel wirklich gut war, braucht xG, Chancenbild und Review.</p>
-    </div>
     <div class="insight-card score-signals post-match-metrics">
-      <span class="briefing-kicker">Datenlage</span>
-      <h3>Was wir noch nicht seriös behaupten</h3>
-      ${
-        verifiedMetrics.length
-          ? `<div class="metric-list">
-              ${verifiedMetrics
-                .map(
-                  (metric) => `
-                    <div class="metric-row">
-                      <span>${getMetricLabel(metric)}</span>
-                      <span class="metric-track"><span class="metric-fill" style="width: ${metric.value}%"></span></span>
-                      <strong>${metric.value}</strong>
-                    </div>
-                  `,
-                )
-                .join("")}
-            </div>`
-          : `<p>Aktuell liegt ein belastbarer Endstand vor, aber keine verlässliche Detailauswertung. Deshalb zeigen wir hier keine xG-, Pressing- oder Field-Tilt-Zahlen.</p>
-             <div class="briefing-tags">
-               ${missingMetricLabels.map((label) => `<span>${label}: offen</span>`).join("")}
-             </div>`
-      }
+      <span class="briefing-kicker">Spielbild</span>
+      <h3>Was die Providerdaten zeigen</h3>
+      ${renderPostMatchMetrics(metrics)}
+      <div class="briefing-tags">
+        ${getCoverageTags(report).map((label) => `<span>${label}</span>`).join("")}
+      </div>
     </div>
     <div class="insight-card trigger-card post-match-patterns">
-      <span class="briefing-kicker">Review-Punkte</span>
-      <h3>Was jetzt wirklich geprüft werden muss</h3>
-      <ol class="trigger-list">
-        <li>War der Sieg nach Chancenqualität verdient oder nur scoreboard-stark?</li>
-        <li>Welche Phase hat das Spiel entschieden: frühe Kontrolle, Standards, Umschalten oder Schlussphase?</li>
-        <li>Passt die Pre-Match-Empfehlung nach dem Ergebnis noch, oder muss ein ähnliches Spiel künftig höher/niedriger bewertet werden?</li>
-      </ol>
+      <span class="briefing-kicker">Schlüsselereignisse</span>
+      <h3>Wann das Spiel gekippt ist</h3>
+      ${renderPostMatchTimeline(report)}
+    </div>
+    <div class="insight-card decision-card post-match-audit">
+      <span class="briefing-kicker">Analyse-Fazit</span>
+      <h3>Was daraus folgt</h3>
+      ${renderAnalysisPatterns(report)}
     </div>
     <div class="insight-card profile-insight">
       <span class="briefing-kicker">Tabellenwirkung</span>
@@ -2168,8 +2208,8 @@ function renderPostMatchDossier(match, home, away, result) {
         </div>
         <div class="insight-card">
           <span class="briefing-kicker">Kalibrierung</span>
-          <h3>Was daraus gelernt wird</h3>
-          <p>${audit.learning || "Die Pre-Match-Logik wird gegen Ergebnis, Metriken und Review-Punkte geprüft."}</p>
+          <h3>Was aus der Empfehlung gelernt wird</h3>
+          <p>${getHumanVerdict(audit, match)}. ${audit.learning || "Die Pre-Match-Logik wird gegen Ergebnis und Providerdaten geprüft."}</p>
         </div>
       </div>
     </details>

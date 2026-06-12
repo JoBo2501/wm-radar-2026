@@ -38,7 +38,7 @@
       "endpoint": "https://api.sportmonks.com/v3/football/fixtures/between/2026-06-11/2026-07-19",
       "apiKeyEnv": "SPORTMONKS_API_KEY",
       "leagueId": 732,
-      "include": "participants;scores;state;league;season;stage;group",
+      "include": "participants;scores;state;league;season;stage;group;statistics.type;events.type;events.player;events.relatedPlayer;pressure",
       "trust": 90,
       "pollMinutes": 5
     }
