@@ -1709,11 +1709,11 @@ function renderDailyCommandCenter() {
 
   const watchPlanCard = watchPlanEl?.closest(".watch-plan-card");
   if (watchPlanCard) watchPlanCard.style.display = singleMatchDay ? "none" : "";
-  watchPlanCountEl.textContent = `${watchMatches.length} Empfehlungen`;
-  watchPlanEl.innerHTML = watchMatches
-    .map((match) => {
-      const [home, away] = match.matchTeams;
-      return `
+  const dayWatch = watchMatches.filter((match) => !isNightMatch(match));
+  const nightWatch = watchMatches.filter(isNightMatch);
+  const renderWatchItem = (match) => {
+    const [home, away] = match.matchTeams;
+    return `
         <button class="watch-plan-item ${match.category}" type="button" data-match="${match.id}">
           <span class="watch-time">${match.germanyTime}</span>
           <span class="watch-fixture">
@@ -1723,8 +1723,26 @@ function renderDailyCommandCenter() {
           </span>
         </button>
       `;
-    })
-    .join("") || `<p class="empty-copy">Keine Live- oder Analyse-Empfehlung im aktuellen Tagesfenster.</p>`;
+  };
+  const renderWatchGroup = (label, hint, items) =>
+    items.length
+      ? `
+        <div class="watch-plan-group">
+          <p class="watch-plan-group-title"><span>${label}</span><small>${hint}</small></p>
+          ${items.map(renderWatchItem).join("")}
+        </div>
+      `
+      : "";
+
+  watchPlanCountEl.textContent = `${watchMatches.length} Empfehlungen`;
+  watchPlanEl.innerHTML = watchMatches.length
+    ? renderWatchGroup("Heute", `${dayWatch.length} ${dayWatch.length === 1 ? "Spiel" : "Spiele"}`, dayWatch) +
+      renderWatchGroup(
+        "Heute Nacht",
+        `${nightWatch.length} ${nightWatch.length === 1 ? "Spiel" : "Spiele"} · spoilerfrei`,
+        nightWatch,
+      )
+    : `<p class="empty-copy">Keine Live- oder Analyse-Empfehlung im aktuellen Tagesfenster.</p>`;
 
   watchPlanEl.querySelectorAll("button").forEach((button) => {
     button.addEventListener("click", () => {
