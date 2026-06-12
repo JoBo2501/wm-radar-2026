@@ -178,7 +178,9 @@ function getPathImpact(match) {
     return matchTeams.some((team) => team.focus) ? 74 : 44;
   }
 
-  const teamBoost = matchTeams.some((team) => team.focus) ? 10 : matchTeams.some((team) => team.surprise) ? 6 : 0;
+  // Kleiner Boost, damit Fokus-/Surprise-Spiele die Metrik nicht pauschal an
+  // die 100er-Decke druecken und die Weiterkommen-Relevanz differenziert bleibt.
+  const teamBoost = matchTeams.some((team) => team.focus) ? 3 : matchTeams.some((team) => team.surprise) ? 2 : 0;
   return clamp(group.pathRelevance + teamBoost, 0, 100);
 }
 
@@ -303,6 +305,8 @@ function createStandingRow(code) {
     losses: 0,
     goalsFor: 0,
     goalsAgainst: 0,
+    realGoalsFor: 0,
+    realGoalsAgainst: 0,
     goalDifference: 0,
     points: 0,
     projectedPoints: 0,
@@ -434,6 +438,10 @@ function addActualResult(homeRow, awayRow, homeGoals, awayGoals) {
   homeRow.goalsAgainst += awayGoals;
   awayRow.goalsFor += awayGoals;
   awayRow.goalsAgainst += homeGoals;
+  homeRow.realGoalsFor += homeGoals;
+  homeRow.realGoalsAgainst += awayGoals;
+  awayRow.realGoalsFor += awayGoals;
+  awayRow.realGoalsAgainst += homeGoals;
 
   if (homeGoals > awayGoals) {
     homeRow.wins += 1;
@@ -476,12 +484,23 @@ function addProjectedResult(homeRow, awayRow) {
 function finalizeStandingRow(row) {
   const totalPoints = row.points + row.projectedPoints;
   const totalGoalDifference = row.goalsFor - row.goalsAgainst;
+  const realGoalDifference = row.realGoalsFor - row.realGoalsAgainst;
+  const isActual = row.mode === "actual";
   return {
     ...row,
     pointsValue: totalPoints,
     goalDifference: totalGoalDifference,
-    displayPoints: row.mode === "actual" ? String(row.points) : totalPoints.toFixed(1),
-    displayGoalDifference: totalGoalDifference >= 0 ? `+${totalGoalDifference.toFixed(1)}` : totalGoalDifference.toFixed(1),
+    realGoalDifference,
+    // Bei echten Resultaten Anzeige UND Sortierung auf reale Werte stuetzen,
+    // damit sichtbare Punkte, Tordifferenz und Reihung dieselbe Basis haben.
+    sortPoints: isActual ? row.points : totalPoints,
+    sortGoalDifference: isActual ? realGoalDifference : totalGoalDifference,
+    displayPoints: isActual ? String(row.points) : totalPoints.toFixed(1),
+    displayGoalDifference: isActual
+      ? formatSignedGoalDifference(realGoalDifference)
+      : totalGoalDifference >= 0
+        ? `+${totalGoalDifference.toFixed(1)}`
+        : totalGoalDifference.toFixed(1),
   };
 }
 
@@ -507,8 +526,8 @@ function getGroupStandings() {
 
     const table = [...rows.values()].map(finalizeStandingRow).sort((a, b) => {
       return (
-        b.pointsValue - a.pointsValue ||
-        b.goalDifference - a.goalDifference ||
+        b.sortPoints - a.sortPoints ||
+        b.sortGoalDifference - a.sortGoalDifference ||
         b.goalsFor - a.goalsFor ||
         b.strength - a.strength ||
         a.code.localeCompare(b.code)
@@ -600,7 +619,7 @@ function renderTournamentSnapshot() {
       </p>
       <div class="snapshot-metrics">
         <span><strong>${focusSafe}/${focusRows.length}</strong><small>Fokus-Teams weiter</small></span>
-        <span><strong>${thirdSafe}/8</strong><small>Dritte Plätze</small></span>
+        <span><strong>${thirdSafe}/${thirdPlaceProjection.length}</strong><small>Dritte Plätze</small></span>
         <span><strong>${topLeverageMatches[0]?.pathImpact || "-"}</strong><small>Top-Hebel</small></span>
       </div>
     </article>
@@ -705,7 +724,7 @@ function resolveDirectSlot(slot, qualificationModel) {
   };
 }
 
-function resolveThirdPlaceSlot(slot, qualificationModel) {
+function resolveThirdPlaceSlot(slot, qualificationModel, assignedThirdGroups) {
   const match = slot.match(/^3([A-L]+)$/);
   if (!match) return null;
 
@@ -717,8 +736,11 @@ function resolveThirdPlaceSlot(slot, qualificationModel) {
       if (a.advances !== b.advances) return Number(b.advances) - Number(a.advances);
       return b.pointsValue - a.pointsValue || b.goalDifference - a.goalDifference || b.goalsFor - a.goalsFor;
     });
-  const row = candidates[0];
+  // Jeder Gruppen-Dritte darf nur EINEM R32-Slot zugeordnet werden: nimm den
+  // besten noch nicht vergebenen Kandidaten (Fallback nur, falls alles vergeben).
+  const row = candidates.find((candidate) => !assignedThirdGroups?.has(candidate.group)) || candidates[0];
   if (!row) return null;
+  if (assignedThirdGroups && row.group) assignedThirdGroups.add(row.group);
 
   return {
     slot,
@@ -757,10 +779,10 @@ function resolveProgressionSlot(slot, qualificationModel, resolvedMatches) {
   };
 }
 
-function resolveSlot(slot, qualificationModel, resolvedMatches) {
+function resolveSlot(slot, qualificationModel, resolvedMatches, assignedThirdGroups) {
   return (
     resolveDirectSlot(slot, qualificationModel) ||
-    resolveThirdPlaceSlot(slot, qualificationModel) ||
+    resolveThirdPlaceSlot(slot, qualificationModel, assignedThirdGroups) ||
     resolveProgressionSlot(slot, qualificationModel, resolvedMatches) || {
       slot,
       type: "offen",
@@ -773,12 +795,15 @@ function resolveSlot(slot, qualificationModel, resolvedMatches) {
 function getResolvedKnockout() {
   const qualificationModel = createQualificationModel();
   const resolvedMatches = new Map();
+  const assignedThirdGroups = new Set();
 
   const resolved = knockout
     .slice()
     .sort((a, b) => a.matchNumber - b.matchNumber)
     .map((match) => {
-      const resolvedSlots = match.slots.map((slot) => resolveSlot(slot, qualificationModel, resolvedMatches));
+      const resolvedSlots = match.slots.map((slot) =>
+        resolveSlot(slot, qualificationModel, resolvedMatches, assignedThirdGroups),
+      );
       const resolvedMatch = { ...match, resolvedSlots };
       resolvedMatches.set(match.matchNumber, resolvedMatch);
       return resolvedMatch;
@@ -997,8 +1022,8 @@ function getKnockoutCategory(score) {
 function getStyleContrast(home, away) {
   const homeProfile = getTeamProfile(home);
   const awayProfile = getTeamProfile(away);
-  const homeIdentity = homeProfile?.identity || home.style || "Teamprofil wird erweitert.";
-  const awayIdentity = awayProfile?.identity || away.style || "Teamprofil wird erweitert.";
+  const homeIdentity = homeProfile?.identity || home.style || `${home.name} wird über Matchsignale und Stärkeprofil eingeordnet.`;
+  const awayIdentity = awayProfile?.identity || away.style || `${away.name} wird über Matchsignale und Stärkeprofil eingeordnet.`;
 
   return `${home.code}: ${homeIdentity} Gegen ${away.code}: ${awayIdentity}`;
 }
@@ -1021,13 +1046,15 @@ function getKnockoutWatchCues(match) {
 
   const profileCues = getWatchCueList(home, away).slice(0, 2);
   const upsetRisk = getUpsetRisk(match);
-  const focusCue = [home, away].some((team) => team.focus)
-    ? "Fokus-Team: frühe Spielkontrolle, Restverteidigung und möglichen nächsten Gegner beachten."
-    : "Neutraler K.o.-Weg: nur live priorisieren, wenn Tempo, Pressing oder Upset-Signal früh sichtbar werden.";
+  const focusTeamCode = [home, away].find((team) => team.focus)?.code;
+  const focusCue = focusTeamCode
+    ? `${focusTeamCode} als Fokus-Team: frühe Spielkontrolle, Restverteidigung und möglichen nächsten Gegner beachten.`
+    : `${home.code} vs ${away.code}: nur live priorisieren, wenn Tempo, Pressing oder Upset-Signal früh sichtbar werden.`;
+  const weaker = getTeamStrength(home.code) <= getTeamStrength(away.code) ? home : away;
   const upsetCue =
     upsetRisk >= 70
-      ? "Upset-Zone: der nominell kleinere Gegner kann über Stilkontrast oder Drittplatz-Dynamik echte Hebel haben."
-      : "Upset-Risiko moderat: eher auf saubere Dominanzmuster und Spielkontrolle achten.";
+      ? `Upset-Zone: ${weaker.code} kann über Stilkontrast oder Drittplatz-Dynamik echte Hebel haben.`
+      : `${home.code} vs ${away.code}: Upset-Risiko moderat, eher auf saubere Dominanzmuster und Spielkontrolle achten.`;
 
   return [...profileCues, focusCue, upsetCue].slice(0, 3);
 }
@@ -1112,7 +1139,7 @@ function renderBracket() {
                   <article class="bracket-match ${match.resolvedSlots.some((resolved) => resolved.row?.team?.focus) ? "focus-bracket" : ""}">
                     <div class="bracket-match-top">
                       <span>Match ${match.matchNumber}</span>
-                      <strong>${getBracketImpact(match)}</strong>
+                      <strong>${getKnockoutScore(match)}</strong>
                     </div>
                     <div class="bracket-slots">
                       ${match.resolvedSlots.map(renderResolvedSlot).join('<span class="versus">vs</span>')}
@@ -1132,6 +1159,7 @@ function renderBracket() {
 }
 
 function renderGroupPaths() {
+  const resultMap = getResultMap();
   groupPathGridEl.innerHTML = groups
     .map((group) => {
       const groupTeams = group.teams.map((code) => teamByCode.get(code) || { code, name: code, flag: "" });
@@ -1178,10 +1206,14 @@ function renderGroupPaths() {
                 ? groupMatches
                     .map((match) => {
                       const [home, away] = match.matchTeams;
+                      const result = resultMap.get(match.id);
+                      const line = isFinalResult(result)
+                        ? `Beendet · Endstand ${Number(result.homeGoals)}:${Number(result.awayGoals)}`
+                        : `${match.score}/100 · ${getWatchAction(match.category)} · Weiterkommen ${match.pathImpact}`;
                       return `<button type="button" data-match="${match.id}">
                         <span>${match.displayDate} · ${match.germanyTime}</span>
                         <strong>${home.code} vs ${away.code}</strong>
-                        <em>${match.score}/100 · ${getWatchAction(match.category)} · Weiterkommen ${match.pathImpact}</em>
+                        <em>${line}</em>
                       </button>`;
                     })
                     .join("")
@@ -1216,7 +1248,7 @@ function renderStandings() {
   standingsSummaryEl.innerHTML = [
     ["Modus", projectedMode ? "Projektion" : "Live + Modell"],
     ["Direkt weiter", directQualifiers.length],
-    ["Beste Dritte", `${thirdQualifiers.length}/8`],
+    ["Beste Dritte", `${thirdQualifiers.length}/${thirdPlaceProjection.length}`],
     ["Fokus weiter", focusQualifiers],
   ]
     .map(
@@ -1815,7 +1847,8 @@ function getWatchCueList(home, away) {
     .filter(Boolean)
     .flatMap((profile) => profile.watchCues.slice(0, 2));
 
-  return cues.length ? cues.slice(0, 4) : ["Auf Ballverluste, Pressinghöhe und Restverteidigung achten."];
+  if (cues.length) return cues.slice(0, 4);
+  return [`${home.code} vs ${away.code}: auf das erste klare Pressingmuster, Ballverluste und die Restverteidigung beider Teams achten.`];
 }
 
 function getDossierBriefing(match, home, away) {
@@ -2813,6 +2846,71 @@ function setupPwa() {
   }
 }
 
+function validateConsistency() {
+  const issues = [];
+
+  // (a) Kein Team steht in zwei Bracket-Slots derselben Runde.
+  const { matches: resolvedKnockout } = getResolvedKnockout();
+  const perRound = new Map();
+  for (const match of resolvedKnockout) {
+    const seen = perRound.get(match.round) || new Map();
+    for (const team of getResolvedTeams(match)) {
+      seen.set(team.code, (seen.get(team.code) || 0) + 1);
+    }
+    perRound.set(match.round, seen);
+  }
+  for (const [round, seen] of perRound) {
+    for (const [code, count] of seen) {
+      if (count > 1) issues.push(`Bracket: ${code} steht ${count}x in Runde ${round}.`);
+    }
+  }
+
+  // (b/c) Tabellenpunkte und Spielanzahl decken sich mit echten Ergebnissen (3/1/0).
+  const resultMap = getResultMap();
+  for (const { group, table } of getGroupStandings()) {
+    for (const row of table) {
+      if (row.mode !== "actual") continue;
+      const realMatches = matches.filter(
+        (m) => getGroupId(m) === group.id && m.teams.includes(row.code) && isFinalResult(resultMap.get(m.id)),
+      );
+      let points = 0;
+      for (const m of realMatches) {
+        const r = resultMap.get(m.id);
+        const isHome = m.teams[0] === row.code;
+        const gf = isHome ? Number(r.homeGoals) : Number(r.awayGoals);
+        const ga = isHome ? Number(r.awayGoals) : Number(r.homeGoals);
+        points += gf > ga ? 3 : gf === ga ? 1 : 0;
+      }
+      if (points !== row.points) {
+        issues.push(`Tabelle ${group.id}/${row.code}: Punkte ${row.points} != aus Ergebnissen ${points}.`);
+      }
+      if (realMatches.length !== row.played) {
+        issues.push(`Tabelle ${group.id}/${row.code}: Spiele ${row.played} != echte Spiele ${realMatches.length}.`);
+      }
+    }
+  }
+
+  // (d) Beste Dritte sind streng absteigend sortiert; genau 8 kommen weiter.
+  const thirds = getThirdPlaceProjection(getGroupStandings());
+  for (let i = 1; i < thirds.length; i++) {
+    if (thirds[i - 1].pointsValue < thirds[i].pointsValue) {
+      issues.push(`Beste Dritte: Reihung bei #${i + 1} nicht absteigend.`);
+    }
+  }
+  const advancing = thirds.filter((t) => t.advances).length;
+  if (advancing !== Math.min(8, thirds.length)) {
+    issues.push(`Beste Dritte: ${advancing} weiter, erwartet ${Math.min(8, thirds.length)}.`);
+  }
+
+  if (issues.length) {
+    console.warn(`[WM Radar Konsistenz-Check] ${issues.length} Befund(e):`);
+    issues.forEach((msg) => console.warn("  •", msg));
+  } else {
+    console.info("[WM Radar Konsistenz-Check] keine Inkonsistenzen.");
+  }
+  return issues;
+}
+
 renderFocusTeams();
 renderBracket();
 renderSurpriseRadar();
@@ -2821,3 +2919,4 @@ renderTeamLab();
 renderKeyFigures();
 setupViewNavigation();
 setupPwa();
+validateConsistency();

@@ -31,7 +31,7 @@ const surpriseTeams = teams
 
 const data = {
   metadata: {
-    snapshotDate: "2026-06-07",
+    snapshotDate: (results.generatedAt || "2026-06-07").slice(0, 10),
     tournament: "FIFA World Cup 2026",
     format: "48 Teams, 104 Spiele, 12 Gruppen",
     status: "MVP mit offiziellen Basisdaten, strukturiertem JSON-Kern und kuratierten Seed-Analysen",
