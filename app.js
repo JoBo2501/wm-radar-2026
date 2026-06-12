@@ -65,13 +65,10 @@ const watchPlanCountEl = document.querySelector("#watchPlanCount");
 const watchPlanEl = document.querySelector("#watchPlan");
 const skipPlanCountEl = document.querySelector("#skipPlanCount");
 const skipPlanEl = document.querySelector("#skipPlan");
-const morningCountEl = document.querySelector("#morningCount");
-const morningQueueEl = document.querySelector("#morningQueue");
 const matchListEl = document.querySelector("#matchList");
 const dossierTitleEl = document.querySelector("#dossierTitle");
 const dossierScoreEl = document.querySelector("#dossierScore");
 const dossierMetaEl = document.querySelector("#dossierMeta");
-const pitchModeEl = document.querySelector("#pitchMode");
 const insightGridEl = document.querySelector("#insightGrid");
 const tournamentSnapshotGridEl = document.querySelector("#tournamentSnapshotGrid");
 const groupPathGridEl = document.querySelector("#groupPathGrid");
@@ -82,7 +79,6 @@ const standingsGridEl = document.querySelector("#standingsGrid");
 const teamLabGridEl = document.querySelector("#teamLabGrid");
 const keyFiguresGridEl = document.querySelector("#keyFiguresGrid");
 const surpriseRadarEl = document.querySelector("#surpriseRadar");
-const spoilerToggle = document.querySelector("#spoilerToggle");
 
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
@@ -864,7 +860,7 @@ function renderControlStats() {
   heroStatusRailEl.innerHTML = [
     ["Heute", dailyMatches.length, "Spiele im Tagesfenster"],
     ["Live", liveCount, "direkt einschalten"],
-    ["Nacht", nightMatches.length, "spoiler-sensibel"],
+    ["Nacht", nightMatches.length, "nach Mitternacht"],
     ["Fokus", focusToday, "Watchlist-Bezug"],
   ]
     .map(
@@ -1691,7 +1687,7 @@ function renderDailyCommandCenter() {
       <strong>${topMatch.score}</strong>
       <span>${topAway.code}</span>
     </div>
-    <p class="${isNightMatch(topMatch) ? "spoiler-sensitive" : ""}">${getCompactMatchReason(topMatch)}</p>
+    <p>${getCompactMatchReason(topMatch)}</p>
     <ul class="cue-list">
       ${getThreeWatchCues(topMatch)
         .map((cue) => `<li>${cue}</li>`)
@@ -1718,7 +1714,7 @@ function renderDailyCommandCenter() {
           <span class="watch-time">${match.germanyTime}</span>
           <span class="watch-fixture">
             <strong>${home.code} vs ${away.code}</strong>
-            <small class="${isNightMatch(match) ? "spoiler-sensitive" : ""}">${getCompactMatchReason(match)}</small>
+            <small>${getCompactMatchReason(match)}</small>
             <em>${match.tags.slice(0, 2).join(" · ")}</em>
           </span>
         </button>
@@ -1739,7 +1735,7 @@ function renderDailyCommandCenter() {
     ? renderWatchGroup("Heute", `${dayWatch.length} ${dayWatch.length === 1 ? "Spiel" : "Spiele"}`, dayWatch) +
       renderWatchGroup(
         "Heute Nacht",
-        `${nightWatch.length} ${nightWatch.length === 1 ? "Spiel" : "Spiele"} · spoilerfrei`,
+        `${nightWatch.length} ${nightWatch.length === 1 ? "Spiel" : "Spiele"}`,
         nightWatch,
       )
     : `<p class="empty-copy">Keine Live- oder Analyse-Empfehlung im aktuellen Tagesfenster.</p>`;
@@ -1781,22 +1777,6 @@ function renderDailyCommandCenter() {
     });
   });
 
-  morningCountEl.textContent = `${nightMatches.length} Nachtspiele`;
-  const morningCard = morningQueueEl?.closest(".morning-card");
-  if (morningCard) morningCard.style.display = nightMatches.length ? "" : "none";
-  morningQueueEl.innerHTML =
-    nightMatches
-      .map((match) => {
-        const [home, away] = match.matchTeams;
-        return `
-          <article class="morning-item">
-            <span>${match.germanyTime}</span>
-            <strong>${home.code} vs ${away.code}</strong>
-            <p class="spoiler-sensitive">${getWatchAction(match.category)} · Spielwert ${match.score}/100 · ${match.analysis.key}</p>
-          </article>
-        `;
-      })
-      .join("") || `<p class="empty-copy">Keine Nachtspiele im aktuellen Tagesfenster.</p>`;
 }
 
 function getTeamProfile(team) {
@@ -2455,9 +2435,6 @@ function renderDossier() {
   dossierScoreEl.style.setProperty("--score", dossierScore);
   dossierScoreEl.className = `score-ring ${getScoreTone(dossierScore)}`;
   dossierScoreEl.querySelector("span").textContent = dossierScore;
-  pitchModeEl.textContent = isFinalMatch ? "Nachspiel-Audit" : selectedMatch.tags[1] || "Taktik";
-  const pitchCard = pitchModeEl.closest(".pitch-card");
-  if (pitchCard) pitchCard.hidden = isFinalMatch;
   const keyBattle = getKeyBattle(home, away);
   const tacticalTriggers = getTacticalTriggers(selectedMatch, home, away);
   const decisionMatrix = getDecisionMatrix(selectedMatch);
@@ -2766,14 +2743,6 @@ function renderComputedViews() {
   renderScoreImpact();
 }
 
-function setupSpoilerMode() {
-  spoilerToggle.addEventListener("click", () => {
-    const enabled = document.body.classList.toggle("spoiler-mode");
-    spoilerToggle.setAttribute("aria-pressed", String(enabled));
-    spoilerToggle.querySelector("strong").textContent = enabled ? "aktiv" : "frei";
-  });
-}
-
 function setupViewNavigation() {
   if (!zoneLinks.length || !viewPanels.length) return;
   const viewByHash = new Map();
@@ -2850,6 +2819,5 @@ renderSurpriseRadar();
 renderAllDynamic();
 renderTeamLab();
 renderKeyFigures();
-setupSpoilerMode();
 setupViewNavigation();
 setupPwa();

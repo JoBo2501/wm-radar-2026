@@ -28,11 +28,6 @@
           <a href="#matchList" data-zone="02">Spiele</a>
           <a href="#tournament" data-zone="03">Turnierlage</a>
         </nav>
-
-        <button class="spoiler-toggle" id="spoilerToggle" type="button" aria-pressed="false">
-          <span>Spoiler</span>
-          <strong>frei</strong>
-        </button>
       </header>
 
       <main id="top">
@@ -153,14 +148,6 @@
             <div class="skip-list" id="skipPlan"></div>
           </details>
 
-          <details class="morning-card command-detail">
-            <summary class="panel-title">
-              <span>Morgen ohne Spoiler</span>
-              <strong id="morningCount">0 Nachtspiele</strong>
-            </summary>
-            <p class="section-note">Nur Nachtspiele, die du später nachholen kannst, ohne direkt das Ergebnis zu sehen.</p>
-            <div id="morningQueue"></div>
-          </details>
         </section>
 
         <details class="matchday-tools">
@@ -228,26 +215,6 @@
             </div>
 
             <div class="dossier-meta" id="dossierMeta"></div>
-
-            <div class="pitch-card">
-              <div class="pitch-toolbar">
-                <span>Schlüsselzonen</span>
-                <strong id="pitchMode">Taktischer Reiz</strong>
-              </div>
-              <div class="tactical-pitch" id="tacticalPitch" aria-label="Taktische Spielfeldvisualisierung">
-                <span class="pitch-line halfway"></span>
-                <span class="pitch-box box-left"></span>
-                <span class="pitch-box box-right"></span>
-                <span class="pressure-zone zone-a"></span>
-                <span class="pressure-zone zone-b"></span>
-                <span class="attack-arrow arrow-a"></span>
-                <span class="attack-arrow arrow-b"></span>
-                <span class="player-dot player-a">6</span>
-                <span class="player-dot player-b">8</span>
-                <span class="player-dot player-c">10</span>
-                <span class="player-dot player-d">9</span>
-              </div>
-            </div>
 
             <div class="insight-grid" id="insightGrid"></div>
           </article>
