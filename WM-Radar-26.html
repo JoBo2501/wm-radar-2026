@@ -5726,7 +5726,7 @@ h3 {
           </div>
           <div class="date-chip" id="activeDateChip">
             <span>Heute</span>
-            <strong>11. Juni 2026</strong>
+            <strong>Wird geladen …</strong>
           </div>
         </section>
 
@@ -18181,6 +18181,10 @@ let activeFilter = "today";
 let activeCategory = "all";
 let weights = { ...preferences.weights };
 const baselineWeights = { ...preferences.weights };
+
+// "Heute" folgt der echten Uhr (auf das Turnierfenster geklemmt). Der feste Wert
+// aus preferences/baseDate dient nur noch als Fallback.
+preferences.baseDate = resolveActiveBaseDate(preferences.baseDate);
 let selectedMatchId = null;
 
 const focusTeamsEl = document.querySelector("#focusTeams");
@@ -18236,6 +18240,35 @@ function formatDate(dateKey) {
   return new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "short" }).format(
     new Date(`${dateKey}T12:00:00+02:00`),
   );
+}
+
+function getTournamentDateBounds() {
+  const keys = matches
+    .map((match) => match.kickoffGermany.slice(0, 10))
+    .filter(Boolean)
+    .sort();
+  return { first: keys[0], last: keys[keys.length - 1] };
+}
+
+function resolveActiveBaseDate(fallback) {
+  try {
+    // Der Matchday rollt um 06:00 Europe/Berlin: Nachtspiele vor 6 Uhr gehoeren
+    // noch zum Vortag (siehe isTodayViewingWindow). Deshalb die echte Uhrzeit um
+    // 6 Stunden zuruecksetzen, bevor der Tag bestimmt wird.
+    const rollover = new Date(Date.now() - 6 * 60 * 60 * 1000);
+    const todayKey = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Europe/Berlin",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }).format(rollover);
+    const { first, last } = getTournamentDateBounds();
+    if (first && todayKey < first) return first;
+    if (last && todayKey > last) return last;
+    return todayKey;
+  } catch {
+    return fallback;
+  }
 }
 
 function getDateKey(match) {
@@ -19763,8 +19796,9 @@ function renderDailyCommandCenter() {
   }
 
   const [topHome, topAway] = topMatch.matchTeams;
+  const singleLead = isOpeningMatch(topMatch) ? "Eröffnungsspiel" : "Einziges Spiel des Tages";
   dailyBriefingTextEl.textContent = singleMatchDay
-    ? `${formatDate(preferences.baseDate)}: ${topHome.name} vs ${topAway.name}. Eröffnungsspiel, 21:00 Uhr, einmal bewusst einschalten.`
+    ? `${formatDate(preferences.baseDate)}: ${topHome.name} vs ${topAway.name}. ${singleLead}, Anpfiff ${topMatch.germanyTime} Uhr, einmal bewusst einschalten.`
     : `${formatDate(preferences.baseDate)} + Nacht: ${dailyMatches.length} Spiele, davon ${liveCount} live, ${analysisCount} Analyse, ${skipCount} bewusst auslassen.`;
 
   commandMetricsEl.innerHTML = (singleMatchDay
