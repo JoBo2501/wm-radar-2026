@@ -2409,6 +2409,7 @@ function setupViewNavigation() {
   });
   viewByHash.set("#matches", "today");
   viewByHash.set("#games", "games");
+  viewByHash.set("#matchList", "games");
   viewByHash.set("#tournament", "tournament");
 
   const setActiveZone = (activeView) => {
@@ -2446,7 +2447,8 @@ function setupViewNavigation() {
     }
 
     const view = viewByHash.get(hash) || "today";
-    showView(view, { hash, scrollTarget: document.querySelector(hash), instant });
+    const scrollTarget = hash === "#games" ? document.querySelector("#matchList") : document.querySelector(hash);
+    showView(view, { hash, scrollTarget, instant });
   };
 
   document.querySelectorAll('a[href^="#"]').forEach((link) => {

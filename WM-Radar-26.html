@@ -5609,7 +5609,7 @@ h3 {
 
         <nav class="main-nav" aria-label="Hauptnavigation">
           <a href="#matches" data-zone="01">Heute</a>
-          <a href="#games" data-zone="02">Spiele</a>
+          <a href="#matchList" data-zone="02">Spiele</a>
           <a href="#tournament" data-zone="03">Turnierlage</a>
         </nav>
 
@@ -5677,7 +5677,7 @@ h3 {
             <strong>Heute</strong>
             <small>Der direkte Spieltagsplan ohne Umwege.</small>
           </a>
-          <a class="orientation-card games" href="#games">
+          <a class="orientation-card games" href="#matchList">
             <span>02</span>
             <strong>Spiele</strong>
             <small>Match-Dossier, Vorschau, Beobachtungspunkte und Teamkontext.</small>
@@ -5787,42 +5787,14 @@ h3 {
           <div>
             <p class="eyebrow">Spiele verstehen</p>
             <h2>Vom Spielplan zum echten Tagesplan</h2>
-            <p>Hier lernst du Teams, Schlüsselfiguren und konkrete Duelle kennen, bevor du ins Match-Dossier springst.</p>
+            <p>Wähle zuerst ein Spiel: Liste, Dossier und Beobachtungspunkte stehen direkt vorne.</p>
           </div>
           <nav aria-label="Spiele Schnellzugriffe">
+            <a href="#dossier">Dossier</a>
             <a href="#teamLab">Teams</a>
             <a href="#keyFigures">Figuren</a>
-            <a href="#dossier">Dossier</a>
             <a href="#radar">Radar</a>
           </nav>
-        </section>
-
-        <section class="team-lab-section" id="teamLab" aria-labelledby="teamLabTitle">
-          <div class="section-head compact">
-            <div>
-              <p class="eyebrow">Teamprofile</p>
-              <h2 id="teamLabTitle">Team-Briefings</h2>
-            </div>
-            <p>
-              Fokus-Teams und Surprise-Kandidaten als taktische Arbeitskarten: Rollen, Stärken, Schwächen und
-              konkrete Watch-Cues für den Spieltag.
-            </p>
-          </div>
-          <div class="team-lab-grid" id="teamLabGrid"></div>
-        </section>
-
-        <section class="key-figures-section" id="keyFigures" aria-labelledby="keyFiguresTitle">
-          <div class="section-head compact">
-            <div>
-              <p class="eyebrow">Schlüsselfiguren</p>
-              <h2 id="keyFiguresTitle">Menschen, die das Turnier prägen</h2>
-            </div>
-            <p>
-              Trainer, Leader, Taktikspieler, Druckspieler und mögliche Entdeckungen: Erwartung vor dem Turnier,
-              konkrete Watch-Cues und Entwicklung im Verlauf.
-            </p>
-          </div>
-          <div class="key-figures-grid" id="keyFiguresGrid"></div>
         </section>
 
         <section class="match-layout" aria-label="Spielauswahl und Dossier">
@@ -5863,6 +5835,34 @@ h3 {
 
             <div class="insight-grid" id="insightGrid"></div>
           </article>
+        </section>
+
+        <section class="team-lab-section" id="teamLab" aria-labelledby="teamLabTitle">
+          <div class="section-head compact">
+            <div>
+              <p class="eyebrow">Teamprofile</p>
+              <h2 id="teamLabTitle">Team-Briefings</h2>
+            </div>
+            <p>
+              Fokus-Teams und Surprise-Kandidaten als taktische Arbeitskarten: Rollen, Stärken, Schwächen und
+              konkrete Watch-Cues für den Spieltag.
+            </p>
+          </div>
+          <div class="team-lab-grid" id="teamLabGrid"></div>
+        </section>
+
+        <section class="key-figures-section" id="keyFigures" aria-labelledby="keyFiguresTitle">
+          <div class="section-head compact">
+            <div>
+              <p class="eyebrow">Schlüsselfiguren</p>
+              <h2 id="keyFiguresTitle">Menschen, die das Turnier prägen</h2>
+            </div>
+            <p>
+              Trainer, Leader, Taktikspieler, Druckspieler und mögliche Entdeckungen: Erwartung vor dem Turnier,
+              konkrete Watch-Cues und Entwicklung im Verlauf.
+            </p>
+          </div>
+          <div class="key-figures-grid" id="keyFiguresGrid"></div>
         </section>
 
         <section class="radar-section" id="radar" aria-labelledby="radarTitle">
@@ -19773,6 +19773,7 @@ function setupViewNavigation() {
   });
   viewByHash.set("#matches", "today");
   viewByHash.set("#games", "games");
+  viewByHash.set("#matchList", "games");
   viewByHash.set("#tournament", "tournament");
 
   const setActiveZone = (activeView) => {
@@ -19810,7 +19811,8 @@ function setupViewNavigation() {
     }
 
     const view = viewByHash.get(hash) || "today";
-    showView(view, { hash, scrollTarget: document.querySelector(hash), instant });
+    const scrollTarget = hash === "#games" ? document.querySelector("#matchList") : document.querySelector(hash);
+    showView(view, { hash, scrollTarget, instant });
   };
 
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
