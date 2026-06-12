@@ -48,12 +48,14 @@ WM Radar 26 ist ein persoenliches Analysten-Cockpit fuer die FIFA Fussball-WM 20
 ## Ergebnis-Sync
 
 Aktive Quelle: `Sportmonks` in `data/result-sources.json`.
+Sportmonks ist auf League-ID `732` gefiltert; der Ergebnis-Sync mappt Sportmonks-Fixtures primaer ueber die stabile `providerId` aus `data/provider-mapping.json`.
+Scores werden aus Sportmonks `scores` primaer ueber `type_id 1525` / `CURRENT` gelesen; Halbzeit- und Perioden-Scores bleiben Fallbacks.
 
 Aktueller Zustand:
 
 - Sportmonks liefert 104 Provider-Matches.
-- Es gibt noch 0 finale und 0 Live-Ergebnisse.
-- Die App bleibt deshalb im Projektionsmodus.
+- Es gibt 2 finale und 0 Live-Ergebnisse.
+- Tabellen, Best Thirds und Bracket laufen mit den synchronisierten Ergebnissen, solange echte Resultate vorliegen; ansonsten bleiben Modellprojektionen sichtbar.
 - Sobald echte Resultate kommen, aktualisieren sich Tabellen, Best Thirds, Bracket und K.o.-Dossiers automatisch.
 - Finale Gruppenspiele erzeugen zusaetzlich automatische Post-Match-Draft-Reports mit Score-Audit, Metrik-Blueprint und Lernfrage.
 
@@ -77,16 +79,16 @@ Wichtige Dateien:
 ## UI-Module
 
 - Hero/Control Room: atmosphaerischer Einstieg und Kontrollzahlen.
-- Orientierungsschicht: vier Hauptzonen Heute, Spiele, Turnierlage und Analyse mit Bereichskarten, aktiver Navigation und Schnellzugriffen.
+- Orientierungsschicht: drei echte Views Heute, Spiele und Turnierlage mit Bereichskarten, aktiver Navigation und Schnellzugriffen.
 - Was heute zaehlt: Empfehlungen Live, Analyse, Highlights, Skip.
 - Matchday-Startseite: Topspiel, Tages-Storylines, kuratierter Watch-Plan, bewusste Skip-Liste und Morgen-ohne-Spoiler.
 - Tagesbriefing: Watch Plan plus Nachtspiele ohne Spoiler.
-- Datenlage & Transparenz: Datenqualitaet, Spielplan-Ampel, Ergebnis-Sync-Ampel. Routine-Importe bleiben in einem einklappbaren Detailbereich.
-- Provider-Testprotokoll: Sportmonks-Abdeckung, Feature-Coverage und naechste Pruefzeitpunkte fuer Pre-Match, Live und Post-Match.
+- Datenlage & Transparenz: Datenqualitaet, Spielplan-Ampel und Ergebnis-Sync-Ampel bleiben in den Daten- und Betriebsdateien pruefbar; die Nutzeroberflaeche zeigt nur spielrelevante Signale.
+- Provider-Testprotokoll: Sportmonks-Abdeckung, Feature-Coverage und naechste Pruefzeitpunkte werden in den Daten- und Betriebsdateien gepflegt, aber nicht mehr als eigenes UI-Modul ausgespielt.
 - Provider-Mapping und Predictions: Sportmonks-Fixture-IDs werden auf interne Match-IDs gemappt; Prediction-Verfuegbarkeit kann vorsichtig als Pre-Match-Signal in den Spielwert einfliessen.
 - Live-Predictions-Beta: Sportmonks hat In-Play-Win-Probabilities vor dem Auftakt am 2026-06-11 angekuendigt; die App fuehrt sie als Beta-Signal, bis echte Responses validiert sind.
 - Datenanbieter-Architektur: SportMonks ist die einzige sichtbare App-Datenquelle; Taktik- und Medienquellen bleiben separat als Analyseebene.
-- Feature Lab: Was-passiert-wenn, Live-Predictions-Radar, Momentum, Stuermer-Effizienz und Pre-Match-Scout als eigene Produktmodule mit Datenbedarf, Sportmonks-Feldern und Risiken.
+- Feature Lab: Was-passiert-wenn, Live-Predictions-Radar, Momentum, Stuermer-Effizienz und Pre-Match-Scout bleiben als Datenmodell und Produkt-Backlog erhalten; sichtbar ist aktuell der Pre-Match-Scout im Match-Dossier.
 - Pre-Match-Scout: Match-Dossier verbindet Prediction, Lineup-/Formationsstatus, Expected-XI-Abdeckung, Mapping-Vertrauen und konkrete Pruefpunkte vor Anpfiff.
 - Gruppen & Szenarien: Gruppen A-L mit Weiterkommen-und-Gegner-Relevanz.
 - Tabellen & Szenarien: Tabellenprojektion, direkte Qualifikanten, Best Thirds und moegliche naechste Gegner.
@@ -95,13 +97,12 @@ Wichtige Dateien:
 - Match-Dossier: Analysten-Story, Belegschicht, Advanced-Metrics-Plan und Post-Match Report Hub.
 - Team-Briefings: taktische Teamprofile. Sichtbare Teamwerte sind Watchlist-Prioritaet, kein objektives Ranking. Spaeter getrennt: Teamstaerke, Momentum, Attraktivitaet, Ueberraschungspotenzial und Datenlage.
 - Schluesselfiguren: Trainer, Leader, Taktikspieler, Druckspieler und Turnier-Entdeckungen mit Erwartung vor dem Turnier, Watch-Cues und Entwicklung im Turnierverlauf.
-- Analyst Desk: Trust-Modell fuer Daten, Stimmen und KI-Research.
-- Analyse-Synthese: Datenanker, Video-/Tracking-Beleg, taktische Deutung und Kontextstimmen werden getrennt gewichtet.
+- Analyse-Synthese: Datenanker, Video-/Tracking-Beleg, taktische Deutung und Kontextstimmen werden im Match-Dossier getrennt gewichtet.
 
 ## Erledigte Schritte
 
 - MVP UI als lokales Analysten-Cockpit aufgebaut.
-- UI-Orientierung mit Vier-Zonen-Navigation, Bereichskarten und Bereichstrennern verbessert.
+- UI-Orientierung mit Drei-Zonen-Navigation, Bereichskarten, Bereichstrennern und echter View-Umschaltung verbessert.
 - Heute-Bereich zur kuratierten Matchday-Startseite ausgebaut.
 - Standalone-Doppelklickdatei erstellt.
 - Vollstaendige Gruppenphase mit 72 Spielen importiert.
@@ -113,18 +114,18 @@ Wichtige Dateien:
 - Ergebnis-Sync-Architektur mit Provider, Overrides, Validierung und Ampel gebaut.
 - football-data.org Free als frueher Fallback vorbereitet.
 - Sportmonks als primaere WM-Datenquelle mit Setup-, Probe- und Enable-Workflow aktiviert.
-- Sportmonks-Probebericht als sichtbares Provider-Testprotokoll in die App integriert.
+- Sportmonks-Probebericht als Betriebs- und Datenpruefung integriert; die sichtbare App bleibt auf Spieltagsorientierung fokussiert.
 - Sportmonks-Mapping-Generator und Prediction-Signal-Kanal vorbereitet.
 - Sportmonks-Meldung vom 2026-06-10 aufgenommen: Live-In-Play-Predictions Beta vor dem Auftakt am 2026-06-11, Widgets als Fallback, MCP als Developer-Hilfe.
 - Sichtbare Datenanbieter auf SportMonks konsolidiert und alte Provider-Pillars entfernt.
 - Sportmonks-Health-Check, Referenzspiel-Goldfall und Spieltags-Checkliste angelegt.
-- Differenzierende Sportmonks-Featuremodule als Feature Lab in Datenmodell und UI aufgenommen.
+- Differenzierende Sportmonks-Featuremodule als Datenmodell und Backlog aufgenommen.
 - Pre-Match-Scout v1 im Match-Dossier integriert.
 - Poller fuer regelmaessigen Ergebnisabgleich hinzugefuegt.
 - Post-Match-Report-Modell, Validator und automatischer Draft-Generator hinzugefuegt.
 - Demo-Feed und Dry-Run fuer Post-Match-Reports hinzugefuegt, damit der Workflow ohne echte WM-Daten getestet werden kann.
 - Schluesselfiguren-Modul als Seed-Datenmodell und UI-Schicht angelegt.
-- Quellen-Automationsmodell und Analyse-Synthese fuer Match-Dossiers und Analyst Desk integriert.
+- Quellen-Automationsmodell und Analyse-Synthese fuer Match-Dossiers integriert.
 
 ## Naechste Schritte
 

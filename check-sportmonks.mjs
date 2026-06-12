@@ -27,6 +27,7 @@ async function fetchFixtures(source, apiKey) {
   const url = new URL(source.endpoint);
   url.searchParams.set("api_token", apiKey);
   url.searchParams.set("include", source.include || "participants;scores;state;predictions");
+  if (source.leagueId) url.searchParams.set("filters", `fixtureLeagues:${source.leagueId}`);
   url.searchParams.set("per_page", "50");
 
   const fixtures = [];
@@ -39,6 +40,9 @@ async function fetchFixtures(source, apiKey) {
     if (!response.ok) throw new Error(`Sportmonks HTTP ${response.status}`);
     const payload = await response.json();
     fixtures.push(...(payload.data || []));
+    if (!payload.pagination && payload.data?.length === 50) {
+      throw new Error("Sportmonks Pagination fehlt trotz voller Seite; Fixture-Set waere unvollstaendig.");
+    }
     hasMore = Boolean(payload.pagination?.has_more);
     page += 1;
   }
@@ -71,6 +75,7 @@ const localMatches = mapping?.coverage?.localMatches || readJson("data/matches.j
 const checks = [];
 let liveFixtureCount = null;
 let livePredictionCount = null;
+let liveLeagueIds = [];
 let liveError = null;
 
 if (!sportmonks) {
@@ -82,6 +87,11 @@ if (!sportmonks) {
       : fail("Aktive Quelle", `Aktiv ist ${config.activeSource || "unbekannt"}, nicht sportmonks.`),
   );
   checks.push(sportmonks.enabled ? pass("Source enabled", "Sportmonks ist enabled=true.") : fail("Source enabled", "Sportmonks ist deaktiviert."));
+  checks.push(
+    sportmonks.leagueId
+      ? pass("League-Filter", `Sportmonks filtert auf League-ID ${sportmonks.leagueId}.`)
+      : warn("League-Filter", "Keine Sportmonks League-ID gesetzt; der Request verlaesst sich auf das aktuelle Provider-Zeitfenster."),
+  );
 }
 
 checks.push(
@@ -95,10 +105,23 @@ if (sportmonks && apiKey) {
     const fixtures = await fetchFixtures(sportmonks, apiKey);
     liveFixtureCount = fixtures.length;
     livePredictionCount = fixtures.filter((fixture) => hasValue(fixture.predictions)).length;
+    liveLeagueIds = [
+      ...new Set(
+        fixtures
+          .map((fixture) => fixture.league?.id || fixture.league_id || null)
+          .filter(Boolean)
+          .map(String),
+      ),
+    ];
     checks.push(
       fixtures.length >= 104
         ? pass("Fixture-Zugriff", `${fixtures.length} Fixtures live von Sportmonks erreichbar.`)
         : warn("Fixture-Zugriff", `${fixtures.length} Fixtures live erreichbar; erwartet sind mindestens 104.`),
+    );
+    checks.push(
+      liveLeagueIds.length === 1
+        ? pass("League live", `Live-Fixtures kommen aus League-ID ${liveLeagueIds[0]}.`)
+        : warn("League live", `${liveLeagueIds.length || 0} League-IDs im Live-Request: ${liveLeagueIds.join(", ") || "keine ID geliefert"}.`),
     );
     checks.push(
       livePredictionCount >= localMatches
@@ -146,6 +169,7 @@ const report = {
   summary: failed ? `${failed} kritische Checks fehlgeschlagen.` : warnings ? `${warnings} Hinweise, keine kritischen Fehler.` : "Sportmonks Health Check gruen.",
   liveFixtureCount,
   livePredictionCount,
+  liveLeagueIds,
   liveError,
   checks,
 };

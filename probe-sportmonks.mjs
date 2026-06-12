@@ -34,6 +34,9 @@ async function fetchAll(url) {
     if (!response.ok) throw new Error(`Sportmonks HTTP ${response.status}`);
     const payload = await response.json();
     data.push(...(payload.data || []));
+    if (!payload.pagination && payload.data?.length === 50) {
+      throw new Error("Sportmonks Pagination fehlt trotz voller Seite; Fixture-Set waere unvollstaendig.");
+    }
     hasMore = Boolean(payload.pagination?.has_more);
     page += 1;
   }
@@ -68,7 +71,9 @@ const sample = fixtures.slice(0, 5).map((fixture) => ({
   id: fixture.id,
   name: fixture.name,
   starting_at: fixture.starting_at,
+  leagueId: fixture.league?.id || fixture.league_id || null,
   league: fixture.league?.name || fixture.league_id,
+  seasonId: fixture.season?.id || fixture.season_id || null,
   season: fixture.season?.name || fixture.season_id,
   state: fixture.state?.name || fixture.state?.state || fixture.state_id,
   has: Object.fromEntries(coverageFields.map((field) => [field, hasValue(fixture[field])])),
@@ -78,7 +83,9 @@ const fixtureIndex = fixtures.map((fixture) => ({
   id: fixture.id,
   name: fixture.name,
   starting_at: fixture.starting_at,
+  leagueId: fixture.league?.id || fixture.league_id || null,
   league: fixture.league?.name || fixture.league_id,
+  seasonId: fixture.season?.id || fixture.season_id || null,
   season: fixture.season?.name || fixture.season_id,
   state: fixture.state?.name || fixture.state?.state || fixture.state_id,
   participants: (fixture.participants || []).map((participant) => ({
@@ -104,6 +111,14 @@ const report = {
   include,
   leagueId: leagueId || null,
   fixtures: fixtures.length,
+  leagueIds: [
+    ...new Set(
+      fixtures
+        .map((fixture) => fixture.league?.id || fixture.league_id || null)
+        .filter(Boolean)
+        .map(String),
+    ),
+  ],
   coverage,
   fixtureIndex,
   predictionIndex,

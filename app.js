@@ -2,24 +2,17 @@ const data = window.WMRadarData;
 const {
   analystSources,
   categoryFilters,
-  dataStatus,
   filters,
-  featureBlueprints,
   focusTeams,
   groups,
   keyFigures,
   knockout,
   matches,
   metadata,
-  postMatchReports,
-  postMatchValidation,
   preferences,
   providerTests,
   providerMapping,
-  resultValidation,
   results,
-  scheduleValidation,
-  sources,
   surpriseTeams,
   teamProfiles,
   teams,
@@ -32,6 +25,7 @@ const providerMappingByMatchId = new Map((providerMapping?.mappings || []).map((
 const groupById = new Map(groups.map((group) => [group.id, group]));
 const groupByTeamCode = new Map(groups.flatMap((group) => group.teams.map((code) => [code, group])));
 const zoneLinks = [...document.querySelectorAll(".main-nav a[data-zone]")];
+const viewPanels = [...document.querySelectorAll("[data-view]")];
 const stateLabels = {
   live: "Pflichtspiel",
   analysis: "Analysewürdig",
@@ -49,7 +43,6 @@ const focusTeamsEl = document.querySelector("#focusTeams");
 const heroMissionEl = document.querySelector("#heroMission");
 const heroStatusRailEl = document.querySelector("#heroStatusRail");
 const orbitSignalEl = document.querySelector("#orbitSignal");
-const heroSignalStackEl = document.querySelector("#heroSignalStack");
 const controlStatsEl = document.querySelector("#controlStats");
 const summaryGridEl = document.querySelector("#summaryGrid");
 const summaryLineEl = document.querySelector("#summaryLine");
@@ -74,12 +67,6 @@ const dossierScoreEl = document.querySelector("#dossierScore");
 const dossierMetaEl = document.querySelector("#dossierMeta");
 const pitchModeEl = document.querySelector("#pitchMode");
 const insightGridEl = document.querySelector("#insightGrid");
-const dataSnapshotEl = document.querySelector("#dataSnapshot");
-const dataStatusGridEl = document.querySelector("#dataStatusGrid");
-const providerTestGridEl = document.querySelector("#providerTestGrid");
-const featureLabGridEl = document.querySelector("#featureLabGrid");
-const scheduleValidatorEl = document.querySelector("#scheduleValidator");
-const resultValidatorEl = document.querySelector("#resultValidator");
 const tournamentSnapshotGridEl = document.querySelector("#tournamentSnapshotGrid");
 const groupPathGridEl = document.querySelector("#groupPathGrid");
 const bracketSummaryEl = document.querySelector("#bracketSummary");
@@ -89,14 +76,6 @@ const standingsGridEl = document.querySelector("#standingsGrid");
 const teamLabGridEl = document.querySelector("#teamLabGrid");
 const keyFiguresGridEl = document.querySelector("#keyFiguresGrid");
 const surpriseRadarEl = document.querySelector("#surpriseRadar");
-const sourceStackEl = document.querySelector("#sourceStack");
-const analystPillarsEl = document.querySelector("#analystPillars");
-const analystVoicesEl = document.querySelector("#analystVoices");
-const sourceAutomationEl = document.querySelector("#sourceAutomation");
-const sourceAccessEl = document.querySelector("#sourceAccess");
-const synthesisModelEl = document.querySelector("#synthesisModel");
-const sourceRulesEl = document.querySelector("#sourceRules");
-const aiModelCardEl = document.querySelector("#aiModelCard");
 const spoilerToggle = document.querySelector("#spoilerToggle");
 
 function clamp(value, min, max) {
@@ -750,15 +729,14 @@ function renderControlStats() {
   const skipCount = scoredMatches.filter((match) => match.category === "skip").length;
   const topScore = Math.max(...scoredMatches.map((match) => match.score));
   const dailyMatches = getTodayCommandMatches();
-  const topMatch = [...dailyMatches].sort((a, b) => b.score - a.score)[0] || scoredMatches[0];
   const nightMatches = dailyMatches.filter(isNightMatch);
   const focusToday = dailyMatches.filter((match) => match.hasFocusTeam).length;
 
-  if (topMatch) {
-    const [home, away] = topMatch.matchTeams;
-    heroMissionEl.textContent = `${formatDate(preferences.baseDate)}: ${home.code}-${away.code} führt den Radar an`;
-    orbitSignalEl.textContent = `Spielwert ${topMatch.score}/100 · ${topMatch.driver} · ${getWatchAction(topMatch.category)}`;
-  }
+  heroMissionEl.textContent =
+    dailyMatches.length === 1
+      ? `${formatDate(preferences.baseDate)}: ein Spiel, eine klare Entscheidung`
+      : `${formatDate(preferences.baseDate)}: ${dailyMatches.length} Spiele nach Wert sortiert`;
+  orbitSignalEl.textContent = `${liveCount} live · ${nightMatches.length} nachts · ${focusToday} mit Watchlist-Bezug`;
 
   heroStatusRailEl.innerHTML = [
     ["Heute", dailyMatches.length, "Spiele im Tagesfenster"],
@@ -776,30 +754,6 @@ function renderControlStats() {
       `,
     )
     .join("");
-
-  heroSignalStackEl.innerHTML = (topMatch ? [topMatch, ...dailyMatches.filter((match) => match.id !== topMatch.id)] : dailyMatches)
-    .slice(0, 3)
-    .map((match) => {
-      const [home, away] = match.matchTeams;
-      return `
-        <button class="hero-signal ${match.category}" type="button" data-match="${match.id}">
-          <span>${match.germanyTime}</span>
-          <strong>${home.code}-${away.code}</strong>
-          <em>Spielwert ${match.score}/100 · ${match.driver}</em>
-        </button>
-      `;
-    })
-    .join("");
-
-  heroSignalStackEl.querySelectorAll("button").forEach((button) => {
-    button.addEventListener("click", () => {
-      selectedMatchId = button.dataset.match;
-      activeFilter = "today";
-      activeCategory = "all";
-      renderAllDynamic();
-      document.querySelector("#dossier").scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  });
 
   controlStatsEl.innerHTML = [
     ["Datenstand", metadata.snapshotDate],
@@ -839,329 +793,6 @@ function getStageLabel(stage) {
   };
 
   return labels[stage] || stage;
-}
-
-function renderDataStatus() {
-  if (!dataSnapshotEl || !dataStatusGridEl) return;
-  dataSnapshotEl.textContent = `${metadata.tournament} · ${metadata.format} · Stand ${metadata.snapshotDate}. Routine-Imports bleiben bewusst in den Details.`;
-  dataStatusGridEl.innerHTML = dataStatus
-    .map(
-      (item) => `
-        <article class="data-card ${item.tone}">
-          <span class="data-label">${item.label}</span>
-          <strong>${item.value}</strong>
-          <p>${item.detail}</p>
-          <span class="confidence">
-            <span style="width: ${item.confidence}%"></span>
-          </span>
-        </article>
-      `,
-    )
-    .join("");
-}
-
-function renderProviderTests() {
-  if (!providerTestGridEl || !providerTests?.providers?.length) return;
-
-  providerTestGridEl.innerHTML = providerTests.providers
-    .map((provider) => {
-      const testedAt = provider.testedAt
-        ? new Date(provider.testedAt).toLocaleString("de-DE", { dateStyle: "short", timeStyle: "short" })
-        : "noch nicht";
-      const topCoverage = provider.coverage.slice(0, 8);
-      const advancedCoverage = provider.coverage.slice(8);
-      const mappingSummary =
-        providerMapping?.provider === provider.id || providerMapping?.provider === "sportmonks"
-          ? providerMapping
-          : null;
-
-      return `
-        <article class="provider-test-card">
-          <div class="provider-test-head">
-            <div>
-              <span class="data-badge real">Primaerquelle</span>
-              <h3>${provider.label}</h3>
-              <p>${providerTests.summary}</p>
-            </div>
-            <div class="provider-test-score">
-              <strong>${provider.fixtures}</strong>
-              <span>Fixtures</span>
-            </div>
-          </div>
-          <div class="provider-test-meta">
-            <span><strong>${provider.status}</strong><small>Status</small></span>
-            <span><strong>${testedAt}</strong><small>Letzter Check</small></span>
-            ${
-              mappingSummary
-                ? `<span><strong>${mappingSummary.coverage.mapped}/${mappingSummary.coverage.localMatches}</strong><small>Mapping</small></span>
-                   <span><strong>${mappingSummary.coverage.predictions}</strong><small>Predictions</small></span>`
-                : ""
-            }
-          </div>
-          <div class="provider-coverage-grid">
-            ${topCoverage
-              .map(
-                (item) => `
-                  <span class="${item.tone}">
-                    <strong>${item.label}</strong>
-                    <em>${item.count}/${item.total}</em>
-                    <small>${item.detail}</small>
-                  </span>
-                `,
-              )
-              .join("")}
-          </div>
-          <div class="provider-advanced-row">
-            ${advancedCoverage
-              .map(
-                (item) => `
-                  <span class="${item.tone}">
-                    <strong>${item.label}</strong>
-                    <em>${item.count}/${item.total}</em>
-                  </span>
-                `,
-              )
-              .join("")}
-          </div>
-          <div class="provider-next-grid">
-            <div>
-              <strong>Was wir damit bauen</strong>
-              <ul class="cue-list">
-                ${provider.productUse.map((item) => `<li>${item}</li>`).join("")}
-              </ul>
-            </div>
-            <div>
-              <strong>Nächste Prüfzeitpunkte</strong>
-              <ul class="cue-list">
-                ${provider.nextChecks.map((item) => `<li>${item}</li>`).join("")}
-              </ul>
-            </div>
-          </div>
-          ${
-            mappingSummary
-              ? `<p class="provider-mapping-note">${mappingSummary.summary}</p>`
-              : ""
-          }
-        </article>
-      `;
-    })
-    .join("");
-}
-
-function getFeatureTone(status) {
-  if (status === "modellbereit") return "real";
-  if (status === "teilweise bereit") return "mixed";
-  if (status.startsWith("wartet")) return "seed";
-  return "model";
-}
-
-function renderFeatureLab() {
-  if (!featureLabGridEl || !featureBlueprints?.length) return;
-
-  featureLabGridEl.innerHTML = featureBlueprints
-    .map(
-      (feature) => `
-        <article class="feature-card ${feature.id}">
-          <div class="feature-card-top">
-            <span class="data-badge ${getFeatureTone(feature.status)}">${feature.status}</span>
-            <strong>${feature.impact}</strong>
-          </div>
-          <h3>${feature.label}</h3>
-          <p>${feature.promise}</p>
-          <div class="feature-field-row">
-            ${feature.sportmonksFields.map((field) => `<span>${field}</span>`).join("")}
-          </div>
-          <div class="feature-story">
-            <strong>Nutzen</strong>
-            <span>${feature.userValue}</span>
-          </div>
-          <div class="feature-story">
-            <strong>Erste Version</strong>
-            <span>${feature.firstVersion}</span>
-          </div>
-          <small>${feature.openRisk}</small>
-        </article>
-      `,
-    )
-    .join("");
-}
-
-function getValidationTone(status) {
-  if (status === "ready" || status === "structure-ready") return "real";
-  if (status === "partial") return "mixed";
-  if (status === "critical") return "seed";
-  return "model";
-}
-
-function getValidationLabel(status) {
-  const labels = {
-    "structure-ready": "Structure Ready",
-    ready: "Ready",
-    partial: "Partial",
-    critical: "Critical",
-    seed: "Seed",
-  };
-
-  return labels[status] || status;
-}
-
-function formatPair(pair) {
-  return pair.replace("-", " vs ");
-}
-
-function formatList(items) {
-  if (items.length <= 1) return items.join("");
-  return `${items.slice(0, -1).join(", ")} und ${items.at(-1)}`;
-}
-
-function renderScheduleValidation() {
-  if (!scheduleValidation || !scheduleValidatorEl) return;
-
-  const missingGroups = scheduleValidation.groups.filter((group) => !group.complete);
-  const completeGroups = scheduleValidation.groups.filter((group) => group.complete);
-  const issueCount =
-    scheduleValidation.issues.duplicateFixtures.length +
-    scheduleValidation.issues.unknownTeams.length +
-    scheduleValidation.issues.invalidGroups.length;
-  const warningCount = scheduleValidation.issues.warnings.length;
-  const statusTone = getValidationTone(scheduleValidation.status);
-
-  scheduleValidatorEl.innerHTML = `
-    <div class="validator-hero ${statusTone}">
-      <div>
-        <span class="data-badge ${statusTone}">${getValidationLabel(scheduleValidation.status)}</span>
-        <h3>Spielplan-Transparenz</h3>
-        <p>${scheduleValidation.summary}</p>
-      </div>
-      <div class="validator-score" style="--coverage: ${scheduleValidation.coverage.tournament}">
-        <strong>${scheduleValidation.coverage.tournament}%</strong>
-        <span>Turnierstruktur</span>
-      </div>
-    </div>
-    <div class="validator-metrics">
-      ${[
-        ["Importiert", `${scheduleValidation.imported.totalMatches}/${scheduleValidation.expected.totalMatches}`],
-        ["Turnier-Coverage", `${scheduleValidation.coverage.tournament}%`],
-        ["Verifiziert", `${scheduleValidation.imported.verifiedGroupMatches}`],
-        ["K.o.-Slots", `${scheduleValidation.imported.knockoutMatches}/${scheduleValidation.expected.knockoutMatches}`],
-        ["Komplette Gruppen", `${scheduleValidation.imported.completeGroups}/${scheduleValidation.expected.groups}`],
-        ["Kritische Issues", issueCount],
-      ]
-        .map(
-          ([label, value]) => `
-            <div class="validator-metric">
-              <span>${label}</span>
-              <strong>${value}</strong>
-            </div>
-          `,
-        )
-        .join("")}
-    </div>
-    <div class="group-coverage-grid">
-      ${scheduleValidation.groups
-        .map(
-          (group) => `
-            <article class="group-coverage-card ${group.complete ? "complete" : ""}">
-              <div>
-                <strong>Gruppe ${group.id}</strong>
-                <span>${group.imported}/${group.expected} Spiele</span>
-              </div>
-              <span class="confidence">
-                <span style="width: ${group.coverage}%"></span>
-              </span>
-              ${
-                group.missingPairs.length
-                  ? `<small>Fehlt: ${group.missingPairs.map(formatPair).slice(0, 3).join(", ")}${
-                      group.missingPairs.length > 3 ? " ..." : ""
-                    }</small>`
-                  : `<small>Vollstaendig importiert.</small>`
-              }
-            </article>
-          `,
-        )
-        .join("")}
-    </div>
-    <div class="validator-next">
-      <strong>Nächster Import-Fokus</strong>
-      <p>${
-        missingGroups.length
-          ? `Zuerst Gruppen ${formatList(missingGroups.map((group) => group.id))} vervollständigen. Komplett sind aktuell: ${
-              formatList(completeGroups.map((group) => group.id)) || "noch keine"
-            }.`
-          : scheduleValidation.imported.knockoutMatches === scheduleValidation.expected.knockoutMatches
-            ? "Turnierstruktur ist komplett. Als Nächstes Ergebnisse, Tabellen und Third-Place-Mapping andocken."
-            : "Gruppenphase ist komplett; als Nächstes K.o.-Platzhalter und Bracket-Logik einführen."
-      }</p>
-    </div>
-  `;
-}
-
-function getResultValidationTone(status) {
-  if (status === "synced") return "real";
-  if (status === "critical") return "seed";
-  if (status === "blocked") return "mixed";
-  return "model";
-}
-
-function getResultValidationLabel(status) {
-  const labels = {
-    synced: "Sync aktiv",
-    waiting: "Wartet",
-    blocked: "Setup offen",
-    critical: "Konflikt",
-    "not-run": "Nicht geprueft",
-  };
-
-  return labels[status] || status;
-}
-
-function renderResultValidation() {
-  if (!resultValidation || !resultValidatorEl) return;
-
-  const tone = getResultValidationTone(resultValidation.status);
-  const issueCount =
-    resultValidation.issues.unknownMatches.length +
-    resultValidation.issues.invalidScores.length +
-    resultValidation.issues.duplicateResults.length +
-    resultValidation.issues.teamMismatches.length;
-  const overrides = results?.summary?.overrides || 0;
-  const sourceLabel = resultValidation.source?.sourceLabel || results?.sourceLabel || "Keine Quelle";
-  const generatedAt = resultValidation.source?.generatedAt
-    ? new Date(resultValidation.source.generatedAt).toLocaleString("de-DE", { dateStyle: "short", timeStyle: "short" })
-    : "noch nie";
-
-  resultValidatorEl.innerHTML = `
-    <div class="validator-hero ${tone}">
-      <div>
-        <span class="data-badge ${tone}">${getResultValidationLabel(resultValidation.status)}</span>
-        <h3>Ergebnis-Sync</h3>
-        <p>${resultValidation.summary}</p>
-      </div>
-      <div class="validator-score" style="--coverage: ${resultValidation.coverage.groupCoverage}">
-        <strong>${resultValidation.coverage.totalResults}</strong>
-        <span>Finale Resultate</span>
-      </div>
-    </div>
-    <div class="validator-metrics">
-      ${[
-        ["Quelle", sourceLabel],
-        ["Letzter Sync", generatedAt],
-        ["Gruppen", `${resultValidation.coverage.groupResults}/${matches.length}`],
-        ["K.o.", `${resultValidation.coverage.knockoutResults}/${knockout.length}`],
-        ["Overrides", overrides],
-        ["Issues", issueCount],
-      ]
-        .map(
-          ([label, value]) => `
-            <div class="validator-metric">
-              <span>${label}</span>
-              <strong>${value}</strong>
-            </div>
-          `,
-        )
-        .join("")}
-    </div>
-  `;
 }
 
 function getSlotGroups(slot) {
@@ -2734,154 +2365,6 @@ function renderSurpriseRadar() {
     .join("");
 }
 
-function renderSources() {
-  if (!sourceStackEl) return;
-  sourceStackEl.innerHTML = sources
-    .map(
-      (source) => `
-        <article class="source-card">
-          <span class="source-grade">${source.grade}</span>
-          <span>
-            <h3>${source.title}</h3>
-            <p>${source.text}</p>
-          </span>
-          <span class="quality-bar" aria-label="Qualität ${source.quality} von 100">
-            <span style="width: ${source.quality}%"></span>
-          </span>
-        </article>
-      `,
-    )
-    .join("");
-}
-
-function renderAnalystDesk() {
-  if (!analystSources || !analystPillarsEl) return;
-
-  analystPillarsEl.innerHTML = analystSources.pillars
-    .map(
-      (pillar) => `
-        <article class="analyst-pillar-card">
-          <div class="analyst-pillar-top">
-            <span>
-              <small>${pillar.layer}</small>
-              <h3>${pillar.name}</h3>
-            </span>
-            <strong style="--score: ${pillar.quality}">${pillar.quality}</strong>
-          </div>
-          <p>${pillar.bestFor}</p>
-          <div class="analyst-signal-row">
-            ${pillar.signals.map((signal) => `<span>${signal}</span>`).join("")}
-          </div>
-          <div class="analyst-note">
-            <strong>Wofür nutzen?</strong>
-            <span>${pillar.watchFor}</span>
-          </div>
-          <div class="analyst-note muted-note">
-            <strong>Blinder Fleck</strong>
-            <span>${pillar.blindSpot}</span>
-          </div>
-          <a href="${pillar.url}" target="_blank" rel="noreferrer">${pillar.integration}</a>
-        </article>
-      `,
-    )
-    .join("");
-
-  if (sourceAutomationEl) {
-    sourceAutomationEl.innerHTML = analystSources.automationPlan
-      .map(
-        (item) => `
-          <article class="workflow-card">
-            <span>${item.mode}</span>
-            <h3>${item.label}</h3>
-            <p>${item.whatHappens}</p>
-            <small>${item.cadence}</small>
-            <em>${item.userAction}</em>
-          </article>
-        `,
-      )
-      .join("");
-  }
-
-  if (sourceAccessEl) {
-    sourceAccessEl.innerHTML = analystSources.accessModel
-      .map(
-        (item) => `
-          <article class="access-card">
-            <h3>${item.label}</h3>
-            <p>${item.use}</p>
-            <small>${item.examples}</small>
-            <em>${item.risk}</em>
-          </article>
-        `,
-      )
-      .join("");
-  }
-
-  if (synthesisModelEl) {
-    synthesisModelEl.innerHTML = analystSources.synthesisModel
-      .map(
-        (item) => `
-          <article class="synthesis-model-card">
-            <div>
-              <strong>${item.label}</strong>
-              <small>${item.weight}% Gewicht</small>
-            </div>
-            <span style="--layer: ${item.weight}"></span>
-            <p>${item.rule}</p>
-          </article>
-        `,
-      )
-      .join("");
-  }
-
-  analystVoicesEl.innerHTML = analystSources.voices
-    .slice()
-    .sort((a, b) => b.trust - a.trust)
-    .map(
-      (voice) => `
-        <article class="voice-card">
-          <div class="voice-score" style="--score: ${voice.trust}">
-            <span>${voice.trust}</span>
-          </div>
-          <span>
-            <small>${voice.type}</small>
-            <h3>${voice.name}</h3>
-            <p>${voice.bestFor}</p>
-            <em>${voice.useWhen}</em>
-            <a href="${voice.url}" target="_blank" rel="noreferrer">Quelle ansehen</a>
-          </span>
-        </article>
-      `,
-    )
-    .join("");
-
-  sourceRulesEl.innerHTML = analystSources.rules
-    .map(
-      (rule) => `
-        <article class="source-rule-card">
-          <strong>${rule.label}</strong>
-          <p>${rule.rule}</p>
-          <span class="quality-bar" aria-label="Regelgewicht ${rule.weight} von 100">
-            <span style="width: ${rule.weight}%"></span>
-          </span>
-        </article>
-      `,
-    )
-    .join("");
-
-  const primaryModel = analystSources.aiModels[0];
-  aiModelCardEl.innerHTML = primaryModel
-    ? `
-      <span class="data-badge model">Research</span>
-      <h3>${primaryModel.name}</h3>
-      <p>${primaryModel.role}</p>
-      <p>${primaryModel.bestFor}</p>
-      <small>${primaryModel.limitation}</small>
-      <a href="${primaryModel.url}" target="_blank" rel="noreferrer">Paper ansehen</a>
-    `
-    : "";
-}
-
 function renderAllDynamic() {
   renderDailyCommandCenter();
   renderTournamentSnapshot();
@@ -2916,15 +2399,23 @@ function setupSpoilerMode() {
   });
 }
 
-function setupZoneNavigation() {
-  if (!zoneLinks.length) return;
-  const zoneTargets = zoneLinks
-    .map((link) => ({ link, target: document.querySelector(link.getAttribute("href")) }))
-    .filter((entry) => entry.target);
+function setupViewNavigation() {
+  if (!zoneLinks.length || !viewPanels.length) return;
+  const viewByHash = new Map();
+  viewPanels.forEach((panel) => {
+    panel.querySelectorAll("[id]").forEach((element) => {
+      viewByHash.set(`#${element.id}`, panel.dataset.view);
+    });
+  });
+  viewByHash.set("#matches", "today");
+  viewByHash.set("#games", "games");
+  viewByHash.set("#tournament", "tournament");
 
-  const setActiveZone = (activeLink) => {
+  const setActiveZone = (activeView) => {
     zoneLinks.forEach((link) => {
-      const isActive = link === activeLink;
+      const target = document.querySelector(link.getAttribute("href"));
+      const view = target?.closest("[data-view]")?.dataset.view || "today";
+      const isActive = view === activeView;
       link.classList.toggle("is-active", isActive);
       if (isActive) {
         link.setAttribute("aria-current", "page");
@@ -2934,32 +2425,40 @@ function setupZoneNavigation() {
     });
   };
 
-  setActiveZone(zoneTargets[0]?.link);
+  const showView = (view, options = {}) => {
+    const nextView = viewPanels.some((panel) => panel.dataset.view === view) ? view : "today";
+    viewPanels.forEach((panel) => {
+      panel.hidden = panel.dataset.view !== nextView;
+    });
+    setActiveZone(nextView);
+    document.body.dataset.activeView = nextView;
 
-  zoneTargets.forEach(({ link, target }) => {
+    if (options.hash) history.replaceState(null, "", options.hash);
+    if (options.scrollTarget) {
+      options.scrollTarget.scrollIntoView({ behavior: options.instant ? "auto" : "smooth", block: "start" });
+    }
+  };
+
+  const navigateToHash = (hash, instant = false) => {
+    if (!hash || hash === "#top") {
+      showView("today", { hash: "#top", scrollTarget: document.querySelector("#top"), instant });
+      return;
+    }
+
+    const view = viewByHash.get(hash) || "today";
+    showView(view, { hash, scrollTarget: document.querySelector(hash), instant });
+  };
+
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener("click", (event) => {
+      const hash = link.getAttribute("href");
+      if (!hash || hash === "#") return;
       event.preventDefault();
-      setActiveZone(link);
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
-      history.replaceState(null, "", link.getAttribute("href"));
+      navigateToHash(hash);
     });
   });
 
-  if (!("IntersectionObserver" in window)) return;
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      const visible = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (!visible) return;
-      const active = zoneTargets.find((entry) => entry.target === visible.target);
-      if (active) setActiveZone(active.link);
-    },
-    { rootMargin: "-18% 0px -66% 0px", threshold: [0.08, 0.18, 0.32] },
-  );
-
-  zoneTargets.forEach(({ target }) => observer.observe(target));
+  navigateToHash(window.location.hash || "#matches", true);
 }
 
 function setupPwa() {
@@ -2969,18 +2468,11 @@ function setupPwa() {
 }
 
 renderFocusTeams();
-renderDataStatus();
-renderProviderTests();
-renderFeatureLab();
-renderResultValidation();
-renderScheduleValidation();
 renderBracket();
 renderSurpriseRadar();
-renderSources();
-renderAnalystDesk();
 renderAllDynamic();
 renderTeamLab();
 renderKeyFigures();
 setupSpoilerMode();
-setupZoneNavigation();
+setupViewNavigation();
 setupPwa();

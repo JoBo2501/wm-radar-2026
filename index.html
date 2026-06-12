@@ -50,8 +50,8 @@
             </p>
 
             <div class="hero-actions" aria-label="Schnellzugriffe">
-              <a class="primary-action" href="#matches">Heutige Spiele ansehen</a>
-              <a class="secondary-action" href="#dossier">Match-Dossier ansehen</a>
+          <a class="primary-action" href="#matches">Heutige Spiele ansehen</a>
+          <a class="secondary-action" href="#dossier">Match-Dossier ansehen</a>
             </div>
 
             <div class="hero-status-rail" aria-label="Live-Status" id="heroStatusRail"></div>
@@ -83,7 +83,6 @@
                 <strong id="orbitSignal">Topspiel wird berechnet</strong>
               </div>
             </div>
-            <div class="hero-signal-stack" id="heroSignalStack" aria-label="Aktuelle Signale"></div>
             <div class="control-stats" id="controlStats"></div>
           </aside>
         </section>
@@ -106,6 +105,7 @@
           </a>
         </section>
 
+        <div class="view-panel" data-view="today" id="view-today">
         <section class="section-head" id="matches" aria-labelledby="matchesTitle">
           <div>
             <p class="eyebrow">Heute priorisieren</p>
@@ -129,13 +129,13 @@
 
           <div class="top-match-card" id="topMatchCard"></div>
 
-          <div class="storyline-card">
-            <div class="panel-title">
+          <details class="storyline-card command-detail">
+            <summary class="panel-title">
               <span>Storylines</span>
               <strong>Worauf achten?</strong>
-            </div>
+            </summary>
             <div class="storyline-list" id="matchdayStorylines"></div>
-          </div>
+          </details>
 
           <div class="watch-plan-card">
             <div class="panel-title">
@@ -145,22 +145,22 @@
             <div class="watch-plan" id="watchPlan"></div>
           </div>
 
-          <div class="skip-card">
-            <div class="panel-title">
+          <details class="skip-card command-detail">
+            <summary class="panel-title">
               <span>Bewusst auslassen</span>
               <strong id="skipPlanCount">0 Spiele</strong>
-            </div>
+            </summary>
             <div class="skip-list" id="skipPlan"></div>
-          </div>
+          </details>
 
-          <div class="morning-card">
-            <div class="panel-title">
+          <details class="morning-card command-detail">
+            <summary class="panel-title">
               <span>Morgen ohne Spoiler</span>
               <strong id="morningCount">0 Nachtspiele</strong>
-            </div>
+            </summary>
             <p class="section-note">Nur Nachtspiele, die du später nachholen kannst, ohne direkt das Ergebnis zu sehen.</p>
             <div id="morningQueue"></div>
-          </div>
+          </details>
         </section>
 
         <details class="matchday-tools">
@@ -195,7 +195,9 @@
             <div class="category-filters" aria-label="Empfehlungsfilter" id="categoryFilters"></div>
           </section>
         </details>
+        </div>
 
+        <div class="view-panel" data-view="games" id="view-games" hidden>
         <section class="zone-divider games" id="games" aria-label="Bereich Spiele">
           <span>02</span>
           <div>
@@ -291,7 +293,9 @@
           </div>
           <div class="radar-grid" id="surpriseRadar"></div>
         </section>
+        </div>
 
+        <div class="view-panel" data-view="tournament" id="view-tournament" hidden>
         <section class="zone-divider tournament" id="tournament" aria-label="Bereich Turnierlage">
           <span>03</span>
           <div>
@@ -363,6 +367,7 @@
           <div class="bracket-summary" id="bracketSummary"></div>
           <div class="bracket-grid" id="bracketGrid"></div>
         </section>
+        </div>
 
       </main>
     </div>

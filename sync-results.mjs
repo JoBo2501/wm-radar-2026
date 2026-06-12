@@ -32,6 +32,38 @@ function fixtureKey(date, teams) {
   return `${date}|${teams.slice().sort().join("-")}`;
 }
 
+function wait(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
+
+function shouldRetryStatus(status) {
+  return status === 429 || status >= 500;
+}
+
+async function fetchJsonWithRetry(url, options = {}, label = "Request", attempts = 3) {
+  let lastError = null;
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    try {
+      const response = await fetch(url, options);
+      if (!response.ok) {
+        const error = new Error(`${label} HTTP ${response.status}`);
+        error.status = response.status;
+        if (!shouldRetryStatus(response.status) || attempt === attempts) throw error;
+        lastError = error;
+      } else {
+        return response.json();
+      }
+    } catch (error) {
+      lastError = error;
+      if (attempt === attempts || (error.status && !shouldRetryStatus(error.status))) throw error;
+    }
+    await wait(750 * attempt);
+  }
+  throw lastError;
+}
+
 function createFixtureIndexes(matches, knockout) {
   const groupById = new Map(matches.map((match) => [match.id, match]));
   const groupByDateTeams = new Map();
@@ -48,6 +80,30 @@ function createFixtureIndexes(matches, knockout) {
     groupByDateTeams,
     knockoutByNumber,
   };
+}
+
+function createProviderMappingIndex(mappingPayload, source) {
+  if (!mappingPayload?.mappings?.length) return new Map();
+  const provider = String(mappingPayload.provider || "").toLowerCase();
+  const sourceId = String(source?.id || "").toLowerCase();
+  const sourceType = String(source?.type || "").toLowerCase();
+  if (provider && provider !== sourceId && provider !== sourceType) return new Map();
+
+  return new Map(
+    mappingPayload.mappings
+      .filter((mapping) => mapping.providerId && mapping.matchId)
+      .map((mapping) => [
+        String(mapping.providerId),
+        {
+          matchId: mapping.matchId,
+          confidence: mapping.confidence ?? null,
+        },
+      ]),
+  );
+}
+
+function getProviderMappedCount(results) {
+  return results.filter((result) => result.providerMapped).length;
 }
 
 function getTeamIndexes(teams) {
@@ -150,8 +206,10 @@ function getSportmonksScore(item, location) {
   const candidates = scores.filter(
     (score) => String(score.score?.participant || score.participant || "").toLowerCase() === location,
   );
+  const currentTypeId = 1525;
   const preferred =
-    candidates.find((score) => String(score.description || score.type?.name || "").toLowerCase().includes("current")) ||
+    candidates.find((score) => Number(score.type_id || score.type?.id) === currentTypeId) ||
+    candidates.find((score) => String(score.description || score.type?.name || "").toLowerCase() === "current") ||
     candidates.find((score) => String(score.description || score.type?.name || "").toLowerCase().includes("full")) ||
     candidates.at(-1);
 
@@ -163,8 +221,9 @@ function getSportmonksStatus(item) {
   return normalizeStatus(item.state?.state || item.state?.name || item.state?.short_name || item.state_id);
 }
 
-function normalizeLocalResult(raw, indexes, teamAliases) {
-  const matchId = raw.matchId || raw.id || null;
+function normalizeLocalResult(raw, indexes, teamAliases, providerMappingById) {
+  const mappedProviderFixture = raw.providerId ? providerMappingById.get(String(raw.providerId)) : null;
+  const matchId = mappedProviderFixture?.matchId || raw.matchId || raw.id || null;
   const matchNumber = Number(raw.matchNumber || raw.number || 0) || null;
   let fixture = matchId ? indexes.groupById.get(matchId) : null;
   if (!fixture && matchNumber) fixture = indexes.knockoutByNumber.get(matchNumber);
@@ -187,6 +246,8 @@ function normalizeLocalResult(raw, indexes, teamAliases) {
     penaltyAwayGoals: raw.penaltyAwayGoals ?? null,
     source: raw.source || "local-json",
     providerId: raw.providerId || null,
+    providerMapped: Boolean(mappedProviderFixture),
+    providerMappingConfidence: mappedProviderFixture?.confidence ?? null,
     providerHome: raw.home || null,
     providerAway: raw.away || null,
     providerDate: raw.date || null,
@@ -206,11 +267,9 @@ async function fetchApiFootball(source) {
   const url = new URL(source.endpoint);
   url.searchParams.set("league", source.leagueId);
   url.searchParams.set("season", source.season);
-  const response = await fetch(url, {
+  const payload = await fetchJsonWithRetry(url, {
     headers: { "x-apisports-key": apiKey },
-  });
-  if (!response.ok) throw new Error(`API-FOOTBALL HTTP ${response.status}`);
-  const payload = await response.json();
+  }, "API-FOOTBALL");
 
   return (payload.response || []).map((item) => ({
     matchNumber: item.fixture?.id,
@@ -233,11 +292,9 @@ async function fetchFootballData(source) {
     throw new Error(`${source.apiKeyEnv} ist nicht gesetzt. Starte setup-football-data-token.cmd oder setze die Variable manuell.`);
   }
 
-  const response = await fetch(source.endpoint, {
+  const payload = await fetchJsonWithRetry(source.endpoint, {
     headers: { "X-Auth-Token": token },
-  });
-  if (!response.ok) throw new Error(`football-data.org HTTP ${response.status}`);
-  const payload = await response.json();
+  }, "football-data.org");
 
   return (payload.matches || []).map((item) => ({
     date: item.utcDate?.slice(0, 10),
@@ -270,10 +327,12 @@ async function fetchSportmonks(source) {
 
   while (hasMore) {
     url.searchParams.set("page", String(page));
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`Sportmonks HTTP ${response.status}`);
-    const payload = await response.json();
-    allFixtures.push(...(payload.data || []));
+    const payload = await fetchJsonWithRetry(url, {}, "Sportmonks");
+    const pageData = payload.data || [];
+    allFixtures.push(...pageData);
+    if (!payload.pagination && pageData.length === 50) {
+      throw new Error("Sportmonks Pagination fehlt trotz voller Seite; Fixture-Set waere unvollstaendig.");
+    }
     hasMore = Boolean(payload.pagination?.has_more);
     page += 1;
   }
@@ -321,11 +380,19 @@ function mergeOverrides(results, overrides) {
   return [...byKey.values()];
 }
 
+function writeSyncStatus(payload) {
+  writeJson("data/sync-status.json", {
+    ...payload,
+    generatedAt: new Date().toISOString(),
+  });
+}
+
 const sourcesConfig = readJson("data/result-sources.json");
 const teams = readJson("data/teams.json");
 const matches = readJson("data/matches.json");
 const knockout = readJson("data/knockout.json");
 const overrides = readJson("data/result-overrides.json", { matches: [] });
+const providerMapping = readJson("data/provider-mapping.json", { mappings: [] });
 const providerId = getArg("source") || sourcesConfig.activeSource;
 const source = sourcesConfig.sources.find((candidate) => candidate.id === providerId);
 const allowEmpty = hasFlag("allow-empty") || source?.type === "football-data" || source?.type === "sportmonks";
@@ -335,6 +402,7 @@ if (!source.enabled) throw new Error(`Resultatquelle ${providerId} ist deaktivie
 
 const indexes = createFixtureIndexes(matches, knockout);
 const teamAliases = getTeamIndexes(teams);
+const providerMappingById = createProviderMappingIndex(providerMapping, source);
 let rawResults = [];
 let syncError = null;
 
@@ -345,13 +413,30 @@ try {
   syncError = error;
 }
 
+if (syncError) {
+  writeSyncStatus({
+    ok: false,
+    activeSource: source.id,
+    sourceLabel: source.label,
+    error: {
+      message: syncError.message,
+      source: source.id,
+    },
+    preservedResults: existsSync("data/results.json"),
+  });
+  console.log(`Sync warning: ${syncError.message}`);
+  console.log("Bestehende data/results.json bleibt unveraendert.");
+  process.exit(1);
+}
+
 const normalizedResults = rawResults
-  .map((raw) => normalizeLocalResult(raw, indexes, teamAliases))
+  .map((raw) => normalizeLocalResult(raw, indexes, teamAliases, providerMappingById))
   .filter((result) => result.matchId || result.matchNumber)
   .filter((result) => result.status !== "scheduled" || hasFlag("include-scheduled"));
 const mergedResults = mergeOverrides(normalizedResults, overrides);
 const finalCount = mergedResults.filter((result) => result.status === "final").length;
 const liveCount = mergedResults.filter((result) => result.status === "live").length;
+const providerMappedCount = getProviderMappedCount(normalizedResults);
 
 writeJson("data/results.json", {
   mode: finalCount || liveCount ? "synced" : "preTournament",
@@ -375,11 +460,24 @@ writeJson("data/results.json", {
   summary: {
     providerMatches: rawResults.length,
     synced: mergedResults.length,
+    providerMapped: providerMappedCount,
     final: finalCount,
     live: liveCount,
     overrides: mergedResults.filter((result) => result.override).length,
   },
   matches: mergedResults,
+});
+
+writeSyncStatus({
+  ok: true,
+  activeSource: source.id,
+  sourceLabel: source.label,
+  providerMatches: rawResults.length,
+  synced: mergedResults.length,
+  providerMapped: providerMappedCount,
+  final: finalCount,
+  live: liveCount,
+  providerMappingEntries: providerMappingById.size,
 });
 
 console.log(

@@ -4,12 +4,13 @@
   "activeSource": "sportmonks",
   "sourceLabel": "Sportmonks",
   "sourceNote": "Automatisch synchronisiert aus Sportmonks; manuelle Overrides wurden angewendet.",
-  "generatedAt": "2026-06-12T07:18:30.730Z",
+  "generatedAt": "2026-06-12T11:08:13.793Z",
   "pollMinutes": 5,
   "syncError": null,
   "summary": {
     "providerMatches": 104,
     "synced": 2,
+    "providerMapped": 2,
     "final": 2,
     "live": 0,
     "overrides": 0
@@ -27,10 +28,12 @@
       "penaltyAwayGoals": null,
       "source": "sportmonks",
       "providerId": 19609127,
+      "providerMapped": true,
+      "providerMappingConfidence": 100,
       "providerHome": "Mexico",
       "providerAway": "South Africa",
       "providerDate": "2026-06-11",
-      "updatedAt": "2026-06-12T07:18:30.729Z"
+      "updatedAt": "2026-06-12T11:08:13.792Z"
     },
     {
       "matchId": "kor-cze-2026-06-12",
@@ -44,10 +47,12 @@
       "penaltyAwayGoals": null,
       "source": "sportmonks",
       "providerId": 19609153,
+      "providerMapped": true,
+      "providerMappingConfidence": 100,
       "providerHome": "Korea Republic",
       "providerAway": "Czech Republic",
       "providerDate": "2026-06-12",
-      "updatedAt": "2026-06-12T07:18:30.729Z"
+      "updatedAt": "2026-06-12T11:08:13.792Z"
     }
   ]
 }
