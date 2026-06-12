@@ -310,6 +310,94 @@ function getResultTone(result) {
   return "pending";
 }
 
+function isFinalResult(result) {
+  return result?.status === "final" && hasCompleteScore(result);
+}
+
+function getResultScore(result) {
+  if (!hasCompleteScore(result)) return null;
+  return {
+    homeGoals: Number(result.homeGoals),
+    awayGoals: Number(result.awayGoals),
+  };
+}
+
+function formatSignedGoalDifference(value) {
+  return value > 0 ? `+${value}` : String(value);
+}
+
+function getFinalMatchImpact(match, result) {
+  const score = getResultScore(result);
+  if (!score) return null;
+
+  const [home, away] = getMatchTeams(match);
+  const homePoints = score.homeGoals > score.awayGoals ? 3 : score.homeGoals === score.awayGoals ? 1 : 0;
+  const awayPoints = score.awayGoals > score.homeGoals ? 3 : score.homeGoals === score.awayGoals ? 1 : 0;
+
+  return {
+    home,
+    away,
+    homeGoals: score.homeGoals,
+    awayGoals: score.awayGoals,
+    homePoints,
+    awayPoints,
+    homeGoalDifference: score.homeGoals - score.awayGoals,
+    awayGoalDifference: score.awayGoals - score.homeGoals,
+    winner: score.homeGoals === score.awayGoals ? null : score.homeGoals > score.awayGoals ? home : away,
+    loser: score.homeGoals === score.awayGoals ? null : score.homeGoals > score.awayGoals ? away : home,
+  };
+}
+
+function getMatchCardScore(match, result) {
+  if (!isFinalResult(result)) return match.score;
+  const report = getPostMatchReport(match, result);
+  return report.recommendationAudit?.postMatchScore ?? match.score;
+}
+
+function getMatchCardState(match, result) {
+  if (isFinalResult(result)) return `Beendet · ${match.displayDate} · ${match.germanyTime}`;
+  return `${match.state} · ${match.displayDate} · ${match.germanyTime}`;
+}
+
+function getMatchCardSignals(match, result) {
+  const impact = getFinalMatchImpact(match, result);
+  if (!impact) {
+    return [
+      { value: match.driver, label: "Treiber" },
+      { value: match.pathImpact, label: "Weiterkommen" },
+      { value: match.signals.tactical, label: "Taktik" },
+    ];
+  }
+
+  return [
+    { value: `${impact.homeGoals}:${impact.awayGoals}`, label: "Endstand" },
+    { value: `${impact.homePoints}:${impact.awayPoints}`, label: "Punkte" },
+    {
+      value: `${formatSignedGoalDifference(impact.homeGoalDifference)}/${formatSignedGoalDifference(impact.awayGoalDifference)}`,
+      label: "Tordifferenz",
+    },
+  ];
+}
+
+function getMatchCardReason(match, result) {
+  const impact = getFinalMatchImpact(match, result);
+  if (!impact) return getCompactMatchReason(match);
+
+  if (!impact.winner) {
+    return `${impact.home.name} und ${impact.away.name} trennen sich ${impact.homeGoals}:${impact.awayGoals}. Die Karte zeigt Ergebnis-Review; Detaildaten wie xG oder Pressing bleiben offen.`;
+  }
+
+  return `${impact.winner.name} gewinnt ${impact.homeGoals}:${impact.awayGoals} gegen ${impact.loser.name}. Die Karte zeigt Ergebnis-Review; Detaildaten wie xG oder Pressing bleiben offen.`;
+}
+
+function getMatchCardWatchLabel(match, result) {
+  return isFinalResult(result) ? "Auswertung" : getWatchLabel(match.category);
+}
+
+function getMatchCardWatchClass(match, result) {
+  return isFinalResult(result) ? "final" : getWatchClass(match.category);
+}
+
 function addActualResult(homeRow, awayRow, homeGoals, awayGoals) {
   homeRow.played += 1;
   awayRow.played += 1;
@@ -1976,18 +2064,15 @@ function getResultFactLine(match, home, away, result) {
   return `${winner.name} gewinnt ${homeGoals}:${awayGoals} gegen ${loser.name} und nimmt drei Punkte mit.`;
 }
 
-function getGroupImpactLine(match) {
-  const groupId = getGroupId(match);
-  const groupEntry = getGroupStandings().find((entry) => entry.group.id === groupId);
-  if (!groupEntry) return "Die Tabellenwirkung wird aus den synchronisierten Ergebnissen berechnet.";
-  const rows = match.teams
-    .map((code) => {
-      const rank = groupEntry.table.findIndex((row) => row.code === code) + 1;
-      const row = groupEntry.table[rank - 1];
-      return row ? `${row.team.name}: Platz ${rank}, ${row.displayPoints} Punkte, Tordifferenz ${row.displayGoalDifference}` : null;
-    })
-    .filter(Boolean);
-  return rows.length ? rows.join(" · ") : "Die Tabellenwirkung wird aus den synchronisierten Ergebnissen berechnet.";
+function getGroupImpactLine(match, result) {
+  const impact = getFinalMatchImpact(match, result);
+  if (!impact) return "Die Tabellenwirkung wird berechnet, sobald ein belastbarer Endstand vorliegt.";
+
+  return `${impact.home.name}: ${impact.homePoints} Punkte, Tordifferenz ${formatSignedGoalDifference(
+    impact.homeGoalDifference,
+  )}. ${impact.away.name}: ${impact.awayPoints} Punkte, Tordifferenz ${formatSignedGoalDifference(
+    impact.awayGoalDifference,
+  )}.`;
 }
 
 function getUnavailableMetricLabels(metrics) {
@@ -2067,7 +2152,7 @@ function renderPostMatchDossier(match, home, away, result) {
     <div class="insight-card profile-insight">
       <span class="briefing-kicker">Tabellenwirkung</span>
       <h3>Was das Ergebnis verändert</h3>
-      <p>${getGroupImpactLine(match)}</p>
+      <p>${getGroupImpactLine(match, result)}</p>
       <p>${match.groupModel ? match.groupModel.pathNote : "Die Pfadwirkung wird mit weiteren Ergebnissen klarer."}</p>
     </div>
     <details class="dossier-depth">
@@ -2203,17 +2288,20 @@ function renderMatches() {
       .map((match) => {
         const [home, away] = match.matchTeams;
         const active = match.id === selectedMatchId ? "active" : "";
-        const scoreTone = getScoreTone(match.score);
         const result = getMatchResult(match);
         const resultLabel = getResultLabel(result);
+        const finalMatch = isFinalResult(result);
+        const displayScore = getMatchCardScore(match, result);
+        const displayScoreTone = getScoreTone(displayScore);
+        const cardSignals = getMatchCardSignals(match, result);
 
         return `
-          <button class="match-card ${active} ${match.category}" type="button" data-match="${match.id}">
+          <button class="match-card ${active} ${match.category} ${finalMatch ? "final" : ""}" type="button" data-match="${match.id}">
             <span class="match-main">
               <span class="match-card-topline">
                 <span class="match-state">
                   <span class="state-dot"></span>
-                  ${match.state} · ${match.displayDate} · ${match.germanyTime}
+                  ${getMatchCardState(match, result)}
                 </span>
                 ${
                   resultLabel
@@ -2227,20 +2315,18 @@ function renderMatches() {
                 <span class="team-side away"><strong>${away.code}</strong>${renderFlag(away)}<small>${away.name}</small></span>
               </span>
               <span class="match-signal-strip">
-                <span><strong>${match.driver}</strong> Treiber</span>
-                <span><strong>${match.pathImpact}</strong> Weiterkommen</span>
-                <span><strong>${match.signals.tactical}</strong> Taktik</span>
+                ${cardSignals.map((signal) => `<span><strong>${signal.value}</strong> ${signal.label}</span>`).join("")}
               </span>
-              <p class="match-reason">${getCompactMatchReason(match)}</p>
+              <p class="match-reason">${getMatchCardReason(match, result)}</p>
               <span class="match-tags">
                   ${match.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}
                 </span>
             </span>
-            <span class="match-score ${scoreTone}">
-              <span class="score-ring ${scoreTone}" style="--score: ${match.score}">
-                <span>${match.score}</span>
+            <span class="match-score ${displayScoreTone}">
+              <span class="score-ring ${displayScoreTone}" style="--score: ${displayScore}">
+                <span>${displayScore}</span>
               </span>
-              <span class="watch-label ${getWatchClass(match.category)}">${getWatchLabel(match.category)}</span>
+              <span class="watch-label ${getMatchCardWatchClass(match, result)}">${getMatchCardWatchLabel(match, result)}</span>
             </span>
           </button>
         `;

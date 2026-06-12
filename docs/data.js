@@ -1238,7 +1238,7 @@ window.WMRadarData = {
   "postMatchReports": {
     "schemaVersion": 1,
     "status": "drafts-generated",
-    "generatedAt": "2026-06-12T12:13:39.594Z",
+    "generatedAt": "2026-06-12T12:19:29.872Z",
     "sourceNote": "Post-Match-Reports sind als Datenmodell vorbereitet. Echte Werte werden nach Spielende aus Ergebnis-, Event-, Tracking- und Analystenquellen ergänzt.",
     "metricDefinitions": [
       {
@@ -1298,7 +1298,7 @@ window.WMRadarData = {
       {
         "matchId": "kor-cze-2026-06-12",
         "status": "draft",
-        "generatedAt": "2026-06-12T12:13:39.594Z",
+        "generatedAt": "2026-06-12T12:19:29.872Z",
         "generatedBy": "generate-post-match-reports.mjs",
         "result": {
           "homeGoals": 2,
@@ -1338,7 +1338,7 @@ window.WMRadarData = {
       {
         "matchId": "mex-rsa-2026-06-11",
         "status": "draft",
-        "generatedAt": "2026-06-12T12:13:39.593Z",
+        "generatedAt": "2026-06-12T12:19:29.870Z",
         "generatedBy": "generate-post-match-reports.mjs",
         "result": {
           "homeGoals": 2,

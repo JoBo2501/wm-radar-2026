@@ -1564,6 +1564,10 @@ h3 {
   background: var(--red);
 }
 
+.match-card.final::before {
+  background: var(--green);
+}
+
 .match-main,
 .match-card-topline {
   min-width: 0;
@@ -1891,6 +1895,11 @@ h3 {
 .watch-label.analysis {
   background: rgba(255, 214, 107, 0.12);
   color: var(--gold);
+}
+
+.watch-label.final {
+  background: rgba(17, 151, 81, 0.12);
+  color: var(--green);
 }
 
 .dossier {
